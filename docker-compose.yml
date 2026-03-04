@@ -1,0 +1,85 @@
+version: "3.9"
+
+# ── Shared volume for pipeline outputs ───────────────────────────────────────
+volumes:
+  cppulse_output:
+
+# ── Services ──────────────────────────────────────────────────────────────────
+services:
+
+  # ── 1. analyzer-core (C++17 static analysis) ────────────────────────────
+  analyzer-core:
+    build:
+      context: ./analyzer-core
+      dockerfile: Dockerfile
+    volumes:
+      - ${REPO_PATH:-./tests/fixtures}:/repo:ro
+      - cppulse_output:/output
+    environment:
+      - OUTPUT_DIR=/output
+    command: ["/usr/local/bin/cppulse-analyzer", "--repo", "/repo", "--output", "/output/findings.json"]
+    # Day 2 Task: implement this Dockerfile
+
+  # ── 2. git-miner (Python git history analysis) ──────────────────────────
+  git-miner:
+    build:
+      context: ./git-miner
+      dockerfile: Dockerfile
+    volumes:
+      - ${REPO_PATH:-./tests/fixtures}:/repo:ro
+      - cppulse_output:/output
+    environment:
+      - OUTPUT_DIR=/output
+    depends_on:
+      - analyzer-core
+    command: ["python3", "-m", "src.main", "--repo", "/repo", "--output", "/output/git_metrics.json"]
+    # Week 3 Task: implement
+
+  # ── 3. predictor (XGBoost ML pipeline) ──────────────────────────────────
+  predictor:
+    build:
+      context: ./predictor
+      dockerfile: Dockerfile
+    volumes:
+      - cppulse_output:/output
+    environment:
+      - OUTPUT_DIR=/output
+    depends_on:
+      - analyzer-core
+      - git-miner
+    command: ["python3", "-m", "src.main", "--input", "/output", "--output", "/output"]
+    # Week 4 Task: implement
+
+  # ── 4. report-engine (FastAPI + PDF) ────────────────────────────────────
+  report-engine:
+    build:
+      context: ./report-engine
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - cppulse_output:/output
+    environment:
+      - OUTPUT_DIR=/output
+    depends_on:
+      - predictor
+    command: ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
+    # Week 4 Task: implement
+
+  # ── 5. dashboard (React/TypeScript) ──────────────────────────────────────
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - report-engine
+    # Week 5 Task: implement
+
+  # ── 6. cli (C++17 orchestrator) ──────────────────────────────────────────
+  # Note: cli is typically run directly, not as a compose service.
+  # It orchestrates the other services via docker-compose internally.
+  # Week 6 Task: implement
