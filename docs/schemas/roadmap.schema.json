@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse Refactoring Roadmap",
+  "type": "object",
+  "required": ["version", "items"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0.0" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["priority", "file", "action", "category", "estimated_hours", "impact_score"],
+        "properties": {
+          "priority": { "type": "integer", "minimum": 1 },
+          "file": { "type": "string" },
+          "action": { "type": "string", "description": "Specific refactoring recommendation" },
+          "category": { "enum": ["memory_safety", "modernization", "complexity", "misra", "knowledge_silo"] },
+          "estimated_hours": { "type": "number", "minimum": 0.5 },
+          "impact_score": { "type": "number", "minimum": 0, "maximum": 100, "description": "ROI: expected health score improvement" },
+          "finding_ids": { "type": "array", "items": { "type": "string" }, "description": "Related finding rule_ids" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse Risk Scores",
+  "type": "object",
+  "required": ["version", "metadata", "health_score", "file_risks", "hotspots"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0.0" },
+    "metadata": {
+      "type": "object",
+      "required": ["generated_at", "model_type", "feature_count"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "model_type": { "type": "string", "const": "xgboost" },
+        "feature_count": { "type": "integer" },
+        "training_samples": { "type": "integer" },
+        "f1_score": { "type": "number" }
+      }
+    },
+    "health_score": {
+      "type": "object",
+      "required": ["overall", "by_category"],
+      "properties": {
+        "overall": { "type": "number", "minimum": 0, "maximum": 100 },
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "memory_safety": { "type": "number", "minimum": 0, "maximum": 100 },
+            "modernization": { "type": "number", "minimum": 0, "maximum": 100 },
+            "complexity": { "type": "number", "minimum": 0, "maximum": 100 },
+            "misra_compliance": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        }
+      }
+    },
+    "file_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "bug_probability", "risk_level", "top_factors"],
+        "properties": {
+          "file": { "type": "string" },
+          "bug_probability": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "risk_level": { "enum": ["critical", "high", "medium", "low"] },
+          "top_factors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "feature": { "type": "string" },
+                "importance": { "type": "number" },
+                "value": { "type": "number" }
+              }
+            },
+            "maxItems": 5
+          }
+        }
+      }
+    },
+    "hotspots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "hotspot_score"],
+        "properties": {
+          "file": { "type": "string" },
+          "hotspot_score": { "type": "number", "description": "change_frequency * complexity * debt_density" },
+          "change_frequency": { "type": "integer" },
+          "complexity_score": { "type": "number" },
+          "finding_count": { "type": "integer" }
+        }
+      },
+      "maxItems": 20,
+      "description": "Top 20 files by hotspot score"
+    }
+  }
+}
