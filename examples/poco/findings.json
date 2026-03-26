@@ -1,6 +1,106 @@
 {
   "findings": [
     {
+      "category": "complexity",
+      "column": 19,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/ODBC/testsuite/src/SQLExecutor.cpp",
+      "line": 150,
+      "message": "Function 'bareboneODBCTest' has cyclomatic complexity of 71 (threshold: warning>15, error>25)",
+      "rule_id": "CPP-CX-001",
+      "severity": "error",
+      "suggestion": "Decompose into smaller functions to reduce complexity"
+    },
+    {
+      "category": "complexity",
+      "column": 1,
+      "confidence": 1.0,
+      "end_line": 281,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "line": 199,
+      "message": "Function 'writeInsert' is 83 lines long (threshold: warning>80, error>150)",
+      "rule_id": "CPP-CX-002",
+      "severity": "warning",
+      "suggestion": "Decompose into smaller helper functions"
+    },
+    {
+      "category": "complexity",
+      "column": 7,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "line": 220,
+      "message": "Function 'printTimeSummary' has 6 parameters (threshold: warning>5, error>8)",
+      "rule_id": "CPP-CX-003",
+      "severity": "warning",
+      "suggestion": "Introduce a parameter struct or builder pattern to reduce parameter count"
+    },
+    {
+      "category": "memory_safety",
+      "column": 34,
+      "confidence": 1.0,
+      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
+      "line": 125,
+      "message": "Raw 'new' expression detected; prefer std::make_unique or std::make_shared",
+      "rule_id": "CPP-MEM-001",
+      "severity": "warning",
+      "suggestion": "Replace 'new T(...)' with 'std::make_unique<T>(...)'"
+    },
+    {
+      "category": "memory_safety",
+      "column": 4,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
+      "line": 94,
+      "message": "Explicit 'delete' detected; prefer smart pointers for automatic lifetime management",
+      "rule_id": "CPP-MEM-002",
+      "severity": "warning",
+      "suggestion": "Use std::unique_ptr or std::shared_ptr to avoid manual delete"
+    },
+    {
+      "category": "memory_safety",
+      "column": 153,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/PostgreSQL/testsuite/src/PostgreSQLTest.cpp",
+      "line": 39,
+      "message": "C-style array parameter 'anOIDArray' decays to a raw pointer with no bounds information",
+      "rule_id": "CPP-MEM-003",
+      "severity": "warning",
+      "suggestion": "Replace C-style array parameter with std::span<T> or std::vector<T>"
+    },
+    {
+      "category": "modernization",
+      "column": 2,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Crypto/src/X509Certificate.cpp",
+      "line": 226,
+      "message": "C-style cast bypasses C++ type-safety checks",
+      "rule_id": "CPP-MOD-001",
+      "severity": "warning",
+      "suggestion": "Replace with static_cast<T>, dynamic_cast<T>, or reinterpret_cast<T>"
+    },
+    {
+      "category": "modernization",
+      "column": 1,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "line": 4,
+      "message": "Deprecated C header <stdlib.h> included; prefer the C++ equivalent",
+      "rule_id": "CPP-MOD-002",
+      "severity": "warning",
+      "suggestion": "Replace <stdlib.h> with <cstdlib>"
+    },
+    {
+      "category": "modernization",
+      "column": 23,
+      "confidence": 0.95,
+      "file": "/tmp/poco/Data/SQLParser/test/auto_query_file_test.cpp",
+      "line": 107,
+      "message": "Virtual method 'what' overrides a base class method but is missing the 'override' specifier",
+      "rule_id": "CPP-MOD-003",
+      "severity": "warning",
+      "suggestion": "Add 'override' to the method declaration"
+    },
+    {
       "category": "modernization",
       "column": 6,
       "confidence": 0.9,
@@ -10,6 +110,116 @@
       "rule_id": "CPP-MOD-004",
       "severity": "info",
       "suggestion": "Replace escaped string with R\"(...)\" raw string literal"
+    },
+    {
+      "category": "modernization",
+      "column": 44,
+      "confidence": 0.9,
+      "file": "/tmp/poco/Data/samples/DBLogger/src/SQLLogInserter.cpp",
+      "line": 196,
+      "message": "Verbose iterator type 'const std::filesystem::directory_iterator' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 2,
+      "confidence": 0.7,
+      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
+      "line": 552,
+      "message": "Index-based for loop may be replaceable with a range-based for loop",
+      "rule_id": "CPP-MOD-006",
+      "severity": "info",
+      "suggestion": "Consider 'for (const auto& elem : container)' instead"
+    },
+    {
+      "category": "modernization",
+      "column": 20,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/flex_lexer.cpp",
+      "line": 4612,
+      "message": "NULL macro used as null pointer constant; prefer nullptr",
+      "rule_id": "CPP-MOD-007",
+      "severity": "warning",
+      "suggestion": "Replace NULL with nullptr"
+    },
+    {
+      "category": "modernization",
+      "column": 7,
+      "confidence": 1.0,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
+      "line": 78,
+      "message": "Unscoped enum 'LogLevel' pollutes the enclosing namespace and allows implicit integer conversion",
+      "rule_id": "CPP-MOD-008",
+      "severity": "warning",
+      "suggestion": "Replace 'enum LogLevel' with 'enum class LogLevel'"
+    },
+    {
+      "category": "modernization",
+      "column": 71,
+      "confidence": 1.0,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
+      "line": 47,
+      "message": "typedef 'RequestHandlerFactories' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef int RequestHandlerFactories' with 'using RequestHandlerFactories = int'"
+    },
+    {
+      "category": "misra",
+      "column": 4,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/bison_parser.cpp",
+      "line": 1881,
+      "message": "goto statement violates MISRA C++ Rule 6-6-2 (no goto)",
+      "rule_id": "MISRA-001",
+      "severity": "error",
+      "suggestion": "Replace goto with structured control flow (loops, exceptions, or early return)"
+    },
+    {
+      "category": "misra",
+      "column": 7,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "line": 272,
+      "message": "Union 'HSQL_STYPE' allows type punning and violates MISRA C++ type safety rules",
+      "rule_id": "MISRA-003",
+      "severity": "error",
+      "suggestion": "Replace union with std::variant for type-safe discriminated unions"
+    },
+    {
+      "category": "misra",
+      "column": 4,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "line": 65,
+      "message": "Dynamic allocation via 'free()' violates MISRA C++ Rule 18-4-1 (no dynamic heap allocation)",
+      "rule_id": "MISRA-004",
+      "severity": "error",
+      "suggestion": "Use stack allocation, std::array, or a pre-allocated memory pool"
+    },
+    {
+      "category": "misra",
+      "column": 13,
+      "confidence": 1.0,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/flex_lexer.cpp",
+      "line": 4792,
+      "message": "Function 'yyinput' is recursive, making stack depth analysis impossible",
+      "rule_id": "MISRA-005",
+      "severity": "error",
+      "suggestion": "Replace recursive implementation with an iterative one"
+    },
+    {
+      "category": "misra",
+      "column": 14,
+      "confidence": 1.0,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Parser.cpp",
+      "line": 232,
+      "message": "Function 'parseBool' has 3 return statements; MISRA Rule 6-6-5 requires a single exit point",
+      "rule_id": "MISRA-006",
+      "severity": "warning",
+      "suggestion": "Restructure function so all exit paths go through a single return"
     },
     {
       "category": "misra",
@@ -298,18 +508,6 @@
       "suggestion": "Replace escaped string with R\"(...)\" raw string literal"
     },
     {
-      "category": "complexity",
-      "column": 1,
-      "confidence": 1.0,
-      "end_line": 281,
-      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
-      "line": 199,
-      "message": "Function 'writeInsert' is 83 lines long (threshold: warning>80, error>150)",
-      "rule_id": "CPP-CX-002",
-      "severity": "warning",
-      "suggestion": "Decompose into smaller helper functions"
-    },
-    {
       "category": "misra",
       "column": 7,
       "confidence": 0.9,
@@ -319,17 +517,6 @@
       "rule_id": "MISRA-007",
       "severity": "warning",
       "suggestion": "Initialize 'it' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 14,
-      "confidence": 1.0,
-      "file": "/tmp/poco/ActiveRecord/Compiler/src/Parser.cpp",
-      "line": 232,
-      "message": "Function 'parseBool' has 3 return statements; MISRA Rule 6-6-5 requires a single exit point",
-      "rule_id": "MISRA-006",
-      "severity": "warning",
-      "suggestion": "Restructure function so all exit paths go through a single return"
     },
     {
       "category": "misra",
@@ -374,17 +561,6 @@
       "rule_id": "MISRA-007",
       "severity": "warning",
       "suggestion": "Initialize 'result' at the point of declaration"
-    },
-    {
-      "category": "memory_safety",
-      "column": 34,
-      "confidence": 1.0,
-      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
-      "line": 125,
-      "message": "Raw 'new' expression detected; prefer std::make_unique or std::make_shared",
-      "rule_id": "CPP-MEM-001",
-      "severity": "warning",
-      "suggestion": "Replace 'new T(...)' with 'std::make_unique<T>(...)'"
     },
     {
       "category": "memory_safety",
@@ -773,17 +949,6 @@
     },
     {
       "category": "modernization",
-      "column": 7,
-      "confidence": 1.0,
-      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
-      "line": 78,
-      "message": "Unscoped enum 'LogLevel' pollutes the enclosing namespace and allows implicit integer conversion",
-      "rule_id": "CPP-MOD-008",
-      "severity": "warning",
-      "suggestion": "Replace 'enum LogLevel' with 'enum class LogLevel'"
-    },
-    {
-      "category": "modernization",
       "column": 2,
       "confidence": 1.0,
       "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
@@ -792,17 +957,6 @@
       "rule_id": "CPP-MOD-008",
       "severity": "warning",
       "suggestion": "Replace 'enum (unnamed enum at /tmp/poco/ApacheConnector/include/ApacheStream.h:36:2)' with 'enum class (unnamed enum at /tmp/poco/ApacheConnector/include/ApacheStream.h:36:2)'"
-    },
-    {
-      "category": "modernization",
-      "column": 71,
-      "confidence": 1.0,
-      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
-      "line": 47,
-      "message": "typedef 'RequestHandlerFactories' should use a C++11 type alias instead",
-      "rule_id": "CPP-MOD-009",
-      "severity": "info",
-      "suggestion": "Replace 'typedef int RequestHandlerFactories' with 'using RequestHandlerFactories = int'"
     },
     {
       "category": "modernization",
@@ -1159,17 +1313,6 @@
       "suggestion": "Decompose into smaller helper functions"
     },
     {
-      "category": "complexity",
-      "column": 7,
-      "confidence": 1.0,
-      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
-      "line": 220,
-      "message": "Function 'printTimeSummary' has 6 parameters (threshold: warning>5, error>8)",
-      "rule_id": "CPP-CX-003",
-      "severity": "warning",
-      "suggestion": "Introduce a parameter struct or builder pattern to reduce parameter count"
-    },
-    {
       "category": "misra",
       "column": 7,
       "confidence": 1.0,
@@ -1311,17 +1454,6 @@
       "rule_id": "MISRA-007",
       "severity": "warning",
       "suggestion": "Initialize 'gbArgs' at the point of declaration"
-    },
-    {
-      "category": "modernization",
-      "column": 2,
-      "confidence": 0.7,
-      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
-      "line": 552,
-      "message": "Index-based for loop may be replaceable with a range-based for loop",
-      "rule_id": "CPP-MOD-006",
-      "severity": "info",
-      "suggestion": "Consider 'for (const auto& elem : container)' instead"
     },
     {
       "category": "modernization",
@@ -3176,17 +3308,6 @@
       "column": 4,
       "confidence": 1.0,
       "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
-      "line": 94,
-      "message": "Explicit 'delete' detected; prefer smart pointers for automatic lifetime management",
-      "rule_id": "CPP-MEM-002",
-      "severity": "warning",
-      "suggestion": "Use std::unique_ptr or std::shared_ptr to avoid manual delete"
-    },
-    {
-      "category": "memory_safety",
-      "column": 4,
-      "confidence": 1.0,
-      "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
       "line": 207,
       "message": "Explicit 'delete' detected; prefer smart pointers for automatic lifetime management",
       "rule_id": "CPP-MEM-002",
@@ -3511,17 +3632,6 @@
       "rule_id": "MISRA-007",
       "severity": "warning",
       "suggestion": "Initialize 'tmp' at the point of declaration"
-    },
-    {
-      "category": "modernization",
-      "column": 2,
-      "confidence": 1.0,
-      "file": "/tmp/poco/Crypto/src/X509Certificate.cpp",
-      "line": 226,
-      "message": "C-style cast bypasses C++ type-safety checks",
-      "rule_id": "CPP-MOD-001",
-      "severity": "warning",
-      "suggestion": "Replace with static_cast<T>, dynamic_cast<T>, or reinterpret_cast<T>"
     },
     {
       "category": "misra",
@@ -5394,116 +5504,6 @@
       "rule_id": "MISRA-007",
       "severity": "warning",
       "suggestion": "Initialize 'strPub2' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 23,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 512,
-      "message": "Variable 'strPriv2' of type 'std::ostringstream' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'strPriv2' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 12,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 516,
-      "message": "Variable 'key3' of type 'int' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'key3' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 23,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 517,
-      "message": "Variable 'strPub3' of type 'std::ostringstream' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'strPub3' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 15,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 537,
-      "message": "Variable 'curveName' of type 'std::string' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'curveName' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 12,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 540,
-      "message": "Variable 'key' of type 'int' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'key' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 18,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 541,
-      "message": "Variable 'filePub' of type 'int' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'filePub' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 18,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 542,
-      "message": "Variable 'filePriv' of type 'int' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'filePriv' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 16,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 546,
-      "message": "Variable 'pubKey' of type 'std::string' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'pubKey' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 16,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 547,
-      "message": "Variable 'privKey' of type 'std::string' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'privKey' at the point of declaration"
-    },
-    {
-      "category": "misra",
-      "column": 12,
-      "confidence": 0.9,
-      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
-      "line": 551,
-      "message": "Variable 'key2' of type 'int' declared without an initializer",
-      "rule_id": "MISRA-007",
-      "severity": "warning",
-      "suggestion": "Initialize 'key2' at the point of declaration"
     }
   ],
   "metadata": {
