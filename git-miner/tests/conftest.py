@@ -11,7 +11,6 @@ from pathlib import Path
 import git
 import pytest
 
-
 _ALICE = git.Actor("Alice", "alice@example.com")
 _BOB = git.Actor("Bob", "bob@example.com")
 _DEFAULT_ACTOR = git.Actor("Test User", "test@example.com")

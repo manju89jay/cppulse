@@ -7,10 +7,8 @@ codebase and per category.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
 
 import pandas as pd
-
 
 PENALTY_WEIGHTS: dict[str, float] = {
     "memory_findings": 3.0,
@@ -98,9 +96,7 @@ class HealthScorer:
         score = 100.0 - normalized_penalty
         return float(max(0.0, min(100.0, score)))
 
-    def _compute_by_category(
-        self, features_df: pd.DataFrame
-    ) -> dict[str, float]:
+    def _compute_by_category(self, features_df: pd.DataFrame) -> dict[str, float]:
         """Compute per-category health scores.
 
         Category score = 100 - (category_findings / file_count * scale_factor),

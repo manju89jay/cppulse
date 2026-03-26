@@ -4,11 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-import pandas as pd
 import pytest
 
 from src.feature_engineer import FEATURE_COLUMNS, FeatureEngineer
-
 
 # ---------------------------------------------------------------------------
 # Shared fixtures
@@ -58,7 +56,12 @@ SAMPLE_FINDINGS: dict[str, Any] = {
     ],
     "summary": {
         "total_findings": 4,
-        "by_category": {"memory_safety": 1, "modernization": 1, "complexity": 1, "misra": 1},
+        "by_category": {
+            "memory_safety": 1,
+            "modernization": 1,
+            "complexity": 1,
+            "misra": 1,
+        },
         "by_severity": {"error": 2, "warning": 2, "info": 0},
     },
 }

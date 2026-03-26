@@ -9,9 +9,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-import pandas as pd
-
-
 RISK_LEVEL_WEIGHTS: dict[str, float] = {
     "critical": 4.0,
     "high": 3.0,
@@ -122,7 +119,9 @@ class RoadmapGenerator:
                 impact = min(100.0, impact)
 
                 rule_ids = list(
-                    dict.fromkeys(f.get("rule_id", "") for f in cat_findings if f.get("rule_id"))
+                    dict.fromkeys(
+                        f.get("rule_id", "") for f in cat_findings if f.get("rule_id")
+                    )
                 )
 
                 action = CATEGORY_ACTIONS.get(

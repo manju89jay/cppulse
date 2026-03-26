@@ -12,7 +12,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 from jinja2 import Environment, FileSystemLoader
 
-
 matplotlib.use("Agg")
 
 TEMPLATES_DIR = Path(__file__).parent / "templates"

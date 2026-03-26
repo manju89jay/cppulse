@@ -6,8 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.model import MIN_SAMPLES_FOR_ML, NUMERIC_FEATURES, BugPredictor, ModelMetrics
-
+from src.model import MIN_SAMPLES_FOR_ML, NUMERIC_FEATURES, BugPredictor
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -25,7 +24,9 @@ def _make_features(n: int, seed: int = 42) -> pd.DataFrame:
         DataFrame with all NUMERIC_FEATURES columns plus a 'file' column.
     """
     rng = np.random.default_rng(seed)
-    data = {feat: rng.integers(0, 10, size=n).astype(float) for feat in NUMERIC_FEATURES}
+    data = {
+        feat: rng.integers(0, 10, size=n).astype(float) for feat in NUMERIC_FEATURES
+    }
     data["churn_rate"] = rng.uniform(0, 5, size=n)
     data["file"] = [f"src/file_{i}.cpp" for i in range(n)]
     return pd.DataFrame(data)
@@ -112,9 +113,7 @@ class TestHeuristicFallback:
                 }
             ]
         )
-        clean = pd.DataFrame(
-            [{**{f: 0 for f in NUMERIC_FEATURES}}]
-        )
+        clean = pd.DataFrame([{**{f: 0 for f in NUMERIC_FEATURES}}])
         risky_score = predictor.predict(risky)[0]
         clean_score = predictor.predict(clean)[0]
         assert risky_score > clean_score

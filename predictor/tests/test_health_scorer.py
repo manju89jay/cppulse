@@ -7,12 +7,10 @@ import pytest
 
 from src.health_scorer import (
     CATEGORY_COLUMN_MAP,
-    CATEGORY_SCALE_FACTORS,
     PENALTY_WEIGHTS,
     HealthScore,
     HealthScorer,
 )
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -217,7 +215,10 @@ class TestCategoryScores:
         scorer = HealthScorer()
         clean = scorer.compute(_make_df())
         dirty = scorer.compute(_make_df(misra_findings=2))
-        assert dirty.by_category["misra_compliance"] < clean.by_category["misra_compliance"]
+        assert (
+            dirty.by_category["misra_compliance"]
+            < clean.by_category["misra_compliance"]
+        )
 
     def test_independent_category_scores(self) -> None:
         """A finding in one category must not reduce an unrelated category's score."""

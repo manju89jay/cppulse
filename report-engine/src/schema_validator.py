@@ -8,7 +8,6 @@ from typing import Any
 
 import jsonschema
 
-
 SCHEMAS_DIR = Path(__file__).parent.parent.parent / "docs" / "schemas"
 
 SCHEMA_FILES: dict[str, str] = {

@@ -6,13 +6,10 @@ suitable for ML training and prediction.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from pathlib import Path
+from dataclasses import dataclass
 from typing import Any
 
-import numpy as np
 import pandas as pd
-
 
 SEVERITY_MAP: dict[str, int] = {"error": 3, "warning": 2, "info": 1}
 

@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any
 
 import jsonschema
-from jsonschema import ValidationError
 
 SCHEMA_DIR = Path(__file__).parent.parent.parent / "docs" / "schemas"
 RISK_SCORES_SCHEMA_PATH = SCHEMA_DIR / "risk_scores.schema.json"

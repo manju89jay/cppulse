@@ -9,7 +9,6 @@ import pytest
 
 from src.schema_validator import load_schema, validate_document, validate_file
 
-
 # ---------------------------------------------------------------------------
 # load_schema
 # ---------------------------------------------------------------------------

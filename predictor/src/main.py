@@ -29,9 +29,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-NUMERIC_FEATURES: list[str] = [
-    col for col in FEATURE_COLUMNS if col != "file"
-]
+NUMERIC_FEATURES: list[str] = [col for col in FEATURE_COLUMNS if col != "file"]
 
 RISK_THRESHOLDS: dict[str, float] = {
     "critical": 0.8,
@@ -312,7 +310,9 @@ def run(input_dir: Path, output_dir: Path) -> None:
     health_scorer = HealthScorer()
 
     logger.info("Building risk scores output...")
-    risk_scores = build_risk_scores(features_df, probabilities, predictor, health_scorer)
+    risk_scores = build_risk_scores(
+        features_df, probabilities, predictor, health_scorer
+    )
 
     logger.info("Validating risk_scores.json schema...")
     validator = SchemaValidator()

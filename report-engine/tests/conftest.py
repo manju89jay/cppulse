@@ -7,7 +7,6 @@ from pathlib import Path
 
 import pytest
 
-
 SAMPLE_FINDINGS: dict = {
     "version": "1.0.0",
     "metadata": {

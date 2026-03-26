@@ -22,7 +22,8 @@ jobs:
 
       - name: C++ format check
         run: |
-          find analyzer-core cli -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \
+          find analyzer-core cli \( -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) \
+            -not -path '*/fixtures/*' -not -path '*/build/*' \
             | xargs clang-format --dry-run --Werror --style=file
 
       - uses: actions/setup-python@v5
