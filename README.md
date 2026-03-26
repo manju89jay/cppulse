@@ -67,17 +67,30 @@ graph LR
 
 ## Demo Results
 
-<!-- Week 4+: add real results here -->
-| Repository | LOC    | Findings | Knowledge Silos | Analysis Time |
-|------------|--------|----------|-----------------|---------------|
-| *Coming Week 4 — POCO C++ Libraries* | | | | |
-| *Coming Week 6 — OpenCV* | | | | |
-| *Coming Week 6 — Godot Engine* | | | | |
+| Repository | LOC | Health Score | Findings | Rules Triggered | Hotspots |
+|------------|-----|-------------|----------|-----------------|----------|
+| **POCO C++ Libraries** | 640,665 | **55.2/100** | 25,821 | 21/22 | 20 |
+| cppulse (self-analysis) | 3,200 | **97.2/100** | 109 | 5/22 | 20 |
+
+### POCO Breakdown
+
+| Category | Score | Findings |
+|----------|-------|----------|
+| Memory Safety | 92.8/100 | 473 (raw new, delete, C-arrays) |
+| Modernization | 33.7/100 | 13,085 (typedef, unscoped enum, C-casts) |
+| Complexity | 90.1/100 | 975 (long functions, high cyclomatic) |
+| MISRA Compliance | 0.0/100 | 11,288 (uninitialized vars, multiple returns) |
+
+**Top risk files**: `Crypto/src/EVPCipherImpl.cpp`, `Crypto/src/RSACipherImpl.cpp`, `Foundation/include/Poco/Buffer.h`
 
 ## Detection Rules (22 total)
 
-<!-- Week 2: update with real rule descriptions -->
-**Memory Safety** · **Modernization** · **Complexity** · **MISRA C++ Subset**
+| Category | Rules | IDs |
+|----------|-------|-----|
+| Memory Safety | 3 | CPP-MEM-001–003 (raw new, delete, C-arrays) |
+| Modernization | 9 | CPP-MOD-001–009 (C-casts, deprecated headers, missing override, typedef, unscoped enum, ...) |
+| Complexity | 3 | CPP-CX-001–003 (cyclomatic complexity, function length, parameter count) |
+| MISRA C++ Subset | 7 | MISRA-001–007 (goto, narrowing, union, malloc, recursion, single exit, init vars) |
 
 See [docs/architecture.md](docs/architecture.md) for the full rule table.
 
