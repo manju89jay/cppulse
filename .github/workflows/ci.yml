@@ -1,0 +1,172 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ── Lint ──────────────────────────────────────────────────────
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: C++ format check
+        run: |
+          find analyzer-core cli -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \
+            | xargs clang-format --dry-run --Werror --style=file
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            git-miner/requirements.txt
+            predictor/requirements.txt
+            report-engine/requirements.txt
+
+      - name: Install Python linters
+        run: pip install ruff==0.2.1 black==24.1.1
+
+      - name: Ruff check
+        run: ruff check git-miner/ predictor/ report-engine/
+
+      - name: Black check
+        run: black --check git-miner/ predictor/ report-engine/
+
+  # ── Build & Test C++ ──────────────────────────────────────────
+  build-cpp:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install C++ dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake \
+            libclang-dev llvm-dev \
+            nlohmann-json3-dev libspdlog-dev libcli11-dev \
+            libgtest-dev libgmock-dev
+
+      - name: Build analyzer-core
+        run: |
+          cmake -B analyzer-core/build -S analyzer-core
+          cmake --build analyzer-core/build -j$(nproc)
+
+      - name: Test analyzer-core
+        run: cd analyzer-core/build && ctest --output-on-failure
+
+      - name: Build CLI
+        run: |
+          cmake -B cli/build -S cli
+          cmake --build cli/build -j$(nproc)
+
+      - name: Test CLI
+        run: cd cli/build && ctest --output-on-failure
+
+  # ── Test Python components ────────────────────────────────────
+  test-python:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            git libpango-1.0-0 libpangocairo-1.0-0 \
+            libgdk-pixbuf-2.0-0 libffi-dev libcairo2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            git-miner/requirements.txt
+            predictor/requirements.txt
+            report-engine/requirements.txt
+
+      - name: Test git-miner
+        run: |
+          pip install -r git-miner/requirements.txt
+          cd git-miner && pytest -v --cov=src --cov-report=xml:coverage.xml tests/
+
+      - name: Test predictor
+        run: |
+          pip install -r predictor/requirements.txt
+          cd predictor && pytest -v --cov=src --cov-report=xml:coverage.xml tests/
+
+      - name: Test report-engine
+        run: |
+          pip install -r report-engine/requirements.txt
+          cd report-engine && pytest -v --cov=src --cov-report=xml:coverage.xml tests/
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: |
+            git-miner/coverage.xml
+            predictor/coverage.xml
+            report-engine/coverage.xml
+
+  # ── Build dashboard ───────────────────────────────────────────
+  build-dashboard:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install and build
+        run: cd dashboard && npm ci && npm run build
+
+  # ── Integration test ──────────────────────────────────────────
+  integration:
+    needs: [build-cpp, test-python]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run full pipeline
+        run: |
+          export REPO_PATH=.
+          docker compose up --build --abort-on-container-exit
+
+      - name: Validate JSON outputs
+        run: |
+          pip install jsonschema
+          python3 -c "
+          import json, jsonschema
+          for schema, data in [
+              ('docs/schemas/findings.schema.json', 'output/findings.json'),
+              ('docs/schemas/git_metrics.schema.json', 'output/git_metrics.json'),
+              ('docs/schemas/risk_scores.schema.json', 'output/risk_scores.json'),
+              ('docs/schemas/roadmap.schema.json', 'output/roadmap.json'),
+          ]:
+              with open(schema) as s, open(data) as d:
+                  jsonschema.validate(json.load(d), json.load(s))
+              print(f'PASS: {data}')
+          "
+
+      - name: Upload pipeline outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-outputs
+          path: output/
