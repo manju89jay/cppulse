@@ -146,8 +146,11 @@ jobs:
 
       - name: Run full pipeline
         run: |
+          mkdir -p output
           export REPO_PATH=.
-          docker compose up --build --abort-on-container-exit
+          docker compose -f docker-compose.yml -f docker-compose.ci.yml \
+            up --build --abort-on-container-exit \
+            analyzer-core git-miner predictor
 
       - name: Validate JSON outputs
         run: |
