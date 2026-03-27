@@ -13,12 +13,11 @@ services:
       context: ./analyzer-core
       dockerfile: Dockerfile
     volumes:
-      - ${REPO_PATH:-./tests/fixtures}:/repo:ro
+      - ${REPO_PATH:-.}:/repo:ro
       - cppulse_output:/output
     environment:
       - OUTPUT_DIR=/output
-    command: ["/usr/local/bin/cppulse-analyzer", "--repo", "/repo", "--output", "/output/findings.json"]
-    # Day 2 Task: implement this Dockerfile
+    command: ["/usr/local/bin/cppulse-analyzer", "--repo", "/repo", "--output", "/output"]
 
   # ── 2. git-miner (Python git history analysis) ──────────────────────────
   git-miner:
@@ -26,14 +25,14 @@ services:
       context: ./git-miner
       dockerfile: Dockerfile
     volumes:
-      - ${REPO_PATH:-./tests/fixtures}:/repo:ro
+      - ${REPO_PATH:-.}:/repo:ro
       - cppulse_output:/output
     environment:
       - OUTPUT_DIR=/output
     depends_on:
-      - analyzer-core
-    command: ["python3", "-m", "src.main", "--repo", "/repo", "--output", "/output/git_metrics.json"]
-    # Week 3 Task: implement
+      analyzer-core:
+        condition: service_completed_successfully
+    command: ["python3", "-m", "src.main", "--repo", "/repo", "--output", "/output"]
 
   # ── 3. predictor (XGBoost ML pipeline) ──────────────────────────────────
   predictor:
@@ -45,10 +44,11 @@ services:
     environment:
       - OUTPUT_DIR=/output
     depends_on:
-      - analyzer-core
-      - git-miner
+      analyzer-core:
+        condition: service_completed_successfully
+      git-miner:
+        condition: service_completed_successfully
     command: ["python3", "-m", "src.main", "--input", "/output", "--output", "/output"]
-    # Week 4 Task: implement
 
   # ── 4. report-engine (FastAPI + PDF) ────────────────────────────────────
   report-engine:
@@ -60,11 +60,11 @@ services:
     volumes:
       - cppulse_output:/output
     environment:
-      - OUTPUT_DIR=/output
+      - DATA_DIR=/output
     depends_on:
-      - predictor
+      predictor:
+        condition: service_completed_successfully
     command: ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
-    # Week 4 Task: implement
 
   # ── 5. dashboard (React/TypeScript) ──────────────────────────────────────
   dashboard:
@@ -73,13 +73,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - VITE_API_URL=http://localhost:8000
     depends_on:
       - report-engine
-    # Week 5 Task: implement
-
-  # ── 6. cli (C++17 orchestrator) ──────────────────────────────────────────
-  # Note: cli is typically run directly, not as a compose service.
-  # It orchestrates the other services via docker-compose internally.
-  # Week 6 Task: implement

@@ -32,7 +32,7 @@ CXChildVisitResult visitor(CXCursor cursor, CXCursor /*parent*/, CXClientData cl
     return CXChildVisit_Recurse;
 }
 
-} // namespace
+}  // namespace
 
 std::optional<std::vector<std::string>> extract_function_names(std::string_view file_path) {
     std::string path_str(file_path);
@@ -44,14 +44,12 @@ std::optional<std::vector<std::string>> extract_function_names(std::string_view 
         return std::nullopt;
     }
 
-    CXTranslationUnit tu = clang_parseTranslationUnit(
-        index,
-        path_str.c_str(),
-        nullptr, // command_line_args
-        0,       // num_command_line_args
-        nullptr, // unsaved_files
-        0,       // num_unsaved_files
-        CXTranslationUnit_None);
+    CXTranslationUnit tu = clang_parseTranslationUnit(index, path_str.c_str(),
+                                                      nullptr,  // command_line_args
+                                                      0,        // num_command_line_args
+                                                      nullptr,  // unsaved_files
+                                                      0,        // num_unsaved_files
+                                                      CXTranslationUnit_None);
 
     if (tu == nullptr) {
         spdlog::warn("extract_function_names: failed to parse '{}'", path_str);
@@ -63,8 +61,7 @@ std::optional<std::vector<std::string>> extract_function_names(std::string_view 
     CXCursor root = clang_getTranslationUnitCursor(tu);
     clang_visitChildren(root, visitor, &names);
 
-    spdlog::info("extract_function_names: found {} function(s) in '{}'",
-                 names.size(), path_str);
+    spdlog::info("extract_function_names: found {} function(s) in '{}'", names.size(), path_str);
 
     clang_disposeTranslationUnit(tu);
     clang_disposeIndex(index);
@@ -72,4 +69,4 @@ std::optional<std::vector<std::string>> extract_function_names(std::string_view 
     return names;
 }
 
-} // namespace cppulse
+}  // namespace cppulse

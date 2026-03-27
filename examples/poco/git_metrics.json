@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/poco",
+    "analyzed_at": "2026-03-26T21:42:43.044081+00:00",
+    "commit_range": "db17c01b..db17c01b",
+    "total_commits": 1
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}

@@ -1,0 +1,280 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "priority": 1,
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 18.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 2,
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 68.0,
+      "impact_score": 18.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 3,
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 18.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 4,
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 92.0,
+      "impact_score": 18.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 5,
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 6,
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 77.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 7,
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 8,
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 84.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "/tmp/fmt/include/fmt/color.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 10,
+      "file": "/tmp/fmt/include/fmt/color.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 70.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 11,
+      "file": "/tmp/fmt/include/fmt/color.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 79.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 12,
+      "file": "/tmp/fmt/include/fmt/format-inl.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "MISRA-001",
+        "MISRA-004"
+      ]
+    },
+    {
+      "priority": 13,
+      "file": "/tmp/fmt/include/fmt/base.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 14,
+      "file": "/tmp/fmt/include/fmt/base.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 22.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "/tmp/fmt/include/fmt/format-inl.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 16,
+      "file": "/tmp/fmt/src/fmt.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 17,
+      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-003"
+      ]
+    },
+    {
+      "priority": 19,
+      "file": "/tmp/fmt/include/fmt/base.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 28.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 20,
+      "file": "/tmp/fmt/include/fmt/compile.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 74.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 21,
+      "file": "/tmp/fmt/include/fmt/fmt-c.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 22,
+      "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    }
+  ]
+}
