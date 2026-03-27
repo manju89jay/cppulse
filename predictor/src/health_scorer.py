@@ -67,7 +67,9 @@ class HealthScorer:
 
     def __init__(self, profile: str = "default") -> None:
         if profile not in PROFILES:
-            raise ValueError(f"Unknown profile: {profile!r}. Choose from {list(PROFILES)}")
+            raise ValueError(
+                f"Unknown profile: {profile!r}. Choose from {list(PROFILES)}"
+            )
         self._profile = PROFILES[profile]
 
     def compute(self, features_df: pd.DataFrame) -> HealthScore:

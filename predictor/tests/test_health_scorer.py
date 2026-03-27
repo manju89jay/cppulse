@@ -96,7 +96,10 @@ class TestSafetyCriticalProfile:
         scorer = HealthScorer(profile="safety-critical")
         clean = scorer.compute(_make_df())
         dirty = scorer.compute(_make_df(misra_findings=2))
-        assert dirty.by_category["misra_compliance"] < clean.by_category["misra_compliance"]
+        assert (
+            dirty.by_category["misra_compliance"]
+            < clean.by_category["misra_compliance"]
+        )
 
 
 class TestClamping:
@@ -141,10 +144,20 @@ class TestProfileValidation:
     def test_penalty_divided_by_file_count(self) -> None:
         scorer = HealthScorer()
         rows = [
-            {"file": "a.cpp", "memory_findings": 1, "modernization_findings": 0,
-             "complexity_findings": 0, "misra_findings": 0},
-            {"file": "b.cpp", "memory_findings": 1, "modernization_findings": 0,
-             "complexity_findings": 0, "misra_findings": 0},
+            {
+                "file": "a.cpp",
+                "memory_findings": 1,
+                "modernization_findings": 0,
+                "complexity_findings": 0,
+                "misra_findings": 0,
+            },
+            {
+                "file": "b.cpp",
+                "memory_findings": 1,
+                "modernization_findings": 0,
+                "complexity_findings": 0,
+                "misra_findings": 0,
+            },
         ]
         df = pd.DataFrame(rows)
         result = scorer.compute(df)
