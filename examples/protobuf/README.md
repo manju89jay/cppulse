@@ -7,19 +7,18 @@ extensible mechanism for serializing structured data. Originally developed at
 Google to replace ad hoc XML formats, it is now the backbone of gRPC and
 countless internal Google systems, as well as a widely adopted standard across
 the industry. At 400K lines and 1,085 analyzed files, protobuf is a large,
-mature codebase — and its cppulse score of 0.0/100 is the starkest result in
-this benchmark set. The zero score is driven entirely by a catastrophic MISRA
-compliance failure: 354 findings of uninitialized variables and multiple returns
-across the analyzed file sample, plus a zero modernization score reflecting
-legacy typedef-heavy style. Memory safety and complexity are actually respectable
-at 95.0 and 80.9 respectively.
+mature codebase. With the default profile (MISRA excluded), cppulse scores it
+at 93.8/100 — a strong result driven by solid memory safety (93.7) and good
+complexity control (88.1). Modernization scores 84.5, reflecting a codebase
+that has progressively adopted modern C++ idioms while retaining some legacy
+NULL-vs-nullptr and deprecated header patterns.
 
 ---
 
 ## Health Score
 
 <p>
-  <img src="../../assets/protobuf/health-gauge.svg" alt="Health Score: 0.0/100" width="280" />
+  <img src="../../assets/protobuf/health-gauge.svg" alt="Health Score: 93.8/100" width="280" />
   <img src="../../assets/protobuf/category-bars.svg" alt="Category Breakdown" width="440" />
 </p>
 
@@ -27,46 +26,45 @@ at 95.0 and 80.9 respectively.
 
 | Category | Score | Findings | Key Issues |
 |----------|------:|--------:|------------|
-| Memory Safety | **95.0** | 13 | C-style array params (11), raw `new` (1), explicit `delete` (1) |
-| Complexity | **80.9** | 37 | Long functions (18), high cyclomatic complexity (10), excess params (9) |
-| Modernization | **0.0** | 96 | NULL vs nullptr (51), deprecated C headers (12), `auto` opportunities (12) |
-| MISRA Compliance | **0.0** | 354 | Uninitialized variables (301), multiple returns (45), `goto` (5) |
+| Memory Safety | **93.7** | 13 | C-style array params (11), raw `new` (1), explicit `delete` (1) |
+| Complexity | **88.1** | 37 | Long functions (18), high cyclomatic complexity (10), excess params (9) |
+| Modernization | **84.5** | 96 | NULL vs nullptr (51), deprecated C headers (12), `auto` opportunities (12) |
 
-**Total: 500 findings across 16 of 22 rules**
+**Total: 146 findings across 13 of 22 rules**
 
 ## Top 10 Riskiest Files
 
 | File | Bug Probability | Risk Level | Top Factors |
 |------|----------------:|:----------:|-------------|
-| `python/google/protobuf/pyext/unknown_field_set.cc` | 99.9% | Critical | MISRA violations (27), memory issues (1) |
-| `rust/cpp_kernel/map.cc` | 99.9% | Critical | MISRA violations (3), memory issues (1) |
-| `rust/test/cpp/interop/test_utils.cc` | 99.9% | Critical | MISRA violations (5), memory issues (2) |
-| `src/google/protobuf/compiler/cpp/copy_unittest.cc` | 99.9% | Critical | MISRA violations (12), memory issues (1) |
-| `src/google/protobuf/compiler/cpp/tools/analyze_profile_proto_main.cc` | 99.9% | Critical | MISRA violations (5), memory issues (1) |
-| `src/google/protobuf/compiler/csharp/csharp_bootstrap_unittest.cc` | 99.9% | Critical | MISRA violations (7), memory issues (1) |
-| `src/google/protobuf/compiler/main.cc` | 99.9% | Critical | MISRA violations (12), memory issues (2) |
-| `src/google/protobuf/field_with_arena_test.cc` | 99.9% | Critical | MISRA violations (6), memory issues (2) |
-| `src/google/protobuf/json/internal/zero_copy_buffered_stream.h` | 99.9% | Critical | MISRA violations (3), memory issues (1) |
-| `src/google/protobuf/preserve_unknown_enum_test.cc` | 99.9% | Critical | MISRA violations (47), memory issues (1) |
+| `conformance/binary_json_conformance_suite.cc` | 56.5% | Medium | Complexity findings (14), memory issues (1), 152 total findings |
+| `conformance/conformance_test_runner.cc` | 31.8% | Medium | Memory issues (2), complexity findings (3), 8 total findings |
+| `conformance/conformance_test_main.cc` | 27.7% | Low | Memory issues (2), complexity findings (1), 3 total findings |
+| `conformance/conformance_test.cc` | 23.0% | Low | Memory issues (1), complexity findings (4), 35 total findings |
+| `conformance/text_format_conformance_suite.cc` | 20.3% | Low | Memory issues (1), complexity findings (3), 20 total findings |
+| `conformance/binary_json_conformance_suite.h` | 14.7% | Low | Memory issues (1), complexity findings (1), 2 total findings |
+| `conformance/conformance_test.h` | 14.3% | Low | Memory issues (1), complexity findings (1), 2 total findings |
+| `conformance/text_format_conformance_suite.h` | 14.3% | Low | Memory issues (1), complexity findings (1), 2 total findings |
+| `bazel/private/file_concat/main.cc` | 13.2% | Low | Memory issues (1), 2 total findings |
+| `hpb/extension.h` | 13.0% | Low | Memory issues (1), 1 total findings |
 
-**541 files** flagged Critical · **140 files** flagged Low risk (of 681 total)
+**2 files** flagged Medium · **29 files** flagged Low risk (of 31 total)
 
 ## Refactoring Roadmap (Top 10 by Impact)
 
 | # | File | Action | Category | Est. Hours | Impact |
 |--:|------|--------|----------|----:|------:|
-| 1 | `conformance/binary_json_conformance_suite.cc` | Reduce cyclomatic complexity | complexity | 42h | 24.0 |
-| 2 | `conformance/naming_test.cc` | Address MISRA C++ compliance violations | misra | 30h | 24.0 |
-| 3 | `conformance/test_manager_test.cc` | Address MISRA C++ compliance violations | misra | 14h | 24.0 |
-| 4 | `bazel/private/file_concat/main.cc` | Replace raw pointers with smart pointers | memory_safety | 4h | 16.0 |
-| 5 | `bazel/private/file_concat/main.cc` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 6 | `bazel/tests/proto_descriptor_set_test.cc` | Address MISRA C++ compliance violations | misra | 8h | 16.0 |
-| 7 | `benchmarks/benchmark.cc` | Modernize C++ code: apply C++11/14/17 idioms | modernization | 8h | 16.0 |
-| 8 | `benchmarks/benchmark.cc` | Address MISRA C++ compliance violations | misra | 42h | 16.0 |
-| 9 | `conformance/binary_json_conformance_suite.cc` | Replace raw pointers with smart pointers | memory_safety | 4h | 16.0 |
-| 10 | `conformance/binary_json_conformance_suite.cc` | Modernize C++ code: apply C++11/14/17 idioms | modernization | 24h | 16.0 |
+| 1 | `conformance/binary_json_conformance_suite.cc` | Reduce cyclomatic complexity | complexity | 42h | 12.0 |
+| 2 | `conformance/binary_json_conformance_suite.cc` | Modernize C++ code: apply C++11/14/17 idioms | modernization | 24h | 8.0 |
+| 3 | `conformance/binary_json_conformance_suite.cc` | Replace raw pointers with smart pointers | memory_safety | 4h | 8.0 |
+| 4 | `conformance/binary_json_conformance_suite.cc` | Address MISRA C++ compliance violations | misra | 274h | 8.0 |
+| 5 | `conformance/conformance_test_runner.cc` | Replace raw pointers with smart pointers | memory_safety | 8h | 8.0 |
+| 6 | `conformance/conformance_test_runner.cc` | Modernize C++ code: apply C++11/14/17 idioms | modernization | 6h | 8.0 |
+| 7 | `conformance/conformance_test_runner.cc` | Reduce cyclomatic complexity | complexity | 9h | 8.0 |
+| 8 | `conformance/conformance_test_runner.cc` | Address MISRA C++ compliance violations | misra | 10h | 8.0 |
+| 9 | `conformance/naming_test.cc` | Address MISRA C++ compliance violations | misra | 28h | 6.0 |
+| 10 | `conformance/test_manager_test.cc` | Address MISRA C++ compliance violations | misra | 14h | 6.0 |
 
-**Total: 1,261 roadmap items · ~114,639 estimated hours**
+**Total: 61 roadmap items · ~967 estimated hours**
 
 ## Downloads
 
