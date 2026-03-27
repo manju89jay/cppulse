@@ -89,6 +89,11 @@ def _display_name(name: str) -> str:
         "godot": "Godot Engine",
         "boost-asio": "Boost.Asio",
         "cppulse": "cppulse (self-analysis)",
+        "grpc": "gRPC",
+        "protobuf": "Protocol Buffers",
+        "json": "nlohmann/json",
+        "fmt": "fmt",
+        "leveldb": "LevelDB",
     }
     return names.get(name, name.replace("-", " ").title())
 

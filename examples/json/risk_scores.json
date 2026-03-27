@@ -1,0 +1,5059 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T14:44:21.715459+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 153,
+    "f1_score": 1.0
+  },
+  "health_score": {
+    "overall": 86.57,
+    "by_category": {
+      "memory_safety": 93.73,
+      "modernization": 85.62,
+      "complexity": 92.55,
+      "misra_compliance": 60.71
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/at__json_pointer.cpp",
+      "bug_probability": 0.032154,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/back.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
+      "bug_probability": 0.048451,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__InputIt_InputIt.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crbegin.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crend.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/diagnostic_positions.cpp",
+      "bug_probability": 0.017821,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/emplace.cpp",
+      "bug_probability": 0.017821,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/get_to.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 5.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/invalid_iterator.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/nlohmann_json_serialize_enum.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/object_comparator_t.cpp",
+      "bug_probability": 0.017821,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__const_reference.c++20.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__scalartype.c++20.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__istream__parser_callback_t.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__string__parser_callback_t.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rbegin.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rend.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/std_hash.cpp",
+      "bug_probability": 0.017821,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bjdata.cpp",
+      "bug_probability": 0.025964,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bson.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_cbor.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_msgpack.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_ubjson.cpp",
+      "bug_probability": 0.025964,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/conversions/to_chars.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 7.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 46.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 69.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/input/input_adapters.hpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/input/lexer.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 31.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 38.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/input/parser.hpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 5.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/iterators/iter_impl.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 5.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/iterators/iteration_proxy.hpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/iterators/primitive_iterator.hpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/json_pointer.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 6.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/json_ref.hpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/meta/type_traits.hpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/output/binary_writer.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 10.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 21.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 8.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/json.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 48.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 56.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/include/nlohmann/ordered_map.hpp",
+      "bug_probability": 0.995428,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 10.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 17.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 22.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/module_cpp20/main.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/fuzzer-parse_bson.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/make_test_data_available.hpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-allocator.cpp",
+      "bug_probability": 0.941087,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-binary_formats.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-bjdata.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-bson.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-cbor.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-class_lexer.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-class_parser.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 13.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-class_parser_diagnostic_positions.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 12.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-convenience.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-conversions.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-deserialization.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-disabled_exceptions.cpp",
+      "bug_probability": 0.905882,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-inspection.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-json_patch.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-msgpack.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-noexcept.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-regression1.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-regression2.cpp",
+      "bug_probability": 0.936515,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-testsuites.cpp",
+      "bug_probability": 0.991612,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-to_chars.cpp",
+      "bug_probability": 0.991612,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-ubjson.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-udt_macro.cpp",
+      "bug_probability": 0.052256,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-unicode1.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-unicode2.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 15.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-unicode3.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 15.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-unicode4.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 15.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/src/unit-unicode5.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 15.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 10.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 8.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDefs.h",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDictionary.h",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 6.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 9.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 17.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 39.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctions.h",
+      "bug_probability": 0.025964,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsDlsym.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeak.cpp",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 24.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 25.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeakAlias.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIO.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 6.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIO.h",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOPosix.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 9.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOWindows.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInterface.h",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInternal.h",
+      "bug_probability": 0.91374,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 10.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 12.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerLoop.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 7.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 21.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 37.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMain.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 10.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.h",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 20.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 16.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 42.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.h",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 7.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerOptions.h",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 8.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 13.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 23.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.h",
+      "bug_probability": 0.91374,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 5.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 8.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 18.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 30.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.h",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTraceState.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 32.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 16.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 26.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.h",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilDarwin.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilLinux.cpp",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilPosix.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 18.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilWindows.cpp",
+      "bug_probability": 0.024447,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerValueBitMap.h",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/afl/afl_driver.cpp",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 12.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 16.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AFLDriverTest.cpp",
+      "bug_probability": 0.025964,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AbsNegAndConstant64Test.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AbsNegAndConstantTest.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AccumulateAllocationsTest.cpp",
+      "bug_probability": 0.905882,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/BufferOverflowOnInput.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CallerCalleeTest.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 7.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomCrossOverTest.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 5.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomMutatorTest.cpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSO1.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSO2.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSOTestExtra.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSOTestMain.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DivTest.cpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/FuzzerUnittest.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 58.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 60.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 130.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/InitializeTest.cpp",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 6.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LeakTest.cpp",
+      "bug_probability": 0.905882,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LeakTimeoutTest.cpp",
+      "bug_probability": 0.995428,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LoadTest.cpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OneHugeAllocTest.cpp",
+      "bug_probability": 0.91374,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemorySingleLargeMallocTest.cpp",
+      "bug_probability": 0.949523,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemoryTest.cpp",
+      "bug_probability": 0.936515,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/RepeatedBytesTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ShrinkControlFlowTest.cpp",
+      "bug_probability": 0.035507,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ShrinkValueProfileTest.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SignedIntOverflowTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleCmpTest.cpp",
+      "bug_probability": 0.991612,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleDictionaryTest.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleHashTest.cpp",
+      "bug_probability": 0.98749,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleThreadedTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleMemcmpTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleStrcmpTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleStrncmpTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SpamyTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrcmpTest.cpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrncmpOOBTest.cpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrncmpTest.cpp",
+      "bug_probability": 0.029766,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrstrTest.cpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SwapCmpTest.cpp",
+      "bug_probability": 0.988552,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/Switch2Test.cpp",
+      "bug_probability": 0.993411,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 4.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SwitchTest.cpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedLeakTest.cpp",
+      "bug_probability": 0.99439,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedTest.cpp",
+      "bug_probability": 0.990924,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 2.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/TraceMallocTest.cpp",
+      "bug_probability": 0.995232,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 6.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest.h",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 23.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest_compatibility.h",
+      "bug_probability": 0.991563,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 23.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tests/thirdparty/fifo_map/fifo_map.hpp",
+      "bug_probability": 0.993683,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 3.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/json/tools/macro_builder/main.cpp",
+      "bug_probability": 0.024691,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7054394483566284,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.28688812255859375,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0035326825454831123,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0023675253614783287,
+          "value": 1.0
+        },
+        {
+          "feature": "max_severity",
+          "importance": 0.0017722324701026082,
+          "value": 1.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/at__json_pointer.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/back.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__InputIt_InputIt.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crbegin.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crend.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/diagnostic_positions.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/emplace.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/get_to.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/invalid_iterator.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/nlohmann_json_serialize_enum.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/object_comparator_t.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__const_reference.c++20.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__scalartype.c++20.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__istream__parser_callback_t.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__string__parser_callback_t.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rbegin.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rend.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/std_hash.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bjdata.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    }
+  ]
+}

@@ -1,0 +1,2821 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "priority": 1,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/get_to.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 10.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 2,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__const_reference.c++20.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 3,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/operator_spaceship__scalartype.c++20.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 4,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__istream__parser_callback_t.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 5,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/parse__string__parser_callback_t.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 6,
+      "file": "/tmp/json/include/nlohmann/detail/conversions/to_chars.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 15.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 7,
+      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 66.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 8,
+      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 92.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "/tmp/json/include/nlohmann/detail/input/lexer.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 10,
+      "file": "/tmp/json/include/nlohmann/detail/input/lexer.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 62.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-001",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 11,
+      "file": "/tmp/json/include/nlohmann/detail/output/binary_writer.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 33.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 12,
+      "file": "/tmp/json/include/nlohmann/detail/output/binary_writer.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 20.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-005",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 13,
+      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 14,
+      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-005",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "/tmp/json/include/nlohmann/json.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 24.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 16,
+      "file": "/tmp/json/include/nlohmann/json.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 96.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 17,
+      "file": "/tmp/json/tests/src/unit-bjdata.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 19,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOPosix.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-005",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 20,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 21,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/FuzzerUnittest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 36.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 22,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleCmpTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 23,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 24,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest_compatibility.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 25,
+      "file": "/tmp/json/include/nlohmann/detail/conversions/to_chars.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 26,
+      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 27,
+      "file": "/tmp/json/include/nlohmann/detail/input/input_adapters.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 28,
+      "file": "/tmp/json/include/nlohmann/detail/input/input_adapters.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 29,
+      "file": "/tmp/json/include/nlohmann/detail/input/parser.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 30,
+      "file": "/tmp/json/include/nlohmann/detail/input/parser.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 31,
+      "file": "/tmp/json/include/nlohmann/detail/iterators/iter_impl.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 10.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 32,
+      "file": "/tmp/json/include/nlohmann/detail/iterators/iteration_proxy.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 33,
+      "file": "/tmp/json/include/nlohmann/detail/json_pointer.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 34,
+      "file": "/tmp/json/include/nlohmann/detail/json_ref.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 35,
+      "file": "/tmp/json/include/nlohmann/ordered_map.hpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 36,
+      "file": "/tmp/json/include/nlohmann/ordered_map.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 14.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 37,
+      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 38,
+      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 39,
+      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 34.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 40,
+      "file": "/tmp/json/tests/module_cpp20/main.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 41,
+      "file": "/tmp/json/tests/src/fuzzer-parse_bson.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 42,
+      "file": "/tmp/json/tests/src/make_test_data_available.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 43,
+      "file": "/tmp/json/tests/src/unit-allocator.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 44,
+      "file": "/tmp/json/tests/src/unit-binary_formats.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 45,
+      "file": "/tmp/json/tests/src/unit-bjdata.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 46,
+      "file": "/tmp/json/tests/src/unit-bson.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 47,
+      "file": "/tmp/json/tests/src/unit-cbor.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 48,
+      "file": "/tmp/json/tests/src/unit-class_lexer.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 49,
+      "file": "/tmp/json/tests/src/unit-class_parser.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 26.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 50,
+      "file": "/tmp/json/tests/src/unit-class_parser_diagnostic_positions.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 24.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 51,
+      "file": "/tmp/json/tests/src/unit-convenience.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 52,
+      "file": "/tmp/json/tests/src/unit-deserialization.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 53,
+      "file": "/tmp/json/tests/src/unit-disabled_exceptions.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 54,
+      "file": "/tmp/json/tests/src/unit-inspection.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 55,
+      "file": "/tmp/json/tests/src/unit-json_patch.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 56,
+      "file": "/tmp/json/tests/src/unit-msgpack.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 57,
+      "file": "/tmp/json/tests/src/unit-regression1.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 58,
+      "file": "/tmp/json/tests/src/unit-regression2.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 59,
+      "file": "/tmp/json/tests/src/unit-regression2.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 60,
+      "file": "/tmp/json/tests/src/unit-testsuites.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 61,
+      "file": "/tmp/json/tests/src/unit-to_chars.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 62,
+      "file": "/tmp/json/tests/src/unit-ubjson.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 63,
+      "file": "/tmp/json/tests/src/unit-unicode1.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 64,
+      "file": "/tmp/json/tests/src/unit-unicode2.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 65,
+      "file": "/tmp/json/tests/src/unit-unicode2.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 66,
+      "file": "/tmp/json/tests/src/unit-unicode3.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 67,
+      "file": "/tmp/json/tests/src/unit-unicode3.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 68,
+      "file": "/tmp/json/tests/src/unit-unicode4.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 69,
+      "file": "/tmp/json/tests/src/unit-unicode4.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 70,
+      "file": "/tmp/json/tests/src/unit-unicode5.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 71,
+      "file": "/tmp/json/tests/src/unit-unicode5.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 72,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 73,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 74,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 75,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 76,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 77,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDictionary.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 78,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 36.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 79,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 17.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 80,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 18.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 81,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIO.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 82,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIO.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 83,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOPosix.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 84,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOPosix.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 85,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInternal.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 86,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInternal.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 10.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 87,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInternal.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 88,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerLoop.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 28.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 89,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerLoop.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 21.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 90,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerLoop.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 91,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerLoop.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 14.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 92,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 93,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 10.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 94,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 95,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 96,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 97,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 98,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 99,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 40.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 100,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 101,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 102,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 103,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 13.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 104,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 105,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 106,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerSHA1.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 107,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 108,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 18.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 109,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 110,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 111,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTraceState.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 112,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTraceState.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 113,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTraceState.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 114,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTraceState.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 24.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 115,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 116,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 117,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 14.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 118,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilPosix.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 119,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilPosix.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 120,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilPosix.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 121,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilPosix.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 122,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/afl/afl_driver.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 123,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/afl/afl_driver.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-007"
+      ]
+    },
+    {
+      "priority": 124,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/afl/afl_driver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 125,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AbsNegAndConstant64Test.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 126,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AbsNegAndConstantTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 127,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AccumulateAllocationsTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 128,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CallerCalleeTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 129,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CallerCalleeTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 130,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomCrossOverTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 131,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomCrossOverTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 132,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomCrossOverTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 133,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomMutatorTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 134,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/CustomMutatorTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 135,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSO1.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 136,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSO2.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 137,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSOTestExtra.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 138,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DSOTestMain.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 139,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DivTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 140,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/DivTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 141,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/FuzzerUnittest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 116.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 142,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LeakTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 143,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LeakTimeoutTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 144,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LeakTimeoutTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 145,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LoadTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 146,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/LoadTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 147,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OneHugeAllocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 148,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OneHugeAllocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 149,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemorySingleLargeMallocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 150,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemorySingleLargeMallocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 151,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemoryTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 152,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/OutOfMemoryTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 153,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ShrinkValueProfileTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 154,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleCmpTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 155,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleDictionaryTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 156,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleHashTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 157,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleHashTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 158,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 159,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrcmpTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 160,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrcmpTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 161,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrncmpOOBTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 162,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrncmpOOBTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 163,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrstrTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 164,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrstrTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 165,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SwapCmpTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 166,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/Switch2Test.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 167,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SwitchTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 168,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SwitchTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 169,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedLeakTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 170,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedLeakTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 171,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 172,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ThreadedTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 173,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/TraceMallocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 174,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/TraceMallocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 175,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/TraceMallocTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006"
+      ]
+    },
+    {
+      "priority": 176,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 177,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 178,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 179,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest_compatibility.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 180,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest_compatibility.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 181,
+      "file": "/tmp/json/tests/thirdparty/doctest/doctest_compatibility.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 182,
+      "file": "/tmp/json/tests/thirdparty/fifo_map/fifo_map.hpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 183,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 184,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/at__json_pointer.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 185,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 186,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/nlohmann_json_serialize_enum.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 187,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bjdata.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 188,
+      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 189,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 190,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDictionary.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 191,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMutate.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 192,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/FuzzerUnittest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 60.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 193,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/Switch2Test.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 194,
+      "file": "/tmp/json/tests/src/unit-udt_macro.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 195,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/back.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 196,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__InputIt_InputIt.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 197,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crbegin.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 198,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/crend.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 199,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/diagnostic_positions.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 200,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/emplace.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 201,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/invalid_iterator.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 202,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/object_comparator_t.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 203,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rbegin.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 204,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/rend.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 205,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/std_hash.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 206,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bson.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 207,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_cbor.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 208,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_msgpack.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 209,
+      "file": "/tmp/json/docs/mkdocs/docs/examples/to_ubjson.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 210,
+      "file": "/tmp/json/include/nlohmann/detail/meta/type_traits.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 211,
+      "file": "/tmp/json/tests/src/unit-conversions.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 212,
+      "file": "/tmp/json/tests/src/unit-noexcept.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 213,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctions.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 214,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeak.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 24.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 215,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeak.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 216,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInterface.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 217,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerInterface.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 218,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerTracePC.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 219,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilLinux.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 220,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerValueBitMap.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 221,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/AFLDriverTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 222,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/BufferOverflowOnInput.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 223,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/InitializeTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 224,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/RepeatedBytesTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 225,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/ShrinkControlFlowTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 226,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SignedIntOverflowTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 227,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 228,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SimpleThreadedTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 229,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleMemcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 230,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleStrcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 231,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SingleStrncmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 232,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/SpamyTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 233,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/test/StrncmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 234,
+      "file": "/tmp/json/include/nlohmann/detail/iterators/primitive_iterator.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 235,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDefs.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 236,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsDlsym.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 237,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeakAlias.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 238,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIO.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 239,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerIOWindows.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 240,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMain.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 241,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerMerge.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 242,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerOptions.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 243,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtil.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 244,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilDarwin.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 245,
+      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerUtilWindows.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 246,
+      "file": "/tmp/json/tools/macro_builder/main.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    }
+  ]
+}

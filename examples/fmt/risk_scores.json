@@ -1,0 +1,2051 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T14:44:16.507123+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 59,
+    "f1_score": 0.9908
+  },
+  "health_score": {
+    "overall": 17.22,
+    "by_category": {
+      "memory_safety": 57.29,
+      "modernization": 0.0,
+      "complexity": 79.15,
+      "misra_compliance": 0.0
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 34.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 119.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 77.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/base.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 11.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 40.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 28.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 46.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 138.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 84.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/color.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 35.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 121.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 79.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/compile.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 34.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 119.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 78.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/core.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 11.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 40.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 28.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/fmt-c.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 11.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 7.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/format-inl.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 50.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 152.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 91.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/format.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 34.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 116.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 75.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/os.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 34.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 117.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 76.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/ostream.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 46.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 138.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 84.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/printf.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 35.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 119.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 76.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/ranges.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 35.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 119.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 77.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/std.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 52.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 145.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 85.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/xchar.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 50.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 148.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 90.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 7.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/src/fmt-c.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/src/fmt.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 14.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/src/os.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 14.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/args-test.cc",
+      "bug_probability": 0.808447,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 14.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 14.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/assert-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/base-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 79.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 98.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 15.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/chrono-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 17.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 23.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/color-test.cc",
+      "bug_probability": 0.534959,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 5.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 5.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/compile-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 17.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 18.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/enforce-checks-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 13.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 9.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/find-package-test/main.cc",
+      "bug_probability": 0.242809,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/format-impl-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 33.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 35.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/format-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 41.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 70.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 26.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/chrono-duration.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/float.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/main.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/named-arg.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/one-arg.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/fuzzing/two-args.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest-extra-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 131.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 144.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest-extra.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest-extra.h",
+      "bug_probability": 0.242809,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 43.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 53.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 258.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 162.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest/gtest/gtest-spi.h",
+      "bug_probability": 0.242809,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 16.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 40.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 142.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 78.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/mock-allocator.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/module-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 29.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 30.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/no-builtin-types-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/os-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 10.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 13.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/ostream-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 6.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/perf-sanity.cc",
+      "bug_probability": 0.242809,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/posix-mock-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 37.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 52.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 9.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/posix-mock.h",
+      "bug_probability": 0.808447,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/printf-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/ranges-odr-test.cc",
+      "bug_probability": 0.559811,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 0.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/ranges-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 37.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 139.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 95.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/scan-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 16.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 22.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 6.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/scan.h",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 15.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/static-export-test/library.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/std-test.cc",
+      "bug_probability": 0.991718,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 17.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 22.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/test-main.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/unicode-test.cc",
+      "bug_probability": 0.964785,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/util.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/fmt/test/xchar-test.cc",
+      "bug_probability": 0.989928,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.7092893123626709,
+          "value": 21.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.24007642269134521,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.050634242594242096,
+          "value": 25.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/fmt/include/fmt/args.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 119
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/base.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 40
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 138
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/color.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 121
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/compile.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 119
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/core.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 40
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/fmt-c.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 11
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/format-inl.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 152
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/format.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 116
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/os.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 117
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/ostream.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 138
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/printf.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 119
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/ranges.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 119
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/std.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 145
+    },
+    {
+      "file": "/tmp/fmt/include/fmt/xchar.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 148
+    },
+    {
+      "file": "/tmp/fmt/src/fmt-c.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/fmt/src/fmt.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 14
+    },
+    {
+      "file": "/tmp/fmt/src/os.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 14
+    },
+    {
+      "file": "/tmp/fmt/test/args-test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 14
+    },
+    {
+      "file": "/tmp/fmt/test/assert-test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 4
+    }
+  ]
+}

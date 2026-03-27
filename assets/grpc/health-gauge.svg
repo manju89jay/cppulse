@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 190" width="280" height="190">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+  </defs>
+  <rect width="280" height="190" rx="12" fill="url(#bg-grad)" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Background arc (gray) -->
+  <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#e5e7eb" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- Score arc (colored) — uses dasharray to fill proportionally -->
+  <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#d97706" stroke-width="18" stroke-linecap="round"
+        stroke-dasharray="139.7 314.2"/>
+
+  <!-- Score text -->
+  <text x="140" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#d97706">44.5</text>
+  <text x="140" y="145" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">/ 100</text>
+  <text x="140" y="170" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#d97706">Needs Work</text>
+</svg>

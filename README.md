@@ -17,12 +17,17 @@ Large C++ codebases accumulate technical debt that's invisible until it causes a
 
 ## Proven on Real Codebases
 
-> We analyzed POCO C++ Libraries — 640K lines of production code — and found 25,821 issues across 21 detection rules, estimated at ~40,000 hours of technical debt.
+> We analyzed **6 major open-source C++ projects** totaling **2.2M lines of code** — gRPC, POCO, Protocol Buffers, nlohmann/json, fmt, and LevelDB — and found **175,000+ issues** across 22 detection rules.
 
 <!-- LEADERBOARD:START -->
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
-| 1 | **POCO C++ Libraries** | 641K | `55.2` ███████████░░░░░░░░░ | 25,821 | 21/22 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 1 | **gRPC** | 964K | `44.5` █████████░░░░░░░░░░░ | 56,844 | 21/22 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 641K | `55.2` ███████████░░░░░░░░░ | 25,821 | 21/22 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 3 | **Protocol Buffers** | 400K | `0.0` ░░░░░░░░░░░░░░░░░░░░ | 87,345 | 21/22 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 98K | `86.6` █████████████████░░░ | 1,119 | 19/22 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `17.2` ███░░░░░░░░░░░░░░░░░ | 2,856 | 20/22 | [Details](examples/fmt/) |
+| 6 | **LevelDB** | 29K | `47.0` █████████░░░░░░░░░░░ | 2,053 | 16/22 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
 
 *Run `cppulse analyze --repo /path/to/repo` to analyze your codebase.*
