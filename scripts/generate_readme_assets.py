@@ -37,27 +37,26 @@ def _score_label(score: float) -> str:
 
 
 def generate_health_gauge(score: float, output_path: Path) -> None:
-    """Generate a semi-circular health gauge SVG."""
-    w, h = 280, 180
-    cx, cy = 140, 150
-    r = 110
-    stroke_w = 20
+    """Generate a semi-circular health gauge SVG using stroke-dasharray."""
+    w, h = 280, 190
+    cx, cy = 140, 155
+    r = 100
+    stroke_w = 18
 
-    # Arc helpers
-    def arc_point(angle_deg: float) -> tuple[float, float]:
-        rad = math.radians(angle_deg)
-        return cx + r * math.cos(rad), cy - r * math.sin(rad)
+    # Semi-circle arc length = pi * r
+    half_circumference = math.pi * r
+    # How much of the arc to fill based on score
+    score_clamped = max(0.0, min(100.0, score))
+    filled = half_circumference * (score_clamped / 100.0)
 
-    def arc_path(start_deg: float, end_deg: float) -> str:
-        sx, sy = arc_point(start_deg)
-        ex, ey = arc_point(end_deg)
-        large = 1 if (end_deg - start_deg) > 180 else 0
-        return f"M {sx:.1f} {sy:.1f} A {r} {r} 0 {large} 0 {ex:.1f} {ey:.1f}"
-
-    # Score maps to 0-180 degrees (left to right arc)
-    score_angle = 180 * (score / 100)
     color = _score_color(score)
     label = _score_label(score)
+
+    # Draw the semicircle as a path from left to right (180° arc)
+    # In SVG: M (left point) A rx ry rotation large-arc-flag sweep-flag (right point)
+    # Left point: (cx-r, cy), Right point: (cx+r, cy)
+    # sweep-flag=0 means counter-clockwise (goes upward in SVG coords)
+    arc_d = f"M {cx - r} {cy} A {r} {r} 0 1 1 {cx + r} {cy}"
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">
   <defs>
@@ -69,15 +68,16 @@ def generate_health_gauge(score: float, output_path: Path) -> None:
   <rect width="{w}" height="{h}" rx="12" fill="url(#bg-grad)" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Background arc (gray) -->
-  <path d="{arc_path(180, 0)}" fill="none" stroke="#e5e7eb" stroke-width="{stroke_w}" stroke-linecap="round"/>
+  <path d="{arc_d}" fill="none" stroke="#e5e7eb" stroke-width="{stroke_w}" stroke-linecap="round"/>
 
-  <!-- Score arc (colored) -->
-  <path d="{arc_path(180, 180 - score_angle)}" fill="none" stroke="{color}" stroke-width="{stroke_w}" stroke-linecap="round"/>
+  <!-- Score arc (colored) — uses dasharray to fill proportionally -->
+  <path d="{arc_d}" fill="none" stroke="{color}" stroke-width="{stroke_w}" stroke-linecap="round"
+        stroke-dasharray="{filled:.1f} {half_circumference:.1f}"/>
 
   <!-- Score text -->
-  <text x="{cx}" y="{cy - 30}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" fill="{color}">{score:.1f}</text>
-  <text x="{cx}" y="{cy - 5}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">/ 100</text>
-  <text x="{cx}" y="{cy + 20}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="{color}">{label}</text>
+  <text x="{cx}" y="{cy - 35}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="{color}">{score:.1f}</text>
+  <text x="{cx}" y="{cy - 10}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">/ 100</text>
+  <text x="{cx}" y="{cy + 15}" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="{color}">{label}</text>
 </svg>"""
 
     output_path.write_text(svg)
@@ -106,7 +106,7 @@ def generate_category_bars(categories: dict[str, float], output_path: Path) -> N
   <!-- {display_name} -->
   <text x="{padding}" y="{y + bar_h / 2 + 5}" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">{display_name}</text>
   <rect x="{label_w}" y="{y}" width="{bar_area_w}" height="{bar_h}" rx="4" fill="#f3f4f6"/>
-  <rect x="{label_w}" y="{y}" width="{max(bar_w, 2):.1f}" height="{bar_h}" rx="4" fill="{color}"/>
+  <rect x="{label_w}" y="{y}" width="{max(bar_w, 0.5):.1f}" height="{bar_h}" rx="4" fill="{color}"/>
   <text x="{label_w + bar_area_w + 10}" y="{y + bar_h / 2 + 5}" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="{color}">{score:.1f}</text>"""
         y += bar_h + gap
 

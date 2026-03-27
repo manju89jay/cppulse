@@ -60,6 +60,11 @@
   {% endif %}
 
   <table>
+    <colgroup>
+      <col width="45%">
+      <col width="30%">
+      <col width="25%">
+    </colgroup>
     <thead>
       <tr>
         <th>Category</th>
@@ -101,6 +106,13 @@
 
   {% if hotspots %}
   <table>
+    <colgroup>
+      <col width="5%">
+      <col width="50%">
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+    </colgroup>
     <thead>
       <tr>
         <th>#</th>
@@ -114,7 +126,7 @@
       {% for h in hotspots %}
       <tr>
         <td>{{ loop.index }}</td>
-        <td style="font-family:monospace; font-size:8pt;">{{ h.file }}</td>
+        <td class="file-path">{{ h.file }}</td>
         <td>{{ "%.2f"|format(h.hotspot_score) }}</td>
         <td>{{ h.get("change_frequency", "—") }}</td>
         <td>{{ h.get("finding_count", "—") }}</td>
@@ -132,34 +144,37 @@
   <div class="page-break"></div>
   <h2>4. Detection Findings</h2>
 
-  {% if findings_grouped %}
-    {% for category, items in findings_grouped.items() %}
-    <h3>{{ category | replace("_", " ") | title }}
-        <span style="font-weight:400; font-size:9pt; color:#6b7280;">({{ items|length }})</span>
-    </h3>
+  {% if findings_clustered %}
+    {% for category, clusters in findings_clustered.items() %}
+    <h3>{{ category | replace("_", " ") | title }} ({{ clusters|length }} rule violations)</h3>
     <table>
+      <colgroup>
+        <col width="12%">
+        <col width="10%">
+        <col width="48%">
+        <col width="15%">
+        <col width="15%">
+      </colgroup>
       <thead>
         <tr>
           <th>Rule</th>
           <th>Severity</th>
-          <th>File : Line</th>
-          <th>Message</th>
+          <th>Description</th>
+          <th>Files Affected</th>
+          <th>Occurrences</th>
         </tr>
       </thead>
       <tbody>
-        {% for f in items %}
+        {% for c in clusters %}
         <tr>
-          <td style="font-family:monospace; font-size:8pt; white-space:nowrap;">{{ f.rule_id }}</td>
-          <td><span class="badge badge-{{ f.severity }}">{{ f.severity }}</span></td>
-          <td style="font-family:monospace; font-size:8pt; white-space:nowrap;">
-            {{ f.file }}:{{ f.line }}
-          </td>
+          <td class="file-path">{{ c.rule_id }}</td>
+          <td><span class="badge badge-{{ c.severity }}">{{ c.severity }}</span></td>
           <td>
-            <span class="finding-message">{{ f.message }}</span>
-            {% if f.get("suggestion") %}
-            <br/><span class="finding-suggestion">Suggestion: {{ f.suggestion }}</span>
-            {% endif %}
+            <span class="finding-message">{{ c.message }}</span>
+            {% if c.suggestion %}<br/><em class="finding-suggestion">{{ c.suggestion }}</em>{% endif %}
           </td>
+          <td class="file-path">{{ c.files[:3]|join(', ') }}{% if c.files|length > 3 %} +{{ c.files|length - 3 }} more{% endif %}</td>
+          <td style="text-align:center; font-weight:700;">{{ c.total_count }}</td>
         </tr>
         {% endfor %}
       </tbody>
@@ -181,6 +196,12 @@
 
   {% if silos %}
   <table>
+    <colgroup>
+      <col width="40%">
+      <col width="20%">
+      <col width="15%">
+      <col width="25%">
+    </colgroup>
     <thead>
       <tr>
         <th>File</th>
@@ -192,7 +213,7 @@
     <tbody>
       {% for s in silos %}
       <tr>
-        <td style="font-family:monospace; font-size:8pt;">{{ s.file }}</td>
+        <td class="file-path">{{ s.file }}</td>
         <td>{{ s.sole_contributor }}</td>
         <td>{{ s.last_commit_date }}</td>
         <td><span class="silo-risk-note">{{ s.get("risk_note", "—") }}</span></td>
@@ -215,6 +236,13 @@
 
   {% if file_risks %}
   <table>
+    <colgroup>
+      <col width="5%">
+      <col width="45%">
+      <col width="15%">
+      <col width="15%">
+      <col width="20%">
+    </colgroup>
     <thead>
       <tr>
         <th>#</th>
@@ -228,7 +256,7 @@
       {% for r in file_risks %}
       <tr>
         <td>{{ loop.index }}</td>
-        <td style="font-family:monospace; font-size:8pt;">{{ r.file }}</td>
+        <td class="file-path">{{ r.file }}</td>
         <td>{{ "%.1f%%"|format(r.bug_probability * 100) }}</td>
         <td><span class="badge badge-{{ r.risk_level }}">{{ r.risk_level }}</span></td>
         <td style="font-size:8.5pt; color:#4b5563;">
@@ -255,6 +283,14 @@
 
   {% if roadmap_items %}
   <table>
+    <colgroup>
+      <col width="8%">
+      <col width="30%">
+      <col width="30%">
+      <col width="15%">
+      <col width="9%">
+      <col width="8%">
+    </colgroup>
     <thead>
       <tr>
         <th>Priority</th>
@@ -269,7 +305,7 @@
       {% for item in roadmap_items %}
       <tr>
         <td style="text-align:center; font-weight:700;">{{ item.priority }}</td>
-        <td style="font-family:monospace; font-size:8pt;">{{ item.file }}</td>
+        <td class="file-path">{{ item.file }}</td>
         <td>{{ item.action }}</td>
         <td><span class="badge badge-info" style="font-size:7pt;">
           {{ item.category | replace("_", " ") | title }}

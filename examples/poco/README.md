@@ -2,6 +2,12 @@
 
 > Analyzed 2026-03-26 · 640,665 LOC · 3,068 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
+POCO C++ Libraries is a mature, widely-deployed open-source C++ framework providing
+networking, file system, threading, and cryptography primitives. With over 640K lines
+of production code spanning 3,068 files and a git history stretching back nearly two
+decades, it represents a realistic benchmark for cppulse: a large, actively maintained
+codebase that predates modern C++ idioms.
+
 ---
 
 ## Health Score
@@ -26,16 +32,16 @@
 
 | File | Bug Probability | Risk Level | Top Factors |
 |------|----------------:|:----------:|-------------|
-| `Crypto/src/EVPCipherImpl.cpp` | 99.9% | Critical | misra, memory |
-| `Crypto/src/RSACipherImpl.cpp` | 99.9% | Critical | misra, memory |
-| `Crypto/testsuite/src/EVPTest.cpp` | 99.9% | Critical | misra, memory |
-| `Crypto/testsuite/src/RSATest.cpp` | 99.9% | Critical | misra, memory |
-| `Foundation/include/Poco/AbstractCache.h` | 99.9% | Critical | misra, memory |
-| `Foundation/include/Poco/Buffer.h` | 99.9% | Critical | misra, memory |
-| `Foundation/include/Poco/MPSCQueue.h` | 99.9% | Critical | misra, memory |
-| `Foundation/testsuite/src/AnyTest.cpp` | 99.9% | Critical | misra, memory |
-| `Foundation/testsuite/src/AutoPtrTest.cpp` | 99.9% | Critical | misra, memory |
-| `DNSSD/samples/HTTPTimeServer/src/HTTPTimeServer.cpp` | 99.9% | Critical | misra, memory |
+| `Crypto/src/EVPCipherImpl.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Crypto/src/RSACipherImpl.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Crypto/testsuite/src/EVPTest.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Crypto/testsuite/src/RSATest.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Foundation/include/Poco/AbstractCache.h` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Foundation/include/Poco/Buffer.h` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Foundation/include/Poco/MPSCQueue.h` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Foundation/testsuite/src/AnyTest.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `Foundation/testsuite/src/AutoPtrTest.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
+| `DNSSD/samples/HTTPTimeServer/src/HTTPTimeServer.cpp` | 99.9% | Critical | MISRA violations (10K+), memory safety issues |
 
 **780 files** flagged Critical · **207 files** flagged Low risk (of 987 total)
 

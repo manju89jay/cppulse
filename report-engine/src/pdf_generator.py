@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import io
 import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -77,6 +78,75 @@ def _bar_chart_base64(
     buf.seek(0)
     encoded = base64.b64encode(buf.read()).decode("ascii")
     return f"data:image/png;base64,{encoded}"
+
+
+def _strip_prefix(path_str: str, prefix: str) -> str:
+    """Strip a common path prefix from a file path string.
+
+    Args:
+        path_str: The file path to strip.
+        prefix: The prefix to remove.  Must end without a trailing slash.
+
+    Returns:
+        The relative path with the prefix removed, or the original string if
+        the prefix does not match.
+    """
+    if not prefix:
+        return path_str
+    norm_prefix = prefix.rstrip("/") + "/"
+    if path_str.startswith(norm_prefix):
+        return path_str[len(norm_prefix) :]
+    return path_str
+
+
+def _cluster_findings(
+    findings: list[dict[str, Any]],
+    max_per_category: int = 30,
+) -> dict[str, list[dict[str, Any]]]:
+    """Group findings by (category, rule_id, message) into compact clusters.
+
+    Each cluster represents all occurrences of one rule+message combination,
+    collecting the set of affected files and a total occurrence count so the
+    report can render one row per rule rather than one row per finding.
+
+    Args:
+        findings: List of raw finding dicts from ``findings.json``.
+        max_per_category: Maximum number of clusters to return per category.
+            Clusters are sorted by ``total_count`` descending before truncation.
+
+    Returns:
+        Dict mapping category name to a list of cluster dicts.  Each cluster
+        has keys: ``rule_id``, ``severity``, ``message``, ``suggestion``,
+        ``files`` (sorted list of unique paths), ``total_count``.
+    """
+    groups: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    for finding in findings:
+        key = (
+            finding.get("category", "other"),
+            finding.get("rule_id", ""),
+            finding.get("message", ""),
+        )
+        groups[key].append(finding)
+
+    clusters_by_cat: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for (category, rule_id, message), items in groups.items():
+        files = sorted({item.get("file", "") for item in items})
+        cluster: dict[str, Any] = {
+            "rule_id": rule_id,
+            "severity": items[0].get("severity", "info"),
+            "message": message,
+            "suggestion": items[0].get("suggestion", ""),
+            "files": files,
+            "total_count": len(items),
+        }
+        clusters_by_cat[category].append(cluster)
+
+    result: dict[str, list[dict[str, Any]]] = {}
+    for cat, clusters in clusters_by_cat.items():
+        clusters.sort(key=lambda c: c["total_count"], reverse=True)
+        result[cat] = clusters[:max_per_category]
+
+    return result
 
 
 class PDFGenerator:
@@ -162,30 +232,47 @@ class PDFGenerator:
                 category_labels, category_scores, "Health Score by Category"
             )
 
-        hotspots = risk_scores.get("hotspots", [])[:20]
-        file_risks = sorted(
+        # Determine repo root for path stripping
+        path_prefix = (
+            findings.get("metadata", {}).get("repo_path")
+            or git_metrics.get("metadata", {}).get("repo_path")
+            or ""
+        )
+
+        def strip(p: str) -> str:
+            return _strip_prefix(p, path_prefix)
+
+        # Hotspots — strip prefix from file field, limit to 20
+        raw_hotspots = risk_scores.get("hotspots", [])[:20]
+        hotspots = [{**h, "file": strip(h.get("file", ""))} for h in raw_hotspots]
+
+        # File risks — strip prefix, sort by bug_probability descending, limit 10
+        raw_file_risks = sorted(
             risk_scores.get("file_risks", []),
             key=lambda x: x.get("bug_probability", 0),
             reverse=True,
         )[:10]
+        file_risks = [{**r, "file": strip(r.get("file", ""))} for r in raw_file_risks]
 
-        raw_findings = findings.get("findings", [])
-        grouped: dict[str, list[dict[str, Any]]] = {}
-        for f in raw_findings:
-            cat = f.get("category", "other")
-            grouped.setdefault(cat, []).append(f)
-        for cat in grouped:
-            grouped[cat].sort(
-                key=lambda x: {"error": 0, "warning": 1, "info": 2}.get(
-                    x.get("severity", "info"), 2
-                )
-            )
+        # Findings — strip prefix then cluster
+        raw_findings: list[dict[str, Any]] = findings.get("findings", [])
+        stripped_findings = [
+            {**f, "file": strip(f.get("file", ""))} for f in raw_findings
+        ]
+        findings_clustered = _cluster_findings(stripped_findings)
 
-        silos = git_metrics.get("knowledge_silos", [])
-        roadmap_items = sorted(
+        # Knowledge silos — strip prefix from file field
+        raw_silos = git_metrics.get("knowledge_silos", [])
+        silos = [{**s, "file": strip(s.get("file", ""))} for s in raw_silos]
+
+        # Roadmap — strip prefix, sort by priority, limit 20
+        raw_roadmap = sorted(
             roadmap.get("items", []),
             key=lambda x: x.get("priority", 999),
-        )
+        )[:20]
+        roadmap_items = [
+            {**item, "file": strip(item.get("file", ""))} for item in raw_roadmap
+        ]
 
         findings_summary = findings.get("summary", {})
 
@@ -197,7 +284,7 @@ class PDFGenerator:
             "category_chart_b64": chart_b64,
             "hotspots": hotspots,
             "file_risks": file_risks,
-            "findings_grouped": grouped,
+            "findings_clustered": findings_clustered,
             "findings_summary": findings_summary,
             "silos": silos,
             "roadmap_items": roadmap_items,

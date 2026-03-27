@@ -48,6 +48,7 @@ body {
     font-size: 13pt;
     color: #4b5563;
     margin: 4px 0;
+    word-break: break-all;
 }
 
 .cover .meta {
@@ -104,6 +105,7 @@ h3 {
 
 /* ─── Tables ─── */
 table {
+    table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
     font-size: 9pt;
@@ -121,20 +123,30 @@ thead th {
     font-weight: 600;
     font-size: 8.5pt;
     letter-spacing: 0.03em;
+    word-break: break-word;
 }
 
 tbody tr:nth-child(even) {
     background: #f8fafc;
 }
 
-tbody tr:hover {
-    background: #eff6ff;
+tbody tr {
+    page-break-inside: avoid;
 }
 
 tbody td {
-    padding: 6px 10px;
+    padding: 4px 8px;
     border-bottom: 1px solid #e5e7eb;
     vertical-align: top;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ─── File Path class ─── */
+.file-path {
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+    word-break: break-all;
 }
 
 /* ─── Severity Badges ─── */
