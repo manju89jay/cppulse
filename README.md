@@ -22,12 +22,12 @@ Large C++ codebases accumulate technical debt that's invisible until it causes a
 <!-- LEADERBOARD:START -->
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
-| 1 | **gRPC** | 964K | `44.5` █████████░░░░░░░░░░░ | 56,844 | 21/22 | [Details](examples/grpc/) |
-| 2 | **POCO C++ Libraries** | 641K | `55.2` ███████████░░░░░░░░░ | 25,821 | 21/22 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
-| 3 | **Protocol Buffers** | 400K | `0.0` ░░░░░░░░░░░░░░░░░░░░ | 87,345 | 21/22 | [Details](examples/protobuf/) |
-| 4 | **nlohmann/json** | 98K | `86.6` █████████████████░░░ | 1,119 | 19/22 | [Details](examples/json/) |
-| 5 | **fmt** | 54K | `17.2` ███░░░░░░░░░░░░░░░░░ | 2,856 | 20/22 | [Details](examples/fmt/) |
-| 6 | **LevelDB** | 29K | `47.0` █████████░░░░░░░░░░░ | 2,053 | 16/22 | [Details](examples/leveldb/) |
+| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 56,844 | 21/22 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 25,821 | 21/22 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 87,345 | 21/22 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 1,119 | 19/22 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 2,856 | 20/22 | [Details](examples/fmt/) |
+| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 2,053 | 16/22 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
 
 *Run `cppulse analyze --repo /path/to/repo` to analyze your codebase.*

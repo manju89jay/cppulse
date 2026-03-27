@@ -90,3 +90,10 @@ Each decision follows: **Context** (what problem), **Decision** (what we chose),
 - **Decision**: Fallback to heuristic weighted scoring (no ML)
 - **Why**: Graceful degradation. Users still get useful output.
 - **Tradeoffs**: Heuristic is less accurate than ML prediction.
+
+## D13: MISRA rules opt-in via analysis profiles
+- **Context**: After analyzing 6 real-world C++ projects, MISRA compliance scored 0.0 on 5 out of 6. protobuf scored 0/100 overall despite being Google production code.
+- **Decision**: Default profile excludes MISRA rules. `--profile safety-critical` enables them with 2.5x weight.
+- **Why**: MISRA C++:2023 targets safety-critical embedded systems (AUTOSAR, DO-178C, IEC 62304). General-purpose C++ projects deliberately use `goto`, unions, multiple returns, and uninitialized-then-assigned variables. Penalizing them produces false signals.
+- **Tradeoffs**: Default profile only evaluates 15/22 rules. Safety-critical projects must explicitly opt in.
+- **Interview angle**: "I discovered this by running cppulse on 6 real codebases. protobuf scored 0/100 because of MISRA rules — that's a false signal. Making MISRA opt-in shows I can calibrate a tool based on real-world data rather than theoretical assumptions."

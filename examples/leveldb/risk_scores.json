@@ -1,2866 +1,529 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "generated_at": "2026-03-27T14:44:18.645929+00:00",
+    "generated_at": "2026-03-27T16:12:30.706538+00:00",
     "model_type": "xgboost",
     "feature_count": 12,
-    "training_samples": 89,
-    "f1_score": 1.0
+    "training_samples": 16,
+    "f1_score": 0.0
   },
   "health_score": {
-    "overall": 47.01,
+    "overall": 76.66,
     "by_category": {
-      "memory_safety": 65.62,
-      "modernization": 83.09,
-      "complexity": 92.47,
-      "misra_compliance": 0.0
+      "memory_safety": 28.75,
+      "modernization": 70.0,
+      "complexity": 79.38
     }
   },
   "file_risks": [
     {
       "file": "/tmp/leveldb/benchmarks/db_bench.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.264756,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 44.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 11.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 70.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 44.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 12.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.047924,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 13.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 1.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 16.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 13.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
+      "bug_probability": 0.167227,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 43.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 59.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 43.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 12.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 4.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.103038,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 23.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 1.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 32.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 23.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 5.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/autocompact_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.038695,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 9.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 1.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 13.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 9.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/builder.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
+      "bug_probability": 0.054645,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 7.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 3.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 11.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 7.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/builder.h",
-      "bug_probability": 0.089045,
+      "bug_probability": 0.007673,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/c.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.343157,
+      "risk_level": "medium",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 20.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 28.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 54.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 20.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/corruption_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.121378,
+      "risk_level": "low",
       "top_factors": [
         {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
           "feature": "misra_findings",
-          "importance": 0.6829162836074829,
+          "importance": 0.21739130434782608,
           "value": 36.0
         },
         {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 42.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 4.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/db_impl.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
+      "bug_probability": 0.033773,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 9.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 1.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 10.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 9.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/db_iter.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.038131,
+      "risk_level": "low",
       "top_factors": [
         {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
           "feature": "misra_findings",
-          "importance": 0.6829162836074829,
+          "importance": 0.21739130434782608,
           "value": 10.0
         },
         {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 12.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/db_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
+      "bug_probability": 0.695652,
+      "risk_level": "high",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 376.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 28.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 474.0
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 80.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 53.0
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 17.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/dbformat.h",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/dbformat_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 22.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 27.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 4.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/dumpfile.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 24.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 6.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 30.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/fault_injection_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 39.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 9.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 50.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/filename.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 9.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 9.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/filename.h",
-      "bug_probability": 0.041816,
+      "bug_probability": 0.002717,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/filename_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
         {
           "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 16.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 19.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/leveldbutil.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 3.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 4.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "importance": 0.21739130434782608,
           "value": 1.0
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/log_format.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/log_reader.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/log_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 49.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 57.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 6.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/log_writer.cc",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/memtable.cc",
-      "bug_probability": 0.988497,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 2.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/memtable.h",
-      "bug_probability": 0.894601,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
+          "importance": 0.13043478260869565,
           "value": 0.0
         },
         {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 2.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/recovery_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 40.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 3.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 49.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 3.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/repair.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 46.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 7.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 53.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/skiplist.h",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 6.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/skiplist_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 34.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 47.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 11.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 2.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/snapshot.h",
-      "bug_probability": 0.933869,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 2.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/table_cache.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 3.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/table_cache.h",
-      "bug_probability": 0.089045,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/version_edit.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 4.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/version_edit.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/version_edit_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 6.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 7.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "/tmp/leveldb/db/version_set.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 18.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 20.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/version_set_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 54.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 101.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 43.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 4.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/db/write_batch_test.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 25.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 26.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/helpers/memenv/memenv.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 20.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 6.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 27.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/helpers/memenv/memenv_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 41.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 14.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 59.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 3.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/include/leveldb/c.h",
-      "bug_probability": 0.223679,
+      "bug_probability": 0.001641,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 23.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 20.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 3.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/include/leveldb/options.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
         {
           "feature": "misra_findings",
-          "importance": 0.6829162836074829,
+          "importance": 0.21739130434782608,
           "value": 0.0
         },
         {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/issues/issue178_test.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 4.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 6.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
           "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/issues/issue200_test.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 6.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 8.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/issues/issue320_test.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 7.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 9.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/port/port.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/port/port_stdcxx.h",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 25.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 24.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/block.cc",
-      "bug_probability": 0.960376,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/filter_block_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 13.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 17.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/format.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 8.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 16.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 25.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/format.h",
-      "bug_probability": 0.196638,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 2.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/iterator.cc",
-      "bug_probability": 0.863474,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/merger.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 8.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 17.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 8.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/table.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 3.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/table_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 75.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 8.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 101.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 16.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 2.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/table/two_level_iterator.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 4.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/arena.h",
-      "bug_probability": 0.960376,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/arena_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 7.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 9.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/bloom.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 15.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 17.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/bloom_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 11.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 15.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 4.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/cache.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 24.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 4.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 31.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/cache_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 34.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 42.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 5.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 3.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/coding.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 17.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 17.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/coding.h",
-      "bug_probability": 0.960376,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/coding_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 37.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 43.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 4.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 2.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/comparator.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 3.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 3.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/crc32c.cc",
-      "bug_probability": 0.289388,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 2.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 2.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/crc32c_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env.cc",
-      "bug_probability": 0.995333,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 7.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 4.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 11.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env_posix.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 18.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 8.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 31.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 5.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env_posix_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 5.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 9.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 25.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 6.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 32.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env_windows.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 54.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 7.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 62.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/env_windows_test.cc",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 4.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 8.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 3.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/hash.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 4.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 4.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/hash_test.cc",
-      "bug_probability": 0.960376,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/histogram.h",
-      "bug_probability": 0.041816,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/logging.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 9.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 9.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/logging_test.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 12.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 14.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/no_destructor.h",
-      "bug_probability": 0.863474,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/no_destructor_test.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 5.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/posix_logger.h",
-      "bug_probability": 0.909018,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/status_test.cc",
-      "bug_probability": 0.990211,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 6.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 6.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/testutil.cc",
-      "bug_probability": 0.985566,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 2.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 0.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 4.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 2.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/testutil.h",
-      "bug_probability": 0.863474,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 1.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 1.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/leveldb/util/windows_logger.h",
-      "bug_probability": 0.993101,
-      "risk_level": "critical",
-      "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 1.0
-        },
-        {
-          "feature": "memory_findings",
-          "importance": 0.3047534227371216,
-          "value": 2.0
-        },
-        {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
-          "value": 5.0
-        },
-        {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
-          "value": 1.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.0,
-          "value": 1.0
         }
       ]
     },
     {
       "file": "db/db_impl.cc",
-      "bug_probability": 0.089045,
+      "bug_probability": 0.0,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
           "value": 0.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
     },
     {
       "file": "db/version_set.cc",
-      "bug_probability": 0.089045,
+      "bug_probability": 0.0,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.6829162836074829,
-          "value": 0.0
-        },
-        {
           "feature": "memory_findings",
-          "importance": 0.3047534227371216,
+          "importance": 0.2608695652173913,
           "value": 0.0
         },
         {
-          "feature": "finding_count",
-          "importance": 0.009318478405475616,
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
           "value": 0.0
         },
         {
-          "feature": "modernization_findings",
-          "importance": 0.003011855762451887,
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
           "value": 0.0
         },
         {
           "feature": "complexity_findings",
-          "importance": 0.0,
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
           "value": 0.0
         }
       ]
@@ -2949,63 +612,35 @@
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 474
+      "finding_count": 178
     },
     {
       "file": "/tmp/leveldb/db/dbformat.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 5
+      "finding_count": 1
     },
     {
-      "file": "/tmp/leveldb/db/dbformat_test.cc",
-      "hotspot_score": 0.0,
-      "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 27
-    },
-    {
-      "file": "/tmp/leveldb/db/dumpfile.cc",
-      "hotspot_score": 0.0,
-      "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 30
-    },
-    {
-      "file": "/tmp/leveldb/db/fault_injection_test.cc",
-      "hotspot_score": 0.0,
-      "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 50
-    },
-    {
-      "file": "/tmp/leveldb/db/filename.cc",
-      "hotspot_score": 0.0,
-      "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 9
-    },
-    {
-      "file": "/tmp/leveldb/db/filename.h",
+      "file": "/tmp/leveldb/db/version_set.cc",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 0.6667,
       "finding_count": 1
     },
     {
-      "file": "/tmp/leveldb/db/filename_test.cc",
+      "file": "db/db_impl.cc",
       "hotspot_score": 0.0,
       "change_frequency": 0,
-      "complexity_score": 1.0,
-      "finding_count": 19
+      "complexity_score": 0.0,
+      "finding_count": 0
     },
     {
-      "file": "/tmp/leveldb/db/leveldbutil.cc",
+      "file": "db/version_set.cc",
       "hotspot_score": 0.0,
       "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 4
+      "complexity_score": 0.0,
+      "finding_count": 0
     }
   ]
 }

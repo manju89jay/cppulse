@@ -275,17 +275,14 @@ def build_roadmap(
     }
 
 
-def run(input_dir: Path, output_dir: Path) -> None:
+def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
     """Execute the full predictor pipeline.
-
-    Loads findings.json and git_metrics.json from input_dir, engineers
-    features, trains the bug predictor, computes health scores, generates
-    the refactoring roadmap, and writes risk_scores.json and roadmap.json
-    to output_dir.
 
     Args:
         input_dir: Directory containing findings.json and git_metrics.json.
         output_dir: Directory to write risk_scores.json and roadmap.json.
+        profile: Analysis profile. "default" excludes MISRA rules,
+            "safety-critical" includes them.
     """
     logger.info("Loading inputs from %s", input_dir)
     findings_data = _load_json(input_dir / "findings.json")
@@ -307,7 +304,7 @@ def run(input_dir: Path, output_dir: Path) -> None:
     probabilities = predictor.predict(features_df)
 
     logger.info("Computing health scores...")
-    health_scorer = HealthScorer()
+    health_scorer = HealthScorer(profile=profile)
 
     logger.info("Building risk scores output...")
     risk_scores = build_risk_scores(
@@ -362,13 +359,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=Path,
         help="Output directory for risk_scores.json and roadmap.json (default: ./output).",
     )
+    parser.add_argument(
+        "--profile",
+        default="default",
+        choices=["default", "safety-critical"],
+        help="Analysis profile. 'default' excludes MISRA rules; 'safety-critical' includes them.",
+    )
     return parser.parse_args(argv)
 
 
 def main() -> None:
     """Entry point for the predictor CLI."""
     args = parse_args()
-    run(input_dir=args.input, output_dir=args.output)
+    run(input_dir=args.input, output_dir=args.output, profile=args.profile)
 
 
 if __name__ == "__main__":
