@@ -1,0 +1,237 @@
+/* cppulse PDF Report Styles */
+
+@page {
+    margin: 2cm 1.8cm;
+    size: A4;
+    @bottom-center {
+        content: "cppulse Health Report  —  page " counter(page) " of " counter(pages);
+        font-size: 9pt;
+        color: #6b7280;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    color: #1f2937;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── Page Break ─── */
+.page-break {
+    page-break-before: always;
+}
+
+/* ─── Header / Cover ─── */
+.cover {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 3px solid #2563eb;
+    margin-bottom: 40px;
+}
+
+.cover h1 {
+    font-size: 28pt;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+}
+
+.cover .subtitle {
+    font-size: 13pt;
+    color: #4b5563;
+    margin: 4px 0;
+    word-break: break-all;
+}
+
+.cover .meta {
+    font-size: 9pt;
+    color: #9ca3af;
+    margin-top: 16px;
+}
+
+/* ─── Section Headers ─── */
+h2 {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #1e3a5f;
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 6px;
+    margin-top: 32px;
+    margin-bottom: 14px;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+/* ─── Health Score ─── */
+.score-hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 16px 0 24px;
+    padding: 20px 24px;
+    background: #f0f9ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 4px;
+}
+
+.score-circle {
+    font-size: 36pt;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.score-circle.great  { color: #16a34a; }
+.score-circle.ok     { color: #d97706; }
+.score-circle.poor   { color: #dc2626; }
+
+.score-label {
+    font-size: 11pt;
+    color: #6b7280;
+}
+
+/* ─── Tables ─── */
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-bottom: 16px;
+}
+
+thead tr {
+    background: #1e3a5f;
+    color: #ffffff;
+}
+
+thead th {
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    letter-spacing: 0.03em;
+    word-break: break-word;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr {
+    page-break-inside: avoid;
+}
+
+tbody td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ─── File Path class ─── */
+.file-path {
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+    word-break: break-all;
+}
+
+/* ─── Severity Badges ─── */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-error    { background: #fee2e2; color: #b91c1c; }
+.badge-warning  { background: #fef3c7; color: #92400e; }
+.badge-info     { background: #dbeafe; color: #1d4ed8; }
+
+/* ─── Risk Level Badges ─── */
+.badge-critical { background: #7f1d1d; color: #fef2f2; }
+.badge-high     { background: #fee2e2; color: #b91c1c; }
+.badge-medium   { background: #fef3c7; color: #92400e; }
+.badge-low      { background: #d1fae5; color: #065f46; }
+
+/* ─── Chart Image ─── */
+.chart-img {
+    max-width: 100%;
+    display: block;
+    margin: 12px auto;
+}
+
+/* ─── Summary Grid ─── */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.summary-card {
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    text-align: center;
+    background: #fafafa;
+}
+
+.summary-card .card-value {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #1e3a5f;
+    line-height: 1.1;
+}
+
+.summary-card .card-label {
+    font-size: 8pt;
+    color: #6b7280;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ─── Finding Message ─── */
+.finding-message {
+    color: #374151;
+}
+
+.finding-suggestion {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 8.5pt;
+}
+
+/* ─── Silo Alert ─── */
+.silo-risk-note {
+    font-style: italic;
+    color: #b45309;
+    font-size: 8.5pt;
+}
+
+/* ─── Footer ─── */
+.report-footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 8pt;
+    color: #9ca3af;
+    text-align: center;
+}
