@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cppulse Health Report</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 1 — Executive Summary
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="cover">
+    <h1>cppulse</h1>
+    <div class="subtitle">C++ Codebase Health Report</div>
+    <div class="subtitle"><strong>{{ repo_path }}</strong></div>
+    <div class="meta">Generated: {{ analyzed_at }}</div>
+  </div>
+
+  <h2>1. Executive Summary</h2>
+
+  {% set score_class = "great" if overall_score >= 80 else ("ok" if overall_score >= 60 else "poor") %}
+  <div class="score-hero">
+    <div class="score-circle {{ score_class }}">{{ "%.1f"|format(overall_score) }}</div>
+    <div>
+      <div style="font-size:13pt; font-weight:700; color:#1e3a5f;">Overall Health Score</div>
+      <div class="score-label">
+        {% if overall_score >= 80 %}Good — codebase is in healthy condition.
+        {% elif overall_score >= 60 %}Fair — moderate technical debt present.
+        {% else %}Poor — significant technical debt requires attention.
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="card-value">{{ findings_summary.get("total_findings", 0) }}</div>
+      <div class="card-label">Total Findings</div>
+    </div>
+    <div class="summary-card">
+      <div class="card-value">{{ findings_summary.get("by_severity", {}).get("error", 0) }}</div>
+      <div class="card-label">Errors</div>
+    </div>
+    <div class="summary-card">
+      <div class="card-value">{{ findings_summary.get("by_severity", {}).get("warning", 0) }}</div>
+      <div class="card-label">Warnings</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 2 — Health Score Breakdown
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>2. Health Score Breakdown</h2>
+
+  {% if category_chart_b64 %}
+  <img class="chart-img" src="{{ category_chart_b64 }}" alt="Health score by category chart" />
+  {% endif %}
+
+  <table>
+    <colgroup>
+      <col width="45%">
+      <col width="30%">
+      <col width="25%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Score (/ 100)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set cats = [
+        ("Memory Safety",   by_category.get("memory_safety", 0)),
+        ("Modernization",   by_category.get("modernization", 0)),
+        ("Complexity",      by_category.get("complexity", 0)),
+        ("MISRA Compliance",by_category.get("misra_compliance", 0)),
+      ] %}
+      {% for label, score in cats %}
+      <tr>
+        <td>{{ label }}</td>
+        <td>{{ "%.1f"|format(score) }}</td>
+        <td>
+          {% if score >= 80 %}<span class="badge badge-info">Good</span>
+          {% elif score >= 60 %}<span class="badge badge-warning">Fair</span>
+          {% else %}<span class="badge badge-error">Poor</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 3 — Hotspot Map
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>3. Hotspot Map — Top {{ hotspots|length }} Files</h2>
+  <p style="font-size:9pt; color:#6b7280;">
+    Hotspot score = change frequency × complexity × debt density.
+    High-score files deliver the greatest ROI when refactored.
+  </p>
+
+  {% if hotspots %}
+  <table>
+    <colgroup>
+      <col width="5%">
+      <col width="50%">
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>File</th>
+        <th>Hotspot Score</th>
+        <th>Change Freq.</th>
+        <th>Findings</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for h in hotspots %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td class="file-path">{{ h.file }}</td>
+        <td>{{ "%.2f"|format(h.hotspot_score) }}</td>
+        <td>{{ h.get("change_frequency", "—") }}</td>
+        <td>{{ h.get("finding_count", "—") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#9ca3af; font-style:italic;">No hotspot data available.</p>
+  {% endif %}
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 4 — Detection Findings
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>4. Detection Findings</h2>
+
+  {% if findings_clustered %}
+    {% for category, clusters in findings_clustered.items() %}
+    <h3>{{ category | replace("_", " ") | title }} ({{ clusters|length }} rule violations)</h3>
+    <table>
+      <colgroup>
+        <col width="12%">
+        <col width="10%">
+        <col width="48%">
+        <col width="15%">
+        <col width="15%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Rule</th>
+          <th>Severity</th>
+          <th>Description</th>
+          <th>Files Affected</th>
+          <th>Occurrences</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in clusters %}
+        <tr>
+          <td class="file-path">{{ c.rule_id }}</td>
+          <td><span class="badge badge-{{ c.severity }}">{{ c.severity }}</span></td>
+          <td>
+            <span class="finding-message">{{ c.message }}</span>
+            {% if c.suggestion %}<br/><em class="finding-suggestion">{{ c.suggestion }}</em>{% endif %}
+          </td>
+          <td class="file-path">{{ c.files[:3]|join(', ') }}{% if c.files|length > 3 %} +{{ c.files|length - 3 }} more{% endif %}</td>
+          <td style="text-align:center; font-weight:700;">{{ c.total_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endfor %}
+  {% else %}
+  <p style="color:#9ca3af; font-style:italic;">No findings data available.</p>
+  {% endif %}
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 5 — Knowledge Silo Alerts
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>5. Knowledge Silo Alerts</h2>
+  <p style="font-size:9pt; color:#6b7280;">
+    Files where only one contributor has committed in the last 12 months.
+    These represent bus-factor risk.
+  </p>
+
+  {% if silos %}
+  <table>
+    <colgroup>
+      <col width="40%">
+      <col width="20%">
+      <col width="15%">
+      <col width="25%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Sole Contributor</th>
+        <th>Last Commit</th>
+        <th>Risk Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in silos %}
+      <tr>
+        <td class="file-path">{{ s.file }}</td>
+        <td>{{ s.sole_contributor }}</td>
+        <td>{{ s.last_commit_date }}</td>
+        <td><span class="silo-risk-note">{{ s.get("risk_note", "—") }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#9ca3af; font-style:italic;">No knowledge silos detected.</p>
+  {% endif %}
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 6 — Bug Prediction
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>6. Bug Prediction — Top {{ file_risks|length }} Highest-Risk Files</h2>
+  <p style="font-size:9pt; color:#6b7280;">
+    XGBoost model bug probability. Files above 0.7 should be prioritised for review.
+  </p>
+
+  {% if file_risks %}
+  <table>
+    <colgroup>
+      <col width="5%">
+      <col width="45%">
+      <col width="15%">
+      <col width="15%">
+      <col width="20%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>File</th>
+        <th>Bug Probability</th>
+        <th>Risk Level</th>
+        <th>Top Factor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in file_risks %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td class="file-path">{{ r.file }}</td>
+        <td>{{ "%.1f%%"|format(r.bug_probability * 100) }}</td>
+        <td><span class="badge badge-{{ r.risk_level }}">{{ r.risk_level }}</span></td>
+        <td style="font-size:8.5pt; color:#4b5563;">
+          {% if r.get("top_factors") %}
+            {{ r.top_factors[0].get("feature", "—") }}
+          {% else %}—{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#9ca3af; font-style:italic;">No risk score data available.</p>
+  {% endif %}
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 7 — Refactoring Roadmap
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <h2>7. Refactoring Roadmap</h2>
+  <p style="font-size:9pt; color:#6b7280;">
+    Prioritised by impact score. Complete high-impact, low-effort items first.
+  </p>
+
+  {% if roadmap_items %}
+  <table>
+    <colgroup>
+      <col width="8%">
+      <col width="30%">
+      <col width="30%">
+      <col width="15%">
+      <col width="9%">
+      <col width="8%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>File</th>
+        <th>Action</th>
+        <th>Category</th>
+        <th>Est. Hours</th>
+        <th>Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in roadmap_items %}
+      <tr>
+        <td style="text-align:center; font-weight:700;">{{ item.priority }}</td>
+        <td class="file-path">{{ item.file }}</td>
+        <td>{{ item.action }}</td>
+        <td><span class="badge badge-info" style="font-size:7pt;">
+          {{ item.category | replace("_", " ") | title }}
+        </span></td>
+        <td style="text-align:center;">{{ item.estimated_hours }}h</td>
+        <td style="text-align:center; font-weight:700; color:#2563eb;">{{ item.impact_score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#9ca3af; font-style:italic;">No roadmap data available.</p>
+  {% endif %}
+
+  <div class="report-footer">
+    Generated by cppulse — C++ Codebase Health Analyzer
+  </div>
+
+</body>
+</html>
