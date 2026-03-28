@@ -1,0 +1,23 @@
+# CI override: run only the pipeline (no long-running services),
+# mount host directory for output instead of named volume.
+services:
+  analyzer-core:
+    volumes:
+      - ${REPO_PATH:-.}:/repo:ro
+      - ./output:/output
+
+  git-miner:
+    volumes:
+      - ${REPO_PATH:-.}:/repo:ro
+      - ./output:/output
+
+  predictor:
+    volumes:
+      - ./output:/output
+
+  # Don't run report-engine and dashboard in CI pipeline mode
+  report-engine:
+    profiles: ["serve"]
+
+  dashboard:
+    profiles: ["serve"]
