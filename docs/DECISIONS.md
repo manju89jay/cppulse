@@ -36,3 +36,28 @@ Each decision follows: **Context** (what problem), **Decision** (what we chose),
 - **Context**: Bug prediction from 12 tabular features
 - **Decision**: XGBoost gradient-boosted trees
 - **Why**: Best performer on tabular data (Kamei et al. 2013), interpretable via SHAP, trains in seconds on CPU
+- **Tradeoffs**: Requires enough labeled training data (SZZ needs 50+ commits)
+- **Reference**: ADR-002
+
+## D5: SZZ algorithm — simplified keyword-based approach
+- **Context**: Need to label bug-introducing commits for ML training
+- **Decision**: Keyword matching ("fix", "bug", "patch") + git blame
+- **Why**: Works without issue tracker integration. Original SZZ (Śliwerski et al. 2005) is well-cited.
+- **Tradeoffs**: Higher false positive rate than issue-tracker linked SZZ. Honest limitation.
+- **Interview angle**: "I chose keyword-based SZZ for zero-dependency operation. In production, I'd integrate with Jira/GitHub Issues for higher precision."
+
+## D6: JSON files over REST for pipeline communication
+- **Context**: 6 components need to pass data
+- **Decision**: JSON files in shared ./output/ directory
+- **Why**: Debuggable (inspect files directly), pipeline can run step-by-step, no network complexity
+- **Tradeoffs**: Not real-time, requires shared filesystem. For microservices, I'd use gRPC.
+- **Reference**: ADR-004
+
+## D7: Health score weighted penalty system
+- **Context**: Need a single 0-100 health score
+- **Decision**: Weighted deduction: memory_safety×3, misra×2.5, complexity×1.5, modernization×1
+- **Why**: Safety-critical findings weighted highest. Mirrors MISRA severity classification.
+- **Tradeoffs**: Weights are calibrated empirically, not formally derived. Documented for transparency.
+
+## D8: 22 rules — standard-grounded where possible
+- **Context**: Which rules to implement?
