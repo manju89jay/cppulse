@@ -61,3 +61,20 @@ Each decision follows: **Context** (what problem), **Decision** (what we chose),
 
 ## D8: 22 rules — standard-grounded where possible
 - **Context**: Which rules to implement?
+- **Decision**: 3 memory safety, 9 modernization, 3 complexity, 7 MISRA subset
+- **Why**: Memory/MISRA rules map to MISRA C++:2023 and AUTOSAR C++14. Modernization rules are empirical best practices from clang-tidy modernize-* checks.
+- **Tradeoffs**: Not exhaustive. 22 was chosen for demonstrable breadth, not completeness.
+- **Interview angle**: "I picked rules that cover the four main debt categories in safety-critical C++. MISRA rules are directly traceable to the standard. Modernization rules mirror clang-tidy's modernize-* set."
+
+## D9: WeasyPrint for PDF generation
+- **Context**: Need professional PDF reports
+- **Decision**: WeasyPrint (HTML/CSS → PDF)
+- **Why**: Full CSS support, Jinja2 templating, Python-native. No external LaTeX dependency.
+- **Tradeoffs**: Large Docker image due to system deps (pango, cairo). Acceptable for server-side generation.
+
+## D10: React + Recharts dashboard
+- **Context**: Interactive visualization of analysis results
+- **Decision**: React 18 + TypeScript + Recharts + Tailwind
+- **Why**: Recharts has treemap (for hotspots), standard React stack, Tailwind for rapid styling
+- **Tradeoffs**: Full SPA for what could be a static page. Justified by: interactive filtering, future trend comparison.
+
