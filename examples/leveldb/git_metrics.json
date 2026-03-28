@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/leveldb",
+    "analyzed_at": "2026-03-27T14:43:47.354899+00:00",
+    "commit_range": "c4c38f9c..7ee830d0",
+    "total_commits": 227
+  },
+  "file_metrics": [],
+  "knowledge_silos": [
+    {
+      "file": "db/db_impl.cc",
+      "sole_contributor": "leveldb Team",
+      "last_commit_date": "2026-03-11",
+      "risk_note": "Only leveldb Team has modified this file in the last 12 months. Bus factor: 1."
+    },
+    {
+      "file": "db/version_set.cc",
+      "sole_contributor": "leveldb Team",
+      "last_commit_date": "2026-03-06",
+      "risk_note": "Only leveldb Team has modified this file in the last 12 months. Bus factor: 1."
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T16:12:30.706538+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 16,
+    "f1_score": 0.0
+  },
+  "health_score": {
+    "overall": 76.66,
+    "by_category": {
+      "memory_safety": 28.75,
+      "modernization": 70.0,
+      "complexity": 79.38
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "bug_probability": 0.264756,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 11.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 44.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "bug_probability": 0.047924,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 13.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "bug_probability": 0.167227,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 43.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 4.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "bug_probability": 0.103038,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 23.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "bug_probability": 0.038695,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 9.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/builder.cc",
+      "bug_probability": 0.054645,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 3.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 7.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/builder.h",
+      "bug_probability": 0.007673,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/c.cc",
+      "bug_probability": 0.343157,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 28.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 20.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "bug_probability": 0.121378,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 36.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/db_impl.cc",
+      "bug_probability": 0.033773,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 9.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/db_iter.cc",
+      "bug_probability": 0.038131,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 10.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "bug_probability": 0.695652,
+      "risk_level": "high",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 28.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 80.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 17.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/dbformat.h",
+      "bug_probability": 0.002717,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/leveldb/db/version_set.cc",
+      "bug_probability": 0.001641,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "db/db_impl.cc",
+      "bug_probability": 0.0,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "db/version_set.cc",
+      "bug_probability": 0.0,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 70
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 16
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 59
+    },
+    {
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 32
+    },
+    {
+      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 13
+    },
+    {
+      "file": "/tmp/leveldb/db/builder.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 11
+    },
+    {
+      "file": "/tmp/leveldb/db/builder.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/leveldb/db/c.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 54
+    },
+    {
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 42
+    },
+    {
+      "file": "/tmp/leveldb/db/db_impl.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 10
+    },
+    {
+      "file": "/tmp/leveldb/db/db_iter.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 12
+    },
+    {
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 178
+    },
+    {
+      "file": "/tmp/leveldb/db/dbformat.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/leveldb/db/version_set.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "db/db_impl.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.0,
+      "finding_count": 0
+    },
+    {
+      "file": "db/version_set.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.0,
+      "finding_count": 0
+    }
+  ]
+}

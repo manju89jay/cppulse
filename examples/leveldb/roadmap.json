@@ -1,0 +1,487 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "priority": 1,
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 51.0,
+      "impact_score": 18.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 2,
+      "file": "/tmp/leveldb/db/c.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 40.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-004",
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 3,
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 53.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-009",
+        "CPP-MOD-001",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 4,
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 112.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 5,
+      "file": "/tmp/leveldb/db/db_test.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 160.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 6,
+      "file": "/tmp/leveldb/db/c.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 7,
+      "file": "/tmp/leveldb/db/c.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 112.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 8,
+      "file": "/tmp/leveldb/db/c.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 10,
+      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-003",
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 11,
+      "file": "/tmp/leveldb/db/dbformat.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "MISRA-005"
+      ]
+    },
+    {
+      "priority": 12,
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 44.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 13,
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 88.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 14,
+      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 16,
+      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 26.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 17,
+      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 12.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008",
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 86.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 19,
+      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 18.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 20,
+      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 21,
+      "file": "/tmp/leveldb/db/version_set.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-007"
+      ]
+    },
+    {
+      "priority": 22,
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 23,
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 24,
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 25,
+      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 46.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 26,
+      "file": "/tmp/leveldb/db/builder.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 27,
+      "file": "/tmp/leveldb/db/builder.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 28,
+      "file": "/tmp/leveldb/db/builder.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 14.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 29,
+      "file": "/tmp/leveldb/db/builder.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 30,
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 31,
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 32,
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 72.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 33,
+      "file": "/tmp/leveldb/db/db_impl.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 34,
+      "file": "/tmp/leveldb/db/db_impl.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 18.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 35,
+      "file": "/tmp/leveldb/db/db_iter.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 36,
+      "file": "/tmp/leveldb/db/db_iter.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 37,
+      "file": "/tmp/leveldb/db/db_iter.cc",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 20.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 38,
+      "file": "db/version_set.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 39,
+      "file": "db/db_impl.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 40,
+      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 41,
+      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 42,
+      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    }
+  ]
+}
