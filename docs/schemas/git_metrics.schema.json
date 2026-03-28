@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse Git Metrics",
+  "type": "object",
+  "required": ["version", "metadata", "file_metrics", "knowledge_silos"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0.0" },
+    "metadata": {
+      "type": "object",
+      "required": ["repo_path", "analyzed_at", "commit_range", "total_commits"],
+      "properties": {
+        "repo_path": { "type": "string" },
+        "analyzed_at": { "type": "string", "format": "date-time" },
+        "commit_range": { "type": "string" },
+        "total_commits": { "type": "integer" }
+      }
+    },
+    "file_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "change_frequency", "unique_contributors", "age_days", "lines_of_code"],
+        "properties": {
+          "file": { "type": "string" },
+          "change_frequency": { "type": "integer", "description": "Number of commits touching this file" },
+          "unique_contributors": { "type": "integer" },
+          "age_days": { "type": "integer", "description": "Days since file was first created" },
+          "last_modified_days": { "type": "integer", "description": "Days since last commit" },
+          "lines_of_code": { "type": "integer" },
+          "lines_added_total": { "type": "integer" },
+          "lines_removed_total": { "type": "integer" },
+          "churn_rate": { "type": "number", "description": "(added + removed) / LOC" },
+          "bug_fix_commits": { "type": "integer", "description": "Commits with fix/bug/patch in message" },
+          "contributor_list": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "knowledge_silos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "sole_contributor", "last_commit_date"],
+        "properties": {
+          "file": { "type": "string" },
+          "sole_contributor": { "type": "string" },
+          "last_commit_date": { "type": "string", "format": "date" },
+          "risk_note": { "type": "string" }
+        }
+      },
+      "description": "Files where only 1 contributor has committed in the last 12 months"
+    }
+  }
+}
