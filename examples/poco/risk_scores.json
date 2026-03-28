@@ -1,0 +1,1794 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T16:12:27.381537+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 51,
+    "f1_score": 0.987
+  },
+  "health_score": {
+    "overall": 97.79,
+    "by_category": {
+      "memory_safety": 95.29,
+      "modernization": 94.71,
+      "complexity": 98.63
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/CodeGenerator.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Compiler.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/HeaderGenerator.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 11.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 9.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Parser.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 29.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 29.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTestSuite.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/WinDriver.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheConnector.h",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheRequestHandlerFactory.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerRequest.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerResponse.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheStream.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/samples/FormServer/src/FormServer.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/samples/TimeServer/src/TimeServer.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/src/ApacheConnector.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 13.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 18.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 3.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 18.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 21.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/NotificationQueueBench.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 13.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/PatternFormatterBench.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 30.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 30.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/src/Utility.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/testsuite/src/AttributesParserTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 15.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/testsuite/src/AttributesTestSuite.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/testsuite/src/CppParserTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 61.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 64.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/testsuite/src/CppParserTestSuite.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/CppParser/testsuite/src/WinDriver.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/CipherKeyImpl.h",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/Crypto.h",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/RSAKeyImpl.h",
+      "bug_probability": 0.134765,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/samples/genrsakey/src/genrsakey.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/src/CipherImpl.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/src/CipherKeyImpl.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 15.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 19.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/src/RSACipherImpl.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 10.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 14.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/src/X509Certificate.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 71.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 74.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTest.h",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTestSuite.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/DigestEngineTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/Driver.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/ECTest.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 80.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 86.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/ODBC/testsuite/src/SQLExecutor.cpp",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/PostgreSQL/testsuite/src/PostgreSQLTest.cpp",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/SQLParser/src/parser/bison_parser.cpp",
+      "bug_probability": 0.978616,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/SQLParser/src/parser/flex_lexer.cpp",
+      "bug_probability": 0.972162,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/SQLParser/test/auto_query_file_test.cpp",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/poco/Data/samples/DBLogger/src/SQLLogInserter.cpp",
+      "bug_probability": 0.169512,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.9995479583740234,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.0004520312650129199,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/CodeGenerator.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 7
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Compiler.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/HeaderGenerator.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 6
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 11
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Parser.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTest.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 29
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTestSuite.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/WinDriver.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheConnector.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 1
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheRequestHandlerFactory.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerRequest.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerResponse.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/include/ApacheStream.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/samples/FormServer/src/FormServer.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/samples/TimeServer/src/TimeServer.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/poco/ApacheConnector/src/ApacheConnector.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 6
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 18
+    },
+    {
+      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 21
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/json",
+    "analyzed_at": "2026-03-27T14:43:48.029046+00:00",
+    "commit_range": "b825d3da..eba0a92b",
+    "total_commits": 50
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}

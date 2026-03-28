@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/grpc",
+    "analyzed_at": "2026-03-27T14:57:46.748507+00:00",
+    "commit_range": "3ca09e48..b640724b",
+    "total_commits": 50
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}

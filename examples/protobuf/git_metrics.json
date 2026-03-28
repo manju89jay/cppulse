@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/protobuf",
+    "analyzed_at": "2026-03-27T14:47:02.505123+00:00",
+    "commit_range": "7f7b974f..a19901d3",
+    "total_commits": 50
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}
