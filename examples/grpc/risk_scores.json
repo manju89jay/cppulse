@@ -1,0 +1,2722 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T16:12:36.101620+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 80,
+    "f1_score": 1.0
+  },
+  "health_score": {
+    "overall": 98.96,
+    "by_category": {
+      "memory_safety": 95.88,
+      "modernization": 99.19,
+      "complexity": 99.62
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/grpc/examples/android/helloworld/app/src/main/cpp/grpc-helloworld.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/auth/ssl_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/auth/ssl_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/cancellation/client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/cancellation/server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/compression/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/compression/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/csm_greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 13.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/csm_greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/observability/csm_greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/observability/csm_greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/deadline/client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/deadline/server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 12.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/debugging/crashing_greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/debugging/greeter_callback_server_admin.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/default_event_engine/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/default_event_engine/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_details/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_details/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_handling/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_handling/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/flow_control/client_flow_control_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/flow_control/client_flow_control_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/flow_control/server_flow_control_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/flow_control/server_flow_control_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/gcp_observability/helloworld/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/gcp_observability/helloworld/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/generic_api/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/generic_api/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 8.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 10.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/health/health_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 12.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/health/health_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_async_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 10.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_async_client2.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 8.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 2.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_async_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 8.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 8.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/xds_greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/helloworld/xds_greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/interceptors/caching_interceptor.h",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/interceptors/client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 12.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/interceptors/server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 3.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/keepalive/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/keepalive/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/load_balancing/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/load_balancing/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 2.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 2.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/metadata/greeter_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/metadata/greeter_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/multiplex/multiplex_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 12.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 12.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/multiplex/multiplex_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/orca/orca_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 6.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 6.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/codelab/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 8.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 8.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/codelab/greeter_callback_client_solution.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 13.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 13.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/codelab/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/codelab/greeter_callback_server_solution.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 9.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/codelab/util.cc",
+      "bug_probability": 0.970297,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 5.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 5.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/ostream/greeter_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/ostream/greeter_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/otel/util.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 16.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 16.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/reflection/reflection_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/retry/client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 7.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/retry/server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 3.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/route_guide/helper.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 4.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 4.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/route_guide/route_guide_callback_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 25.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 26.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/route_guide/route_guide_callback_server.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 3.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 7.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 4.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/route_guide/route_guide_client.cc",
+      "bug_probability": 0.986498,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 8.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 9.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/include/grpc/byte_buffer.h",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/include/grpc/byte_buffer_reader.h",
+      "bug_probability": 0.970297,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/include/grpc/compression.h",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/include/grpc/credentials.h",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/compiler/cpp_generator.cc",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/compiler/cpp_generator_helpers.h",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/core/credentials/call/jwt/json_token.cc",
+      "bug_probability": 0.970297,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/core/lib/promise/activity.h",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_iovec_record_protocol.cc",
+      "bug_probability": 0.970297,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/src/core/util/avl.h",
+      "bug_probability": 0.970297,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 1.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/grpc/test/cpp/common/auth_property_iterator_test.cc",
+      "bug_probability": 0.152091,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "misra_findings",
+          "importance": 0.6592304706573486,
+          "value": 0.0
+        },
+        {
+          "feature": "finding_count",
+          "importance": 0.340769499540329,
+          "value": 1.0
+        },
+        {
+          "feature": "memory_findings",
+          "importance": 0.0,
+          "value": 0.0
+        },
+        {
+          "feature": "modernization_findings",
+          "importance": 0.0,
+          "value": 1.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.0,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/grpc/examples/android/helloworld/app/src/main/cpp/grpc-helloworld.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 7
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/auth/ssl_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/auth/ssl_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 6
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/cancellation/client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/cancellation/server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/compression/greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 7
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/compression/greeter_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/csm_greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 13
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/csm_greeter_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/observability/csm_greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/csm/observability/csm_greeter_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/deadline/client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/deadline/server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 12
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/debugging/crashing_greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/debugging/greeter_callback_server_admin.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/default_event_engine/greeter_callback_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/default_event_engine/greeter_callback_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_details/greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 9
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_details/greeter_server.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 7
+    },
+    {
+      "file": "/tmp/grpc/examples/cpp/error_handling/greeter_client.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 7
+    }
+  ]
+}
