@@ -20,7 +20,8 @@ namespace {
  */
 std::filesystem::path fixture_path(const std::string& filename) {
     // When running from build/ inside analyzer-core/
-    std::filesystem::path from_build = std::filesystem::path(__FILE__).parent_path() / "fixtures" / filename;
+    std::filesystem::path from_build =
+        std::filesystem::path(__FILE__).parent_path() / "fixtures" / filename;
     if (std::filesystem::exists(from_build)) {
         return from_build;
     }
@@ -29,15 +30,15 @@ std::filesystem::path fixture_path(const std::string& filename) {
     if (std::filesystem::exists(from_cwd)) {
         return from_cwd;
     }
-    return from_build; // Return the primary path even if not found — test will fail with a clear message
+    return from_build;  // Return the primary path even if not found — test will fail with a clear
+                        // message
 }
 
-} // namespace
+}  // namespace
 
 TEST(HelloLibclangTest, ExtractsFunctionNames) {
     auto path = fixture_path("sample.cpp");
-    ASSERT_TRUE(std::filesystem::exists(path))
-        << "Fixture not found: " << path;
+    ASSERT_TRUE(std::filesystem::exists(path)) << "Fixture not found: " << path;
 
     auto result = cppulse::extract_function_names(path.string());
 
@@ -56,8 +57,7 @@ TEST(HelloLibclangTest, ReturnsNulloptForNonexistentFile) {
 
 TEST(HelloLibclangTest, ReturnsEmptyForEmptyFile) {
     auto path = fixture_path("empty.cpp");
-    ASSERT_TRUE(std::filesystem::exists(path))
-        << "Fixture not found: " << path;
+    ASSERT_TRUE(std::filesystem::exists(path)) << "Fixture not found: " << path;
 
     auto result = cppulse::extract_function_names(path.string());
     ASSERT_TRUE(result.has_value()) << "Parse failed unexpectedly";
