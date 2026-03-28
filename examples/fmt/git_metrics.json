@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/tmp/fmt",
+    "analyzed_at": "2026-03-27T14:43:46.712669+00:00",
+    "commit_range": "39e15aff..7b2c4d06",
+    "total_commits": 50
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}
