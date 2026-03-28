@@ -23,8 +23,9 @@ namespace cppulse {
  * @param file_path Path to the C++ source file to parse.
  * @return Vector of function names, or nullopt on error.
  */
-[[nodiscard]] std::optional<std::vector<std::string>> extract_function_names(std::string_view file_path);
+[[nodiscard]] std::optional<std::vector<std::string>> extract_function_names(
+    std::string_view file_path);
 
-} // namespace cppulse
+}  // namespace cppulse
 
-#endif // CPPULSE_HELLO_LIBCLANG_H
+#endif  // CPPULSE_HELLO_LIBCLANG_H
