@@ -1,0 +1,1154 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-03-27T16:12:34.337600+00:00",
+    "model_type": "xgboost",
+    "feature_count": 12,
+    "training_samples": 31,
+    "f1_score": 0.0
+  },
+  "health_score": {
+    "overall": 93.85,
+    "by_category": {
+      "memory_safety": 93.71,
+      "modernization": 84.52,
+      "complexity": 88.06
+    }
+  },
+  "file_risks": [
+    {
+      "file": "/tmp/protobuf/bazel/private/file_concat/main.cc",
+      "bug_probability": 0.132022,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/bazel/tests/proto_descriptor_set_test.cc",
+      "bug_probability": 0.006347,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 4.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/benchmarks/benchmark.cc",
+      "bug_probability": 0.062308,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 21.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_json_conformance_suite.cc",
+      "bug_probability": 0.565217,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 137.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 14.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_json_conformance_suite.h",
+      "bug_probability": 0.146998,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_wireformat.cc",
+      "bug_probability": 0.00476,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 3.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_wireformat_test.cc",
+      "bug_probability": 0.106924,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 24.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_cpp.cc",
+      "bug_probability": 0.040815,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 13.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test.cc",
+      "bug_probability": 0.229799,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 30.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 4.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test.h",
+      "bug_probability": 0.143375,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test_main.cc",
+      "bug_probability": 0.277433,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 2.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test_runner.cc",
+      "bug_probability": 0.318493,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 2.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 5.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/failure_list_trie_node.cc",
+      "bug_probability": 0.009521,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 6.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/failure_list_trie_node_test.cc",
+      "bug_probability": 0.006347,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 4.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/fork_pipe_runner.cc",
+      "bug_probability": 0.050547,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 10.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/naming.h",
+      "bug_probability": 0.003174,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/naming_test.cc",
+      "bug_probability": 0.022215,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 14.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/test_manager.cc",
+      "bug_probability": 0.017455,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 11.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/test_manager_test.cc",
+      "bug_probability": 0.054586,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 7.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/testee.cc",
+      "bug_probability": 0.019491,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 10.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/testee_test.cc",
+      "bug_probability": 0.03967,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 25.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/text_format_conformance_suite.cc",
+      "bug_probability": 0.203027,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 19.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 3.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/conformance/text_format_conformance_suite.h",
+      "bug_probability": 0.143375,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 1.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/editions/defaults_test.cc",
+      "bug_probability": 0.073151,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 5.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 7.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/hpb/backend/upb/repeated_field_iterator_test.cc",
+      "bug_probability": 0.003623,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/hpb/extension.h",
+      "bug_probability": 0.130435,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/objectivec/GPBAny.pbobjc.h",
+      "bug_probability": 0.001587,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/python/google/protobuf/pyext/descriptor_pool.cc",
+      "bug_probability": 0.130435,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 1.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/src/google/protobuf/compiler/subprocess.cc",
+      "bug_probability": 0.001587,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/src/google/protobuf/generated_enum_util.cc",
+      "bug_probability": 0.001587,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "/tmp/protobuf/src/google/protobuf/stubs/common_unittest.cc",
+      "bug_probability": 0.003623,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "memory_findings",
+          "importance": 0.2608695652173913,
+          "value": 0.0
+        },
+        {
+          "feature": "misra_findings",
+          "importance": 0.21739130434782608,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17391304347826086,
+          "value": 0.0
+        },
+        {
+          "feature": "complexity_findings",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        },
+        {
+          "feature": "bug_fix_commits",
+          "importance": 0.13043478260869565,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "file": "/tmp/protobuf/bazel/private/file_concat/main.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/protobuf/bazel/tests/proto_descriptor_set_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/protobuf/benchmarks/benchmark.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 29
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_json_conformance_suite.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 176
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_json_conformance_suite.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_wireformat.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/protobuf/conformance/binary_wireformat_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 43
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_cpp.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 17
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 39
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 3
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test_main.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
+    },
+    {
+      "file": "/tmp/protobuf/conformance/conformance_test_runner.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 16
+    },
+    {
+      "file": "/tmp/protobuf/conformance/failure_list_trie_node.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 6
+    },
+    {
+      "file": "/tmp/protobuf/conformance/failure_list_trie_node_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 4
+    },
+    {
+      "file": "/tmp/protobuf/conformance/fork_pipe_runner.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 18
+    },
+    {
+      "file": "/tmp/protobuf/conformance/naming.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 2
+    },
+    {
+      "file": "/tmp/protobuf/conformance/naming_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 14
+    },
+    {
+      "file": "/tmp/protobuf/conformance/test_manager.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 11
+    },
+    {
+      "file": "/tmp/protobuf/conformance/test_manager_test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 19
+    },
+    {
+      "file": "/tmp/protobuf/conformance/testee.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 11
+    }
+  ]
+}
