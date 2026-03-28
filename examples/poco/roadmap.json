@@ -1,0 +1,873 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "priority": 1,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 2,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 3,
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "CPP-CX-003",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 4,
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 26.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 5,
+      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 6,
+      "file": "/tmp/poco/ActiveRecord/include/Poco/ActiveRecord/Query.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 7,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/CodeGenerator.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 12.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 8,
+      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 36.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Parser.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 10.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 10,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Compiler.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 8.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 11,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/HeaderGenerator.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 12,
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 58.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 13,
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/ActiveRecordTestSuite.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 14,
+      "file": "/tmp/poco/ActiveRecord/testsuite/src/WinDriver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "/tmp/poco/ApacheConnector/samples/FormServer/src/FormServer.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 16,
+      "file": "/tmp/poco/ApacheConnector/samples/FormServer/src/FormServer.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 14.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 17,
+      "file": "/tmp/poco/ApacheConnector/samples/TimeServer/src/TimeServer.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "/tmp/poco/ApacheConnector/samples/TimeServer/src/TimeServer.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 19,
+      "file": "/tmp/poco/ApacheConnector/src/ApacheConnector.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 12.0,
+      "impact_score": 16.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 20,
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-003",
+        "MISRA-004"
+      ]
+    },
+    {
+      "priority": 21,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/flex_lexer.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-005"
+      ]
+    },
+    {
+      "priority": 22,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/bison_parser.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 12.0,
+      "finding_ids": [
+        "MISRA-001"
+      ]
+    },
+    {
+      "priority": 23,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/ImplGenerator.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 9.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 24,
+      "file": "/tmp/poco/Benchmark/src/BenchmarkApp.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 25,
+      "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-002",
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 26,
+      "file": "/tmp/poco/Crypto/src/EVPCipherImpl.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 27,
+      "file": "/tmp/poco/Crypto/src/X509Certificate.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 28,
+      "file": "/tmp/poco/Crypto/src/X509Certificate.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 29,
+      "file": "/tmp/poco/Data/SQLParser/src/SQLParser.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 30,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/CodeGenerator.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 31,
+      "file": "/tmp/poco/Benchmark/src/LoggerBench.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 32,
+      "file": "/tmp/poco/Data/SQLParser/src/parser/flex_lexer.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-007"
+      ]
+    },
+    {
+      "priority": 33,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/Compiler.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 34,
+      "file": "/tmp/poco/ActiveRecord/Compiler/src/HeaderGenerator.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 35,
+      "file": "/tmp/poco/ApacheConnector/samples/FormServer/src/FormServer.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 36,
+      "file": "/tmp/poco/ApacheConnector/samples/TimeServer/src/TimeServer.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 37,
+      "file": "/tmp/poco/Benchmark/src/NotificationQueueBench.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 26.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 38,
+      "file": "/tmp/poco/Benchmark/src/PatternFormatterBench.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 60.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 39,
+      "file": "/tmp/poco/CppParser/src/Utility.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 40,
+      "file": "/tmp/poco/CppParser/testsuite/src/AttributesParserTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 30.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 41,
+      "file": "/tmp/poco/CppParser/testsuite/src/AttributesTestSuite.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 42,
+      "file": "/tmp/poco/CppParser/testsuite/src/CppParserTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 122.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 43,
+      "file": "/tmp/poco/CppParser/testsuite/src/CppParserTestSuite.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 44,
+      "file": "/tmp/poco/CppParser/testsuite/src/WinDriver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 45,
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/Crypto.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 46,
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/Crypto.h",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 47,
+      "file": "/tmp/poco/Crypto/samples/genrsakey/src/genrsakey.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 48,
+      "file": "/tmp/poco/Crypto/src/CipherImpl.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 49,
+      "file": "/tmp/poco/Crypto/src/CipherImpl.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 50,
+      "file": "/tmp/poco/Crypto/src/CipherKeyImpl.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 4.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 51,
+      "file": "/tmp/poco/Crypto/src/RSACipherImpl.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 52,
+      "file": "/tmp/poco/Crypto/src/RSACipherImpl.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 20.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-006",
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 53,
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 54,
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 142.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 55,
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTestSuite.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 56,
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTestSuite.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 57,
+      "file": "/tmp/poco/Crypto/testsuite/src/DigestEngineTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 58,
+      "file": "/tmp/poco/Crypto/testsuite/src/Driver.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 59,
+      "file": "/tmp/poco/Crypto/testsuite/src/ECTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 2.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 60,
+      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 61,
+      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 62,
+      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
+      "action": "Address MISRA C++ compliance violations to meet safety standards",
+      "category": "misra",
+      "estimated_hours": 160.0,
+      "impact_score": 8.0,
+      "finding_ids": [
+        "MISRA-007"
+      ]
+    },
+    {
+      "priority": 63,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheApplication.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 64,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheConnector.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 65,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheRequestHandlerFactory.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 66,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerRequest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 67,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheServerResponse.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 68,
+      "file": "/tmp/poco/ApacheConnector/include/ApacheStream.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 69,
+      "file": "/tmp/poco/CppParser/testsuite/src/CppParserTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 70,
+      "file": "/tmp/poco/Crypto/testsuite/src/DigestEngineTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 71,
+      "file": "/tmp/poco/Crypto/testsuite/src/EVPTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 72,
+      "file": "/tmp/poco/Data/ODBC/testsuite/src/SQLExecutor.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 73,
+      "file": "/tmp/poco/Data/PostgreSQL/testsuite/src/PostgreSQLTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 74,
+      "file": "/tmp/poco/Data/SQLParser/test/auto_query_file_test.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-003"
+      ]
+    },
+    {
+      "priority": 75,
+      "file": "/tmp/poco/Crypto/testsuite/src/CryptoTest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 76,
+      "file": "/tmp/poco/Data/samples/DBLogger/src/SQLLogInserter.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 77,
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/CipherKeyImpl.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 78,
+      "file": "/tmp/poco/Crypto/include/Poco/Crypto/RSAKeyImpl.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    }
+  ]
+}
