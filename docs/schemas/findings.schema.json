@@ -22,7 +22,7 @@
         "required": ["rule_id", "category", "severity", "file", "line", "message"],
         "properties": {
           "rule_id": { "type": "string", "pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-\\d{3}$" },
-          "category": { "enum": ["memory_safety", "modernization", "complexity", "misra"] },
+          "category": { "enum": ["memory_safety", "modernization", "complexity", "misra"], "description": "misra category only present when using --profile safety-critical" },
           "severity": { "enum": ["error", "warning", "info"] },
           "file": { "type": "string" },
           "line": { "type": "integer", "minimum": 1 },

@@ -15,20 +15,6 @@
     },
     {
       "priority": 2,
-      "file": "/tmp/fmt/include/fmt/args.h",
-      "action": "Address MISRA C++ compliance violations to meet safety standards",
-      "category": "misra",
-      "estimated_hours": 68.0,
-      "impact_score": 18.0,
-      "finding_ids": [
-        "MISRA-003",
-        "MISRA-005",
-        "MISRA-006",
-        "MISRA-007"
-      ]
-    },
-    {
-      "priority": 3,
       "file": "/tmp/fmt/include/fmt/chrono.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
@@ -40,21 +26,7 @@
       ]
     },
     {
-      "priority": 4,
-      "file": "/tmp/fmt/include/fmt/chrono.h",
-      "action": "Address MISRA C++ compliance violations to meet safety standards",
-      "category": "misra",
-      "estimated_hours": 92.0,
-      "impact_score": 18.0,
-      "finding_ids": [
-        "MISRA-003",
-        "MISRA-005",
-        "MISRA-006",
-        "MISRA-007"
-      ]
-    },
-    {
-      "priority": 5,
+      "priority": 3,
       "file": "/tmp/fmt/include/fmt/args.h",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
@@ -65,7 +37,7 @@
       ]
     },
     {
-      "priority": 6,
+      "priority": 4,
       "file": "/tmp/fmt/include/fmt/args.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -80,7 +52,7 @@
       ]
     },
     {
-      "priority": 7,
+      "priority": 5,
       "file": "/tmp/fmt/include/fmt/chrono.h",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
@@ -91,7 +63,7 @@
       ]
     },
     {
-      "priority": 8,
+      "priority": 6,
       "file": "/tmp/fmt/include/fmt/chrono.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -106,7 +78,7 @@
       ]
     },
     {
-      "priority": 9,
+      "priority": 7,
       "file": "/tmp/fmt/include/fmt/color.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
@@ -118,21 +90,7 @@
       ]
     },
     {
-      "priority": 10,
-      "file": "/tmp/fmt/include/fmt/color.h",
-      "action": "Address MISRA C++ compliance violations to meet safety standards",
-      "category": "misra",
-      "estimated_hours": 70.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "MISRA-003",
-        "MISRA-005",
-        "MISRA-006",
-        "MISRA-007"
-      ]
-    },
-    {
-      "priority": 11,
+      "priority": 8,
       "file": "/tmp/fmt/include/fmt/color.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -147,19 +105,7 @@
       ]
     },
     {
-      "priority": 12,
-      "file": "/tmp/fmt/include/fmt/format-inl.h",
-      "action": "Address MISRA C++ compliance violations to meet safety standards",
-      "category": "misra",
-      "estimated_hours": 4.0,
-      "impact_score": 6.0,
-      "finding_ids": [
-        "MISRA-001",
-        "MISRA-004"
-      ]
-    },
-    {
-      "priority": 13,
+      "priority": 9,
       "file": "/tmp/fmt/include/fmt/base.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
@@ -170,19 +116,7 @@
       ]
     },
     {
-      "priority": 14,
-      "file": "/tmp/fmt/include/fmt/base.h",
-      "action": "Address MISRA C++ compliance violations to meet safety standards",
-      "category": "misra",
-      "estimated_hours": 22.0,
-      "impact_score": 6.0,
-      "finding_ids": [
-        "MISRA-003",
-        "MISRA-006"
-      ]
-    },
-    {
-      "priority": 15,
+      "priority": 10,
       "file": "/tmp/fmt/include/fmt/format-inl.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
@@ -193,7 +127,7 @@
       ]
     },
     {
-      "priority": 16,
+      "priority": 11,
       "file": "/tmp/fmt/src/fmt.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
@@ -204,7 +138,7 @@
       ]
     },
     {
-      "priority": 17,
+      "priority": 12,
       "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
@@ -215,7 +149,7 @@
       ]
     },
     {
-      "priority": 18,
+      "priority": 13,
       "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -226,7 +160,7 @@
       ]
     },
     {
-      "priority": 19,
+      "priority": 14,
       "file": "/tmp/fmt/include/fmt/base.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -240,7 +174,7 @@
       ]
     },
     {
-      "priority": 20,
+      "priority": 15,
       "file": "/tmp/fmt/include/fmt/compile.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -255,7 +189,7 @@
       ]
     },
     {
-      "priority": 21,
+      "priority": 16,
       "file": "/tmp/fmt/include/fmt/fmt-c.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
@@ -266,7 +200,7 @@
       ]
     },
     {
-      "priority": 22,
+      "priority": 17,
       "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",

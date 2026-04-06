@@ -7,6 +7,7 @@ networking, file system, threading, and cryptography primitives. With over 640K 
 of production code spanning 3,068 files and a git history stretching back nearly two
 decades, it represents a realistic benchmark for cppulse: a large, actively maintained
 codebase that predates modern C++ idioms.
+cppulse scores it at 97.8/100 — reflecting strong memory safety (95.3), complexity control (98.6), modernization (94.7).
 
 ---
 
@@ -21,26 +22,26 @@ codebase that predates modern C++ idioms.
 
 | Category | Score | Findings | Key Issues |
 |----------|------:|--------:|------------|
-| Memory Safety | **95.3** | 473 | Raw `new` (229), explicit `delete` (188), C-style arrays (56) |
-| Complexity | **98.6** | 975 | High cyclomatic complexity (154), long functions (290), too many params (531) |
-| Modernization | **94.7** | 13,085 | `typedef` (6,986), unscoped `enum` (3,128), C-style casts (1,081) |
+| Memory Safety | **95.3** | 473 | Raw `new` (8), explicit `delete` (7), C-style array params (1) |
+| Complexity | **98.6** | 975 | long functions (5), high cyclomatic complexity (1), too many params (1) |
+| Modernization | **94.7** | 13,085 | raw string literal (24), unscoped `enum` (16), `typedef` (5) |
 
-**Total: 14,533 findings across 21 of 22 rules**
+**Total: 14,533 findings across 15 of 15 rules**
 
 ## Top 10 Riskiest Files
 
 | File | Bug Probability | Risk Level | Top Factors |
 |------|----------------:|:----------:|-------------|
-| `ActiveRecord/testsuite/src/ActiveRecordTestSuite.cpp` | 97.9% | Critical | MISRA violations (1), 1 total findings |
-| `ActiveRecord/testsuite/src/WinDriver.cpp` | 97.9% | Critical | MISRA violations (1), 1 total findings |
-| `ActiveRecord/Compiler/src/CodeGenerator.cpp` | 97.2% | Critical | MISRA violations (6), modernization issues (1), 7 total findings |
-| `ActiveRecord/Compiler/src/Compiler.cpp` | 97.2% | Critical | MISRA violations (4), modernization issues (1), 5 total findings |
-| `ActiveRecord/Compiler/src/HeaderGenerator.cpp` | 97.2% | Critical | MISRA violations (3), modernization issues (3), 6 total findings |
-| `ActiveRecord/Compiler/src/ImplGenerator.cpp` | 97.2% | Critical | MISRA violations (1), modernization issues (9), complexity (1), 11 total findings |
-| `ActiveRecord/Compiler/src/Parser.cpp` | 97.2% | Critical | MISRA violations (5), 5 total findings |
-| `ActiveRecord/include/Poco/ActiveRecord/Query.h` | 97.2% | Critical | MISRA violations (3), memory issues (2), 5 total findings |
-| `ActiveRecord/testsuite/src/ActiveRecordTest.cpp` | 97.2% | Critical | MISRA violations (29), 29 total findings |
-| `ApacheConnector/samples/FormServer/src/FormServer.cpp` | 13.5% | Low | Modernization issues (1), 3 total findings |
+| `ActiveRecord/testsuite/src/ActiveRecordTestSuite.cpp` | 97.9% | Critical | 1 total findings |
+| `ActiveRecord/testsuite/src/WinDriver.cpp` | 97.9% | Critical | 1 total findings |
+| `CppParser/src/Utility.cpp` | 97.9% | Critical | 1 total findings |
+| `CppParser/testsuite/src/AttributesTestSuite.cpp` | 97.9% | Critical | 1 total findings |
+| `CppParser/testsuite/src/CppParserTestSuite.cpp` | 97.9% | Critical | 1 total findings |
+| `CppParser/testsuite/src/WinDriver.cpp` | 97.9% | Critical | 1 total findings |
+| `Crypto/testsuite/src/Driver.cpp` | 97.9% | Critical | 1 total findings |
+| `Crypto/testsuite/src/ECTest.cpp` | 97.9% | Critical | 1 total findings |
+| `Data/SQLParser/src/parser/bison_parser.cpp` | 97.9% | Critical | 1 total findings |
+| `ActiveRecord/Compiler/src/CodeGenerator.cpp` | 97.2% | Critical | 7 total findings, Modernization issues (1) |
 
 **38 files** flagged Critical · **13 files** flagged Low risk (of 51 total)
 
@@ -48,18 +49,18 @@ codebase that predates modern C++ idioms.
 
 | # | File | Action | Category | Est. Hours | Impact |
 |--:|------|--------|----------|----:|------:|
-| 1 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Reduce cyclomatic complexity | complexity | 3h | 16.0 |
-| 2 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 3 | `Benchmark/src/BenchmarkApp.cpp` | Reduce cyclomatic complexity | complexity | 9h | 16.0 |
-| 4 | `Benchmark/src/BenchmarkApp.cpp` | Address MISRA C++ compliance violations | misra | 26h | 16.0 |
-| 5 | `ActiveRecord/include/Poco/ActiveRecord/Query.h` | Replace raw pointers with smart pointers | memory_safety | 8h | 16.0 |
-| 6 | `ActiveRecord/include/Poco/ActiveRecord/Query.h` | Address MISRA C++ compliance violations | misra | 6h | 16.0 |
-| 7 | `ActiveRecord/Compiler/src/CodeGenerator.cpp` | Address MISRA C++ compliance violations | misra | 12h | 16.0 |
-| 8 | `Benchmark/src/LoggerBench.cpp` | Address MISRA C++ compliance violations | misra | 36h | 16.0 |
-| 9 | `ActiveRecord/Compiler/src/Parser.cpp` | Address MISRA C++ compliance violations | misra | 10h | 16.0 |
-| 10 | `ActiveRecord/Compiler/src/Compiler.cpp` | Address MISRA C++ compliance violations | misra | 8h | 16.0 |
+| 1 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 16.0 |
+| 2 | `Benchmark/src/BenchmarkApp.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 9h | 16.0 |
+| 3 | `ActiveRecord/include/Poco/ActiveRecord/Query.h` | Fix memory safety issues | memory_safety | 8h | 16.0 |
+| 4 | `ApacheConnector/samples/FormServer/src/FormServer.cpp` | Fix memory safety issues | memory_safety | 4h | 16.0 |
+| 5 | `ApacheConnector/samples/TimeServer/src/TimeServer.cpp` | Fix memory safety issues | memory_safety | 4h | 16.0 |
+| 6 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Modernize C++ code | modernization | 9h | 8.0 |
+| 7 | `Benchmark/src/BenchmarkApp.cpp` | Modernize C++ code | modernization | 2h | 8.0 |
+| 8 | `Crypto/src/EVPCipherImpl.cpp` | Fix memory safety issues | memory_safety | 16h | 8.0 |
+| 9 | `Crypto/src/X509Certificate.cpp` | Modernize C++ code | modernization | 1h | 8.0 |
+| 10 | `Data/SQLParser/src/SQLParser.cpp` | Modernize C++ code | modernization | 1h | 8.0 |
 
-**Total: 78 roadmap items · ~985 estimated hours**
+**Total: 40 roadmap items · ~139 estimated hours**
 
 ## Downloads
 

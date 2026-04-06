@@ -16,12 +16,11 @@ from xgboost import XGBClassifier
 
 logger = logging.getLogger(__name__)
 
-NUMERIC_FEATURES: list[str] = [
+_BASE_NUMERIC_FEATURES: list[str] = [
     "finding_count",
     "memory_findings",
     "modernization_findings",
     "complexity_findings",
-    "misra_findings",
     "max_severity",
     "change_frequency",
     "unique_contributors",
@@ -31,14 +30,50 @@ NUMERIC_FEATURES: list[str] = [
     "is_knowledge_silo",
 ]
 
-HEURISTIC_WEIGHTS: dict[str, float] = {
+_MISRA_FEATURE: str = "misra_findings"
+
+NUMERIC_FEATURES: list[str] = _BASE_NUMERIC_FEATURES + [_MISRA_FEATURE]
+
+_BASE_HEURISTIC_WEIGHTS: dict[str, float] = {
     "memory_findings": 3.0,
-    "misra_findings": 2.5,
     "complexity_findings": 1.5,
     "modernization_findings": 1.0,
     "churn_rate": 2.0,
     "bug_fix_commits": 1.5,
 }
+
+HEURISTIC_WEIGHTS: dict[str, float] = {
+    **_BASE_HEURISTIC_WEIGHTS,
+    "misra_findings": 2.5,
+}
+
+
+def _features_for_profile(profile: str) -> list[str]:
+    """Return the numeric feature list for the given profile.
+
+    Args:
+        profile: "default" or "safety-critical".
+
+    Returns:
+        List of feature column names.
+    """
+    if profile == "safety-critical":
+        return _BASE_NUMERIC_FEATURES + [_MISRA_FEATURE]
+    return list(_BASE_NUMERIC_FEATURES)
+
+
+def _heuristic_weights_for_profile(profile: str) -> dict[str, float]:
+    """Return heuristic weights for the given profile.
+
+    Args:
+        profile: "default" or "safety-critical".
+
+    Returns:
+        Dict mapping feature names to weights.
+    """
+    if profile == "safety-critical":
+        return {**_BASE_HEURISTIC_WEIGHTS, _MISRA_FEATURE: 2.5}
+    return dict(_BASE_HEURISTIC_WEIGHTS)
 
 MIN_SAMPLES_FOR_ML: int = 50
 
@@ -66,18 +101,24 @@ class BugPredictor:
     Uses XGBClassifier when >= 50 samples are available, otherwise falls back
     to a weighted heuristic sum of normalized features.
 
+    Args:
+        profile: Analysis profile. "default" excludes MISRA features from
+            the model; "safety-critical" includes them.
+
     Attributes:
         model: Trained XGBClassifier, or None if using heuristic.
         metrics: Training metrics from the last call to train().
         use_heuristic: True when the heuristic fallback is active.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, profile: str = "default") -> None:
         """Initialize BugPredictor with no trained model."""
         self.model: XGBClassifier | None = None
         self.metrics: ModelMetrics = ModelMetrics()
         self.use_heuristic: bool = False
         self._feature_max: pd.Series | None = None
+        self._features = _features_for_profile(profile)
+        self._heuristic_weights = _heuristic_weights_for_profile(profile)
 
     def train(self, features_df: pd.DataFrame, labels: pd.Series) -> ModelMetrics:
         """Train the bug prediction model.
@@ -106,7 +147,7 @@ class BugPredictor:
             return self.metrics
 
         self.use_heuristic = False
-        X = features_df[NUMERIC_FEATURES].fillna(0).astype(float)
+        X = features_df[self._features].fillna(0).astype(float)
 
         self.model = XGBClassifier(
             n_estimators=100,
@@ -158,7 +199,7 @@ class BugPredictor:
         if self.use_heuristic or self.model is None:
             return self._predict_heuristic(features_df)
 
-        X = features_df[NUMERIC_FEATURES].fillna(0).astype(float)
+        X = features_df[self._features].fillna(0).astype(float)
         proba = self.model.predict_proba(X)[:, 1]
         return proba.astype(float)
 
@@ -168,7 +209,7 @@ class BugPredictor:
         Args:
             features_df: Training feature DataFrame.
         """
-        relevant = [c for c in HEURISTIC_WEIGHTS if c in features_df.columns]
+        relevant = [c for c in self._heuristic_weights if c in features_df.columns]
         self._feature_max = features_df[relevant].max().replace(0, 1)
 
     def _predict_heuristic(self, features_df: pd.DataFrame) -> np.ndarray:
@@ -185,7 +226,7 @@ class BugPredictor:
         """
         score = pd.Series(np.zeros(len(features_df)), index=features_df.index)
 
-        for feature, weight in HEURISTIC_WEIGHTS.items():
+        for feature, weight in self._heuristic_weights.items():
             if feature not in features_df.columns:
                 continue
             col = features_df[feature].fillna(0).astype(float)
@@ -198,6 +239,6 @@ class BugPredictor:
                 max_val = 1.0
             score = score + weight * (col / max_val)
 
-        total_weight = sum(HEURISTIC_WEIGHTS.values())
+        total_weight = sum(self._heuristic_weights.values())
         score = score / total_weight
         return score.clip(0.0, 1.0).to_numpy(dtype=float)

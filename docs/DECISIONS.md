@@ -55,16 +55,16 @@ Each decision follows: **Context** (what problem), **Decision** (what we chose),
 
 ## D7: Health score weighted penalty system
 - **Context**: Need a single 0-100 health score
-- **Decision**: Weighted deduction: memory_safety×3, misra×2.5, complexity×1.5, modernization×1
-- **Why**: Safety-critical findings weighted highest. Mirrors MISRA severity classification.
+- **Decision**: Default profile: memory_safety×3, complexity×1.5, modernization×1. Safety-critical profile adds misra×2.5.
+- **Why**: Safety-critical findings weighted highest. MISRA only included when explicitly opted in via `--profile safety-critical` (see D13).
 - **Tradeoffs**: Weights are calibrated empirically, not formally derived. Documented for transparency.
 
-## D8: 22 rules — standard-grounded where possible
+## D8: 15 default rules + 7 opt-in MISRA — standard-grounded where possible
 - **Context**: Which rules to implement?
-- **Decision**: 3 memory safety, 9 modernization, 3 complexity, 7 MISRA subset
-- **Why**: Memory/MISRA rules map to MISRA C++:2023 and AUTOSAR C++14. Modernization rules are empirical best practices from clang-tidy modernize-* checks.
-- **Tradeoffs**: Not exhaustive. 22 was chosen for demonstrable breadth, not completeness.
-- **Interview angle**: "I picked rules that cover the four main debt categories in safety-critical C++. MISRA rules are directly traceable to the standard. Modernization rules mirror clang-tidy's modernize-* set."
+- **Decision**: Default profile: 3 memory safety, 9 modernization, 3 complexity (15 rules). Safety-critical profile adds 7 MISRA rules (22 total).
+- **Why**: Memory rules map to common CVE patterns. Modernization rules are empirical best practices from clang-tidy modernize-* checks. MISRA rules are opt-in because they target safety-critical embedded (see D13).
+- **Tradeoffs**: Not exhaustive. 15 default rules cover the three main debt categories for general-purpose C++. MISRA opt-in adds a fourth for safety-critical projects.
+- **Interview angle**: "I picked 15 default rules covering three debt categories for general C++, plus 7 opt-in MISRA rules for safety-critical work. MISRA is opt-in because real-world testing showed it produces false signals on general-purpose code (see D13)."
 
 ## D9: WeasyPrint for PDF generation
 - **Context**: Need professional PDF reports

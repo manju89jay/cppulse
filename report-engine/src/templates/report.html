@@ -77,8 +77,10 @@
         ("Memory Safety",   by_category.get("memory_safety", 0)),
         ("Modernization",   by_category.get("modernization", 0)),
         ("Complexity",      by_category.get("complexity", 0)),
-        ("MISRA Compliance",by_category.get("misra_compliance", 0)),
       ] %}
+      {% if "misra_compliance" in by_category %}
+        {% set cats = cats + [("MISRA Compliance", by_category.get("misra_compliance", 0))] %}
+      {% endif %}
       {% for label, score in cats %}
       <tr>
         <td>{{ label }}</td>

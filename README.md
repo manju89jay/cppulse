@@ -17,17 +17,17 @@ Large C++ codebases accumulate technical debt that's invisible until it causes a
 
 ## Proven on Real Codebases
 
-> We analyzed **6 major open-source C++ projects** totaling **2.2M lines of code** — gRPC, POCO, Protocol Buffers, nlohmann/json, fmt, and LevelDB — and found **175,000+ issues** across 22 detection rules.
+> We analyzed **6 major open-source C++ projects** totaling **2.2M lines of code** — gRPC, POCO, Protocol Buffers, nlohmann/json, fmt, and LevelDB — and found **90,000+ issues** across 15 detection rules.
 
 <!-- LEADERBOARD:START -->
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
-| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 56,844 | 21/22 | [Details](examples/grpc/) |
-| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 25,821 | 21/22 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
-| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 87,345 | 21/22 | [Details](examples/protobuf/) |
-| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 1,119 | 19/22 | [Details](examples/json/) |
-| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 2,856 | 20/22 | [Details](examples/fmt/) |
-| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 2,053 | 16/22 | [Details](examples/leveldb/) |
+| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 9,408 | 15/15 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 14,533 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
+| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 572 | 12/15 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
 
 *Run `cppulse analyze --repo /path/to/repo` to analyze your codebase.*
@@ -39,9 +39,9 @@ A comprehensive report with 7 sections:
 | Section | Description |
 |---------|-------------|
 | **Health Score** | Single 0-100 number. Memory safety weighted 3x modernization. |
-| **Category Breakdown** | Scores for memory safety, modernization, complexity, MISRA compliance |
+| **Category Breakdown** | Scores for memory safety, modernization, and complexity |
 | **Hotspot Map** | Top 20 files by `change_frequency × complexity × debt_density` |
-| **Detection Findings** | 22 rules: raw pointers, C-style casts, `goto`, uninitialized vars, ... |
+| **Detection Findings** | 15 rules: raw pointers, C-style casts, cyclomatic complexity, ... |
 | **Knowledge Silos** | Files where only 1 person has committed in 12 months |
 | **Bug Prediction** | Per-file bug probability via XGBoost trained on SZZ-labeled git history |
 | **Refactoring Roadmap** | Prioritized fixes with estimated hours and ROI impact score |
@@ -95,12 +95,11 @@ flowchart LR
 
 ## Detection Rules
 
-22 rules across 4 categories, grounded in MISRA C++:2023 and AUTOSAR C++14:
+15 rules across 3 categories (+ 7 optional MISRA rules for safety-critical projects via `--profile safety-critical`):
 
 ```mermaid
-pie title POCO C++ Libraries — 25,821 Findings
+pie title POCO C++ Libraries — 14,533 Findings
     "Modernization (13,085)" : 13085
-    "MISRA Compliance (11,288)" : 11288
     "Complexity (975)" : 975
     "Memory Safety (473)" : 473
 ```
@@ -145,7 +144,7 @@ pie title POCO C++ Libraries — 25,821 Findings
 </details>
 
 <details>
-<summary>7 MISRA C++ rules (MISRA-001 to 007)</summary>
+<summary>7 MISRA C++ rules (MISRA-001 to 007) — opt-in via --profile safety-critical</summary>
 
 | ID | Name | MISRA Rule |
 |----|------|------------|
