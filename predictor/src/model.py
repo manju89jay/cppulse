@@ -75,6 +75,7 @@ def _heuristic_weights_for_profile(profile: str) -> dict[str, float]:
         return {**_BASE_HEURISTIC_WEIGHTS, _MISRA_FEATURE: 2.5}
     return dict(_BASE_HEURISTIC_WEIGHTS)
 
+
 MIN_SAMPLES_FOR_ML: int = 50
 
 

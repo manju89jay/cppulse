@@ -61,9 +61,7 @@ def _load_json(path: Path) -> dict[str, Any]:
         sys.exit(1)
 
 
-def _derive_labels(
-    features_df: pd.DataFrame, profile: str = "default"
-) -> pd.Series:
+def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Series:
     """Derive pseudo-labels for training from heuristic thresholds.
 
     Files with >= 1 memory finding or >= 3 bug-fix commits are treated as
@@ -142,8 +140,7 @@ def _build_feature_importance(predictor: BugPredictor) -> dict[str, float]:
         raw = predictor.model.feature_importances_
         total = float(raw.sum()) or 1.0
         return {
-            feat: float(raw[i]) / total
-            for i, feat in enumerate(predictor._features)
+            feat: float(raw[i]) / total for i, feat in enumerate(predictor._features)
         }
 
     # Heuristic weights as importance proxy

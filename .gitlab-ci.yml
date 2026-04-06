@@ -1,0 +1,174 @@
+stages:
+  - lint
+  - build
+  - test
+  - integration
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+default:
+  interruptible: true
+
+# Prevent duplicate pipelines: if an MR exists for the branch, only
+# run the MR pipeline (skip the redundant branch-push pipeline).
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
+# ── Lint ──────────────────────────────────────────────────────
+lint:cpp-format:
+  stage: lint
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends clang-format findutils
+  script:
+    - >-
+      find analyzer-core cli
+      \( -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \)
+      -not -path '*/fixtures/*' -not -path '*/build/*'
+      | xargs clang-format --dry-run --Werror --style=file
+
+lint:python:
+  stage: lint
+  image: python:3.11-slim
+  cache:
+    key: pip-lint
+    paths:
+      - .pip-cache/
+  script:
+    - pip install ruff==0.2.1 black==24.1.1
+    - ruff check git-miner/ predictor/ report-engine/
+    - black --check git-miner/ predictor/ report-engine/
+
+# ── Build & Test C++ ──────────────────────────────────────────
+build:cpp:
+  stage: build
+  image: ubuntu:24.04
+  before_script:
+    - >-
+      apt-get update && apt-get install -y --no-install-recommends
+      build-essential cmake libclang-dev llvm-dev
+      nlohmann-json3-dev libspdlog-dev libcli11-dev
+      libgtest-dev libgmock-dev
+  script:
+    - cmake -B analyzer-core/build -S analyzer-core
+    - cmake --build analyzer-core/build -j$(nproc)
+    - cd analyzer-core/build && ctest --output-on-failure
+    - cd "$CI_PROJECT_DIR"
+    - cmake -B cli/build -S cli
+    - cmake --build cli/build -j$(nproc)
+    - cd cli/build && ctest --output-on-failure
+  artifacts:
+    paths:
+      - analyzer-core/build/cppulse-analyzer
+    expire_in: 1 hour
+
+# ── Test Python components ────────────────────────────────────
+test:git-miner:
+  stage: test
+  image: python:3.11-slim
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends git
+    - pip install -r git-miner/requirements.txt
+  cache:
+    key: pip-git-miner
+    paths:
+      - .pip-cache/
+  script:
+    - cd git-miner && pytest -v --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing tests/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: git-miner/coverage.xml
+    expire_in: 7 days
+  coverage: '/TOTAL.*\s(\d+%)/'
+
+test:predictor:
+  stage: test
+  image: python:3.11-slim
+  before_script:
+    - pip install -r predictor/requirements.txt
+  cache:
+    key: pip-predictor
+    paths:
+      - .pip-cache/
+  script:
+    - cd predictor && pytest -v --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing tests/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: predictor/coverage.xml
+    expire_in: 7 days
+  coverage: '/TOTAL.*\s(\d+%)/'
+
+test:report-engine:
+  stage: test
+  image: python:3.11-slim
+  before_script:
+    - >-
+      apt-get update && apt-get install -y --no-install-recommends
+      libpango-1.0-0 libpangocairo-1.0-0
+      libgdk-pixbuf-2.0-0 libffi-dev libcairo2
+    - pip install -r report-engine/requirements.txt
+  cache:
+    key: pip-report-engine
+    paths:
+      - .pip-cache/
+  script:
+    - cd report-engine && pytest -v --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing tests/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: report-engine/coverage.xml
+    expire_in: 7 days
+  coverage: '/TOTAL.*\s(\d+%)/'
+
+# ── Build dashboard ───────────────────────────────────────────
+build:dashboard:
+  stage: build
+  image: node:20-alpine
+  script:
+    - cd dashboard && npm ci && npm run build
+  cache:
+    key: npm-dashboard
+    paths:
+      - dashboard/node_modules/
+
+# ── Integration test ──────────────────────────────────────────
+integration:
+  stage: integration
+  image: ubuntu:24.04
+  needs:
+    - build:cpp
+    - test:git-miner
+    - test:predictor
+  before_script:
+    - >-
+      apt-get update && apt-get install -y --no-install-recommends
+      python3 python3-pip python3-venv git
+      libclang-dev llvm-dev libspdlog-dev nlohmann-json3-dev libcli11-dev
+    - python3 -m venv /opt/venv
+    - . /opt/venv/bin/activate
+    - pip install gitpython==3.1.41 pandas==2.2.0 numpy==1.26.4 xgboost==2.0.3 scikit-learn==1.4.0 joblib==1.3.2 jsonschema==4.21.1
+  script:
+    - . /opt/venv/bin/activate
+    - mkdir -p output
+    - echo "=== Step 1 analyzer-core ==="
+    - ./analyzer-core/build/cppulse-analyzer --repo . --output ./output
+    - echo "=== Step 2 git-miner ==="
+    - cd git-miner && python3 -m src.main --repo .. --output ../output && cd ..
+    - echo "=== Step 3 predictor ==="
+    - cd predictor && python3 -m src.main --input ../output --output ../output && cd ..
+    - echo "=== Validate JSON outputs ==="
+    - python3 scripts/validate_json_outputs.py
+  artifacts:
+    paths:
+      - output/
+    expire_in: 7 days
