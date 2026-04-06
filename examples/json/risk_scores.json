@@ -22,11 +22,6 @@
       "risk_level": "medium",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -53,11 +48,6 @@
       "bug_probability": 0.030161,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -86,11 +76,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -117,11 +102,6 @@
       "bug_probability": 0.030161,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -150,11 +130,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -181,11 +156,6 @@
       "bug_probability": 0.030161,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -214,11 +184,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 2.0
@@ -245,11 +210,6 @@
       "bug_probability": 0.05006,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -278,11 +238,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 5.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -309,11 +264,6 @@
       "bug_probability": 0.030161,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -342,11 +292,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -373,11 +318,6 @@
       "bug_probability": 0.05006,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -406,11 +346,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -437,11 +372,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -470,11 +400,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -501,11 +426,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -534,11 +454,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -565,11 +480,6 @@
       "bug_probability": 0.030161,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -598,11 +508,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 2.0
@@ -629,11 +534,6 @@
       "bug_probability": 0.090824,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -662,11 +562,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -693,11 +588,6 @@
       "bug_probability": 0.040582,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -726,11 +616,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -757,11 +642,6 @@
       "bug_probability": 0.090824,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -790,11 +670,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 2.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -821,11 +696,6 @@
       "bug_probability": 0.954365,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 46.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -854,11 +724,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -885,11 +750,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 31.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -918,11 +778,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 4.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -949,11 +804,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 5.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -982,11 +832,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1013,11 +858,6 @@
       "bug_probability": 0.064078,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1046,11 +886,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 6.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1077,11 +912,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1110,11 +940,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -1141,11 +966,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 10.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1174,11 +994,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -1205,11 +1020,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 48.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1238,11 +1048,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 7.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1269,11 +1074,6 @@
       "bug_probability": 0.94274,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 17.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1302,11 +1102,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1333,11 +1128,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1366,11 +1156,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1397,11 +1182,6 @@
       "bug_probability": 0.705375,
       "risk_level": "high",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1430,11 +1210,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1461,11 +1236,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1494,11 +1264,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1525,11 +1290,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1558,11 +1318,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1589,11 +1344,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 13.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1622,11 +1372,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 12.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1653,11 +1398,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1686,11 +1426,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -1717,11 +1452,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1750,11 +1480,6 @@
       "risk_level": "medium",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1781,11 +1506,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1814,11 +1534,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -1845,11 +1560,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1878,11 +1588,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -1909,11 +1614,6 @@
       "bug_probability": 0.989599,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -1942,11 +1642,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 1.0
@@ -1973,11 +1668,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 2.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2006,11 +1696,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 2.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -2037,11 +1722,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 3.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2070,11 +1750,6 @@
       "risk_level": "high",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -2101,11 +1776,6 @@
       "bug_probability": 0.994475,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 4.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2134,11 +1804,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 15.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -2165,11 +1830,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 15.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2198,11 +1858,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 15.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 0.0
@@ -2229,11 +1884,6 @@
       "bug_probability": 0.991269,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 15.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2262,11 +1912,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 1.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 6.0
@@ -2293,11 +1938,6 @@
       "bug_probability": 0.94274,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 2.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2326,11 +1966,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 3.0
@@ -2357,11 +1992,6 @@
       "bug_probability": 0.94274,
       "risk_level": "critical",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 2.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2390,11 +2020,6 @@
       "risk_level": "critical",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 9.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 17.0
@@ -2421,11 +2046,6 @@
       "bug_probability": 0.090824,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
@@ -2454,11 +2074,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 3.0
@@ -2486,11 +2101,6 @@
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
-        {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,
           "value": 6.0
@@ -2517,11 +2127,6 @@
       "bug_probability": 0.040582,
       "risk_level": "low",
       "top_factors": [
-        {
-          "feature": "misra_findings",
-          "importance": 0.8953370985589683,
-          "value": 0.0
-        },
         {
           "feature": "modernization_findings",
           "importance": 0.05393691682439547,

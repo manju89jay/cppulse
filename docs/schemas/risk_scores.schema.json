@@ -27,7 +27,7 @@
             "memory_safety": { "type": "number", "minimum": 0, "maximum": 100 },
             "modernization": { "type": "number", "minimum": 0, "maximum": 100 },
             "complexity": { "type": "number", "minimum": 0, "maximum": 100 },
-            "misra_compliance": { "type": "number", "minimum": 0, "maximum": 100 }
+            "misra_compliance": { "type": "number", "minimum": 0, "maximum": 100, "description": "Only present when using --profile safety-critical" }
           }
         }
       }

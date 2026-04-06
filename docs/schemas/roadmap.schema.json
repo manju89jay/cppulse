@@ -14,7 +14,7 @@
           "priority": { "type": "integer", "minimum": 1 },
           "file": { "type": "string" },
           "action": { "type": "string", "description": "Specific refactoring recommendation" },
-          "category": { "enum": ["memory_safety", "modernization", "complexity", "misra", "knowledge_silo"] },
+          "category": { "enum": ["memory_safety", "modernization", "complexity", "misra", "knowledge_silo"], "description": "misra category only present when using --profile safety-critical" },
           "estimated_hours": { "type": "number", "minimum": 0.5 },
           "impact_score": { "type": "number", "minimum": 0, "maximum": 100, "description": "ROI: expected health score improvement" },
           "finding_ids": { "type": "array", "items": { "type": "string" }, "description": "Related finding rule_ids" }

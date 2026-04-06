@@ -5,12 +5,8 @@
 nlohmann/json is the most widely starred C++ JSON library on GitHub, created by
 Niels Lohmann. Its single-header design, intuitive API, and comprehensive test
 suite have made it the de facto standard for JSON handling in modern C++ projects
-across game engines, scientific computing, and cloud services. With the default
-profile (MISRA excluded), it scores 96.8/100 — one of the strongest performers
-in the cppulse benchmark set, reflecting rigorous code quality and consistent
-use of modern C++ idioms. The remaining penalties are concentrated in complexity
-hotspots inside the binary reader and lexer — areas that are inherently complex
-by the nature of a full-featured JSON parser.
+across game engines, scientific computing, and cloud services.
+cppulse scores it at 96.8/100 — reflecting strong memory safety (95.8), complexity control (90.9), modernization (94.8).
 
 ---
 
@@ -25,26 +21,26 @@ by the nature of a full-featured JSON parser.
 
 | Category | Score | Findings | Key Issues |
 |----------|------:|--------:|------------|
-| Memory Safety | **95.8** | 22 | Raw `new` (15), explicit `delete` (5), C-style array params (2) |
-| Complexity | **90.9** | 72 | High cyclomatic complexity (32), long functions (31), excess params (9) |
-| Modernization | **94.8** | 83 | `auto` opportunities (21), C-style casts (19), unscoped `enum` (12) |
+| Memory Safety | **95.8** | 64 | Raw `new` (15), explicit `delete` (5), C-style array params (2) |
+| Complexity | **90.9** | 114 | high cyclomatic complexity (32), long functions (31), too many params (9) |
+| Modernization | **94.8** | 440 | `typedef` (21), C-style casts (19), `auto` opportunities (12) |
 
-**Total: 177 findings across 16 of 22 rules**
+**Total: 618 findings across 14 of 15 rules**
 
 ## Top 10 Riskiest Files
 
 | File | Bug Probability | Risk Level | Top Factors |
 |------|----------------:|:----------:|-------------|
-| `docs/mkdocs/docs/examples/get_to.cpp` | 99.4% | Critical | MISRA violations (5), 5 total findings |
-| `include/nlohmann/detail/iterators/iter_impl.hpp` | 99.4% | Critical | MISRA violations (5), 5 total findings |
-| `include/nlohmann/detail/json_pointer.hpp` | 99.4% | Critical | MISRA violations (6), 6 total findings |
-| `include/nlohmann/ordered_map.hpp` | 99.4% | Critical | MISRA violations (7), memory issues (3), 10 total findings |
-| `tests/src/unit-bson.cpp` | 99.4% | Critical | MISRA violations (3), 3 total findings |
-| `tests/src/unit-cbor.cpp` | 99.4% | Critical | MISRA violations (3), 3 total findings |
-| `tests/src/unit-class_parser.cpp` | 99.4% | Critical | MISRA violations (13), 13 total findings |
-| `tests/src/unit-class_parser_diagnostic_positions.cpp` | 99.4% | Critical | MISRA violations (12), 12 total findings |
-| `tests/src/unit-msgpack.cpp` | 99.4% | Critical | MISRA violations (3), 3 total findings |
-| `tests/src/unit-testsuites.cpp` | 99.4% | Critical | MISRA violations (2), 2 total findings |
+| `docs/mkdocs/docs/examples/get_to.cpp` | 99.4% | Critical | 5 total findings |
+| `include/nlohmann/detail/iterators/iter_impl.hpp` | 99.4% | Critical | 5 total findings |
+| `include/nlohmann/detail/json_pointer.hpp` | 99.4% | Critical | 6 total findings |
+| `include/nlohmann/ordered_map.hpp` | 99.4% | Critical | 10 total findings |
+| `tests/src/unit-bson.cpp` | 99.4% | Critical | 3 total findings |
+| `tests/src/unit-cbor.cpp` | 99.4% | Critical | 3 total findings |
+| `tests/src/unit-class_parser.cpp` | 99.4% | Critical | 13 total findings |
+| `tests/src/unit-class_parser_diagnostic_positions.cpp` | 99.4% | Critical | 12 total findings |
+| `tests/src/unit-msgpack.cpp` | 99.4% | Critical | 3 total findings |
+| `tests/src/unit-testsuites.cpp` | 99.4% | Critical | 2 total findings |
 
 **47 files** flagged Critical · **2 files** flagged High · **2 files** flagged Medium · **28 files** flagged Low risk (of 79 total)
 
@@ -52,18 +48,18 @@ by the nature of a full-featured JSON parser.
 
 | # | File | Action | Category | Est. Hours | Impact |
 |--:|------|--------|----------|----:|------:|
-| 1 | `docs/mkdocs/docs/examples/get_to.cpp` | Address MISRA C++ compliance violations | misra | 10h | 16.0 |
-| 2 | `docs/mkdocs/docs/examples/operator_spaceship__const_reference.c++20.cpp` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 3 | `docs/mkdocs/docs/examples/operator_spaceship__scalartype.c++20.cpp` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 4 | `docs/mkdocs/docs/examples/parse__istream__parser_callback_t.cpp` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 5 | `docs/mkdocs/docs/examples/parse__string__parser_callback_t.cpp` | Address MISRA C++ compliance violations | misra | 2h | 16.0 |
-| 6 | `include/nlohmann/detail/conversions/to_chars.hpp` | Reduce cyclomatic complexity | complexity | 15h | 12.0 |
-| 7 | `include/nlohmann/detail/input/binary_reader.hpp` | Reduce cyclomatic complexity | complexity | 66h | 12.0 |
-| 8 | `include/nlohmann/detail/input/binary_reader.hpp` | Address MISRA C++ compliance violations | misra | 92h | 12.0 |
-| 9 | `include/nlohmann/detail/input/lexer.hpp` | Address MISRA C++ compliance violations | misra | 62h | 12.0 |
-| 10 | `include/nlohmann/detail/input/lexer.hpp` | Reduce cyclomatic complexity | complexity | 21h | 12.0 |
+| 1 | `include/nlohmann/detail/conversions/to_chars.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 15h | 12.0 |
+| 2 | `include/nlohmann/detail/input/binary_reader.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 66h | 12.0 |
+| 3 | `include/nlohmann/detail/input/lexer.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 21h | 12.0 |
+| 4 | `include/nlohmann/json.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 24h | 12.0 |
+| 5 | `include/nlohmann/detail/output/binary_writer.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 33h | 12.0 |
+| 6 | `include/nlohmann/detail/output/serializer.hpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 12h | 12.0 |
+| 7 | `tests/src/unit-bjdata.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 12.0 |
+| 8 | `tests/thirdparty/Fuzzer/FuzzerDriver.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 12h | 12.0 |
+| 9 | `tests/src/unit-udt_macro.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 6h | 9.0 |
+| 10 | `docs/mkdocs/docs/examples/at__json_pointer.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 8.0 |
 
-**Total: 107 roadmap items · ~1,033 estimated hours**
+**Total: 60 roadmap items · ~387 estimated hours**
 
 ## Downloads
 

@@ -10,7 +10,7 @@ flowchart TB
 
     subgraph Analysis ["Static Analysis  +  Behavioral Mining"]
         direction LR
-        AC["analyzer-core\nC++17 / libclang\n22 detection rules\nCRTP rule engine\nJSON output"]
+        AC["analyzer-core\nC++17 / libclang\n15 detection rules (default)\nCRTP rule engine\nJSON output"]
         GM["git-miner\nPython / gitpython\n10 per-file metrics\nknowledge silo detection\nSZZ bug labeling"]
     end
 
@@ -47,7 +47,7 @@ sequenceDiagram
     participant DB as dashboard
 
     CLI->>AC: analyze --repo /path
-    AC-->>CLI: findings.json (22 rules, per-file)
+    AC-->>CLI: findings.json (15 rules, per-file)
     CLI->>GM: mine --repo /path
     GM-->>CLI: git_metrics.json (10 metrics/file)
     CLI->>PR: predict --input ./output
@@ -61,7 +61,7 @@ sequenceDiagram
 | Step | Component | Input | Output | Key Work |
 |-----:|-----------|-------|--------|----------|
 | 1 | CLI | repo path | — | Validates target is a C++ git repo |
-| 2 | analyzer-core | source files | `findings.json` | Runs 22 libclang rules; emits per-file violation list |
+| 2 | analyzer-core | source files | `findings.json` | Runs 15 libclang rules (22 with `--profile safety-critical`); emits per-file violation list |
 | 3 | git-miner | git log | `git_metrics.json` | Computes 10 behavioral metrics; detects knowledge silos |
 | 4 | predictor | both JSONs | `risk_scores.json`, `roadmap.json` | Merges features; trains XGBoost; applies SZZ labels; ranks fixes |
 | 5 | report-engine | all JSONs | `report.pdf`, REST API | Renders PDF via WeasyPrint; serves FastAPI endpoints |
@@ -71,24 +71,33 @@ sequenceDiagram
 
 | Component | Language | Responsibility | Key Libraries |
 |-----------|----------|----------------|---------------|
-| `analyzer-core` | C++17 | AST-level static analysis via libclang; 22 rules in a CRTP rule engine | libclang, nlohmann/json, spdlog |
+| `analyzer-core` | C++17 | AST-level static analysis via libclang; 15 rules in a CRTP rule engine (+ 7 opt-in MISRA rules) | libclang, nlohmann/json, spdlog |
 | `git-miner` | Python | Git log mining: change frequency, churn, authorship entropy, silo detection | gitpython, pandas, numpy |
 | `predictor` | Python | Feature engineering, XGBoost training, SZZ bug labeling, SHAP explainability, roadmap generation | xgboost, scikit-learn, shap, pandas |
 | `report-engine` | Python | FastAPI REST layer; Jinja2 HTML templating; WeasyPrint PDF generation | fastapi, uvicorn, jinja2, weasyprint |
 | `dashboard` | TypeScript / React | Interactive health dashboard: score gauges, hotspot treemap, silo alerts, bug predictions | recharts, tailwindcss, vite |
 | `cli` | C++17 | Orchestration: invokes components in order, validates JSON handoffs, streams progress | CLI11, fmt, nlohmann/json |
 
-## Detection Rules (22 total)
+## Detection Rules (15 default + 7 opt-in MISRA)
 
 All rules are implemented in `analyzer-core` using a CRTP rule engine that walks
 the libclang AST. Each rule emits findings with file path, line number, severity,
 and an estimated remediation time used by the refactoring roadmap.
+
+### Default Profile (15 rules)
 
 | Category | Count | IDs | Weight in Health Score |
 |----------|------:|-----|------------------------|
 | Memory Safety | 3 | CPP-MEM-001 – CPP-MEM-003 | 3.0x |
 | Modernization | 9 | CPP-MOD-001 – CPP-MOD-009 | 1.0x |
 | Complexity | 3 | CPP-CX-001 – CPP-CX-003 | 1.5x |
+
+### Safety-Critical Profile (`--profile safety-critical`, 22 rules)
+
+Adds 7 MISRA C++ rules with 2.5x weight:
+
+| Category | Count | IDs | Weight in Health Score |
+|----------|------:|-----|------------------------|
 | MISRA C++ Subset | 7 | MISRA-001 – MISRA-007 | 2.5x |
 
 ### Memory Safety (CPP-MEM-001 – 003)
@@ -107,37 +116,50 @@ unscoped enums, `typedef` vs `using`, range-for and `auto` opportunities.
 Cyclomatic complexity (warning > 15, error > 25), function length (warning > 80
 lines, error > 150), and parameter count (warning > 5, error > 8).
 
-### MISRA C++ Subset (MISRA-001 – 007)
+### MISRA C++ Subset (MISRA-001 – 007) — opt-in only
 
 `goto`, implicit narrowing conversions, `union`, dynamic allocation, recursion,
 multiple return points, uninitialized variables. Grounded in MISRA C++:2023 and
-AUTOSAR C++14.
+AUTOSAR C++14. Only included when using `--profile safety-critical`, as these
+rules target safety-critical embedded systems and produce false signals on
+general-purpose C++ codebases (see D13 in DECISIONS.md).
 
 ## Health Score Algorithm
 
 The health score is a 0–100 penalty model. Each category contributes a weighted
-penalty based on its findings density (findings per KLOC):
+penalty based on its findings density (findings per KLOC).
+
+### Default Profile
 
 ```
-penalty(category) = min(findings / kloc / threshold, 1.0)
+weighted_penalty = (
+    penalty(memory_safety)  × 3.0 +
+    penalty(complexity)     × 1.5 +
+    penalty(modernization)  × 1.0
+) / (3.0 + 1.5 + 1.0)
 
+health_score = round((1.0 - weighted_penalty) × 100, 1)
+```
+
+### Safety-Critical Profile
+
+Adds MISRA with 2.5x weight:
+
+```
 weighted_penalty = (
     penalty(memory_safety)  × 3.0 +
     penalty(misra)          × 2.5 +
     penalty(complexity)     × 1.5 +
     penalty(modernization)  × 1.0
 ) / (3.0 + 2.5 + 1.5 + 1.0)
-
-health_score = round((1.0 - weighted_penalty) × 100, 1)
 ```
 
 A codebase with zero findings scores 100. The memory safety weight (3x) reflects
 the empirical finding that raw pointer violations are the dominant source of
 CVEs and crash bugs in production C++ systems.
 
-**POCO C++ Libraries result:** 55.2/100 — MISRA compliance (score 0.0) and
-modernization debt (score 33.7) drag the overall score despite strong memory
-safety (92.8) and complexity (90.1) numbers.
+**POCO C++ Libraries result:** 97.8/100 — strong scores across all three
+categories: memory safety (95.3), complexity (98.6), modernization (94.7).
 
 ## Inter-Component Communication
 

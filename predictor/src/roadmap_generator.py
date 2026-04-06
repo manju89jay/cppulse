@@ -62,12 +62,23 @@ class RoadmapItem:
     finding_ids: list[str] = field(default_factory=list)
 
 
+_MISRA_CATEGORY: str = "misra"
+
+
 class RoadmapGenerator:
     """Generates a prioritized refactoring roadmap.
 
     Takes findings, git metrics, and risk scores to produce ranked
     refactoring items sorted by impact score descending.
+
+    Args:
+        profile: Analysis profile. "default" excludes MISRA roadmap items;
+            "safety-critical" includes them.
     """
+
+    def __init__(self, profile: str = "default") -> None:
+        """Initialize RoadmapGenerator with profile."""
+        self._exclude_misra = profile != "safety-critical"
 
     def generate(
         self,
@@ -111,6 +122,8 @@ class RoadmapGenerator:
                     by_category.setdefault(cat, []).append(f)
 
             for category, cat_findings in by_category.items():
+                if self._exclude_misra and category == _MISRA_CATEGORY:
+                    continue
                 max_sev = max(
                     SEVERITY_WEIGHTS.get(f.get("severity", "info"), 1.0)
                     for f in cat_findings

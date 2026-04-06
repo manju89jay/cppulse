@@ -61,23 +61,27 @@ def _load_json(path: Path) -> dict[str, Any]:
         sys.exit(1)
 
 
-def _derive_labels(features_df: pd.DataFrame) -> pd.Series:
+def _derive_labels(
+    features_df: pd.DataFrame, profile: str = "default"
+) -> pd.Series:
     """Derive pseudo-labels for training from heuristic thresholds.
 
-    Files with >= 1 memory/MISRA finding or >= 3 bug-fix commits are
-    treated as historically buggy (label=1).
+    Files with >= 1 memory finding or >= 3 bug-fix commits are treated as
+    historically buggy (label=1). On the safety-critical profile, MISRA
+    findings also contribute.
 
     Args:
         features_df: Feature DataFrame from FeatureEngineer.
+        profile: Analysis profile name.
 
     Returns:
         Binary pandas Series of integer labels (0 or 1).
     """
-    buggy = (
-        (features_df["memory_findings"] >= 1)
-        | (features_df["misra_findings"] >= 1)
-        | (features_df["bug_fix_commits"] >= 3)
+    buggy = (features_df["memory_findings"] >= 1) | (
+        features_df["bug_fix_commits"] >= 3
     )
+    if profile == "safety-critical":
+        buggy = buggy | (features_df["misra_findings"] >= 1)
     return buggy.astype(int)
 
 
@@ -137,13 +141,14 @@ def _build_feature_importance(predictor: BugPredictor) -> dict[str, float]:
     if predictor.model is not None and not predictor.use_heuristic:
         raw = predictor.model.feature_importances_
         total = float(raw.sum()) or 1.0
-        return {feat: float(raw[i]) / total for i, feat in enumerate(NUMERIC_FEATURES)}
+        return {
+            feat: float(raw[i]) / total
+            for i, feat in enumerate(predictor._features)
+        }
 
     # Heuristic weights as importance proxy
-    from src.model import HEURISTIC_WEIGHTS
-
-    total = sum(HEURISTIC_WEIGHTS.values())
-    return {feat: w / total for feat, w in HEURISTIC_WEIGHTS.items()}
+    total = sum(predictor._heuristic_weights.values())
+    return {feat: w / total for feat, w in predictor._heuristic_weights.items()}
 
 
 def _compute_hotspot_score(row: pd.Series) -> float:
@@ -244,6 +249,7 @@ def build_roadmap(
     findings_data: dict[str, Any],
     git_metrics_data: dict[str, Any],
     risk_scores_data: dict[str, Any],
+    profile: str = "default",
 ) -> dict[str, Any]:
     """Assemble the roadmap.json payload.
 
@@ -251,11 +257,12 @@ def build_roadmap(
         findings_data: Parsed findings.json.
         git_metrics_data: Parsed git_metrics.json.
         risk_scores_data: Assembled risk scores dict.
+        profile: Analysis profile. "default" excludes MISRA items.
 
     Returns:
         Dict matching the roadmap.schema.json schema.
     """
-    generator = RoadmapGenerator()
+    generator = RoadmapGenerator(profile=profile)
     items = generator.generate(findings_data, git_metrics_data, risk_scores_data)
 
     return {
@@ -296,8 +303,8 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
     logger.info("Feature matrix shape: %s", features_df.shape)
 
     logger.info("Training bug predictor...")
-    predictor = BugPredictor()
-    labels = _derive_labels(features_df)
+    predictor = BugPredictor(profile=profile)
+    labels = _derive_labels(features_df, profile=profile)
     predictor.train(features_df, labels)
 
     logger.info("Generating predictions...")
@@ -321,7 +328,7 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
     logger.info("Wrote %s", risk_scores_path)
 
     logger.info("Generating refactoring roadmap...")
-    roadmap = build_roadmap(findings_data, git_metrics_data, risk_scores)
+    roadmap = build_roadmap(findings_data, git_metrics_data, risk_scores, profile)
 
     logger.info("Validating roadmap.json schema...")
     validator.validate_roadmap(roadmap)
