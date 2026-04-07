@@ -37,8 +37,9 @@ int main(int argc, char* argv[]) {
     app.add_option("--repo", repo_path, "Repository root directory to analyze recursively");
     app.add_option("--output", output_dir, "Output directory for findings.json")
         ->default_val("output");
-    app.add_option("--config", config_path,
-                   "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
+    app.add_option(
+        "--config", config_path,
+        "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
     // Backward-compatible positional argument for single-file analysis.
     app.add_option("file", single_file, "C++ source file to analyze (single-file mode)")
         ->required(false);

@@ -41,19 +41,23 @@ int count_lines(const std::filesystem::path& file_path) {
 
 /// @brief Check if a rule is enabled per the project config.
 bool is_rule_enabled(const std::string& rule_id, const std::optional<ProjectConfig>& config) {
-    if (!config.has_value()) return true;
+    if (!config.has_value())
+        return true;
     const auto it = config->rules.find(rule_id);
-    if (it == config->rules.end()) return true;
+    if (it == config->rules.end())
+        return true;
     return it->second.enabled;
 }
 
 /// @brief Apply threshold overrides from config to a complexity rule.
 template <typename Rule>
 void apply_thresholds(Rule& rule, const std::optional<ProjectConfig>& config) {
-    if (!config.has_value()) return;
+    if (!config.has_value())
+        return;
     const std::string id{rule.rule_id()};
     const auto it = config->rules.find(id);
-    if (it == config->rules.end()) return;
+    if (it == config->rules.end())
+        return;
     if (it->second.warning_threshold.has_value()) {
         rule.set_warn_threshold(it->second.warning_threshold.value());
     }
