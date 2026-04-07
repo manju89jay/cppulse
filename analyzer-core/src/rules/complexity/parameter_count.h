@@ -35,10 +35,18 @@ class ParameterCountRule : public RuleBase<ParameterCountRule> {
         return "complexity";
     }
 
-    void set_warn_threshold(int value) noexcept { warn_params_ = value; }
-    void set_error_threshold(int value) noexcept { error_params_ = value; }
-    [[nodiscard]] int warn_threshold() const noexcept { return warn_params_; }
-    [[nodiscard]] int error_threshold() const noexcept { return error_params_; }
+    void set_warn_threshold(int value) noexcept {
+        warn_params_ = value;
+    }
+    void set_error_threshold(int value) noexcept {
+        error_params_ = value;
+    }
+    [[nodiscard]] int warn_threshold() const noexcept {
+        return warn_params_;
+    }
+    [[nodiscard]] int error_threshold() const noexcept {
+        return error_params_;
+    }
 
    private:
     int warn_params_{5};

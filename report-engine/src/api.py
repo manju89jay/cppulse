@@ -76,8 +76,10 @@ def verify_api_key(request: Request) -> None:
         return
     auth = request.headers.get("Authorization", "")
     if not auth.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Missing API key. Use Authorization: Bearer <key>.")
-    token = auth[len("Bearer "):]
+        raise HTTPException(
+            status_code=401, detail="Missing API key. Use Authorization: Bearer <key>."
+        )
+    token = auth[len("Bearer ") :]
     if token != expected:
         raise HTTPException(status_code=401, detail="Invalid API key.")
 
@@ -133,9 +135,7 @@ class _JsonCache:
 
         # Read outside the lock to avoid holding it during I/O.
         try:
-            data: dict[str, Any] = json.loads(
-                path.read_text(encoding="utf-8")
-            )
+            data: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise HTTPException(
                 status_code=503,

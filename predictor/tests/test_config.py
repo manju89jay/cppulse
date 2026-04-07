@@ -62,15 +62,11 @@ class TestLoadProfileFromJson:
         assert _load_profile_from_config(p) == "default"
 
     def test_reads_safety_critical_profile(self, tmp_config):
-        p = tmp_config(
-            ".cppulserc.json", json.dumps({"profile": "safety-critical"})
-        )
+        p = tmp_config(".cppulserc.json", json.dumps({"profile": "safety-critical"}))
         assert _load_profile_from_config(p) == "safety-critical"
 
     def test_missing_profile_returns_default(self, tmp_config):
-        p = tmp_config(
-            ".cppulserc.json", json.dumps({"exclude_paths": ["vendor/**"]})
-        )
+        p = tmp_config(".cppulserc.json", json.dumps({"exclude_paths": ["vendor/**"]}))
         assert _load_profile_from_config(p) == "default"
 
 

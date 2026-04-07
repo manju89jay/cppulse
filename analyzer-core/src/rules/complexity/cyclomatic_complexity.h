@@ -37,13 +37,21 @@ class CyclomaticComplexityRule : public RuleBase<CyclomaticComplexityRule> {
     }
 
     /// @brief Override the warning threshold (default: 15).
-    void set_warn_threshold(int value) noexcept { warn_threshold_ = value; }
+    void set_warn_threshold(int value) noexcept {
+        warn_threshold_ = value;
+    }
 
     /// @brief Override the error threshold (default: 25).
-    void set_error_threshold(int value) noexcept { error_threshold_ = value; }
+    void set_error_threshold(int value) noexcept {
+        error_threshold_ = value;
+    }
 
-    [[nodiscard]] int warn_threshold() const noexcept { return warn_threshold_; }
-    [[nodiscard]] int error_threshold() const noexcept { return error_threshold_; }
+    [[nodiscard]] int warn_threshold() const noexcept {
+        return warn_threshold_;
+    }
+    [[nodiscard]] int error_threshold() const noexcept {
+        return error_threshold_;
+    }
 
    private:
     int warn_threshold_{15};

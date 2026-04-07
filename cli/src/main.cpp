@@ -37,8 +37,9 @@ int main(int argc, char* argv[]) {
     analyze_cmd->add_option("--repo", analyze_repo, "Path to the C++ repository root")->required();
     analyze_cmd->add_option("--output", analyze_output, "Output directory for pipeline artifacts")
         ->default_val("./output");
-    analyze_cmd->add_option("--config", analyze_config,
-                            "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
+    analyze_cmd->add_option(
+        "--config", analyze_config,
+        "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
     analyze_cmd
         ->add_option("--profile", analyze_profile, "Analysis profile: default or safety-critical")
         ->default_val("default")
@@ -84,8 +85,8 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(),
-                                   config_path, profile};
+        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config_path,
+                                   profile};
         const auto result = orch.run_full_pipeline();
 
         if (!result.success) {
@@ -144,8 +145,9 @@ int main(int argc, char* argv[]) {
     watch_cmd->add_option("--repo", watch_repo, "Path to the C++ repository root")->required();
     watch_cmd->add_option("--output", watch_output, "Output directory for pipeline artifacts")
         ->default_val("./output");
-    watch_cmd->add_option("--config", watch_config,
-                          "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
+    watch_cmd->add_option(
+        "--config", watch_config,
+        "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
     watch_cmd
         ->add_option("--profile", watch_profile, "Analysis profile: default or safety-critical")
         ->default_val("default")
@@ -187,8 +189,8 @@ int main(int argc, char* argv[]) {
                      watch_interval);
 
         while (true) {
-            cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(),
-                                       config_path, watch_profile};
+            cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config_path,
+                                       watch_profile};
             const auto result = orch.run_full_pipeline();
 
             if (!result.success) {

@@ -53,8 +53,9 @@ void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_pat
                         .column = static_cast<int>(col),
                         .end_line = static_cast<int>(end_line),
                         .message = "Function '" + name_str + "' is " + std::to_string(line_count) +
-                                   " lines long (threshold: warning>" + std::to_string(warn_lines_) +
-                                   ", error>" + std::to_string(error_lines_) + ")",
+                                   " lines long (threshold: warning>" +
+                                   std::to_string(warn_lines_) + ", error>" +
+                                   std::to_string(error_lines_) + ")",
                         .suggestion = "Decompose into smaller helper functions",
                         .confidence = 1.0});
 }

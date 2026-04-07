@@ -104,8 +104,7 @@ std::pair<int, std::string> execute_shell(const std::string& command) {
 
 Orchestrator::Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir,
                            std::filesystem::path project_root,
-                           std::optional<std::filesystem::path> config_path,
-                           std::string profile)
+                           std::optional<std::filesystem::path> config_path, std::string profile)
     : repo_path_{std::move(repo_path)},
       output_dir_{std::move(output_dir)},
       project_root_{std::move(project_root)},
@@ -129,8 +128,8 @@ PipelineResult Orchestrator::run_command(const std::string& command,
 }
 
 PipelineResult Orchestrator::run_analyzer() {
-    std::string command =
-        "cppulse-analyzer --repo " + shell_quote(repo_path_) + " --output " + shell_quote(output_dir_);
+    std::string command = "cppulse-analyzer --repo " + shell_quote(repo_path_) + " --output " +
+                          shell_quote(output_dir_);
     if (config_path_.has_value()) {
         command += " --config " + shell_quote(config_path_.value());
     }
@@ -158,9 +157,10 @@ PipelineResult Orchestrator::run_report_generator() {
     const auto component_dir = shell_quote(project_root_ / "report-engine");
     const std::string quoted_input = shell_quote(output_dir_);
     const std::string quoted_pdf = shell_quote(output_dir_ / "report.pdf");
-    const std::string command =
-        "cd " + component_dir + " && python3 -c \"from src.pdf_generator import PDFGenerator; "
-        "PDFGenerator(" + quoted_input + ").generate(" + quoted_pdf + ")\"";
+    const std::string command = "cd " + component_dir +
+                                " && python3 -c \"from src.pdf_generator import PDFGenerator; "
+                                "PDFGenerator(" +
+                                quoted_input + ").generate(" + quoted_pdf + ")\"";
     return run_command(command, "report-generator");
 }
 

@@ -204,7 +204,6 @@ class BugPredictor:
 
         # Train final model on all data for production predictions.
         self.model.fit(X, labels)
-        self._training_X = X
 
         self.metrics = ModelMetrics(
             f1=f1,
@@ -214,7 +213,9 @@ class BugPredictor:
         )
         return self.metrics
 
-    def explain(self, features_df: pd.DataFrame) -> list[dict[str, list[dict[str, float]]]]:
+    def explain(
+        self, features_df: pd.DataFrame
+    ) -> list[dict[str, list[dict[str, float]]]]:
         """Compute per-file feature importance using SHAP or XGBoost gain fallback.
 
         When SHAP is installed, uses TreeExplainer for per-prediction SHAP

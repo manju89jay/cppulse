@@ -146,7 +146,8 @@ TEST(OrchestratorConfigTest, ConstructsWithConfigPath) {
     const std::filesystem::path output{"/tmp/out"};
     const std::filesystem::path config{"/tmp/.cppulserc.yml"};
     EXPECT_NO_THROW(([&] {
-        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config, "default"};
+        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config,
+                                   "default"};
     }()));
 }
 

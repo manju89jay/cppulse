@@ -33,8 +33,8 @@ struct RuleConfig {
  * @code
  *   profile: safety-critical
  *   exclude_paths:
- *     - vendor/**
- *     - third_party/**
+ *     - "vendor/\*\*"
+ *     - "third_party/\*\*"
  *   rules:
  *     CPP-CX-001:
  *       warning_threshold: 20
@@ -74,8 +74,7 @@ struct ProjectConfig {
  * @param dir  Directory to search (typically the repository root).
  * @return Path to the found config file, or std::nullopt if none found.
  */
-[[nodiscard]] std::optional<std::filesystem::path> find_config(
-    const std::filesystem::path& dir);
+[[nodiscard]] std::optional<std::filesystem::path> find_config(const std::filesystem::path& dir);
 
 /**
  * @brief Test whether a relative path matches any of the exclude glob patterns.
@@ -88,9 +87,8 @@ struct ProjectConfig {
  * @param patterns       List of glob patterns from ProjectConfig::exclude_paths.
  * @return true if the path matches at least one pattern and should be excluded.
  */
-[[nodiscard]] bool matches_exclude_pattern(
-    const std::filesystem::path& relative_path,
-    const std::vector<std::string>& patterns);
+[[nodiscard]] bool matches_exclude_pattern(const std::filesystem::path& relative_path,
+                                           const std::vector<std::string>& patterns);
 
 }  // namespace cppulse
 

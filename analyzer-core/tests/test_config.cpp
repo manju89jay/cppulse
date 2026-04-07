@@ -13,9 +13,8 @@
 namespace {
 
 /// @brief Write a temporary file with the given content.
-std::filesystem::path write_temp_file(const std::filesystem::path& dir,
-                                       const std::string& filename,
-                                       const std::string& content) {
+std::filesystem::path write_temp_file(const std::filesystem::path& dir, const std::string& filename,
+                                      const std::string& content) {
     auto path = dir / filename;
     std::ofstream ofs(path);
     ofs << content;
