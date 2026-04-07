@@ -7,9 +7,11 @@
 #define CPPULSE_ANALYZER_H
 
 #include <filesystem>
+#include <optional>
 #include <string>
 #include <vector>
 
+#include "config.h"
 #include "finding.h"
 
 namespace cppulse {
@@ -30,8 +32,10 @@ class FileAnalyzer {
      * @brief Construct a FileAnalyzer targeting the given repository root.
      *
      * @param repo_root  Directory containing C++ source files to analyze.
+     * @param config     Optional per-project configuration.
      */
-    explicit FileAnalyzer(std::filesystem::path repo_root);
+    explicit FileAnalyzer(std::filesystem::path repo_root,
+                          std::optional<ProjectConfig> config = std::nullopt);
 
     /**
      * @brief Discover all C++ files and apply every rule to each file.
@@ -78,6 +82,7 @@ class FileAnalyzer {
     void analyze_file(const std::filesystem::path& file_path);
 
     std::filesystem::path repo_root_;
+    std::optional<ProjectConfig> config_;
     std::vector<Finding> findings_;
     int file_count_{0};
     int total_loc_{0};

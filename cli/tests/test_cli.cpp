@@ -87,6 +87,37 @@ TEST(OrchestratorRunCommandTest, CommandWithExitCode42) {
 }
 
 // ---------------------------------------------------------------------------
+// Shell injection resistance tests
+// ---------------------------------------------------------------------------
+
+TEST(OrchestratorRunCommandTest, PathWithSemicolonDoesNotExecuteInjectedCommand) {
+    // If shell injection were possible, this would create the marker file.
+    // With proper quoting, the entire string is treated as a single argument.
+    cppulse::Orchestrator orch{std::filesystem::path{"/tmp; touch /tmp/pwned"},
+                               std::filesystem::path{"/tmp/out"}};
+    // run_analyzer will fail (cppulse-analyzer not on PATH), but the key
+    // assertion is that /tmp/pwned must NOT exist after the attempt.
+    auto result = orch.run_analyzer();
+    EXPECT_FALSE(std::filesystem::exists("/tmp/pwned"));
+}
+
+TEST(OrchestratorRunCommandTest, PathWithBackticksDoesNotExecuteInjectedCommand) {
+    cppulse::Orchestrator orch{std::filesystem::path{"/tmp/`touch /tmp/pwned2`"},
+                               std::filesystem::path{"/tmp/out"}};
+    auto result = orch.run_analyzer();
+    EXPECT_FALSE(std::filesystem::exists("/tmp/pwned2"));
+}
+
+TEST(OrchestratorRunCommandTest, PathWithDollarDoesNotExpandVariable) {
+    cppulse::Orchestrator orch{std::filesystem::path{"/tmp/$HOME"},
+                               std::filesystem::path{"/tmp/out"}};
+    // Should not expand $HOME — the path should be treated literally.
+    // We just verify it doesn't crash and returns a clean failure.
+    auto result = orch.run_analyzer();
+    EXPECT_FALSE(result.success);
+}
+
+// ---------------------------------------------------------------------------
 // run_full_pipeline: non-existent repo should fail at analyzer stage
 // ---------------------------------------------------------------------------
 
@@ -104,6 +135,35 @@ TEST(OrchestratorPipelineTest, PipelineFailsWhenAnalyzerNotOnPath) {
     if (!result.success) {
         EXPECT_NE(result.exit_code, 0);
     }
+}
+
+// ---------------------------------------------------------------------------
+// Config-aware orchestrator tests
+// ---------------------------------------------------------------------------
+
+TEST(OrchestratorConfigTest, ConstructsWithConfigPath) {
+    const std::filesystem::path repo{"/tmp"};
+    const std::filesystem::path output{"/tmp/out"};
+    const std::filesystem::path config{"/tmp/.cppulserc.yml"};
+    EXPECT_NO_THROW(([&] {
+        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config, "default"};
+    }()));
+}
+
+TEST(OrchestratorConfigTest, ConstructsWithSafetyCriticalProfile) {
+    const std::filesystem::path repo{"/tmp"};
+    const std::filesystem::path output{"/tmp/out"};
+    EXPECT_NO_THROW(([&] {
+        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), std::nullopt,
+                                   "safety-critical"};
+    }()));
+}
+
+TEST(OrchestratorConfigTest, ConstructsWithNoOptionalArgs) {
+    // Backwards compatibility: config_path and profile default to nullopt/"default".
+    const std::filesystem::path repo{"/tmp"};
+    const std::filesystem::path output{"/tmp/out"};
+    EXPECT_NO_THROW(([&] { cppulse::Orchestrator orch{repo, output}; }()));
 }
 
 }  // namespace

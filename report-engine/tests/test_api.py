@@ -276,3 +276,104 @@ def test_cors_headers_present(data_dir: Path) -> None:
     response = client.get("/health", headers={"Origin": "http://localhost:3000"})
     assert response.status_code == 200
     assert "access-control-allow-origin" in response.headers
+
+
+def test_cors_custom_origin(data_dir: Path) -> None:
+    """CORS_ORIGINS env var configures allowed origins."""
+    os.environ["CORS_ORIGINS"] = "https://example.com,https://other.com"
+    client = _make_client(data_dir)
+    response = client.get("/health", headers={"Origin": "https://example.com"})
+    assert response.status_code == 200
+    assert response.headers.get("access-control-allow-origin") == "https://example.com"
+    os.environ.pop("CORS_ORIGINS", None)
+
+
+# ---------------------------------------------------------------------------
+# API Key Authentication
+# ---------------------------------------------------------------------------
+
+
+def _make_authed_client(data_dir: Path, api_key: str | None = None) -> TestClient:
+    """Create a TestClient with optional API key auth configured.
+
+    Args:
+        data_dir: Path to JSON data directory.
+        api_key: If set, configures CPPULSE_API_KEY env var.
+
+    Returns:
+        Configured TestClient instance.
+    """
+    os.environ["DATA_DIR"] = str(data_dir)
+    if api_key is not None:
+        os.environ["CPPULSE_API_KEY"] = api_key
+    else:
+        os.environ.pop("CPPULSE_API_KEY", None)
+    os.environ.pop("CORS_ORIGINS", None)
+    import importlib
+
+    import src.api as api_module
+
+    importlib.reload(api_module)
+    return TestClient(api_module.app)
+
+
+def test_no_api_key_allows_unauthenticated_access(data_dir: Path) -> None:
+    """Without CPPULSE_API_KEY, endpoints are accessible without auth."""
+    client = _make_authed_client(data_dir, api_key=None)
+    response = client.get("/api/v1/summary")
+    assert response.status_code == 200
+
+
+def test_api_key_rejects_missing_header(data_dir: Path) -> None:
+    """With CPPULSE_API_KEY set, missing Authorization header returns 401."""
+    client = _make_authed_client(data_dir, api_key="test-secret-key")
+    response = client.get("/api/v1/summary")
+    assert response.status_code == 401
+    os.environ.pop("CPPULSE_API_KEY", None)
+
+
+def test_api_key_rejects_wrong_key(data_dir: Path) -> None:
+    """With CPPULSE_API_KEY set, wrong key returns 401."""
+    client = _make_authed_client(data_dir, api_key="test-secret-key")
+    response = client.get(
+        "/api/v1/summary",
+        headers={"Authorization": "Bearer wrong-key"},
+    )
+    assert response.status_code == 401
+    os.environ.pop("CPPULSE_API_KEY", None)
+
+
+def test_api_key_accepts_correct_key(data_dir: Path) -> None:
+    """With CPPULSE_API_KEY set, correct key allows access."""
+    client = _make_authed_client(data_dir, api_key="test-secret-key")
+    response = client.get(
+        "/api/v1/summary",
+        headers={"Authorization": "Bearer test-secret-key"},
+    )
+    assert response.status_code == 200
+    os.environ.pop("CPPULSE_API_KEY", None)
+
+
+def test_health_endpoint_skips_auth(data_dir: Path) -> None:
+    """GET /health is accessible even with API key configured."""
+    client = _make_authed_client(data_dir, api_key="test-secret-key")
+    response = client.get("/health")
+    assert response.status_code == 200
+    os.environ.pop("CPPULSE_API_KEY", None)
+
+
+def test_api_key_protects_all_data_endpoints(data_dir: Path) -> None:
+    """All /api/v1/* endpoints return 401 without valid key."""
+    client = _make_authed_client(data_dir, api_key="secret")
+    endpoints = [
+        "/api/v1/summary",
+        "/api/v1/findings",
+        "/api/v1/hotspots",
+        "/api/v1/risks",
+        "/api/v1/silos",
+        "/api/v1/roadmap",
+    ]
+    for endpoint in endpoints:
+        response = client.get(endpoint)
+        assert response.status_code == 401, f"{endpoint} should be protected"
+    os.environ.pop("CPPULSE_API_KEY", None)

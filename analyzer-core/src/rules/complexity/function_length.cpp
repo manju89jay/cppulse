@@ -9,13 +9,6 @@
 
 namespace cppulse {
 
-namespace {
-
-constexpr int kWarnLines = 80;
-constexpr int kErrorLines = 150;
-
-}  // namespace
-
 void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_path) {
     const CXCursorKind kind = clang_getCursorKind(cursor);
     if (kind != CXCursor_FunctionDecl && kind != CXCursor_CXXMethod &&
@@ -38,11 +31,11 @@ void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_pat
 
     const int line_count = static_cast<int>(end_line) - static_cast<int>(start_line) + 1;
 
-    if (line_count <= kWarnLines) {
+    if (line_count <= warn_lines_) {
         return;
     }
 
-    const std::string severity = (line_count > kErrorLines) ? "error" : "warning";
+    const std::string severity = (line_count > error_lines_) ? "error" : "warning";
 
     CXString spelling = clang_getCursorSpelling(cursor);
     const char* func_name = clang_getCString(spelling);
@@ -60,8 +53,8 @@ void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_pat
                         .column = static_cast<int>(col),
                         .end_line = static_cast<int>(end_line),
                         .message = "Function '" + name_str + "' is " + std::to_string(line_count) +
-                                   " lines long (threshold: warning>" + std::to_string(kWarnLines) +
-                                   ", error>" + std::to_string(kErrorLines) + ")",
+                                   " lines long (threshold: warning>" + std::to_string(warn_lines_) +
+                                   ", error>" + std::to_string(error_lines_) + ")",
                         .suggestion = "Decompose into smaller helper functions",
                         .confidence = 1.0});
 }

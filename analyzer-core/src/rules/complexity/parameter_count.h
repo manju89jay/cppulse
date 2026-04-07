@@ -34,6 +34,15 @@ class ParameterCountRule : public RuleBase<ParameterCountRule> {
     [[nodiscard]] std::string_view category_impl() const noexcept {
         return "complexity";
     }
+
+    void set_warn_threshold(int value) noexcept { warn_params_ = value; }
+    void set_error_threshold(int value) noexcept { error_params_ = value; }
+    [[nodiscard]] int warn_threshold() const noexcept { return warn_params_; }
+    [[nodiscard]] int error_threshold() const noexcept { return error_params_; }
+
+   private:
+    int warn_params_{5};
+    int error_params_{8};
 };
 
 }  // namespace cppulse

@@ -9,13 +9,6 @@
 
 namespace cppulse {
 
-namespace {
-
-constexpr int kWarnParams = 5;
-constexpr int kErrorParams = 8;
-
-}  // namespace
-
 void ParameterCountRule::check_impl(CXCursor cursor, const std::string& file_path) {
     const CXCursorKind kind = clang_getCursorKind(cursor);
     if (kind != CXCursor_FunctionDecl && kind != CXCursor_CXXMethod &&
@@ -28,11 +21,11 @@ void ParameterCountRule::check_impl(CXCursor cursor, const std::string& file_pat
         return;  // Not a function-type cursor.
     }
 
-    if (num_params <= kWarnParams) {
+    if (num_params <= warn_params_) {
         return;
     }
 
-    const std::string severity = (num_params > kErrorParams) ? "error" : "warning";
+    const std::string severity = (num_params > error_params_) ? "error" : "warning";
 
     CXSourceLocation loc = clang_getCursorLocation(cursor);
     unsigned int line = 0;
@@ -52,8 +45,8 @@ void ParameterCountRule::check_impl(CXCursor cursor, const std::string& file_pat
         .line = static_cast<int>(line),
         .column = static_cast<int>(column),
         .message = "Function '" + name_str + "' has " + std::to_string(num_params) +
-                   " parameters (threshold: warning>" + std::to_string(kWarnParams) + ", error>" +
-                   std::to_string(kErrorParams) + ")",
+                   " parameters (threshold: warning>" + std::to_string(warn_params_) + ", error>" +
+                   std::to_string(error_params_) + ")",
         .suggestion = "Introduce a parameter struct or builder pattern to reduce parameter count",
         .confidence = 1.0});
 }

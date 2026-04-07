@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include "config.h"
 #include "file_discovery.h"
 #include "rule_engine.h"
 
@@ -38,40 +39,85 @@ int count_lines(const std::filesystem::path& file_path) {
     return lines + 1;  // Include last line if file doesn't end with newline.
 }
 
-/// @brief Build the default set of 22 analysis rules.
-std::vector<AnyRule> make_rules() {
+/// @brief Check if a rule is enabled per the project config.
+bool is_rule_enabled(const std::string& rule_id, const std::optional<ProjectConfig>& config) {
+    if (!config.has_value()) return true;
+    const auto it = config->rules.find(rule_id);
+    if (it == config->rules.end()) return true;
+    return it->second.enabled;
+}
+
+/// @brief Apply threshold overrides from config to a complexity rule.
+template <typename Rule>
+void apply_thresholds(Rule& rule, const std::optional<ProjectConfig>& config) {
+    if (!config.has_value()) return;
+    const std::string id{rule.rule_id()};
+    const auto it = config->rules.find(id);
+    if (it == config->rules.end()) return;
+    if (it->second.warning_threshold.has_value()) {
+        rule.set_warn_threshold(it->second.warning_threshold.value());
+    }
+    if (it->second.error_threshold.has_value()) {
+        rule.set_error_threshold(it->second.error_threshold.value());
+    }
+}
+
+/// @brief Build the set of analysis rules, applying config overrides.
+std::vector<AnyRule> make_rules(const std::optional<ProjectConfig>& config) {
     std::vector<AnyRule> rules;
     rules.reserve(22);
 
+    // Helper lambda to conditionally add a rule.
+    auto add_rule = [&](auto rule) {
+        const std::string id{rule.rule_id()};
+        if (is_rule_enabled(id, config)) {
+            rules.emplace_back(std::move(rule));
+        } else {
+            spdlog::info("Rule {} disabled by config", id);
+        }
+    };
+
     // Memory Safety
-    rules.emplace_back(RawPointerOwnershipRule{});
-    rules.emplace_back(ManualMemoryMgmtRule{});
-    rules.emplace_back(UnsafeArrayAccessRule{});
+    add_rule(RawPointerOwnershipRule{});
+    add_rule(ManualMemoryMgmtRule{});
+    add_rule(UnsafeArrayAccessRule{});
 
     // Modernization
-    rules.emplace_back(CStyleCastRule{});
-    rules.emplace_back(DeprecatedHeadersRule{});
-    rules.emplace_back(MissingOverrideRule{});
-    rules.emplace_back(RawStringLiteralRule{});
-    rules.emplace_back(AutoUsageRule{});
-    rules.emplace_back(RangeForRule{});
-    rules.emplace_back(NullptrUsageRule{});
-    rules.emplace_back(EnumClassRule{});
-    rules.emplace_back(UsingVsTypedefRule{});
+    add_rule(CStyleCastRule{});
+    add_rule(DeprecatedHeadersRule{});
+    add_rule(MissingOverrideRule{});
+    add_rule(RawStringLiteralRule{});
+    add_rule(AutoUsageRule{});
+    add_rule(RangeForRule{});
+    add_rule(NullptrUsageRule{});
+    add_rule(EnumClassRule{});
+    add_rule(UsingVsTypedefRule{});
 
-    // Complexity
-    rules.emplace_back(CyclomaticComplexityRule{});
-    rules.emplace_back(FunctionLengthRule{});
-    rules.emplace_back(ParameterCountRule{});
+    // Complexity — apply threshold overrides.
+    {
+        CyclomaticComplexityRule r;
+        apply_thresholds(r, config);
+        add_rule(std::move(r));
+    }
+    {
+        FunctionLengthRule r;
+        apply_thresholds(r, config);
+        add_rule(std::move(r));
+    }
+    {
+        ParameterCountRule r;
+        apply_thresholds(r, config);
+        add_rule(std::move(r));
+    }
 
     // MISRA
-    rules.emplace_back(NoGotoRule{});
-    rules.emplace_back(NoImplicitConversionRule{});
-    rules.emplace_back(NoUnionRule{});
-    rules.emplace_back(NoDynamicAllocRule{});
-    rules.emplace_back(NoRecursionRule{});
-    rules.emplace_back(SingleExitRule{});
-    rules.emplace_back(InitAllVarsRule{});
+    add_rule(NoGotoRule{});
+    add_rule(NoImplicitConversionRule{});
+    add_rule(NoUnionRule{});
+    add_rule(NoDynamicAllocRule{});
+    add_rule(NoRecursionRule{});
+    add_rule(SingleExitRule{});
+    add_rule(InitAllVarsRule{});
 
     return rules;
 }
@@ -106,7 +152,8 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 
 }  // namespace
 
-FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root) : repo_root_(std::move(repo_root)) {}
+FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config)
+    : repo_root_(std::move(repo_root)), config_(std::move(config)) {}
 
 void FileAnalyzer::run() {
     findings_.clear();
@@ -116,8 +163,25 @@ void FileAnalyzer::run() {
     const std::vector<std::filesystem::path> files = discover_cpp_files(repo_root_);
     spdlog::info("FileAnalyzer: found {} file(s) under {}", files.size(), repo_root_.string());
 
+    const auto& exclude_patterns =
+        config_.has_value() ? config_->exclude_paths : std::vector<std::string>{};
+    int skipped = 0;
+
     for (const auto& file_path : files) {
+        // Apply exclude_paths from config.
+        if (!exclude_patterns.empty()) {
+            const auto rel = std::filesystem::relative(file_path, repo_root_);
+            if (matches_exclude_pattern(rel, exclude_patterns)) {
+                spdlog::debug("FileAnalyzer: excluding '{}' (matched exclude pattern)",
+                              file_path.string());
+                ++skipped;
+                continue;
+            }
+        }
         analyze_file(file_path);
+    }
+    if (skipped > 0) {
+        spdlog::info("FileAnalyzer: excluded {} file(s) by config", skipped);
     }
 
     spdlog::info("FileAnalyzer: analysis complete — {} file(s), {} finding(s)", file_count_,
@@ -162,8 +226,8 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     total_loc_ += loc;
     ++file_count_;
 
-    // Build a fresh rule set for this file.
-    std::vector<AnyRule> rules = make_rules();
+    // Build a fresh rule set for this file, applying config overrides.
+    std::vector<AnyRule> rules = make_rules(config_);
 
     VisitorData visitor_data{&rules, &path_str};
     CXCursor root = clang_getTranslationUnitCursor(tu);

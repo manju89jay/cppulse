@@ -1,0 +1,29 @@
+# cppulse per-project configuration
+# Copy this to .cppulserc.yml in your repository root.
+
+# Analysis profile: "default" or "safety-critical"
+# "safety-critical" adds 7 MISRA C++ rules with 2.5x weight.
+profile: default
+
+# Glob patterns for paths to exclude from analysis.
+# Supports * (any non-separator chars) and ** (any path, including separators).
+exclude_paths:
+  - vendor/**
+  - third_party/**
+  - build/**
+  - .git/**
+
+# Per-rule overrides.
+# You can disable rules or adjust warning/error thresholds.
+rules:
+  # Raise cyclomatic complexity warning threshold from 15 to 20.
+  CPP-CX-001:
+    warning_threshold: 20
+    error_threshold: 30
+  # Raise function length warning threshold.
+  CPP-CX-002:
+    warning_threshold: 100
+    error_threshold: 200
+  # Disable a specific rule.
+  # CPP-MEM-001:
+  #   enabled: false

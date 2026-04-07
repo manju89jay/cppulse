@@ -10,7 +10,18 @@
 #include <array>
 #include <cstdio>
 #include <filesystem>
+#include <future>
 #include <string>
+
+// Platform-specific subprocess API.
+#ifdef _WIN32
+#define cppulse_popen _popen
+#define cppulse_pclose _pclose
+#else
+#include <sys/wait.h>
+#define cppulse_popen popen
+#define cppulse_pclose pclose
+#endif
 
 namespace cppulse {
 
@@ -18,6 +29,41 @@ namespace {
 
 /// @brief Maximum number of bytes to read from a subprocess's stderr/stdout.
 constexpr std::size_t kReadBufferSize = 256;
+
+/**
+ * @brief Shell-quote a filesystem path to prevent shell injection.
+ *
+ * On POSIX: wraps in single quotes, escapes embedded single quotes with '\''.
+ * On Windows: wraps in double quotes, escapes embedded double quotes with \".
+ *
+ * @param path Filesystem path to quote.
+ * @return Shell-safe quoted string.
+ */
+std::string shell_quote(const std::filesystem::path& path) {
+    std::string raw = path.string();
+#ifdef _WIN32
+    std::string result = "\"";
+    for (char ch : raw) {
+        if (ch == '"') {
+            result += "\\\"";
+        } else {
+            result += ch;
+        }
+    }
+    result += "\"";
+#else
+    std::string result = "'";
+    for (char ch : raw) {
+        if (ch == '\'') {
+            result += "'\\''";
+        } else {
+            result += ch;
+        }
+    }
+    result += "'";
+#endif
+    return result;
+}
 
 /**
  * @brief Execute a shell command and return its exit code plus any stderr output.
@@ -32,7 +78,7 @@ std::pair<int, std::string> execute_shell(const std::string& command) {
     const std::string full_cmd = command + " 2>&1";
 
     // NOLINTNEXTLINE(cert-env33-c) — intentional subprocess execution
-    std::FILE* pipe = popen(full_cmd.c_str(), "r");
+    std::FILE* pipe = cppulse_popen(full_cmd.c_str(), "r");
     if (pipe == nullptr) {
         return {-1, "popen() failed to start subprocess"};
     }
@@ -43,16 +89,28 @@ std::pair<int, std::string> execute_shell(const std::string& command) {
         output += buffer.data();
     }
 
-    const int raw_status = pclose(pipe);
-    // WEXITSTATUS extracts the real exit code from the wait-status integer.
+    const int raw_status = cppulse_pclose(pipe);
+#ifdef _WIN32
+    // On Windows, _pclose() returns the exit code directly.
+    const int exit_code = raw_status;
+#else
+    // On POSIX, pclose() returns a wait-status that must be decoded.
     const int exit_code = WEXITSTATUS(raw_status);  // NOLINT(hicpp-signed-bitwise)
+#endif
     return {exit_code, output};
 }
 
 }  // namespace
 
-Orchestrator::Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir)
-    : repo_path_{std::move(repo_path)}, output_dir_{std::move(output_dir)} {}
+Orchestrator::Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir,
+                           std::filesystem::path project_root,
+                           std::optional<std::filesystem::path> config_path,
+                           std::string profile)
+    : repo_path_{std::move(repo_path)},
+      output_dir_{std::move(output_dir)},
+      project_root_{std::move(project_root)},
+      config_path_{std::move(config_path)},
+      profile_{std::move(profile)} {}
 
 PipelineResult Orchestrator::run_command(const std::string& command,
                                          const std::string& stage_name) {
@@ -71,32 +129,38 @@ PipelineResult Orchestrator::run_command(const std::string& command,
 }
 
 PipelineResult Orchestrator::run_analyzer() {
-    const std::string command =
-        "cppulse-analyzer --repo " + repo_path_.string() + " --output " + output_dir_.string();
+    std::string command =
+        "cppulse-analyzer --repo " + shell_quote(repo_path_) + " --output " + shell_quote(output_dir_);
+    if (config_path_.has_value()) {
+        command += " --config " + shell_quote(config_path_.value());
+    }
     return run_command(command, "analyzer");
 }
 
 PipelineResult Orchestrator::run_git_miner() {
-    // Derive the git-miner directory relative to this binary's installed location.
-    // When running from the project root the component lives at ./git-miner/.
-    const std::string command = "cd git-miner && python3 -m src.main --repo " +
-                                repo_path_.string() + " --output " + output_dir_.string();
+    const auto component_dir = shell_quote(project_root_ / "git-miner");
+    const std::string command = "cd " + component_dir + " && python3 -m src.main --repo " +
+                                shell_quote(repo_path_) + " --output " + shell_quote(output_dir_);
     return run_command(command, "git-miner");
 }
 
 PipelineResult Orchestrator::run_predictor() {
-    const std::string command = "cd predictor && python3 -m src.main --input " +
-                                output_dir_.string() + " --output " + output_dir_.string();
+    const auto component_dir = shell_quote(project_root_ / "predictor");
+    std::string command = "cd " + component_dir + " && python3 -m src.main --input " +
+                          shell_quote(output_dir_) + " --output " + shell_quote(output_dir_);
+    if (profile_ != "default") {
+        command += " --profile " + shell_quote(std::filesystem::path{profile_});
+    }
     return run_command(command, "predictor");
 }
 
 PipelineResult Orchestrator::run_report_generator() {
-    const std::string input_str = output_dir_.string();
-    const std::string output_pdf = (output_dir_ / "report.pdf").string();
+    const auto component_dir = shell_quote(project_root_ / "report-engine");
+    const std::string quoted_input = shell_quote(output_dir_);
+    const std::string quoted_pdf = shell_quote(output_dir_ / "report.pdf");
     const std::string command =
-        "python3 -c \"from src.pdf_generator import PDFGenerator; "
-        "PDFGenerator('" +
-        input_str + "').generate('" + output_pdf + "')\"";
+        "cd " + component_dir + " && python3 -c \"from src.pdf_generator import PDFGenerator; "
+        "PDFGenerator(" + quoted_input + ").generate(" + quoted_pdf + ")\"";
     return run_command(command, "report-generator");
 }
 
@@ -112,16 +176,22 @@ PipelineResult Orchestrator::run_full_pipeline() {
         return PipelineResult{false, msg, 1};
     }
 
-    // --- Stage 1: static analysis ---
-    if (auto result = run_analyzer(); !result.success) {
+    // --- Stages 1 & 2: run analyzer and git-miner in parallel ---
+    auto analyzer_future = std::async(std::launch::async, [this] { return run_analyzer(); });
+    auto git_miner_future = std::async(std::launch::async, [this] { return run_git_miner(); });
+
+    auto analyzer_result = analyzer_future.get();
+    if (!analyzer_result.success) {
         spdlog::error("cppulse: pipeline aborted at analyzer stage");
-        return result;
+        // Still wait for git-miner to finish before returning.
+        git_miner_future.get();
+        return analyzer_result;
     }
 
-    // --- Stage 2: git history mining ---
-    if (auto result = run_git_miner(); !result.success) {
+    auto git_miner_result = git_miner_future.get();
+    if (!git_miner_result.success) {
         spdlog::error("cppulse: pipeline aborted at git-miner stage");
-        return result;
+        return git_miner_result;
     }
 
     // --- Stage 3: ML prediction ---

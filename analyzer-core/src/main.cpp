@@ -7,9 +7,11 @@
 
 #include <CLI/CLI.hpp>
 #include <filesystem>
+#include <optional>
 #include <string>
 
 #include "analyzer.h"
+#include "config.h"
 #include "hello_libclang.h"
 #include "output_writer.h"
 
@@ -29,11 +31,14 @@ int main(int argc, char* argv[]) {
 
     std::string repo_path;
     std::string output_dir = "output";
+    std::string config_path;
     std::string single_file;
 
     app.add_option("--repo", repo_path, "Repository root directory to analyze recursively");
     app.add_option("--output", output_dir, "Output directory for findings.json")
         ->default_val("output");
+    app.add_option("--config", config_path,
+                   "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
     // Backward-compatible positional argument for single-file analysis.
     app.add_option("file", single_file, "C++ source file to analyze (single-file mode)")
         ->required(false);
@@ -44,7 +49,18 @@ int main(int argc, char* argv[]) {
         // Full repo analysis mode.
         spdlog::info("cppulse-analyzer: analyzing repo '{}'", repo_path);
 
-        cppulse::FileAnalyzer analyzer{std::filesystem::path{repo_path}};
+        // Load config: explicit --config, auto-discover from repo root, or none.
+        std::optional<cppulse::ProjectConfig> config;
+        if (!config_path.empty()) {
+            config = cppulse::load_config(std::filesystem::path{config_path});
+        } else {
+            auto found = cppulse::find_config(std::filesystem::path{repo_path});
+            if (found.has_value()) {
+                config = cppulse::load_config(found.value());
+            }
+        }
+
+        cppulse::FileAnalyzer analyzer{std::filesystem::path{repo_path}, config};
         analyzer.run();
 
         const bool ok =
