@@ -4,14 +4,44 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 
 from src.pdf_generator import PDFGenerator
+
+
+def _cors_origins() -> list[str]:
+    """Return allowed CORS origins from environment or default.
+
+    Reads the ``CORS_ORIGINS`` environment variable as a comma-separated list.
+    Falls back to ``["http://localhost:3000"]`` when unset.
+
+    Returns:
+        List of allowed origin strings.
+    """
+    raw = os.environ.get("CORS_ORIGINS", "").strip()
+    if raw:
+        return [o.strip() for o in raw.split(",") if o.strip()]
+    return ["http://localhost:3000"]
+
+
+def _api_key() -> str | None:
+    """Return the configured API key, or None if auth is disabled.
+
+    Reads the ``CPPULSE_API_KEY`` environment variable. When unset or empty,
+    API endpoints are unauthenticated (backwards compatible).
+
+    Returns:
+        API key string or None.
+    """
+    key = os.environ.get("CPPULSE_API_KEY", "").strip()
+    return key if key else None
+
 
 app = FastAPI(
     title="cppulse Report Engine",
@@ -21,11 +51,35 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def verify_api_key(request: Request) -> None:
+    """FastAPI dependency that enforces API key auth when configured.
+
+    Checks the ``Authorization: Bearer <key>`` header against the
+    ``CPPULSE_API_KEY`` environment variable. Skips validation when no key
+    is configured (unauthenticated mode).
+
+    Args:
+        request: Incoming FastAPI request.
+
+    Raises:
+        HTTPException: 401 if the key is missing or incorrect.
+    """
+    expected = _api_key()
+    if expected is None:
+        return
+    auth = request.headers.get("Authorization", "")
+    if not auth.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Missing API key. Use Authorization: Bearer <key>.")
+    token = auth[len("Bearer "):]
+    if token != expected:
+        raise HTTPException(status_code=401, detail="Invalid API key.")
 
 
 def _data_dir() -> Path:
@@ -38,8 +92,72 @@ def _data_dir() -> Path:
     return Path(os.environ.get("DATA_DIR", "./output"))
 
 
+class _JsonCache:
+    """Thread-safe in-memory cache for parsed JSON files with mtime invalidation.
+
+    Each entry tracks the file's modification time. On access, if the mtime
+    has changed the file is re-read; otherwise the cached dict is returned.
+    """
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._entries: dict[str, tuple[float, dict[str, Any]]] = {}
+
+    def get(self, path: Path) -> dict[str, Any]:
+        """Load and cache a JSON file, invalidating on mtime change.
+
+        Args:
+            path: Absolute path to the JSON file.
+
+        Returns:
+            Parsed JSON dict (possibly from cache).
+
+        Raises:
+            HTTPException: 503 if the file is missing or malformed.
+        """
+        name = path.stem
+        if not path.exists():
+            raise HTTPException(
+                status_code=503,
+                detail=f"Data file not available: {name}.json. "
+                "Ensure the pipeline has been run.",
+            )
+
+        current_mtime = path.stat().st_mtime
+
+        with self._lock:
+            if name in self._entries:
+                cached_mtime, cached_data = self._entries[name]
+                if cached_mtime == current_mtime:
+                    return cached_data
+
+        # Read outside the lock to avoid holding it during I/O.
+        try:
+            data: dict[str, Any] = json.loads(
+                path.read_text(encoding="utf-8")
+            )
+        except json.JSONDecodeError as exc:
+            raise HTTPException(
+                status_code=503,
+                detail=f"Could not parse {name}.json: {exc}",
+            ) from exc
+
+        with self._lock:
+            self._entries[name] = (current_mtime, data)
+
+        return data
+
+    def clear(self) -> None:
+        """Evict all cached entries."""
+        with self._lock:
+            self._entries.clear()
+
+
+_json_cache = _JsonCache()
+
+
 def _load_json(name: str) -> dict[str, Any]:
-    """Load a JSON file from the data directory.
+    """Load a JSON file from the data directory (cached with mtime invalidation).
 
     Args:
         name: Filename without extension (e.g. ``'findings'``).
@@ -51,19 +169,7 @@ def _load_json(name: str) -> dict[str, Any]:
         HTTPException: 503 if the file is missing or unreadable.
     """
     path = _data_dir() / f"{name}.json"
-    if not path.exists():
-        raise HTTPException(
-            status_code=503,
-            detail=f"Data file not available: {name}.json. "
-            "Ensure the pipeline has been run.",
-        )
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))  # type: ignore[return-value]
-    except json.JSONDecodeError as exc:
-        raise HTTPException(
-            status_code=503,
-            detail=f"Could not parse {name}.json: {exc}",
-        ) from exc
+    return _json_cache.get(path)
 
 
 # ---------------------------------------------------------------------------
@@ -81,7 +187,7 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-@app.get("/api/v1/summary")
+@app.get("/api/v1/summary", dependencies=[Depends(verify_api_key)])
 def summary() -> dict[str, Any]:
     """Return overall health score and summary statistics.
 
@@ -100,7 +206,7 @@ def summary() -> dict[str, Any]:
     }
 
 
-@app.get("/api/v1/findings")
+@app.get("/api/v1/findings", dependencies=[Depends(verify_api_key)])
 def findings(
     page: int = Query(default=1, ge=1, description="Page number (1-based)"),
     per_page: int = Query(default=50, ge=1, le=200, description="Items per page"),
@@ -139,7 +245,7 @@ def findings(
     }
 
 
-@app.get("/api/v1/hotspots")
+@app.get("/api/v1/hotspots", dependencies=[Depends(verify_api_key)])
 def hotspots() -> dict[str, Any]:
     """Return the top 20 hotspot files.
 
@@ -151,7 +257,7 @@ def hotspots() -> dict[str, Any]:
     return {"items": items, "total": len(items)}
 
 
-@app.get("/api/v1/risks")
+@app.get("/api/v1/risks", dependencies=[Depends(verify_api_key)])
 def risks() -> dict[str, Any]:
     """Return per-file risk scores from the predictor output.
 
@@ -163,7 +269,7 @@ def risks() -> dict[str, Any]:
     return {"items": items, "total": len(items)}
 
 
-@app.get("/api/v1/silos")
+@app.get("/api/v1/silos", dependencies=[Depends(verify_api_key)])
 def silos() -> dict[str, Any]:
     """Return knowledge silo alerts from git metrics.
 
@@ -175,7 +281,7 @@ def silos() -> dict[str, Any]:
     return {"items": items, "total": len(items)}
 
 
-@app.get("/api/v1/roadmap")
+@app.get("/api/v1/roadmap", dependencies=[Depends(verify_api_key)])
 def roadmap() -> dict[str, Any]:
     """Return the prioritised refactoring roadmap.
 
@@ -190,7 +296,7 @@ def roadmap() -> dict[str, Any]:
     return {"items": items, "total": len(items)}
 
 
-@app.get("/api/v1/report/pdf")
+@app.get("/api/v1/report/pdf", dependencies=[Depends(verify_api_key)])
 def report_pdf() -> Response:
     """Generate and return the full PDF health report.
 

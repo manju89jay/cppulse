@@ -14,6 +14,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    import yaml
+
+    _HAS_YAML = True
+except ImportError:
+    _HAS_YAML = False
+
 import numpy as np
 import pandas as pd
 
@@ -191,7 +198,7 @@ def build_risk_scores(
         Dict matching the risk_scores.schema.json schema.
     """
     health = health_scorer.compute(features_df)
-    feature_importance = _build_feature_importance(predictor)
+    explanations = predictor.explain(features_df)
 
     file_risks: list[dict[str, Any]] = []
     hotspot_scores: list[dict[str, Any]] = []
@@ -199,7 +206,7 @@ def build_risk_scores(
     for i, (_, row) in enumerate(features_df.iterrows()):
         prob = float(probabilities[i]) if i < len(probabilities) else 0.0
         risk_level = _assign_risk_level(prob)
-        top_factors = _compute_top_factors(row, feature_importance)
+        top_factors = explanations[i]["top_factors"] if i < len(explanations) else []
 
         file_risks.append(
             {
@@ -339,6 +346,46 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
     logger.info("Pipeline complete. Overall health score: %.1f/100", overall)
 
 
+def _load_profile_from_config(config_path: Path) -> str:
+    """Extract the profile setting from a .cppulserc.yml/.json config file.
+
+    Args:
+        config_path: Path to the config file.
+
+    Returns:
+        Profile string ("default" or "safety-critical").
+    """
+    try:
+        content = config_path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        logger.warning("Config file not found: %s", config_path)
+        return "default"
+
+    if config_path.suffix == ".json":
+        data = json.loads(content)
+    elif _HAS_YAML and config_path.suffix in (".yml", ".yaml"):
+        data = yaml.safe_load(content) or {}
+    else:
+        # Fallback: try JSON first, then simple line scanning for YAML.
+        try:
+            data = json.loads(content)
+        except json.JSONDecodeError:
+            # Simple YAML fallback: scan for "profile:" line.
+            for line in content.splitlines():
+                stripped = line.strip()
+                if stripped.startswith("profile:"):
+                    value = stripped.split(":", 1)[1].strip().strip("'\"")
+                    if value in ("default", "safety-critical"):
+                        return value
+            return "default"
+
+    profile = data.get("profile", "default")
+    if profile not in ("default", "safety-critical"):
+        logger.warning("Unknown profile '%s' in config, using 'default'", profile)
+        return "default"
+    return profile
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse CLI arguments.
 
@@ -369,13 +416,26 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         choices=["default", "safety-critical"],
         help="Analysis profile. 'default' excludes MISRA rules; 'safety-critical' includes them.",
     )
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=None,
+        help="Path to .cppulserc.yml/.json config file. Profile is read from it if --profile is not explicitly set.",
+    )
     return parser.parse_args(argv)
 
 
 def main() -> None:
     """Entry point for the predictor CLI."""
     args = parse_args()
-    run(input_dir=args.input, output_dir=args.output, profile=args.profile)
+    profile = args.profile
+    # If --config is given and --profile was not explicitly set, read profile from config.
+    if args.config is not None and profile == "default":
+        config_profile = _load_profile_from_config(args.config)
+        if config_profile != "default":
+            logger.info("Using profile '%s' from config file", config_profile)
+            profile = config_profile
+    run(input_dir=args.input, output_dir=args.output, profile=profile)
 
 
 if __name__ == "__main__":

@@ -102,6 +102,16 @@ struct ClearFindingsVisitor {
     }
 };
 
+/**
+ * @brief Visitor that returns the rule_id string_view from whichever rule is active.
+ */
+struct RuleIdVisitor {
+    template <typename Rule>
+    std::string_view operator()(const Rule& rule) const {
+        return rule.rule_id();
+    }
+};
+
 }  // namespace cppulse
 
 #endif  // CPPULSE_RULE_ENGINE_H

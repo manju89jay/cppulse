@@ -13,8 +13,10 @@
 #include <CLI/CLI.hpp>
 #include <chrono>
 #include <filesystem>
+#include <optional>
 #include <string>
 #include <thread>
+#include <vector>
 
 #include "orchestrator.h"
 
@@ -29,10 +31,18 @@ int main(int argc, char* argv[]) {
 
     std::string analyze_repo;
     std::string analyze_output = "./output";
+    std::string analyze_config;
+    std::string analyze_profile = "default";
 
     analyze_cmd->add_option("--repo", analyze_repo, "Path to the C++ repository root")->required();
     analyze_cmd->add_option("--output", analyze_output, "Output directory for pipeline artifacts")
         ->default_val("./output");
+    analyze_cmd->add_option("--config", analyze_config,
+                            "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
+    analyze_cmd
+        ->add_option("--profile", analyze_profile, "Analysis profile: default or safety-critical")
+        ->default_val("default")
+        ->check(CLI::IsMember({"default", "safety-critical"}));
 
     analyze_cmd->callback([&]() {
         const std::filesystem::path repo{analyze_repo};
@@ -55,7 +65,27 @@ int main(int argc, char* argv[]) {
             std::exit(1);
         }
 
-        cppulse::Orchestrator orch{repo, output};
+        // Discover or use explicit config file.
+        std::optional<std::filesystem::path> config_path;
+        std::string profile = analyze_profile;
+        if (!analyze_config.empty()) {
+            config_path = std::filesystem::path{analyze_config};
+        } else {
+            // Auto-discover .cppulserc.yml in repo root.
+            static const std::vector<std::string> kConfigNames = {
+                ".cppulserc.yml", ".cppulserc.yaml", ".cppulserc.json"};
+            for (const auto& name : kConfigNames) {
+                auto candidate = repo / name;
+                if (std::filesystem::exists(candidate)) {
+                    config_path = candidate;
+                    spdlog::info("analyze: found config file: {}", candidate.string());
+                    break;
+                }
+            }
+        }
+
+        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(),
+                                   config_path, profile};
         const auto result = orch.run_full_pipeline();
 
         if (!result.success) {
@@ -107,11 +137,19 @@ int main(int argc, char* argv[]) {
 
     std::string watch_repo;
     std::string watch_output = "./output";
+    std::string watch_config;
+    std::string watch_profile = "default";
     int watch_interval = 300;
 
     watch_cmd->add_option("--repo", watch_repo, "Path to the C++ repository root")->required();
     watch_cmd->add_option("--output", watch_output, "Output directory for pipeline artifacts")
         ->default_val("./output");
+    watch_cmd->add_option("--config", watch_config,
+                          "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
+    watch_cmd
+        ->add_option("--profile", watch_profile, "Analysis profile: default or safety-critical")
+        ->default_val("default")
+        ->check(CLI::IsMember({"default", "safety-critical"}));
     watch_cmd
         ->add_option("--interval", watch_interval, "Seconds between analysis runs (default 300)")
         ->default_val(300);
@@ -129,11 +167,28 @@ int main(int argc, char* argv[]) {
             std::exit(1);
         }
 
+        // Discover config.
+        std::optional<std::filesystem::path> config_path;
+        if (!watch_config.empty()) {
+            config_path = std::filesystem::path{watch_config};
+        } else {
+            static const std::vector<std::string> kConfigNames = {
+                ".cppulserc.yml", ".cppulserc.yaml", ".cppulserc.json"};
+            for (const auto& name : kConfigNames) {
+                auto candidate = repo / name;
+                if (std::filesystem::exists(candidate)) {
+                    config_path = candidate;
+                    break;
+                }
+            }
+        }
+
         spdlog::info("watch: starting continuous analysis of '{}' every {}s", repo.string(),
                      watch_interval);
 
         while (true) {
-            cppulse::Orchestrator orch{repo, output};
+            cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(),
+                                       config_path, watch_profile};
             const auto result = orch.run_full_pipeline();
 
             if (!result.success) {

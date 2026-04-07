@@ -11,9 +11,6 @@ namespace cppulse {
 
 namespace {
 
-constexpr int kWarnThreshold = 15;
-constexpr int kErrorThreshold = 25;
-
 /// @brief Count decision points inside a function body.
 int count_decision_points(CXCursor function_cursor) {
     struct Counter {
@@ -85,11 +82,11 @@ void CyclomaticComplexityRule::check_impl(CXCursor cursor, const std::string& fi
     }
 
     const int complexity = count_decision_points(cursor);
-    if (complexity <= kWarnThreshold) {
+    if (complexity <= warn_threshold_) {
         return;
     }
 
-    const std::string severity = (complexity > kErrorThreshold) ? "error" : "warning";
+    const std::string severity = (complexity > error_threshold_) ? "error" : "warning";
 
     CXSourceLocation loc = clang_getCursorLocation(cursor);
     unsigned int line = 0;
@@ -109,8 +106,8 @@ void CyclomaticComplexityRule::check_impl(CXCursor cursor, const std::string& fi
                         .column = static_cast<int>(column),
                         .message = "Function '" + name_str + "' has cyclomatic complexity of " +
                                    std::to_string(complexity) + " (threshold: warning>" +
-                                   std::to_string(kWarnThreshold) + ", error>" +
-                                   std::to_string(kErrorThreshold) + ")",
+                                   std::to_string(warn_threshold_) + ", error>" +
+                                   std::to_string(error_threshold_) + ")",
                         .suggestion = "Decompose into smaller functions to reduce complexity",
                         .confidence = 1.0});
 }

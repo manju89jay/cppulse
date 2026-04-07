@@ -34,6 +34,15 @@ class FunctionLengthRule : public RuleBase<FunctionLengthRule> {
     [[nodiscard]] std::string_view category_impl() const noexcept {
         return "complexity";
     }
+
+    void set_warn_threshold(int value) noexcept { warn_lines_ = value; }
+    void set_error_threshold(int value) noexcept { error_lines_ = value; }
+    [[nodiscard]] int warn_threshold() const noexcept { return warn_lines_; }
+    [[nodiscard]] int error_threshold() const noexcept { return error_lines_; }
+
+   private:
+    int warn_lines_{80};
+    int error_lines_{150};
 };
 
 }  // namespace cppulse

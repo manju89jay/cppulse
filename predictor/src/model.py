@@ -12,7 +12,15 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
 from xgboost import XGBClassifier
+
+try:
+    import shap
+
+    _HAS_SHAP = True
+except ImportError:  # pragma: no cover
+    _HAS_SHAP = False
 
 logger = logging.getLogger(__name__)
 
@@ -159,20 +167,44 @@ class BugPredictor:
             verbosity=0,
             use_label_encoder=False,
         )
+
+        # Evaluate via stratified k-fold CV before final training.
+        # This prevents inflated metrics from evaluating on training data.
+        n_folds = min(5, n_samples)
+        n_positive = int(labels.sum())
+        n_negative = n_samples - n_positive
+        can_stratify = n_positive >= n_folds and n_negative >= n_folds
+
+        if can_stratify:
+            cv = StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=42)
+            cv_predictions = cross_val_predict(self.model, X, labels, cv=cv)
+            f1 = float(f1_score(labels, cv_predictions, zero_division=0))
+            precision = float(precision_score(labels, cv_predictions, zero_division=0))
+            recall = float(recall_score(labels, cv_predictions, zero_division=0))
+            logger.info(
+                "XGBoost %d-fold CV: F1=%.3f, Precision=%.3f, Recall=%.3f, samples=%d",
+                n_folds,
+                f1,
+                precision,
+                recall,
+                n_samples,
+            )
+        else:
+            # Too few positives/negatives for stratified CV — report without metrics.
+            f1 = 0.0
+            precision = 0.0
+            recall = 0.0
+            logger.info(
+                "XGBoost: skipping CV (need >= %d positive and negative samples), "
+                "samples=%d, positives=%d",
+                n_folds,
+                n_samples,
+                n_positive,
+            )
+
+        # Train final model on all data for production predictions.
         self.model.fit(X, labels)
-
-        predictions = self.model.predict(X)
-        f1 = float(f1_score(labels, predictions, zero_division=0))
-        precision = float(precision_score(labels, predictions, zero_division=0))
-        recall = float(recall_score(labels, predictions, zero_division=0))
-
-        logger.info(
-            "XGBoost trained: F1=%.3f, Precision=%.3f, Recall=%.3f, samples=%d",
-            f1,
-            precision,
-            recall,
-            n_samples,
-        )
+        self._training_X = X
 
         self.metrics = ModelMetrics(
             f1=f1,
@@ -181,6 +213,67 @@ class BugPredictor:
             training_samples=n_samples,
         )
         return self.metrics
+
+    def explain(self, features_df: pd.DataFrame) -> list[dict[str, list[dict[str, float]]]]:
+        """Compute per-file feature importance using SHAP or XGBoost gain fallback.
+
+        When SHAP is installed, uses TreeExplainer for per-prediction SHAP
+        values. Otherwise falls back to global XGBoost feature importances.
+
+        Args:
+            features_df: DataFrame containing NUMERIC_FEATURES columns.
+
+        Returns:
+            List of dicts, one per row, each with a 'top_factors' key mapping
+            to a list of up to 5 {feature, importance, value} dicts sorted
+            by descending importance.
+        """
+        if features_df.empty:
+            return []
+
+        X = features_df[self._features].fillna(0).astype(float)
+
+        if _HAS_SHAP and self.model is not None and not self.use_heuristic:
+            explainer = shap.TreeExplainer(self.model)
+            shap_values = explainer.shap_values(X)
+            explanations = []
+            for i in range(len(X)):
+                factors = [
+                    {
+                        "feature": feat,
+                        "importance": float(abs(shap_values[i, j])),
+                        "value": float(X.iloc[i, j]),
+                    }
+                    for j, feat in enumerate(self._features)
+                ]
+                factors.sort(key=lambda x: x["importance"], reverse=True)
+                explanations.append({"top_factors": factors[:5]})
+            return explanations
+
+        # Fallback: global feature importance from XGBoost or heuristic weights
+        if self.model is not None and not self.use_heuristic:
+            raw = self.model.feature_importances_
+            total = float(raw.sum()) or 1.0
+            importance = {
+                feat: float(raw[i]) / total for i, feat in enumerate(self._features)
+            }
+        else:
+            total = sum(self._heuristic_weights.values())
+            importance = {f: w / total for f, w in self._heuristic_weights.items()}
+
+        explanations = []
+        for i in range(len(X)):
+            factors = [
+                {
+                    "feature": feat,
+                    "importance": imp,
+                    "value": float(X.iloc[i][feat]) if feat in X.columns else 0.0,
+                }
+                for feat, imp in importance.items()
+            ]
+            factors.sort(key=lambda x: x["importance"], reverse=True)
+            explanations.append({"top_factors": factors[:5]})
+        return explanations
 
     def predict(self, features_df: pd.DataFrame) -> np.ndarray:
         """Predict bug probability for each file.

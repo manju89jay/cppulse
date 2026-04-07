@@ -198,6 +198,69 @@ class TestXGBoostModel:
 # ---------------------------------------------------------------------------
 
 
+class TestExplain:
+    """Tests for the explain() method (feature importance per file)."""
+
+    def test_explain_returns_one_entry_per_row(self) -> None:
+        """explain() must return one dict per input row."""
+        predictor = BugPredictor()
+        df = _make_features(60)
+        labels = _make_labels(df)
+        predictor.train(df, labels)
+        explanations = predictor.explain(df)
+        assert len(explanations) == 60
+
+    def test_explain_top_factors_at_most_5(self) -> None:
+        """Each entry's top_factors must have at most 5 items."""
+        predictor = BugPredictor()
+        df = _make_features(60)
+        labels = _make_labels(df)
+        predictor.train(df, labels)
+        explanations = predictor.explain(df)
+        for entry in explanations:
+            assert len(entry["top_factors"]) <= 5
+
+    def test_explain_factors_have_required_keys(self) -> None:
+        """Each factor must have feature, importance, and value keys."""
+        predictor = BugPredictor()
+        df = _make_features(60)
+        labels = _make_labels(df)
+        predictor.train(df, labels)
+        explanations = predictor.explain(df)
+        for entry in explanations:
+            for factor in entry["top_factors"]:
+                assert "feature" in factor
+                assert "importance" in factor
+                assert "value" in factor
+
+    def test_explain_heuristic_fallback(self) -> None:
+        """explain() works with heuristic mode (< 50 samples)."""
+        predictor = BugPredictor()
+        df = _make_features(10)
+        labels = _make_labels(df)
+        predictor.train(df, labels)
+        explanations = predictor.explain(df)
+        assert len(explanations) == 10
+        assert all(len(e["top_factors"]) > 0 for e in explanations)
+
+    def test_explain_empty_dataframe(self) -> None:
+        """explain() on empty DataFrame returns empty list."""
+        predictor = BugPredictor()
+        df = pd.DataFrame(columns=NUMERIC_FEATURES)
+        assert predictor.explain(df) == []
+
+    def test_explain_factors_sorted_by_importance(self) -> None:
+        """top_factors must be sorted by importance descending."""
+        predictor = BugPredictor()
+        df = _make_features(60)
+        labels = _make_labels(df)
+        predictor.train(df, labels)
+        explanations = predictor.explain(df)
+        for entry in explanations:
+            importances = [f["importance"] for f in entry["top_factors"]]
+            assert importances == sorted(importances, reverse=True)
+
+
 class TestEdgeCases:
     """Edge-case and boundary tests for BugPredictor."""
 
