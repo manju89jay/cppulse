@@ -158,8 +158,10 @@ A codebase with zero findings scores 100. The memory safety weight (3x) reflects
 the empirical finding that raw pointer violations are the dominant source of
 CVEs and crash bugs in production C++ systems.
 
-**POCO C++ Libraries result:** 97.8/100 â€” strong scores across all three
-categories: memory safety (95.3), complexity (98.6), modernization (94.7).
+<!-- SHOWCASE_RESULT:START -->
+**gRPC result:** 99.0/100 — strong scores across all three
+categories: memory safety (95.9), complexity (99.6), modernization (99.2).
+<!-- SHOWCASE_RESULT:END -->
 
 ## Inter-Component Communication
 

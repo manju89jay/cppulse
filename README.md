@@ -104,14 +104,14 @@ A report with 7 sections:
 Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 
 <!-- LEADERBOARD:START -->
-| # | Project | LOC | Health | Findings | Rules Hit | Report |
-|--:|---------|----:|:------:|---------:|:---------:|:------:|
-| 1 | **gRPC** | 964K | `99.0` | 9,408 | 15/15 | [Details](examples/grpc/) |
-| 2 | **POCO** | 641K | `97.8` | 14,533 | 15/15 | [Details](examples/poco/) |
-| 3 | **Protobuf** | 400K | `93.8` | 63,344 | 15/15 | [Details](examples/protobuf/) |
-| 4 | **nlohmann/json** | 98K | `96.8` | 618 | 14/15 | [Details](examples/json/) |
-| 5 | **fmt** | 54K | `60.9` | 1,769 | 14/15 | [Details](examples/fmt/) |
-| 6 | **LevelDB** | 29K | `76.7` | 572 | 12/15 | [Details](examples/leveldb/) |
+| # | Project | LOC | Health | Findings | Rules | Report |
+|--:|---------|----:|:------:|---------:|:-----:|:------:|
+| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 9,408 | 15/15 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 14,533 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
+| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 572 | 12/15 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
 
 ## Detection Rules

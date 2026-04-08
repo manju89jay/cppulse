@@ -1,13 +1,9 @@
 # cppulse Report: Protocol Buffers
 
-> Analyzed 2026-03-27 · 400,000 LOC · 1,085 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
+> Analyzed 2026-03-27 · 400,355 LOC · 1,085 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
-Protocol Buffers (protobuf) is Google's language-neutral, platform-neutral
-extensible mechanism for serializing structured data. Originally developed at
-Google to replace ad hoc XML formats, it is now the backbone of gRPC and
-countless internal Google systems, as well as a widely adopted standard across
-the industry.
-cppulse scores it at 93.8/100 — reflecting strong memory safety (93.7).
+Protocol Buffers (protobuf) is Google's language-neutral, platform-neutral extensible mechanism for serializing structured data. Originally developed at Google to replace ad hoc XML formats, it is now the backbone of gRPC and countless internal Google systems, as well as a widely adopted standard across the industry.
+cppulse scores it at 93.8/100 — reflecting strong memory safety (93.7), complexity (88.1), modernization (84.5).
 
 ---
 
@@ -50,15 +46,15 @@ cppulse scores it at 93.8/100 — reflecting strong memory safety (93.7).
 | # | File | Action | Category | Est. Hours | Impact |
 |--:|------|--------|----------|----:|------:|
 | 1 | `conformance/binary_json_conformance_suite.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 42h | 12.0 |
-| 2 | `conformance/binary_json_conformance_suite.cc` | Modernize C++ code | modernization | 24h | 8.0 |
-| 3 | `conformance/binary_json_conformance_suite.cc` | Fix memory safety issues | memory_safety | 4h | 8.0 |
-| 4 | `conformance/conformance_test_runner.cc` | Fix memory safety issues | memory_safety | 8h | 8.0 |
-| 5 | `conformance/conformance_test_runner.cc` | Modernize C++ code | modernization | 6h | 8.0 |
+| 2 | `conformance/binary_json_conformance_suite.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 24h | 8.0 |
+| 3 | `conformance/binary_json_conformance_suite.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 8.0 |
+| 4 | `conformance/conformance_test_runner.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 8h | 8.0 |
+| 5 | `conformance/conformance_test_runner.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 6h | 8.0 |
 | 6 | `conformance/conformance_test_runner.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 9h | 8.0 |
-| 7 | `bazel/private/file_concat/main.cc` | Fix memory safety issues | memory_safety | 4h | 4.0 |
-| 8 | `benchmarks/benchmark.cc` | Modernize C++ code | modernization | 8h | 4.0 |
-| 9 | `conformance/test_manager_test.cc` | Modernize C++ code | modernization | 12h | 4.0 |
-| 10 | `conformance/binary_json_conformance_suite.h` | Fix memory safety issues | memory_safety | 4h | 4.0 |
+| 7 | `bazel/private/file_concat/main.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 4.0 |
+| 8 | `benchmarks/benchmark.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 8h | 4.0 |
+| 9 | `conformance/test_manager_test.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 12h | 4.0 |
+| 10 | `conformance/binary_json_conformance_suite.h` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 4.0 |
 
 **Total: 38 roadmap items · ~259 estimated hours**
 

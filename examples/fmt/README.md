@@ -1,12 +1,9 @@
 # cppulse Report: {fmt}
 
-> Analyzed 2026-03-27 · 54,000 LOC · 70 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
+> Analyzed 2026-03-27 · 54,423 LOC · 70 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
-{fmt} is Victor Zverovich's type-safe formatting library that became the direct
-basis for `std::format` in C++20. Widely deployed across game engines, embedded
-systems, and cloud infrastructure, fmt is valued for both its ergonomics and its
-near-zero runtime overhead.
-cppulse scores it at 60.9/100 — strong memory safety (94.0) offset by weaker modernization (0.0).
+{fmt} is Victor Zverovich's type-safe formatting library that became the direct basis for std::format in C++20. Widely deployed across game engines, embedded systems, and cloud infrastructure, fmt is valued for both its ergonomics and its near-zero runtime overhead.
+cppulse scores it at 60.9/100 — reflecting strong memory safety (94.0), complexity (77.0), modernization (0.0).
 
 ---
 
@@ -50,12 +47,12 @@ cppulse scores it at 60.9/100 — strong memory safety (94.0) offset by weaker m
 |--:|------|--------|----------|----:|------:|
 | 1 | `include/fmt/args.h` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 21h | 18.0 |
 | 2 | `include/fmt/chrono.h` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 21h | 18.0 |
-| 3 | `include/fmt/args.h` | Fix memory safety issues | memory_safety | 4h | 12.0 |
-| 4 | `include/fmt/args.h` | Modernize C++ code | modernization | 77h | 12.0 |
-| 5 | `include/fmt/chrono.h` | Fix memory safety issues | memory_safety | 4h | 12.0 |
-| 6 | `include/fmt/chrono.h` | Modernize C++ code | modernization | 84h | 12.0 |
+| 3 | `include/fmt/args.h` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 12.0 |
+| 4 | `include/fmt/args.h` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 77h | 12.0 |
+| 5 | `include/fmt/chrono.h` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 12.0 |
+| 6 | `include/fmt/chrono.h` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 84h | 12.0 |
 | 7 | `include/fmt/color.h` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 21h | 12.0 |
-| 8 | `include/fmt/color.h` | Modernize C++ code | modernization | 79h | 8.0 |
+| 8 | `include/fmt/color.h` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 79h | 8.0 |
 | 9 | `include/fmt/base.h` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 6.0 |
 | 10 | `include/fmt/format-inl.h` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 4.0 |
 
