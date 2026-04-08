@@ -10,7 +10,7 @@
   <!-- Background arc (gray) -->
   <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#e5e7eb" stroke-width="18" stroke-linecap="round"/>
 
-  <!-- Score arc (colored) â€” uses dasharray to fill proportionally -->
+  <!-- Score arc (colored) — uses dasharray to fill proportionally -->
   <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#16a34a" stroke-width="18" stroke-linecap="round"
         stroke-dasharray="240.8 314.2"/>
 

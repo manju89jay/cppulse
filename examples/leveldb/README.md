@@ -1,14 +1,9 @@
 # cppulse Report: LevelDB
 
-> Analyzed 2026-03-27 · 29,000 LOC · 132 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
+> Analyzed 2026-03-27 · 28,648 LOC · 132 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
-LevelDB is Google's fast on-disk key-value storage library, originally written
-by Jeff Dean and Sanjay Ghemawat and open-sourced in 2011. It underpins Chrome's
-IndexedDB and has been adopted by Bitcoin Core, Ethereum clients, and dozens of
-embedded database projects. At just 29K lines across 132 files it is one of the
-most studied small systems codebases in existence, making it an excellent
-cppulse benchmark.
-cppulse scores it at 76.7/100 — dragged down by memory safety (28.8).
+LevelDB is Google's fast on-disk key-value storage library, originally written by Jeff Dean and Sanjay Ghemawat and open-sourced in 2011. It underpins Chrome's IndexedDB and has been adopted by Bitcoin Core, Ethereum clients, and dozens of embedded database projects.
+cppulse scores it at 76.7/100 — reflecting strong memory safety (28.8), complexity (79.4), modernization (70.0).
 
 ---
 
@@ -51,15 +46,15 @@ cppulse scores it at 76.7/100 — dragged down by memory safety (28.8).
 | # | File | Action | Category | Est. Hours | Impact |
 |--:|------|--------|----------|----:|------:|
 | 1 | `db/db_test.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 51h | 18.0 |
-| 2 | `db/db_test.cc` | Modernize C++ code | modernization | 53h | 12.0 |
-| 3 | `db/db_test.cc` | Fix memory safety issues | memory_safety | 112h | 12.0 |
-| 4 | `db/c.cc` | Modernize C++ code | modernization | 3h | 8.0 |
-| 5 | `db/c.cc` | Fix memory safety issues | memory_safety | 112h | 8.0 |
+| 2 | `db/db_test.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 53h | 12.0 |
+| 3 | `db/db_test.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 112h | 12.0 |
+| 4 | `db/c.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 3h | 8.0 |
+| 5 | `db/c.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 112h | 8.0 |
 | 6 | `db/c.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 9h | 8.0 |
 | 7 | `benchmarks/db_bench.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 9h | 6.0 |
 | 8 | `benchmarks/db_bench_sqlite3.cc` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 12h | 6.0 |
-| 9 | `benchmarks/db_bench.cc` | Fix memory safety issues | memory_safety | 44h | 4.0 |
-| 10 | `benchmarks/db_bench_log.cc` | Modernize C++ code | modernization | 2h | 4.0 |
+| 9 | `benchmarks/db_bench.cc` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 44h | 4.0 |
+| 10 | `benchmarks/db_bench_log.cc` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 2h | 4.0 |
 
 **Total: 30 roadmap items · ~515 estimated hours**
 

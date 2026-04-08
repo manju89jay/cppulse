@@ -145,10 +145,19 @@ def generate_badge(label: str, value: str, color: str, output_path: Path) -> Non
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate SVG assets for a cppulse project report.")
+    parser = argparse.ArgumentParser(
+        description="Generate SVG assets for a cppulse project report."
+    )
     parser.add_argument("--project", required=True, help="Project name (e.g. poco)")
-    parser.add_argument("--data-dir", required=True, type=Path, help="Directory containing JSON output files")
-    parser.add_argument("--output-dir", required=True, type=Path, help="Directory to write SVG files")
+    parser.add_argument(
+        "--data-dir",
+        required=True,
+        type=Path,
+        help="Directory containing JSON output files",
+    )
+    parser.add_argument(
+        "--output-dir", required=True, type=Path, help="Directory to write SVG files"
+    )
     args = parser.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -177,18 +186,33 @@ def main() -> None:
     # Generate badges
     score = health["overall"]
     badge_color = _score_color(score).lstrip("#")
-    generate_badge("health score", f"{score:.1f}/100", f"#{badge_color}", args.output_dir / "health-score.svg")
+    generate_badge(
+        "health score",
+        f"{score:.1f}/100",
+        f"#{badge_color}",
+        args.output_dir / "health-score.svg",
+    )
 
     if findings_path.exists():
         findings_data = json.loads(findings_path.read_text())
         total = findings_data.get("summary", {}).get("total_findings", 0)
-        generate_badge("findings", f"{total:,}", "#e05d44", args.output_dir / "findings.svg")
+        generate_badge(
+            "findings", f"{total:,}", "#e05d44", args.output_dir / "findings.svg"
+        )
 
-    rules_hit = len(set(
-        f["rule_id"]
-        for f in json.loads(findings_path.read_text()).get("findings", [])
-    )) if findings_path.exists() else 0
-    generate_badge("rules triggered", f"{rules_hit}/22", "#007ec6", args.output_dir / "rules.svg")
+    rules_hit = (
+        len(
+            set(
+                f["rule_id"]
+                for f in json.loads(findings_path.read_text()).get("findings", [])
+            )
+        )
+        if findings_path.exists()
+        else 0
+    )
+    generate_badge(
+        "rules triggered", f"{rules_hit}/15", "#007ec6", args.output_dir / "rules.svg"
+    )
 
     print(f"Done: {args.project} assets in {args.output_dir}")
 

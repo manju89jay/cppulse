@@ -54,6 +54,9 @@ predictor/models/
 .DS_Store
 Thumbs.db
 
+# ── Showcase repo cache ──────────────────────────────────────────────────────
+.showcase-repos/
+
 # ── Claude Code ──────────────────────────────────────────────────────────────
 CLAUDE.local.md
 .claude/worktrees/

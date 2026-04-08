@@ -1,12 +1,9 @@
 # cppulse Report: nlohmann/json
 
-> Analyzed 2026-03-27 · 98,000 LOC · 479 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
+> Analyzed 2026-03-27 · 97,669 LOC · 479 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
-nlohmann/json is the most widely starred C++ JSON library on GitHub, created by
-Niels Lohmann. Its single-header design, intuitive API, and comprehensive test
-suite have made it the de facto standard for JSON handling in modern C++ projects
-across game engines, scientific computing, and cloud services.
-cppulse scores it at 96.8/100 — reflecting strong memory safety (95.8), complexity control (90.9), modernization (94.8).
+nlohmann/json is the most widely starred C++ JSON library on GitHub, created by Niels Lohmann. Its single-header design, intuitive API, and comprehensive test suite have made it the de facto standard for JSON handling in modern C++ projects across game engines, scientific computing, and cloud services.
+cppulse scores it at 96.8/100 — reflecting strong memory safety (95.8), complexity (90.9), modernization (94.8).
 
 ---
 

@@ -2,12 +2,8 @@
 
 > Analyzed 2026-03-26 · 640,665 LOC · 3,068 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
-POCO C++ Libraries is a mature, widely-deployed open-source C++ framework providing
-networking, file system, threading, and cryptography primitives. With over 640K lines
-of production code spanning 3,068 files and a git history stretching back nearly two
-decades, it represents a realistic benchmark for cppulse: a large, actively maintained
-codebase that predates modern C++ idioms.
-cppulse scores it at 97.8/100 — reflecting strong memory safety (95.3), complexity control (98.6), modernization (94.7).
+POCO C++ Libraries is a mature, widely-deployed open-source C++ framework providing networking, file system, threading, and cryptography primitives. With a git history stretching back nearly two decades, it represents a realistic benchmark for cppulse: a large, actively maintained codebase that predates modern C++ idioms.
+cppulse scores it at 97.8/100 — reflecting strong memory safety (95.3), complexity (98.6), modernization (94.7).
 
 ---
 
@@ -51,20 +47,20 @@ cppulse scores it at 97.8/100 — reflecting strong memory safety (95.3), comple
 |--:|------|--------|----------|----:|------:|
 | 1 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 3h | 16.0 |
 | 2 | `Benchmark/src/BenchmarkApp.cpp` | Reduce cyclomatic complexity by extracting methods and simplifying control flow | complexity | 9h | 16.0 |
-| 3 | `ActiveRecord/include/Poco/ActiveRecord/Query.h` | Fix memory safety issues | memory_safety | 8h | 16.0 |
-| 4 | `ApacheConnector/samples/FormServer/src/FormServer.cpp` | Fix memory safety issues | memory_safety | 4h | 16.0 |
-| 5 | `ApacheConnector/samples/TimeServer/src/TimeServer.cpp` | Fix memory safety issues | memory_safety | 4h | 16.0 |
-| 6 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Modernize C++ code | modernization | 9h | 8.0 |
-| 7 | `Benchmark/src/BenchmarkApp.cpp` | Modernize C++ code | modernization | 2h | 8.0 |
-| 8 | `Crypto/src/EVPCipherImpl.cpp` | Fix memory safety issues | memory_safety | 16h | 8.0 |
-| 9 | `Crypto/src/X509Certificate.cpp` | Modernize C++ code | modernization | 1h | 8.0 |
-| 10 | `Data/SQLParser/src/SQLParser.cpp` | Modernize C++ code | modernization | 1h | 8.0 |
+| 3 | `ActiveRecord/include/Poco/ActiveRecord/Query.h` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 8h | 16.0 |
+| 4 | `ApacheConnector/samples/FormServer/src/FormServer.cpp` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 16.0 |
+| 5 | `ApacheConnector/samples/TimeServer/src/TimeServer.cpp` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 4h | 16.0 |
+| 6 | `ActiveRecord/Compiler/src/ImplGenerator.cpp` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 9h | 8.0 |
+| 7 | `Benchmark/src/BenchmarkApp.cpp` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 2h | 8.0 |
+| 8 | `Crypto/src/EVPCipherImpl.cpp` | Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks | memory_safety | 16h | 8.0 |
+| 9 | `Crypto/src/X509Certificate.cpp` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 1h | 8.0 |
+| 10 | `Data/SQLParser/src/SQLParser.cpp` | Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs | modernization | 1h | 8.0 |
 
 **Total: 40 roadmap items · ~139 estimated hours**
 
 ## Downloads
 
-- [PDF Executive Report (272 pages)](report.pdf)
+- [PDF Executive Report](report.pdf)
 - [Raw Findings (JSON)](findings.json)
 - [Risk Scores (JSON)](risk_scores.json)
 - [Refactoring Roadmap (JSON)](roadmap.json)
