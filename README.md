@@ -231,6 +231,14 @@ pip install -r report-engine/requirements.txt
 cd dashboard && npm ci && npm run build
 ```
 
+### Compilation database
+
+analyzer-core looks for `compile_commands.json` in the analyzed repo root (or its
+`build/` directory) and parses each file with its recorded include paths, defines,
+and language standard — falling back to bare `-std=c++17` when absent. Generate one
+with `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` for substantially more accurate
+type-dependent findings; the log reports how many files used recorded args.
+
 ### Testing
 
 ```bash
