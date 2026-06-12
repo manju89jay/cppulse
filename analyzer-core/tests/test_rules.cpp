@@ -306,6 +306,8 @@ TEST(OutputWriterTest, WritesValidJson) {
     EXPECT_EQ(root["summary"]["by_category"]["memory_safety"].get<int>(), 1);
     EXPECT_EQ(root["summary"]["by_severity"]["warning"].get<int>(), 1);
 
+    // Close before remove_all: Windows refuses to delete files that are open.
+    ifs.close();
     std::filesystem::remove_all(out_dir);
 }
 
@@ -327,6 +329,8 @@ TEST(OutputWriterTest, HandlesEmptyFindings) {
     EXPECT_EQ(root["findings"].size(), 0u);
     EXPECT_EQ(root["summary"]["total_findings"].get<int>(), 0);
 
+    // Close before remove_all: Windows refuses to delete files that are open.
+    ifs.close();
     std::filesystem::remove_all(out_dir);
 }
 

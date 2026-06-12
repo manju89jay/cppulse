@@ -17,12 +17,40 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # --------------------------------------------------------------------------
 # libclang — Ubuntu ships libclang-dev without CMake config files,
 # so we locate the library and headers manually.
-find_library(LIBCLANG_LIBRARY NAMES clang PATHS /usr/lib/llvm-18/lib /usr/lib/llvm-17/lib /usr/lib)
-find_path(LIBCLANG_INCLUDE_DIR NAMES clang-c/Index.h PATHS /usr/lib/llvm-18/include /usr/lib/llvm-17/include /usr/include)
-if(NOT LIBCLANG_LIBRARY OR NOT LIBCLANG_INCLUDE_DIR)
-    message(FATAL_ERROR "libclang not found. Install libclang-dev.")
+# Search order: caller hints (CMAKE_PREFIX_PATH / LIBCLANG_ROOT),
+# MSYS2/MinGW prefixes (Windows), then Ubuntu LLVM layouts.
+set(_LIBCLANG_HINT_PATHS "")
+if(DEFINED ENV{LIBCLANG_ROOT})
+    list(APPEND _LIBCLANG_HINT_PATHS "$ENV{LIBCLANG_ROOT}/lib")
 endif()
-add_library(libclang SHARED IMPORTED)
+if(DEFINED ENV{MINGW_PREFIX})
+    list(APPEND _LIBCLANG_HINT_PATHS "$ENV{MINGW_PREFIX}/lib")
+endif()
+if(WIN32)
+    list(APPEND _LIBCLANG_HINT_PATHS "C:/msys64/mingw64/lib" "C:/msys64/clang64/lib")
+endif()
+
+find_library(LIBCLANG_LIBRARY NAMES clang libclang
+    PATHS ${_LIBCLANG_HINT_PATHS} /usr/lib/llvm-18/lib /usr/lib/llvm-17/lib /usr/lib)
+
+set(_LIBCLANG_INCLUDE_HINTS "")
+foreach(_lib_dir ${_LIBCLANG_HINT_PATHS})
+    get_filename_component(_prefix "${_lib_dir}" DIRECTORY)
+    list(APPEND _LIBCLANG_INCLUDE_HINTS "${_prefix}/include")
+endforeach()
+
+find_path(LIBCLANG_INCLUDE_DIR NAMES clang-c/Index.h
+    PATHS ${_LIBCLANG_INCLUDE_HINTS} /usr/lib/llvm-18/include /usr/lib/llvm-17/include /usr/include)
+if(NOT LIBCLANG_LIBRARY OR NOT LIBCLANG_INCLUDE_DIR)
+    message(FATAL_ERROR
+        "libclang not found. Install libclang-dev (Ubuntu) or mingw-w64-x86_64-clang (MSYS2), "
+        "or set LIBCLANG_ROOT to an LLVM install prefix.")
+endif()
+message(STATUS "libclang library: ${LIBCLANG_LIBRARY}")
+message(STATUS "libclang include: ${LIBCLANG_INCLUDE_DIR}")
+# UNKNOWN: links the found library path directly; avoids needing the DLL vs
+# import-lib (IMPORTED_IMPLIB) split on Windows.
+add_library(libclang UNKNOWN IMPORTED)
 set_target_properties(libclang PROPERTIES
     IMPORTED_LOCATION "${LIBCLANG_LIBRARY}"
     INTERFACE_INCLUDE_DIRECTORIES "${LIBCLANG_INCLUDE_DIR}"
@@ -91,4 +119,6 @@ target_link_libraries(cppulse-analyzer-tests
         GTest::gtest_main
 )
 
-gtest_discover_tests(cppulse-analyzer-tests)
+# Discovery launches the test binary at build time; first launch can exceed the
+# 5s default on Windows (libclang DLL load + AV scan), so allow more headroom.
+gtest_discover_tests(cppulse-analyzer-tests DISCOVERY_TIMEOUT 30)

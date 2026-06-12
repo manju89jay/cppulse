@@ -1,10 +1,16 @@
-"""PDF report generation for cppulse using WeasyPrint and Jinja2."""
+"""PDF report generation for cppulse using WeasyPrint and Jinja2.
+
+Usage as a CLI (invoked by the cppulse orchestrator):
+    python -m src.pdf_generator --data ./output --output ./output/report.pdf
+"""
 
 from __future__ import annotations
 
+import argparse
 import base64
 import io
 import json
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -321,3 +327,48 @@ class PDFGenerator:
         base_url = str(TEMPLATES_DIR)
         pdf_bytes: bytes = HTML(string=html_content, base_url=base_url).write_pdf()
         return pdf_bytes
+
+
+def main(argv: list[str] | None = None) -> int:
+    """CLI entry point: generate a PDF report from pipeline output JSONs.
+
+    Args:
+        argv: Argument list (defaults to sys.argv when None).
+
+    Returns:
+        0 on success, 1 if PDF generation failed (e.g. WeasyPrint missing).
+    """
+    parser = argparse.ArgumentParser(
+        prog="pdf_generator",
+        description="Generate the cppulse PDF health report.",
+    )
+    parser.add_argument(
+        "--data",
+        required=True,
+        type=Path,
+        help="Directory containing findings.json, git_metrics.json, "
+        "risk_scores.json, and roadmap.json.",
+    )
+    parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+        help="Path of the PDF file to write.",
+    )
+    args = parser.parse_args(argv)
+
+    generator = PDFGenerator(args.data)
+    try:
+        pdf_bytes = generator.generate_pdf()
+    except RuntimeError as exc:
+        print(f"pdf_generator: {exc}", file=sys.stderr)
+        return 1
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_bytes(pdf_bytes)
+    print(f"pdf_generator: wrote {args.output}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
