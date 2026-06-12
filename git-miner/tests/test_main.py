@@ -213,3 +213,60 @@ class TestRunFunction:
         result = run(repo_dir, out_dir)
         assert result == 0
         assert (out_dir / "git_metrics.json").exists()
+
+
+class TestBuildOutputSZZ:
+    """SZZ counts are merged into serialized file metrics."""
+
+    def test_szz_counts_merged_into_file_metrics(self, tmp_path: Path) -> None:
+        """Files present in szz_counts carry their bug-introduction count."""
+        repo = _init_repo(tmp_path)
+        src = tmp_path / "a.cpp"
+        src.write_text("// a\n")
+        repo.index.add(["a.cpp"])
+        repo.index.commit("init", author=_DEFAULT, committer=_DEFAULT)
+
+        metrics = [FileMetrics(file="a.cpp"), FileMetrics(file="b.cpp")]
+        result = build_output(tmp_path, metrics, [], repo, szz_counts={"a.cpp": 2})
+
+        by_file = {m["file"]: m for m in result["file_metrics"]}
+        assert by_file["a.cpp"]["szz_bug_introductions"] == 2
+        assert by_file["b.cpp"]["szz_bug_introductions"] == 0
+
+    def test_szz_field_defaults_to_zero_without_counts(self, tmp_path: Path) -> None:
+        """Omitting szz_counts still emits the field with value 0."""
+        repo = _init_repo(tmp_path)
+        src = tmp_path / "a.cpp"
+        src.write_text("// a\n")
+        repo.index.add(["a.cpp"])
+        repo.index.commit("init", author=_DEFAULT, committer=_DEFAULT)
+
+        result = build_output(tmp_path, [FileMetrics(file="a.cpp")], [], repo)
+        assert result["file_metrics"][0]["szz_bug_introductions"] == 0
+
+
+class TestRunWritesSZZ:
+    """End-to-end: run() produces git_metrics.json with SZZ data."""
+
+    def test_run_emits_szz_field_for_bug_fix_history(self, tmp_path: Path) -> None:
+        """A repo with a fix commit yields a non-zero SZZ count for the file."""
+        repo_dir = tmp_path / "repo"
+        repo_dir.mkdir()
+        repo = _init_repo(repo_dir)
+        src = repo_dir / "main.cpp"
+        src.write_text("int main() { return 0; }\n")
+        repo.index.add(["main.cpp"])
+        repo.index.commit("Initial implementation", author=_DEFAULT, committer=_DEFAULT)
+
+        src.write_text("int main() { return 1; }\n")
+        repo.index.add(["main.cpp"])
+        repo.index.commit(
+            "fix: wrong return value", author=_DEFAULT, committer=_DEFAULT
+        )
+
+        out_dir = tmp_path / "out"
+        assert run(repo_dir, out_dir) == 0
+
+        data = json.loads((out_dir / "git_metrics.json").read_text())
+        by_file = {m["file"]: m for m in data["file_metrics"]}
+        assert by_file["main.cpp"]["szz_bug_introductions"] >= 1

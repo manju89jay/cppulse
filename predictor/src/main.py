@@ -69,11 +69,18 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 
 def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Series:
-    """Derive pseudo-labels for training from heuristic thresholds.
+    """Derive training labels from git history.
 
-    Files with >= 1 memory finding or >= 3 bug-fix commits are treated as
-    historically buggy (label=1). On the safety-critical profile, MISRA
-    findings also contribute.
+    Primary source: SZZ analysis — a file is labeled buggy (1) when at least
+    one bug-introducing commit touched it. The SZZ column is excluded from
+    the model's feature set (see model._BASE_NUMERIC_FEATURES), so the label
+    is independent of the features the model trains on.
+
+    Fallback (logged loudly): when no SZZ data is available — e.g. metrics
+    produced by an older git-miner — fall back to the legacy heuristic
+    (>= 1 memory finding or >= 3 bug-fix commits; MISRA findings on the
+    safety-critical profile). Heuristic labels overlap with model features,
+    so reported CV metrics are optimistic in that mode.
 
     Args:
         features_df: Feature DataFrame from FeatureEngineer.
@@ -82,6 +89,17 @@ def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Se
     Returns:
         Binary pandas Series of integer labels (0 or 1).
     """
+    if (
+        "szz_bug_introductions" in features_df.columns
+        and features_df["szz_bug_introductions"].sum() > 0
+    ):
+        return (features_df["szz_bug_introductions"] >= 1).astype(int)
+
+    logger.warning(
+        "No SZZ bug-introduction data in git_metrics — falling back to "
+        "heuristic labels (memory findings / bug-fix commits). CV metrics "
+        "will be optimistic; re-run git-miner to produce SZZ labels."
+    )
     buggy = (features_df["memory_findings"] >= 1) | (
         features_df["bug_fix_commits"] >= 3
     )

@@ -19,6 +19,7 @@ import git
 from .miner import FileMetrics, GitMiner
 from .schema_validator import SchemaValidator
 from .silo_detector import SiloDetector, SiloEntry
+from .szz_labeler import SZZLabeler
 
 logging.basicConfig(
     level=logging.INFO,
@@ -32,6 +33,7 @@ def build_output(
     file_metrics: list[FileMetrics],
     silos: list[SiloEntry],
     repo: git.Repo,
+    szz_counts: dict[str, int] | None = None,
 ) -> dict[str, Any]:
     """Assemble the full git_metrics output dictionary.
 
@@ -40,10 +42,12 @@ def build_output(
         file_metrics: List of per-file metrics from GitMiner.
         silos: List of knowledge silo entries from SiloDetector.
         repo: The git.Repo object for extracting commit range metadata.
+        szz_counts: Per-file counts of distinct SZZ bug-introducing commits.
 
     Returns:
         Dictionary conforming to the git_metrics.schema.json schema.
     """
+    szz_counts = szz_counts or {}
     try:
         all_commits = list(repo.iter_commits())
         total_commits = len(all_commits)
@@ -71,6 +75,7 @@ def build_output(
             "lines_removed_total": m.lines_removed_total,
             "churn_rate": m.churn_rate,
             "bug_fix_commits": m.bug_fix_commits,
+            "szz_bug_introductions": szz_counts.get(m.file, 0),
             "contributor_list": m.contributor_list,
         }
         for m in file_metrics
@@ -126,15 +131,26 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         metavar="DIR",
         help="Output directory for git_metrics.json (default: ./output).",
     )
+    parser.add_argument(
+        "--szz-max-fix-commits",
+        default=500,
+        type=int,
+        metavar="N",
+        help=(
+            "Trace at most the N most recent bug-fix commits in the SZZ "
+            "analysis (bounds blame runtime on large histories; default: 500)."
+        ),
+    )
     return parser.parse_args(argv)
 
 
-def run(repo_path: Path, output_dir: Path) -> int:
+def run(repo_path: Path, output_dir: Path, szz_max_fix_commits: int = 500) -> int:
     """Execute the full git-miner pipeline.
 
     Args:
         repo_path: Path to the target git repository.
         output_dir: Directory where git_metrics.json will be written.
+        szz_max_fix_commits: Cap on bug-fix commits traced by the SZZ labeler.
 
     Returns:
         0 on success, 1 on fatal error.
@@ -173,8 +189,19 @@ def run(repo_path: Path, output_dir: Path) -> int:
         logger.warning("SiloDetector encountered an error: %s — skipping silos", exc)
         silos = []
 
+    # SZZ bug-introduction labeling (used by the predictor as training labels)
+    try:
+        labeler = SZZLabeler(repo_path, max_fix_commits=szz_max_fix_commits)
+        szz_counts = labeler.label()
+        logger.info(
+            "SZZ labeled %d file(s) with bug-introducing commits", len(szz_counts)
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("SZZLabeler encountered an error: %s — skipping SZZ", exc)
+        szz_counts = {}
+
     # Build output document
-    output_doc = build_output(repo_path, file_metrics, silos, repo)
+    output_doc = build_output(repo_path, file_metrics, silos, repo, szz_counts)
 
     # Validate against schema
     try:
@@ -199,7 +226,7 @@ def run(repo_path: Path, output_dir: Path) -> int:
 def main() -> None:
     """Entry point called by ``python -m src.main``."""
     args = parse_args()
-    sys.exit(run(args.repo, args.output))
+    sys.exit(run(args.repo, args.output, args.szz_max_fix_commits))
 
 
 if __name__ == "__main__":
