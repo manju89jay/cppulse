@@ -25,6 +25,7 @@ FEATURE_COLUMNS: list[str] = [
     "unique_contributors",
     "churn_rate",
     "bug_fix_commits",
+    "szz_bug_introductions",
     "age_days",
     "is_knowledge_silo",
 ]
@@ -63,6 +64,7 @@ class GitSummary:
         unique_contributors: Number of distinct contributors.
         churn_rate: Code churn ratio (added + removed) / LOC.
         bug_fix_commits: Historical bug-fix commit count.
+        szz_bug_introductions: Distinct SZZ bug-introducing commits.
         age_days: File age in days.
         is_knowledge_silo: True if this file is a knowledge silo.
     """
@@ -72,6 +74,7 @@ class GitSummary:
     unique_contributors: int = 0
     churn_rate: float = 0.0
     bug_fix_commits: int = 0
+    szz_bug_introductions: int = 0
     age_days: int = 0
     is_knowledge_silo: bool = False
 
@@ -125,6 +128,7 @@ class FeatureEngineer:
                     "unique_contributors": gs.unique_contributors,
                     "churn_rate": gs.churn_rate,
                     "bug_fix_commits": gs.bug_fix_commits,
+                    "szz_bug_introductions": gs.szz_bug_introductions,
                     "age_days": gs.age_days,
                     "is_knowledge_silo": int(gs.is_knowledge_silo),
                 }
@@ -204,6 +208,7 @@ class FeatureEngineer:
                 unique_contributors=int(fm.get("unique_contributors", 0)),
                 churn_rate=float(fm.get("churn_rate", 0.0)),
                 bug_fix_commits=int(fm.get("bug_fix_commits", 0)),
+                szz_bug_introductions=int(fm.get("szz_bug_introductions", 0)),
                 age_days=int(fm.get("age_days", 0)),
                 is_knowledge_silo=(file_path in silo_files),
             )

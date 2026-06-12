@@ -35,16 +35,22 @@ class SZZLabeler:
 
     Args:
         repo_path: Path to the root of the git repository.
+        max_fix_commits: Upper bound on bug-fix commits to trace via blame
+            (newest first). Keeps runtime bounded on large histories;
+            None means no limit.
     """
 
-    def __init__(self, repo_path: Path) -> None:
+    def __init__(self, repo_path: Path, max_fix_commits: int | None = None) -> None:
         """Initialize SZZLabeler.
 
         Args:
             repo_path: Absolute or relative path to the git repository root.
+            max_fix_commits: Maximum number of bug-fix commits to analyze
+                (newest first), or None for no limit.
         """
         self._repo_path = Path(repo_path).resolve()
         self._repo = git.Repo(str(self._repo_path))
+        self._max_fix_commits = max_fix_commits
 
     def label(self) -> dict[str, int]:
         """Run SZZ analysis and return bug-introducing commit counts per file.
@@ -65,6 +71,17 @@ class SZZLabeler:
             return {}
 
         bug_fix_commits = [c for c in commits if self._is_bug_fix(c.message)]
+        if (
+            self._max_fix_commits is not None
+            and len(bug_fix_commits) > self._max_fix_commits
+        ):
+            # iter_commits() yields newest first; keep the most recent fixes.
+            logger.info(
+                "Capping SZZ analysis to the %d most recent of %d bug-fix commits",
+                self._max_fix_commits,
+                len(bug_fix_commits),
+            )
+            bug_fix_commits = bug_fix_commits[: self._max_fix_commits]
         logger.debug("Found %d bug-fix commits", len(bug_fix_commits))
 
         bug_introducing: dict[str, set[str]] = {}

@@ -12,7 +12,7 @@ Point it at any C++ git repository. Get a health score, bug predictions, knowled
 
 Static analysis tools like cppcheck and clang-tidy produce thousands of warnings with no prioritization. cppulse answers three questions they can't:
 
-1. **Which files are most likely to introduce the next bug?** — XGBoost model trained on SZZ-labeled git history
+1. **Which files are most likely to introduce the next bug?** — XGBoost ranking trained on SZZ-derived labels (blame-traced bug-introducing commits), with honest cross-validated metrics and a transparent heuristic fallback below 50 files
 2. **Who is the only person who understands a critical module?** — Knowledge silo detection from 12-month authorship analysis
 3. **Where should refactoring effort go first?** — Prioritized roadmap ranked by risk, severity, and estimated hours
 
@@ -96,7 +96,7 @@ A report with 7 sections:
 | **Hotspot Map** | Top 20 files by change_frequency x complexity x debt_density |
 | **Detection Findings** | Per-file violations across 15 rules (22 with `--profile safety-critical`) |
 | **Knowledge Silos** | Files where only 1 person has committed in 12 months |
-| **Bug Prediction** | Per-file bug probability via XGBoost trained on SZZ-labeled history |
+| **Bug Risk Ranking** | Per-file risk probability via XGBoost on SZZ-derived labels; label-adjacent columns are excluded from the feature set to avoid leakage, and reported F1/precision/recall come from stratified cross-validation |
 | **Refactoring Roadmap** | Prioritized fixes with estimated hours and ROI impact score |
 
 ## Proven on Real Codebases
