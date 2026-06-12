@@ -15,8 +15,9 @@ analyze. analyzer-core must itself embody the standards it enforces.
 
 ## Concurrency Safety
 - No global mutable state — all shared state explicitly synchronized
-- Thread-safe result aggregation in FileAnalyzer (std::mutex on findings vector)
-- No data races — validate with ThreadSanitizer (`-fsanitize=thread`) before merge
+- FileAnalyzer is single-threaded by design (one translation unit at a time);
+  if parallel analysis is introduced, findings aggregation must be mutex-guarded
+  and validated with ThreadSanitizer (`-fsanitize=thread`) before merge
 
 ## Error Paths
 - Every libclang API call result must be checked

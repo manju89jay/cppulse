@@ -322,6 +322,14 @@ class PDFGenerator:
             raise RuntimeError(
                 "WeasyPrint is not installed. Cannot generate PDF."
             ) from exc
+        except OSError as exc:
+            # weasyprint is pip-installed but its native GTK/Pango libraries
+            # are missing (common on Windows) — import raises OSError, not
+            # ImportError. Normalize so the API returns 503, not 500.
+            raise RuntimeError(
+                "WeasyPrint native libraries (GTK/Pango) are not available. "
+                "Cannot generate PDF."
+            ) from exc
 
         html_content = self.render_html()
         base_url = str(TEMPLATES_DIR)
