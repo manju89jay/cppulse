@@ -5,6 +5,7 @@
 
 #include "analyzer.h"
 
+#include <clang-c/CXCompilationDatabase.h>
 #include <clang-c/Index.h>
 #include <spdlog/spdlog.h>
 
@@ -22,6 +23,14 @@ namespace {
 
 /// @brief Maximum file size in bytes before a file is skipped.
 constexpr std::uintmax_t kMaxFileSizeBytes = 500ULL * 1024ULL;  // 500 KB
+
+/// @brief Convert a CXString to std::string and dispose the original.
+std::string to_string_and_dispose(CXString cx_str) {
+    const char* c_str = clang_getCString(cx_str);
+    std::string result = (c_str != nullptr) ? c_str : "";
+    clang_disposeString(cx_str);
+    return result;
+}
 
 /// @brief Count the number of newlines in a file (approximate LOC).
 int count_lines(const std::filesystem::path& file_path) {
@@ -159,10 +168,92 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config)
     : repo_root_(std::move(repo_root)), config_(std::move(config)) {}
 
+void FileAnalyzer::load_compilation_database() {
+    compile_db_ = nullptr;
+
+    for (const auto& candidate : {repo_root_, repo_root_ / "build"}) {
+        std::error_code ec;
+        if (!std::filesystem::exists(candidate / "compile_commands.json", ec) || ec) {
+            continue;
+        }
+        CXCompilationDatabase_Error db_error = CXCompilationDatabase_NoError;
+        CXCompilationDatabase db =
+            clang_CompilationDatabase_fromDirectory(candidate.string().c_str(), &db_error);
+        if (db_error == CXCompilationDatabase_NoError && db != nullptr) {
+            spdlog::info("FileAnalyzer: using compilation database from '{}'", candidate.string());
+            compile_db_ = db;
+            return;
+        }
+        if (db != nullptr) {
+            clang_CompilationDatabase_dispose(db);
+        }
+        spdlog::warn("FileAnalyzer: failed to load compilation database from '{}'",
+                     candidate.string());
+    }
+    spdlog::info(
+        "FileAnalyzer: no compilation database found — parsing with default flags "
+        "(type-dependent rules may degrade; generate compile_commands.json for best results)");
+}
+
+std::vector<std::string> FileAnalyzer::compile_args_for(
+    const std::filesystem::path& file_path) const {
+    if (compile_db_ == nullptr) {
+        return {};
+    }
+
+    // Look up with the native spelling first, then the generic (forward-slash)
+    // spelling — generators differ in which form they record on Windows.
+    CXCompileCommands commands =
+        clang_CompilationDatabase_getCompileCommands(compile_db_, file_path.string().c_str());
+    if (clang_CompileCommands_getSize(commands) == 0) {
+        clang_CompileCommands_dispose(commands);
+        commands = clang_CompilationDatabase_getCompileCommands(compile_db_,
+                                                                file_path.generic_string().c_str());
+    }
+
+    // Note: libclang wraps JSON databases in InterpolatingCompilationDatabase,
+    // so files absent from the database (headers, new files) receive arguments
+    // interpolated from the closest recorded entry rather than no arguments.
+    std::vector<std::string> args;
+    if (clang_CompileCommands_getSize(commands) > 0) {
+        CXCompileCommand command = clang_CompileCommands_getCommand(commands, 0);
+        const std::string file_name = file_path.filename().string();
+        const unsigned num_args = clang_CompileCommand_getNumArgs(command);
+
+        // Skip argv[0] (the compiler executable). Strip -c, -o <out>, and the
+        // source file itself: clang_parseTranslationUnit receives the file
+        // separately and chokes on output/source positional arguments.
+        for (unsigned i = 1; i < num_args; ++i) {
+            std::string arg = to_string_and_dispose(clang_CompileCommand_getArg(command, i));
+            if (arg == "-c") {
+                continue;
+            }
+            if (arg == "-o") {
+                ++i;  // Also skip the output path that follows.
+                continue;
+            }
+            const bool is_source_arg =
+                arg == file_path.string() || arg == file_path.generic_string() ||
+                (!arg.empty() && arg.front() != '-' &&
+                 std::filesystem::path(arg).filename().string() == file_name);
+            if (is_source_arg) {
+                continue;
+            }
+            args.push_back(std::move(arg));
+        }
+    }
+    clang_CompileCommands_dispose(commands);
+    return args;
+}
+
 void FileAnalyzer::run() {
     findings_.clear();
     file_count_ = 0;
     total_loc_ = 0;
+    db_parsed_count_ = 0;
+    fallback_parsed_count_ = 0;
+
+    load_compilation_database();
 
     const std::vector<std::filesystem::path> files = discover_cpp_files(repo_root_);
     spdlog::info("FileAnalyzer: found {} file(s) under {}", files.size(), repo_root_.string());
@@ -188,6 +279,15 @@ void FileAnalyzer::run() {
         spdlog::info("FileAnalyzer: excluded {} file(s) by config", skipped);
     }
 
+    if (compile_db_ != nullptr) {
+        clang_CompilationDatabase_dispose(compile_db_);
+        compile_db_ = nullptr;
+        spdlog::info(
+            "FileAnalyzer: parsed {} file(s) with compilation database args, {} with "
+            "default flags",
+            db_parsed_count_, fallback_parsed_count_);
+    }
+
     spdlog::info("FileAnalyzer: analysis complete — {} file(s), {} finding(s)", file_count_,
                  findings_.size());
 }
@@ -211,18 +311,36 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         return;
     }
 
-    // Parse with C++17 so modern features are recognized.
-    const char* cmd_args[] = {"-std=c++17", "-x", "c++"};
-    constexpr int kNumArgs = 3;
+    // Prefer the project's recorded compile arguments (include paths, defines,
+    // language standard); fall back to bare C++17 flags when the file is not
+    // covered by a compilation database.
+    const std::vector<std::string> db_args = compile_args_for(file_path);
+    std::vector<const char*> cmd_args;
+    if (db_args.empty()) {
+        cmd_args = {"-std=c++17", "-x", "c++"};
+    } else {
+        cmd_args.reserve(db_args.size());
+        for (const auto& arg : db_args) {
+            cmd_args.push_back(arg.c_str());
+        }
+        spdlog::debug("FileAnalyzer: '{}' parsed with {} compilation database arg(s)", path_str,
+                      cmd_args.size());
+    }
 
-    CXTranslationUnit tu =
-        clang_parseTranslationUnit(index, path_str.c_str(), cmd_args, kNumArgs, nullptr, 0,
-                                   CXTranslationUnit_DetailedPreprocessingRecord);
+    CXTranslationUnit tu = clang_parseTranslationUnit(
+        index, path_str.c_str(), cmd_args.data(), static_cast<int>(cmd_args.size()), nullptr, 0,
+        CXTranslationUnit_DetailedPreprocessingRecord);
 
     if (tu == nullptr) {
         spdlog::warn("FileAnalyzer: failed to parse '{}'", path_str);
         clang_disposeIndex(index);
         return;
+    }
+
+    if (db_args.empty()) {
+        ++fallback_parsed_count_;
+    } else {
+        ++db_parsed_count_;
     }
 
     // Count LOC.
