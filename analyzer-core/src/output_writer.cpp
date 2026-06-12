@@ -22,7 +22,11 @@ std::string utc_timestamp() {
     const auto now = std::chrono::system_clock::now();
     const std::time_t tt = std::chrono::system_clock::to_time_t(now);
     std::tm utc_tm{};
+#ifdef _WIN32
+    gmtime_s(&utc_tm, &tt);
+#else
     gmtime_r(&tt, &utc_tm);
+#endif
     std::ostringstream oss;
     oss << std::put_time(&utc_tm, "%Y-%m-%dT%H:%M:%SZ");
     return oss.str();
