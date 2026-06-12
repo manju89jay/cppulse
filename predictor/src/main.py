@@ -203,6 +203,7 @@ def build_risk_scores(
     probabilities: np.ndarray,
     predictor: BugPredictor,
     health_scorer: HealthScorer,
+    total_loc: int,
 ) -> dict[str, Any]:
     """Assemble the risk_scores.json payload.
 
@@ -211,11 +212,13 @@ def build_risk_scores(
         probabilities: Bug probability array aligned with features_df rows.
         predictor: Trained BugPredictor (for model metadata).
         health_scorer: HealthScorer instance.
+        total_loc: Total analyzed lines of code (findings.json metadata),
+            used to normalize finding densities per KLOC.
 
     Returns:
         Dict matching the risk_scores.schema.json schema.
     """
-    health = health_scorer.compute(features_df)
+    health = health_scorer.compute(features_df, total_loc)
     explanations = predictor.explain(features_df)
 
     file_risks: list[dict[str, Any]] = []
@@ -334,10 +337,16 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
 
     logger.info("Computing health scores...")
     health_scorer = HealthScorer(profile=profile)
+    total_loc = int(findings_data.get("metadata", {}).get("total_loc", 0))
+    if total_loc <= 0:
+        logger.warning(
+            "findings.json metadata has no total_loc — density normalization "
+            "degenerates to a 1-KLOC baseline"
+        )
 
     logger.info("Building risk scores output...")
     risk_scores = build_risk_scores(
-        features_df, probabilities, predictor, health_scorer
+        features_df, probabilities, predictor, health_scorer, total_loc
     )
 
     logger.info("Validating risk_scores.json schema...")

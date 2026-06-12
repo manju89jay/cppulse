@@ -111,7 +111,7 @@ Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 | 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
 | 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
 | 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
-| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 572 | 12/15 | [Details](examples/leveldb/) |
+| 6 | **LevelDB** | 29K | `18.9` ████░░░░░░░░░░░░░░░░ | 1,621 | 12/15 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
 
 ## Detection Rules
@@ -181,17 +181,19 @@ pie title POCO C++ Libraries - 14,533 Findings
 
 ## Health Score
 
-Penalty-based model where each category contributes a weighted penalty based on findings density (findings per KLOC):
+Deterministic density model ([ADR-007](docs/adr/ADR-007-health-score-formula.md)) — independent of repository size and file layout:
 
 ```
-health = 100 - weighted_average(
-    penalty(memory_safety)  * 3.0,
-    penalty(complexity)     * 1.5,
-    penalty(modernization)  * 1.0
-)
+density(cat)  = findings(cat) / KLOC
+penalty(cat)  = min(1.0, density(cat) / cap(cat))
+health        = (1 - Σ penalty(cat) × weight(cat) / Σ weight(cat)) × 100
 ```
 
-The safety-critical profile adds MISRA at 2.5x weight. A codebase with zero findings scores 100.
+Weights: memory safety 3.0×, complexity 1.5×, modernization 1.0× (the safety-critical
+profile adds MISRA at 2.5×). Caps — the density at which a category scores 0 — are
+5 / 10 / 50 / 10 findings per KLOC respectively and are documented as calibration
+constants in ADR-007. Zero findings scores 100; identical inputs always produce the
+identical score.
 
 ## CI Integration
 

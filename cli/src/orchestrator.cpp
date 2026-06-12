@@ -141,6 +141,9 @@ PipelineResult Orchestrator::run_analyzer() {
     if (config_path_.has_value()) {
         command += " --config " + shell_quote(config_path_.value());
     }
+    if (profile_ != "default") {
+        command += " --profile " + shell_quote(std::filesystem::path{profile_});
+    }
     return run_command(command, "analyzer");
 }
 

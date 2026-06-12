@@ -126,8 +126,22 @@ general-purpose C++ codebases (see D13 in DECISIONS.md).
 
 ## Health Score Algorithm
 
-The health score is a 0–100 penalty model. Each category contributes a weighted
-penalty based on its findings density (findings per KLOC).
+The health score is a 0–100 penalty model over finding *densities* (findings per
+KLOC), so it is independent of repository size and file layout (ADR-007). Each
+category's penalty is its density relative to a documented cap — the density at
+which that category is considered fully degraded:
+
+```
+density(cat)  = findings(cat) / KLOC      # KLOC from findings.json metadata.total_loc
+penalty(cat)  = min(1.0, density(cat) / cap(cat))
+```
+
+| Category | Weight | Cap (findings/KLOC) |
+|----------|-------:|--------------------:|
+| memory_safety | 3.0 | 5 |
+| misra_compliance (safety-critical profile only) | 2.5 | 10 |
+| complexity | 1.5 | 10 |
+| modernization | 1.0 | 50 |
 
 ### Default Profile
 
@@ -154,9 +168,12 @@ weighted_penalty = (
 ) / (3.0 + 2.5 + 1.5 + 1.0)
 ```
 
-A codebase with zero findings scores 100. The memory safety weight (3x) reflects
-the empirical finding that raw pointer violations are the dominant source of
-CVEs and crash bugs in production C++ systems.
+Per-category scores are `(1 − penalty) × 100`. A codebase with zero findings
+scores 100, and identical inputs always produce the identical score. The memory
+safety weight (3x) reflects the empirical finding that raw pointer violations
+are the dominant source of CVEs and crash bugs in production C++ systems.
+Implementation: `predictor/src/health_scorer.py`; rationale and cap
+calibration: ADR-007.
 
 <!-- SHOWCASE_RESULT:START -->
 **gRPC result:** 99.0/100 � strong scores across all three

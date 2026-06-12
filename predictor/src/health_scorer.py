@@ -1,8 +1,19 @@
 """Health scoring module for cppulse predictor.
 
 Converts raw finding counts into a 0–100 health score for the overall
-codebase and per category. Supports profiles: "default" excludes MISRA
-rules (designed for safety-critical embedded, not general C++).
+codebase and per category, using finding density (findings per KLOC)
+so the score is independent of repository size and file granularity.
+
+Model (see ADR-007):
+    density_cat  = findings_cat / KLOC
+    penalty_cat  = min(1.0, density_cat / cap_cat)        # in [0, 1]
+    category     = (1 - penalty_cat) * 100
+    overall      = (1 - sum(penalty_cat * w_cat) / sum(w_cat)) * 100
+
+The cap is the density at which a category is considered fully degraded
+(category score 0). Caps are calibration constants documented in ADR-007.
+Supports profiles: "default" excludes MISRA rules (designed for
+safety-critical embedded, not general C++).
 """
 
 from __future__ import annotations
@@ -11,32 +22,18 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-PROFILES: dict[str, dict] = {
+# Per profile: category -> (feature column, weight, density cap in findings/KLOC).
+PROFILES: dict[str, dict[str, tuple[str, float, float]]] = {
     "default": {
-        "weights": {
-            "memory_findings": 3.0,
-            "complexity_findings": 1.5,
-            "modernization_findings": 1.0,
-        },
-        "categories": {
-            "memory_safety": ("memory_findings", 15.0),
-            "modernization": ("modernization_findings", 5.0),
-            "complexity": ("complexity_findings", 10.0),
-        },
+        "memory_safety": ("memory_findings", 3.0, 5.0),
+        "complexity": ("complexity_findings", 1.5, 10.0),
+        "modernization": ("modernization_findings", 1.0, 50.0),
     },
     "safety-critical": {
-        "weights": {
-            "memory_findings": 3.0,
-            "misra_findings": 2.5,
-            "complexity_findings": 1.5,
-            "modernization_findings": 1.0,
-        },
-        "categories": {
-            "memory_safety": ("memory_findings", 15.0),
-            "modernization": ("modernization_findings", 5.0),
-            "complexity": ("complexity_findings", 10.0),
-            "misra_compliance": ("misra_findings", 12.0),
-        },
+        "memory_safety": ("memory_findings", 3.0, 5.0),
+        "misra_compliance": ("misra_findings", 2.5, 10.0),
+        "complexity": ("complexity_findings", 1.5, 10.0),
+        "modernization": ("modernization_findings", 1.0, 50.0),
     },
 }
 
@@ -55,10 +52,12 @@ class HealthScore:
 
 
 class HealthScorer:
-    """Computes codebase health scores from feature data.
+    """Computes codebase health scores from finding densities.
 
-    The overall health score penalizes findings weighted by category severity.
-    Category scores reflect per-file average finding density scaled to [0, 100].
+    Each category's penalty is its finding density (per KLOC) relative to a
+    documented cap, weighted and normalized by the sum of weights — the same
+    inputs always produce the same score, and a codebase with zero findings
+    scores 100 regardless of size.
 
     Args:
         profile: Analysis profile name. "default" excludes MISRA rules,
@@ -70,13 +69,15 @@ class HealthScorer:
             raise ValueError(
                 f"Unknown profile: {profile!r}. Choose from {list(PROFILES)}"
             )
-        self._profile = PROFILES[profile]
+        self._categories = PROFILES[profile]
 
-    def compute(self, features_df: pd.DataFrame) -> HealthScore:
+    def compute(self, features_df: pd.DataFrame, total_loc: int) -> HealthScore:
         """Compute the overall and per-category health scores.
 
         Args:
             features_df: DataFrame produced by FeatureEngineer.build_features().
+            total_loc: Total lines of code analyzed (from findings.json
+                metadata). Guarded to at least 1.
 
         Returns:
             HealthScore with overall score and by_category breakdown.
@@ -84,37 +85,29 @@ class HealthScorer:
         if features_df.empty:
             return HealthScore(
                 overall=100.0,
-                by_category={cat: 100.0 for cat in self._profile["categories"]},
+                by_category={cat: 100.0 for cat in self._categories},
             )
 
-        overall = self._compute_overall(features_df)
-        by_category = self._compute_by_category(features_df)
+        kloc = max(int(total_loc), 1) / 1000.0
+
+        penalties: dict[str, float] = {}
+        for category, (col, _weight, cap) in self._categories.items():
+            count = float(features_df[col].sum()) if col in features_df.columns else 0.0
+            density = count / kloc
+            penalties[category] = min(1.0, density / cap)
+
+        weight_sum = sum(weight for (_c, weight, _cap) in self._categories.values())
+        weighted_penalty = (
+            sum(
+                penalties[category] * weight
+                for category, (_c, weight, _cap) in self._categories.items()
+            )
+            / weight_sum
+        )
+
+        overall = round((1.0 - weighted_penalty) * 100.0, 1)
+        by_category = {
+            category: round((1.0 - penalty) * 100.0, 1)
+            for category, penalty in penalties.items()
+        }
         return HealthScore(overall=overall, by_category=by_category)
-
-    def _compute_overall(self, features_df: pd.DataFrame) -> float:
-        """Compute overall health score using the active profile weights."""
-        total_penalty = 0.0
-        file_count = len(features_df)
-
-        for col, weight in self._profile["weights"].items():
-            if col in features_df.columns:
-                total_penalty += float(features_df[col].sum()) * weight
-
-        normalized_penalty = total_penalty / max(file_count, 1)
-        score = 100.0 - normalized_penalty
-        return float(max(0.0, min(100.0, score)))
-
-    def _compute_by_category(self, features_df: pd.DataFrame) -> dict[str, float]:
-        """Compute per-category health scores for the active profile."""
-        file_count = len(features_df)
-        scores: dict[str, float] = {}
-
-        for category, (col, scale) in self._profile["categories"].items():
-            if col in features_df.columns:
-                avg_findings = float(features_df[col].sum()) / max(file_count, 1)
-            else:
-                avg_findings = 0.0
-            raw = 100.0 - avg_findings * scale
-            scores[category] = float(max(0.0, min(100.0, raw)))
-
-        return scores

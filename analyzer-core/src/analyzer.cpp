@@ -9,6 +9,7 @@
 #include <clang-c/Index.h>
 #include <spdlog/spdlog.h>
 
+#include <algorithm>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -164,6 +165,16 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 }
 
 }  // namespace
+
+std::vector<Finding> apply_profile(std::vector<Finding> findings, const std::string& profile) {
+    if (profile == "safety-critical") {
+        return findings;
+    }
+    findings.erase(std::remove_if(findings.begin(), findings.end(),
+                                  [](const Finding& f) { return f.category == "misra"; }),
+                   findings.end());
+    return findings;
+}
 
 FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config)
     : repo_root_(std::move(repo_root)), config_(std::move(config)) {}

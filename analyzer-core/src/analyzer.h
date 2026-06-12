@@ -19,6 +19,19 @@
 namespace cppulse {
 
 /**
+ * @brief Drop findings not belonging to the given analysis profile.
+ *
+ * MISRA findings are opt-in: they are removed unless the profile is
+ * "safety-critical" (see D13 in docs/DECISIONS.md).
+ *
+ * @param findings  Findings to filter (taken by value, filtered in place).
+ * @param profile   "default" or "safety-critical".
+ * @return The filtered findings vector.
+ */
+[[nodiscard]] std::vector<Finding> apply_profile(std::vector<Finding> findings,
+                                                 const std::string& profile);
+
+/**
  * @brief Analyzes all C++ files under a repository root with all 22 rules.
  *
  * Usage:

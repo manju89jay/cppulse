@@ -147,3 +147,22 @@ TEST(CompilationDbTest, MalformedDatabaseFallsBackWithoutCrashing) {
 }
 
 }  // namespace
+
+TEST(ApplyProfileTest, DefaultProfileRemovesMisraFindings) {
+    std::vector<cppulse::Finding> findings;
+    findings.push_back(cppulse::Finding{.rule_id = "MISRA-001", .category = "misra"});
+    findings.push_back(cppulse::Finding{.rule_id = "CPP-MEM-001", .category = "memory_safety"});
+
+    const auto filtered = cppulse::apply_profile(findings, "default");
+    ASSERT_EQ(filtered.size(), 1u);
+    EXPECT_EQ(filtered.front().rule_id, "CPP-MEM-001");
+}
+
+TEST(ApplyProfileTest, SafetyCriticalProfileKeepsMisraFindings) {
+    std::vector<cppulse::Finding> findings;
+    findings.push_back(cppulse::Finding{.rule_id = "MISRA-001", .category = "misra"});
+    findings.push_back(cppulse::Finding{.rule_id = "CPP-MEM-001", .category = "memory_safety"});
+
+    const auto filtered = cppulse::apply_profile(findings, "safety-critical");
+    EXPECT_EQ(filtered.size(), 2u);
+}

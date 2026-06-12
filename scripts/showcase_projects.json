@@ -3,42 +3,42 @@
     "id": "poco",
     "display_name": "POCO C++ Libraries",
     "repo_url": "https://github.com/pocoproject/poco",
-    "clone_depth": 1,
+    "clone_depth": 1500,
     "description": "POCO C++ Libraries is a mature, widely-deployed open-source C++ framework providing networking, file system, threading, and cryptography primitives. With a git history stretching back nearly two decades, it represents a realistic benchmark for cppulse: a large, actively maintained codebase that predates modern C++ idioms."
   },
   {
     "id": "grpc",
     "display_name": "gRPC",
     "repo_url": "https://github.com/grpc/grpc",
-    "clone_depth": 1,
+    "clone_depth": 4000,
     "description": "gRPC is Google's open-source, high-performance Remote Procedure Call framework, built on HTTP/2 and Protocol Buffers. It powers microservice communication at Google scale and has become the dominant RPC standard across cloud-native infrastructure."
   },
   {
     "id": "protobuf",
     "display_name": "Protocol Buffers",
     "repo_url": "https://github.com/protocolbuffers/protobuf",
-    "clone_depth": 1,
+    "clone_depth": 3000,
     "description": "Protocol Buffers (protobuf) is Google's language-neutral, platform-neutral extensible mechanism for serializing structured data. Originally developed at Google to replace ad hoc XML formats, it is now the backbone of gRPC and countless internal Google systems, as well as a widely adopted standard across the industry."
   },
   {
     "id": "json",
     "display_name": "nlohmann/json",
     "repo_url": "https://github.com/nlohmann/json",
-    "clone_depth": 1,
+    "clone_depth": 800,
     "description": "nlohmann/json is the most widely starred C++ JSON library on GitHub, created by Niels Lohmann. Its single-header design, intuitive API, and comprehensive test suite have made it the de facto standard for JSON handling in modern C++ projects across game engines, scientific computing, and cloud services."
   },
   {
     "id": "fmt",
     "display_name": "{fmt}",
     "repo_url": "https://github.com/fmtlib/fmt",
-    "clone_depth": 1,
+    "clone_depth": 1000,
     "description": "{fmt} is Victor Zverovich's type-safe formatting library that became the direct basis for std::format in C++20. Widely deployed across game engines, embedded systems, and cloud infrastructure, fmt is valued for both its ergonomics and its near-zero runtime overhead."
   },
   {
     "id": "leveldb",
     "display_name": "LevelDB",
     "repo_url": "https://github.com/google/leveldb",
-    "clone_depth": 1,
+    "clone_depth": 300,
     "description": "LevelDB is Google's fast on-disk key-value storage library, originally written by Jeff Dean and Sanjay Ghemawat and open-sourced in 2011. It underpins Chrome's IndexedDB and has been adopted by Bitcoin Core, Ethereum clients, and dozens of embedded database projects."
   }
 ]
