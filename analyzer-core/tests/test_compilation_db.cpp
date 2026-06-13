@@ -15,6 +15,7 @@
 #include <string>
 
 #include "analyzer.h"
+#include "file_discovery.h"
 
 namespace {
 
@@ -165,4 +166,33 @@ TEST(ApplyProfileTest, SafetyCriticalProfileKeepsMisraFindings) {
 
     const auto filtered = cppulse::apply_profile(findings, "safety-critical");
     EXPECT_EQ(filtered.size(), 2u);
+}
+
+// ---------------------------------------------------------------------------
+// Generated-source detection (file_discovery.h)
+// ---------------------------------------------------------------------------
+
+TEST(GeneratedSourceTest, FlagsProtobufAndUpbGenerated) {
+    EXPECT_TRUE(cppulse::is_generated_source("foo.pb.h"));
+    EXPECT_TRUE(cppulse::is_generated_source("foo.pb.cc"));
+    EXPECT_TRUE(cppulse::is_generated_source("service.grpc.pb.h"));
+    EXPECT_TRUE(cppulse::is_generated_source("route_components.upb.h"));
+    EXPECT_TRUE(cppulse::is_generated_source("msg.upbdefs.h"));
+    EXPECT_TRUE(cppulse::is_generated_source("msg.upb_minitable.c"));
+    EXPECT_TRUE(cppulse::is_generated_source("schema_generated.h"));
+    EXPECT_TRUE(cppulse::is_generated_source("moc_widget.cpp"));
+}
+
+TEST(GeneratedSourceTest, FlagsGeneratorDirectories) {
+    EXPECT_TRUE(cppulse::is_generated_source(std::filesystem::path{"src"} / "upb-gen" / "envoy" /
+                                             "route.upb.h"));
+}
+
+TEST(GeneratedSourceTest, DoesNotFlagHandWrittenSources) {
+    EXPECT_FALSE(cppulse::is_generated_source("analyzer.cpp"));
+    EXPECT_FALSE(cppulse::is_generated_source("widget.h"));
+    EXPECT_FALSE(
+        cppulse::is_generated_source(std::filesystem::path{"src"} / "core" / "channel.cc"));
+    // "ui" substring must not trip the moc/ui prefix check.
+    EXPECT_FALSE(cppulse::is_generated_source("build.h"));
 }
