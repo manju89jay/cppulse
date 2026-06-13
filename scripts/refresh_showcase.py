@@ -116,6 +116,16 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         cwd=REPO_ROOT / "git-miner",
     )
 
+    # Sanity gate: a shallow clone whose history can't be mined yields empty
+    # file_metrics, which silently degrades the predictor to tautological
+    # heuristic labels. Fail loudly here rather than publish bad showcase data.
+    git_metrics = json.loads((output_dir / "git_metrics.json").read_text())
+    if not git_metrics.get("file_metrics"):
+        raise RuntimeError(
+            f"{project_id}: git-miner produced no file_metrics — history likely "
+            "unreachable (increase clone_depth in showcase_projects.json)."
+        )
+
     # Step 3: predictor → risk_scores.json + roadmap.json
     print(f"  Running predictor on {project_id}...")
     _run(

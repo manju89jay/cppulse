@@ -13,6 +13,8 @@ from pathlib import Path
 
 import git
 
+from .commit_utils import changed_files
+
 logger = logging.getLogger(__name__)
 
 CPP_EXTENSIONS: frozenset[str] = frozenset(
@@ -104,7 +106,7 @@ class GitMiner:
             is_bug_fix = self._is_bug_fix_commit(commit.message)
             author = commit.author.name or commit.author.email or "unknown"
 
-            stats = commit.stats.files
+            stats = changed_files(commit)
             for filepath, file_stat in stats.items():
                 if not self._is_cpp_file(filepath):
                     continue

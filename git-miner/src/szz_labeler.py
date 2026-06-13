@@ -14,6 +14,8 @@ from pathlib import Path
 
 import git
 
+from .commit_utils import changed_files
+
 logger = logging.getLogger(__name__)
 
 CPP_EXTENSIONS: frozenset[str] = frozenset(
@@ -92,11 +94,11 @@ class SZZLabeler:
                 continue
 
             parent = fix_commit.parents[0]
-            changed_files = [
-                fp for fp in fix_commit.stats.files if self._is_cpp_file(fp)
+            cpp_files = [
+                fp for fp in changed_files(fix_commit) if self._is_cpp_file(fp)
             ]
 
-            for filepath in changed_files:
+            for filepath in cpp_files:
                 introducing_shas = self._blame_file(parent, filepath)
                 if not introducing_shas:
                     continue
