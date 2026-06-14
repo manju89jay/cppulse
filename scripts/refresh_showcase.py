@@ -202,7 +202,7 @@ def update_architecture_showcase_result() -> None:
     Finds the top-scoring project and writes its result into the markers.
     """
     arch_path = REPO_ROOT / "docs" / "architecture.md"
-    content = arch_path.read_text()
+    content = arch_path.read_text(encoding="utf-8")
 
     start_marker = "<!-- SHOWCASE_RESULT:START -->"
     end_marker = "<!-- SHOWCASE_RESULT:END -->"
@@ -258,7 +258,7 @@ def update_architecture_showcase_result() -> None:
         + content[end_idx:]
     )
 
-    arch_path.write_text(new_content)
+    arch_path.write_text(new_content, encoding="utf-8")
     print(f"  Updated architecture.md with {best_project['display_name']} result")
 
 
