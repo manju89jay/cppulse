@@ -3,95 +3,1310 @@
   "items": [
     {
       "priority": 1,
-      "file": "/tmp/json/include/nlohmann/detail/conversions/to_chars.hpp",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 15.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-CX-003",
-        "CPP-CX-002"
-      ]
+      "file": "tests/src/unit-msgpack.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 2,
-      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 66.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "tests/src/unit-reference_access.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 3,
-      "file": "/tmp/json/include/nlohmann/detail/input/lexer.hpp",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 21.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "include/nlohmann/detail/iterators/iterator_traits.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 4,
-      "file": "/tmp/json/include/nlohmann/json.hpp",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 24.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "include/nlohmann/detail/meta/identity_tag.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 5,
-      "file": "/tmp/json/include/nlohmann/detail/output/binary_writer.hpp",
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_explicit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 6,
+      "file": "tests/src/unit-wstring.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 7,
+      "file": "tests/src/unit-ordered_map.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 8,
+      "file": "tests/src/unit-byte_container_with_subtype.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 9,
+      "file": "include/nlohmann/detail/meta/void_t.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 10,
+      "file": "tests/src/unit-json_patch.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 11,
+      "file": "tests/src/unit-32bit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 12,
+      "file": "tests/src/unit-unicode4.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 13,
+      "file": "tests/src/unit-unicode2.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 14,
+      "file": "tests/src/unit-unicode3.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 15,
+      "file": "tests/src/unit-alt-string.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 16,
+      "file": "include/nlohmann/detail/meta/call_std/begin.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 17,
+      "file": "tests/src/unit-pointer_access.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 18,
+      "file": "include/nlohmann/detail/meta/detected.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 19,
+      "file": "single_include/nlohmann/json_fwd.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 20,
+      "file": "include/nlohmann/detail/meta/cpp_future.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 21,
+      "file": "tests/src/unit-custom-base-class.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 22,
+      "file": "tests/src/unit-constructor2.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 23,
+      "file": "tests/src/make_test_data_available.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 24,
+      "file": "tests/src/unit-to_chars.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 25,
+      "file": "tests/src/fuzzer-driver_afl.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 26,
+      "file": "tests/src/fuzzer-parse_ubjson.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 27,
+      "file": "tests/cmake_import_minver/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 28,
+      "file": "tests/src/unit-binary_formats.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 29,
+      "file": "tests/abi/config/default.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 30,
+      "file": "tests/src/unit-noexcept.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 31,
+      "file": "tests/src/unit-unicode1.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 32,
+      "file": "include/nlohmann/detail/iterators/internal_iterator.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 33,
+      "file": "tests/src/unit-class_iterator.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 34,
+      "file": "include/nlohmann/detail/exceptions.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 35,
+      "file": "tests/cmake_import/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 36,
+      "file": "include/nlohmann/detail/input/parser.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 37,
+      "file": "tests/src/unit-user_defined_input.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 38,
+      "file": "tests/src/unit-capacity.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 39,
+      "file": "tests/src/unit-unicode5.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 40,
+      "file": "tests/src/unit-ubjson.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 41,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_intrusive_with_default_explicit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 42,
+      "file": "include/nlohmann/detail/output/binary_writer.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 43,
+      "file": "include/nlohmann/byte_container_with_subtype.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 44,
+      "file": "include/nlohmann/detail/meta/is_sax.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 45,
+      "file": "tests/src/unit-disabled_exceptions.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 46,
+      "file": "tests/src/unit-assert_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 47,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_with_default_explicit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 48,
+      "file": "tests/src/unit-convenience.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 49,
+      "file": "include/nlohmann/thirdparty/hedley/hedley_undef.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 50,
+      "file": "tests/cmake_add_subdirectory/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 51,
+      "file": "tests/src/fuzzer-parse_cbor.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 52,
+      "file": "tests/src/unit-concepts.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 53,
+      "file": "include/nlohmann/detail/input/json_sax.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 54,
+      "file": "tests/src/unit-items.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 55,
+      "file": "tests/src/unit-comparison.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 56,
+      "file": "tests/src/unit-udt.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 57,
+      "file": "tests/cmake_target_include_directories/project/Bar.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 58,
+      "file": "tests/src/unit-readme.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 59,
+      "file": "include/nlohmann/json_fwd.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 60,
+      "file": "tests/abi/config/noversion.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 61,
+      "file": "tests/cmake_target_include_directories/project/Foo.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 62,
+      "file": "include/nlohmann/detail/meta/call_std/end.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 63,
+      "file": "include/nlohmann/detail/conversions/to_json.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 64,
+      "file": "include/nlohmann/detail/string_escape.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 65,
+      "file": "tests/benchmarks/src/benchmarks.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 66,
+      "file": "tests/src/unit-class_const_iterator.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 67,
+      "file": "tests/src/unit-deserialization.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 68,
+      "file": "tests/src/unit-iterators2.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 69,
+      "file": "tests/src/unit-modifiers.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 70,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_intrusive_explicit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 71,
+      "file": "include/nlohmann/detail/input/position_t.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 72,
+      "file": "tests/src/fuzzer-parse_json.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 73,
+      "file": "include/nlohmann/detail/meta/std_fs.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 74,
+      "file": "tests/src/unit-algorithms.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 75,
+      "file": "tests/src/unit-element_access1.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 76,
+      "file": "tests/src/fuzzer-parse_bjdata.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 77,
+      "file": "tests/src/unit-allocator.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 78,
+      "file": "include/nlohmann/detail/input/lexer.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 79,
+      "file": "tests/cmake_fetch_content2/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 80,
+      "file": "include/nlohmann/detail/value_t.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 81,
+      "file": "include/nlohmann/detail/abi_macros.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 82,
+      "file": "tests/src/unit-inspection.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 83,
+      "file": "tests/src/fuzzer-parse_msgpack.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 84,
+      "file": "include/nlohmann/detail/conversions/to_chars.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 85,
+      "file": "include/nlohmann/detail/iterators/primitive_iterator.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 86,
+      "file": "include/nlohmann/thirdparty/hedley/hedley.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 87,
+      "file": "include/nlohmann/detail/string_concat.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 88,
+      "file": "tests/src/unit-bson.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 89,
+      "file": "tests/src/unit-regression1.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 90,
+      "file": "tests/src/unit-class_lexer.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 91,
+      "file": "include/nlohmann/adl_serializer.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 92,
+      "file": "tests/src/unit-bjdata.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 93,
+      "file": "tests/src/unit-testsuites.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 94,
+      "file": "include/nlohmann/detail/iterators/iteration_proxy.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 95,
+      "file": "include/nlohmann/detail/hash.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 96,
+      "file": "tests/cmake_fetch_content/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 97,
+      "file": "tests/cmake_target_include_directories/project/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 98,
+      "file": "tests/src/unit-merge_patch.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 99,
+      "file": "tests/src/fuzzer-parse_bson.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 100,
+      "file": "include/nlohmann/detail/json_ref.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 101,
+      "file": "include/nlohmann/detail/output/output_adapters.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 102,
+      "file": "tests/src/unit-iterators1.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 103,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\basic_json__CompatibleType.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 33.0,
-      "impact_score": 12.0,
+      "estimated_hours": 3.0,
+      "impact_score": 6.0,
       "finding_ids": [
-        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 104,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\conversions\\to_chars.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 15.0,
+      "impact_score": 6.0,
+      "finding_ids": [
         "CPP-CX-002",
         "CPP-CX-003"
       ]
     },
     {
-      "priority": 6,
-      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
+      "priority": 105,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\binary_reader.hpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 12.0,
-      "impact_score": 12.0,
+      "estimated_hours": 69.0,
+      "impact_score": 6.0,
       "finding_ids": [
         "CPP-CX-001",
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 7,
-      "file": "/tmp/json/tests/src/unit-bjdata.cpp",
+      "priority": 106,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\lexer.hpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 3.0,
-      "impact_score": 12.0,
+      "estimated_hours": 21.0,
+      "impact_score": 6.0,
       "finding_ids": [
-        "CPP-CX-003"
+        "CPP-CX-001",
+        "CPP-CX-002"
       ]
     },
     {
-      "priority": 8,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "priority": 107,
+      "file": "tests/src/unit-class_parser_diagnostic_positions.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 108,
+      "file": "tests/abi/config/custom.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 109,
+      "file": "docs/mkdocs/docs/examples/diagnostics_extended_positions.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 110,
+      "file": "docs/mkdocs/docs/examples/value__return_type.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 111,
+      "file": "docs/mkdocs/docs/examples/diagnostic_positions_exception.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 112,
+      "file": "tests/src/unit-udl.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 113,
+      "file": "docs/mkdocs/docs/examples/operator_ltlt__json_pointer.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 6.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 114,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\at__json_pointer.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 12.0,
-      "impact_score": 12.0,
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 115,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\basic_json__CompatibleType.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 116,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\byte_container_with_subtype__subtype.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 117,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\nlohmann_json_serialize_enum.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 118,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\nlohmann_json_serialize_enum_strict.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 119,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\to_bjdata.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 120,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\to_ubjson.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 121,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\conversions\\to_chars.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 40.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 122,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\hash.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 123,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\binary_reader.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 124,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\input_adapters.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 125,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\json_sax.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 126,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\lexer.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 11.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 127,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\input\\parser.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 128,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\iterators\\iter_impl.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 129,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\iterators\\iteration_proxy.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 130,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\json_pointer.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 131,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\macro_scope.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 132,
+      "file": "include/nlohmann/detail/json_custom_base_class.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 133,
+      "file": "tests/src/unit-no-mem-leak-on-adl-serialize.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 134,
+      "file": "tests/abi/config/config.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 135,
+      "file": "tests/src/unit-iterators3.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 136,
+      "file": "docs/mkdocs/docs/examples/from_json__default_constructible.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 137,
+      "file": "tests/src/unit-type_traits.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 138,
+      "file": "tests/src/unit-locale-cpp.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 139,
+      "file": "docs/mkdocs/docs/examples/nlohmann_json_serialize_enum.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 140,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\output\\binary_writer.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 33.0,
+      "impact_score": 3.0,
       "finding_ids": [
         "CPP-CX-001",
         "CPP-CX-002",
@@ -99,537 +1314,473 @@
       ]
     },
     {
-      "priority": 9,
-      "file": "/tmp/json/tests/src/unit-udt_macro.cpp",
+      "priority": 141,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\output\\serializer.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 142,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\json.hpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 36.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 143,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-bjdata.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 144,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-udt_macro.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 6.0,
-      "impact_score": 9.0,
+      "impact_score": 3.0,
       "finding_ids": [
         "CPP-CX-001"
       ]
     },
     {
-      "priority": 10,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/at__json_pointer.cpp",
+      "priority": 145,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerDriver.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 3.0,
-      "impact_score": 8.0,
+      "estimated_hours": 12.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 146,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTracePC.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 3.0,
       "finding_ids": [
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 11,
-      "file": "/tmp/json/include/nlohmann/detail/input/binary_reader.hpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 8.0,
+      "priority": 147,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\FuzzerUnittest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 36.0,
+      "impact_score": 3.0,
       "finding_ids": [
-        "CPP-MOD-001"
+        "CPP-CX-001"
       ]
     },
     {
-      "priority": 12,
-      "file": "/tmp/json/include/nlohmann/ordered_map.hpp",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 12.0,
-      "impact_score": 8.0,
+      "priority": 148,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SimpleCmpTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
       "finding_ids": [
-        "CPP-MEM-001"
+        "CPP-CX-001"
       ]
     },
     {
-      "priority": 13,
-      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 12.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 14,
-      "file": "/tmp/json/tests/benchmarks/src/benchmarks.cpp",
+      "priority": 149,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\docs\\mkdocs\\docs\\examples\\diagnostic_positions.cpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 2.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
-        "CPP-MOD-006",
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 15,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 12.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-MEM-003",
-        "CPP-MEM-001",
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 16,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCorpus.h",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 6.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-MOD-002",
-        "CPP-MOD-009",
-        "CPP-MOD-001",
         "CPP-MOD-004"
       ]
     },
     {
-      "priority": 17,
-      "file": "/tmp/json/include/nlohmann/detail/input/input_adapters.hpp",
+      "priority": 150,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\iterators\\primitive_iterator.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 151,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\meta\\type_traits.hpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 1.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-MOD-008"
       ]
     },
     {
-      "priority": 18,
-      "file": "/tmp/json/include/nlohmann/detail/input/parser.hpp",
+      "priority": 152,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\output\\binary_writer.hpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 8.0,
+      "estimated_hours": 5.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-MOD-001"
       ]
     },
     {
-      "priority": 19,
-      "file": "/tmp/json/tests/src/unit-unicode2.cpp",
+      "priority": 153,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\detail\\output\\serializer.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 154,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\include\\nlohmann\\json.hpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 155,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\benchmarks\\src\\benchmarks.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 156,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\benchmarks\\src\\benchmarks.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 157,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_bjdata.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 158,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_bson.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 159,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_cbor.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 160,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_json.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 161,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_msgpack.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 162,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\fuzzer-parse_ubjson.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 163,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-allocator.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 164,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-allocator.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 165,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-conversions.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 166,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-disabled_exceptions.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 167,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-noexcept.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 168,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-regression2.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 169,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-regression2.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 170,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-to_chars.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 171,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-unicode2.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 20,
-      "file": "/tmp/json/tests/src/unit-unicode3.cpp",
+      "priority": 172,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-unicode3.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 21,
-      "file": "/tmp/json/tests/src/unit-unicode4.cpp",
+      "priority": 173,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-unicode4.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 22,
-      "file": "/tmp/json/tests/src/unit-unicode5.cpp",
+      "priority": 174,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\src\\unit-unicode5.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 23,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
+      "priority": 175,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerCorpus.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 176,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerCorpus.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 177,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerCrossOver.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 178,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerCrossOver.cpp",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 6.0,
-      "impact_score": 8.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-CX-003"
       ]
     },
     {
-      "priority": 24,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "priority": 179,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerDictionary.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 180,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerDriver.cpp",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
-      "estimated_hours": 36.0,
-      "impact_score": 8.0,
+      "estimated_hours": 24.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-MEM-001",
-        "CPP-MEM-002",
         "CPP-MEM-003"
       ]
     },
     {
-      "priority": 25,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDriver.cpp",
+      "priority": 181,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerDriver.cpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 17.0,
-      "impact_score": 8.0,
+      "estimated_hours": 30.0,
+      "impact_score": 2.0,
       "finding_ids": [
         "CPP-MOD-001",
         "CPP-MOD-002",
         "CPP-MOD-004",
-        "CPP-MOD-006",
         "CPP-MOD-009"
       ]
     },
     {
-      "priority": 26,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 3.0,
-      "impact_score": 6.0,
-      "finding_ids": [
-        "CPP-CX-002"
-      ]
-    },
-    {
-      "priority": 27,
-      "file": "/tmp/json/tests/src/unit-allocator.cpp",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 8.0,
-      "impact_score": 6.0,
-      "finding_ids": [
-        "CPP-MEM-001"
-      ]
-    },
-    {
-      "priority": 28,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__CompatibleType.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 29,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bjdata.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 30,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/nlohmann_json_serialize_enum.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 31,
-      "file": "/tmp/json/include/nlohmann/detail/output/serializer.hpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-004"
-      ]
-    },
-    {
-      "priority": 32,
-      "file": "/tmp/json/tests/src/unit-disabled_exceptions.cpp",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MEM-001"
-      ]
-    },
-    {
-      "priority": 33,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerCrossOver.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-009"
-      ]
-    },
-    {
-      "priority": 34,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDictionary.h",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-009"
-      ]
-    },
-    {
-      "priority": 35,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/back.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 36,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/diagnostic_positions.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-004"
-      ]
-    },
-    {
-      "priority": 37,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/afl/afl_driver.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-007"
-      ]
-    },
-    {
-      "priority": 38,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/basic_json__InputIt_InputIt.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 39,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/crbegin.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 40,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/crend.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 41,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/emplace.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 42,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/invalid_iterator.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 43,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/object_comparator_t.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-004"
-      ]
-    },
-    {
-      "priority": 44,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/rbegin.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 45,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/rend.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-005"
-      ]
-    },
-    {
-      "priority": 46,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/std_hash.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-004"
-      ]
-    },
-    {
-      "priority": 47,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/to_bson.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 48,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/to_cbor.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 49,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/to_msgpack.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 50,
-      "file": "/tmp/json/docs/mkdocs/docs/examples/to_ubjson.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 2.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-001"
-      ]
-    },
-    {
-      "priority": 51,
-      "file": "/tmp/json/include/nlohmann/detail/meta/type_traits.hpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 52,
-      "file": "/tmp/json/tests/src/unit-conversions.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 53,
-      "file": "/tmp/json/tests/src/unit-noexcept.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 54,
-      "file": "/tmp/json/tests/src/unit-regression2.cpp",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MEM-001"
-      ]
-    },
-    {
-      "priority": 55,
-      "file": "/tmp/json/tests/src/unit-regression2.cpp",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 2.0,
-      "finding_ids": [
-        "CPP-MOD-008"
-      ]
-    },
-    {
-      "priority": 56,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctions.h",
+      "priority": 182,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerExtFunctions.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 2.0,
@@ -639,30 +1790,1331 @@
       ]
     },
     {
-      "priority": 57,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsWeak.cpp",
+      "priority": 183,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerExtFunctionsWeakAlias.cpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 184,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerExtFunctionsWeakAlias.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 185,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerIO.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 186,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerIOWindows.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 17.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-007",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 187,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerIOWindows.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 188,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerInterface.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 189,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerInterface.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 190,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerInternal.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 191,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerInternal.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 11.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 192,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerInternal.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 193,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerLoop.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 194,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerLoop.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 54.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 195,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerLoop.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 196,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMerge.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 197,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMerge.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 13.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 198,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMerge.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 199,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMutate.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 200,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMutate.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 47.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 201,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMutate.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 202,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMutate.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 203,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMutate.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 204,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerSHA1.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 205,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerSHA1.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 13.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 206,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerSHA1.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 207,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerSHA1.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 208,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTracePC.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 209,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTracePC.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 32.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 210,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTracePC.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 211,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTraceState.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 212,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTraceState.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 26.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 213,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerTraceState.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 214,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtil.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 215,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtil.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 17.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 216,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtil.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 217,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilWindows.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 218,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilWindows.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 38.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-007",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 219,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilWindows.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 220,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerValueBitMap.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 221,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\afl\\afl_driver.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 222,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\afl\\afl_driver.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-007"
+      ]
+    },
+    {
+      "priority": 223,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\AFLDriverTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 224,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\AccumulateAllocationsTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 225,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\BufferOverflowOnInput.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 226,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\CallerCalleeTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 227,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\CustomCrossOverTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 228,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\CustomCrossOverTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 229,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\CustomMutatorTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 230,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\DivTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 231,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\InitializeTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 232,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\LeakTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 233,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\LeakTimeoutTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 234,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\LoadTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 235,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OneHugeAllocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 236,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OneHugeAllocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 237,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OutOfMemorySingleLargeMallocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 238,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OutOfMemorySingleLargeMallocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 239,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OutOfMemoryTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 240,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\OutOfMemoryTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 241,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\RepeatedBytesTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 242,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\ShrinkControlFlowTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
       "impact_score": 2.0,
       "finding_ids": [
         "CPP-MOD-001"
       ]
     },
     {
-      "priority": 58,
-      "file": "/tmp/json/include/nlohmann/detail/iterators/primitive_iterator.hpp",
+      "priority": 243,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SignedIntOverflowTest.cpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 3.0,
-      "impact_score": 1.0,
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
       "finding_ids": [
-        "CPP-MOD-005"
+        "CPP-MOD-001",
+        "CPP-MOD-002"
       ]
     },
     {
-      "priority": 59,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerDefs.h",
+      "priority": 244,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SimpleHashTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 245,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SimpleTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 246,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SimpleThreadedTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 247,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SingleMemcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 248,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SingleStrcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 249,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SingleStrncmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 250,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SpamyTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 251,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\StrcmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 252,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\StrcmpTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 253,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\StrncmpOOBTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 254,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\StrncmpTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 255,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\StrstrTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 256,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\SwitchTest.cpp",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 257,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\ThreadedLeakTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 258,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\ThreadedTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 259,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\TraceMallocTest.cpp",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 260,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\TraceMallocTest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 261,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 262,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 263,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 264,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest_compatibility.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 265,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest_compatibility.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 266,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\doctest\\doctest_compatibility.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 267,
+      "file": "tests/cmake_target_include_directories/project/Bar.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 268,
+      "file": "tests/src/unit-meta.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 269,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_intrusive_with_default_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 270,
+      "file": "tests/abi/inline_ns/use_v3_10_5.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 271,
+      "file": "tests/src/unit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 272,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_with_names_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 273,
+      "file": "tests/src/unit-hash.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 274,
+      "file": "tests/src/unit-diagnostic-positions.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 275,
+      "file": "include/nlohmann/detail/string_utils.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 276,
+      "file": "tests/abi/diag/diag_on.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 277,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 278,
+      "file": "tests/module_cpp20/json.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 279,
+      "file": "tests/abi/diag/diag.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 280,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_with_default_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 281,
+      "file": "docs/mkdocs/docs/examples/nlohmann_json_serialize_enum_strict.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 282,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_non_intrusive_with_names_explicit.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 283,
+      "file": "tests/src/unit-large_json.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 284,
+      "file": "tests/abi/diag/diag_off.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 285,
+      "file": "docs/mkdocs/docs/examples/nlohmann_json_serialize_enum_strict_err.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 286,
+      "file": "docs/mkdocs/docs/examples/nlohmann_json_serialize_enum_2.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 287,
+      "file": "docs/mkdocs/docs/examples/get__PointerType.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 288,
+      "file": "docs/mkdocs/docs/examples/json_pointer__push_front.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 289,
+      "file": "docs/mkdocs/docs/examples/nlohmann_json_serialize_enum_strict_2.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 290,
+      "file": "docs/mkdocs/docs/examples/json_pointer__pop_front.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 291,
+      "file": "docs/mkdocs/docs/examples/from_json__non_default_constructible.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 292,
+      "file": "tests/abi/inline_ns/use_current.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 293,
+      "file": "docs/mkdocs/docs/integration/build2/example.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 294,
+      "file": "tests/src/unit-windows_h.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 295,
+      "file": "tests/cmake_target_include_directories/project/Foo.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 296,
+      "file": "tests/abi/main.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 297,
+      "file": "include/nlohmann/detail/meta/logic.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 298,
+      "file": "tests/src/test_utils.hpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 299,
+      "file": "docs/mkdocs/docs/examples/get__ValueType_const.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 300,
+      "file": "tests/src/unit-diagnostic-positions-only.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 301,
+      "file": "docs/mkdocs/docs/examples/json_pointer__front.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 302,
+      "file": "tests/abi/diag/diag.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 303,
+      "file": "docs/mkdocs/docs/examples/nlohmann_define_type_intrusive_macro.cpp",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 304,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerDefs.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 3.0,
@@ -672,14 +3124,159 @@
       ]
     },
     {
-      "priority": 60,
-      "file": "/tmp/json/tests/thirdparty/Fuzzer/FuzzerExtFunctionsDlsym.cpp",
+      "priority": 305,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerExtFunctionsDlsym.cpp",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 3.0,
       "impact_score": 1.0,
       "finding_ids": [
         "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 306,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerExtFunctionsWeak.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 307,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerIO.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 308,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerIOPosix.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 309,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMain.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 310,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerMerge.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 311,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerOptions.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 312,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtil.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 313,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilDarwin.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 314,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilLinux.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 315,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\FuzzerUtilPosix.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 316,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\FuzzerUnittest.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 160.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 317,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tests\\thirdparty\\Fuzzer\\test\\Switch2Test.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 318,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\json\\tools\\macro_builder\\main.cpp",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
       ]
     }
   ]

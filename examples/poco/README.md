@@ -60,7 +60,6 @@ cppulse scores it at 70.6/100 — reflecting strong memory safety (82.6), comple
 
 ## Downloads
 
-- [PDF Executive Report](report.pdf)
 - [Raw Findings (JSON)](findings.json)
 - [Risk Scores (JSON)](risk_scores.json)
 - [Refactoring Roadmap (JSON)](roadmap.json)

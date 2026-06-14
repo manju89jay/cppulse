@@ -11,11 +11,11 @@
   <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#e5e7eb" stroke-width="18" stroke-linecap="round"/>
 
   <!-- Score arc (colored) — uses dasharray to fill proportionally -->
-  <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#16a34a" stroke-width="18" stroke-linecap="round"
-        stroke-dasharray="310.9 314.2"/>
+  <path d="M 40 155 A 100 100 0 1 1 240 155" fill="none" stroke="#d97706" stroke-width="18" stroke-linecap="round"
+        stroke-dasharray="214.3 314.2"/>
 
   <!-- Score text -->
-  <text x="140" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#16a34a">99.0</text>
+  <text x="140" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#d97706">68.2</text>
   <text x="140" y="145" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b">/ 100</text>
-  <text x="140" y="170" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#16a34a">Good</text>
+  <text x="140" y="170" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#d97706">Needs Work</text>
 </svg>

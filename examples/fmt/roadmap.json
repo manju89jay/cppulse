@@ -3,87 +3,74 @@
   "items": [
     {
       "priority": 1,
-      "file": "/tmp/fmt/include/fmt/args.h",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 21.0,
-      "impact_score": 18.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "src/format.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 2,
-      "file": "/tmp/fmt/include/fmt/chrono.h",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 21.0,
-      "impact_score": 18.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "test/no-builtin-types-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 3,
-      "file": "/tmp/fmt/include/fmt/args.h",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-MEM-001"
-      ]
+      "file": "include/fmt/ostream.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 4,
-      "file": "/tmp/fmt/include/fmt/args.h",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 77.0,
-      "impact_score": 12.0,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\args.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 366.0,
+      "impact_score": 6.0,
       "finding_ids": [
-        "CPP-MOD-001",
-        "CPP-MOD-002",
-        "CPP-MOD-004",
-        "CPP-MOD-006",
-        "CPP-MOD-008"
+        "CPP-CX-001",
+        "CPP-CX-002"
       ]
     },
     {
       "priority": 5,
-      "file": "/tmp/fmt/include/fmt/chrono.h",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 12.0,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\base.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 222.0,
+      "impact_score": 6.0,
       "finding_ids": [
-        "CPP-MEM-001"
+        "CPP-CX-001",
+        "CPP-CX-002"
       ]
     },
     {
       "priority": 6,
-      "file": "/tmp/fmt/include/fmt/chrono.h",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 84.0,
-      "impact_score": 12.0,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\chrono.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 615.0,
+      "impact_score": 6.0,
       "finding_ids": [
-        "CPP-MOD-001",
-        "CPP-MOD-002",
-        "CPP-MOD-004",
-        "CPP-MOD-006",
-        "CPP-MOD-008"
+        "CPP-CX-001",
+        "CPP-CX-002"
       ]
     },
     {
       "priority": 7,
-      "file": "/tmp/fmt/include/fmt/color.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\color.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
-      "estimated_hours": 21.0,
-      "impact_score": 12.0,
+      "estimated_hours": 423.0,
+      "impact_score": 6.0,
       "finding_ids": [
         "CPP-CX-001",
         "CPP-CX-002"
@@ -91,11 +78,132 @@
     },
     {
       "priority": 8,
-      "file": "/tmp/fmt/include/fmt/color.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\compile.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 372.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\core.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 222.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 10,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format-inl.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 384.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 11,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 366.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 12,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\os.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 369.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 13,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ostream.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 615.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 14,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\printf.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 369.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ranges.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 372.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 16,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\std.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 615.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 17,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\xchar.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 678.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\args.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 79.0,
-      "impact_score": 8.0,
+      "estimated_hours": 76.0,
+      "impact_score": 4.0,
       "finding_ids": [
         "CPP-MOD-001",
         "CPP-MOD-002",
@@ -105,63 +213,8 @@
       ]
     },
     {
-      "priority": 9,
-      "file": "/tmp/fmt/include/fmt/base.h",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 3.0,
-      "impact_score": 6.0,
-      "finding_ids": [
-        "CPP-CX-001"
-      ]
-    },
-    {
-      "priority": 10,
-      "file": "/tmp/fmt/include/fmt/format-inl.h",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 3.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-CX-003"
-      ]
-    },
-    {
-      "priority": 11,
-      "file": "/tmp/fmt/src/fmt.cc",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 12,
-      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MEM-003"
-      ]
-    },
-    {
-      "priority": 13,
-      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-003"
-      ]
-    },
-    {
-      "priority": 14,
-      "file": "/tmp/fmt/include/fmt/base.h",
+      "priority": 19,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\base.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 28.0,
@@ -174,8 +227,106 @@
       ]
     },
     {
-      "priority": 15,
-      "file": "/tmp/fmt/include/fmt/compile.h",
+      "priority": 20,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\chrono.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 21,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\chrono.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 83.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 22,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\color.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 78.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 23,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\compile.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 77.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 24,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\core.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 28.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 25,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\fmt-c.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 26,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format-inl.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 87.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 27,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 74.0,
@@ -189,25 +340,1041 @@
       ]
     },
     {
-      "priority": 16,
-      "file": "/tmp/fmt/include/fmt/fmt-c.h",
+      "priority": 28,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\os.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 75.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 29,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ostream.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 30,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ostream.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 83.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 31,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\printf.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 75.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 32,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ranges.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 76.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 33,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\std.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 34,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\std.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 84.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 35,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\xchar.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 36,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\xchar.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 89.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 37,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\fmt.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 38,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\os.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 39,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\os.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 40,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\assert-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 41,
+      "file": "test/fuzzing/chrono-duration.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 42,
+      "file": "test/unicode-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 4.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 43,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\base-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 15.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 44,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\chrono-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 57.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 45,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\color-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 46,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-impl-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 47,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 510.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 48,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gmock\\gmock.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 45.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 49,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 33.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 50,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 24.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 51,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\module-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 52,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ostream-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 53,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\printf-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 54.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 54,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ranges-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 55,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 57.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 56,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 57.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 57,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\std-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 18.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 58,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\xchar-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 59,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\add-subdirectory-test\\main.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 1.0,
       "impact_score": 2.0,
       "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 60,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\args-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 17.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 61,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\base-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 142.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
         "CPP-MOD-009"
       ]
     },
     {
-      "priority": 17,
-      "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
+      "priority": 62,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\chrono-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 430.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 63,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\color-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 93.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 64,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\compile-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 113.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 65,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\compile-test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 66,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\enforce-checks-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 67,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-impl-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 89.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 68,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 69,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1073.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 70,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\fuzzing\\main.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 71,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\fuzzing\\one-arg.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 72,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gmock\\gmock.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 212.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 73,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gmock\\gmock.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 162.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-005",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 74,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest-spi.h",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 1.0,
       "impact_score": 2.0,
       "finding_ids": [
-        "CPP-MOD-005"
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 75,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 116.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003"
+      ]
+    },
+    {
+      "priority": 76,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 79.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-003",
+        "CPP-MOD-004",
+        "CPP-MOD-005",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 77,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra-test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 78,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 82.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 79,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 80,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 81,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\mock-allocator.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 82,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\module-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 91.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 83,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\os-test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 84,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\os-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 80.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 85,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ostream-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 63.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 86,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\posix-mock-test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 87,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\posix-mock-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 44.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 88,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\posix-mock.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 89,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\printf-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 343.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 90,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ranges-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 205.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 91,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 54.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 92,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 93,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\std-test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 94,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\std-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 184.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 95,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\xchar-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 148.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-004",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 96,
+      "file": "test/posix-mock.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 97,
+      "file": "test/assert-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 98,
+      "file": "test/ostream-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 99,
+      "file": "test/test-assert.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 100,
+      "file": "test/test-main.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 101,
+      "file": "include/fmt/core.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 102,
+      "file": "test/args-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 103,
+      "file": "test/fuzzing/fuzzer-common.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 104,
+      "file": "test/noexception-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 105,
+      "file": "test/util.h",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 106,
+      "file": "test/gtest-extra.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 107,
+      "file": "test/ranges-odr-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 108,
+      "file": "test/enforce-checks-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 109,
+      "file": "test/detect-stdfs.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 110,
+      "file": "test/compile-fp-test.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 111,
+      "file": "test/util.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": []
+    },
+    {
+      "priority": 112,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\find-package-test\\main.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 113,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\header-only-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 114,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\no-builtin-types-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 115,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\perf-sanity.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 116,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ranges-odr-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 117,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\unicode-test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
       ]
     }
   ]

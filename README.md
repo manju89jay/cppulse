@@ -106,13 +106,21 @@ Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 <!-- LEADERBOARD:START -->
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
-| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 9,408 | 15/15 | [Details](examples/grpc/) |
-| 2 | **POCO C++ Libraries** | 658K | `70.6` ██████████████░░░░░░ | 17,017 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
-| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
-| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
-| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
+| 1 | **gRPC** | 795K | `68.2` ██████████████░░░░░░ | 30,843 | 15/15 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 658K | `70.6` ██████████████░░░░░░ | 17,017 | 15/15 | [Details](examples/poco/) |
+| 3 | **Protocol Buffers** | 363K | `47.2` █████████░░░░░░░░░░░ | 106,765 | 15/15 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 99K | `88.4` ██████████████████░░ | 979 | 14/15 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `34.7` ███████░░░░░░░░░░░░░ | 6,966 | 14/15 | [Details](examples/fmt/) |
 | 6 | **LevelDB** | 29K | `18.9` ████░░░░░░░░░░░░░░░░ | 1,621 | 12/15 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
+
+> **Every score above is reproducible from public evidence.** Each number is
+> derived solely from that project's [`findings.json`](examples/) (finding
+> densities per KLOC) and the documented [ADR-007](docs/adr/ADR-007-health-score-formula.md)
+> caps and weights — there is no hidden state and no per-project tuning. Recompute
+> them yourself with `python scripts/verify_scores.py`, which re-derives all six
+> scores independently of the scoring code; CI runs it on every push and fails on
+> any mismatch.
 
 ## Detection Rules
 

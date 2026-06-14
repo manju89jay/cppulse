@@ -176,8 +176,8 @@ Implementation: `predictor/src/health_scorer.py`; rationale and cap
 calibration: ADR-007.
 
 <!-- SHOWCASE_RESULT:START -->
-**gRPC result:** 99.0/100 — strong scores across all three
-categories: memory safety (95.9), complexity (99.6), modernization (99.2).
+**nlohmann/json result:** 88.4/100 â€” strong scores across all three
+categories: memory safety (90.5), complexity (87.5), modernization (83.7).
 <!-- SHOWCASE_RESULT:END -->
 
 ## Inter-Component Communication
