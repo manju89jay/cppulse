@@ -12,7 +12,7 @@ Point it at any C++ git repository. Get a health score, bug predictions, knowled
 
 Static analysis tools like cppcheck and clang-tidy produce thousands of warnings with no prioritization. cppulse answers three questions they can't:
 
-1. **Which files are most likely to introduce the next bug?** — XGBoost model trained on SZZ-labeled git history
+1. **Which files are most likely to introduce the next bug?** — XGBoost ranking trained on SZZ-derived labels (blame-traced bug-introducing commits), with honest cross-validated metrics and a transparent heuristic fallback below 50 files
 2. **Who is the only person who understands a critical module?** — Knowledge silo detection from 12-month authorship analysis
 3. **Where should refactoring effort go first?** — Prioritized roadmap ranked by risk, severity, and estimated hours
 
@@ -96,7 +96,7 @@ A report with 7 sections:
 | **Hotspot Map** | Top 20 files by change_frequency x complexity x debt_density |
 | **Detection Findings** | Per-file violations across 15 rules (22 with `--profile safety-critical`) |
 | **Knowledge Silos** | Files where only 1 person has committed in 12 months |
-| **Bug Prediction** | Per-file bug probability via XGBoost trained on SZZ-labeled history |
+| **Bug Risk Ranking** | Per-file risk probability via XGBoost on SZZ-derived labels; label-adjacent columns are excluded from the feature set to avoid leakage, and reported F1/precision/recall come from stratified cross-validation |
 | **Refactoring Roadmap** | Prioritized fixes with estimated hours and ROI impact score |
 
 ## Proven on Real Codebases
@@ -106,23 +106,31 @@ Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 <!-- LEADERBOARD:START -->
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
-| 1 | **gRPC** | 964K | `99.0` ████████████████████ | 9,408 | 15/15 | [Details](examples/grpc/) |
-| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 14,533 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
-| 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
-| 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
-| 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
-| 6 | **LevelDB** | 29K | `76.7` ███████████████░░░░░ | 572 | 12/15 | [Details](examples/leveldb/) |
+| 1 | **gRPC** | 795K | `68.2` ██████████████░░░░░░ | 30,843 | 15/15 | [Details](examples/grpc/) |
+| 2 | **POCO C++ Libraries** | 658K | `70.6` ██████████████░░░░░░ | 17,017 | 15/15 | [Details](examples/poco/) |
+| 3 | **Protocol Buffers** | 363K | `47.2` █████████░░░░░░░░░░░ | 106,765 | 15/15 | [Details](examples/protobuf/) |
+| 4 | **nlohmann/json** | 99K | `88.4` ██████████████████░░ | 979 | 14/15 | [Details](examples/json/) |
+| 5 | **fmt** | 54K | `34.7` ███████░░░░░░░░░░░░░ | 6,966 | 14/15 | [Details](examples/fmt/) |
+| 6 | **LevelDB** | 29K | `18.9` ████░░░░░░░░░░░░░░░░ | 1,621 | 12/15 | [Details](examples/leveldb/) |
 <!-- LEADERBOARD:END -->
+
+> **Every score above is reproducible from public evidence.** Each number is
+> derived solely from that project's [`findings.json`](examples/) (finding
+> densities per KLOC) and the documented [ADR-007](docs/adr/ADR-007-health-score-formula.md)
+> caps and weights — there is no hidden state and no per-project tuning. Recompute
+> them yourself with `python scripts/verify_scores.py`, which re-derives all six
+> scores independently of the scoring code; CI runs it on every push and fails on
+> any mismatch.
 
 ## Detection Rules
 
 15 default rules across 3 categories, plus 7 optional MISRA C++ rules:
 
 ```mermaid
-pie title POCO C++ Libraries - 14,533 Findings
-    "Modernization (13,085)" : 13085
-    "Complexity (975)" : 975
-    "Memory Safety (473)" : 473
+pie title POCO C++ Libraries - 17,017 Findings
+    "Modernization (13,428)" : 13428
+    "Complexity (3,016)" : 3016
+    "Memory Safety (573)" : 573
 ```
 
 <details>
@@ -181,17 +189,19 @@ pie title POCO C++ Libraries - 14,533 Findings
 
 ## Health Score
 
-Penalty-based model where each category contributes a weighted penalty based on findings density (findings per KLOC):
+Deterministic density model ([ADR-007](docs/adr/ADR-007-health-score-formula.md)) — independent of repository size and file layout:
 
 ```
-health = 100 - weighted_average(
-    penalty(memory_safety)  * 3.0,
-    penalty(complexity)     * 1.5,
-    penalty(modernization)  * 1.0
-)
+density(cat)  = findings(cat) / KLOC
+penalty(cat)  = min(1.0, density(cat) / cap(cat))
+health        = (1 - Σ penalty(cat) × weight(cat) / Σ weight(cat)) × 100
 ```
 
-The safety-critical profile adds MISRA at 2.5x weight. A codebase with zero findings scores 100.
+Weights: memory safety 3.0×, complexity 1.5×, modernization 1.0× (the safety-critical
+profile adds MISRA at 2.5×). Caps — the density at which a category scores 0 — are
+5 / 10 / 50 / 10 findings per KLOC respectively and are documented as calibration
+constants in ADR-007. Zero findings scores 100; identical inputs always produce the
+identical score.
 
 ## CI Integration
 
@@ -230,6 +240,14 @@ pip install -r report-engine/requirements.txt
 # Dashboard
 cd dashboard && npm ci && npm run build
 ```
+
+### Compilation database
+
+analyzer-core looks for `compile_commands.json` in the analyzed repo root (or its
+`build/` directory) and parses each file with its recorded include paths, defines,
+and language standard — falling back to bare `-std=c++17` when absent. Generate one
+with `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` for substantially more accurate
+type-dependent findings; the log reports how many files used recorded args.
 
 ### Testing
 

@@ -24,6 +24,10 @@ except ImportError:  # pragma: no cover
 
 logger = logging.getLogger(__name__)
 
+# NOTE: deliberately excludes the label-adjacent columns. Training labels are
+# derived from SZZ bug introductions, and bug_fix_commits counts the very
+# fix commits SZZ starts from — including either as a feature would leak the
+# label into the model and inflate CV metrics.
 _BASE_NUMERIC_FEATURES: list[str] = [
     "finding_count",
     "memory_findings",
@@ -33,7 +37,6 @@ _BASE_NUMERIC_FEATURES: list[str] = [
     "change_frequency",
     "unique_contributors",
     "churn_rate",
-    "bug_fix_commits",
     "age_days",
     "is_knowledge_silo",
 ]

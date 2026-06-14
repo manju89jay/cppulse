@@ -149,3 +149,52 @@ class TestSZZLabelerFirstCommit:
         result = labeler.label()
         # No parent means no blame possible; result should be empty
         assert result == {}
+
+
+class TestSZZLabelerCap:
+    """max_fix_commits bounds how many bug-fix commits are traced."""
+
+    def test_cap_zero_skips_all_fix_commits(self, tmp_path: Path) -> None:
+        """With max_fix_commits=0, no blame tracing happens at all."""
+        repo = _init_repo(tmp_path)
+        src = tmp_path / "main.cpp"
+        src.write_text("int main() { return 0; }\n")
+        repo.index.add(["main.cpp"])
+        repo.index.commit("Initial implementation", author=_DEFAULT, committer=_DEFAULT)
+
+        src.write_text("int main() { return 1; }\n")
+        repo.index.add(["main.cpp"])
+        repo.index.commit(
+            "fix: wrong return value", author=_DEFAULT, committer=_DEFAULT
+        )
+
+        labeler = SZZLabeler(tmp_path, max_fix_commits=0)
+        assert labeler.label() == {}
+
+    def test_cap_keeps_most_recent_fix_commits(self, tmp_path: Path) -> None:
+        """With a cap of 1, only the newest fix commit is traced."""
+        repo = _init_repo(tmp_path)
+        old_file = tmp_path / "old.cpp"
+        old_file.write_text("int old_function() { return 0; }\n")
+        repo.index.add(["old.cpp"])
+        repo.index.commit("Initial old.cpp", author=_DEFAULT, committer=_DEFAULT)
+
+        old_file.write_text("int old_function() { return 1; }\n")
+        repo.index.add(["old.cpp"])
+        repo.index.commit("fix: old bug", author=_DEFAULT, committer=_DEFAULT)
+
+        new_file = tmp_path / "new.cpp"
+        new_file.write_text("int new_function() { return 0; }\n")
+        repo.index.add(["new.cpp"])
+        repo.index.commit("Initial new.cpp", author=_DEFAULT, committer=_DEFAULT)
+
+        new_file.write_text("int new_function() { return 1; }\n")
+        repo.index.add(["new.cpp"])
+        repo.index.commit("fix: new bug", author=_DEFAULT, committer=_DEFAULT)
+
+        capped = SZZLabeler(tmp_path, max_fix_commits=1).label()
+        uncapped = SZZLabeler(tmp_path).label()
+
+        assert "new.cpp" in capped
+        assert "old.cpp" not in capped
+        assert "old.cpp" in uncapped

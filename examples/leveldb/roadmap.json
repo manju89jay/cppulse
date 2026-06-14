@@ -3,81 +3,25 @@
   "items": [
     {
       "priority": 1,
-      "file": "/tmp/leveldb/db/db_test.cc",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 51.0,
-      "impact_score": 18.0,
-      "finding_ids": [
-        "CPP-CX-001",
-        "CPP-CX-002"
-      ]
+      "file": "db/db_impl.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 2,
-      "file": "/tmp/leveldb/db/db_test.cc",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 53.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-MOD-004",
-        "CPP-MOD-009",
-        "CPP-MOD-001",
-        "CPP-MOD-006",
-        "CPP-MOD-008"
-      ]
+      "file": "db/version_set.cc",
+      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
+      "category": "knowledge_silo",
+      "estimated_hours": 8.0,
+      "impact_score": 8.0,
+      "finding_ids": []
     },
     {
       "priority": 3,
-      "file": "/tmp/leveldb/db/db_test.cc",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 112.0,
-      "impact_score": 12.0,
-      "finding_ids": [
-        "CPP-MEM-001",
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 4,
-      "file": "/tmp/leveldb/db/c.cc",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 3.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-MOD-002",
-        "CPP-MOD-006"
-      ]
-    },
-    {
-      "priority": 5,
-      "file": "/tmp/leveldb/db/c.cc",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 112.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-MEM-001",
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 6,
-      "file": "/tmp/leveldb/db/c.cc",
-      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
-      "category": "complexity",
-      "estimated_hours": 9.0,
-      "impact_score": 8.0,
-      "finding_ids": [
-        "CPP-CX-003"
-      ]
-    },
-    {
-      "priority": 7,
-      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench.cc",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 9.0,
@@ -88,21 +32,44 @@
       ]
     },
     {
-      "priority": 8,
-      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
+      "priority": 4,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_sqlite3.cc",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 12.0,
       "impact_score": 6.0,
       "finding_ids": [
-        "CPP-CX-003",
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 5,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 150.0,
+      "impact_score": 6.0,
+      "finding_ids": [
         "CPP-CX-001",
         "CPP-CX-002"
       ]
     },
     {
-      "priority": 9,
-      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "priority": 6,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\filename_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 6.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 7,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 44.0,
@@ -113,20 +80,44 @@
       ]
     },
     {
-      "priority": 10,
-      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "priority": 8,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_log.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 9,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_log.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 2.0,
+      "estimated_hours": 3.0,
       "impact_score": 4.0,
       "finding_ids": [
         "CPP-MOD-001",
+        "CPP-MOD-004",
         "CPP-MOD-006"
       ]
     },
     {
+      "priority": 10,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_sqlite3.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 9.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
       "priority": 11,
-      "file": "/tmp/leveldb/benchmarks/db_bench_log.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_tree_db.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 4.0,
@@ -137,53 +128,7 @@
     },
     {
       "priority": 12,
-      "file": "/tmp/leveldb/benchmarks/db_bench_sqlite3.cc",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 12.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-008",
-        "CPP-MOD-001",
-        "CPP-MOD-006"
-      ]
-    },
-    {
-      "priority": 13,
-      "file": "/tmp/leveldb/db/autocompact_test.cc",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 14,
-      "file": "/tmp/leveldb/db/version_set.cc",
-      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
-      "category": "modernization",
-      "estimated_hours": 1.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MOD-007"
-      ]
-    },
-    {
-      "priority": 15,
-      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
-      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
-      "category": "memory_safety",
-      "estimated_hours": 4.0,
-      "impact_score": 4.0,
-      "finding_ids": [
-        "CPP-MEM-002"
-      ]
-    },
-    {
-      "priority": 16,
-      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_tree_db.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 5.0,
@@ -194,8 +139,8 @@
       ]
     },
     {
-      "priority": 17,
-      "file": "/tmp/leveldb/benchmarks/db_bench_tree_db.cc",
+      "priority": 13,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench_tree_db.cc",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 9.0,
@@ -206,8 +151,19 @@
       ]
     },
     {
-      "priority": 18,
-      "file": "/tmp/leveldb/db/builder.cc",
+      "priority": 14,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\autocompact_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 15,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\builder.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 12.0,
@@ -217,8 +173,8 @@
       ]
     },
     {
-      "priority": 19,
-      "file": "/tmp/leveldb/db/builder.cc",
+      "priority": 16,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\builder.cc",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
@@ -228,11 +184,46 @@
       ]
     },
     {
-      "priority": 20,
-      "file": "/tmp/leveldb/db/builder.h",
+      "priority": 17,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\builder.h",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 18,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\c.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 112.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 19,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\c.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 20,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\c.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
       "impact_score": 4.0,
       "finding_ids": [
         "CPP-CX-003"
@@ -240,7 +231,7 @@
     },
     {
       "priority": 21,
-      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\corruption_test.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 4.0,
@@ -251,7 +242,7 @@
     },
     {
       "priority": 22,
-      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\corruption_test.cc",
       "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
       "category": "complexity",
       "estimated_hours": 3.0,
@@ -262,7 +253,7 @@
     },
     {
       "priority": 23,
-      "file": "/tmp/leveldb/db/db_impl.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_impl.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 4.0,
@@ -273,7 +264,7 @@
     },
     {
       "priority": 24,
-      "file": "/tmp/leveldb/db/db_iter.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_iter.cc",
       "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
       "category": "memory_safety",
       "estimated_hours": 4.0,
@@ -284,7 +275,7 @@
     },
     {
       "priority": 25,
-      "file": "/tmp/leveldb/db/db_iter.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_iter.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 1.0,
@@ -295,25 +286,226 @@
     },
     {
       "priority": 26,
-      "file": "db/version_set.cc",
-      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
-      "category": "knowledge_silo",
-      "estimated_hours": 8.0,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 112.0,
       "impact_score": 4.0,
-      "finding_ids": []
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
     },
     {
       "priority": 27,
-      "file": "db/db_impl.cc",
-      "action": "Reduce knowledge silo risk: add documentation, conduct knowledge transfer sessions",
-      "category": "knowledge_silo",
-      "estimated_hours": 8.0,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\db_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 346.0,
       "impact_score": 4.0,
-      "finding_ids": []
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
     },
     {
       "priority": 28,
-      "file": "/tmp/leveldb/benchmarks/db_bench.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\dbformat.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 29,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\dbformat.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 30,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\dbformat_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 31,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\dumpfile.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 24.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 32,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\fault_injection_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 36.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 33,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\fault_injection_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 34,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\filename.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 35,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\filename.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 4.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 36,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\recovery_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 37,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\skiplist_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 38,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_set_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 12.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 39,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\helpers\\memenv\\memenv_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 40,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\filter_block_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 41,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\table_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 21.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 42,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\cache_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 43,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\coding_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 44,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\logging_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 3.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 45,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\benchmarks\\db_bench.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 12.0,
@@ -323,23 +515,1073 @@
       ]
     },
     {
-      "priority": 29,
-      "file": "/tmp/leveldb/db/autocompact_test.cc",
+      "priority": 46,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\autocompact_test.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
-      "estimated_hours": 3.0,
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 47,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\corruption_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 21.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 48,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\dbformat_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 33.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 49,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\filename_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 38.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 50,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\leveldbutil.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
       "impact_score": 2.0,
       "finding_ids": [
         "CPP-MOD-006"
       ]
     },
     {
-      "priority": 30,
-      "file": "/tmp/leveldb/db/corruption_test.cc",
+      "priority": 51,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\log_format.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 52,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\log_reader.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 53,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\log_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 54,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\log_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 97.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 55,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\memtable.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 56,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\recovery_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 57,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\repair.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 28.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 58,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\repair.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 59,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\skiplist.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 60,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\skiplist.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 61,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\skiplist_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 37.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 62,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\snapshot.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 63,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\table_cache.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 64,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\table_cache.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 65,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_edit.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 66,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_set.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-007",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 67,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\write_batch_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 68,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\helpers\\memenv\\memenv.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 24.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 69,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\helpers\\memenv\\memenv.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 70,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\helpers\\memenv\\memenv_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 56.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 71,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\include\\leveldb\\c.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 20.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 72,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\include\\leveldb\\c.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 9.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-003"
+      ]
+    },
+    {
+      "priority": 73,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\include\\leveldb\\options.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 74,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue178_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 75,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue200_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 76,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue320_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 77,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\port\\port.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 78,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\port\\port_stdcxx.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 25.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 79,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\format.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 64.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 80,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\format.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 81,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\format.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 82,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\iterator.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 83,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\merger.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 84,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\merger.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-006",
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 85,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\table.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 86,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\table_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 32.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 87,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\table_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 58.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-006",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 88,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\two_level_iterator.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 89,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\arena.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 90,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\arena_test.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001"
+      ]
+    },
+    {
+      "priority": 91,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\bloom.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 92,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\cache.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 93,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\cache.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 13.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 94,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\cache_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 52.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 95,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\crc32c.cc",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-001",
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 96,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 16.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 97,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_posix.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 24.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 98,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_posix.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002"
+      ]
+    },
+    {
+      "priority": 99,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_posix_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 100,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 24.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 101,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_windows.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 28.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 102,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_windows.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 12.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001"
+      ]
+    },
+    {
+      "priority": 103,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_windows_test.cc",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 104,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\histogram.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-008"
+      ]
+    },
+    {
+      "priority": 105,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\no_destructor.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001"
+      ]
+    },
+    {
+      "priority": 106,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\posix_logger.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 107,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\posix_logger.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 7.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 108,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\posix_logger.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 109,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\testutil.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 4.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 110,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\windows_logger.h",
+      "action": "Fix memory safety issues: replace raw pointers with smart pointers and add bounds checks",
+      "category": "memory_safety",
+      "estimated_hours": 8.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MEM-001",
+        "CPP-MEM-002"
+      ]
+    },
+    {
+      "priority": 111,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\windows_logger.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-001",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 112,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\windows_logger.h",
+      "action": "Reduce cyclomatic complexity by extracting methods and simplifying control flow",
+      "category": "complexity",
+      "estimated_hours": 3.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-CX-002"
+      ]
+    },
+    {
+      "priority": 113,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\log_writer.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 114,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\memtable.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 115,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\recovery_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 52.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 116,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_edit.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 117,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_edit_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 118,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\version_set_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 151.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 119,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\db\\write_batch_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 18.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 120,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\helpers\\memenv\\memenv_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 40.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 121,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue178_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 122,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue200_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 123,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\issues\\issue320_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 124,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\filter_block_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 29.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 125,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\table\\two_level_iterator.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 126,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\arena_test.cc",
       "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
       "category": "modernization",
       "estimated_hours": 4.0,
-      "impact_score": 2.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 127,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\bloom.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 128,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\bloom_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 129,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\coding_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 48.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 130,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\crc32c_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 14.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 131,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_posix_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 132,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 15.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 133,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\env_windows_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004",
+        "CPP-MOD-006"
+      ]
+    },
+    {
+      "priority": 134,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\hash_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 6.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 135,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\logging_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 27.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 136,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\no_destructor_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 4.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 137,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\status_test.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 3.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-004"
+      ]
+    },
+    {
+      "priority": 138,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\leveldb\\util\\testutil.cc",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 2.0,
+      "impact_score": 1.0,
       "finding_ids": [
         "CPP-MOD-006"
       ]

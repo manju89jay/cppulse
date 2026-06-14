@@ -299,6 +299,7 @@ def build_context(
         "roadmap_count": len(roadmap_items),
         "roadmap_hours": total_hours,
         "pdf_pages": pdf_pages,
+        "has_pdf": pdf_path.exists(),
     }
 
 

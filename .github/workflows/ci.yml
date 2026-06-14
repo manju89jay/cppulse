@@ -201,6 +201,14 @@ jobs:
               print(f'PASS: {data}')
           "
 
+      - name: Verify scores reproduce from findings (ADR-007)
+        run: |
+          # Independent re-derivation: the freshly computed self-analysis score
+          # and every committed leaderboard score must reproduce from their own
+          # findings.json using only the documented caps/weights.
+          python3 scripts/verify_scores.py output
+          python3 scripts/verify_scores.py
+
       - name: Upload pipeline outputs
         if: always()
         uses: actions/upload-artifact@v4

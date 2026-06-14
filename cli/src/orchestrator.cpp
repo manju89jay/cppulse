@@ -30,6 +30,14 @@ namespace {
 /// @brief Maximum number of bytes to read from a subprocess's stderr/stdout.
 constexpr std::size_t kReadBufferSize = 256;
 
+/// @brief Python interpreter command: Windows installs expose "python",
+/// POSIX distributions expose "python3".
+#ifdef _WIN32
+constexpr const char* kPythonCommand = "python";
+#else
+constexpr const char* kPythonCommand = "python3";
+#endif
+
 /**
  * @brief Shell-quote a filesystem path to prevent shell injection.
  *
@@ -133,20 +141,25 @@ PipelineResult Orchestrator::run_analyzer() {
     if (config_path_.has_value()) {
         command += " --config " + shell_quote(config_path_.value());
     }
+    if (profile_ != "default") {
+        command += " --profile " + shell_quote(std::filesystem::path{profile_});
+    }
     return run_command(command, "analyzer");
 }
 
 PipelineResult Orchestrator::run_git_miner() {
     const auto component_dir = shell_quote(project_root_ / "git-miner");
-    const std::string command = "cd " + component_dir + " && python3 -m src.main --repo " +
-                                shell_quote(repo_path_) + " --output " + shell_quote(output_dir_);
+    const std::string command = "cd " + component_dir + " && " + kPythonCommand +
+                                " -m src.main --repo " + shell_quote(repo_path_) + " --output " +
+                                shell_quote(output_dir_);
     return run_command(command, "git-miner");
 }
 
 PipelineResult Orchestrator::run_predictor() {
     const auto component_dir = shell_quote(project_root_ / "predictor");
-    std::string command = "cd " + component_dir + " && python3 -m src.main --input " +
-                          shell_quote(output_dir_) + " --output " + shell_quote(output_dir_);
+    std::string command = "cd " + component_dir + " && " + kPythonCommand +
+                          " -m src.main --input " + shell_quote(output_dir_) + " --output " +
+                          shell_quote(output_dir_);
     if (profile_ != "default") {
         command += " --profile " + shell_quote(std::filesystem::path{profile_});
     }
@@ -157,10 +170,12 @@ PipelineResult Orchestrator::run_report_generator() {
     const auto component_dir = shell_quote(project_root_ / "report-engine");
     const std::string quoted_input = shell_quote(output_dir_);
     const std::string quoted_pdf = shell_quote(output_dir_ / "report.pdf");
-    const std::string command = "cd " + component_dir +
-                                " && python3 -c \"from src.pdf_generator import PDFGenerator; "
-                                "PDFGenerator(" +
-                                quoted_input + ").generate(" + quoted_pdf + ")\"";
+    // Invoke the module's CLI entry point instead of inline "python -c" code:
+    // nesting quoted paths inside a -c string breaks on Windows (cmd.exe strips
+    // the inner double quotes) and couples the CLI to PDFGenerator's API.
+    const std::string command = "cd " + component_dir + " && " + kPythonCommand +
+                                " -m src.pdf_generator --data " + quoted_input + " --output " +
+                                quoted_pdf;
     return run_command(command, "report-generator");
 }
 

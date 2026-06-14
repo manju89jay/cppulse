@@ -11,16 +11,16 @@
   <!-- Memory Safety -->
   <text x="20" y="69.0" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">Memory Safety</text>
   <rect x="150" y="50" width="200" height="28" rx="4" fill="#f3f4f6"/>
-  <rect x="150" y="50" width="191.6" height="28" rx="4" fill="#16a34a"/>
-  <text x="360" y="69.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">95.8</text>
-  <!-- Modernization -->
-  <text x="20" y="109.0" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">Modernization</text>
-  <rect x="150" y="90" width="200" height="28" rx="4" fill="#f3f4f6"/>
-  <rect x="150" y="90" width="189.5" height="28" rx="4" fill="#16a34a"/>
-  <text x="360" y="109.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">94.8</text>
+  <rect x="150" y="50" width="181.0" height="28" rx="4" fill="#16a34a"/>
+  <text x="360" y="69.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">90.5</text>
   <!-- Complexity -->
-  <text x="20" y="149.0" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">Complexity</text>
+  <text x="20" y="109.0" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">Complexity</text>
+  <rect x="150" y="90" width="200" height="28" rx="4" fill="#f3f4f6"/>
+  <rect x="150" y="90" width="175.0" height="28" rx="4" fill="#16a34a"/>
+  <text x="360" y="109.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">87.5</text>
+  <!-- Modernization -->
+  <text x="20" y="149.0" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#374151">Modernization</text>
   <rect x="150" y="130" width="200" height="28" rx="4" fill="#f3f4f6"/>
-  <rect x="150" y="130" width="181.8" height="28" rx="4" fill="#16a34a"/>
-  <text x="360" y="149.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">90.9</text>
+  <rect x="150" y="130" width="167.4" height="28" rx="4" fill="#16a34a"/>
+  <text x="360" y="149.0" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#16a34a">83.7</text>
 </svg>

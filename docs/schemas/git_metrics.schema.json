@@ -31,6 +31,7 @@
           "lines_removed_total": { "type": "integer" },
           "churn_rate": { "type": "number", "description": "(added + removed) / LOC" },
           "bug_fix_commits": { "type": "integer", "description": "Commits with fix/bug/patch in message" },
+          "szz_bug_introductions": { "type": "integer", "minimum": 0, "description": "Distinct bug-introducing commits per the SZZ analysis (blame trace from bug-fix commits)" },
           "contributor_list": { "type": "array", "items": { "type": "string" } }
         }
       }

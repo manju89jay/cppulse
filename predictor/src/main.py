@@ -69,11 +69,18 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 
 def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Series:
-    """Derive pseudo-labels for training from heuristic thresholds.
+    """Derive training labels from git history.
 
-    Files with >= 1 memory finding or >= 3 bug-fix commits are treated as
-    historically buggy (label=1). On the safety-critical profile, MISRA
-    findings also contribute.
+    Primary source: SZZ analysis — a file is labeled buggy (1) when at least
+    one bug-introducing commit touched it. The SZZ column is excluded from
+    the model's feature set (see model._BASE_NUMERIC_FEATURES), so the label
+    is independent of the features the model trains on.
+
+    Fallback (logged loudly): when no SZZ data is available — e.g. metrics
+    produced by an older git-miner — fall back to the legacy heuristic
+    (>= 1 memory finding or >= 3 bug-fix commits; MISRA findings on the
+    safety-critical profile). Heuristic labels overlap with model features,
+    so reported CV metrics are optimistic in that mode.
 
     Args:
         features_df: Feature DataFrame from FeatureEngineer.
@@ -82,6 +89,17 @@ def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Se
     Returns:
         Binary pandas Series of integer labels (0 or 1).
     """
+    if (
+        "szz_bug_introductions" in features_df.columns
+        and features_df["szz_bug_introductions"].sum() > 0
+    ):
+        return (features_df["szz_bug_introductions"] >= 1).astype(int)
+
+    logger.warning(
+        "No SZZ bug-introduction data in git_metrics — falling back to "
+        "heuristic labels (memory findings / bug-fix commits). CV metrics "
+        "will be optimistic; re-run git-miner to produce SZZ labels."
+    )
     buggy = (features_df["memory_findings"] >= 1) | (
         features_df["bug_fix_commits"] >= 3
     )
@@ -185,6 +203,7 @@ def build_risk_scores(
     probabilities: np.ndarray,
     predictor: BugPredictor,
     health_scorer: HealthScorer,
+    total_loc: int,
 ) -> dict[str, Any]:
     """Assemble the risk_scores.json payload.
 
@@ -193,11 +212,13 @@ def build_risk_scores(
         probabilities: Bug probability array aligned with features_df rows.
         predictor: Trained BugPredictor (for model metadata).
         health_scorer: HealthScorer instance.
+        total_loc: Total analyzed lines of code (findings.json metadata),
+            used to normalize finding densities per KLOC.
 
     Returns:
         Dict matching the risk_scores.schema.json schema.
     """
-    health = health_scorer.compute(features_df)
+    health = health_scorer.compute(features_df, total_loc)
     explanations = predictor.explain(features_df)
 
     file_risks: list[dict[str, Any]] = []
@@ -316,10 +337,16 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
 
     logger.info("Computing health scores...")
     health_scorer = HealthScorer(profile=profile)
+    total_loc = int(findings_data.get("metadata", {}).get("total_loc", 0))
+    if total_loc <= 0:
+        logger.warning(
+            "findings.json metadata has no total_loc — density normalization "
+            "degenerates to a 1-KLOC baseline"
+        )
 
     logger.info("Building risk scores output...")
     risk_scores = build_risk_scores(
-        features_df, probabilities, predictor, health_scorer
+        features_df, probabilities, predictor, health_scorer, total_loc
     )
 
     logger.info("Validating risk_scores.json schema...")

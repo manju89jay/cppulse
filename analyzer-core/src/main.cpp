@@ -33,10 +33,16 @@ int main(int argc, char* argv[]) {
     std::string output_dir = "output";
     std::string config_path;
     std::string single_file;
+    std::string profile = "default";
 
     app.add_option("--repo", repo_path, "Repository root directory to analyze recursively");
     app.add_option("--output", output_dir, "Output directory for findings.json")
         ->default_val("output");
+    app.add_option("--profile", profile,
+                   "Analysis profile: 'default' (15 rules) or 'safety-critical' (adds 7 MISRA "
+                   "rules)")
+        ->default_val("default")
+        ->check(CLI::IsMember({"default", "safety-critical"}));
     app.add_option(
         "--config", config_path,
         "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
@@ -64,8 +70,12 @@ int main(int argc, char* argv[]) {
         cppulse::FileAnalyzer analyzer{std::filesystem::path{repo_path}, config};
         analyzer.run();
 
+        // MISRA findings are opt-in via --profile safety-critical (D13).
+        const std::vector<cppulse::Finding> findings =
+            cppulse::apply_profile(analyzer.findings(), profile);
+
         const bool ok =
-            cppulse::write_findings_json(analyzer.findings(), repo_path, analyzer.file_count(),
+            cppulse::write_findings_json(findings, repo_path, analyzer.file_count(),
                                          analyzer.total_loc(), std::filesystem::path{output_dir});
 
         if (!ok) {
@@ -73,8 +83,8 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        spdlog::info("cppulse-analyzer: {} finding(s) written to {}/findings.json",
-                     analyzer.findings().size(), output_dir);
+        spdlog::info("cppulse-analyzer: {} finding(s) written to {}/findings.json", findings.size(),
+                     output_dir);
         return 0;
     }
 

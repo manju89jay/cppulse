@@ -46,7 +46,9 @@
 
 ## Downloads
 
+{% if has_pdf %}
 - [PDF Executive Report{% if pdf_pages %} ({{ pdf_pages }} pages){% endif %}](report.pdf)
+{% endif %}
 - [Raw Findings (JSON)](findings.json)
 - [Risk Scores (JSON)](risk_scores.json)
 - [Refactoring Roadmap (JSON)](roadmap.json)

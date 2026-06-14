@@ -51,7 +51,8 @@ def clone_or_update(project: dict) -> Path:
 
     if repo_dir.exists():
         print(f"  Updating {project['id']}...")
-        _run(["git", "-C", str(repo_dir), "fetch", "--depth", "1"])
+        depth = str(project.get("clone_depth", 1))
+        _run(["git", "-C", str(repo_dir), "fetch", "--depth", depth])
         _run(["git", "-C", str(repo_dir), "reset", "--hard", "FETCH_HEAD"])
     else:
         print(f"  Cloning {project['id']}...")
@@ -88,7 +89,7 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         print("  Skipping analysis — build analyzer-core first (cmake --build)")
         return
 
-    # Step 1: analyzer-core → findings.json
+    # Step 1: analyzer-core → findings.json (--output takes a directory)
     print(f"  Running analyzer-core on {project_id}...")
     _run(
         [
@@ -96,23 +97,34 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
             "--repo",
             str(repo_dir),
             "--output",
-            str(output_dir / "findings.json"),
+            str(output_dir),
         ]
     )
 
-    # Step 2: git-miner → git_metrics.json
+    # Step 2: git-miner → git_metrics.json (module CLI, run from its component dir)
     print(f"  Running git-miner on {project_id}...")
     _run(
         [
             sys.executable,
             "-m",
-            "git_miner",
+            "src.main",
             "--repo",
             str(repo_dir),
             "--output",
-            str(output_dir / "git_metrics.json"),
-        ]
+            str(output_dir),
+        ],
+        cwd=REPO_ROOT / "git-miner",
     )
+
+    # Sanity gate: a shallow clone whose history can't be mined yields empty
+    # file_metrics, which silently degrades the predictor to tautological
+    # heuristic labels. Fail loudly here rather than publish bad showcase data.
+    git_metrics = json.loads((output_dir / "git_metrics.json").read_text())
+    if not git_metrics.get("file_metrics"):
+        raise RuntimeError(
+            f"{project_id}: git-miner produced no file_metrics — history likely "
+            "unreachable (increase clone_depth in showcase_projects.json)."
+        )
 
     # Step 3: predictor → risk_scores.json + roadmap.json
     print(f"  Running predictor on {project_id}...")
@@ -120,14 +132,13 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         [
             sys.executable,
             "-m",
-            "predictor",
-            "--findings",
-            str(output_dir / "findings.json"),
-            "--git-metrics",
-            str(output_dir / "git_metrics.json"),
-            "--output-dir",
+            "src.main",
+            "--input",
             str(output_dir),
-        ]
+            "--output",
+            str(output_dir),
+        ],
+        cwd=REPO_ROOT / "predictor",
     )
 
 
@@ -191,7 +202,7 @@ def update_architecture_showcase_result() -> None:
     Finds the top-scoring project and writes its result into the markers.
     """
     arch_path = REPO_ROOT / "docs" / "architecture.md"
-    content = arch_path.read_text()
+    content = arch_path.read_text(encoding="utf-8")
 
     start_marker = "<!-- SHOWCASE_RESULT:START -->"
     end_marker = "<!-- SHOWCASE_RESULT:END -->"
@@ -247,7 +258,7 @@ def update_architecture_showcase_result() -> None:
         + content[end_idx:]
     )
 
-    arch_path.write_text(new_content)
+    arch_path.write_text(new_content, encoding="utf-8")
     print(f"  Updated architecture.md with {best_project['display_name']} result")
 
 
@@ -296,6 +307,11 @@ def print_diff(before: dict[str, float], after: dict[str, float]) -> None:
 
 
 def main() -> None:
+    # Windows consoles default to cp1252, which cannot print the arrows used
+    # in the score diff; force UTF-8 with graceful replacement.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(
         description="Refresh showcase analysis and regenerate all derived files."
     )

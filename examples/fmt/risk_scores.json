@@ -1,287 +1,3601 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "generated_at": "2026-03-27T16:12:28.878333+00:00",
+    "generated_at": "2026-06-14T10:58:16.045217+00:00",
     "model_type": "xgboost",
-    "feature_count": 12,
-    "training_samples": 10,
-    "f1_score": 0.0
+    "feature_count": 13,
+    "training_samples": 112,
+    "f1_score": 0.8525
   },
   "health_score": {
-    "overall": 60.85,
+    "overall": 34.7,
     "by_category": {
-      "memory_safety": 94.0,
-      "modernization": 0.0,
-      "complexity": 77.0
+      "memory_safety": 63.6,
+      "complexity": 0.0,
+      "modernization": 0.0
     }
   },
   "file_risks": [
     {
-      "file": "/tmp/fmt/include/fmt/args.h",
-      "bug_probability": 0.631695,
-      "risk_level": "high",
-      "top_factors": [
-        {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 1.0
-        },
-        {
-          "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 7.0
-        },
-        {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/fmt/include/fmt/base.h",
-      "bug_probability": 0.099604,
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\args.h",
+      "bug_probability": 0.00702,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
           "value": 0.0
         },
         {
           "feature": "churn_rate",
-          "importance": 0.17391304347826086,
+          "importance": 0.9311721324920654,
           "value": 0.0
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 1.0
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
         },
         {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
           "value": 0.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/include/fmt/chrono.h",
-      "bug_probability": 0.695652,
-      "risk_level": "high",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\base.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 1.0
-        },
-        {
-          "feature": "churn_rate",
-          "importance": 0.17391304347826086,
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
           "value": 0.0
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\chrono.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\color.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\compile.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\core.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\fmt-c.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format-inl.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\os.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ostream.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\printf.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ranges.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\std.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\xchar.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\fmt.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\os.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\add-subdirectory-test\\main.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\args-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\assert-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\base-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\chrono-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\color-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\compile-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\enforce-checks-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\find-package-test\\main.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-impl-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\format-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\fuzzing\\main.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\fuzzing\\one-arg.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest-extra.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gmock\\gmock.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest-spi.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\gtest\\gtest\\gtest.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\header-only-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\mock-allocator.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\module-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\no-builtin-types-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\os-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ostream-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\perf-sanity.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\posix-mock-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\posix-mock.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\printf-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ranges-odr-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\ranges-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\scan.h",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\std-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\unicode-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\xchar-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 0.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/args.h",
+      "bug_probability": 0.985982,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 14.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.2590380907058716,
+          "value": 0.3394
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/base.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 293.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 730.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 3.2103
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 36.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/chrono.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 60.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.7256
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 12.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/color.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 15.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 684.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.5453
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
           "value": 7.0
         },
         {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
           "value": 0.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/include/fmt/color.h",
-      "bug_probability": 0.377622,
+      "file": "include/fmt/compile.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 25.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.6656
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 10.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/core.h",
+      "bug_probability": 0.017806,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 2.226590633392334,
+          "value": 134.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.2767387628555298,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.49752312898635864,
+          "value": 1.2143
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.11332771927118301,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.10030940175056458,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/fmt-c.h",
+      "bug_probability": 0.098029,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 3.4548110961914062,
+          "value": 117.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.4199851751327515,
+          "value": 9.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.7482322454452515,
+          "value": 2.2935
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.115419402718544,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.05669509992003441,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/format-inl.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 56.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.9883
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 13.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/format.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 234.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 1.2919
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 32.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/os.h",
+      "bug_probability": 0.985982,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 16.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.2590380907058716,
+          "value": 0.3771
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/ostream.h",
+      "bug_probability": 0.986176,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 18.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7769488096237183,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.1314985752105713,
+          "value": 1.1377
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.25993573665618896,
+          "value": 6.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.10018916428089142,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/printf.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 23.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.5467
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 7.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/ranges.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 38.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 730.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.6053
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 11.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/std.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 55.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 1.4358
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 14.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "include/fmt/xchar.h",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 33.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 1.0292
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 7.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "src/fmt-c.cc",
+      "bug_probability": 0.092013,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 3.3260505199432373,
+          "value": 117.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.3906668424606323,
+          "value": 7.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.719022274017334,
+          "value": 2.8806
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.06062212213873863,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.020864000543951988,
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "file": "src/fmt.cc",
+      "bug_probability": 0.985982,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 9.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 734.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.2590380907058716,
+          "value": 0.3121
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 6.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "src/format.cc",
+      "bug_probability": 0.97648,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 2.060786724090576,
+          "value": 9.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.6514124870300293,
+          "value": 679.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.114948034286499,
+          "value": 0.6512
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.22632360458374023,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.11673851311206818,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "src/os.cc",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 11.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 729.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.5037
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/args-test.cc",
+      "bug_probability": 0.156509,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 2.029664993286133,
+          "value": 0.0891
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.6734572649002075,
+          "value": 3.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 0.6546279788017273,
+          "value": 542.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.23172220587730408,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.2231234908103943,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "test/assert-test.cc",
+      "bug_probability": 0.015089,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.7483147382736206,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9903685450553894,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.5506796836853027,
+          "value": 0.0645
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.11307919025421143,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/base-test.cc",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 39.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 721.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.9047
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 6.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/chrono-test.cc",
+      "bug_probability": 0.979981,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 2.011519432067871,
+          "value": 23.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7360605001449585,
+          "value": 653.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.1814719438552856,
+          "value": 0.6029
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.0771600529551506,
+          "value": 0.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.03042013570666313,
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "file": "test/color-test.cc",
+      "bug_probability": 0.93443,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.5074959993362427,
+          "value": 6.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.052147388458252,
+          "value": 0.68
+        },
+        {
+          "feature": "age_days",
+          "importance": 0.8902930021286011,
+          "value": 469.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.2588295042514801,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/compile-fp-test.cc",
+      "bug_probability": 0.174158,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.6208982467651367,
+          "value": 283.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.1869707107543945,
+          "value": 0.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.0872788429260254,
+          "value": 2.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21154376864433289,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.12317965924739838,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/compile-test.cc",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 19.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 691.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.578
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 6.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/detect-stdfs.cc",
+      "bug_probability": 0.015089,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8083449602127075,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9903685450553894,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.49670445919036865,
+          "value": 0.1111
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.10702409595251083,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/enforce-checks-test.cc",
+      "bug_probability": 0.034346,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.6711585521697998,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9665398001670837,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.1906128078699112,
+          "value": 0.0308
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.11307919025421143,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/format-impl-test.cc",
+      "bug_probability": 0.135851,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 2.141261100769043,
+          "value": 0.0526
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.2023204565048218,
+          "value": 8.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 0.46296262741088867,
+          "value": 588.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.24060869216918945,
+          "value": 2.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.14214642345905304,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/format-test.cc",
+      "bug_probability": 0.985982,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 53.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 707.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.2590380907058716,
+          "value": 0.3132
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 9.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/fuzzing/chrono-duration.cc",
+      "bug_probability": 0.448054,
       "risk_level": "medium",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 0.0
+          "feature": "age_days",
+          "importance": 1.8785479068756104,
+          "value": 223.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.0305886268615723,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.15171489119529724,
+          "value": 1.0
         },
         {
           "feature": "churn_rate",
-          "importance": 0.17391304347826086,
+          "importance": 0.12861816585063934,
+          "value": 0.0294
+        }
+      ]
+    },
+    {
+      "file": "test/fuzzing/fuzzer-common.h",
+      "bug_probability": 0.010481,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8442296981811523,
+          "value": 197.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.856062650680542,
+          "value": 0.026
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21154376864433289,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08454398065805435,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest-extra-test.cc",
+      "bug_probability": 0.00702,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 69.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9311721324920654,
+          "value": 0.0073
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
           "value": 0.0
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest-extra.cc",
+      "bug_probability": 0.010481,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8442296981811523,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.856062650680542,
+          "value": 0.025
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21154376864433289,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.08454398065805435,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest-extra.h",
+      "bug_probability": 0.377837,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.9832086563110352,
+          "value": 278.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.0305886268615723,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.17982420325279236,
+          "value": 0.0355
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.1544722616672516,
+          "value": 2.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12560847401618958,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest/gmock-gtest-all.cc",
+      "bug_probability": 0.055171,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 1.3384062051773071,
+          "value": 0.0021
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.2966029644012451,
+          "value": 1.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.151521921157837,
+          "value": 646.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.23975145816802979,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.1258687525987625,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest/gmock/gmock.h",
+      "bug_probability": 0.055171,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 1.3384062051773071,
+          "value": 0.0029
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.2966029644012451,
+          "value": 1.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.151521921157837,
+          "value": 646.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.23975145816802979,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.1258687525987625,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/gtest/gtest/gtest.h",
+      "bug_probability": 0.055171,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 1.3384062051773071,
+          "value": 0.0006
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.2966029644012451,
+          "value": 1.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.151521921157837,
+          "value": 646.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.23975145816802979,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.1258687525987625,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/mock-allocator.h",
+      "bug_probability": 0.902473,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.492287278175354,
+          "value": 308.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.981540322303772,
+          "value": 3.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.9558595418930054,
+          "value": 0.4659
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.15260198712348938,
+          "value": 2.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.06062212213873863,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/module-test.cc",
+      "bug_probability": 0.060777,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 3.0542404651641846,
+          "value": 62.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.8213639259338379,
+          "value": 3.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.6380971670150757,
+          "value": 0.663
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.09098606556653976,
+          "value": 2.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.06062212213873863,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/no-builtin-types-test.cc",
+      "bug_probability": 0.950882,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.8389134407043457,
+          "value": 5.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.218349814414978,
+          "value": 617.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.0069410800933838,
+          "value": 1.3226
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.22632360458374023,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.11673851311206818,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/noexception-test.cc",
+      "bug_probability": 0.015089,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8083449602127075,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9903685450553894,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.49670445919036865,
+          "value": 0.1111
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.10702409595251083,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/os-test.cc",
+      "bug_probability": 0.834462,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.6954270601272583,
           "value": 7.0
         },
         {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
+          "feature": "age_days",
+          "importance": 1.3125865459442139,
+          "value": 653.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.23803210258483887,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.0837772786617279,
+          "value": 0.1839
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.0771600529551506,
           "value": 0.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/include/fmt/compile.h",
-      "bug_probability": 0.076605,
+      "file": "test/ostream-test.cc",
+      "bug_probability": 0.010481,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 0.0
+          "feature": "age_days",
+          "importance": 1.8442296981811523,
+          "value": 203.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 2.0
         },
         {
           "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
+          "importance": 0.856062650680542,
+          "value": 0.013
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        },
-        {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/fmt/include/fmt/fmt-c.h",
-      "bug_probability": 0.001035,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 0.0
-        },
-        {
-          "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        },
-        {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        }
-      ]
-    },
-    {
-      "file": "/tmp/fmt/include/fmt/format-inl.h",
-      "bug_probability": 0.028085,
-      "risk_level": "low",
-      "top_factors": [
-        {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 0.0
-        },
-        {
-          "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
+          "feature": "is_knowledge_silo",
+          "importance": 0.21154376864433289,
           "value": 1.0
         },
         {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
-          "value": 0.0
+          "feature": "unique_contributors",
+          "importance": 0.08454398065805435,
+          "value": 1.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/src/fmt.cc",
-      "bug_probability": 0.26087,
+      "file": "test/perf-sanity.cc",
+      "bug_probability": 0.229503,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
+          "feature": "change_frequency",
+          "importance": 2.0355846881866455,
+          "value": 2.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.335373878479004,
+          "value": 699.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.8676842451095581,
+          "value": 1.24
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.30997559428215027,
           "value": 1.0
         },
         {
-          "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
-        },
-        {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        },
-        {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
+          "feature": "is_knowledge_silo",
+          "importance": 0.0771600529551506,
           "value": 0.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
-      "bug_probability": 0.001035,
+      "file": "test/posix-mock-test.cc",
+      "bug_probability": 0.00702,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
-          "value": 0.0
+          "feature": "age_days",
+          "importance": 1.8388535976409912,
+          "value": 45.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
+          "value": 2.0
         },
         {
           "feature": "churn_rate",
-          "importance": 0.17391304347826086,
+          "importance": 0.9311721324920654,
+          "value": 0.0136
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.12183476239442825,
           "value": 0.0
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 0.0
-        },
-        {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
-          "value": 0.0
+          "feature": "unique_contributors",
+          "importance": 0.08569137752056122,
+          "value": 2.0
         }
       ]
     },
     {
-      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
-      "bug_probability": 0.261905,
+      "file": "test/posix-mock.h",
+      "bug_probability": 0.010481,
       "risk_level": "low",
       "top_factors": [
         {
-          "feature": "memory_findings",
-          "importance": 0.2608695652173913,
+          "feature": "age_days",
+          "importance": 1.8442296981811523,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9829348921775818,
           "value": 1.0
         },
         {
           "feature": "churn_rate",
-          "importance": 0.17391304347826086,
-          "value": 0.0
+          "importance": 0.856062650680542,
+          "value": 0.0267
         },
         {
-          "feature": "complexity_findings",
-          "importance": 0.13043478260869565,
-          "value": 0.0
+          "feature": "is_knowledge_silo",
+          "importance": 0.21154376864433289,
+          "value": 1.0
         },
         {
-          "feature": "bug_fix_commits",
-          "importance": 0.13043478260869565,
+          "feature": "unique_contributors",
+          "importance": 0.08454398065805435,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/printf-test.cc",
+      "bug_probability": 0.980892,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 9.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.708088994026184,
+          "value": 710.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.0104860067367554,
+          "value": 0.2138
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 6.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/ranges-odr-test.cc",
+      "bug_probability": 0.015089,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.8083449602127075,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9903685450553894,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.49670445919036865,
+          "value": 0.1111
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.10702409595251083,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/ranges-test.cc",
+      "bug_probability": 0.985982,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 21.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 730.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.2590380907058716,
+          "value": 0.3019
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 8.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/scan-test.cc",
+      "bug_probability": 0.206402,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 1.7115880250930786,
+          "value": 0.1313
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.0933705568313599,
+          "value": 653.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.6582556962966919,
+          "value": 4.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.25318974256515503,
+          "value": 3.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.14214642345905304,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/scan.h",
+      "bug_probability": 0.250964,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 2.0900161266326904,
+          "value": 0.108
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 1.3445221185684204,
+          "value": 8.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.0543246269226074,
+          "value": 722.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.2687082588672638,
+          "value": 3.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.14214642345905304,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/std-test.cc",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 21.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 709.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.5311
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 7.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "file": "test/test-assert.h",
+      "bug_probability": 0.057233,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.3498539924621582,
+          "value": 2.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.181009292602539,
+          "value": 0.1026
+        },
+        {
+          "feature": "age_days",
+          "importance": 0.7897528409957886,
+          "value": 622.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.3008436858654022,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.23172220587730408,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/test-main.cc",
+      "bug_probability": 0.015089,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "age_days",
+          "importance": 1.7483147382736206,
+          "value": 13.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.9903685450553894,
+          "value": 1.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.5506796836853027,
+          "value": 0.0465
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.21529307961463928,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.11307919025421143,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/unicode-test.cc",
+      "bug_probability": 0.381064,
+      "risk_level": "medium",
+      "top_factors": [
+        {
+          "feature": "churn_rate",
+          "importance": 1.5669901371002197,
+          "value": 0.125
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.3558707237243652,
+          "value": 649.0
+        },
+        {
+          "feature": "change_frequency",
+          "importance": 0.6992019414901733,
+          "value": 3.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.23172220587730408,
+          "value": 1.0
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.21338164806365967,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/util.cc",
+      "bug_probability": 0.202695,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 2.0355846881866455,
+          "value": 2.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.2799632549285889,
+          "value": 653.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.5590729117393494,
+          "value": 0.2292
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.29826709628105164,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.11673851311206818,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/util.h",
+      "bug_probability": 0.152456,
+      "risk_level": "low",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.3093056678771973,
+          "value": 2.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.1561627388000488,
+          "value": 344.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 0.49451085925102234,
+          "value": 0.1806
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.19309447705745697,
+          "value": 1.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.11673851311206818,
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "file": "test/xchar-test.cc",
+      "bug_probability": 0.985559,
+      "risk_level": "critical",
+      "top_factors": [
+        {
+          "feature": "change_frequency",
+          "importance": 1.9903126955032349,
+          "value": 18.0
+        },
+        {
+          "feature": "age_days",
+          "importance": 1.7744345664978027,
+          "value": 653.0
+        },
+        {
+          "feature": "churn_rate",
+          "importance": 1.228880524635315,
+          "value": 0.628
+        },
+        {
+          "feature": "unique_contributors",
+          "importance": 0.28143736720085144,
+          "value": 5.0
+        },
+        {
+          "feature": "is_knowledge_silo",
+          "importance": 0.060499269515275955,
           "value": 0.0
         }
       ]
@@ -289,74 +3603,144 @@
   ],
   "hotspots": [
     {
-      "file": "/tmp/fmt/include/fmt/args.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\args.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 119
+      "finding_count": 198
     },
     {
-      "file": "/tmp/fmt/include/fmt/base.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\base.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 40
+      "finding_count": 102
     },
     {
-      "file": "/tmp/fmt/include/fmt/chrono.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\chrono.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 138
+      "finding_count": 289
     },
     {
-      "file": "/tmp/fmt/include/fmt/color.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\color.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 121
+      "finding_count": 219
     },
     {
-      "file": "/tmp/fmt/include/fmt/compile.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\compile.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 201
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\core.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 102
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\fmt-c.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 0.6667,
-      "finding_count": 74
+      "finding_count": 7
     },
     {
-      "file": "/tmp/fmt/include/fmt/fmt-c.h",
-      "hotspot_score": 0.0,
-      "change_frequency": 0,
-      "complexity_score": 0.3333,
-      "finding_count": 1
-    },
-    {
-      "file": "/tmp/fmt/include/fmt/format-inl.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format-inl.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 1.0,
-      "finding_count": 3
+      "finding_count": 215
     },
     {
-      "file": "/tmp/fmt/src/fmt.cc",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\format.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
-      "complexity_score": 0.6667,
-      "finding_count": 1
+      "complexity_score": 1.0,
+      "finding_count": 196
     },
     {
-      "file": "/tmp/fmt/test/gtest/gmock/gmock.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\os.h",
       "hotspot_score": 0.0,
       "change_frequency": 0,
-      "complexity_score": 0.3333,
-      "finding_count": 1
+      "complexity_score": 1.0,
+      "finding_count": 198
     },
     {
-      "file": "/tmp/fmt/test/gtest/gtest/gtest.h",
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ostream.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 289
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\printf.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 198
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\ranges.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 200
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\std.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 290
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\include\\fmt\\xchar.h",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 1.0,
+      "finding_count": 316
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\fmt.cc",
       "hotspot_score": 0.0,
       "change_frequency": 0,
       "complexity_score": 0.6667,
       "finding_count": 2
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\src\\os.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 6
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\add-subdirectory-test\\main.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 1
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\args-test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.3333,
+      "finding_count": 17
+    },
+    {
+      "file": "D:\\repo\\cppulse\\.showcase-repos\\fmt\\test\\assert-test.cc",
+      "hotspot_score": 0.0,
+      "change_frequency": 0,
+      "complexity_score": 0.6667,
+      "finding_count": 5
     }
   ]
 }
