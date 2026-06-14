@@ -107,7 +107,7 @@ Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 | # | Project | LOC | Health | Findings | Rules | Report |
 |--:|---------|----:|:------:|---------:|:-----:|:------:|
 | 1 | **gRPC** | 964K | `99.0` ████████████████████ | 9,408 | 15/15 | [Details](examples/grpc/) |
-| 2 | **POCO C++ Libraries** | 641K | `97.8` ████████████████████ | 14,533 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
+| 2 | **POCO C++ Libraries** | 658K | `70.6` ██████████████░░░░░░ | 17,017 | 15/15 | [Details](examples/poco/) · [PDF](examples/poco/report.pdf) |
 | 3 | **Protocol Buffers** | 400K | `93.8` ███████████████████░ | 63,344 | 15/15 | [Details](examples/protobuf/) |
 | 4 | **nlohmann/json** | 98K | `96.8` ███████████████████░ | 618 | 14/15 | [Details](examples/json/) |
 | 5 | **fmt** | 54K | `60.9` ████████████░░░░░░░░ | 1,769 | 14/15 | [Details](examples/fmt/) |
@@ -119,10 +119,10 @@ Analyzed **6 major open-source C++ projects** totaling **2.2M lines of code**:
 15 default rules across 3 categories, plus 7 optional MISRA C++ rules:
 
 ```mermaid
-pie title POCO C++ Libraries - 14,533 Findings
-    "Modernization (13,085)" : 13085
-    "Complexity (975)" : 975
-    "Memory Safety (473)" : 473
+pie title POCO C++ Libraries - 17,017 Findings
+    "Modernization (13,428)" : 13428
+    "Complexity (3,016)" : 3016
+    "Memory Safety (573)" : 573
 ```
 
 <details>
