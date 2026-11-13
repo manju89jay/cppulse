@@ -165,13 +165,20 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 
 }  // namespace
 
-FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config)
-    : repo_root_(std::move(repo_root)), config_(std::move(config)) {}
+FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config,
+                           std::optional<std::filesystem::path> compilation_database)
+    : repo_root_(std::move(repo_root)),
+      config_(std::move(config)),
+      compilation_database_(std::move(compilation_database)) {}
 
 void FileAnalyzer::load_compilation_database() {
     compile_db_ = nullptr;
 
-    for (const auto& candidate : {repo_root_, repo_root_ / "build"}) {
+    const std::vector<std::filesystem::path> candidates =
+        compilation_database_.has_value()
+            ? std::vector<std::filesystem::path>{*compilation_database_}
+            : std::vector<std::filesystem::path>{repo_root_, repo_root_ / "build"};
+    for (const auto& candidate : candidates) {
         std::error_code ec;
         if (!std::filesystem::exists(candidate / "compile_commands.json", ec) || ec) {
             continue;
@@ -217,6 +224,12 @@ std::vector<std::string> FileAnalyzer::compile_args_for(
     std::vector<std::string> args;
     if (clang_CompileCommands_getSize(commands) > 0) {
         CXCompileCommand command = clang_CompileCommands_getCommand(commands, 0);
+        // Interpret relative include paths in the build directory recorded by CMake.
+        const std::string directory =
+            to_string_and_dispose(clang_CompileCommand_getDirectory(command));
+        if (!directory.empty()) {
+            args.push_back("-working-directory=" + directory);
+        }
         const std::string file_name = file_path.filename().string();
         const unsigned num_args = clang_CompileCommand_getNumArgs(command);
 
@@ -252,6 +265,11 @@ void FileAnalyzer::run() {
     total_loc_ = 0;
     db_parsed_count_ = 0;
     fallback_parsed_count_ = 0;
+    coverage_ = {};
+    for (const auto& rule : make_rules(config_)) {
+        coverage_.enabled_rules.push_back(
+            std::visit([](const auto& value) { return std::string{value.rule_id()}; }, rule));
+    }
 
     load_compilation_database();
 
@@ -270,6 +288,8 @@ void FileAnalyzer::run() {
                 spdlog::debug("FileAnalyzer: excluding '{}' (matched exclude pattern)",
                               file_path.string());
                 ++skipped;
+                coverage_.files.push_back(
+                    FileCoverage{file_path.generic_string(), "excluded", "none", 0});
                 continue;
             }
         }
@@ -293,10 +313,13 @@ void FileAnalyzer::run() {
 }
 
 void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
+    coverage_.files.push_back(FileCoverage{file_path.generic_string()});
+    auto& outcome = coverage_.files.back();
     // Skip oversized files.
     std::error_code ec;
     const std::uintmax_t file_size = std::filesystem::file_size(file_path, ec);
     if (ec || file_size > kMaxFileSizeBytes) {
+        outcome.status = "skipped";
         spdlog::warn("FileAnalyzer: skipping large/unreadable file: {}", file_path.string());
         return;
     }
@@ -315,6 +338,7 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     // language standard); fall back to bare C++17 flags when the file is not
     // covered by a compilation database.
     const std::vector<std::string> db_args = compile_args_for(file_path);
+    outcome.compile_context = db_args.empty() ? "fallback" : "database";
     std::vector<const char*> cmd_args;
     if (db_args.empty()) {
         cmd_args = {"-std=c++17", "-x", "c++"};
@@ -336,6 +360,19 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         clang_disposeIndex(index);
         return;
     }
+
+    const unsigned diagnostic_count = clang_getNumDiagnostics(tu);
+    for (unsigned i = 0; i < diagnostic_count; ++i) {
+        CXDiagnostic diagnostic = clang_getDiagnostic(tu, i);
+        if (clang_getDiagnosticSeverity(diagnostic) >= CXDiagnostic_Error) {
+            ++outcome.error_count;
+            spdlog::warn("FileAnalyzer: partial AST for '{}': {}", path_str,
+                         to_string_and_dispose(clang_formatDiagnostic(
+                             diagnostic, clang_defaultDiagnosticDisplayOptions())));
+        }
+        clang_disposeDiagnostic(diagnostic);
+    }
+    outcome.status = outcome.error_count == 0 ? "analyzed" : "partial";
 
     if (db_args.empty()) {
         ++fallback_parsed_count_;

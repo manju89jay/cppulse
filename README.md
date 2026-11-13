@@ -261,6 +261,16 @@ clang-tidy analyzer-core/src/*.cpp -- -std=c++17
 ruff check . && black --check .
 ```
 
+## Research References
+
+- [Product discovery and working direction](docs/research/cppulse-product-discovery.md) -
+  Consolidated findings, current source capabilities, C++ pain points, proposed
+  distinctions, and maintainer/consumer workflows. Updated 2026-11-11;
+  proposed capabilities and validation gaps are marked explicitly.
+- [C++ analysis tool landscape](docs/research/cpp-analysis-tool-landscape.md) -
+  High-level features, availability, and official sources for tools relevant to
+  cppulse. Research snapshot dated 2026-11-05 for the goal-selection discussion.
+
 ## Architecture Decisions
 
 | ADR | Decision | Rationale |

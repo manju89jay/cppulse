@@ -33,10 +33,13 @@ int main(int argc, char* argv[]) {
     std::string output_dir = "output";
     std::string config_path;
     std::string single_file;
+    std::string compilation_database;
 
     app.add_option("--repo", repo_path, "Repository root directory to analyze recursively");
     app.add_option("--output", output_dir, "Output directory for findings.json")
         ->default_val("output");
+    app.add_option("--compilation-database", compilation_database,
+                   "Directory containing compile_commands.json (overrides discovery)");
     app.add_option(
         "--config", config_path,
         "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
@@ -61,12 +64,16 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        cppulse::FileAnalyzer analyzer{std::filesystem::path{repo_path}, config};
+        std::optional<std::filesystem::path> database_path;
+        if (!compilation_database.empty()) {
+            database_path = compilation_database;
+        }
+        cppulse::FileAnalyzer analyzer{std::filesystem::path{repo_path}, config, database_path};
         analyzer.run();
 
-        const bool ok =
-            cppulse::write_findings_json(analyzer.findings(), repo_path, analyzer.file_count(),
-                                         analyzer.total_loc(), std::filesystem::path{output_dir});
+        const bool ok = cppulse::write_findings_json(
+            analyzer.findings(), repo_path, analyzer.file_count(), analyzer.total_loc(),
+            std::filesystem::path{output_dir}, &analyzer.coverage());
 
         if (!ok) {
             spdlog::error("cppulse-analyzer: failed to write findings.json");

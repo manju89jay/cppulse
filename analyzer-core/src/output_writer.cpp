@@ -35,7 +35,8 @@ std::string utc_timestamp() {
 }  // namespace
 
 bool write_findings_json(const std::vector<Finding>& findings, const std::string& repo_path,
-                         int file_count, int total_loc, const std::filesystem::path& output_dir) {
+                         int file_count, int total_loc, const std::filesystem::path& output_dir,
+                         const AnalysisCoverage* coverage) {
     std::error_code ec;
     std::filesystem::create_directories(output_dir, ec);
     if (ec) {
@@ -101,6 +102,17 @@ bool write_findings_json(const std::vector<Finding>& findings, const std::string
                         {"analyzed_at", utc_timestamp()},
                         {"file_count", file_count},
                         {"total_loc", total_loc}};
+    if (coverage != nullptr) {
+        auto files = nlohmann::json::array();
+        for (const auto& file : coverage->files) {
+            files.push_back({{"path", file.path},
+                             {"status", file.status},
+                             {"compile_context", file.compile_context},
+                             {"error_count", file.error_count}});
+        }
+        root["metadata"]["analysis"] = {{"enabled_rules", coverage->enabled_rules},
+                                        {"files", std::move(files)}};
+    }
     root["findings"] = std::move(findings_array);
     root["summary"] = {
         {"total_findings", static_cast<int>(findings.size())},

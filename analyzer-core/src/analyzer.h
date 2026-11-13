@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 
+#include "analysis_coverage.h"
 #include "config.h"
 #include "finding.h"
 
@@ -35,9 +36,11 @@ class FileAnalyzer {
      *
      * @param repo_root  Directory containing C++ source files to analyze.
      * @param config     Optional per-project configuration.
+     * @param compilation_database Directory containing compile_commands.json, if explicit.
      */
     explicit FileAnalyzer(std::filesystem::path repo_root,
-                          std::optional<ProjectConfig> config = std::nullopt);
+                          std::optional<ProjectConfig> config = std::nullopt,
+                          std::optional<std::filesystem::path> compilation_database = std::nullopt);
 
     /**
      * @brief Discover all C++ files and apply every rule to each file.
@@ -89,6 +92,11 @@ class FileAnalyzer {
         return fallback_parsed_count_;
     }
 
+    /** @brief Return parse outcomes and enabled rules, including analysis gaps. */
+    [[nodiscard]] const AnalysisCoverage& coverage() const noexcept {
+        return coverage_;
+    }
+
    private:
     /**
      * @brief Analyze a single translation unit and collect findings.
@@ -117,6 +125,8 @@ class FileAnalyzer {
 
     std::filesystem::path repo_root_;
     std::optional<ProjectConfig> config_;
+    std::optional<std::filesystem::path> compilation_database_;
+    AnalysisCoverage coverage_;
     std::vector<Finding> findings_;
     int file_count_{0};
     int total_loc_{0};

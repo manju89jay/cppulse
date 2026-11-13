@@ -12,7 +12,32 @@
         "repo_path": { "type": "string" },
         "analyzed_at": { "type": "string", "format": "date-time" },
         "file_count": { "type": "integer", "minimum": 0 },
-        "total_loc": { "type": "integer", "minimum": 0 }
+        "total_loc": { "type": "integer", "minimum": 0 },
+        "analysis": {
+          "type": "object",
+          "required": ["enabled_rules", "files"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled_rules": {
+              "type": "array", "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["path", "status", "compile_context", "error_count"],
+                "additionalProperties": false,
+                "properties": {
+                  "path": { "type": "string", "minLength": 1 },
+                  "status": { "enum": ["analyzed", "partial", "failed", "excluded", "skipped"] },
+                  "compile_context": { "enum": ["database", "fallback", "none"] },
+                  "error_count": { "type": "integer", "minimum": 0 }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "findings": {

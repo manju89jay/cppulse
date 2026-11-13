@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include "analysis_coverage.h"
 #include "finding.h"
 
 namespace cppulse {
@@ -27,11 +28,13 @@ namespace cppulse {
  * @param file_count    Number of source files analyzed.
  * @param total_loc     Total lines of code across all analyzed files.
  * @param output_dir    Directory where findings.json will be written.
+ * @param coverage      Optional parse outcomes for evidence-aware consumers.
  * @return              true on success, false on I/O error.
  */
 [[nodiscard]] bool write_findings_json(const std::vector<Finding>& findings,
                                        const std::string& repo_path, int file_count, int total_loc,
-                                       const std::filesystem::path& output_dir);
+                                       const std::filesystem::path& output_dir,
+                                       const AnalysisCoverage* coverage = nullptr);
 
 }  // namespace cppulse
 
