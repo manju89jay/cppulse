@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/run_manifest.schema.json",
+  "title": "cppulse run_manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "partial",
+        "cancelled"
+      ]
+    },
+    "source": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/source"
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/context"
+      },
+      "minItems": 0
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/stage"
+      },
+      "minItems": 0
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+      },
+      "minItems": 0
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "config_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "versions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "input_verification": {
+      "enum": [
+        "verified",
+        "unverified"
+      ],
+      "description": "Whether an explicit pre-publication check verified the recorded finite input inventory. Missing means unverified; this does not establish discovery completeness."
+    }
+  },
+  "required": [
+    "version",
+    "run_id",
+    "status",
+    "source",
+    "contexts",
+    "stages",
+    "artifacts",
+    "started_at",
+    "finished_at",
+    "config_digest",
+    "versions",
+    "limitations"
+  ]
+}

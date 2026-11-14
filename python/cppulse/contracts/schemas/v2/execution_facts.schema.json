@@ -1,0 +1,457 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/execution_facts.schema.json",
+  "title": "cppulse execution_facts v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "collector_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt": {
+      "$ref": "https://schemas.cppulse.local/v2/execution_receipt.schema.json"
+    },
+    "input_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "inode": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mtime_ns": {
+                "type": "integer"
+              },
+              "ctime_ns": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "device",
+              "inode",
+              "mtime_ns",
+              "ctime_ns"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "stat"
+        ]
+      },
+      "minItems": 0
+    },
+    "input_after_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "inode": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mtime_ns": {
+                "type": "integer"
+              },
+              "ctime_ns": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "device",
+              "inode",
+              "mtime_ns",
+              "ctime_ns"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "stat"
+        ]
+      },
+      "minItems": 0
+    },
+    "output_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "inode": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mtime_ns": {
+                "type": "integer"
+              },
+              "ctime_ns": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "device",
+              "inode",
+              "mtime_ns",
+              "ctime_ns"
+            ]
+          },
+          "freshness": {
+            "enum": [
+              "created",
+              "modified",
+              "unchanged"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "stat",
+          "freshness"
+        ]
+      },
+      "minItems": 0
+    },
+    "preexisting_output_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "inode": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mtime_ns": {
+                "type": "integer"
+              },
+              "ctime_ns": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "device",
+              "inode",
+              "mtime_ns",
+              "ctime_ns"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "stat"
+        ]
+      },
+      "minItems": 0
+    },
+    "executable_fact": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stat": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "device": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "inode": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mtime_ns": {
+                  "type": "integer"
+                },
+                "ctime_ns": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "device",
+                "inode",
+                "mtime_ns",
+                "ctime_ns"
+              ]
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "stat"
+          ]
+        }
+      ]
+    },
+    "material_status": {
+      "enum": [
+        "not_collected",
+        "available",
+        "missing",
+        "invalid"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "stdout_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stderr_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "captured_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "logs_truncated": {
+      "type": "boolean"
+    },
+    "snapshot_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "verified",
+            "invalid",
+            "not_collected"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "input_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              }
+            },
+            "required": [
+              "path",
+              "artifact_id"
+            ]
+          },
+          "minItems": 0
+        },
+        "output_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              }
+            },
+            "required": [
+              "path",
+              "artifact_id"
+            ]
+          },
+          "minItems": 0
+        },
+        "log_artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "stdout": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                }
+              ]
+            },
+            "stderr": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                }
+              ]
+            }
+          },
+          "required": [
+            "stdout",
+            "stderr"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "limitations",
+        "input_artifacts",
+        "output_artifacts",
+        "log_artifacts"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "collector_version",
+    "receipt",
+    "input_facts",
+    "input_after_facts",
+    "output_facts",
+    "preexisting_output_facts",
+    "executable_fact",
+    "material_status",
+    "limitations",
+    "stdout_bytes",
+    "stderr_bytes",
+    "captured_bytes",
+    "logs_truncated",
+    "snapshot_limitations",
+    "binding"
+  ]
+}

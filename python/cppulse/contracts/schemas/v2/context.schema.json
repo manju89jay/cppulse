@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/context.schema.json",
+  "title": "cppulse context v2",
+  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/context"
+}
