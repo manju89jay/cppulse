@@ -169,7 +169,11 @@ class TestXGBoostModel:
         df = _make_features(60)
         labels = _make_labels(df)
         metrics = predictor.train(df, labels)
+        assert metrics.f1 is not None
         assert 0.0 <= metrics.f1 <= 1.0
+        assert metrics.evaluation_status == "cross_validated"
+        assert metrics.evaluation_folds == 5
+        assert metrics.fallback_reason is None
 
     def test_training_samples_recorded(self) -> None:
         """ModelMetrics.training_samples must match the input count."""

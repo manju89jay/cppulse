@@ -10,6 +10,21 @@ import pytest
 from src.main import _load_profile_from_config
 
 
+@pytest.mark.parametrize(
+    "value",
+    [
+        "safety-critical # selected scoring profile",
+        "'safety-critical' # quoted YAML value",
+        '"safety-critical" # double-quoted YAML value',
+    ],
+)
+def test_profile_with_yaml_inline_comment(tmp_path: Path, value: str) -> None:
+    """A valid commented YAML profile must not silently select default scoring."""
+    path = tmp_path / ".cppulserc.yml"
+    path.write_text(f"profile: {value}\n", encoding="utf-8")
+    assert _load_profile_from_config(path) == "safety-critical"
+
+
 @pytest.fixture()
 def tmp_config(tmp_path: Path):
     """Factory for creating temporary config files."""
