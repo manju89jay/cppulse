@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(cppulse-selected-package-consumer NONE)
+if(NOT CPPULSE_SELECTED_BINARY)
+  message(FATAL_ERROR "Pass the actual separately built consumer binary")
+endif()
+enable_testing()
+add_test(NAME selected-package-consumer COMMAND "${CPPULSE_SELECTED_BINARY}")
