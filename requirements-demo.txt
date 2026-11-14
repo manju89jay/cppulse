@@ -1,0 +1,3 @@
+# Verification tools; component runtime dependencies remain in each requirements.txt.
+pypdf==7.1.0
+playwright==1.65.1

@@ -1,0 +1,7 @@
+# Optional external report-production tooling; keep separate from the core venv.
+# The executed cloud closure is recorded in review/autonomous/s6-gcovr-tooling.lock.
+# Adapters parse reports with the standard library and do not import this tool.
+gcovr==8.8
+# Optional local hook-template verification; separate tool environment closure:
+# review/autonomous/s7-precommit-tooling.lock. Never required by cppulse core.
+pre-commit==4.3.0

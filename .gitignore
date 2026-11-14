@@ -1,6 +1,7 @@
 # ── Build outputs ──────────────────────────────────────────────────────────
 analyzer-core/build/
 cli/build/
+/build/
 *.o
 *.a
 *.so
@@ -64,3 +65,7 @@ CLAUDE.local.md
 
 # ── Test fixtures (generated) ────────────────────────────────────────────────
 tests/tmp/
+
+# Local verification workspaces and large review artifacts
+# Selected review summaries are tracked explicitly.
+/review/
