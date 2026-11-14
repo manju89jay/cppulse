@@ -1,0 +1,613 @@
+{
+  "version": "2.0.0",
+  "rules": [
+    {
+      "id": "CPP-CX-001",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "complexity",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Cyclomatic complexity",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 15,
+            "maximum": 2147483647
+          },
+          "error_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 25,
+            "maximum": 2147483647
+          }
+        }
+      },
+      "documentation": "Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-CX-002",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "complexity",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Function length",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 80,
+            "maximum": 2147483647
+          },
+          "error_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 150,
+            "maximum": 2147483647
+          }
+        }
+      },
+      "documentation": "Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-CX-003",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "complexity",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Parameter count",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 5,
+            "maximum": 2147483647
+          },
+          "error_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 8,
+            "maximum": 2147483647
+          }
+        }
+      },
+      "documentation": "Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MEM-001",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "memory_safety",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Raw pointer ownership",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect use of raw `new` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MEM-002",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "memory_safety",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Manual memory management",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect explicit `delete` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MEM-003",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "memory_safety",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "C-style array parameters",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect C-style array parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-001",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "C-style casts",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect C-style cast expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-002",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Deprecated C headers",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect inclusion of deprecated C headers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-003",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Missing override",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect virtual methods that are missing the override keyword. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-004",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Raw string literal opportunities",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect string literals with many escape sequences. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-005",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Iterator auto opportunities",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-006",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Range-for opportunities",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Suggest range-based for loops for index-based loops. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-007",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Null pointer literals",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect use of NULL macro or integer 0 as a null pointer. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-008",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Unscoped enums",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect unscoped (plain) enum declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "CPP-MOD-009",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "modernization",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Typedef aliases",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect typedef declarations that should use `using`. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-001",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Goto statements",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect use of goto statements. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-002",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Implicit narrowing conversions",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect implicit narrowing conversions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-003",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Union declarations",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect union declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-004",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "C dynamic allocation calls",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect dynamic memory allocation via C library functions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-005",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Direct recursion",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect direct recursive function calls. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-006",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Multiple return statements",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect functions with multiple return statements. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    },
+    {
+      "id": "MISRA-007",
+      "version": "prototype-1",
+      "maturity": "experimental",
+      "category": "misra",
+      "required_capabilities": [
+        "libclang_ast"
+      ],
+      "supported_inputs": [
+        "c++_translation_unit",
+        "c++_header_with_context"
+      ],
+      "configuration_schema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "Uninitialized local variables",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "documentation": "Detect variable declarations without initializers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+    }
+  ]
+}
