@@ -103,7 +103,11 @@ std::pair<int, std::string> execute_shell(const std::string& command) {
     const int exit_code = raw_status;
 #else
     // On POSIX, pclose() returns a wait-status that must be decoded.
-    const int exit_code = WEXITSTATUS(raw_status);  // NOLINT(hicpp-signed-bitwise)
+    const int exit_code =
+        raw_status == -1
+            ? -1
+            : (WIFEXITED(raw_status) ? WEXITSTATUS(raw_status)
+                                     : 128 + WTERMSIG(raw_status));  // NOLINT(hicpp-signed-bitwise)
 #endif
     return {exit_code, output};
 }
@@ -112,12 +116,18 @@ std::pair<int, std::string> execute_shell(const std::string& command) {
 
 Orchestrator::Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir,
                            std::filesystem::path project_root,
-                           std::optional<std::filesystem::path> config_path, std::string profile)
-    : repo_path_{std::move(repo_path)},
-      output_dir_{std::move(output_dir)},
-      project_root_{std::move(project_root)},
-      config_path_{std::move(config_path)},
-      profile_{std::move(profile)} {}
+                           std::optional<std::filesystem::path> config_path, std::string profile,
+                           std::optional<std::filesystem::path> compilation_database)
+    : repo_path_{repo_path.empty() ? repo_path : std::filesystem::absolute(repo_path)},
+      output_dir_{std::filesystem::absolute(output_dir.empty() ? "." : output_dir)},
+      project_root_{std::filesystem::absolute(project_root)},
+      config_path_{config_path ? std::optional{std::filesystem::absolute(*config_path)}
+                               : std::nullopt},
+      profile_{std::move(profile)},
+      compilation_database_{
+          compilation_database
+              ? std::optional{std::filesystem::absolute(*compilation_database).lexically_normal()}
+              : std::nullopt} {}
 
 PipelineResult Orchestrator::run_command(const std::string& command,
                                          const std::string& stage_name) {
@@ -131,15 +141,24 @@ PipelineResult Orchestrator::run_command(const std::string& command,
         return PipelineResult{false, captured_output, exit_code};
     }
 
+    if (!captured_output.empty()) {
+        spdlog::info("[{}] output:\n{}", stage_name, captured_output);
+    }
     spdlog::info("[{}] completed successfully", stage_name);
     return PipelineResult{true, {}, 0};
 }
 
 PipelineResult Orchestrator::run_analyzer() {
-    std::string command = "cppulse-analyzer --repo " + shell_quote(repo_path_) + " --output " +
-                          shell_quote(output_dir_);
+    const auto local_analyzer = project_root_ / "analyzer-core" / "build" / "cppulse-analyzer";
+    const auto executable =
+        std::filesystem::exists(local_analyzer) ? shell_quote(local_analyzer) : "cppulse-analyzer";
+    std::string command =
+        executable + " --repo " + shell_quote(repo_path_) + " --output " + shell_quote(output_dir_);
     if (config_path_.has_value()) {
         command += " --config " + shell_quote(config_path_.value());
+    }
+    if (compilation_database_) {
+        command += " --compilation-database " + shell_quote(*compilation_database_);
     }
     return run_command(command, "analyzer");
 }
@@ -157,22 +176,28 @@ PipelineResult Orchestrator::run_predictor() {
     std::string command = "cd " + component_dir + " && " + kPythonCommand +
                           " -m src.main --input " + shell_quote(output_dir_) + " --output " +
                           shell_quote(output_dir_);
-    if (profile_ != "default") {
+    if (!profile_.empty()) {
         command += " --profile " + shell_quote(std::filesystem::path{profile_});
+    }
+    if (config_path_) {
+        command += " --config " + shell_quote(*config_path_);
     }
     return run_command(command, "predictor");
 }
 
-PipelineResult Orchestrator::run_report_generator() {
+PipelineResult Orchestrator::run_report_generator(const std::string& format) {
+    if (format != "pdf" && format != "json") {
+        return PipelineResult{false, "Unsupported report format", 1};
+    }
     const auto component_dir = shell_quote(project_root_ / "report-engine");
     const std::string quoted_input = shell_quote(output_dir_);
-    const std::string quoted_pdf = shell_quote(output_dir_ / "report.pdf");
+    const std::string quoted_pdf = shell_quote(output_dir_ / ("report." + format));
     // Invoke the module's CLI entry point instead of inline "python -c" code:
     // nesting quoted paths inside a -c string breaks on Windows (cmd.exe strips
     // the inner double quotes) and couples the CLI to PDFGenerator's API.
     const std::string command = "cd " + component_dir + " && " + kPythonCommand +
                                 " -m src.pdf_generator --data " + quoted_input + " --output " +
-                                quoted_pdf;
+                                quoted_pdf + " --format " + format;
     return run_command(command, "report-generator");
 }
 

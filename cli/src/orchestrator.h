@@ -33,11 +33,13 @@ class Orchestrator {
      *                      Defaults to the current working directory.
      * @param config_path   Optional path to a .cppulserc.yml/.json config file.
      * @param profile       Optional analysis profile override ("default" or "safety-critical").
+     * @param compilation_database Optional compile_commands.json file or containing directory.
      */
     explicit Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir,
                           std::filesystem::path project_root = std::filesystem::current_path(),
                           std::optional<std::filesystem::path> config_path = std::nullopt,
-                          std::string profile = "default");
+                          std::string profile = "",
+                          std::optional<std::filesystem::path> compilation_database = std::nullopt);
 
     /**
      * @brief Run the cppulse-analyzer static analysis stage.
@@ -73,7 +75,7 @@ class Orchestrator {
      *
      * @return PipelineResult indicating success or failure with exit code.
      */
-    [[nodiscard]] PipelineResult run_report_generator();
+    [[nodiscard]] PipelineResult run_report_generator(const std::string& format = "pdf");
 
     /**
      * @brief Run the complete analysis pipeline in sequence.
@@ -103,6 +105,7 @@ class Orchestrator {
     std::filesystem::path project_root_;
     std::optional<std::filesystem::path> config_path_;
     std::string profile_;
+    std::optional<std::filesystem::path> compilation_database_;
 };
 
 }  // namespace cppulse

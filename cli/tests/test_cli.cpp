@@ -168,3 +168,8 @@ TEST(OrchestratorConfigTest, ConstructsWithNoOptionalArgs) {
 }
 
 }  // namespace
+
+TEST(OrchestratorReportTest, RejectsUnknownFormatWithoutSpawning) {
+    cppulse::Orchestrator orch{{}, {}};
+    EXPECT_FALSE(orch.run_report_generator("html").success);
+}

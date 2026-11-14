@@ -23,6 +23,8 @@
 int main(int argc, char* argv[]) {
     CLI::App app{"cppulse — C++ codebase health analyzer"};
     app.require_subcommand(1);
+    std::string project_root = CPPULSE_SOURCE_ROOT;
+    app.add_option("--project-root", project_root, "cppulse source checkout root");
 
     // -----------------------------------------------------------------------
     // Sub-command: analyze
@@ -32,7 +34,8 @@ int main(int argc, char* argv[]) {
     std::string analyze_repo;
     std::string analyze_output = "./output";
     std::string analyze_config;
-    std::string analyze_profile = "default";
+    std::string analyze_compilation_database;
+    std::string analyze_profile;
 
     analyze_cmd->add_option("--repo", analyze_repo, "Path to the C++ repository root")->required();
     analyze_cmd->add_option("--output", analyze_output, "Output directory for pipeline artifacts")
@@ -41,8 +44,11 @@ int main(int argc, char* argv[]) {
         "--config", analyze_config,
         "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
     analyze_cmd
+        ->add_option("--compilation-database", analyze_compilation_database,
+                     "compile_commands.json file or containing directory")
+        ->check(CLI::ExistingPath);
+    analyze_cmd
         ->add_option("--profile", analyze_profile, "Analysis profile: default or safety-critical")
-        ->default_val("default")
         ->check(CLI::IsMember({"default", "safety-critical"}));
 
     analyze_cmd->callback([&]() {
@@ -85,8 +91,12 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config_path,
-                                   profile};
+        std::optional<std::filesystem::path> database_path;
+        if (!analyze_compilation_database.empty()) {
+            database_path = analyze_compilation_database;
+        }
+        cppulse::Orchestrator orch{repo,        output,  std::filesystem::path{project_root},
+                                   config_path, profile, database_path};
         const auto result = orch.run_full_pipeline();
 
         if (!result.success) {
@@ -120,8 +130,8 @@ int main(int argc, char* argv[]) {
 
         // Use a temporary Orchestrator with an empty repo path — only
         // run_report_generator() is needed here.
-        cppulse::Orchestrator orch{std::filesystem::path{}, input};
-        const auto result = orch.run_report_generator();
+        cppulse::Orchestrator orch{std::filesystem::path{}, input, project_root};
+        const auto result = orch.run_report_generator(report_format);
 
         if (!result.success) {
             spdlog::error("report: generation failed (exit {}): {}", result.exit_code,
@@ -139,7 +149,8 @@ int main(int argc, char* argv[]) {
     std::string watch_repo;
     std::string watch_output = "./output";
     std::string watch_config;
-    std::string watch_profile = "default";
+    std::string watch_compilation_database;
+    std::string watch_profile;
     int watch_interval = 300;
 
     watch_cmd->add_option("--repo", watch_repo, "Path to the C++ repository root")->required();
@@ -149,12 +160,16 @@ int main(int argc, char* argv[]) {
         "--config", watch_config,
         "Path to .cppulserc.yml/.json (auto-discovered from repo root if omitted)");
     watch_cmd
+        ->add_option("--compilation-database", watch_compilation_database,
+                     "compile_commands.json file or containing directory")
+        ->check(CLI::ExistingPath);
+    watch_cmd
         ->add_option("--profile", watch_profile, "Analysis profile: default or safety-critical")
-        ->default_val("default")
         ->check(CLI::IsMember({"default", "safety-critical"}));
     watch_cmd
         ->add_option("--interval", watch_interval, "Seconds between analysis runs (default 300)")
-        ->default_val(300);
+        ->default_val(300)
+        ->check(CLI::PositiveNumber);
 
     watch_cmd->callback([&]() {
         const std::filesystem::path repo{watch_repo};
@@ -185,12 +200,18 @@ int main(int argc, char* argv[]) {
             }
         }
 
+        std::optional<std::filesystem::path> database_path;
+        if (!watch_compilation_database.empty()) {
+            database_path = watch_compilation_database;
+        }
+
         spdlog::info("watch: starting continuous analysis of '{}' every {}s", repo.string(),
                      watch_interval);
 
         while (true) {
-            cppulse::Orchestrator orch{repo, output, std::filesystem::current_path(), config_path,
-                                       watch_profile};
+            cppulse::Orchestrator orch{
+                repo,        output,        std::filesystem::path{project_root},
+                config_path, watch_profile, database_path};
             const auto result = orch.run_full_pipeline();
 
             if (!result.success) {
