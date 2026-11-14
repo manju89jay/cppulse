@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/analysis_inventory.schema.json",
+  "title": "cppulse analysis_inventory v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "receipt_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "job_context_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "report_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "registry_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "config_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "compilation_database_artifact_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        }
+      ]
+    },
+    "resource_manifest_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "registry_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "requested_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requested_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "enabled_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parse_context_id": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "analyzed",
+              "partial",
+              "failed",
+              "skipped",
+              "excluded",
+              "missing",
+              "not_attempted"
+            ]
+          },
+          "error_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "context_source": {
+            "enum": [
+              "database",
+              "inferred",
+              "fallback",
+              "none"
+            ]
+          },
+          "context_match": {
+            "enum": [
+              "matched",
+              "mismatched",
+              "unverified"
+            ]
+          },
+          "executed_rules": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "finding_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "file",
+          "parse_context_id",
+          "status",
+          "error_count",
+          "context_source",
+          "context_match",
+          "executed_rules",
+          "finding_count",
+          "limitations"
+        ]
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "producer",
+    "receipt_id",
+    "job_context_id",
+    "report_artifact_id",
+    "registry_artifact_id",
+    "config_artifact_id",
+    "compilation_database_artifact_id",
+    "registry_sha256",
+    "requested_files",
+    "requested_rules",
+    "enabled_rules",
+    "items",
+    "limitations"
+  ]
+}
