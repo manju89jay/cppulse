@@ -1,0 +1,128 @@
+{
+  "version": "2.0.0",
+  "id": "organization-example",
+  "policy_version": "1.0.0",
+  "standards": [],
+  "scope": {
+    "include": [
+      "src/**/*.cpp",
+      "src/**/*.cc",
+      "src/**/*.cxx"
+    ],
+    "exclude": [
+      "src/vendor/**"
+    ]
+  },
+  "contexts": [
+    "gcc-debug",
+    "clang-debug",
+    "native-analysis"
+  ],
+  "gates": {
+    "minimum_readiness": 100,
+    "minimum_completeness": 100
+  },
+  "controls": [
+    {
+      "id": "observed-jobs",
+      "title": "Both selected jobs have observed source-scope results",
+      "kind": "required_contexts",
+      "weight": 2,
+      "required": true,
+      "parameters": {
+        "contexts": [
+          "gcc-debug",
+          "clang-debug"
+        ]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "gcc-tests",
+      "title": "Selected GCC-job tests pass",
+      "kind": "test_outcomes",
+      "weight": 4,
+      "required": true,
+      "allow_deviation": false,
+      "parameters": {
+        "evidence_ids": [
+          "gcc-unit-tests"
+        ],
+        "contexts": [
+          "gcc-debug"
+        ]
+      },
+      "depends_on": [
+        "observed-jobs"
+      ]
+    },
+    {
+      "id": "clang-tests",
+      "title": "Selected Clang-job tests pass",
+      "kind": "test_outcomes",
+      "weight": 4,
+      "required": true,
+      "allow_deviation": false,
+      "parameters": {
+        "evidence_ids": [
+          "clang-unit-tests"
+        ],
+        "contexts": [
+          "clang-debug"
+        ]
+      },
+      "depends_on": [
+        "observed-jobs"
+      ]
+    },
+    {
+      "id": "observed-analysis-job",
+      "title": "Native analysis job has observed matched parse attempts",
+      "kind": "required_contexts",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "contexts": [
+          "native-analysis"
+        ]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "analysis-parse",
+      "title": "Selected files have complete matched analysis parses",
+      "kind": "minimum_analysis_coverage",
+      "weight": 2,
+      "required": true,
+      "parameters": {
+        "minimum": 100,
+        "contexts": [
+          "native-analysis"
+        ]
+      },
+      "depends_on": [
+        "observed-analysis-job"
+      ]
+    },
+    {
+      "id": "selected-findings",
+      "title": "Selected experimental memory and modernization rules have no observations",
+      "kind": "finding_limit",
+      "weight": 3,
+      "required": true,
+      "parameters": {
+        "rule_ids": [
+          "CPP-MEM-001",
+          "CPP-MOD-001"
+        ],
+        "max_findings": 0,
+        "contexts": [
+          "native-analysis"
+        ]
+      },
+      "depends_on": [
+        "observed-analysis-job"
+      ]
+    }
+  ]
+}

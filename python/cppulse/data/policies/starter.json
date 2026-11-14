@@ -1,0 +1,106 @@
+{
+  "version": "2.0.0",
+  "id": "local-starter",
+  "policy_version": "1.0.0",
+  "standards": [],
+  "scope": {
+    "include": [
+      "**/*.cpp",
+      "**/*.cc",
+      "**/*.cxx"
+    ],
+    "exclude": [
+      "build/**",
+      "vendor/**"
+    ]
+  },
+  "contexts": [
+    "build-debug",
+    "analysis-debug"
+  ],
+  "gates": {
+    "minimum_readiness": 100,
+    "minimum_completeness": 100
+  },
+  "controls": [
+    {
+      "id": "observed-build-job",
+      "title": "Build/test job has observed source-scope results",
+      "kind": "required_contexts",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "contexts": [
+          "build-debug"
+        ]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "observed-analysis-job",
+      "title": "Analysis job has observed matched parse attempts",
+      "kind": "required_contexts",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "contexts": [
+          "analysis-debug"
+        ]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-tests",
+      "title": "Selected tests pass for the requested source scope",
+      "kind": "test_outcomes",
+      "weight": 2,
+      "required": true,
+      "parameters": {
+        "evidence_ids": [
+          "unit-tests"
+        ],
+        "contexts": [
+          "build-debug"
+        ]
+      },
+      "depends_on": [
+        "observed-build-job"
+      ]
+    },
+    {
+      "id": "analysis-parse",
+      "title": "Selected files have complete matched analysis parses",
+      "kind": "minimum_analysis_coverage",
+      "weight": 2,
+      "required": true,
+      "parameters": {
+        "minimum": 100,
+        "contexts": [
+          "analysis-debug"
+        ]
+      },
+      "depends_on": [
+        "observed-analysis-job"
+      ]
+    },
+    {
+      "id": "selected-findings",
+      "title": "Selected experimental memory rule has no observations",
+      "kind": "finding_limit",
+      "weight": 2,
+      "required": true,
+      "parameters": {
+        "rule_ids": [
+          "CPP-MEM-001"
+        ],
+        "max_findings": 0,
+        "contexts": [
+          "analysis-debug"
+        ]
+      },
+      "depends_on": [
+        "observed-analysis-job"
+      ]
+    }
+  ]
+}
