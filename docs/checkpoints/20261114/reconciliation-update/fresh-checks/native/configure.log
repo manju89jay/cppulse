@@ -1,0 +1,15 @@
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- libclang library: /usr/lib/x86_64-linux-gnu/libclang-19.so.1
+-- libclang include: /workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/include
+-- Found nlohmann_json: /workspace/scratch/b3d4e6fff494/toolchain/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version "3.11.3")
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-handoff-verification

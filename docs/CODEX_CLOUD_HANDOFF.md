@@ -2,6 +2,34 @@
 
 Prepared 14 November 2026. **Implementation is paused. This is not a green release.**
 
+## Saved checkpoint and updated audit
+
+The WIP implementation was pushed to the existing branch at
+`79665c4808a7bbd05e69c70ad0bd10379aa8fef1`, directly on top of the earlier
+`15492dbfcbc6b20d938e42e760486da4181035f6` checkpoint. The later handover/audit
+commit changes documentation and checkpoint records, not implementation.
+
+Read the [updated, filterable full audit](portfolio/cppulse-reconciliation-audit.html)
+and [short completion summary](checkpoints/20261114/reconciliation-update/task-completion-summary.md).
+All 118 requirements, nine additional obligations and 60 tasks were retained.
+The large tasks have not been equated with individual repaired defects.
+M0-01 is closed in its inventory scope; no new whole task or milestone is
+declared complete. The verified R1 implementation slices are listed separately.
+
+Fresh read-only verification on the pushed implementation checkpoint:
+
+- Native configure/build and **139/139 CTests passed** on the combined frozen source.
+- **453 selected Python checks passed**, with source hashes stable before/after.
+- Full root collection found **2,322 tests and four collection errors**, due to
+  absent `cppulse.maintenance`, `cppulse.measurements` and `cppulse.work_units`.
+- Known CR-only LOC correctness and raw native-output schema gaps remain open.
+
+Exact commands/logs are in
+`docs/checkpoints/20261114/reconciliation-update/fresh-checks/`.
+These newer checks supersede the earlier agent uncertainty about rebuilding the
+last native edits. They do not resolve uncovered defects, missing Python
+runtime modules, the policy 1.2 failure or real editor-host qualification.
+
 The user requested stopping the current workers, saving their progress and
 resuming in Codex Cloud. They then requested using the **same existing branch**:
 `codex/cppulse-local-core-20261114`. This checkpoint is directly based on
@@ -44,16 +72,16 @@ source/artifact/environment. The working tree was frozen mid-feature.
 
 | Track | Saved implementation and actual evidence | Remaining work / known failure |
 |---|---|---|
-| R1 native correctness | Already-auto, logical counting, template rules, strict JSON/simple-YAML, ambiguity, configurable 16 MiB file budget and skip reasons. Coordinated R1 native suite 114/114 passed. | Later metrics/resource changes happened after that suite; rebuild current combined source. Tested libclang pair is 19.1.7, not every discovered version. |
+| R1 native correctness | Already-auto, logical counting, template rules, strict JSON/simple-YAML, ambiguity, configurable 16 MiB file budget and skip reasons. Earlier R1 suite 114/114 passed; the final handover rebuilt the combined source and passed 139/139 CTests. | Reproduce in the new cloud environment. Tested libclang pair is 19.1.7, not every discovered version; this suite does not establish every native metric's correctness. |
 | R1 ranking/CLI/presentation | Partial/unverified/history-incomplete files retained in `unranked_files`; four-document verifier checks ranked ∪ unranked scope. CLI/config 70, predictor 110, report 125, dashboard 57 tests plus production build passed in their recorded runs. | No claim these counts constitute a fresh full-suite pass at this checkpoint. |
 | Actual real-code R1 integration | Pinned fmt and utfcpp plus tiny authored consumer rebuilt/analyzed. Actual utfcpp API/packaged dashboard/PDF passed: seven unranked files, insufficient-history labels, no browser errors, readable 9-page PDF. | Library parse gaps remain. Full upstream suites, six-original-project qualification and predictive accuracy were not established. |
 | P1/R2 developer tooling | `tools/dev.py`, benchmark runner, typed results, shared checks/CI wrappers; 73 focused tests and actual developer-command resource observations passed. | Exact final candidate, representative scale, all platforms and Docker remain unqualified. Existing CI definitions were edited but remote CI was not run. |
 | README | Product overview, developer journeys, commands, distinctions and full-plan links rewritten; documented source/runtime flows exercised. | Refresh against finished features and a verified candidate; do not relabel preview as production complete. |
 | P2 VS Code | Source, protocol/process tests, explicit commands and diagnostic views saved. Compile and latest 16 unit tests passed. A prior VSIX was built. | Latest source is newer than that VSIX. Real host remains unverified: AF_UNIX/NETLINK restricted; TCP-only Xvfb gets past display then VS Code stalls. Finite settings/package metadata and docs need completion. |
-| P3 native metrics | Live-TU LOC/code-LOC, functions/USR/location, semantic CC/length/nesting/parameters, token records, include callbacks and content SHA implemented. Twenty metric tests and an intermediate 139/139 native suite passed. | **CR-only line endings miscount LOC**; raw actual report schema gate was not run because PYTHONPATH was absent. Unresolved include edges are omitted; legacy total_loc saturates int. Latest P5 native edits are newer than the 139-pass build. |
+| P3 native metrics | Live-TU LOC/code-LOC, functions/USR/location, semantic CC/length/nesting/parameters, token records, include callbacks and content SHA implemented. Twenty metric tests passed; the later root handover check rebuilt the combined source and passed 139/139 CTests. | **CR-only line endings miscount LOC**; raw actual report schema gate was not run because PYTHONPATH was absent. Unresolved include edges are omitted; legacy total_loc saturates int. |
 | P3 Python/scorer | Typed metrics/health/duplication contracts and 69 tests passed. Red tests for measured normalization, health, duplication and trends retained. | Measured normalizer/scorer/hotspot/duplication/trend runtime implementation is absent. Wait for accepted native producer gate, then implement consumers. |
 | P4 policies | Profile 1.2 contracts/review details and metric/review evaluator implementation started. Prerequisite gate 532 passed; behavior went from 36 red to 35 passed / 1 failed. | Remaining fixture/control approval-ID mismatch is an agent diagnosis, not a verified fix. Inspect and reproduce. No final runtime/presentation/installed qualification. Domain standard mappings must remain unreviewed until authorized-edition review exists. |
-| P5 scale | Draft/private schemas, native finite file selection and Linux resource-limit flags, public execution wrapper and red tests saved. | Latest resource changes unbuilt/unverified. `cppulse.work_units` runtime is absent, so collection can fail. Scheduler/cache/resume/index are not implemented. |
+| P5 scale | Draft/private schemas, native finite file selection and Linux resource-limit flags, public execution wrapper and red tests saved. The combined native build and 139 CTests passed in the final read-only verification. | Native tests do not establish scheduler/resource-protocol integration. `cppulse.work_units` runtime is absent, so collection fails. Scheduler/cache/resume/index are not implemented. |
 | P6 and expansions | Full requirements/tasks retained. | Deep Git intelligence, temporal model evaluation, MCP/skill qualification, organization/repair/language/hosting expansions remain unfinished. No silent scope reduction. |
 
 Individual checkpoint notes include exact paths, commands, red/green logs,

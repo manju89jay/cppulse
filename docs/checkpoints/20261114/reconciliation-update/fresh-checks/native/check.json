@@ -1,0 +1,45 @@
+{
+  "revision": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1",
+  "started_at": "2026-11-14T16:15:22.438868+00:00",
+  "checks": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "analyzer-core",
+        "-B",
+        "analyzer-core/build-handoff-verification",
+        "-DBUILD_TESTING=ON"
+      ],
+      "exit_code": 0,
+      "log": "review/cloud-handoff-verification-20261114/native/configure.log",
+      "log_sha256": "a4e7e6bb95f8e80dcb8c4586b6c804dc25d04c195d6af757cd7ecfded349b052"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "analyzer-core/build-handoff-verification",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "log": "review/cloud-handoff-verification-20261114/native/build.log",
+      "log_sha256": "4cb444560e627f135c2fe6e98432bc8978fff6f3303702c53c1b7d7b1a3e19e7"
+    },
+    {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "analyzer-core/build-handoff-verification",
+        "--output-on-failure",
+        "--no-tests=error"
+      ],
+      "exit_code": 0,
+      "log": "review/cloud-handoff-verification-20261114/native/ctest.log",
+      "log_sha256": "17e266132578a4744aa615259dd68388c6821d933471b2c03913bbd18a4730a0"
+    }
+  ],
+  "scope": "Fresh frozen native checkpoint build/CTest; known uncovered defects still remain.",
+  "finished_at": "2026-11-14T16:16:06.717709+00:00",
+  "status": "passed"
+}

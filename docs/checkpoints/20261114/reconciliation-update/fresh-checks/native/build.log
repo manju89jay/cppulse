@@ -1,0 +1,75 @@
+[  4%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/analyzer.cpp.o
+[  4%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/config.cpp.o
+[  6%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/file_discovery.cpp.o
+[  9%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/hello_libclang.cpp.o
+[ 11%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/metrics.cpp.o
+[ 13%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/native_execution_limits.cpp.o
+[ 15%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/output_writer.cpp.o
+[ 18%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/complexity/cyclomatic_complexity.cpp.o
+[ 20%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/complexity/function_length.cpp.o
+[ 22%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/complexity/parameter_count.cpp.o
+[ 25%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/memory_safety/manual_memory_mgmt.cpp.o
+[ 27%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/memory_safety/raw_pointer_ownership.cpp.o
+[ 29%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/memory_safety/unsafe_array_access.cpp.o
+[ 31%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/init_all_vars.cpp.o
+[ 34%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/no_dynamic_alloc.cpp.o
+[ 36%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/no_goto.cpp.o
+[ 38%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/no_implicit_conversion.cpp.o
+[ 40%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/no_recursion.cpp.o
+[ 43%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/no_union.cpp.o
+[ 45%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/misra/single_exit.cpp.o
+[ 47%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/auto_usage.cpp.o
+[ 50%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/c_style_cast.cpp.o
+[ 52%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/deprecated_headers.cpp.o
+[ 54%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/enum_class.cpp.o
+[ 56%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/missing_override.cpp.o
+[ 59%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/nullptr_usage.cpp.o
+[ 61%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/range_for.cpp.o
+[ 63%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/raw_string_literal.cpp.o
+[ 65%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/rules/modernization/using_vs_typedef.cpp.o
+[ 68%] Linking CXX static library libcppulse-analyzer-lib.a
+[ 68%] Built target cppulse-analyzer-lib
+[ 70%] Building CXX object CMakeFiles/cppulse-analyzer.dir/src/main.cpp.o
+[ 72%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_compilation_db.cpp.o
+[ 75%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_config.cpp.o
+[ 77%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_config_limits.cpp.o
+[ 79%] Linking CXX executable cppulse-analyzer
+[ 79%] Built target cppulse-analyzer
+[ 81%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_coverage.cpp.o
+[ 84%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_hello_libclang.cpp.o
+[ 86%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_native_metrics.cpp.o
+[ 88%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_native_scope.cpp.o
+[ 90%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_parse_trace.cpp.o
+[ 93%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_rule_regressions.cpp.o
+[ 95%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_rules.cpp.o
+[ 97%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_work_unit_selection.cpp.o
+In file included from /workspace/scratch/b3d4e6fff494/toolchain/usr/include/gtest/gtest-printers.h:122,
+                 from /workspace/scratch/b3d4e6fff494/toolchain/usr/include/gtest/gtest-matchers.h:49,
+                 from /workspace/scratch/b3d4e6fff494/toolchain/usr/include/gtest/internal/gtest-death-test-internal.h:47,
+                 from /workspace/scratch/b3d4e6fff494/toolchain/usr/include/gtest/gtest-death-test.h:43,
+                 from /workspace/scratch/b3d4e6fff494/toolchain/usr/include/gtest/gtest.h:64,
+                 from /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp:4:
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp: In member function ‘virtual void {anonymous}::WorkUnitSelectionTest_RejectsMalformedEscapingDuplicateAndMissingSelections_Test::TestBody()’:
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp:56:50: warning: ignoring return value of ‘std::vector<std::filesystem::__cxx11::path> cppulse::read_selected_files(const std::filesystem::__cxx11::path&, const std::filesystem::__cxx11::path&)’, declared with attribute ‘nodiscard’ [-Wunused-result]
+   56 |         EXPECT_THROW(cppulse::read_selected_files(root_, list), std::runtime_error) << text;
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+In file included from /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp:11:
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/native_execution_limits.h:36:50: note: declared here
+   36 | [[nodiscard]] std::vector<std::filesystem::path> read_selected_files(
+      |                                                  ^~~~~~~~~~~~~~~~~~~
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp: In member function ‘virtual void {anonymous}::WorkUnitSelectionTest_RejectsSymlinkFileAndDirectoryComponents_Test::TestBody()’:
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp:70:50: warning: ignoring return value of ‘std::vector<std::filesystem::__cxx11::path> cppulse::read_selected_files(const std::filesystem::__cxx11::path&, const std::filesystem::__cxx11::path&)’, declared with attribute ‘nodiscard’ [-Wunused-result]
+   70 |         EXPECT_THROW(cppulse::read_selected_files(root_, list), std::runtime_error);
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/native_execution_limits.h:36:50: note: declared here
+   36 | [[nodiscard]] std::vector<std::filesystem::path> read_selected_files(
+      |                                                  ^~~~~~~~~~~~~~~~~~~
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp: In member function ‘virtual void {anonymous}::WorkUnitSelectionTest_RejectsUnusablyLowAddressSpaceBeforeParsing_Test::TestBody()’:
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_work_unit_selection.cpp:83:56: warning: ignoring return value of ‘nlohmann::json_abi_v3_11_3::json cppulse::apply_native_execution_limits(const NativeExecutionLimits&)’, declared with attribute ‘nodiscard’ [-Wunused-result]
+   83 |     EXPECT_THROW(cppulse::apply_native_execution_limits(limits), std::runtime_error);
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/native_execution_limits.h:24:30: note: declared here
+   24 | [[nodiscard]] nlohmann::json apply_native_execution_limits(const NativeExecutionLimits& limits);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[100%] Linking CXX executable cppulse-analyzer-tests
+[100%] Built target cppulse-analyzer-tests

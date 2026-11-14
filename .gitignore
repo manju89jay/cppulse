@@ -71,3 +71,4 @@ tests/tmp/
 # Local verification workspaces and large review artifacts
 # Selected review summaries are tracked explicitly.
 /review/
+/error.log

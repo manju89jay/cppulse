@@ -102,7 +102,9 @@
       "original_optionality": "core",
       "remaining_work": "Preserve licensing/offline/no-account contract; this verifies local core access, not all third-party license obligations or a stable published release.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-01"
     },
     {
       "id": "PR-02",
@@ -118,7 +120,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete editor/MCP clients, human-text CLI, mature shared context/config semantics and current candidate qualification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-02"
     },
     {
       "id": "PR-03",
@@ -134,7 +138,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete extensible normalized fact streams/full measured metrics and broader supported producer/context matrix; retain independent provenance.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-03"
     },
     {
       "id": "PR-04",
@@ -151,7 +157,9 @@
       "original_optionality": "core",
       "remaining_work": "Repair per-file false-clean/risk wording and estimates; implement specified measured/context scorer and validated ranking semantics.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-04"
     },
     {
       "id": "PR-05",
@@ -166,7 +174,9 @@
       "original_optionality": "core",
       "remaining_work": "Add missing metric/reviewed-evidence evaluators and reviewed edition-pinned general/domain packs; keep domain labels out of evaluator.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-05"
     },
     {
       "id": "PR-06",
@@ -181,7 +191,9 @@
       "original_optionality": "core",
       "remaining_work": "Keep M9 expansion visible and specify before implementation; this verifies declared boundary, not completion of M9.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-06"
     },
     {
       "id": "PR-07",
@@ -196,7 +208,9 @@
       "original_optionality": "core",
       "remaining_work": "Correct delivered exit/label/config defects; repair stale S0\u2013S7 completion wording and keep per-capability support evidence.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-07"
     },
     {
       "id": "UX-01",
@@ -211,7 +225,9 @@
       "original_optionality": "core",
       "remaining_work": "Requalify the exact final artifact, repair the partial-analysis exit code, simplify the first useful result and separate optional Git/risk dependencies. Keep Linux host header and libclang requirements explicit.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-01"
     },
     {
       "id": "UX-02",
@@ -226,7 +242,9 @@
       "original_optionality": "core",
       "remaining_work": "Broaden platform qualification and supply simpler maintainer target/recipe authoring; run representative upstream suites when those checks are claimed.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-02"
     },
     {
       "id": "UX-03",
@@ -241,7 +259,9 @@
       "original_optionality": "core",
       "remaining_work": "Provide maintainer-authored representative type/macro/exception/error workload matrices and broaden named target/toolchain evidence.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-03"
     },
     {
       "id": "UX-04",
@@ -257,7 +277,9 @@
       "original_optionality": "core",
       "remaining_work": "Install a find_package(CPPulse) package or explicitly approve the resource-include interface. Reconcile the proposed CMake 3.16 consumer minimum with the helper's 3.21+ features. Fix partial analyze exit 3. Target dependencies order builds; they do not prove analysis scope.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-04"
     },
     {
       "id": "UX-05",
@@ -274,7 +296,9 @@
       "original_optionality": "core",
       "remaining_work": "Add dependency-aware changed-file execution and symbol/token identities. Preserve explicit unknown outcomes for ambiguous anchors and renames. Current comparisons require full relevant collection.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-05"
     },
     {
       "id": "UX-06",
@@ -289,7 +313,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement new detector/adapter/evaluator capabilities before accepting requirements that existing predicates cannot express; introduce reviewed policy-pack lifecycle before broader adoption.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-06"
     },
     {
       "id": "UX-07",
@@ -304,7 +330,9 @@
       "original_optionality": "core",
       "remaining_work": "Generate native registration and integration metadata from one registry. Require meaningful detector/adapter fixtures and declared supported producer versions before a scaffold becomes a supported extension.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-07"
     },
     {
       "id": "UX-08",
@@ -319,7 +347,9 @@
       "original_optionality": "core",
       "remaining_work": "Compose the scripts into one complete developer facade. Verify the final current candidate, actual Docker execution, the supported platform/toolchain matrix, dependency/changelog preparation and performance qualification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#UX-08"
     },
     {
       "id": "FR-CTX-01",
@@ -335,7 +365,9 @@
       "original_optionality": "core",
       "remaining_work": "Emit classification (source/header/generated/vendor/test), complete unreadable/unsupported inventories and machine-readable exclusion reasons. Current inventory only covers discovered C++ files; skipped symlinks/non-C++/permission denied inputs are not complete source classification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-01"
     },
     {
       "id": "FR-CTX-02",
@@ -351,7 +383,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete a distinct authorized external-dependency identity namespace, dependency inventory and platform collision qualification; legacy native coverage display paths remain absolute and are normalized at boundaries.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-02"
     },
     {
       "id": "FR-CTX-03",
@@ -366,7 +400,9 @@
       "original_optionality": "core",
       "remaining_work": "Qualify broader compiler-driver/target/sysroot/response-file forms and supported platform matrix. Handle multiple commands as separate selected work units rather than choosing command 0.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-03"
     },
     {
       "id": "FR-CTX-04",
@@ -382,7 +418,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain these distinctions when adding context-matrix scheduling and installed/platform qualification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-04"
     },
     {
       "id": "FR-CTX-05",
@@ -398,7 +436,9 @@
       "original_optionality": "core",
       "remaining_work": "Schedule each selected compiler/target/macro/standard tuple explicitly and retain per-context full required scope; do not treat conservative ambiguity rejection as successful matrix analysis.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-05"
     },
     {
       "id": "FR-CTX-06",
@@ -415,7 +455,9 @@
       "original_optionality": "core",
       "remaining_work": "Standardize full enumerated statuses/reasons/diagnostic links. Native status skipped lacks a machine reason and unsupported/nonattempted non-discovered inputs are incomplete; replace hardcoded 500 KB skip with explicit configurable large-file policy.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-06"
     },
     {
       "id": "FR-CTX-07",
@@ -431,7 +473,9 @@
       "original_optionality": "core",
       "remaining_work": "Unify provenance across public analyze and explicit collection: observed revision/dirty state when available, actual effective inputs/tool/rule/scorer/policy identity on every applicable run. Do not promote post-run archive snapshots to verified pre-run source binding.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-07"
     },
     {
       "id": "FR-CTX-08",
@@ -446,7 +490,9 @@
       "original_optionality": "core",
       "remaining_work": "Extend stable snapshot/change detection to the complete discovered source/context/dependency closure and the ordinary analyze path. Conservative finite inventories do not observe unlisted additions; unknown closure remains incomplete.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-CTX-08"
     },
     {
       "id": "FR-ANA-01",
@@ -461,7 +507,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix delivered detector defects using positive/negative/template fixtures; add per-rule clean/edge/line expectations and a reviewed accuracy sample. Do not call pattern matches comprehensive memory-safety or coding-standard analysis.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-01"
     },
     {
       "id": "FR-ANA-02",
@@ -475,7 +523,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement measured per-symbol/file metrics for all functions (not only breaches): LOC, length, corrected cyclomatic count, nesting, parameter counts, duplication; add validated cohesion/compound smells later with explicit availability.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-02"
     },
     {
       "id": "FR-ANA-03",
@@ -491,7 +541,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete namespaced native rules, provenance on every finding entry point and stable symbol/normalized-token/occurrence fingerprints with tested migration. Retain conservative unknowns and multiplicities. Validate or clearly qualify numeric confidence; no calibration established.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-03"
     },
     {
       "id": "FR-ANA-04",
@@ -505,7 +557,9 @@
       "original_optionality": "core",
       "remaining_work": "Replace legacy severity proxy with available measured complexity or mark measured hotspots unavailable. Keep legacy export field only with explicit compatibility semantics; do not count transparent relabeling as completing measured hotspot requirements.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-04"
     },
     {
       "id": "FR-ANA-05",
@@ -521,7 +575,9 @@
       "original_optionality": "core",
       "remaining_work": "Add scope-role classification and presentation/evaluation of individually disabled checks; do not award full-category health from an unexecuted category. Complete design fingerprint migration and automatic dependency-aware changed-scope checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-05"
     },
     {
       "id": "FR-ANA-06",
@@ -536,7 +592,9 @@
       "original_optionality": "core",
       "remaining_work": "Resolve explicit formula conflict by implementing and versioning design density/context scorer with migration/legacy export. Publish caps/weights/denominators and hand-calculated regression checks. Do not silently declare retained demo formula production-complete.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-06"
     },
     {
       "id": "FR-ANA-07",
@@ -551,7 +609,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain repaired empty/partial behavior; extend prerequisites to each required context, metric/category and required detector. Add per-file ranking availability so unparsed files cannot display 0% LOW as if observed clean.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-07"
     },
     {
       "id": "FR-ANA-08",
@@ -568,7 +628,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete/qualify propagation through all supported entry points including Compose/build/agent interfaces and reject unsupported native/component options consistently. Preserve documented distinction between detector switches and scoring profiles.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-08"
     },
     {
       "id": "FR-ANA-09",
@@ -583,7 +645,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand supported external analyzers through versioned adapter tests and explicit overlap/independent-confirmation semantics. Importing GCC diagnostics is real but does not establish completed full analysis or broad clang-tidy/Cppcheck integration.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-09"
     },
     {
       "id": "FR-GIT-01",
@@ -600,7 +664,9 @@
       "original_optionality": "core",
       "remaining_work": "Add configured time windows, defined merge/branch lineage and richer history status granularity. Replace clean-looking no-silo/no-hotspot presentation where usable history is unavailable with explicit unavailable results.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-01"
     },
     {
       "id": "FR-GIT-02",
@@ -615,7 +681,9 @@
       "original_optionality": "core",
       "remaining_work": "Build one streaming reusable history store with limits/cutoff/checkpoints, incremental append/rewrite/shallow semantics and resumed-versus-full equivalence checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-02"
     },
     {
       "id": "FR-GIT-03",
@@ -629,7 +697,9 @@
       "original_optionality": "core",
       "remaining_work": "Add contributor identity configuration and tests for aliases, bots, former members and pair attribution; consistently call authorship a knowledge proxy.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-03"
     },
     {
       "id": "FR-GIT-04",
@@ -643,7 +713,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement file coupling with minimum support and bulk/generated exclusions; add symbol history before function coupling and test known synthetic histories.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-04"
     },
     {
       "id": "FR-GIT-05",
@@ -658,7 +730,9 @@
       "original_optionality": "core",
       "remaining_work": "Specify weighted denominators, author/team identities and offboarding scenarios; validate shallow/empty data and distinguish proxy from expertise.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-05"
     },
     {
       "id": "FR-GIT-06",
@@ -673,7 +747,9 @@
       "original_optionality": "core",
       "remaining_work": "Add component mapping/aggregation and coupling views; retain historical co-change versus static dependency provenance separately.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-06"
     },
     {
       "id": "FR-GIT-07",
@@ -689,7 +765,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement indexed comparable health/complexity/hotspot/ownership/goal snapshots and version/scope/context gap handling. Retained files are foundation rather than finished trends.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-07"
     },
     {
       "id": "FR-GIT-08",
@@ -704,7 +782,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain imperfect labels with explicit provenance/cutoffs; restrict blame to relevant changed lines or disclose broader heuristic correctly. Implement temporal/project holdouts and calibration before any future-defect claims; no real-code predictive accuracy established.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-08"
     },
     {
       "id": "FR-EVD-01",
@@ -719,7 +799,9 @@
       "original_optionality": "core",
       "remaining_work": "Maintain explicit dialect/version qualification; add producer/format adapters only with retained positive, malformed, missing and contradictory cases.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-01"
     },
     {
       "id": "FR-EVD-02",
@@ -734,7 +816,9 @@
       "original_optionality": "core",
       "remaining_work": "Add any further compiler/platform/format as separately reviewed adapters; retain explicit unsupported results for all other dialects.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-02"
     },
     {
       "id": "FR-EVD-03",
@@ -749,7 +833,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain negative regressions whenever a new dialect/producer is added.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-03"
     },
     {
       "id": "FR-EVD-04",
@@ -765,7 +851,9 @@
       "original_optionality": "core",
       "remaining_work": "Keep incomplete external/toolchain dependency inventories explicit; broaden freshness/identity qualification only with new execution evidence.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-04"
     },
     {
       "id": "FR-EVD-05",
@@ -780,7 +868,9 @@
       "original_optionality": "core",
       "remaining_work": "Add a versioned attestation structure with explicit rationale, review identity/approval provenance and scope; implement review collection/import, meaningful expiry/reviewer tests and presentation, then a reviewed-evidence evaluator.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-05"
     },
     {
       "id": "FR-EVD-06",
@@ -795,7 +885,9 @@
       "original_optionality": "core",
       "remaining_work": "Qualify further compiler/OS/target/linking combinations before advertising them; improve friendly authoring of consumer configurations.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-06"
     },
     {
       "id": "FR-EVD-07",
@@ -810,7 +902,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand declared type/macro/error-handling workloads based on maintainer support claims, without treating them as exhaustive template coverage.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-07"
     },
     {
       "id": "FR-EVD-08",
@@ -825,7 +919,9 @@
       "original_optionality": "core",
       "remaining_work": "Extend to other supported dependency/link modes only after actual instrumentation, binary-use and workload lineage checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-08"
     },
     {
       "id": "FR-EVD-09",
@@ -840,7 +936,9 @@
       "original_optionality": "core",
       "remaining_work": "Add decision/MC/DC only with a producer-specific adapter and real denominator/condition-identity proof; until then keep unsupported/unknown.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-09"
     },
     {
       "id": "FR-EVD-10",
@@ -854,7 +952,9 @@
       "original_optionality": "core",
       "remaining_work": "Specify extension identity/registration and version contracts for fuzzing, API/ABI, dependency provenance, traceability and process-artifact evidence; prove one extension using a meaningful non-stub adapter. Full implementations remain later optional work.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-10"
     },
     {
       "id": "FR-POL-01",
@@ -869,7 +969,9 @@
       "original_optionality": "core",
       "remaining_work": "Add pinned policy-pack composition/upgrades as separately explicit operations if adopting the design\u2019s multi-pack references.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-01"
     },
     {
       "id": "FR-POL-02",
@@ -884,7 +986,9 @@
       "original_optionality": "core",
       "remaining_work": "Add new applicability domains only with machine-readable exclusions and tested rationale.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-02"
     },
     {
       "id": "FR-POL-03",
@@ -899,7 +1003,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement measured-metric producer/contracts before numeric metric thresholds; implement reviewed-evidence provenance/rationale/expiry workflow before reviewed_evidence evaluation. Preserve explicit capability-profile rejection until done.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-03"
     },
     {
       "id": "FR-POL-04",
@@ -914,7 +1020,9 @@
       "original_optionality": "core",
       "remaining_work": "Keep maintenance-health and experimental ranking distinct from policy readiness; add equations for any new metric without changing existing gate semantics.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-04"
     },
     {
       "id": "FR-POL-05",
@@ -929,7 +1037,9 @@
       "original_optionality": "core",
       "remaining_work": "Preserve precedence for every future evaluator and report consumer.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-05"
     },
     {
       "id": "FR-POL-06",
@@ -944,7 +1054,9 @@
       "original_optionality": "core",
       "remaining_work": "For enterprise identity/trusted approval, add a separate authenticated review capability and explicit policy; do not reinterpret text reviewer fields as trusted signatures.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-06"
     },
     {
       "id": "FR-POL-07",
@@ -960,7 +1072,9 @@
       "original_optionality": "core",
       "remaining_work": "Provide the same actionable capability errors when future policy-pack composition and additional configuration formats are introduced.\nHarmonize strict configuration validation across native, component, public CLI and container entry points; add unknown-key/type/rule regressions.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-07"
     },
     {
       "id": "FR-POL-08",
@@ -974,7 +1088,9 @@
       "original_optionality": "core",
       "remaining_work": "Develop reviewed explicitly incomplete automotive and medical packs with pinned editions, mapping provenance, uncovered obligations and expert review. Qualify a friendly general/header-only starter setup; do not add unsupported certification claims.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-08"
     },
     {
       "id": "FR-POL-09",
@@ -990,7 +1106,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement immutable policy/scorer-aware history and trend comparison; annotate or break incompatible series and require explicit migration/rebaseline.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-09"
     },
     {
       "id": "FR-POL-10",
@@ -1006,7 +1124,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain no-side-effect tests for policy loading/evaluation and keep network pack fetch/update or command collection separately explicit.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-POL-10"
     },
     {
       "id": "FR-UX-01",
@@ -1022,7 +1142,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement the proposed developer journeys, including init --kind, config show --effective and explaining a rule. Align old/new CLI options and no-Git behavior. Watch still repeats full runs. Fix partial analyze exit behavior.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-01"
     },
     {
       "id": "FR-UX-02",
@@ -1039,7 +1161,9 @@
       "original_optionality": "core",
       "remaining_work": "Return 3 for materially incomplete analyze/watch results. Align operational failures with proposed exit 2 instead of current exit 1. Add concise text output by default, explicit JSON selection and bounded progress without corrupting machine output.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-02"
     },
     {
       "id": "FR-UX-03",
@@ -1054,7 +1178,9 @@
       "original_optionality": "core",
       "remaining_work": "Requalify the final candidate. This verified behavior is scoped to the retained Linux candidate/current source; Windows and macOS execution are not established.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-03"
     },
     {
       "id": "FR-UX-04",
@@ -1069,7 +1195,9 @@
       "original_optionality": "core",
       "remaining_work": "Reject multiple discovered configuration candidates unless --config explicitly selects one. Add JSON/YAML pair regressions and apply the same resolution semantics through native, C++ CLI and Docker entry points.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-04"
     },
     {
       "id": "FR-UX-05",
@@ -1085,7 +1213,9 @@
       "original_optionality": "core",
       "remaining_work": "Deliver the proposed installed find_package interface or record an approved alternative. Decide and test the compatibility minimum. Add installed application/library examples. Selecting DEPENDS does not automatically collect or analyze that target context.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-05"
     },
     {
       "id": "FR-UX-06",
@@ -1101,7 +1231,9 @@
       "original_optionality": "core",
       "remaining_work": "Add a dependency graph, conservative changed-scope selection/cache invalidation and robust symbol/token fingerprints. The old basename-based .github/actions/cppulse/diff_findings.py remains present but is not called by the current action.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-06"
     },
     {
       "id": "FR-UX-07",
@@ -1119,7 +1251,9 @@
       "original_optionality": "core",
       "remaining_work": "Correct misleading legacy heuristic percentages/LOW labels and no-silo messages under incomplete history. Add evidence-linked, measured roadmap priorities. The fresh legacy report does not verify the v2 library-evidence workflow.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-07"
     },
     {
       "id": "FR-UX-08",
@@ -1135,7 +1269,9 @@
       "original_optionality": "core",
       "remaining_work": "Add indexed history APIs, run/query-bound cursors, server search/filter and bounded dashboard paging. Current findings load the entire JSON document; the dashboard fetches the whole view. Legacy flat mode is explicitly unpinned.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-08"
     },
     {
       "id": "FR-UX-09",
@@ -1150,7 +1286,9 @@
       "original_optionality": "core",
       "remaining_work": "Requalify the exact final candidate. GitPython, NumPy and pandas remain core dependencies, so the proposed optional Git/risk packaging split is incomplete.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-09"
     },
     {
       "id": "FR-UX-10",
@@ -1166,7 +1304,9 @@
       "original_optionality": "core",
       "remaining_work": "Version the read contracts; implement VS Code diagnostics/results/commands and read-only MCP tools; verify parity with CLI/API pins; package and test the free text workflow skill. Publication remains separate.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-10"
     },
     {
       "id": "FR-UX-11",
@@ -1182,7 +1322,9 @@
       "original_optionality": "core",
       "remaining_work": "Maintain the redaction contract. Document the command name diagnostics versus the proposed bugreport spelling. Any richer collection needs explicit opt-in.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-11"
     },
     {
       "id": "FR-UX-12",
@@ -1199,7 +1341,9 @@
       "original_optionality": "core",
       "remaining_work": "Do not claim a self-contained compiler toolchain or untested platforms. Requalify the exact final candidate and provide complete offline closures for supported optional extras.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-12"
     },
     {
       "id": "NFR-SCL-01",
@@ -1214,7 +1358,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement isolated per-TU/context analyzer workers with memory/CPU/time budgets and configurable large-file limit; test crashing parsers and budgets.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-01"
     },
     {
       "id": "NFR-SCL-02",
@@ -1229,7 +1375,9 @@
       "original_optionality": "core",
       "remaining_work": "Native parser process crash currently can lose complete whole invocation result; add per-work-unit crash isolation and persisted completed facts.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-02"
     },
     {
       "id": "NFR-SCL-03",
@@ -1243,7 +1391,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement complete dependency-aware keys, conservative invalidation and separate assessment cache; unknown dependencies force recollection.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-03"
     },
     {
       "id": "NFR-SCL-04",
@@ -1258,7 +1408,9 @@
       "original_optionality": "core",
       "remaining_work": "Add deterministic semantic comparisons first, then repeated cold/warm/edit benchmarks on named host.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-04"
     },
     {
       "id": "NFR-SCL-05",
@@ -1274,7 +1426,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement bounded JSONL/batches, indexed storage/history and cursor-based queries; keep portable JSON export.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-05"
     },
     {
       "id": "NFR-SCL-06",
@@ -1289,7 +1443,9 @@
       "original_optionality": "core",
       "remaining_work": "Add native work-unit checkpoints/recovery and Windows-safe equivalent; atomic publication alone is not resumable analysis.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-06"
     },
     {
       "id": "NFR-SCL-07",
@@ -1303,7 +1459,9 @@
       "original_optionality": "core",
       "remaining_work": "Build representative source/history tiers and retain revisions, reference-host details, results and completeness for repeated runs.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-07"
     },
     {
       "id": "NFR-SCL-08",
@@ -1319,7 +1477,9 @@
       "original_optionality": "core",
       "remaining_work": "Collect process/resource counters, cache/work-unit measurements and reference-host metadata. Freeze budgets only after baseline measurements.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-08"
     },
     {
       "id": "NFR-SCL-09",
@@ -1333,7 +1493,9 @@
       "original_optionality": "core",
       "remaining_work": "Establish reference measurements, statistical/repeated comparison and explicit reviewed exceptions.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-09"
     },
     {
       "id": "NFR-SCL-10",
@@ -1348,7 +1510,9 @@
       "original_optionality": "core",
       "remaining_work": "Extend same completeness invariants to future incremental/streaming scheduler and resource exhaustion; no speed claims before semantic equality.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-SCL-10"
     },
     {
       "id": "NFR-MNT-01",
@@ -1365,7 +1529,9 @@
       "original_optionality": "core",
       "remaining_work": "Reduce large-module coupling, remove remaining duplicated legacy presentation/configuration interpretations, and prove shared gate/score behavior across future clients.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-01"
     },
     {
       "id": "NFR-MNT-02",
@@ -1380,7 +1546,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain wrappers during the declared migration window. Python versions other than 3.12 require separate qualification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-02"
     },
     {
       "id": "NFR-MNT-03",
@@ -1395,7 +1563,9 @@
       "original_optionality": "core",
       "remaining_work": "Generate native registration helpers/integration metadata from one registry rather than only detecting manual drift.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-03"
     },
     {
       "id": "NFR-MNT-04",
@@ -1410,7 +1580,9 @@
       "original_optionality": "core",
       "remaining_work": "Contributors still must implement meaningful positive/negative fixtures; this verifies generator behavior, not generated detector functionality.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-04"
     },
     {
       "id": "NFR-MNT-05",
@@ -1425,7 +1597,9 @@
       "original_optionality": "core",
       "remaining_work": "Qualify compiler/libclang pairs, Python 3.11/3.12, actual Clang C++20 execution, Windows MinGW/MSVC and macOS. Record the CMake 3.21 versus proposed consumer 3.16 decision. Verify the separation of optional Git functionality and core dependencies.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-05"
     },
     {
       "id": "NFR-MNT-06",
@@ -1444,7 +1618,9 @@
       "original_optionality": "core",
       "remaining_work": "Finish versioned measured scoring, symbol fingerprints and migrations for baseline/configuration/default changes. The stable API/version lifecycle has not been released.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-06"
     },
     {
       "id": "NFR-MNT-07",
@@ -1461,7 +1637,9 @@
       "original_optionality": "core",
       "remaining_work": "Exercise independent accuracy review, default-change migration and rollback on an actual candidate. Retain pinned organization policies.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-07"
     },
     {
       "id": "NFR-MNT-08",
@@ -1475,7 +1653,9 @@
       "original_optionality": "core",
       "remaining_work": "Preserve both decision histories under unique IDs. Reconcile authoritative scope, superseded completion language, unavailable references and C++17/style contradictions.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-08"
     },
     {
       "id": "NFR-MNT-09",
@@ -1490,7 +1670,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand supported versions only with actual fixtures and producer runs. Verified status applies to rejection/provenance behavior for declared adapters, not universal producer support.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-09"
     },
     {
       "id": "REL-01",
@@ -1505,7 +1687,9 @@
       "original_optionality": "core",
       "remaining_work": "Provide tools/dev.py or an approved equivalent that composes all checks, install tests and benchmarks. Include native formatting, conservative changed scope and actual Windows/macOS qualification. Make existing CI call shared commands.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-01"
     },
     {
       "id": "REL-02",
@@ -1520,7 +1704,9 @@
       "original_optionality": "core",
       "remaining_work": "Run the full required suite and installed checks against the same final candidate. The current fresh real-code check is narrower and does not establish a broad platform matrix.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-02"
     },
     {
       "id": "REL-03",
@@ -1537,7 +1723,9 @@
       "original_optionality": "core",
       "remaining_work": "On a Docker host, execute image builds, service completion, host/named-volume extraction, API and browser checks. Include the v2 assessment flow as well as the legacy pipeline.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-03"
     },
     {
       "id": "REL-04",
@@ -1551,7 +1739,9 @@
       "original_optionality": "core",
       "remaining_work": "Add red/green regressions for partial analyze exits, conflicting configuration discovery and report mislabeling. Retain pre-fix failures and neighboring cases rather than tests mirroring implementation.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-04"
     },
     {
       "id": "REL-05",
@@ -1565,7 +1755,9 @@
       "original_optionality": "core",
       "remaining_work": "For every remaining feature, require reviewed contracts, meaningful fixtures, consumer documentation, migration classification and measured resource impact. Source presence alone cannot close it.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-05"
     },
     {
       "id": "REL-06",
@@ -1581,7 +1773,9 @@
       "original_optionality": "core",
       "remaining_work": "Rebuild the exact current candidate. Complete CPack/platform packaging, the optional Git/risk split, actual container builds and Windows/macOS installed qualification. Keep support claims tied to evidence.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-06"
     },
     {
       "id": "REL-07",
@@ -1596,7 +1790,9 @@
       "original_optionality": "core",
       "remaining_work": "Automate changelog and curated compatibility notes. Complete native/optional dependency inventory and bind full verification results to the exact current retained candidate. Host dependencies are not fully bundled.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-07"
     },
     {
       "id": "REL-08",
@@ -1609,7 +1805,9 @@
       "original_optionality": "core",
       "remaining_work": "Exercise side-by-side upgrade and rollback across supported schemas/configurations. Publication must use the verified candidate and separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-08"
     },
     {
       "id": "REL-09",
@@ -1623,7 +1821,9 @@
       "original_optionality": "core",
       "remaining_work": "Add locked dependency-update preparation, dry-run compatibility matrices and release-note preparation. Reuse the shared runner in existing CI. Do not weaken controls to force success.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-09"
     },
     {
       "id": "REL-10",
@@ -1637,7 +1837,9 @@
       "original_optionality": "core",
       "remaining_work": "Specify and implement M9-01/M9-02: reviewable dry-run diffs, idempotence and relevant compilation/tests first. Semantic repair requires a separate language-validation design. This is proposed expansion, not a broken existing feature.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-10"
     },
     {
       "id": "REL-11",
@@ -1652,7 +1854,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain a separate hosting/cost model when M9-05 is designed.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#REL-11"
     },
     {
       "id": "AC-01",
@@ -1667,7 +1871,9 @@
       "original_optionality": "core",
       "remaining_work": "Rebuild and test the exact final candidate for every advertised OS/toolchain/Python combination. Fix partial analyze exits first.\nRebuild and verify the exact HEAD candidate. Fix configuration ambiguity and partial-analysis exit status; qualify the supported host matrix and real first-time setup.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-01"
     },
     {
       "id": "AC-02",
@@ -1684,7 +1890,9 @@
       "original_optionality": "core",
       "remaining_work": "Repair the CLI incomplete-analysis exit and per-file LOW mislabel. Verify empty, failed and missing-context journeys through the installed CLI.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-02"
     },
     {
       "id": "AC-03",
@@ -1701,7 +1909,9 @@
       "original_optionality": "core",
       "remaining_work": "Preserve these semantics in future cache/editor integrations and native Windows qualification. Separator unit cases do not establish Windows OS support.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-03"
     },
     {
       "id": "AC-04",
@@ -1716,7 +1926,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement caches/dependency invalidation then equality checks, including generated/external includes.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-04"
     },
     {
       "id": "AC-05",
@@ -1732,7 +1944,9 @@
       "original_optionality": "core",
       "remaining_work": "Add an explicit assessment-cache/no-AST-work receipt and complete metric-threshold/reviewed-evidence semantics. Measure policy-only runs.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-05"
     },
     {
       "id": "AC-06",
@@ -1747,7 +1961,9 @@
       "original_optionality": "core",
       "remaining_work": "Add parser-worker crash isolation, per-unit resource budgets, checkpoint/resume and disk interruption scenarios. Ensure analyze exit codes reflect partial results.\nAdd isolated native-worker crash, resource-exhaustion and disk-full recovery/resume. Verify current CLI cancellation paths; cross-platform execution is unsupported.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-06"
     },
     {
       "id": "AC-07",
@@ -1764,7 +1980,9 @@
       "original_optionality": "core",
       "remaining_work": "Do not interpret an absence of detected silos as evidence of no knowledge risk. Operation without GitPython or a Git executable remains to be qualified.\nCarry explicit knowledge/rank availability into each consumer section rather than relying only on a global limitation.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-07"
     },
     {
       "id": "AC-08",
@@ -1779,7 +1997,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand the declared context matrix, header self-containment and selected instantiations. Resolve the 500-KiB skip. The six original corpus projects and platform coverage remain incomplete.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-08"
     },
     {
       "id": "AC-09",
@@ -1794,7 +2014,9 @@
       "original_optionality": "core",
       "remaining_work": "Maintain exact declared format/tool/platform limits. Do not claim complete path coverage or assurance on every platform.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-09"
     },
     {
       "id": "AC-10",
@@ -1810,7 +2032,9 @@
       "original_optionality": "core",
       "remaining_work": "Preserve gate precedence when adding evaluators, deviations and interfaces. Verify the exact candidate again.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-10"
     },
     {
       "id": "AC-11",
@@ -1826,7 +2050,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix delivered configuration ambiguity. Complete supported control types, exclusion provenance and configuration consistency across entry points.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-11"
     },
     {
       "id": "AC-12",
@@ -1842,7 +2068,9 @@
       "original_optionality": "core",
       "remaining_work": "Add MCP and VS Code parity against the same pins and artifact links. Maintain consistency while cursors/latest pointers change.\nImplement MCP and VS Code clients and verify all interfaces against the same stored snapshot. Preserve the distinction between legacy unverified results and pinned snapshots.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-12"
     },
     {
       "id": "AC-13",
@@ -1860,7 +2088,9 @@
       "original_optionality": "core",
       "remaining_work": "Publish a supported-version matrix and migrations. Exercise installed old-to-new upgrade/rollback. Reject configuration conflicts with an actionable error.\nComplete the documented migration matrix for fingerprints, scorers and configuration compatibility. Qualification of upgrades/rollback from an actual old released candidate is absent.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-13"
     },
     {
       "id": "AC-14",
@@ -1876,7 +2106,9 @@
       "original_optionality": "core",
       "remaining_work": "Requalify the exact final candidate. Review report usefulness on the complete corpus, correct legacy risk/history labels and distinguish legacy rendering from verified v2 evidence collection.\nQualify a fresh current-HEAD candidate and correct partial-exit/risk-label defects. Existing proof does not establish Docker, host-matrix support or human usefulness.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-14"
     },
     {
       "id": "AC-15",
@@ -1892,7 +2124,9 @@
       "original_optionality": "core",
       "remaining_work": "Pin all six original projects with real history and exercise consumer/clean/defect matrices. Hand-review false positives/negatives and measure resources. utfcpp is supplementary; it does not silently replace one of the six.\nRerun the six specified projects\u2014fmt, grpc, json, leveldb, poco and protobuf\u2014with real history and reviewed defect/clean annotations. Publish accuracy/resource bounds. utfcpp cannot replace the original six.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-15"
     },
     {
       "id": "AC-16",
@@ -1907,7 +2141,9 @@
       "original_optionality": "core",
       "remaining_work": "Package a versioned text skill using released commands and test installation/use in a clean agent session. Listing preparation, submission and publication remain separate actions.\nImplement a versioned portable instruction package and validate it against actual released CLI commands in a clean agent session. Listing/submission is a separately authorized step.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#AC-16"
     },
     {
       "id": "M0-01",
@@ -1923,7 +2159,9 @@
       "original_optionality": "core",
       "remaining_work": "Keep uploaded and current provenance separate; avoid blind merges or overwriting newer files.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "verified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-01"
     },
     {
       "id": "M0-02",
@@ -1939,7 +2177,9 @@
       "original_optionality": "core",
       "remaining_work": "Finalize the missing metric, reviewed-evidence, fingerprint and scorer contracts. Make native and public configuration errors consistent.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-02"
     },
     {
       "id": "M0-03",
@@ -1955,7 +2195,9 @@
       "original_optionality": "core",
       "remaining_work": "Add small failing regressions for delivered defects and all supported context/flag cases. Preserve existing test expectations.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-03"
     },
     {
       "id": "M0-04",
@@ -1971,7 +2213,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix the 500-KiB skip, configuration ambiguity and template traversal. Isolate work units and complete generated/vendor/context-flag scope and external-dependency identities.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-04"
     },
     {
       "id": "M0-05",
@@ -1986,7 +2230,9 @@
       "original_optionality": "core",
       "remaining_work": "Correct 0%/LOW labels on partially analyzed files and unsupported probability wording. Add measured metrics/hotspots and the specified density/context scorer with migration.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-05"
     },
     {
       "id": "M0-06",
@@ -2001,7 +2247,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix exit status, configuration ambiguity, misleading ranking labels and unsupported absence-of-knowledge-risk wording. Verify all presentation contracts.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-06"
     },
     {
       "id": "M0-07",
@@ -2017,7 +2265,9 @@
       "original_optionality": "core",
       "remaining_work": "The small synthetic fixture and existing native local components were verified. This does not complete Docker, accuracy, six-corpus or production milestones.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M0-07"
     },
     {
       "id": "M1-01",
@@ -2033,7 +2283,9 @@
       "original_optionality": "core",
       "remaining_work": "Freeze the declared and actually tested GCC/Clang/libclang/Python/CMake/platform matrix. Do not infer Windows or macOS support.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-01"
     },
     {
       "id": "M1-02",
@@ -2048,7 +2300,9 @@
       "original_optionality": "core",
       "remaining_work": "Add native formatting/lint, installed-package, performance and integration stages to one portable local entry point. Docker remains unavailable in this environment.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-02"
     },
     {
       "id": "M1-03",
@@ -2063,7 +2317,9 @@
       "original_optionality": "core",
       "remaining_work": "Retain compatible wrappers. Verify Python 3.11 and separate the runtime Git/risk dependency footprint in the next support matrix.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-03"
     },
     {
       "id": "M1-04",
@@ -2078,7 +2334,9 @@
       "original_optionality": "core",
       "remaining_work": "Rebuild the exact current candidate and complete CPack/platform artifacts and tested install dependency closure. The current native artifact is a custom Linux archive.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-04"
     },
     {
       "id": "M1-05",
@@ -2093,7 +2351,9 @@
       "original_optionality": "core",
       "remaining_work": "Execute Compose one-shot services and named-volume output extraction. Native browser/PDF proof does not establish that Compose works.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-05"
     },
     {
       "id": "M1-06",
@@ -2108,7 +2368,9 @@
       "original_optionality": "core",
       "remaining_work": "Build the exact HEAD candidate with locked dependencies, support matrix, changelog and dependency inventory/SBOM. Reproduce installation and verify a release dry run.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-06"
     },
     {
       "id": "M1-07",
@@ -2123,7 +2385,9 @@
       "original_optionality": "core",
       "remaining_work": "Generate native registration/integration metadata and make existing CI invoke shared local commands. No new external service is needed.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-07"
     },
     {
       "id": "M2-01",
@@ -2137,7 +2401,9 @@
       "original_optionality": "core",
       "remaining_work": "Define dependency graph, cache and per-translation-unit checkpoint identities. Immutable publication alone is not a resumable scheduler.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-01"
     },
     {
       "id": "M2-02",
@@ -2151,7 +2417,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement isolated native workers, memory/CPU limits and configurable large-file handling. Recipe concurrency is not the proposed AST worker pool.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-02"
     },
     {
       "id": "M2-03",
@@ -2165,7 +2433,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement compatible cache keys, invalidation and conservative handling of unknown dependencies before enabling reuse.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-03"
     },
     {
       "id": "M2-04",
@@ -2180,7 +2450,9 @@
       "original_optionality": "core",
       "remaining_work": "Replace materialized commit/change lists with streamed or persisted history. Support append, rewrite and shallow-history resume; compare clean and resumed metrics.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-04"
     },
     {
       "id": "M2-05",
@@ -2194,7 +2466,9 @@
       "original_optionality": "core",
       "remaining_work": "Add indexed history/catalog storage, migration/recovery and bounded aggregation. Preserve coherent reads and explicit incomplete attempts.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-05"
     },
     {
       "id": "M2-06",
@@ -2209,7 +2483,9 @@
       "original_optionality": "core",
       "remaining_work": "Add indexed bounded queries, pagination pinned to one run, and efficient dashboard pages. Avoid downloading and slicing the complete JSON data set.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-06"
     },
     {
       "id": "M2-07",
@@ -2223,7 +2499,9 @@
       "original_optionality": "core",
       "remaining_work": "Create baseline/equality checks and repeated resource measurements on a named host. Freeze budgets from actual measurements.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M2-07"
     },
     {
       "id": "M3-01",
@@ -2239,7 +2517,9 @@
       "original_optionality": "core",
       "remaining_work": "Resolve ambiguous configuration, text defaults and partial exits. Add stable symbol/token fingerprint migration and a complete inspectable effective context.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-01"
     },
     {
       "id": "M3-02",
@@ -2255,7 +2535,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete the independent core-health gate contract and documented predicate behavior. Reject unsupported later policy controls before execution.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-02"
     },
     {
       "id": "M3-03",
@@ -2270,7 +2552,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix delivered defects. Provide concise human output by default, separate machine output, and a complete inspectable effective configuration.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-03"
     },
     {
       "id": "M3-04",
@@ -2286,7 +2570,9 @@
       "original_optionality": "core",
       "remaining_work": "Resolve the 3.21 helper versus 3.16 compatibility decision. Exercise Ninja, other platforms and actual context capture. DEPENDS only establishes build ordering.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-04"
     },
     {
       "id": "M3-05",
@@ -2302,7 +2588,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete dependency-aware changed-scope execution and more stable fingerprints. The Docker host wrapper remains unexecuted.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-05"
     },
     {
       "id": "M3-06",
@@ -2318,7 +2606,9 @@
       "original_optionality": "core",
       "remaining_work": "Reconcile commands with current defects and full scope. Exercise every documented example using the current candidate and support matrix, and validate first setup with users.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-06"
     },
     {
       "id": "M3-07",
@@ -2333,7 +2623,9 @@
       "original_optionality": "core",
       "remaining_work": "Finish release qualification and clean-agent text-skill tests. Treat publication as a separate authorized action.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M3-07"
     },
     {
       "id": "M4-01",
@@ -2347,7 +2639,9 @@
       "original_optionality": "core",
       "remaining_work": "Define measured units, versions, contexts, prerequisites and trend compatibility before implementing producers.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-01"
     },
     {
       "id": "M4-02",
@@ -2361,7 +2655,9 @@
       "original_optionality": "core",
       "remaining_work": "Fix detectors, then emit reviewed complexity, nesting, length and parameter metrics. Add validated duplication/cohesion with macro/template fixtures.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-02"
     },
     {
       "id": "M4-03",
@@ -2375,7 +2671,9 @@
       "original_optionality": "core",
       "remaining_work": "The design requires analyzed-KLOC density/caps and the worst fully evaluated required context. Record an explicit migration/decision for the different current method; add measured hotspots, evidence links and clearly labeled effort estimates.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-03"
     },
     {
       "id": "M4-04",
@@ -2391,7 +2689,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement measurement-history compatibility and views/goals with explicit gaps and method changes.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-04"
     },
     {
       "id": "M4-05",
@@ -2406,7 +2706,9 @@
       "original_optionality": "core",
       "remaining_work": "Run the six original projects with reviewed defect/clean accuracy annotations and resource measurements. Historical examples are not benchmarks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-05"
     },
     {
       "id": "M5-01",
@@ -2420,7 +2722,9 @@
       "original_optionality": "core",
       "remaining_work": "Finalize metric-threshold and review-attestation evaluator contracts, typed extension maturity, and policy-pack resolution/versioning.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-01"
     },
     {
       "id": "M5-02",
@@ -2434,7 +2738,9 @@
       "original_optionality": "core",
       "remaining_work": "Maintain declared producer format/version limits. A broader context matrix and streaming are separate work.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-02"
     },
     {
       "id": "M5-03",
@@ -2449,7 +2755,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand the declared ASan/UBSan/TSan producer/platform matrix. Keep instrumented dependency-closure limits and unsupported runtime behavior explicit.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-03"
     },
     {
       "id": "M5-04",
@@ -2463,7 +2771,9 @@
       "original_optionality": "core",
       "remaining_work": "Only six evaluators are supported. Add missing types while preserving the verified passed/failed/unknown/not-applicable equations; full feature qualification remains necessary.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-04"
     },
     {
       "id": "M5-05",
@@ -2478,7 +2788,9 @@
       "original_optionality": "core",
       "remaining_work": "Expand the real context matrix, selected instantiations and header self-containment. Correct large-header skipping and retain explicit non-exhaustive scope.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-05"
     },
     {
       "id": "M5-06",
@@ -2494,7 +2806,9 @@
       "original_optionality": "core",
       "remaining_work": "Verify the exact current candidate after correcting delivered defects. Add richer findings/search/history; Docker and editor coverage are absent.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-06"
     },
     {
       "id": "M5-07",
@@ -2508,7 +2822,9 @@
       "original_optionality": "core",
       "remaining_work": "Add reviewed, explicitly incomplete ISO 26262/IEC 62304 edition-specific packs, with coverage/unassessed obligations and without reproducing licensed text or claiming certification.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-07"
     },
     {
       "id": "M5-08",
@@ -2523,7 +2839,9 @@
       "original_optionality": "core",
       "remaining_work": "Complete applicable acceptance checks and exact-artifact qualification. Separate publication from preparation.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-08"
     },
     {
       "id": "M6-01",
@@ -2537,7 +2855,9 @@
       "original_optionality": "core",
       "remaining_work": "Add contributor aliases, bot/pair attribution, architectural component, symbol-history and coupling contracts.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-01"
     },
     {
       "id": "M6-02",
@@ -2551,7 +2871,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement these metrics from a shared history stream with hand-reviewed synthetic cases for double counting and denominators.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-02"
     },
     {
       "id": "M6-03",
@@ -2565,7 +2887,9 @@
       "original_optionality": "core",
       "remaining_work": "Define and implement component/symbol history and scenarios with explicit knowledge-proxy limitations.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-03"
     },
     {
       "id": "M6-04",
@@ -2580,7 +2904,9 @@
       "original_optionality": "core",
       "remaining_work": "Render persisted metrics with CLI agreement and indexed-query resource checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-04"
     },
     {
       "id": "M6-05",
@@ -2594,7 +2920,9 @@
       "original_optionality": "core",
       "remaining_work": "Prevent future-information leakage and add temporal training/test cutoffs and calibration. Until validated, retain experimental ranking without probability claims.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-05"
     },
     {
       "id": "M7-01",
@@ -2609,7 +2937,9 @@
       "original_optionality": "core",
       "remaining_work": "Define versioned read-first capabilities, explicit execution consent, cancellation, stale-state handling and result contracts.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M7-01"
     },
     {
       "id": "M7-02",
@@ -2625,7 +2955,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement initial VSIX diagnostics, navigation and explicit commands plus read-first MCP tools. Verify actual installed-client agreement.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M7-02"
     },
     {
       "id": "M7-03",
@@ -2641,7 +2973,9 @@
       "original_optionality": "core",
       "remaining_work": "Qualify Docker/host workflow wrappers and templates against the current installed artifact. Keep provider and permission-sensitive operations explicit.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M7-03"
     },
     {
       "id": "M7-04",
@@ -2656,7 +2990,9 @@
       "original_optionality": "core",
       "remaining_work": "Validate the portable text skill against actual released commands. Submit or publish only through a separately authorized step.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M7-04"
     },
     {
       "id": "M8-01",
@@ -2670,7 +3006,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts \u2192 producers \u2192 consumers \u2192 presentation \u2192 orchestration \u2192 integration, with the stated acceptance checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M8-01"
     },
     {
       "id": "M8-02",
@@ -2684,7 +3022,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts \u2192 producers \u2192 consumers \u2192 presentation \u2192 orchestration \u2192 integration, with the stated acceptance checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M8-02"
     },
     {
       "id": "M8-03",
@@ -2698,7 +3038,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts \u2192 producers \u2192 consumers \u2192 presentation \u2192 orchestration \u2192 integration, with the stated acceptance checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M8-03"
     },
     {
       "id": "M8-04",
@@ -2712,7 +3054,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts \u2192 producers \u2192 consumers \u2192 presentation \u2192 orchestration \u2192 integration, with the stated acceptance checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M8-04"
     },
     {
       "id": "M8-05",
@@ -2726,7 +3070,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts \u2192 producers \u2192 consumers \u2192 presentation \u2192 orchestration \u2192 integration, with the stated acceptance checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M8-05"
     },
     {
       "id": "M9-01",
@@ -2740,7 +3086,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M9-01"
     },
     {
       "id": "M9-02",
@@ -2754,7 +3102,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M9-02"
     },
     {
       "id": "M9-03",
@@ -2768,7 +3118,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M9-03"
     },
     {
       "id": "M9-04",
@@ -2782,7 +3134,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M9-04"
     },
     {
       "id": "M9-05",
@@ -2796,7 +3150,9 @@
       "original_optionality": "Expansion/optional in original specification; retained, assigned and not silently dropped.",
       "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M9-05"
     },
     {
       "id": "DESIGN-SCORER",
@@ -2810,7 +3166,9 @@
       "original_optionality": "core",
       "remaining_work": "Add a versioned migration/decision and hand-calculated KLOC/context fixtures.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#DESIGN-SCORER"
     },
     {
       "id": "DESIGN-FINGERPRINT",
@@ -2825,7 +3183,9 @@
       "original_optionality": "core",
       "remaining_work": "Implement stable comparison identities, explicit ambiguity handling and baseline migration.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#DESIGN-FINGERPRINT"
     },
     {
       "id": "DESIGN-DEV-FACADE",
@@ -2839,7 +3199,9 @@
       "original_optionality": "core",
       "remaining_work": "Unify the documented cross-platform entry point while reusing component checks.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#DESIGN-DEV-FACADE"
     },
     {
       "id": "DESIGN-CPACK",
@@ -2854,7 +3216,9 @@
       "original_optionality": "core",
       "remaining_work": "Resolve the packaging design and verify artifact installation/relocation.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#DESIGN-CPACK"
     },
     {
       "id": "DESIGN-SIX-CORPUS",
@@ -2869,7 +3233,9 @@
       "original_optionality": "core",
       "remaining_work": "Run all six original projects: fmt, grpc, json, leveldb, poco and protobuf. utfcpp is additional. Retain real history and reviewed accuracy cases.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#DESIGN-SIX-CORPUS"
     },
     {
       "id": "ENV-MATRIX",
@@ -2883,7 +3249,9 @@
       "original_optionality": "core",
       "remaining_work": "Qualify actual GCC and Clang/compiler-libclang pairs, analyzed C++17/C++20, Python 3.11+, Windows MinGW and MSVC separately, and macOS.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "partial",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#ENV-MATRIX"
     },
     {
       "id": "ENV-CMAKE",
@@ -2898,7 +3266,9 @@
       "original_optionality": "core",
       "remaining_work": "Record an explicit compatibility decision and test supported minimum versions.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "conflicting",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#ENV-CMAKE"
     },
     {
       "id": "HUMAN-USEFULNESS",
@@ -2913,7 +3283,9 @@
       "original_optionality": "core",
       "remaining_work": "Observe real maintainer/consumer tasks against the baseline workflow: setup, manual steps, review effort and false alarms. Set acceptance thresholds after baseline measurements.",
       "evidence": [],
-      "review": null
+      "review": null,
+      "handoff_audit_status": "missing",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#HUMAN-USEFULNESS"
     },
     {
       "id": "ENV-DOCKER-COMPOSE",
@@ -2928,7 +3300,9 @@
       "remaining_work": "Run image builds and full Compose workflow on a Docker-enabled host; verify one-shot exit handling, readiness, the current host-output bind mounts (and extraction for any named-volume fixtures), schemas/totals/PDF and API/browser behavior.",
       "evidence": [],
       "review": null,
-      "blocker": "Docker executable/socket unavailable on current cloud host; source presence does not qualify execution."
+      "blocker": "Docker executable/socket unavailable on current cloud host; source presence does not qualify execution.",
+      "handoff_audit_status": "implemented but unverified",
+      "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#ENV-DOCKER-COMPOSE"
     }
   ],
   "work_packages": [
@@ -3012,5 +3386,7 @@
   ],
   "execution_state": "paused_for_codex_cloud_handoff",
   "handoff": "docs/CODEX_CLOUD_HANDOFF.md",
-  "resume_branch": "codex/cppulse-local-core-20261114"
+  "resume_branch": "codex/cppulse-local-core-20261114",
+  "handoff_audit_scope": "Current audit labels do not automatically close final release acceptance; original execution state is retained.",
+  "implementation_checkpoint": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1"
 }

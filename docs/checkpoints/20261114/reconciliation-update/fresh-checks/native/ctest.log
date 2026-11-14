@@ -1,0 +1,284 @@
+Internal ctest changing into directory: /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-handoff-verification
+Test project /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-handoff-verification
+        Start   1: CompilationDbTest.UsesRecordedArgsAndDetectsGuardedGoto
+  1/139 Test   #1: CompilationDbTest.UsesRecordedArgsAndDetectsGuardedGoto ................................   Passed    0.03 sec
+        Start   2: CompilationDbTest.FallsBackToDefaultFlagsWithoutDatabase
+  2/139 Test   #2: CompilationDbTest.FallsBackToDefaultFlagsWithoutDatabase ...............................   Passed    0.03 sec
+        Start   3: CompilationDbTest.InterpolatesArgsForFileMissingFromDatabase
+  3/139 Test   #3: CompilationDbTest.InterpolatesArgsForFileMissingFromDatabase ...........................   Passed    0.03 sec
+        Start   4: CompilationDbTest.MalformedDatabaseFallsBackWithoutCrashing
+  4/139 Test   #4: CompilationDbTest.MalformedDatabaseFallsBackWithoutCrashing ............................   Passed    0.02 sec
+        Start   5: ConfigYamlTest.ParsesProfile
+  5/139 Test   #5: ConfigYamlTest.ParsesProfile ...........................................................   Passed    0.02 sec
+        Start   6: ConfigYamlTest.DefaultProfile
+  6/139 Test   #6: ConfigYamlTest.DefaultProfile ..........................................................   Passed    0.02 sec
+        Start   7: ConfigYamlTest.MissingProfileDefaultsToDefault
+  7/139 Test   #7: ConfigYamlTest.MissingProfileDefaultsToDefault .........................................   Passed    0.02 sec
+        Start   8: ConfigYamlTest.ParsesExcludePaths
+  8/139 Test   #8: ConfigYamlTest.ParsesExcludePaths ......................................................   Passed    0.02 sec
+        Start   9: ConfigYamlTest.ParsesRuleDisabled
+  9/139 Test   #9: ConfigYamlTest.ParsesRuleDisabled ......................................................   Passed    0.02 sec
+        Start  10: ConfigYamlTest.ParsesRuleThresholds
+ 10/139 Test  #10: ConfigYamlTest.ParsesRuleThresholds ....................................................   Passed    0.02 sec
+        Start  11: ConfigYamlTest.ParsesFullConfig
+ 11/139 Test  #11: ConfigYamlTest.ParsesFullConfig ........................................................   Passed    0.02 sec
+        Start  12: ConfigYamlTest.HandlesComments
+ 12/139 Test  #12: ConfigYamlTest.HandlesComments .........................................................   Passed    0.02 sec
+        Start  13: ConfigYamlTest.EmptyFileReturnsDefaults
+ 13/139 Test  #13: ConfigYamlTest.EmptyFileReturnsDefaults ................................................   Passed    0.02 sec
+        Start  14: ConfigYamlTest.ParsesJsonConfig
+ 14/139 Test  #14: ConfigYamlTest.ParsesJsonConfig ........................................................   Passed    0.02 sec
+        Start  15: ConfigYamlTest.FindConfigDiscoversYml
+ 15/139 Test  #15: ConfigYamlTest.FindConfigDiscoversYml ..................................................   Passed    0.02 sec
+        Start  16: ConfigYamlTest.FindConfigDiscoversJson
+ 16/139 Test  #16: ConfigYamlTest.FindConfigDiscoversJson .................................................   Passed    0.02 sec
+        Start  17: ConfigYamlTest.FindConfigReturnsNulloptWhenMissing
+ 17/139 Test  #17: ConfigYamlTest.FindConfigReturnsNulloptWhenMissing .....................................   Passed    0.02 sec
+        Start  18: ConfigYamlTest.FindConfigRejectsAmbiguousDiscovery
+ 18/139 Test  #18: ConfigYamlTest.FindConfigRejectsAmbiguousDiscovery .....................................   Passed    0.02 sec
+        Start  19: ConfigYamlTest.RejectsUnknownJsonKeyRatherThanIgnoringIt
+ 19/139 Test  #19: ConfigYamlTest.RejectsUnknownJsonKeyRatherThanIgnoringIt ...............................   Passed    0.02 sec
+        Start  20: ConfigYamlTest.RejectsWrongJsonTypesRatherThanApplyingDefaults
+ 20/139 Test  #20: ConfigYamlTest.RejectsWrongJsonTypesRatherThanApplyingDefaults .........................   Passed    0.02 sec
+        Start  21: ConfigYamlTest.RejectsUnknownRuleAndProperty
+ 21/139 Test  #21: ConfigYamlTest.RejectsUnknownRuleAndProperty ...........................................   Passed    0.02 sec
+        Start  22: ConfigYamlTest.RejectsUnsupportedYamlRatherThanMisreadingIt
+ 22/139 Test  #22: ConfigYamlTest.RejectsUnsupportedYamlRatherThanMisreadingIt ............................   Passed    0.02 sec
+        Start  23: ConfigYamlTest.PreservesQuotedHashInYamlPath
+ 23/139 Test  #23: ConfigYamlTest.PreservesQuotedHashInYamlPath ...........................................   Passed    0.02 sec
+        Start  24: ConfigYamlTest.PreservesApostropheInsidePlainYamlPath
+ 24/139 Test  #24: ConfigYamlTest.PreservesApostropheInsidePlainYamlPath ..................................   Passed    0.02 sec
+        Start  25: ConfigYamlTest.RejectsDuplicateYamlKeys
+ 25/139 Test  #25: ConfigYamlTest.RejectsDuplicateYamlKeys ................................................   Passed    0.02 sec
+        Start  26: ConfigYamlTest.RejectsDuplicateJsonKeysAtEachObjectDepth
+ 26/139 Test  #26: ConfigYamlTest.RejectsDuplicateJsonKeysAtEachObjectDepth ...............................   Passed    0.02 sec
+        Start  27: ConfigYamlTest.RejectsInvalidThresholdValues
+ 27/139 Test  #27: ConfigYamlTest.RejectsInvalidThresholdValues ...........................................   Passed    0.02 sec
+        Start  28: ConfigYamlTest.ParsesFileLimitAndEmptyMappingsInYaml
+ 28/139 Test  #28: ConfigYamlTest.ParsesFileLimitAndEmptyMappingsInYaml ...................................   Passed    0.02 sec
+        Start  29: ExcludePatternTest.DoubleStarMatchesDeep
+ 29/139 Test  #29: ExcludePatternTest.DoubleStarMatchesDeep ...............................................   Passed    0.02 sec
+        Start  30: ExcludePatternTest.DoubleStarMatchesShallow
+ 30/139 Test  #30: ExcludePatternTest.DoubleStarMatchesShallow ............................................   Passed    0.02 sec
+        Start  31: ExcludePatternTest.SingleStarDoesNotMatchSlash
+ 31/139 Test  #31: ExcludePatternTest.SingleStarDoesNotMatchSlash .........................................   Passed    0.02 sec
+        Start  32: ExcludePatternTest.SingleStarMatchesFileInDir
+ 32/139 Test  #32: ExcludePatternTest.SingleStarMatchesFileInDir ..........................................   Passed    0.02 sec
+        Start  33: ExcludePatternTest.NoMatchReturnsFalse
+ 33/139 Test  #33: ExcludePatternTest.NoMatchReturnsFalse .................................................   Passed    0.02 sec
+        Start  34: ExcludePatternTest.EmptyPatternsReturnsFalse
+ 34/139 Test  #34: ExcludePatternTest.EmptyPatternsReturnsFalse ...........................................   Passed    0.02 sec
+        Start  35: ExcludePatternTest.MultiplePatterns
+ 35/139 Test  #35: ExcludePatternTest.MultiplePatterns ....................................................   Passed    0.02 sec
+        Start  36: NativeConfigLimitsTest.AnalyzesOrdinaryHeaderAboveHistorical500KiBLimit
+ 36/139 Test  #36: NativeConfigLimitsTest.AnalyzesOrdinaryHeaderAboveHistorical500KiBLimit ................   Passed    0.06 sec
+        Start  37: NativeConfigLimitsTest.ConfiguredSmallLimitPreservesIndependentFileAndExplainsSkip
+ 37/139 Test  #37: NativeConfigLimitsTest.ConfiguredSmallLimitPreservesIndependentFileAndExplainsSkip .....   Passed    0.03 sec
+        Start  38: NativeConfigLimitsTest.RejectsInvalidFileLimits
+ 38/139 Test  #38: NativeConfigLimitsTest.RejectsInvalidFileLimits ........................................   Passed    0.02 sec
+        Start  39: CoverageFixture.MissingIncludeIsPartialAndStillProducesFindings
+ 39/139 Test  #39: CoverageFixture.MissingIncludeIsPartialAndStillProducesFindings ........................   Passed    0.03 sec
+        Start  40: CoverageFixture.FindingsUseRepositoryRelativeIdentity
+ 40/139 Test  #40: CoverageFixture.FindingsUseRepositoryRelativeIdentity ..................................   Passed    0.03 sec
+        Start  41: CoverageFixture.CountsPhysicalLinesWithAndWithoutFinalNewline
+ 41/139 Test  #41: CoverageFixture.CountsPhysicalLinesWithAndWithoutFinalNewline ..........................   Passed    0.03 sec
+        Start  42: CoverageFixture.RecordsSkippedAndExcludedFiles
+ 42/139 Test  #42: CoverageFixture.RecordsSkippedAndExcludedFiles .........................................   Passed    0.02 sec
+        Start  43: CoverageFixture.ExternalDatabaseResolvesRelativeIncludes
+ 43/139 Test  #43: CoverageFixture.ExternalDatabaseResolvesRelativeIncludes ...............................   Passed    0.03 sec
+        Start  44: HelloLibclangTest.ExtractsFunctionNames
+ 44/139 Test  #44: HelloLibclangTest.ExtractsFunctionNames ................................................   Passed    0.03 sec
+        Start  45: HelloLibclangTest.ReturnsNulloptForNonexistentFile
+ 45/139 Test  #45: HelloLibclangTest.ReturnsNulloptForNonexistentFile .....................................   Passed    0.02 sec
+        Start  46: HelloLibclangTest.ReturnsEmptyForEmptyFile
+ 46/139 Test  #46: HelloLibclangTest.ReturnsEmptyForEmptyFile .............................................   Passed    0.02 sec
+        Start  47: NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding
+ 47/139 Test  #47: NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding ...................   Passed    0.03 sec
+        Start  48: NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters
+ 48/139 Test  #48: NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters .....   Passed    0.03 sec
+        Start  49: NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce
+ 49/139 Test  #49: NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce ........................   Passed    0.03 sec
+        Start  50: NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction
+ 50/139 Test  #50: NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction .................   Passed    0.03 sec
+        Start  51: NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction
+ 51/139 Test  #51: NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction .............   Passed    0.03 sec
+        Start  52: NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent
+ 52/139 Test  #52: NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent ..............   Passed    0.03 sec
+        Start  53: NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions
+ 53/139 Test  #53: NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions .....................   Passed    0.03 sec
+        Start  54: NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount
+ 54/139 Test  #54: NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount ........   Passed    0.03 sec
+        Start  55: NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget
+ 55/139 Test  #55: NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget ....................   Passed    0.07 sec
+        Start  56: NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory
+ 56/139 Test  #56: NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory ......   Passed    0.03 sec
+        Start  57: NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine
+ 57/139 Test  #57: NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine .....   Passed    0.03 sec
+        Start  58: NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration
+ 58/139 Test  #58: NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration .........   Passed    0.03 sec
+        Start  59: NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns
+ 59/139 Test  #59: NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns ................   Passed    0.03 sec
+        Start  60: NativeMetricsFixture.SourceFingerprintMatchesObservedBytesAndChangesWithSource
+ 60/139 Test  #60: NativeMetricsFixture.SourceFingerprintMatchesObservedBytesAndChangesWithSource .........   Passed    0.03 sec
+        Start  61: NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements
+ 61/139 Test  #61: NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements ................   Passed    0.02 sec
+        Start  62: NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation
+ 62/139 Test  #62: NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation .....   Passed    0.03 sec
+        Start  63: NativeMetricsFixture.TokenRecordConfigurationRejectsInvalidBoundsAndTypes
+ 63/139 Test  #63: NativeMetricsFixture.TokenRecordConfigurationRejectsInvalidBoundsAndTypes ..............   Passed    0.02 sec
+        Start  64: NativeMetricsFixture.TokenRecordConfigurationAcceptsBothInclusiveBounds
+ 64/139 Test  #64: NativeMetricsFixture.TokenRecordConfigurationAcceptsBothInclusiveBounds ................   Passed    0.02 sec
+        Start  65: NativeMetricsFixture.DefaultTokenRecordBudgetIsExplicitInEveryStream
+ 65/139 Test  #65: NativeMetricsFixture.DefaultTokenRecordBudgetIsExplicitInEveryStream ...................   Passed    0.03 sec
+        Start  66: NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets
+ 66/139 Test  #66: NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets .....................   Passed    0.03 sec
+        Start  67: NativeScopeFixture.AcceptsCompilationDatabaseFile
+ 67/139 Test  #67: NativeScopeFixture.AcceptsCompilationDatabaseFile ......................................   Passed    0.02 sec
+        Start  68: NativeScopeFixture.DistinguishesInferredHeaderContext
+ 68/139 Test  #68: NativeScopeFixture.DistinguishesInferredHeaderContext ..................................   Passed    0.03 sec
+        Start  69: NativeScopeFixture.IncludedHeaderFindingsBelongToHeaderOnce
+ 69/139 Test  #69: NativeScopeFixture.IncludedHeaderFindingsBelongToHeaderOnce ............................   Passed    0.02 sec
+        Start  70: NativeScopeFixture.ExternalIncludeIsNotAttributedToMainFile
+ 70/139 Test  #70: NativeScopeFixture.ExternalIncludeIsNotAttributedToMainFile ............................   Passed    0.03 sec
+        Start  71: NativeScopeFixture.DiscoversHeaderImplementationExtensions
+ 71/139 Test  #71: NativeScopeFixture.DiscoversHeaderImplementationExtensions .............................   Passed    0.02 sec
+        Start  72: NativeScopeFixture.DoesNotDiscoverExternalFileSymlink
+ 72/139 Test  #72: NativeScopeFixture.DoesNotDiscoverExternalFileSymlink ..................................   Passed    0.02 sec
+        Start  73: NativeScopeFixture.DoesNotTraverseExternalDirectorySymlink
+ 73/139 Test  #73: NativeScopeFixture.DoesNotTraverseExternalDirectorySymlink .............................   Passed    0.02 sec
+        Start  74: NativeScopeFixture.PreservesForcedIncludeWithSameBasename
+ 74/139 Test  #74: NativeScopeFixture.PreservesForcedIncludeWithSameBasename ..............................   Passed    0.03 sec
+        Start  75: ParseTraceFixture.FallbackRecordsExactArgumentsProcessCwdAndActualParserVersion
+ 75/139 Test  #75: ParseTraceFixture.FallbackRecordsExactArgumentsProcessCwdAndActualParserVersion ........   Passed    0.03 sec
+        Start  76: ParseTraceFixture.DatabasePreservesOrderedDuplicateFlagsAndRemovesOnlyDriverOperands
+ 76/139 Test  #76: ParseTraceFixture.DatabasePreservesOrderedDuplicateFlagsAndRemovesOnlyDriverOperands ...   Passed    0.05 sec
+        Start  77: ParseTraceFixture.InferredHeaderRetainsItsActualInterpolatedArguments
+ 77/139 Test  #77: ParseTraceFixture.InferredHeaderRetainsItsActualInterpolatedArguments ..................   Passed    0.12 sec
+        Start  78: ParseTraceFixture.FailedParseRetainsTheArgumentsActuallyAttempted
+ 78/139 Test  #78: ParseTraceFixture.FailedParseRetainsTheArgumentsActuallyAttempted ......................   Passed    0.04 sec
+        Start  79: ParseTraceFixture.PartialParseStillRecordsItsAttemptedContext
+ 79/139 Test  #79: ParseTraceFixture.PartialParseStillRecordsItsAttemptedContext ..........................   Passed    0.04 sec
+        Start  80: ParseTraceFixture.SkippedAndExcludedFilesDoNotInventParseAttempts
+ 80/139 Test  #80: ParseTraceFixture.SkippedAndExcludedFilesDoNotInventParseAttempts ......................   Passed    0.02 sec
+        Start  81: ParseTraceFixture.ResourceOverrideAndWorkingDirectoryOverrideRemainInExactOrder
+ 81/139 Test  #81: ParseTraceFixture.ResourceOverrideAndWorkingDirectoryOverrideRemainInExactOrder ........   Passed    0.03 sec
+        Start  82: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+ 82/139 Test  #82: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean .............................   Passed    0.03 sec
+        Start  83: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+ 83/139 Test  #83: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode .............................   Passed    0.04 sec
+        Start  84: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+ 84/139 Test  #84: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce ..........................   Passed    0.03 sec
+        Start  85: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+ 85/139 Test  #85: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction ...............   Passed    0.03 sec
+        Start  86: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+ 86/139 Test  #86: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates .................   Passed    0.03 sec
+        Start  87: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+ 87/139 Test  #87: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength .............................   Passed    0.03 sec
+        Start  88: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+ 88/139 Test  #88: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters .........................   Passed    0.03 sec
+        Start  89: RuleRegressionFixture.LambdaCaptureInitializerBelongsToEnclosingFunction
+ 89/139 Test  #89: RuleRegressionFixture.LambdaCaptureInitializerBelongsToEnclosingFunction ...............   Passed    0.03 sec
+        Start  90: RuleRegressionFixture.LocalClassBodyHasSeparateControlFlow
+ 90/139 Test  #90: RuleRegressionFixture.LocalClassBodyHasSeparateControlFlow .............................   Passed    0.03 sec
+        Start  91: RuleRegressionFixture.BranchlessAndOverloadedOperatorCallsAreNotDecisions
+ 91/139 Test  #91: RuleRegressionFixture.BranchlessAndOverloadedOperatorCallsAreNotDecisions ..............   Passed    0.03 sec
+        Start  92: RuleRegressionFixture.CaptureRecoveryPreservesNestedLambdaAndOverloadSemantics
+ 92/139 Test  #92: RuleRegressionFixture.CaptureRecoveryPreservesNestedLambdaAndOverloadSemantics .........   Passed    0.03 sec
+        Start  93: RuleRegressionFixture.RecoversDirectAndConditionalCaptureInitializers
+ 93/139 Test  #93: RuleRegressionFixture.RecoversDirectAndConditionalCaptureInitializers ..................   Passed    0.03 sec
+        Start  94: RuleRegressionFixture.LambdaDefaultArgumentsDoNotBelongToEnclosingFunction
+ 94/139 Test  #94: RuleRegressionFixture.LambdaDefaultArgumentsDoNotBelongToEnclosingFunction .............   Passed    0.03 sec
+        Start  95: MemorySafetyTest.DetectsRawNew
+ 95/139 Test  #95: MemorySafetyTest.DetectsRawNew .........................................................   Passed    0.34 sec
+        Start  96: MemorySafetyTest.DetectsRawDelete
+ 96/139 Test  #96: MemorySafetyTest.DetectsRawDelete ......................................................   Passed    0.31 sec
+        Start  97: MemorySafetyTest.DetectsCArrayParam
+ 97/139 Test  #97: MemorySafetyTest.DetectsCArrayParam ....................................................   Passed    0.33 sec
+        Start  98: MemorySafetyTest.FindingsHaveCorrectCategory
+ 98/139 Test  #98: MemorySafetyTest.FindingsHaveCorrectCategory ...........................................   Passed    0.34 sec
+        Start  99: MemorySafetyTest.FindingsHavePositiveLineNumbers
+ 99/139 Test  #99: MemorySafetyTest.FindingsHavePositiveLineNumbers .......................................   Passed    0.56 sec
+        Start 100: ModernizationTest.DetectsCStyleCast
+100/139 Test #100: ModernizationTest.DetectsCStyleCast ....................................................   Passed    0.37 sec
+        Start 101: ModernizationTest.DetectsDeprecatedHeader
+101/139 Test #101: ModernizationTest.DetectsDeprecatedHeader ..............................................   Passed    0.33 sec
+        Start 102: ModernizationTest.DetectsMissingOverride
+102/139 Test #102: ModernizationTest.DetectsMissingOverride ...............................................   Passed    0.31 sec
+        Start 103: ModernizationTest.DetectsUnscopedEnum
+103/139 Test #103: ModernizationTest.DetectsUnscopedEnum ..................................................   Passed    0.32 sec
+        Start 104: ModernizationTest.DetectsTypedef
+104/139 Test #104: ModernizationTest.DetectsTypedef .......................................................   Passed    0.32 sec
+        Start 105: ModernizationTest.FindingsHaveCorrectCategory
+105/139 Test #105: ModernizationTest.FindingsHaveCorrectCategory ..........................................   Passed    0.53 sec
+        Start 106: ComplexityTest.DetectsLongFunction
+106/139 Test #106: ComplexityTest.DetectsLongFunction .....................................................   Passed    0.35 sec
+        Start 107: ComplexityTest.DetectsTooManyParams
+107/139 Test #107: ComplexityTest.DetectsTooManyParams ....................................................   Passed    0.32 sec
+        Start 108: ComplexityTest.TooManyParamsErrorSeverityForNineParams
+108/139 Test #108: ComplexityTest.TooManyParamsErrorSeverityForNineParams .................................   Passed    0.31 sec
+        Start 109: ComplexityTest.FindingsHaveCorrectCategory
+109/139 Test #109: ComplexityTest.FindingsHaveCorrectCategory .............................................   Passed    0.32 sec
+        Start 110: MisraTest.DetectsGoto
+110/139 Test #110: MisraTest.DetectsGoto ..................................................................   Passed    0.32 sec
+        Start 111: MisraTest.DetectsUnion
+111/139 Test #111: MisraTest.DetectsUnion .................................................................   Passed    0.44 sec
+        Start 112: MisraTest.DetectsDynamicAlloc
+112/139 Test #112: MisraTest.DetectsDynamicAlloc ..........................................................   Passed    0.34 sec
+        Start 113: MisraTest.DetectsRecursion
+113/139 Test #113: MisraTest.DetectsRecursion .............................................................   Passed    0.31 sec
+        Start 114: MisraTest.DetectsMultipleReturns
+114/139 Test #114: MisraTest.DetectsMultipleReturns .......................................................   Passed    0.32 sec
+        Start 115: MisraTest.FindingsHaveCorrectCategory
+115/139 Test #115: MisraTest.FindingsHaveCorrectCategory ..................................................   Passed    0.33 sec
+        Start 116: MisraTest.GotoIsErrorSeverity
+116/139 Test #116: MisraTest.GotoIsErrorSeverity ..........................................................   Passed    0.32 sec
+        Start 117: MisraTest.UnionIsErrorSeverity
+117/139 Test #117: MisraTest.UnionIsErrorSeverity .........................................................   Passed    0.50 sec
+        Start 118: CleanCodeTest.ProducesZeroFindings
+118/139 Test #118: CleanCodeTest.ProducesZeroFindings .....................................................   Passed    0.34 sec
+        Start 119: OutputWriterTest.WritesValidJson
+119/139 Test #119: OutputWriterTest.WritesValidJson .......................................................   Passed    0.02 sec
+        Start 120: OutputWriterTest.HandlesEmptyFindings
+120/139 Test #120: OutputWriterTest.HandlesEmptyFindings ..................................................   Passed    0.02 sec
+        Start 121: FileDiscoveryTest.FindsFixtureFiles
+121/139 Test #121: FileDiscoveryTest.FindsFixtureFiles ....................................................   Passed    0.02 sec
+        Start 122: FileDiscoveryTest.ReturnsEmptyForNonexistentDir
+122/139 Test #122: FileDiscoveryTest.ReturnsEmptyForNonexistentDir ........................................   Passed    0.02 sec
+        Start 123: FileDiscoveryTest.OnlyReturnsCppFiles
+123/139 Test #123: FileDiscoveryTest.OnlyReturnsCppFiles ..................................................   Passed    0.02 sec
+        Start 124: WorkUnitSelectionTest.SelectsExactlyOneOfEqualBasenames
+124/139 Test #124: WorkUnitSelectionTest.SelectsExactlyOneOfEqualBasenames ................................   Passed    0.03 sec
+        Start 125: WorkUnitSelectionTest.RejectsMalformedEscapingDuplicateAndMissingSelections
+125/139 Test #125: WorkUnitSelectionTest.RejectsMalformedEscapingDuplicateAndMissingSelections ............   Passed    0.03 sec
+        Start 126: WorkUnitSelectionTest.RejectsSymlinkFileAndDirectoryComponents
+126/139 Test #126: WorkUnitSelectionTest.RejectsSymlinkFileAndDirectoryComponents .........................   Passed    0.02 sec
+        Start 127: WorkUnitSelectionTest.DefaultDiscoveryStillAnalyzesBothFiles
+127/139 Test #127: WorkUnitSelectionTest.DefaultDiscoveryStillAnalyzesBothFiles ...........................   Passed    0.03 sec
+        Start 128: WorkUnitSelectionTest.RejectsUnusablyLowAddressSpaceBeforeParsing
+128/139 Test #128: WorkUnitSelectionTest.RejectsUnusablyLowAddressSpaceBeforeParsing ......................   Passed    0.03 sec
+        Start 129: ResourceDirectoryCli.valid_fallback
+129/139 Test #129: ResourceDirectoryCli.valid_fallback ....................................................   Passed    0.05 sec
+        Start 130: ResourceDirectoryCli.valid_db
+130/139 Test #130: ResourceDirectoryCli.valid_db ..........................................................   Passed    0.05 sec
+        Start 131: ResourceDirectoryCli.invalid_flag
+131/139 Test #131: ResourceDirectoryCli.invalid_flag ......................................................   Passed    0.03 sec
+        Start 132: ResourceDirectoryCli.invalid_env
+132/139 Test #132: ResourceDirectoryCli.invalid_env .......................................................   Passed    0.04 sec
+        Start 133: ResourceDirectoryCli.relative_repo
+133/139 Test #133: ResourceDirectoryCli.relative_repo .....................................................   Passed    0.04 sec
+        Start 134: ResourceDirectoryCli.valid_inferred
+134/139 Test #134: ResourceDirectoryCli.valid_inferred ....................................................   Passed    0.04 sec
+        Start 135: ResourceDirectoryCli.valid_barrier
+135/139 Test #135: ResourceDirectoryCli.valid_barrier .....................................................   Passed    0.04 sec
+        Start 136: ConfigurationCli.unknown_key
+136/139 Test #136: ConfigurationCli.unknown_key ...........................................................   Passed    0.03 sec
+        Start 137: ConfigurationCli.wrong_type
+137/139 Test #137: ConfigurationCli.wrong_type ............................................................   Passed    0.03 sec
+        Start 138: ConfigurationCli.ambiguous
+138/139 Test #138: ConfigurationCli.ambiguous .............................................................   Passed    0.03 sec
+        Start 139: ConfigurationCli.explicit
+139/139 Test #139: ConfigurationCli.explicit ..............................................................   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 139
+
+Total Test time (real) =  11.85 sec
