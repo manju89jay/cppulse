@@ -1,0 +1,10 @@
+.git
+.venv
+**/node_modules
+**/build
+**/__pycache__
+output
+review
+examples
+assets
+tests/tmp

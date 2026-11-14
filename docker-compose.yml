@@ -1,8 +1,5 @@
-version: "3.9"
 
-# ── Shared volume for pipeline outputs ───────────────────────────────────────
-volumes:
-  cppulse_output:
+# Pipeline outputs use a host bind mount (OUTPUT_PATH, default ./output).
 
 # ── Services ──────────────────────────────────────────────────────────────────
 services:
@@ -14,19 +11,19 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ${REPO_PATH:-.}:/repo:ro
-      - cppulse_output:/output
+      - ${OUTPUT_PATH:-./output}:/output
     environment:
       - OUTPUT_DIR=/output
-    command: ["/usr/local/bin/cppulse-analyzer", "--repo", "/repo", "--output", "/output"]
+    command: ["--repo", "/repo", "--output", "/output"]
 
   # ── 2. git-miner (Python git history analysis) ──────────────────────────
   git-miner:
     build:
-      context: ./git-miner
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: git-miner/Dockerfile
     volumes:
       - ${REPO_PATH:-.}:/repo:ro
-      - cppulse_output:/output
+      - ${OUTPUT_PATH:-./output}:/output
     environment:
       - OUTPUT_DIR=/output
     depends_on:
@@ -37,10 +34,10 @@ services:
   # ── 3. predictor (XGBoost ML pipeline) ──────────────────────────────────
   predictor:
     build:
-      context: ./predictor
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: predictor/Dockerfile
     volumes:
-      - cppulse_output:/output
+      - ${OUTPUT_PATH:-./output}:/output
     environment:
       - OUTPUT_DIR=/output
     depends_on:
@@ -53,18 +50,29 @@ services:
   # ── 4. report-engine (FastAPI + PDF) ────────────────────────────────────
   report-engine:
     build:
-      context: ./report-engine
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: report-engine/Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - cppulse_output:/output
+      - ${OUTPUT_PATH:-./output}:/output
     environment:
       - DATA_DIR=/output
     depends_on:
       predictor:
         condition: service_completed_successfully
     command: ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  report-pdf:
+    build:
+      context: .
+      dockerfile: report-engine/Dockerfile
+    volumes:
+      - ${OUTPUT_PATH:-./output}:/output
+    depends_on:
+      predictor:
+        condition: service_completed_successfully
+    command: ["python3", "-m", "src.pdf_generator", "--data", "/output", "--output", "/output/report.pdf"]
 
   # ── 5. dashboard (React/TypeScript) ──────────────────────────────────────
   dashboard:

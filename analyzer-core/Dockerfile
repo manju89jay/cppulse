@@ -34,6 +34,9 @@ FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libclang1 \
+    libclang-dev \
+    g++ \
+    libspdlog-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /src/build/cppulse-analyzer /usr/local/bin/cppulse-analyzer
