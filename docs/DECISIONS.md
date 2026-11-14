@@ -325,3 +325,32 @@ features as implemented or the proposal as accepted.
 - **Why**: A developer should be able to trace the displayed gate or finding back to the same run and original bytes, and distinguish a new finding from a failed policy or missing proof.
 - **Tradeoffs**: These comparisons require relevant fresh collection; no incremental analysis or automatic safe rename claim is made. The actual source workflow exercises 24 commands and 43 checked snapshots; public evidence examples demonstrate passed, failed and insufficient-evidence gates. Bundled UI runtime needs no Node server, but optional PDF/web packages and host libraries still apply. Installed dev2 and unavailable-platform qualification remain separate from source tests.
 - **Interview angle**: "A shifted line can remain the same finding, but an ambiguous repeated line stays unknown instead of being matched optimistically."
+
+
+## PROD-20261114-01: Execute the full reconciled production scope
+- **Context**: The full 118 requirements and 60 tasks were audited against delivered code; the earlier S0–S7 boundary did not satisfy the later full-product instruction.
+- **Decision**: The latest user authorization starts full autonomous implementation with all P0–P14 phases retained. Keep a separate execution ledger, current-byte check evidence and independent acceptance review. Existing draft plans remain historical inputs. No new commits, pushes, deployment, publication or messages are authorized.
+- **Why**: Delivery must be assessed against the complete product goal, not a convenient subset or aggregate test count.
+- **Tradeoffs**: Unavailable platforms, standards review and human usefulness remain open blockers; they cannot be replaced by source inspection or invented tests.
+- **Interview angle**: “I kept a requirement open until observable acceptance and current source-bound evidence supported it.”
+
+## PROD-20261114-02: Reconcile C++17 style and configurable library limits
+- **Context**: Historical style prescribed span/expected beyond C++17 and a fixed 500 KiB skip that conflicts with amalgamated-library support.
+- **Decision**: Preserve the C++17 implementation, checked containers/results and explicit failure boundaries. Adopt a positive configurable max_file_bytes with a 16 MiB default and visible skip reasons. Synchronize only genuinely shared concurrent state.
+- **Why**: Standards and resource limits must describe actual supported code and cannot silently exclude the primary library use case.
+- **Tradeoffs**: The byte limit is not a memory or whole-program safety guarantee. Per-worker memory isolation and tested platform combinations remain separate requirements.
+- **Interview angle**: “A configured large header can be analyzed; an exceeded limit remains an explicit incomplete result.”
+
+## PROD-20261114-03: Preserve snapshot decision provenance
+- **Context**: Uploaded D28/D29 describe review restrictions and research capture; current D28/D29 describe different later changes.
+- **Decision**: Preserve current entries unchanged. Refer to the uploaded entries as SNAPSHOT-20261114-D28 and SNAPSHOT-20261114-D29, retaining the separately audited source paths and hashes rather than overwriting either history. Subsequent user Git authorization applies only to the recorded historical save/push.
+- **Why**: Reused IDs cannot establish one continuous decision history or override current instructions.
+- **Tradeoffs**: Historical references require their provenance label, not an ambiguous bare D number.
+- **Interview angle**: “I reconciled contradictory records without rewriting evidence.”
+
+## PROD-20261114-04: Qualify installed editor bytes against one closed backend wheelhouse
+- **Context**: The VSIX was built, but `test:host` referenced a missing runner. Backend installation selected an older same-version cppulse wheel from a second directory and failed the current hash lock.
+- **Decision**: Add an isolated real-host runner that installs the actual VSIX and invokes a separately installed CLI. Prepare verification backends using a single wheelhouse with exactly one cppulse wheel and its actual SHA-256; retain hash checking. Record display/socket failures as environment blockers, with no editor-host acceptance.
+- **Why**: Compiled sources and client unit tests cannot establish behavior of installed extension bytes. Weakening lock verification would hide the wrong-package selection.
+- **Tradeoffs**: The current native fixture uses the earlier named dev2 native candidate. Linux display startup is blocked in this command environment; full P2/P8, other platforms and production-native qualification remain unfinished. Unit/syntax checks do not establish host acceptance.
+- **Interview angle**: “A reproducible installation selects one exact artifact; a packaged extension still needs a real-host test.”

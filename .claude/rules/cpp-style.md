@@ -31,7 +31,7 @@ paths:
 - Implementation comments explain WHY, not WHAT
 
 ## Error Handling
-- Return `std::expected<T, Error>` for fallible operations (or `std::optional<T>` for simpler cases)
+- The implementation remains C++17: use an explicit result type or `std::optional<T>` for fallible operations. `std::expected` requires C++23 and is not a requirement of this implementation.
 - Never use exceptions across component boundaries
 - Handle every error path — no silent failures
 

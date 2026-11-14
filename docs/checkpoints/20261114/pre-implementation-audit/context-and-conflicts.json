@@ -1,0 +1,810 @@
+{
+  "audit_scope": "Read-only contextual reconciliation of uploaded research/specification/instructions against current checkout documentation and selected implementation. No commits, pushes, refs or repository files modified by this audit task.",
+  "current_revision": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "current_branch": "codex/cppulse-local-core-20261114",
+  "evidence_boundary": "Sources were read directly in this checkout and uploaded snapshots. No tests were executed by this contextual sub-audit; runtime acceptance must come from separately checked command logs and artifacts. Historical documents and newly written plans are not execution evidence.",
+  "read_order": [
+    "TASK_SPEC.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "docs/research/cppulse-product-discovery.md",
+    "docs/research/cpp-analysis-tool-landscape.md",
+    "docs/specs/production-platform/requirements.md",
+    "docs/specs/production-platform/design.md",
+    "docs/specs/production-platform/tasks.md",
+    "docs/DECISIONS.md",
+    "docs/architecture.md",
+    "applicable C++/Python/safety/testing rules",
+    "other historical contextual references/current implementation"
+  ],
+  "product_history": [
+    {
+      "phase": "Historical six-component prototype",
+      "meaning": "C++17/libclang pattern checks plus Git behavioral signals, experimental ranking and reports intended to help a developer inheriting legacy C++ decide where refactoring attention might be useful. The original brief emphasized a complete end-to-end technical-debt report, not a comprehensive defect verifier.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/TASK_SPEC.md",
+          "line_start": 1,
+          "line_end": 6
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/CLAUDE.md",
+          "line_start": 3,
+          "line_end": 6
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 12,
+          "line_end": 26
+        }
+      ]
+    },
+    {
+      "phase": "Broader production proposal, 2026-11-04",
+      "meaning": "A free local analysis and evidence-assessment product for applications, compiled libraries and header-only libraries. Explainable maintenance assessment, versioned configurable policies, trustworthy context-bound external-tool/test/coverage/runtime evidence, installed CLI/build/editor/agent workflows, bounded scale, maintainable extensions and repeatable candidate/release processes. All M0\u2013M9 remain comparison scope; M8/M9 are explicitly expansion/optional outcomes and require their own sub-specifications, rather than prerequisites for the first useful release.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/requirements.md",
+          "line_start": 3,
+          "line_end": 15
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/requirements.md",
+          "line_start": 21,
+          "line_end": 29
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/tasks.md",
+          "line_start": 10,
+          "line_end": 36
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/tasks.md",
+          "line_start": 181,
+          "line_end": 204
+        }
+      ]
+    },
+    {
+      "phase": "Focused discovery, 2026-11-11",
+      "meaning": "Working hypothesis: help C++ library/header-only maintainers know which declared compiler/OS/target/standard/macros/options have current applicable verification, what failed and what is unknown; help consuming applications identify what upstream evidence does not cover. Reuse compilers and established tools, bind their facts to actual distributed artifacts, distinguish health/ranking/completeness/policy status. User demand and comparative advantage remain unvalidated.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 3,
+          "line_end": 17
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 74,
+          "line_end": 84
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 105,
+          "line_end": 138
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 239,
+          "line_end": 287
+        }
+      ]
+    },
+    {
+      "phase": "Explicit relationship between documents",
+      "meaning": "The focused discovery says it does not authorize the broader backlog or rewrite TASK_SPEC. It preserves the broader proposal. Therefore neither the broad specification nor the focused hypothesis can silently erase the other; later user authorization changes execution scope, and this audit must compare with the full proposal while identifying unresolved product choices.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 335,
+          "line_end": 348
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 24,
+          "line_end": 27
+        }
+      ]
+    }
+  ],
+  "instruction_chronology": [
+    {
+      "order": 1,
+      "basis": "Visible original user instruction and matching D27",
+      "instruction": "Start from codex/job-application-demo-20261113 at b89dce9d22b37ef44843a68eb3373c525b4b8e94; build, test and stabilize CURRENT prototype for reproducible job-application demonstration. Explicitly exclude new collect/assess/evidence-policy MVP, certification, hosting and broad production backlog. Initially no further project commits/pushes/refs/GitHub writes; temporary test fixture commits allowed.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/DECISIONS.md",
+          "line_start": 200,
+          "line_end": 212
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 112,
+          "line_end": 122
+        }
+      ],
+      "limit": "Review-index linked original handoff brief itself is unavailable; exact original prompt is visible in the conversation, not reconstructed from that absent file."
+    },
+    {
+      "order": 2,
+      "basis": "Visible subsequent user messages",
+      "instruction": "User asked a staged plan to implement everything previously planned, then authorized autonomous execution. User also raised VS Code integration and repeatedly requested continued work/status. These broader instructions are not equivalent to explicit user agreement to stop at S7.",
+      "sources": []
+    },
+    {
+      "order": 3,
+      "basis": "Current assistant-authored staged plan, D31 and status",
+      "instruction": "Implementation was organized as S0\u2013S7 core, with measured metrics/trends, scale/incremental, deeper Git/model validation, editor/MCP and expansion placed in S8\u2013S11/E. That is the documented implementation boundary the assistant used; calling it the full original production goal would be incorrect.",
+      "sources": [
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 9,
+          "line_end": 15
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 99,
+          "line_end": 104
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 128,
+          "line_end": 142
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+          "line_start": 231,
+          "line_end": 236
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/STATUS.md",
+          "line_start": 170,
+          "line_end": 173
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "basis": "Visible subsequent user authorization and local history",
+      "instruction": "User later explicitly authorized a new branch and small commits under their Git identity without ChatGPT coauthor, then explicitly authorized pushing. Earlier no-commit/no-push instructions are historical for that already authorized operation; they do not prohibit the historical delivery. New current review explicitly forbids commits/pushes.",
+      "sources": [
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/STATUS.md",
+          "line_start": 3,
+          "line_end": 8
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "basis": "Current uncommitted plan amendment and latest user audit request",
+      "instruction": "Current plan header explicitly supersedes S0\u2013S7 stopping boundary and tracks full M0\u2013M9. This is new planning only, not production implementation. Current request: reconciliation audit and dependency-ordered correction plan for owner verification before further implementation; no commits or pushes.",
+      "sources": [
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 3,
+          "line_end": 7
+        }
+      ]
+    }
+  ],
+  "implementation_distinction": {
+    "preexisting_foundation": "The 22 checks, Git mining, heuristic/XGBoost pathways, seven-section report, API/dashboard and C++ orchestration already existed in the starting checkpoint; they must not be represented as all authored during this cloud increment.",
+    "cloud_increment_source_present": "Identity/parse/status/profile/model fixes; namespaced installable Python package; retained original C++ analyzer/CLI; canonical Python dispatcher; optional ML/PDF/web; immutable manifest-bound snapshots and current-attempt failure handling; explicit finite recipe capture and narrow normalizers; policy predicates and gate semantics; library consumer/package comparison; baselines/suppressions/SARIF; snapshot reports/API/dashboard; local integration/candidate scripts and demos.",
+    "sources": [
+      {
+        "kind": "uploaded reference snapshot",
+        "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+        "line_start": 36,
+        "line_end": 72
+      },
+      {
+        "kind": "current checkout",
+        "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/portfolio/cppulse-project-overview.md",
+        "line_start": 18,
+        "line_end": 41
+      },
+      {
+        "kind": "current checkout",
+        "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+        "line_start": 238,
+        "line_end": 326
+      }
+    ],
+    "qualification": "This is substantially more than initial demo stabilization and substantially less than the complete production specification. Source and self-description do not qualify all these features; final table must use independent tests/artifact checks for each precise supported slice."
+  },
+  "conflicts": [
+    {
+      "id": "C01",
+      "requirement_or_topic": "Full product scope versus S0\u2013S7 delivery",
+      "finding": "The old staged plan and status present S0\u2013S7 as the accepted autonomous boundary, while the user requested everything planned. Full original M2/M4/M6/M7 and optional M8/M9 are not closed by a small evidence-capable candidate. The uncommitted top-level amendment now acknowledges this but does not implement it.",
+      "sources": [
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 3,
+          "line_end": 13
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/plans/cppulse-staged-implementation-plan.md",
+          "line_start": 128,
+          "line_end": 142
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/STATUS.md",
+          "line_start": 170,
+          "line_end": 173
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/tasks.md",
+          "line_start": 10,
+          "line_end": 36
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Owner review should accept one reconciled goal with all numbered requirements/tasks retained; distinguish release order from completion and preserve optional expansion classification. Remove unsupported attribution of the S7 cutoff to the user."
+    },
+    {
+      "id": "C02",
+      "requirement_or_topic": "Health model",
+      "finding": "Production design requires analyzed-KLOC density, caps and weight normalization, per-required-context scoring and worst fully evaluated context. Current implementation explicitly retains weighted findings per attempted file, with category scales. Honest version metadata and null partial health repair false clean results but do not fulfill the specified scorer.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 210,
+          "line_end": 235
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/predictor/health_scorer.py",
+          "line_start": 95,
+          "line_end": 119
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/predictor/main.py",
+          "line_start": 222,
+          "line_end": 227
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/predictor/main.py",
+          "line_start": 267,
+          "line_end": 275
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+          "line_start": 210,
+          "line_end": 215
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Implement the specified scorer after valid analyzed LOC/context metrics, or explicitly propose a reviewed specification change and migration. Never silently treat the current formula as satisfying the KLOC design."
+    },
+    {
+      "id": "C03",
+      "requirement_or_topic": "Complexity and hotspot semantics",
+      "finding": "Current hotspot complexity_score remains max_severity/3 and debt_density is findings per years-of-age, while design requires measured complexity and documented debt measures. Metadata now discloses the proxy, but source still calls it normalized complexity and legacy field consumers can misread it.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/requirements.md",
+          "line_start": 125,
+          "line_end": 132
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 237,
+          "line_end": 249
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/predictor/main.py",
+          "line_start": 180,
+          "line_end": 202
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/predictor/main.py",
+          "line_start": 248,
+          "line_end": 275
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Add measured function/file metrics and versioned measured hotspots; keep proxy explicitly named and unavailable actual complexity distinct. Test hand-reviewed values and remove misleading field/presentation claims through compatibility migration."
+    },
+    {
+      "id": "C04",
+      "requirement_or_topic": "Detector profile versus scoring profile",
+      "finding": "Historical D8/D13/architecture say default executes 15 detectors and MISRA is opt-in. Current engine variant contains all 22 and current DECISIONS explicitly explains profile only changes scoring/roadmap. Uploaded discovery already identified discrepancy.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/DECISIONS.md",
+          "line_start": 62,
+          "line_end": 99
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/architecture.md",
+          "line_start": 81,
+          "line_end": 125
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-product-discovery.md",
+          "line_start": 56,
+          "line_end": 68
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/rule_engine.h",
+          "line_start": 51,
+          "line_end": 67
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+          "line_start": 63,
+          "line_end": 69
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Decide detector defaults versus scoring policy explicitly; expose effective rule selection and verify every entry point; retain historical text only as clearly superseded context."
+    },
+    {
+      "id": "C05",
+      "requirement_or_topic": "Large/header-only libraries versus fixed size skip",
+      "finding": "Safety style requires skipping >500KB and the analyzer still has a hardcoded 500*1024 cap. Production design forbids a hardcoded small limit excluding common amalgamated libraries and requires configurable explicit limits. Current skip is recorded, so it does not silently fabricate analyzed scope, but the supported library use remains incomplete.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/.claude/rules/safety-critical.md",
+          "line_start": 26,
+          "line_end": 29
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 162,
+          "line_end": 169
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/analyzer.cpp",
+          "line_start": 24,
+          "line_end": 27
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/src/analyzer.cpp",
+          "line_start": 355,
+          "line_end": 364
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Replace fixed cap with configurable resource/large-file policy and isolated bounded work; test an actual >500KB distributed header including positive/negative triggers and an exhausted/incomplete case."
+    },
+    {
+      "id": "C06",
+      "requirement_or_topic": "C++17 style requirements versus later-language APIs and historical assertions",
+      "finding": "C++ style mandates C++17 while recommending std::expected; safety rules recommend std::span, require public expected/noexcept and assert mutex aggregation/TSan. The standard APIs are unavailable in C++17 without alternatives and source instruction text is not evidence that thread safety or TSan passed.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/.claude/rules/cpp-style.md",
+          "line_start": 12,
+          "line_end": 18
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/.claude/rules/cpp-style.md",
+          "line_start": 33,
+          "line_end": 35
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/.claude/rules/safety-critical.md",
+          "line_start": 14,
+          "line_end": 33
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Reconcile style around C++17-supported alternatives and actual worker design; preserve explicit failure statuses, validate callbacks/error paths and run appropriate sanitizer/compiler matrix before claiming support."
+    },
+    {
+      "id": "C07",
+      "requirement_or_topic": "Public CLI design versus implemented interface",
+      "finding": "Design proposes text default, init --kind, config show --effective, collect --recipe, installed CMake find_package function with ANALYZE_TARGETS and check changed flags. Current CLI uses machine JSON stdout, init --repo, config flat form, collect --request/workspace/store and snapshot check semantics. These can be deliberate strict interfaces but are not the same contract.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 401,
+          "line_end": 477
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/cli.py",
+          "line_start": 128,
+          "line_end": 177
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/cli.py",
+          "line_start": 476,
+          "line_end": 497
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/development/public-cli.md",
+          "line_start": 14,
+          "line_end": 45
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/python/cppulse/data/Cppulse.cmake",
+          "line_start": 1,
+          "line_end": 23
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Perform command-by-command compatibility/UX reconciliation. Supply documented text default and aliases where required, or propose explicit versioned contract changes. CMake collection and retained-snapshot checking need a clear end-to-end recipe, not a claim that checking automatically collects."
+    },
+    {
+      "id": "C08",
+      "requirement_or_topic": "Historical C++ CLI versus installed Python orchestration",
+      "finding": "TASK_SPEC and production design preserve C++ CLI; current canonical installed command is Python dispatcher, while original C++ path remains checkout-based. D34 openly records refinement of D11. This is a documented architectural divergence, not a wholesale replacement of native analyzer.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/TASK_SPEC.md",
+          "line_start": 772,
+          "line_end": 801
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 12,
+          "line_end": 16
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/pyproject.toml",
+          "line_start": 27,
+          "line_end": 34
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+          "line_start": 252,
+          "line_end": 257
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/README.md",
+          "line_start": 94,
+          "line_end": 118
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Review the architectural refinement and define precisely which compatibility entry points remain supported and packaged; exercise both installed canonical workflow and retained legacy CLI where advertised."
+    },
+    {
+      "id": "C09",
+      "requirement_or_topic": "Optional Git/risk packaging and declared environment",
+      "finding": "Design separates optional Git/risk capability; current core dependencies require GitPython, NumPy and pandas. Python >=3.11,<3.13 is declared; only cloud 3.12.14 is evidenced here. CMake helper docs require3.21+ versus design/dev3.25 and consumer3.16 where feasible. CONTRIBUTING still says Python3.10, Node18, libclang17/18 and old GitLab URL.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/design.md",
+          "line_start": 518,
+          "line_end": 527
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/requirements.md",
+          "line_start": 240,
+          "line_end": 258
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/pyproject.toml",
+          "line_start": 10,
+          "line_end": 25
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/development/local-check-integrations.md",
+          "line_start": 44,
+          "line_end": 44
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/CONTRIBUTING.md",
+          "line_start": 8,
+          "line_end": 22
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/portfolio/cppulse-project-overview.md",
+          "line_start": 107,
+          "line_end": 112
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Separate compatibility declaration from actual qualification, settle optional Git dependency boundary, update setup docs and run installed support matrix before widening claims."
+    },
+    {
+      "id": "C10",
+      "requirement_or_topic": "Decision identifier collision",
+      "finding": "Uploaded D28 records no commits pending review and D29 records research packet. Current D28/D29 use the same identifiers for stabilization and shared checks/report dispatch. They are independent append histories and cannot safely be overwritten or cited by ID alone.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/DECISIONS.md",
+          "line_start": 207,
+          "line_end": 219
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/DECISIONS.md",
+          "line_start": 210,
+          "line_end": 222
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Preserve both histories under unique stable IDs or provenance labels, linking uploaded source/date and explaining later commit/push authorization. Do not overwrite current decisions with snapshot."
+    },
+    {
+      "id": "C11",
+      "requirement_or_topic": "Historical findings/benchmark and accuracy claims",
+      "finding": "Snapshot REVIEW claims June Windows tests, six density examples and F1 values; architecture contains gRPC99.0 and unsupported CVE/crash rationale. Current architecture/ADR warnings correctly disavow these as current evidence. Those historical numbers remain unsuitable for detector accuracy, scale, production or safety claims; current test totals prove tested behavior only.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 3,
+          "line_end": 6
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 269,
+          "line_end": 308
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/architecture.md",
+          "line_start": 103,
+          "line_end": 107
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/architecture.md",
+          "line_start": 157,
+          "line_end": 164
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/architecture.md",
+          "line_start": 1,
+          "line_end": 3
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/adr/ADR-006-production-readiness.md",
+          "line_start": 1,
+          "line_end": 3
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Retain historical evidence as dated context; regenerate the six original pinned repositories with real history, internally checked totals, reviewed accuracy samples and measured resources before publishing a new comparison."
+    },
+    {
+      "id": "C12",
+      "requirement_or_topic": "Current documentation status versus later verified artifacts and push",
+      "finding": "README says final dev2 installed acceptance is recorded separately once completed and branch local; portfolio says no installed dev2 proof asserted; STATUS still says no push authorized and S7 later tracks out of scope. These are dated checkpoint statements and no longer a complete current narrative. Do not infer runtime failure merely from stale text, or infer qualification merely from newer prose.",
+      "sources": [
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/README.md",
+          "line_start": 25,
+          "line_end": 30
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/docs/portfolio/cppulse-project-overview.md",
+          "line_start": 98,
+          "line_end": 103
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/STATUS.md",
+          "line_start": 3,
+          "line_end": 13
+        },
+        {
+          "kind": "current checkout",
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/STATUS.md",
+          "line_start": 153,
+          "line_end": 173
+        }
+      ],
+      "status": "conflicting",
+      "remaining_work": "Link exact final installed byte hashes, post-format current analyzer/source revision checks and actual push result separately. Refresh one current capability/evidence ledger while keeping original records immutable."
+    }
+  ],
+  "unavailable_references": [
+    {
+      "path": "docs/PRODUCT_VISION.md",
+      "availability": "Absent in current repository and uploaded snapshots. Referenced by CLAUDE46 and production requirements46; contents cannot be reconstructed.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/CLAUDE.md",
+          "line_start": 46,
+          "line_end": 46
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/specs/production-platform/requirements.md",
+          "line_start": 44,
+          "line_end": 46
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 160,
+          "line_end": 161
+        }
+      ]
+    },
+    {
+      "path": "ADR-007 density-score decision text",
+      "availability": "Mentioned in snapshot REVIEW but no ADR-007 file found in current checkout or uploaded snapshots. Do not invent its exact caps or approval history. Newer main source can be inspected separately.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 255,
+          "line_end": 257
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 269,
+          "line_end": 289
+        }
+      ]
+    },
+    {
+      "path": "output/cloud-transfer/start-cloud-task.txt; checkpoint-manifest.json; local-checkpoint-backup.zip; cloud-task-receipt.json; output/review/checkpoint-verification.json; output/pdf/cppulse-project-overview.pdf",
+      "availability": "Linked by snapshot review-index but absent both decoded uploaded markdown snapshot and current checkout. This upload is not the full review ZIP described in that index. Its provenance assertions are not independently established by these missing materials.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 99,
+          "line_end": 110
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 124,
+          "line_end": 136
+        }
+      ]
+    },
+    {
+      "path": "Complete pre-cloud research chat, webpage archive, actual maintainer interviews/competitor experiments/accepted pilot thresholds",
+      "availability": "Not supplied; review-index expressly says complete raw research chat/web archive not saved, and validation still needed. Saved synthesis permits bounded summary of motivations, not a claim to recover every prior discussion.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 138,
+          "line_end": 157
+        }
+      ]
+    },
+    {
+      "path": "REVIEW.md; .claude/session-state.md; docs/research/cppulse-review-index.md",
+      "availability": "Available only in uploaded reference-snapshots, absent current checkout. REVIEW is dated June12/14 historical Windows review; sessionstate is March6 initial scaffolding and no22rules; reviewindex Nov14 review aid. None is current cloud completion evidence.",
+      "sources": [
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/REVIEW.md",
+          "line_start": 1,
+          "line_end": 6
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/.claude/session-state.md",
+          "line_start": 1,
+          "line_end": 23
+        },
+        {
+          "kind": "uploaded reference snapshot",
+          "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/reference-snapshots/docs/research/cppulse-review-index.md",
+          "line_start": 1,
+          "line_end": 10
+        }
+      ]
+    }
+  ],
+  "correction_order_intent": [
+    {
+      "order": 0,
+      "kind": "Goal and traceability review, no implementation",
+      "work": "Reconcile historical MVP, full production scope and focused evidence hypothesis; retain all118 numbered requirements,60 M0\u2013M9 tasks and unnumbered design obligations. Resolve statuses against actual code/test evidence, not plan claims.",
+      "acceptance": "Owner can see what is delivered, defective, unverified, missing and conflicting. Every item has source, scope, dependency and acceptance check; optional expansions remain explicit."
+    },
+    {
+      "order": 1,
+      "kind": "Delivered behavior defects and contracts",
+      "work": "Reproduce gaps such as partial files appearing low-risk, stale/ambiguous/oversized scope and misleading proxy output. Version fixes and explicit unknown/null semantics before dependent views.",
+      "acceptance": "Fail-before/pass-after meaningful regression plus neighboring clean case; no missing/partial input interpreted as verified safety; schemas and raw/rendered/API output agree."
+    },
+    {
+      "order": 2,
+      "kind": "Source/context/metrics producers",
+      "work": "Support finite declared consumer/header contexts and distributed material, replace fixed small file cap with configured bounded analysis, emit measured function/file metrics with units and prerequisites.",
+      "acceptance": "Compiled and >500KB header-only library plus consuming app in explicit compiler/standard/macro contexts; hand-reviewed metric counts, missing variants visible, crash/limit/cancel preserved."
+    },
+    {
+      "order": 3,
+      "kind": "Consumers and methodology",
+      "work": "Resolve scorer conflict with explicit version/migration; measured hotspots, precise roadmap links and policy gaps; deeper Git/ownership/coupling and temporal model validation remain separate work.",
+      "acceptance": "Independent formulas reproduce, no proxy advertised as measured complexity, no heuristic advertised as calibrated probability, unknown required evidence blocks acceptance."
+    },
+    {
+      "order": 4,
+      "kind": "Presentation and public interfaces",
+      "work": "Update reports/API/dashboard, stable paging/history and inspectable effective config; implement versioned CLI text/JSON, CMake compatibility, then read-first VS Code/MCP using same contracts.",
+      "acceptance": "Same run gives identical statuses/identities/links through CLI, report, API, dashboard and editor; clean outside-checkout and usability journeys work; no hidden collection."
+    },
+    {
+      "order": 5,
+      "kind": "Scale and release qualification",
+      "work": "Bound/isolate workers, dependency-aware facts/assessment caching, streaming history/catalog/resume and repeated named-host benchmarks; unify local developer verification and exact installed-artifact candidate matrix.",
+      "acceptance": "Clean equals warm/edit/policy/history runs;1K/10K/100K tiers have actual timing/resource/completeness records; advertised environments and Docker pass actual runtime or remain explicitly unqualified."
+    },
+    {
+      "order": 6,
+      "kind": "Remaining proposed features, not defects in demo delivery",
+      "work": "Domain reviewed packs, skill clean-session qualification/VS Code distribution, M8 organization/provider features and M9 deterministic/agent repair, APIABI/fuzz/dependency adapters, more languages, identity/hosting require retained sub-specifications and review boundaries.",
+      "acceptance": "Each selected feature meets full original task acceptance; unsupported mappings/certification/accuracy never claimed; publication/deployment/messages remain separately authorized."
+    }
+  ]
+}

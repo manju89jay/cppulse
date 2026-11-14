@@ -4,27 +4,26 @@
  */
 
 #include "analyzer.h"
+#include "native_execution_limits.h"
 
 #include <clang-c/CXCompilationDatabase.h>
 #include <clang-c/Index.h>
 #include <spdlog/spdlog.h>
 
 #include <algorithm>
-#include <fstream>
+#include <limits>
 #include <set>
 #include <string>
 #include <vector>
 
 #include "config.h"
 #include "file_discovery.h"
+#include "metrics.h"
 #include "rule_engine.h"
 
 namespace cppulse {
 
 namespace {
-
-/// @brief Maximum file size in bytes before a file is skipped.
-constexpr std::uintmax_t kMaxFileSizeBytes = 500ULL * 1024ULL;  // 500 KB
 
 /// @brief Convert a CXString to std::string and dispose the original.
 std::string to_string_and_dispose(CXString cx_str) {
@@ -32,20 +31,6 @@ std::string to_string_and_dispose(CXString cx_str) {
     std::string result = (c_str != nullptr) ? c_str : "";
     clang_disposeString(cx_str);
     return result;
-}
-
-/// @brief Count the number of newlines in a file (approximate LOC).
-int count_lines(const std::filesystem::path& file_path) {
-    std::ifstream ifs(file_path, std::ios::binary);
-    if (!ifs) {
-        return 0;
-    }
-    int lines = 0;
-    std::string line;
-    while (std::getline(ifs, line)) {
-        ++lines;
-    }
-    return lines;
 }
 
 /// @brief Check if a rule is enabled per the project config.
@@ -167,11 +152,13 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 
 FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config,
                            std::optional<std::filesystem::path> compilation_database,
-                           std::optional<std::filesystem::path> resource_directory)
+                           std::optional<std::filesystem::path> resource_directory,
+                           std::optional<std::vector<std::filesystem::path>> selected_files)
     : repo_root_(std::move(repo_root)),
       config_(std::move(config)),
       compilation_database_(std::move(compilation_database)),
-      resource_directory_(std::move(resource_directory)) {}
+      resource_directory_(std::move(resource_directory)),
+      selected_files_(std::move(selected_files)) {}
 
 void FileAnalyzer::load_compilation_database() {
     compile_db_ = nullptr;
@@ -305,6 +292,7 @@ void FileAnalyzer::run() {
     db_parsed_count_ = 0;
     fallback_parsed_count_ = 0;
     coverage_ = {};
+    coverage_.max_token_records = config_ ? config_->max_token_records : kDefaultMaxTokenRecords;
     coverage_.parser_version = to_string_and_dispose(clang_getClangVersion());
     for (const auto& rule : make_rules(config_)) {
         coverage_.enabled_rules.push_back(
@@ -313,7 +301,8 @@ void FileAnalyzer::run() {
 
     load_compilation_database();
 
-    const std::vector<std::filesystem::path> files = discover_cpp_files(repo_root_);
+    const std::vector<std::filesystem::path> files = selected_files_
+        ? validate_selected_files(repo_root_, *selected_files_) : discover_cpp_files(repo_root_);
     spdlog::info("FileAnalyzer: found {} file(s) under {}", files.size(), repo_root_.string());
 
     const auto& exclude_patterns =
@@ -330,6 +319,7 @@ void FileAnalyzer::run() {
                 ++skipped;
                 coverage_.files.push_back(
                     FileCoverage{file_path.generic_string(), "excluded", "none", 0});
+                coverage_.files.back().reason = "matched configured exclude_paths";
                 continue;
             }
         }
@@ -355,21 +345,36 @@ void FileAnalyzer::run() {
 void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     coverage_.files.push_back(FileCoverage{file_path.generic_string()});
     auto& outcome = coverage_.files.back();
-    // Skip oversized files.
+    // A configurable bound protects each input without excluding ordinary
+    // amalgamated headers through the historical fixed 500-KiB ceiling.
     std::error_code ec;
     const std::uintmax_t file_size = std::filesystem::file_size(file_path, ec);
-    if (ec || file_size > kMaxFileSizeBytes) {
+    const auto limit = config_.has_value() ? config_->max_file_bytes : kDefaultMaxFileBytes;
+    if (ec || file_size > limit) {
         outcome.status = "skipped";
-        spdlog::warn("FileAnalyzer: skipping large/unreadable file: {}", file_path.string());
+        outcome.reason = ec ? "cannot read file size: " + ec.message()
+                            : std::to_string(file_size) +
+                                  " bytes exceed max_file_bytes=" + std::to_string(limit);
+        spdlog::warn("FileAnalyzer: skipping '{}': {}", file_path.string(), *outcome.reason);
         return;
     }
 
     const std::string path_str = file_path.string();
     spdlog::debug("FileAnalyzer: analyzing '{}'", path_str);
 
+    struct ClangResources {
+        CXIndex index{nullptr};
+        CXTranslationUnit unit{nullptr};
+        ~ClangResources() noexcept {
+            if (unit != nullptr) clang_disposeTranslationUnit(unit);
+            if (index != nullptr) clang_disposeIndex(index);
+        }
+    } resources;
     CXIndex index = clang_createIndex(/*excludeDeclarationsFromPCH=*/0,
                                       /*displayDiagnostics=*/0);
+    resources.index = index;
     if (index == nullptr) {
+        outcome.reason = "clang_createIndex failed";
         spdlog::error("FileAnalyzer: clang_createIndex failed for '{}'", path_str);
         return;
     }
@@ -423,9 +428,10 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         index, path_str.c_str(), cmd_args.data(), static_cast<int>(cmd_args.size()), nullptr, 0,
         CXTranslationUnit_DetailedPreprocessingRecord);
 
+    resources.unit = tu;
     if (tu == nullptr) {
         spdlog::warn("FileAnalyzer: failed to parse '{}'", path_str);
-        clang_disposeIndex(index);
+        outcome.reason = "libclang failed to create translation unit";
         return;
     }
 
@@ -448,9 +454,14 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         ++db_parsed_count_;
     }
 
-    // Count LOC.
-    const int loc = count_lines(file_path);
-    total_loc_ += loc;
+    // Measurements bind to the live TU source buffer, independently of finding thresholds.
+    outcome.metrics = measure_native_file(tu, file_path, repo_root_, outcome,
+                                         coverage_.max_token_records);
+    if ((*outcome.metrics)["physical_loc"].is_number_unsigned()) {
+        const auto observed_loc = (*outcome.metrics)["physical_loc"].get<std::uint64_t>();
+        const auto remaining = static_cast<std::uint64_t>(std::numeric_limits<int>::max() - total_loc_);
+        total_loc_ += static_cast<int>(std::min(observed_loc, remaining));
+    }
     ++file_count_;
 
     // Build a fresh rule set for this file, applying config overrides.
@@ -472,8 +483,6 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         findings_.push_back(std::move(finding));
     }
 
-    clang_disposeTranslationUnit(tu);
-    clang_disposeIndex(index);
 }
 
 }  // namespace cppulse

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "M0-01",
+    "Requirement": "Inventory current worktree, origin/main 82120d2, health-score-v2 history, and preliminary drafts. Preserve unrelated files and existing working code. | Recorded baseline and merge/reuse plan; no duplicate implementation of existing fixes",
+    "Implemented code": "review/environment.json:1; review/HANDOFF.md:8–20; docs/DECISIONS.md:139–140; preserved native engine and legacy wrappers",
+    "Verification evidence": "Recorded baseline b89dce9 and inspected cached main 82120d26. The handoff records selective reuse of the shallow-Git helper/tests, without merging. Current source and snapshot manifests retain provenance.",
+    "Status": "verified",
+    "Remaining work": "Keep uploaded and current provenance separate; avoid blind merges or overwriting newer files.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:76",
+    "classification": ""
+  },
+  {
+    "id": "M0-02",
+    "Requirement": "Define canonical identities, manifest/status envelopes, configuration/version compatibility, scorer availability, and model metadata schemas. Reconcile draft contracts. | Draft-07 and semantic validation; legacy fixture compatibility",
+    "Implemented code": "contracts/schemas/{legacy,prototype_v1,v2}; contracts/validation.py; config.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+    "Status": "partial",
+    "Remaining work": "Finalize the missing metric, reviewed-evidence, fingerprint and scorer contracts. Make native and public configuration errors consistent.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:77",
+    "classification": ""
+  },
+  {
+    "id": "M0-03",
+    "Requirement": "Add regressions for absolute/relative paths, separators, basename collisions, empty/partial scope, missing context, profile propagation, and incorrect model labels. | Reproductions demonstrate the pre-fix behavior",
+    "Implemented code": "tests/test_identities_v2.py; tests/test_contracts_v2.py; tests/test_pipeline_failures.py; producer/component regression tests",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Fresh probes also exposed uncovered complexity, template traversal, auto detection, partial-exit and configuration-ambiguity cases.",
+    "Status": "partial",
+    "Remaining work": "Add small failing regressions for delivered defects and all supported context/flag cases. Preserve existing test expectations.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:78",
+    "classification": ""
+  },
+  {
+    "id": "M0-04",
+    "Requirement": "Correct producers, configuration propagation, per-file parse outcomes, rule execution facts, generated/vendor scope, and no-Git handling. Reuse newer branch fixes. | Producer output validates; valid partial facts survive failed units",
+    "Implemented code": "analyzer-core/src/{analyzer,compilation_database,file_discovery}.cpp; analysis.py; config.py; git_miner/history.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "partial",
+    "Remaining work": "Fix the 500-KiB skip, configuration ambiguity and template traversal. Isolate work units and complete generated/vendor/context-flag scope and external-dependency identities.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:79",
+    "classification": ""
+  },
+  {
+    "id": "M0-05",
+    "Requirement": "Correct feature joins, score prerequisites, actual complexity availability, heuristic metadata, label provenance, and false clean-state handling. | Consistent equations; no fabricated complexity/probabilities/perfect missing-data score",
+    "Implemented code": "predictor/{feature_engineer,health_scorer,model,roadmap_generator}.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "partial",
+    "Remaining work": "Correct 0%/LOW labels on partially analyzed files and unsupported probability wording. Add measured metrics/hotspots and the specified density/context scorer with migration.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:80",
+    "classification": ""
+  },
+  {
+    "id": "M0-06",
+    "Requirement": "Update reports and CLI output to expose partial/unknown state; fix existing advertised command/format behavior and baseline matching. | CLI and rendered results agree; no silently ignored format/profile options",
+    "Implemented code": "cli.py; pipeline.py; presentation.py; report_engine/templates; findings.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. A fresh partial-analysis probe returned exit 0 despite the documented exit 3.",
+    "Status": "partial",
+    "Remaining work": "Fix exit status, configuration ambiguity, misleading ranking labels and unsupported absence-of-knowledge-risk wording. Verify all presentation contracts.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:81",
+    "classification": ""
+  },
+  {
+    "id": "M0-07",
+    "Requirement": "Verify all existing components and regenerate a small pinned example before refreshing larger examples. | Tests, schema results, semantic score verification, and documented remaining limitations",
+    "Implemented code": "scripts/prepare_demo_fixture.sh; scripts/verify_pipeline.py; scripts/run_real_corpus.py; component checks",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "verified",
+    "Remaining work": "The small synthetic fixture and existing native local components were verified. This does not complete Docker, accuracy, six-corpus or production milestones.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:82",
+    "classification": ""
+  },
+  {
+    "id": "M1-01",
+    "Requirement": "Define verification-result and package-version manifests; freeze the initially supported dependency/platform matrix. | One documented source of versions and compatibility expectations",
+    "Implemented code": "pyproject.toml; requirements-verification.txt; candidate version manifests",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Freeze the declared and actually tested GCC/Clang/libclang/Python/CMake/platform matrix. Do not infer Windows or macOS support.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:91",
+    "classification": ""
+  },
+  {
+    "id": "M1-02",
+    "Requirement": "Add the cross-platform local development runner around existing CTest/pytest/dashboard tools. | Full run invokes every required suite and returns machine-readable failures",
+    "Implemented code": "scripts/check_local.py:71,243,322",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+    "Status": "partial",
+    "Remaining work": "Add native formatting/lint, installed-package, performance and integration stages to one portable local entry point. Docker remains unavailable in this environment.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:92",
+    "classification": ""
+  },
+  {
+    "id": "M1-03",
+    "Requirement": "Consolidate common Python contracts/configuration with compatibility entry points. Separate development and optional runtime dependencies. | Existing component commands and isolated installs both pass",
+    "Implemented code": "python/cppulse namespace; legacy src compatibility shims; pyproject.toml optional dependency groups",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "verified",
+    "Remaining work": "Retain compatible wrappers. Verify Python 3.11 and separate the runtime Git/risk dependency footprint in the next support matrix.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:93",
+    "classification": ""
+  },
+  {
+    "id": "M1-04",
+    "Requirement": "Extend CMake with install targets, package core artifacts, and build the Python distribution and optional components. | Analyze from an empty working directory using only installed artifacts",
+    "Implemented code": "CMake install targets; scripts/package_native.py; scripts/package_candidate.py; native.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Rebuild the exact current candidate and complete CPack/platform artifacts and tested install dependency closure. The current native artifact is a custom Linux archive.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:94",
+    "classification": ""
+  },
+  {
+    "id": "M1-05",
+    "Requirement": "Complete integration fixtures: actual outputs, volume extraction, PDF generation, API queries, and browser-level dashboard checks. | Integration fails when any promised output or consumer is broken",
+    "Implemented code": "scripts/integration_test.sh; scripts/verify_pipeline.py; scripts/verify_web_demo.py; scripts/verify_snapshot_web.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Execute Compose one-shot services and named-volume output extraction. Native browser/PDF proof does not establish that Compose works.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:95",
+    "classification": ""
+  },
+  {
+    "id": "M1-06",
+    "Requirement": "Generate candidate versions, changelog, checksums, notices, dependency inventory, support matrix, and verification manifest. | A retained candidate can be reproduced and installed; dry-run publication changes no external state",
+    "Implemented code": "scripts/package_candidate.py:368; candidate checksums, notices, inventory and manifests",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Build the exact HEAD candidate with locked dependencies, support matrix, changelog and dependency inventory/SBOM. Reproduce installation and verify a release dry run.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:96",
+    "classification": ""
+  },
+  {
+    "id": "M1-07",
+    "Requirement": "Add rule/adapter generators and generated-documentation checks; make existing CI call shared local commands. | A generated extension passes registry/contract checks only after meaningful fixture implementation",
+    "Implemented code": "tooling.py; scripts/check_generated.py; tests/test_local_tooling.py; local action wrapper",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. Existing CI files were inspected: they do not delegate to check_local.",
+    "Status": "partial",
+    "Remaining work": "Generate native registration/integration metadata and make existing CI invoke shared local commands. No new external service is needed.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:97",
+    "classification": ""
+  },
+  {
+    "id": "M2-01",
+    "Requirement": "Define work-unit/dependency/cache identities, checkpoints, and committed snapshot semantics. | Contract fixtures cover crashes, incomplete graphs, and stale/latest races",
+    "Implemented code": "run_store.py; contracts/schemas/v2/run_manifest.schema.json; identities.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+    "Status": "partial",
+    "Remaining work": "Define dependency graph, cache and per-translation-unit checkpoint identities. Immutable publication alone is not a resumable scheduler.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:105",
+    "classification": ""
+  },
+  {
+    "id": "M2-02",
+    "Requirement": "Introduce bounded analyzer workers, per-unit time/resource limits, cancellation, and explicit large-file policy. | Limits respected; a crashing parser does not erase other results",
+    "Implemented code": "execution.py:398,697,753; analyzer-core/src/analyzer.cpp:27,355",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. /workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-large-header-probe/verification.json: a 562,577-byte header was skipped, a small header was analyzed, and the native exit was 0.",
+    "Status": "partial",
+    "Remaining work": "Implement isolated native workers, memory/CPU limits and configurable large-file handling. Recipe concurrency is not the proposed AST worker pool.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:106",
+    "classification": ""
+  },
+  {
+    "id": "M2-03",
+    "Requirement": "Implement dependency-aware facts caching and separate assessment caching. | Clean versus cached results agree for source/header/flag/tool/policy edits",
+    "Implemented code": "No dependency-aware facts or assessment caches were found. findings.py:37 requires full collection.",
+    "Verification evidence": "No clean-versus-cached semantic comparison matrix exists.",
+    "Status": "missing",
+    "Remaining work": "Implement compatible cache keys, invalidation and conservative handling of unknown dependencies before enabling reuse.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:107",
+    "classification": ""
+  },
+  {
+    "id": "M2-04",
+    "Requirement": "Stream reusable Git records, handle history rewrite/shallow cases, and checkpoint incremental mining. | Complete and resumed history metrics agree on controlled histories",
+    "Implemented code": "git_miner/history.py:100; shared HistoryScan consumed by derived metrics",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+    "Status": "partial",
+    "Remaining work": "Replace materialized commit/change lists with streamed or persisted history. Support append, rewrite and shallow-history resume; compare clean and resumed metrics.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:108",
+    "classification": ""
+  },
+  {
+    "id": "M2-05",
+    "Requirement": "Publish immutable runs atomically and add indexed history/catalog queries and bounded result aggregation. | Readers never mix runs; interruption recovery and catalog migration pass",
+    "Implemented code": "run_store.py:408,432,576; snapshot API and presentation",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+    "Status": "partial",
+    "Remaining work": "Add indexed history/catalog storage, migration/recovery and bounded aggregation. Preserve coherent reads and explicit incomplete attempts.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:109",
+    "classification": ""
+  },
+  {
+    "id": "M2-06",
+    "Requirement": "Add stable pagination to the API and efficient dashboard access for large findings sets. | Bounded page size and one-run cursor consistency",
+    "Implemented code": "report_engine/api.py: legacy finding page/per_page slicing and shared snapshot view",
+    "Verification evidence": "The legacy page size is capped at 200, but there is no indexed cursor/history query or measured large-view resource budget.",
+    "Status": "partial",
+    "Remaining work": "Add indexed bounded queries, pagination pinned to one run, and efficient dashboard pages. Avoid downloading and slicing the complete JSON data set.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:110",
+    "classification": ""
+  },
+  {
+    "id": "M2-07",
+    "Requirement": "Benchmark 1K/10K/100K-file tiers and representative histories on a named host. Set measured release budgets. | Published cold/warm/edit timing, memory, completeness, and comparison results",
+    "Implemented code": "No 1K/10K/100K-file benchmark tiers or budget runner were found.",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "missing",
+    "Remaining work": "Create baseline/equality checks and repeated resource measurements on a named host. Freeze budgets from actual measurements.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:111",
+    "classification": ""
+  },
+  {
+    "id": "M3-01",
+    "Requirement": "Define CLI/config/exit contracts and baseline fingerprints. | Compatible invocation fixtures and actionable invalid-input cases",
+    "Implemented code": "cli.py; config.py; contracts/finding_workflows.py; findings.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+    "Status": "partial",
+    "Remaining work": "Resolve ambiguous configuration, text defaults and partial exits. Add stable symbol/token fingerprint migration and a complete inspectable effective context.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:119",
+    "classification": ""
+  },
+  {
+    "id": "M3-02",
+    "Requirement": "Specify and implement core health/finding-regression gate predicates before exposing check. General evidence-policy packs remain M5 work. | No dependency on the later assurance engine; unsupported policy/evidence options are rejected clearly",
+    "Implemented code": "findings.py: separate finding gate; public check workflows; policy.py: scoped predicates",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Complete the independent core-health gate contract and documented predicate behavior. Reject unsupported later policy controls before execution.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:120",
+    "classification": ""
+  },
+  {
+    "id": "M3-03",
+    "Requirement": "Implement init, doctor, effective configuration, explain, check, baseline, and local bug-report commands. Preserve analyze/report/watch. | Clean-machine and outside-checkout journeys; JSON/log separation",
+    "Implemented code": "cli.py:33,89,128,476; config.py:61; pipeline.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. Fresh probes reproduced partial-exit and configuration-selection defects.",
+    "Status": "partial",
+    "Remaining work": "Fix delivered defects. Provide concise human output by default, separate machine output, and a complete inspectable effective configuration.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:121",
+    "classification": ""
+  },
+  {
+    "id": "M3-04",
+    "Requirement": "Install the CMake helper and implement explicit check targets, target/dependency selection, and optional normal-build checks. | A sample application and library use the installed package without custom output parsing",
+    "Implemented code": "data/Cppulse.cmake; tests/test_cmake_check_helper.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. Actual CMake 3.31.6 dependency/enforcement tests ran; the proposed 3.16 consumer minimum was not qualified.",
+    "Status": "partial",
+    "Remaining work": "Resolve the 3.21 helper versus 3.16 compatibility decision. Exercise Ninja, other platforms and actual context capture. DEPENDS only establishes build ordering.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:122",
+    "classification": ""
+  },
+  {
+    "id": "M3-05",
+    "Requirement": "Add changed-scope checks and SARIF exports; repair the existing PR comparison/action as a consumer of the same engine. | Rename, repeated finding, basename collision, branch, and partial-analysis tests",
+    "Implemented code": "findings.py: multiplicity and conservative rename comparison; sarif.py; .github/actions/cppulse",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Complete dependency-aware changed-scope execution and more stable fingerprints. The Docker host wrapper remains unexecuted.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:123",
+    "classification": ""
+  },
+  {
+    "id": "M3-06",
+    "Requirement": "Publish concise quickstarts, troubleshooting, upgrade/rollback instructions, and a supported-environment table. | Every example is exercised by package integration tests",
+    "Implemented code": "README.md; docs/development/public-cli.md; docs/development/local-check-integrations.md; candidate upgrade/rollback instructions",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Reconcile commands with current defects and full scope. Exercise every documented example using the current candidate and support matrix, and validate first setup with users.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:124",
+    "classification": ""
+  },
+  {
+    "id": "M3-07",
+    "Requirement": "Prepare Release A and a free skill/listing containing released commands only; test the skill in a clean agent session. | Verified install artifacts; validated text ZIP; listing describes actual scope; submission status recorded separately",
+    "Implemented code": "A prototype candidate exists; no qualified Release A or clean-agent skill proof was found.",
+    "Verification evidence": "No published release or clean-agent skill execution is established. Publication is not authorized during this review.",
+    "Status": "missing",
+    "Remaining work": "Finish release qualification and clean-agent text-skill tests. Treat publication as a separate authorized action.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:125",
+    "classification": ""
+  },
+  {
+    "id": "M4-01",
+    "Requirement": "Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit",
+    "Implemented code": "analysis_metrics.schema.json; analysis.py: count/LOC inventory",
+    "Verification evidence": "Contracts are present, but no complete function, duplication or trend facts are produced.",
+    "Status": "partial",
+    "Remaining work": "Define measured units, versions, contexts, prerequisites and trend compatibility before implementing producers.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:134",
+    "classification": ""
+  },
+  {
+    "id": "M4-02",
+    "Requirement": "Emit actual complexity/nesting/length/parameter metrics, then validated duplication and cohesion metrics. | Positive/negative and macro/template fixtures; counts match hand-reviewed cases",
+    "Implemented code": "Existing complexity threshold rules; no complete function-metrics/duplication pipeline",
+    "Verification evidence": "Fresh probes showed ordinary && double counting and unvisited template functions. Finding emission is not a measured-metrics stream.",
+    "Status": "partial",
+    "Remaining work": "Fix detectors, then emit reviewed complexity, nesting, length and parameter metrics. Add validated duplication/cohesion with macro/template fixtures.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:135",
+    "classification": ""
+  },
+  {
+    "id": "M4-03",
+    "Requirement": "Calibrate and explain a maintenance profile; compute measured hotspots and precise roadmap evidence links. | Same facts give same scores; no claim of empirical probability or financial ROI without supporting validation",
+    "Implemented code": "predictor/health_scorer.py: weighted-findings-per-attempted-file-v2; model.py; roadmap_generator.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "conflicting",
+    "Remaining work": "The design requires analyzed-KLOC density/caps and the worst fully evaluated required context. Record an explicit migration/decision for the different current method; add measured hotspots, evidence links and clearly labeled effort estimates.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:136",
+    "classification": ""
+  },
+  {
+    "id": "M4-04",
+    "Requirement": "Add history, trends, function drill-down, critical-code markers, and basic debt goals. | Version/context changes break or annotate trends rather than silently continuing them",
+    "Implemented code": "No maintenance-history, trend, function drill-down, critical-marker or debt-goal engine was found.",
+    "Verification evidence": "Retained run snapshots are not comparable versioned maintenance trends.",
+    "Status": "missing",
+    "Remaining work": "Implement measurement-history compatibility and views/goals with explicit gaps and method changes.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:137",
+    "classification": ""
+  },
+  {
+    "id": "M4-05",
+    "Requirement": "Expand and review the pinned corpus and resource measurements. | Accuracy sample, false positives, unsupported syntax, and baseline results published",
+    "Implemented code": "demo/corpus-lock.json; scripts/run_real_corpus.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+    "Status": "partial",
+    "Remaining work": "Run the six original projects with reviewed defect/clean accuracy annotations and resource measurements. Historical examples are not benchmarks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:138",
+    "classification": ""
+  },
+  {
+    "id": "M5-01",
+    "Requirement": "Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators",
+    "Implemented code": "contracts/schemas/v2/{context,consumer_matrix,evidence,policy,assessment}.schema.json; contracts/validation.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+    "Status": "partial",
+    "Remaining work": "Finalize metric-threshold and review-attestation evaluator contracts, typed extension maturity, and policy-pack resolution/versioning.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:146",
+    "classification": ""
+  },
+  {
+    "id": "M5-02",
+    "Requirement": "Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently",
+    "Implemented code": "collection.py; adapters/test_results.py; adapters/coverage.py; consumer.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Named CTest/JUnit/LCOV/Cobertura fixtures and count boundaries were exercised; empty or skipped tests do not automatically pass.",
+    "Status": "verified",
+    "Remaining work": "Maintain declared producer format/version limits. A broader context matrix and streaming are separate work.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:147",
+    "classification": ""
+  },
+  {
+    "id": "M5-03",
+    "Requirement": "Add ASan/UBSan/TSan collection/import adapters for explicitly supported tool/platform versions. | Instrumented failing/clean samples, uninstrumented runs, empty logs, wrong contexts, and stale artifacts are distinguished",
+    "Implemented code": "sanitizers.py; adapters/gcc_sanitizer.py; scripts/demo_sanitizers.py",
+    "Verification evidence": "Retained S6 evidence: 12 GNU cases, comprising 3 passed, 4 failed and 5 unsupported. Recovering UBSan failures were retained despite process success; support is limited to named Linux dialects.",
+    "Status": "partial",
+    "Remaining work": "Expand the declared ASan/UBSan/TSan producer/platform matrix. Keep instrumented dependency-closure limits and unsupported runtime behavior explicit.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:148",
+    "classification": ""
+  },
+  {
+    "id": "M5-04",
+    "Requirement": "Implement the pure policy evaluator, four control outcomes, three scores, gate precedence, and bounded deviations. | Hand-calculated examples and invariants pass; averages cannot override blocking failures/unknowns",
+    "Implemented code": "policy.py; tests/test_policy_gate_properties.py; contracts/verification.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Hand-calculated scores, gate precedence, bounded deviations and property cases were exercised.",
+    "Status": "verified",
+    "Remaining work": "Only six evaluators are supported. Add missing types while preserving the verified passed/failed/unknown/not-applicable equations; full feature qualification remains necessary.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:149",
+    "classification": ""
+  },
+  {
+    "id": "M5-05",
+    "Requirement": "Add compiled-library and header-only examples with selected consumer/instantiation matrices. | Missing consumer variants are visible and required variants block acceptance",
+    "Implemented code": "scripts/demo_consumer.py; consumer.py; distribution_subject and consumer_usage contracts",
+    "Verification evidence": "Retained actual fmt/utfcpp package cases include changed-package, C++20, no-exception and missing-local-test counterexamples.",
+    "Status": "partial",
+    "Remaining work": "Expand the real context matrix, selected instantiations and header self-containment. Correct large-header skipping and retain explicit non-exhaustive scope.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:150",
+    "classification": ""
+  },
+  {
+    "id": "M5-06",
+    "Requirement": "Render assessment/evidence/gaps in JSON/HTML/PDF/API/dashboard and add collect/assess workflows to installed CLI/CMake. | Interface agreement and complete package scenarios pass",
+    "Implemented code": "cli.py: collect/assess; presentation.py; API; React dashboard; CMake helper",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Verify the exact current candidate after correcting delivered defects. Add richer findings/search/history; Docker and editor coverage are absent.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:151",
+    "classification": ""
+  },
+  {
+    "id": "M5-07",
+    "Requirement": "Ship general and custom-library policies, then reviewed automotive/medical starter mappings with explicit coverage statements. | Edition pinning, unsupported obligations, and mapping maturity are visible; no certification claim",
+    "Implemented code": "data/policies/{starter,organization-example,verification-example}.json",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. General/custom examples exist and were exercised; automotive and medical packs are absent.",
+    "Status": "partial",
+    "Remaining work": "Add reviewed, explicitly incomplete ISO 26262/IEC 62304 edition-specific packs, with coverage/unassessed obligations and without reproducing licensed text or claiming certification.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:152",
+    "classification": ""
+  },
+  {
+    "id": "M5-08",
+    "Requirement": "Prepare Release B and update the skill to expose only released evidence/policy workflows. | AC-08..12 and AC-16 pass; policy and software versions are recorded together",
+    "Implemented code": "No Release B or released expanded skill was found.",
+    "Verification evidence": "The prototype candidate is not Release B. AC-12, AC-15 and AC-16 remain incomplete.",
+    "Status": "missing",
+    "Remaining work": "Complete applicable acceptance checks and exact-artifact qualification. Separate publication from preparation.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:153",
+    "classification": ""
+  },
+  {
+    "id": "M6-01",
+    "Requirement": "Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames",
+    "Implemented code": "git_miner/history.py: current-file linear rename handling and merge limitations",
+    "Verification evidence": "Component tests cover synthetic rename, deleted/recreated and shallow-history cases.",
+    "Status": "partial",
+    "Remaining work": "Add contributor aliases, bot/pair attribution, architectural component, symbol-history and coupling contracts.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:162",
+    "classification": ""
+  },
+  {
+    "id": "M6-02",
+    "Requirement": "Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history",
+    "Implemented code": "Existing contributor counts, churn and silo heuristics only",
+    "Verification evidence": "No weighted ownership, familiarity, coupling or fragmentation producer was found.",
+    "Status": "missing",
+    "Remaining work": "Implement these metrics from a shared history stream with hand-reviewed synthetic cases for double counting and denominators.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:163",
+    "classification": ""
+  },
+  {
+    "id": "M6-03",
+    "Requirement": "Evaluate offboarding scenarios, architectural hotspots, and function-level historical priorities. | Outcomes match known synthetic histories and disclose knowledge-proxy limitations",
+    "Implemented code": "No offboarding, architectural-component or function-history assessment engine was found.",
+    "Verification evidence": "Existing hotspots using a severity proxy are not the required advanced metrics.",
+    "Status": "missing",
+    "Remaining work": "Define and implement component/symbol history and scenarios with explicit knowledge-proxy limitations.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:164",
+    "classification": ""
+  },
+  {
+    "id": "M6-04",
+    "Requirement": "Add maps, trends, explanations, and comparison support to reports/API/dashboard. | Underlying metrics agree with CLI; large-view queries stay within benchmark budgets",
+    "Implemented code": "Existing current-run views only",
+    "Verification evidence": "No advanced knowledge/coupling maps, trends or large-view qualification was found.",
+    "Status": "missing",
+    "Remaining work": "Render persisted metrics with CLI agreement and indexed-query resource checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:165",
+    "classification": ""
+  },
+  {
+    "id": "M6-05",
+    "Requirement": "Evaluate optional risk models with temporal cutoffs and calibration. | Publish evaluation methodology; unvalidated ranking remains labeled experimental",
+    "Implemented code": "predictor/model.py: heuristic fallback and random cross-validation metadata; git_miner/szz_labeler.py",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow. All fresh cases used heuristic ranking without evaluation; no temporal holdout or calibration is established.",
+    "Status": "partial",
+    "Remaining work": "Prevent future-information leakage and add temporal training/test cutoffs and calibration. Until validated, retain experimental ranking without probability claims.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:166",
+    "classification": ""
+  },
+  {
+    "id": "M7-01",
+    "Requirement": "Specify read-first MCP/IDE contracts and execution capability boundaries. | Client fixtures cannot obtain inconsistent scoring or hidden analysis assumptions",
+    "Implemented code": "IDE work packages in docs/plans only; no implemented MCP/IDE contracts",
+    "Verification evidence": "A plan is not client-fixture verification.",
+    "Status": "missing",
+    "Remaining work": "Define versioned read-first capabilities, explicit execution consent, cancellation, stale-state handling and result contracts.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:174",
+    "classification": ""
+  },
+  {
+    "id": "M7-02",
+    "Requirement": "Implement run/health/findings/hotspot/policy-gap MCP tools and initial VS Code diagnostics. | Compare results with CLI and installed API fixtures",
+    "Implemented code": "No actual MCP server or VS Code extension/VSIX was found.",
+    "Verification evidence": "No extension-host, MCP tool-call or CLI-consistency execution is established.",
+    "Status": "missing",
+    "Remaining work": "Implement initial VSIX diagnostics, navigation and explicit commands plus read-first MCP tools. Verify actual installed-client agreement.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:175",
+    "classification": ""
+  },
+  {
+    "id": "M7-03",
+    "Requirement": "Package reusable local build/pre-commit integration and existing Git-host workflow templates. | Consumer examples execute shared commands rather than duplicate logic",
+    "Implemented code": "data/Cppulse.cmake; templates/pre-commit.example.yaml; .github/actions/cppulse local wrapper",
+    "Verification evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+    "Status": "partial",
+    "Remaining work": "Qualify Docker/host workflow wrappers and templates against the current installed artifact. Keep provider and permission-sensitive operations explicit.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:176",
+    "classification": ""
+  },
+  {
+    "id": "M7-04",
+    "Requirement": "Validate and submit the expanded free skill and release integration artifacts. | Marketplace review/publication recorded separately from ZIP preparation; text delivery does not claim native installation",
+    "Implemented code": "No expanded skill submission or release-integration publication was found.",
+    "Verification evidence": "No clean-agent or marketplace review evidence is established. This review authorizes no such writes.",
+    "Status": "missing",
+    "Remaining work": "Validate the portable text skill against actual released commands. Submit or publish only through a separately authorized step.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:177",
+    "classification": ""
+  },
+  {
+    "id": "M8-01",
+    "Requirement": "Team ownership/alignment and fragmentation views | Identity changes and team history do not produce unexplained metrics",
+    "Implemented code": "No implementation of team ownership, alignment and fragmentation was found in the current packages.",
+    "Verification evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:187",
+    "classification": ""
+  },
+  {
+    "id": "M8-02",
+    "Requirement": "Multi-repository portfolio, goals, scheduled reports | Explicit project access/scope; reproducible per-project and aggregate results",
+    "Implemented code": "No implementation of multi-repository portfolios, goals and schedules was found in the current packages.",
+    "Verification evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:188",
+    "classification": ""
+  },
+  {
+    "id": "M8-03",
+    "Requirement": "Branch and delivery analytics | Define branch/merge semantics, task linkage, time windows, and missing-data behavior",
+    "Implemented code": "No implementation of branch, merge and delivery analytics was found in the current packages.",
+    "Verification evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:189",
+    "classification": ""
+  },
+  {
+    "id": "M8-04",
+    "Requirement": "Issue-tracker adapters and cost/ROI views | Provider-specific contract tests; estimated and observed costs clearly separated",
+    "Implemented code": "No implementation of issue-tracker and cost/ROI adapters was found in the current packages.",
+    "Verification evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:190",
+    "classification": ""
+  },
+  {
+    "id": "M8-05",
+    "Requirement": "Additional report/notification integrations | Explicit configuration and delivery outcome; reuse persisted results",
+    "Implemented code": "No implementation of additional report and notification delivery was found in the current packages.",
+    "Verification evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:191",
+    "classification": ""
+  },
+  {
+    "id": "M9-01",
+    "Requirement": "Narrow deterministic fixes and dry-run patches | Precise source edits, idempotence, compilation/tests where relevant",
+    "Implemented code": "No implementation of deterministic fixes and dry-run patches was found. Generic adapter drafts do not establish that capability.",
+    "Verification evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:200",
+    "classification": ""
+  },
+  {
+    "id": "M9-02",
+    "Requirement": "Agentic semantic refactoring and PR repair | Separate language-specific behavior-validation design and reviewable changes",
+    "Implemented code": "No implementation of behavior-validated agentic semantic repair and PR repair was found. Generic adapter drafts do not establish that capability.",
+    "Verification evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:201",
+    "classification": ""
+  },
+  {
+    "id": "M9-03",
+    "Requirement": "API/ABI compatibility, fuzzing, dependency evidence adapters | Explicit supported formats/platforms and scope; no unsupported safety claims",
+    "Implemented code": "No implementation of API/ABI, fuzzing and dependency evidence adapters was found. Generic adapter drafts do not establish that capability.",
+    "Verification evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:202",
+    "classification": ""
+  },
+  {
+    "id": "M9-04",
+    "Requirement": "Additional analyzed languages | Language-specific metrics, fixtures, calibration, and documentation",
+    "Implemented code": "No implementation of additional analyzed languages was found. Generic adapter drafts do not establish that capability.",
+    "Verification evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:203",
+    "classification": ""
+  },
+  {
+    "id": "M9-05",
+    "Requirement": "SSO/RBAC and optional managed hosting | Access/data ownership/deployment sub-specification and operating-cost model",
+    "Implemented code": "No implementation of SSO/RBAC and managed hosting was found. Generic adapter drafts do not establish that capability.",
+    "Verification evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+    "Status": "missing",
+    "Remaining work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization.",
+    "specification_reference": "docs/specs/production-platform/tasks.md:204",
+    "classification": ""
+  }
+]

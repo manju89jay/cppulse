@@ -14,7 +14,8 @@
 namespace cppulse {
 
 /**
- * @brief Flags function declarations with an excessive number of parameters.
+ * @brief Flags function declarations with an excessive number of parameters,
+ *        including templates while excluding their template-parameter list.
  *
  * Thresholds:
  *  - params > 5  → warning

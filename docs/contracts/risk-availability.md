@@ -1,0 +1,38 @@
+# Experimental ranking availability
+
+`file-eligibility-1` adds explicit per-file availability to the unreleased
+prototype and v2 risk documents. It does not change the frozen original v1
+contract or establish prediction accuracy. Existing supported documents without
+the extension remain readable.
+
+`file_risks` contains numeric experimental rankings only for files with usable
+declared analysis and Git-history inputs. It never inserts zero for a missing
+prediction. `unranked_files` accounts for the remaining non-excluded scope,
+including skipped and failed units that have no feature row. Each record has
+`file`, `availability`, machine-readable `reason_codes` and readable `reasons`.
+An unranked record has no numeric score, probability or risk-level label.
+
+`metadata.ranking_scope` records its version and the declared/ranked/unranked
+counts. Validation rejects duplicate or overlapping file identities and counts
+that disagree with the inventories. Prototype-to-v2 conversion preserves this
+information. Original legacy export is still rejected when the richer semantics
+cannot be represented honestly.
+
+Ranking requires an error-free analyzed file, at least one enabled detector and
+available selected Git history for that file. Inferred parse arguments remain
+inferred: an eligible experimental rank does not establish an observed consumer
+build, complete language support or library verification. Partial/missing parse
+inventory and partial/unavailable/unverified history are exposed as unavailable
+inputs, rather than zero findings or zero change activity. Model training uses
+only eligible observations. Full-scope health retains its separate prerequisites
+and current versioned formula.
+
+Renderers should display the unranked inventory and its reasons, retain observed
+findings, and show history limitations beside knowledge conclusions. A missing
+rank is not evidence of a low-risk file, and an empty silo list with incomplete
+history is not evidence of adequate knowledge distribution.
+
+This is an additive change to unreleased development contracts. Consumers using
+an older strict v2 schema may reject the new optional fields and should upgrade
+together with the candidate; no published-package compatibility qualification is
+claimed by source tests alone.

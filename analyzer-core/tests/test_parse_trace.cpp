@@ -142,6 +142,7 @@ TEST_F(ParseTraceFixture, SkippedAndExcludedFilesDoNotInventParseAttempts) {
     write("large.cpp", std::string(501 * 1024, ' '));
     write("excluded.cpp", "int excluded() { return 0; }\n");
     cppulse::ProjectConfig config;
+    config.max_file_bytes = 500ULL * 1024ULL;
     config.exclude_paths = {"excluded.cpp"};
     cppulse::FileAnalyzer analyzer{root_, config};
     const auto output = report(analyzer);

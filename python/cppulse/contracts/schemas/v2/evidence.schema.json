@@ -157,6 +157,69 @@
           "expires_at": {
             "type": "string",
             "format": "date-time"
+          },
+          "review_details": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "version",
+              "source_digest",
+              "statement",
+              "rationale",
+              "reviewed_at",
+              "recorded_at",
+              "recorded_by",
+              "reviewed_artifact_ids",
+              "identity_assurance",
+              "limitations"
+            ],
+            "properties": {
+              "version": {
+                "const": "1.0.0"
+              },
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "recorded_by": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_artifact_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "identity_assurance": {
+                "const": "self_declared"
+              },
+              "limitations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
           }
         },
         "required": [

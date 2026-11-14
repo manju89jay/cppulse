@@ -6,6 +6,7 @@
 #ifndef CPPULSE_CONFIG_H
 #define CPPULSE_CONFIG_H
 
+#include <cstdint>
 #include <filesystem>
 #include <map>
 #include <optional>
@@ -13,6 +14,11 @@
 #include <vector>
 
 namespace cppulse {
+
+/** @brief Default per-input byte limit; projects may raise or lower it explicitly. */
+inline constexpr std::uintmax_t kDefaultMaxFileBytes = 16ULL * 1024ULL * 1024ULL;
+/** @brief Maximum source-spelled token records retained per file by default. */
+inline constexpr std::uint64_t kDefaultMaxTokenRecords = 100000;
 
 /**
  * @brief Per-rule configuration overrides.
@@ -46,6 +52,12 @@ struct ProjectConfig {
     /** @brief Analysis profile: "default" or "safety-critical". */
     std::string profile{"default"};
 
+    /** @brief Positive per-file byte limit; a skipped input remains incomplete. */
+    std::uintmax_t max_file_bytes{kDefaultMaxFileBytes};
+
+    /** @brief Positive lexical record budget; truncation remains explicit. */
+    std::uint64_t max_token_records{kDefaultMaxTokenRecords};
+
     /** @brief Glob patterns for paths to exclude from analysis. */
     std::vector<std::string> exclude_paths;
 
@@ -69,10 +81,12 @@ struct ProjectConfig {
 /**
  * @brief Search for a config file in the given directory.
  *
- * Search order: .cppulserc.yml, .cppulserc.yaml, .cppulserc.json
+ * Recognized names: .cppulserc.yml, .cppulserc.yaml, .cppulserc.json.
+ * Multiple discovered files are an error; explicit --config bypasses discovery.
  *
  * @param dir  Directory to search (typically the repository root).
  * @return Path to the found config file, or std::nullopt if none found.
+ * @throws std::runtime_error if discovery is ambiguous.
  */
 [[nodiscard]] std::optional<std::filesystem::path> find_config(const std::filesystem::path& dir);
 

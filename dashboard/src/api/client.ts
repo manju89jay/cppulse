@@ -1,4 +1,4 @@
-import type { Summary, FindingsResponse, Hotspot, RiskScores, KnowledgeSilo, RoadmapItem, HealthScore, FileRisk, Finding } from "../types";
+import type { Summary, FindingsResponse, Hotspot, RiskScores, KnowledgeSilo, RoadmapItem, HealthScore, FileRisk, Finding, UnrankedFile, RankingScope, GitHistoryStatus } from "../types";
 import type { DashboardView, LegacySlots, SnapshotView } from "../types";
 const BASE_URL = "/api/v1";
 async function apiFetch<T>(path: string): Promise<T> {
@@ -27,10 +27,11 @@ function healthView(health: WireHealth, limitations: string[] = []): HealthScore
 }
 export async function fetchSummary(): Promise<Summary> {
   const [data, risks, silos] = await Promise.all([
-    apiFetch<WireSummary>("/summary"), apiFetch<Envelope<FileRisk>>("/risks"), apiFetch<Envelope<KnowledgeSilo>>("/silos")]);
+    apiFetch<WireSummary>("/summary"), apiFetch<Envelope<FileRisk>>("/risks"), apiFetch<Envelope<KnowledgeSilo> & {history_status?: GitHistoryStatus}>("/silos")]);
   return { model_metadata: data.model_metadata, repository: data.metadata.repo_path, analysis_date: data.metadata.analyzed_at,
     health_score: healthView(data.health_score, data.model_metadata?.limitations), total_findings: data.findings_summary.total_findings,
-    critical_files: risks.items.filter(r => r.risk_level === "critical").length, knowledge_silos: silos.total };
+    critical_files: risks.items.filter(r => r.risk_level === "critical").length,
+    knowledge_silos: silos.total, knowledge_silos_status: silos.history_status ?? "unverified" };
 }
 export async function fetchFindings(page?: number, category?: string): Promise<FindingsResponse> {
   const params = new URLSearchParams();
@@ -50,8 +51,9 @@ export async function fetchFindings(page?: number, category?: string): Promise<F
 export async function fetchHotspots(): Promise<Hotspot[]> { return (await apiFetch<Envelope<Hotspot>>("/hotspots")).items; }
 export async function fetchRisks(): Promise<RiskScores> {
   const [summary, risks, hotspots] = await Promise.all([apiFetch<WireSummary>("/summary"),
-    apiFetch<Envelope<Omit<FileRisk, "top_factors"> & { top_factors: {feature: string; importance: number; value: number}[] }>>("/risks"), fetchHotspots()]);
+    apiFetch<Envelope<Omit<FileRisk, "top_factors"> & { top_factors: {feature: string; importance: number; value: number}[] }> & {unranked_files?: UnrankedFile[]; ranking_scope?: RankingScope | null}>("/risks"), fetchHotspots()]);
   return { health_score: healthView(summary.health_score, summary.model_metadata?.limitations), hotspots,
+    unranked_files: risks.unranked_files ?? [], ranking_scope: risks.ranking_scope,
     file_risks: risks.items.map(r => ({...r, top_factors: r.top_factors.map(f => f.feature)})) };
 }
 export async function fetchSilos(): Promise<KnowledgeSilo[]> {
@@ -110,14 +112,18 @@ export async function fetchSnapshotReport(view: SnapshotView, format: "pdf" | "h
 export function legacySections(slots: LegacySlots): {
   summary: Summary | null; findings: Finding[] | null; risks: RiskScores | null;
   hotspots: Hotspot[] | null; silos: KnowledgeSilo[] | null; roadmap: RoadmapItem[] | null;
+  historyStatus: GitHistoryStatus; historyLimitations: string[];
 } {
   const findings = slots.findings?.document ?? null;
   const risk = slots.risk_scores?.document ?? null;
   const git = slots.git_metrics?.document ?? null;
+  const historyStatus = git?.metadata?.history_status ?? "unverified";
+  const historyLimitations = git?.metadata?.limitations ?? [];
   const silos = git?.knowledge_silos.map(item => ({ ...item, last_commit: item.last_commit_date })) ?? null;
   const risks = risk ? {
     health_score: healthView(risk.health_score, risk.metadata?.limitations),
     hotspots: risk.hotspots,
+    unranked_files: risk.unranked_files ?? [], ranking_scope: risk.metadata?.ranking_scope,
     file_risks: risk.file_risks.map(item => ({ ...item, top_factors: item.top_factors.map(factor => factor.feature) })),
   } : null;
   const summary = findings && risk && git ? {
@@ -127,7 +133,8 @@ export function legacySections(slots: LegacySlots): {
     total_findings: findings.summary.total_findings,
     critical_files: risk.file_risks.filter(item => item.risk_level === "critical").length,
     knowledge_silos: git.knowledge_silos.length,
+    knowledge_silos_status: historyStatus,
   } : null;
-  return { summary, findings: findings?.findings ?? null, risks,
+  return { summary, findings: findings?.findings ?? null, risks, historyStatus, historyLimitations,
     hotspots: risk?.hotspots ?? null, silos, roadmap: slots.roadmap?.document.items ?? null };
 }

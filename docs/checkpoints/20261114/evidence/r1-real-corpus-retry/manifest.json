@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-11-14T10:39:53.101466+00:00",
+  "projects": [
+    {
+      "id": "fmt",
+      "repository": "https://github.com/fmtlib/fmt.git",
+      "tag": "10.2.1",
+      "revision": "e69e5f977d458f2650bb346dadf2ad30c5320281",
+      "role": "compiled-library"
+    },
+    {
+      "id": "utfcpp",
+      "repository": "https://github.com/nemtrif/utfcpp.git",
+      "tag": "v4.0.5",
+      "revision": "6be08bbea14ffa0a5c594257fb6285a054395cd7",
+      "role": "header-only-library"
+    }
+  ],
+  "cases": [
+    {
+      "findings": 0,
+      "risk_files": 0,
+      "unranked_files": 16,
+      "git_files": 67,
+      "hotspots": 0,
+      "health_status": "partial",
+      "pdf_pages": 8,
+      "id": "fmt",
+      "output": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-r1-real-20261114-retry/fmt",
+      "parse_states": {
+        "excluded": 52,
+        "analyzed": 15,
+        "partial": 1
+      },
+      "compile_contexts": {
+        "none": 52,
+        "inferred": 14,
+        "database": 2
+      }
+    },
+    {
+      "findings": 29,
+      "risk_files": 0,
+      "unranked_files": 7,
+      "git_files": 17,
+      "hotspots": 0,
+      "health_status": "partial",
+      "pdf_pages": 9,
+      "id": "utfcpp",
+      "output": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-r1-real-20261114-retry/utfcpp",
+      "parse_states": {
+        "analyzed": 6,
+        "partial": 1,
+        "excluded": 10
+      },
+      "compile_contexts": {
+        "inferred": 7,
+        "none": 10
+      }
+    },
+    {
+      "findings": 1,
+      "risk_files": 0,
+      "unranked_files": 1,
+      "git_files": 0,
+      "hotspots": 0,
+      "health_status": "scored",
+      "pdf_pages": 7,
+      "id": "consumer",
+      "output": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-r1-real-20261114-retry/consumer",
+      "parse_states": {
+        "analyzed": 1
+      },
+      "compile_contexts": {
+        "database": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Only the selected consumer test executes; upstream test suites are not claimed passed.",
+    "Shallow source checkouts provide limited Git history.",
+    "Standalone/inferred headers and unsupported module sources may be partially analyzed; these do not establish every consumer configuration."
+  ]
+}

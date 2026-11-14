@@ -153,4 +153,11 @@ if(BUILD_TESTING)
                 -DMODE=${_resource_mode}
                 -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_resource_dir_cli.cmake)
     endforeach()
+    foreach(_config_mode unknown_key wrong_type ambiguous explicit)
+        add_test(NAME ConfigurationCli.${_config_mode}
+            COMMAND ${CMAKE_COMMAND}
+                -DANALYZER_BIN=$<TARGET_FILE:cppulse-analyzer>
+                -DMODE=${_config_mode}
+                -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_config_cli.cmake)
+    endforeach()
 endif()

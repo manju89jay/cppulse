@@ -67,6 +67,7 @@ TEST_F(CoverageFixture, RecordsSkippedAndExcludedFiles) {
     write("large.cpp", std::string(501 * 1024, ' '));
     write("excluded.cpp", "void skipped() {}\n");
     cppulse::ProjectConfig config;
+    config.max_file_bytes = 500ULL * 1024ULL;
     config.exclude_paths = {"excluded.cpp"};
     config.rules["CPP-MOD-001"].enabled = false;
     cppulse::FileAnalyzer analyzer{root_, config};

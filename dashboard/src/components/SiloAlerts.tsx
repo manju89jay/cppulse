@@ -1,8 +1,10 @@
 import React from "react";
-import type { KnowledgeSilo } from "../types";
+import type { GitHistoryStatus, KnowledgeSilo } from "../types";
 
 interface SiloAlertsProps {
   silos: KnowledgeSilo[];
+  historyStatus?: GitHistoryStatus;
+  limitations?: string[];
 }
 
 function shortPath(path: string): string {
@@ -11,7 +13,7 @@ function shortPath(path: string): string {
   return `.../${parts.slice(-2).join("/")}`;
 }
 
-export function SiloAlerts({ silos }: SiloAlertsProps): React.ReactElement {
+export function SiloAlerts({ silos, historyStatus = "unverified", limitations = [] }: SiloAlertsProps): React.ReactElement {
   return (
     <div className="bg-white rounded-xl shadow p-6">
       <h2 className="text-lg font-semibold text-gray-800 mb-4">
@@ -21,11 +23,15 @@ export function SiloAlerts({ silos }: SiloAlertsProps): React.ReactElement {
         </span>
       </h2>
 
-      {silos.length === 0 ? (
+      {historyStatus !== "available" && <div className="mb-4 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded p-3">
+        <p>Insufficient history for a complete knowledge assessment ({historyStatus}). Observed alerts cover only retained history; an empty list does not establish absent knowledge risk.</p>
+        {limitations.length > 0 && <ul className="list-disc ml-5 mt-2">{limitations.map((value, index) => <li key={index}>{value}</li>)}</ul>}
+      </div>}
+      {silos.length === 0 && historyStatus === "available" ? (
         <p className="text-gray-400 text-sm">
           No single-contributor alerts in the available history.
         </p>
-      ) : (
+      ) : silos.length > 0 ? (
         <div className="space-y-3">
           {silos.map((silo) => (
             <div
@@ -58,7 +64,7 @@ export function SiloAlerts({ silos }: SiloAlertsProps): React.ReactElement {
             </div>
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

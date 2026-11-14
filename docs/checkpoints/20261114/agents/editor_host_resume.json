@@ -1,0 +1,74 @@
+{
+  "status": "frozen_for_user_handoff",
+  "timestamp_utc": "2026-11-14T15:53:42.605125+00:00",
+  "repo": "/workspace/scratch/b3d4e6fff494/cppulse",
+  "changed_this_resume": [
+    "editors/vscode/src/protocol.ts",
+    "editors/vscode/src/extension.ts",
+    "editors/vscode/test/contracts.test.cjs",
+    "editors/vscode/test/run-host.cjs"
+  ],
+  "preserved_preexisting_work": [
+    "editors/vscode/**",
+    "docs/editor-vscode.md",
+    "all other uncommitted files"
+  ],
+  "checks": {
+    "compile": "npm --prefix editors/vscode run compile passed (exit 0) after latest src changes",
+    "unit": "npm --prefix editors/vscode run test:unit passed 16/16; log p2-host-resume/editor-unit-green.log",
+    "regressions_before_fix": "3 new tests failed in editor-regressions-red.log; preexisting 13 passed",
+    "vsix_install": "packaged pre-resume VSIX installed successfully into fresh isolated profiles during actual host attempts",
+    "actual_extension_host": "NOT PASSED. No host-report.json; TCP Xvfb enabled display startup but real VS Code hung before test assertions; bounded 45s run timed out exit 124, host ended SIGINT",
+    "package_after_latest_changes": "UNRUN; current VSIX is older than latest source/dist",
+    "full_core_or_platform": "UNRUN in this resume"
+  },
+  "host_limitations": [
+    "AF_UNIX socket creation denied errno 1 by managed command environment; NETLINK unavailable. TCP loopback bind succeeds.",
+    "Each exec invocation has isolated process/network namespace: Xvfb and VS Code must start in the same exec invocation.",
+    "TCP-only Xvfb :109/:110 avoids missing-display crash but host still stalls. Do not claim AF_UNIX is conclusively the sole cause; verbose logs show startup only.",
+    "No mock VS Code API substituted for actual host. No successful host assertions ran."
+  ],
+  "implemented_this_resume": [
+    "Operation responses must include their own complete paired run/hash pins before a follow-up retained read.",
+    "SARIF finite occurrence limit now counts all locations, not just results.",
+    "Protocol accepts finite configurable limits; extension reads responseLimitMiB/sourceLimitMiB/diagnosticLimit and passes limits to bounded reads/process/SARIF.",
+    "Legacy Problems source and messages always explicitly label unverified even if bytes match imported source claims; rejected typed results no longer fall back to legacy because zero mapped.",
+    "Local selected SARIF now uses bounded regular-file reader instead of stat then unbounded readFile.",
+    "Host runner optional CPPULSE_HOST_VERBOSE and CPPULSE_HOST_ARTIFACTS preserve startup logs/inputs."
+  ],
+  "incomplete_work": [
+    "Add responseLimitMiB/sourceLimitMiB/diagnosticLimit configuration contribution entries to editors/vscode/package.json and document finite defaults/maxima. Current unknown settings are read internally but not yet exposed in configuration UI.",
+    "Update README.md/docs/editor-vscode.md: prior absolute Xvfb-unavailable statement is stale because TCP-only works, actual host still unverified.",
+    "Read remaining full source/spec sections if needed; TASK_SPEC middle and full production requirements/design/workpackages reviewed, full task text output partially truncated.",
+    "Expand actual host assertions for legacy unverified labels, required operation pins, configurable limits, explicit workflows/missing/backend compatibility/delayed/cancelled cases.",
+    "Rebuild VSIX after above. Existing VSIX MUST NOT be labeled matching latest source.",
+    "Candidate wheel in p2-resumed predates concurrent backend changes; freshly source-hidden installed qualification remains necessary, no whole-current-candidate qualification claimed.",
+    "P8 MCP reader and portable clean-session skill remain open after actual VS Code gate; coordinate root ownership, do not omit."
+  ],
+  "next_commands": [
+    "npm --prefix editors/vscode run compile",
+    "npm --prefix editors/vscode run test:unit",
+    "npm --prefix editors/vscode run package",
+    "With an authorized environment supporting real host: set CPPULSE_VSCODE_EXECUTABLE, CPPULSE_HOST_CLI, CPPULSE_HOST_WORKSPACE, CPPULSE_HOST_STORE, CPPULSE_HOST_REPORT, CPPULSE_HOST_ARTIFACTS; npm --prefix editors/vscode run test:host."
+  ],
+  "environment_paths": {
+    "vscode": "/workspace/scratch/b3d4e6fff494/cppulse/editors/vscode/.vscode-test/vscode-linux-x64-1.105.1/code",
+    "cli": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/p2-resumed/venv/bin/cppulse",
+    "workspace": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/p2-resumed/workspace with spaces",
+    "store": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/p2-resumed/store",
+    "xvfb": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/vscode-env/xserver/usr/bin/Xvfb",
+    "xvfb_args": ":110 -screen 0 1280x900x24 -nolisten unix -nolisten local -listen tcp -ac",
+    "DISPLAY": "127.0.0.1:110"
+  },
+  "source_and_artifact_sha256": {
+    "editors/vscode/src/protocol.ts": "d0609361ffd362634c2c4f13cd23b27843723d6486192001f3f2a903522f7f27",
+    "editors/vscode/src/extension.ts": "65a7a0bc16b4f38574d9440388df30c60267f627858057b31572d5572296c61c",
+    "editors/vscode/test/contracts.test.cjs": "98b28c66110b87d149dbd5ca95c581736cff9b352d2a6d64c4ef25ed2c3b6c0a",
+    "editors/vscode/test/run-host.cjs": "c67c3af39dd0bdc84157e808dace495d836a5c5cc91ec6d8d8b4c37188b3409c",
+    "editors/vscode/artifacts/cppulse-0.2.0-preview.vsix": "7fe2986147195f01739f64d69ad2c92a7ffc4cc219c581cbc10741ffcab4d8e0",
+    "editors/vscode/dist/extension.js": "b6514fa91d1b4ff2e392ecf0e362b31d07f19cadd2177b0bd814148f9599bd17",
+    "editors/vscode/dist/protocol.js": "31274b7d51cc60e7e63b229a18233c2a93acf527a3b7953af6d51c81ed6f1630"
+  },
+  "owned_processes": "All owned exec sessions completed or sent Ctrl-C: 2007 Xvfb exit130; 88353 first same-invocation host exit130; 47161 bounded verbose host exit124 (host SIGINT), its Xvfb EXIT trap ran; test/compile sessions completed. No processes intentionally left running.",
+  "git_writes": "none"
+}

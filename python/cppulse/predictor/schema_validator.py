@@ -11,7 +11,8 @@ from typing import Any
 
 import jsonschema
 
-from cppulse.contracts import load_schema
+from cppulse.contracts import load_schema, validate
+from cppulse.errors import ContractError
 
 
 class SchemaValidator:
@@ -22,6 +23,7 @@ class SchemaValidator:
 
     def __init__(self, schema_dir: Path | None = None) -> None:
         """Load packaged schemas, or explicit caller-supplied schema files."""
+        self._packaged = schema_dir is None
         if schema_dir is None:
             self._risk_scores_schema = load_schema("risk_scores", "prototype_v1")
             self._roadmap_schema = load_schema("roadmap", "prototype_v1")
@@ -44,6 +46,11 @@ class SchemaValidator:
             jsonschema.SchemaError: If the schema itself is malformed.
         """
         jsonschema.validate(instance=data, schema=self._risk_scores_schema)
+        if self._packaged:
+            try:
+                validate("risk_scores", data, version="prototype_v1")
+            except ContractError as exc:
+                raise jsonschema.ValidationError(str(exc)) from exc
 
     def validate_roadmap(self, data: dict[str, Any]) -> None:
         """Validate roadmap.json data against the schema.

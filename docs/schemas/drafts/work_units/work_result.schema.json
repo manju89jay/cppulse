@@ -1,0 +1,280 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/work_result.schema.json",
+  "title": "Draft cppulse work_result protocol 1.0; not a supported runtime contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "unit_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "request_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "mode": {
+      "enum": [
+        "fresh",
+        "reused"
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "complete",
+        "partial",
+        "process_error",
+        "timed_out",
+        "cancelled",
+        "input_changed",
+        "unsupported",
+        "not_attempted",
+        "crashed",
+        "invalid_output"
+      ]
+    },
+    "parse_status": {
+      "enum": [
+        "analyzed",
+        "partial",
+        "failed",
+        "skipped",
+        "excluded",
+        "missing",
+        null
+      ]
+    },
+    "execution_receipt": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/execution_receipt.schema.json"
+        }
+      ]
+    },
+    "cache_origin": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "run_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "manifest_sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "artifact": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+            },
+            "fact_key": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "original_source_digest": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            }
+          },
+          "required": [
+            "run_id",
+            "manifest_sha256",
+            "artifact",
+            "fact_key",
+            "original_source_digest"
+          ]
+        }
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+      },
+      "minItems": 0
+    },
+    "limits_applied": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_time": {
+          "type": "boolean"
+        },
+        "address_space": {
+          "type": "boolean"
+        },
+        "cpu_time": {
+          "type": "boolean"
+        },
+        "output_bytes": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "wall_time",
+        "address_space",
+        "cpu_time",
+        "output_bytes"
+      ]
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cpu_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "peak_memory_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "peak_memory_scope": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "measurement_method": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "wall_seconds",
+        "cpu_seconds",
+        "peak_memory_bytes",
+        "peak_memory_scope",
+        "measurement_method"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "version",
+    "unit_id",
+    "request_sha256",
+    "mode",
+    "outcome",
+    "parse_status",
+    "execution_receipt",
+    "cache_origin",
+    "artifacts",
+    "limits_applied",
+    "measurements",
+    "reason",
+    "limitations"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "reused"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "execution_receipt": {
+            "type": "null"
+          },
+          "cache_origin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "run_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "manifest_sha256": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+              },
+              "artifact": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+              },
+              "fact_key": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+              },
+              "original_source_digest": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+              }
+            },
+            "required": [
+              "run_id",
+              "manifest_sha256",
+              "artifact",
+              "fact_key",
+              "original_source_digest"
+            ]
+          },
+          "outcome": {
+            "const": "complete"
+          },
+          "parse_status": {
+            "const": "analyzed"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "execution_receipt": {
+            "$ref": "https://schemas.cppulse.local/v2/execution_receipt.schema.json"
+          },
+          "cache_origin": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "complete"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "parse_status": {
+            "const": "analyzed"
+          },
+          "artifacts": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

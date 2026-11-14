@@ -1,0 +1,65 @@
+{
+  "name": "cppulse",
+  "displayName": "cppulse — C++ evidence preview",
+  "description": "Read retained cppulse findings and scope; run explicitly selected local workflows.",
+  "version": "0.2.0",
+  "publisher": "cppulse",
+  "private": true,
+  "preview": true,
+  "license": "MIT",
+  "repository": {"type": "git", "url": "https://github.com/manju89jay/cppulse.git"},
+  "engines": {"vscode": "1.105.1"},
+  "main": "./dist/extension.js",
+  "categories": ["Linters", "Other"],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Local SARIF reading is available; configured CLI execution requires Workspace Trust.",
+      "restrictedConfigurations": ["cppulse.executable", "cppulse.arguments"]
+    },
+    "virtualWorkspaces": {"supported": false, "description": "This preview requires an explicit local filesystem workspace."}
+  },
+  "activationEvents": ["onView:cppulse.results", "onCommand:cppulse.readRun", "onCommand:cppulse.openSarif", "onCommand:cppulse.doctor", "onCommand:cppulse.analyze", "onCommand:cppulse.collect", "onCommand:cppulse.check", "onCommand:cppulse.report"],
+  "contributes": {
+    "commands": [
+      {"command":"cppulse.readRun","title":"cppulse: Read Retained Run"},
+      {"command":"cppulse.openSarif","title":"cppulse: Open Local SARIF"},
+      {"command":"cppulse.doctor","title":"cppulse: Inspect Installed Tools"},
+      {"command":"cppulse.analyze","title":"cppulse: Analyze Selected Workspace"},
+      {"command":"cppulse.collect","title":"cppulse: Collect Explicit Request"},
+      {"command":"cppulse.check","title":"cppulse: Check Selected Policy"},
+      {"command":"cppulse.report","title":"cppulse: Render Selected Evidence Report"},
+      {"command":"cppulse.clear","title":"cppulse: Clear Editor View"},
+      {"command":"cppulse.showStatus","title":"cppulse: Show Selected Run Status"},
+      {"command":"cppulse.openArtifact","title":"cppulse: Open Retained Evidence"}
+    ],
+    "viewsContainers": {"activitybar":[{"id":"cppulse","title":"cppulse","icon":"media/pulse.svg"}]},
+    "views": {"cppulse":[{"id":"cppulse.results","name":"Retained Results","when":"true"}]},
+    "menus": {"view/title":[{"command":"cppulse.readRun","when":"view == cppulse.results && isWorkspaceTrusted","group":"navigation"},{"command":"cppulse.clear","when":"view == cppulse.results","group":"navigation"}]},
+    "configuration": {
+      "title":"cppulse",
+      "properties": {
+        "cppulse.executable":{"type":"string","default":"cppulse","description":"Installed CLI executable; one literal program path, never a shell command.","scope":"machine-overridable"},
+        "cppulse.arguments":{"type":"array","items":{"type":"string"},"default":[],"description":"Literal prefix arguments, for example [\"-m\",\"cppulse\"] with a selected Python executable.","scope":"machine-overridable"},
+        "cppulse.storeDirectory":{"type":"string","default":".cppulse-output","description":"Retained run store. Relative paths resolve beneath the selected workspace."},
+        "cppulse.compilationDatabase":{"type":"string","default":"","description":"Optional compilation database path for explicit analysis."},
+        "cppulse.timeoutSeconds":{"type":"integer","minimum":1,"maximum":86400,"default":300,"description":"Wall-time limit for an explicit CLI action."},
+        "cppulse.openReports":{"type":"boolean","default":true,"description":"Open a report after explicit successful rendering."}
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "test:contracts": "node --test test/contracts.test.cjs",
+    "test:unit": "node --test test/*.test.cjs",
+    "test:host": "node test/run-host.cjs",
+    "package": "vsce package --no-dependencies --out artifacts/cppulse-0.2.0-preview.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.12",
+    "@types/vscode": "1.105.0",
+    "@vscode/test-electron": "2.5.2",
+    "@vscode/vsce": "3.6.0",
+    "typescript": "5.9.3"
+  }
+}

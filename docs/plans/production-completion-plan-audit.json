@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "requirements_exactly_covered": 118,
+  "tasks_exactly_covered": 60,
+  "missing_numbered_ids": [],
+  "extra_numbered_ids": [],
+  "duplicate_numbered_ids": [],
+  "supplemental_obligations_covered": 8,
+  "all_assigned_to_existing_phases": true,
+  "all_original_source_cells_retained": true,
+  "all_input_specification_sha256_unchanged": true,
+  "all_evidence_paths_exist": true,
+  "all_M8_M9_tasks_retained": true,
+  "counts_are_traceability_not_completion": true,
+  "traceability_sha256": "1675b19e70b84709ac170a232c36686c3e59f228e261fcb4637aa5ce98137af6",
+  "csv_sha256": "1e6e80d11aa182a87fa433e524217d1f925c816bce3aa4ea53e571f549034a8a",
+  "phase_count": 15,
+  "baseline_requirement_states": {
+    "implemented_and_locally_verified": 60,
+    "partial": 47,
+    "not_started": 11
+  },
+  "baseline_task_states": {
+    "implemented_and_locally_verified": 14,
+    "partial": 23,
+    "not_started": 23
+  }
+}

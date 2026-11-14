@@ -961,7 +961,7 @@ def validate_verification_assessment(
     """Guard current typed references/positive claims without executing a policy."""
     from .validation import _datetime, _fail, policy_scope_paths
 
-    if policy.get("evaluator_profile", "1.0.0") != "1.1.0":
+    if policy.get("evaluator_profile", "1.0.0") not in {"1.1.0", "1.2.0"}:
         return
     families = {
         kind: {row["id"]: row for family, row in flat if family == kind}

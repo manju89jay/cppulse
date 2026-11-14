@@ -181,6 +181,15 @@ def analyze(
             generate_report(work, report_format, work / f"report.{report_format}")
             summary = import_pipeline(work, config.repo, config.output)
             snapshot = RunStore(config.output).open_run(summary["run_id"])
+            health = snapshot.read_json("risk_scores")["health_score"]
+            # A completed archive import only means artifacts were retained.
+            # Keep the producer's analysis availability separate so the public
+            # CLI cannot report a partial or source-free run as success.
+            summary["analysis_status"] = (
+                "completed"
+                if health.get("status") == "scored" and health["overall"] is not None
+                else "partial"
+            )
             # Flat files preserve original scripts. Snapshot readers, not these
             # separately replaced compatibility exports, provide coherent reads.
             for name in (

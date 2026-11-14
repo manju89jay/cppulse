@@ -38,11 +38,13 @@ class FileAnalyzer {
      * @param config     Optional per-project configuration.
      * @param compilation_database compile_commands.json file or its directory, if explicit.
      * @param resource_directory Optional libclang builtin resource directory override.
+     * @param selected_files Optional finite canonical repository-relative source selection.
      */
-    explicit FileAnalyzer(std::filesystem::path repo_root,
-                          std::optional<ProjectConfig> config = std::nullopt,
-                          std::optional<std::filesystem::path> compilation_database = std::nullopt,
-                          std::optional<std::filesystem::path> resource_directory = std::nullopt);
+    explicit FileAnalyzer(
+        std::filesystem::path repo_root, std::optional<ProjectConfig> config = std::nullopt,
+        std::optional<std::filesystem::path> compilation_database = std::nullopt,
+        std::optional<std::filesystem::path> resource_directory = std::nullopt,
+        std::optional<std::vector<std::filesystem::path>> selected_files = std::nullopt);
 
     /**
      * @brief Discover all C++ files and apply every rule to each file.
@@ -130,6 +132,7 @@ class FileAnalyzer {
     std::optional<std::filesystem::path> compilation_database_;
     std::vector<std::filesystem::path> recorded_files_;
     std::optional<std::filesystem::path> resource_directory_;
+    std::optional<std::vector<std::filesystem::path>> selected_files_;
     AnalysisCoverage coverage_;
     std::vector<Finding> findings_;
     int file_count_{0};

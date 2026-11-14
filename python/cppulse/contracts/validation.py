@@ -35,6 +35,7 @@ _KINDS = {
     "baseline",
     "observations",
     "analysis_metrics",
+    "maintenance_health",
     "analysis_inventory",
     "execution_facts",
     "resource_manifest",
@@ -591,20 +592,31 @@ def _policy(document: dict[str, Any]) -> None:
         "reviewed_evidence": {"evidence_ids"},
         "sanitizer_outcome": {"fact_ids", "sanitizer"},
     }
-    if document.get("evaluator_profile") == "1.1.0":
+    if document.get("evaluator_profile") in {"1.1.0", "1.2.0"}:
         fields["minimum_coverage"] = {
             "minimum",
             "fact_ids",
             "measurement_kind",
             "method",
         }
+    if document.get("evaluator_profile") == "1.2.0":
+        from .policy_extensions import METRIC_PARAMETERS, REVIEW_PARAMETERS
+
+        fields["metric_threshold"] = METRIC_PARAMETERS
+        fields["reviewed_evidence"] = REVIEW_PARAMETERS
     for index, control in enumerate(document["controls"]):
         parameters = control["parameters"]
         expected = fields[control["kind"]]
         allowed = expected | (
             {"contexts"}
             if control["kind"]
-            in _EVALUATORS | {"minimum_coverage", "sanitizer_outcome"}
+            in _EVALUATORS
+            | {"minimum_coverage", "sanitizer_outcome"}
+            | (
+                {"metric_threshold", "reviewed_evidence"}
+                if document.get("evaluator_profile") == "1.2.0"
+                else set()
+            )
             else set()
         )
         if not expected <= set(parameters) or not set(parameters) <= allowed:
@@ -618,6 +630,10 @@ def _policy(document: dict[str, Any]) -> None:
                     f"{name} must not be empty for this evaluator",
                     f"/controls/{index}/parameters/{name}",
                 )
+        if document.get("evaluator_profile") == "1.2.0":
+            from .policy_extensions import validate_profile_12_control
+
+            validate_profile_12_control(control, f"/controls/{index}")
     for name in ["include", "exclude"]:
         for index, value in enumerate(document["scope"][name]):
             _safe_path(value, f"/scope/{name}/{index}", allow_dot=True)
@@ -651,7 +667,7 @@ def validate_evaluation_policy(
     selected = policy.get("evaluator_profile", "1.0.0")
     if not isinstance(selected, str):
         _fail("Evaluator profile must be a version string", "/evaluator_profile")
-    if selected not in {"1.0.0", "1.1.0"} or (
+    if selected not in {"1.0.0", "1.1.0", "1.2.0"} or (
         profile_version is not None and profile_version != selected
     ):
         raise UnsupportedVersion(
@@ -661,9 +677,14 @@ def validate_evaluation_policy(
     if not policy["contexts"]:
         _fail("Evaluation requires explicit nonempty job contexts", "/contexts")
     for index, control in enumerate(policy["controls"]):
-        if control["kind"] not in _EVALUATORS | (
-            {"minimum_coverage", "sanitizer_outcome"} if selected == "1.1.0" else set()
-        ):
+        supported = _EVALUATORS | (
+            {"minimum_coverage", "sanitizer_outcome"}
+            if selected in {"1.1.0", "1.2.0"}
+            else set()
+        )
+        if selected == "1.2.0":
+            supported |= {"metric_threshold", "reviewed_evidence"}
+        if control["kind"] not in supported:
             raise UnsupportedVersion(
                 f"Evaluator profile {selected} does not support {control['kind']!r}",
                 path=f"/controls/{index}/kind",
@@ -675,7 +696,7 @@ def validate_evaluation_policy(
                 "Control contexts are outside the selected policy job contexts",
                 f"/controls/{index}/parameters/contexts",
             )
-        if control["kind"] == "minimum_coverage" and selected == "1.1.0":
+        if control["kind"] == "minimum_coverage" and selected in {"1.1.0", "1.2.0"}:
             methods = {
                 "line": {"lcov-da-v1", "cobertura-lines-v1"},
                 "branch": {"lcov-brda-v1", "cobertura-condition-counts-v1"},
@@ -778,7 +799,7 @@ def _assessment(document: dict[str, Any]) -> None:
     evaluator = document.get("evaluator")
     if evaluator is not None and (
         evaluator["name"] != "cppulse.policy"
-        or evaluator["version"] not in {"1.0.0", "1.1.0"}
+        or evaluator["version"] not in {"1.0.0", "1.1.0", "1.2.0"}
     ):
         raise UnsupportedVersion(
             "Unsupported assessment evaluator identity/version", path="/evaluator"
@@ -1558,6 +1579,10 @@ def _semantic(kind: str, document: dict[str, Any]) -> None:
                 key in record for key in ["reviewer", "expires_at"]
             ):
                 _fail("Attestation needs reviewer and expiry", f"/records/{index}")
+            if "review_details" in record:
+                from .policy_extensions import validate_review_details
+
+                validate_review_details(record, f"/records/{index}")
     elif kind == "policy":
         _policy(document)
     elif kind == "assessment":
@@ -1574,6 +1599,13 @@ def _semantic(kind: str, document: dict[str, Any]) -> None:
             _safe_path(metric["file"], f"/items/{index}/file")
             if (metric["availability"] == "available") != (metric["value"] is not None):
                 _fail("Metric availability and value disagree", f"/items/{index}/value")
+        from .maintenance import validate_metrics
+
+        validate_metrics(document)
+    elif kind == "maintenance_health":
+        from .maintenance import validate_health
+
+        validate_health(document)
     elif kind == "rule_registry":
         _unique(document["rules"], "id", "/rules")
         for index, rule in enumerate(document["rules"]):
@@ -1640,6 +1672,38 @@ def _semantic(kind: str, document: dict[str, Any]) -> None:
             _fail("XGBoost output must identify model ranking", "/metadata/score_kind")
 
 
+def _risk_availability(document: dict[str, Any]) -> None:
+    """Validate additive rank-scope facts without fabricating missing scores.
+
+    Earlier supported documents may omit this unreleased extension. Once a
+    producer supplies it, ranked and unranked identities must be disjoint and
+    the published scope counts must account for every supplied file exactly.
+    """
+    unranked = document.get("unranked_files", [])
+    unavailable = _unique(unranked, "file", "/unranked_files")
+    ranked = _unique(document["file_risks"], "file", "/file_risks")
+    for index, path in enumerate(unavailable):
+        _safe_path(path, f"/unranked_files/{index}/file")
+        if path in ranked:
+            _fail(
+                "A file cannot be both ranked and explicitly unranked",
+                f"/unranked_files/{index}/file",
+            )
+    scope = document["metadata"].get("ranking_scope")
+    if scope is not None:
+        expected = {
+            "declared_files": len(ranked) + len(unavailable),
+            "ranked_files": len(ranked),
+            "unranked_files": len(unavailable),
+        }
+        for key, count in expected.items():
+            if scope[key] != count:
+                _fail(
+                    "Ranking scope count disagrees with supplied file inventories",
+                    f"/metadata/ranking_scope/{key}",
+                )
+
+
 def validate(
     kind: str, document: dict[str, Any], *, version: str | None = None
 ) -> None:
@@ -1675,6 +1739,12 @@ def validate(
         _fail(error.message, _pointer(error.absolute_path))
     if selected == _VERSION or (kind == "native_install" and selected == "1.0.0"):
         _semantic(kind, document)
+    if kind == "risk_scores" and selected in {_VERSION, "prototype_v1"}:
+        _risk_availability(document)
+    if kind == "findings" and selected == "prototype_v1":
+        from .maintenance import validate_native_metrics
+
+        validate_native_metrics(document)
 
 
 def validate_bundle(
@@ -1807,7 +1877,9 @@ def validate_bundle(
                 )
         if kind in {"observations", "analysis_metrics", "risk_scores"}:
             entries = (
-                document["file_risks"] if kind == "risk_scores" else document["items"]
+                document["file_risks"] + document.get("unranked_files", [])
+                if kind == "risk_scores"
+                else document["items"]
             )
             if any(entry["file"] not in source_files for entry in entries):
                 _fail(
@@ -1952,6 +2024,9 @@ def validate_bundle(
                 validate_verification_assessment(
                     flat, manifest, policy, document, evidence_map
                 )
+                from .policy_extensions import validate_profile_12_assessment
+
+                validate_profile_12_assessment(flat, manifest, policy, document)
                 generated = _datetime(document["generated_at"])
                 if generated < _datetime(manifest["finished_at"]):
                     _fail(
@@ -2327,3 +2402,6 @@ def validate_bundle(
     from .public_workflows import validate_lineage_bundle
 
     validate_lineage_bundle(flat, manifest)
+    from .maintenance import validate_maintenance_bundle
+
+    validate_maintenance_bundle(flat, manifest)

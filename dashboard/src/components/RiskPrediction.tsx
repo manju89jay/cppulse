@@ -1,8 +1,10 @@
 import React from "react";
-import type { FileRisk } from "../types";
+import type { FileRisk, RankingScope, UnrankedFile } from "../types";
 
 interface RiskPredictionProps {
   fileRisks: FileRisk[];
+  unrankedFiles?: UnrankedFile[];
+  rankingScope?: RankingScope | null;
 }
 
 function riskBadge(level: FileRisk["risk_level"]): React.ReactElement {
@@ -29,6 +31,8 @@ function shortPath(path: string): string {
 
 export function RiskPrediction({
   fileRisks,
+  unrankedFiles = [],
+  rankingScope,
 }: RiskPredictionProps): React.ReactElement {
   const topRisks = [...fileRisks]
     .sort((a, b) => b.bug_probability - a.bug_probability)
@@ -42,9 +46,11 @@ export function RiskPrediction({
           (top 10 files)
         </span>
       </h2>
+      <p className="text-sm text-gray-600 mb-4">Experimental prioritization scores are uncalibrated and do not measure the probability of a future defect.</p>
+      {rankingScope && <p className="text-sm mb-4">Declared files: {rankingScope.declared_files}; ranked: {rankingScope.ranked_files}; without a usable rank: {rankingScope.unranked_files}.</p>}
 
       {topRisks.length === 0 ? (
-        <p className="text-gray-400 text-sm">No risk data available.</p>
+        <p className="text-gray-400 text-sm">{unrankedFiles.length > 0 ? "No files have a usable rank." : "No risk data available."}</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
@@ -105,6 +111,15 @@ export function RiskPrediction({
           </table>
         </div>
       )}
+      {unrankedFiles.length > 0 && <section className="mt-6">
+        <h3 className="font-semibold">Files without a usable rank ({unrankedFiles.length})</h3>
+        <p className="text-sm text-gray-600 my-2">Showing {Math.min(50, unrankedFiles.length)} of {unrankedFiles.length} unavailable files. These files receive no numeric score or low-risk label; complete records remain in the original JSON.</p>
+        <div className="space-y-3">{unrankedFiles.slice(0, 50).map(item => <article key={item.file} className="border border-amber-200 bg-amber-50 rounded p-3 text-sm">
+          <p className="font-mono break-all">{item.file}</p><p>Availability: {item.availability}</p>
+          <p className="text-xs text-gray-600">{item.reason_codes.join(", ")}</p>
+          <ul>{item.reasons.map((reason, index) => <li key={index}>{reason}</li>)}</ul>
+        </article>)}</div>
+      </section>}
     </div>
   );
 }

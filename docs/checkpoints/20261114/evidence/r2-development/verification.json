@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "exit_code": 0,
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-v",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_dev_facade.py",
+    "tests/test_development_shared_checks.py",
+    "tests/test_development_contracts.py",
+    "tests/test_development_ci_contracts.py",
+    "tests/test_local_tooling.py",
+    "tests/test_benchmark_contracts.py",
+    "tests/test_benchmark_runner.py"
+  ],
+  "source_files": {
+    "tools/dev.py": "fc749a4efc30af62dc2aec169bd964d137494e6a6f3dadddc827757d4793a8e2",
+    "tools/benchmark.py": "bedbcf82c9ce5efa7082044536ddb097d2a5350ea10dd2ff9776b27982d886c9",
+    "tools/contracts/development-result.schema.json": "a803cd6ba7bde5a753adea6ac70fab06477c8d548642ec43bfad44bc401ad6fd",
+    "tools/contracts/benchmark-suite.schema.json": "4eb06df525b5ede13bad332f4c8d9b0ddbbbce2a5a9ebff40c31024319806f90",
+    "tools/contracts/benchmark-result.schema.json": "6f06768919117c39bc46a71f24a3d40a4847e9eb0b3278dbad9004e917449ac5",
+    "scripts/check_local.py": "7fb29e3165e899a0872da2fa41304cbd13d58792a8a0b7a50e7516513e9521bf",
+    "tests/test_dev_facade.py": "e9a76eb341e11a612cc48c4d693a7766bb9a9678d1913214fd7b5b0bf85eb038",
+    "tests/test_development_contracts.py": "d13a7ddf807e831003da5c72f6f7919354f1463346448a9f6c2d6868919f42ef",
+    "tests/test_development_shared_checks.py": "445481f9f56b5acaa10d61ab70608eb5f3472646e0d14fa9a861095f31bde419",
+    "tests/test_development_ci_contracts.py": "b73bd5854b1704da7c1140d9154d7a83faf000edcf9a3bf32cf022e69d5809a4",
+    "tests/test_benchmark_contracts.py": "7df496746acee1b742c73d8704c00e9feccbe5653038a394ad77916e9ea8fafe",
+    "tests/test_benchmark_runner.py": "7921661f52bfe39cafda70c007693f74baba02c32107dd40134a9198a468d4d3",
+    "tests/test_local_tooling.py": "bee1f096927b92570e3db8fcee054417e344afd995b7615ad23c8b1848a52e53",
+    ".github/workflows/ci.yml": "fba4c7171a9131604aca27475d5de4b21040e118d32a14143f8d7f405d65dacf",
+    ".gitlab-ci.yml": "7b9a7bec9e161a2aa8abdae31bda40a968a2be64caf45eb02d64bd956de0b49d",
+    "docs/development/workflow.md": "488f8694fd1a8d4dfb6e3e419c48ac5b3b4ee1330e17e22e2934d6077e81eb76"
+  },
+  "log": "review/production-20261114/r2-development/facade-final.log",
+  "log_sha256": "c1a3cdce0e5380011f250d4043a0425b9d0d8f8c1b36a1128ea415f4518a4496",
+  "result": "73 passed in 3.36s",
+  "revision": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "limitations": [
+    "Focused developer/benchmark/contracts and CI-source checks, not a full production, CI, Docker or installed candidate qualification.",
+    "Actual Linux formatter passed in separate selected run; then-current unrelated in-progress Python files failed formatting, so the whole project format result was not passed.",
+    "Reference suite, final current candidate and other-platform installed qualification remain required; full missing prerequisites block.",
+    "Generic measurements record actual resources for selected commands, not 1K/10K/100K scale or clean/cache semantic equivalence."
+  ]
+}

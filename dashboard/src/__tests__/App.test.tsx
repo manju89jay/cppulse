@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "../App";
 
@@ -116,6 +116,27 @@ describe("one pinned dashboard snapshot", () => {
     expect(await screen.findByText(/Legacy flat compatibility/)).toBeInTheDocument();
     expect(screen.getByText("Flat data has no immutable snapshot pin.")).toBeInTheDocument();
     expect(screen.queryByRole("status", { name: "Stored policy gate" })).not.toBeInTheDocument();
+  });
+
+  it("retains unavailable ranks and history gaps while navigating one legacy view", async () => {
+    mockView({mode:"legacy-flat",input_verification:"unverified",limitations:[],legacy:{
+      findings:{document:{metadata:{repo_path:"/synthetic",analyzed_at:"today"},summary:{total_findings:0},findings:[]}},
+      git_metrics:{document:{metadata:{history_status:"partial",limitations:["Shallow history."]},knowledge_silos:[]}},
+      risk_scores:{document:{metadata:{model_type:"heuristic",profile:"default",experimental:true},health_score:{overall:null,status:"partial",by_category:{}},file_risks:[],unranked_files:[{file:"src/incomplete.hpp",availability:"partial",reason_codes:["PARTIAL_ANALYSIS"],reasons:["Selected parse failed."]}],hotspots:[]}},
+      roadmap:null,
+    }});
+    render(<App/>);
+    await screen.findByText(/Legacy flat compatibility/);
+    const knowledgeCard=screen.getByText("Knowledge silos").parentElement!;
+    expect(within(knowledgeCard).getByText("Unavailable")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:/Knowledge Silos/}));
+    expect(screen.getByText(/Insufficient history/)).toBeInTheDocument();
+    expect(screen.getByText("Shallow history.")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:/Risk Prediction/}));
+    expect(screen.getByText("src/incomplete.hpp")).toBeInTheDocument();
+    expect(screen.getByText("Selected parse failed.")).toBeInTheDocument();
+    expect(screen.queryByText("0%")).not.toBeInTheDocument();
+    expect(screen.queryByText("low")).not.toBeInTheDocument();
   });
 
   it("shows typed per-job observations without legacy findings and preserves exact line tokens", async () => {

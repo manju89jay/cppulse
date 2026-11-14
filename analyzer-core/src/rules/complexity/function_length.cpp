@@ -11,8 +11,8 @@ namespace cppulse {
 
 void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_path) {
     const CXCursorKind kind = clang_getCursorKind(cursor);
-    if (kind != CXCursor_FunctionDecl && kind != CXCursor_CXXMethod &&
-        kind != CXCursor_Constructor && kind != CXCursor_Destructor) {
+    if (kind != CXCursor_FunctionDecl && kind != CXCursor_FunctionTemplate &&
+        kind != CXCursor_CXXMethod && kind != CXCursor_Constructor && kind != CXCursor_Destructor) {
         return;
     }
 

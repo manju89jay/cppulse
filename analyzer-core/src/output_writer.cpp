@@ -13,6 +13,8 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
+#include "metrics.h"
+
 namespace cppulse {
 
 namespace {
@@ -117,10 +119,14 @@ bool write_findings_json(const std::vector<Finding>& findings, const std::string
             if (file.working_directory.has_value()) {
                 item["working_directory"] = file.working_directory.value();
             }
+            if (file.reason.has_value()) {
+                item["reason"] = file.reason.value();
+            }
             files.push_back(std::move(item));
         }
         root["metadata"]["analysis"] = {{"enabled_rules", coverage->enabled_rules},
                                         {"files", std::move(files)}};
+        root["metadata"]["analysis"]["native_metrics"] = native_metrics_document(*coverage);
         if (!coverage->parser_version.empty()) {
             root["metadata"]["analysis"]["parser"] = {{"name", "libclang"},
                                                       {"version", coverage->parser_version}};

@@ -1,0 +1,483 @@
+[
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__code-reviewer.md",
+    "original_path": ".claude/agents/code-reviewer.md",
+    "snapshot_sha256": "5998263d5f4fc322cef31721efac71163c8106b0a19741177bf8006b567266b3",
+    "snapshot_bytes": 1956,
+    "current_exists": true,
+    "current_sha256": "5998263d5f4fc322cef31721efac71163c8106b0a19741177bf8006b567266b3",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__cpp-engineer.md",
+    "original_path": ".claude/agents/cpp-engineer.md",
+    "snapshot_sha256": "0a81227c2492d5afe40e14ddcb6fe5ba51fc12bebd7023f331c2bd062936f37d",
+    "snapshot_bytes": 1773,
+    "current_exists": true,
+    "current_sha256": "0a81227c2492d5afe40e14ddcb6fe5ba51fc12bebd7023f331c2bd062936f37d",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__doc-writer.md",
+    "original_path": ".claude/agents/doc-writer.md",
+    "snapshot_sha256": "fba109848583d5e53e12a74eedaa7bb9d7e70bf0f9a0e505eab15241fb4db88c",
+    "snapshot_bytes": 1807,
+    "current_exists": true,
+    "current_sha256": "fba109848583d5e53e12a74eedaa7bb9d7e70bf0f9a0e505eab15241fb4db88c",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__python-engineer.md",
+    "original_path": ".claude/agents/python-engineer.md",
+    "snapshot_sha256": "b5e9498cebd6b29695d4c0c8182ac15c76f5a603568d2f38caac6ed2d8e55179",
+    "snapshot_bytes": 1861,
+    "current_exists": true,
+    "current_sha256": "b5e9498cebd6b29695d4c0c8182ac15c76f5a603568d2f38caac6ed2d8e55179",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__spec-writer.md",
+    "original_path": ".claude/agents/spec-writer.md",
+    "snapshot_sha256": "095515cfc7570d41f96da158318c96ed36671a05445350fe79d7f189f63d252d",
+    "snapshot_bytes": 1748,
+    "current_exists": true,
+    "current_sha256": "095515cfc7570d41f96da158318c96ed36671a05445350fe79d7f189f63d252d",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__agents__test-writer.md",
+    "original_path": ".claude/agents/test-writer.md",
+    "snapshot_sha256": "1c3a903b10f8656fdaee167e36e7a793d6196b9f680939a67903c1aa0d872411",
+    "snapshot_bytes": 2051,
+    "current_exists": true,
+    "current_sha256": "1c3a903b10f8656fdaee167e36e7a793d6196b9f680939a67903c1aa0d872411",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__rules__cpp-style.md",
+    "original_path": ".claude/rules/cpp-style.md",
+    "snapshot_sha256": "d66188b50d5c432be6f5fd7418826437ff893d5a39f76017e8086c309a856e5d",
+    "snapshot_bytes": 1484,
+    "current_exists": true,
+    "current_sha256": "d66188b50d5c432be6f5fd7418826437ff893d5a39f76017e8086c309a856e5d",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__rules__python-style.md",
+    "original_path": ".claude/rules/python-style.md",
+    "snapshot_sha256": "12569c9524b825eedf1c157ce6ae8ff0c8b59ecc4aeb0bcae0d4b8ecaada53e6",
+    "snapshot_bytes": 1197,
+    "current_exists": true,
+    "current_sha256": "12569c9524b825eedf1c157ce6ae8ff0c8b59ecc4aeb0bcae0d4b8ecaada53e6",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__rules__safety-critical.md",
+    "original_path": ".claude/rules/safety-critical.md",
+    "snapshot_sha256": "c61358e282da604268cc5a2baf146fd3da171403aca7110f57341ce8732be578",
+    "snapshot_bytes": 1568,
+    "current_exists": true,
+    "current_sha256": "5f448accf42a09a4f8a1a42af38ca6b709d29b3bf26ecd8ffc97ea2e288028df",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__rules__testing.md",
+    "original_path": ".claude/rules/testing.md",
+    "snapshot_sha256": "9d99ca769de751fe77899d4ef3444735b83a6be0727e68c3e8e802761ac1ea8e",
+    "snapshot_bytes": 1468,
+    "current_exists": true,
+    "current_sha256": "9d99ca769de751fe77899d4ef3444735b83a6be0727e68c3e8e802761ac1ea8e",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__session-state.md",
+    "original_path": ".claude/session-state.md",
+    "snapshot_sha256": "7c8e379be95968ea11c59fd3cd96d21e4064b0411aa394855efc4eb550ff7c41",
+    "snapshot_bytes": 1590,
+    "current_exists": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__demo-report__SKILL.md",
+    "original_path": ".claude/skills/demo-report/SKILL.md",
+    "snapshot_sha256": "03c9f467e20f8c3f29e174eedf7e6c1a9a3ae1ed9297852735136a6488d95f65",
+    "snapshot_bytes": 1564,
+    "current_exists": true,
+    "current_sha256": "03c9f467e20f8c3f29e174eedf7e6c1a9a3ae1ed9297852735136a6488d95f65",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__implement-feature__SKILL.md",
+    "original_path": ".claude/skills/implement-feature/SKILL.md",
+    "snapshot_sha256": "948110f5d3be320b78c7219a55832cd703365cedb4d855240ba89248b73f39c4",
+    "snapshot_bytes": 1592,
+    "current_exists": true,
+    "current_sha256": "948110f5d3be320b78c7219a55832cd703365cedb4d855240ba89248b73f39c4",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__review-code__SKILL.md",
+    "original_path": ".claude/skills/review-code/SKILL.md",
+    "snapshot_sha256": "f68cc857bdf254fd1f5b49c1f198a3371ba3c1cafd91c5c2fec286a42cb8cf86",
+    "snapshot_bytes": 1164,
+    "current_exists": true,
+    "current_sha256": "f68cc857bdf254fd1f5b49c1f198a3371ba3c1cafd91c5c2fec286a42cb8cf86",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__run-tests__SKILL.md",
+    "original_path": ".claude/skills/run-tests/SKILL.md",
+    "snapshot_sha256": "449f67c8b2ae347b3366710cbe24537ffdad700966f074053b1c01ba5de5091e",
+    "snapshot_bytes": 1282,
+    "current_exists": true,
+    "current_sha256": "449f67c8b2ae347b3366710cbe24537ffdad700966f074053b1c01ba5de5091e",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__session-handoff__SKILL.md",
+    "original_path": ".claude/skills/session-handoff/SKILL.md",
+    "snapshot_sha256": "efae7671563c18a48f74f5cae5c84a6a90928aeb122fd826dadd697b3fe17edb",
+    "snapshot_bytes": 1452,
+    "current_exists": true,
+    "current_sha256": "efae7671563c18a48f74f5cae5c84a6a90928aeb122fd826dadd697b3fe17edb",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/.claude__skills__write-adr__SKILL.md",
+    "original_path": ".claude/skills/write-adr/SKILL.md",
+    "snapshot_sha256": "1a42987183590faf8179d81f35b50092e09995cd1cd12fac9833d8ed659815d4",
+    "snapshot_bytes": 1393,
+    "current_exists": true,
+    "current_sha256": "1a42987183590faf8179d81f35b50092e09995cd1cd12fac9833d8ed659815d4",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/AGENTS.md",
+    "original_path": "AGENTS.md",
+    "snapshot_sha256": "4a0eaecb0a141d8d893b21387d2b42aea7e78b14a48fb0d2152d3bad7f824f57",
+    "snapshot_bytes": 3897,
+    "current_exists": true,
+    "current_sha256": "b57f3319d561f4825d73c532d3dbf585889dcd391dce197b276e89429145e61b",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/CLAUDE.md",
+    "original_path": "CLAUDE.md",
+    "snapshot_sha256": "26d7cc82679b756ca4e89ad64dee7ff97cd7011841ebb634971d08125f45cac5",
+    "snapshot_bytes": 2073,
+    "current_exists": true,
+    "current_sha256": "26d7cc82679b756ca4e89ad64dee7ff97cd7011841ebb634971d08125f45cac5",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/CONTRIBUTING.md",
+    "original_path": "CONTRIBUTING.md",
+    "snapshot_sha256": "ca223b99c4c8aab4f59f72f0ba7db15657b53ba97c44ec99e1330bb2658c5725",
+    "snapshot_bytes": 4095,
+    "current_exists": true,
+    "current_sha256": "536278016bba94b53f6f7a2224b7c4098e691798c112918f788b207ea03ac11a",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/README.md",
+    "original_path": "README.md",
+    "snapshot_sha256": "79ca8fa17a43d80f7befe356c81a7a7effe70e99f3a4feff8b330160c671a545",
+    "snapshot_bytes": 11807,
+    "current_exists": true,
+    "current_sha256": "c70f2309ae0108af1c23c284fdfcf5d176c405733a7a0043cb918df332dc23e0",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/REVIEW.md",
+    "original_path": "REVIEW.md",
+    "snapshot_sha256": "983770c8526b142f8a6a43f09bf394f866f8d3dde92ffc650f848b25e3b520f3",
+    "snapshot_bytes": 21976,
+    "current_exists": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/TASK_SPEC.md",
+    "original_path": "TASK_SPEC.md",
+    "snapshot_sha256": "33c1a75a5c2da431e5a37fea85c6536b33805b1d2a4a1da7792bfce6b65ea2af",
+    "snapshot_bytes": 41994,
+    "current_exists": true,
+    "current_sha256": "cdfbf074d26ed385ffc54296f609c465bf5e8747797e7936ce9ba50730ca258c",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__DECISIONS.md",
+    "original_path": "docs/DECISIONS.md",
+    "snapshot_sha256": "89f5d1531bbb9d2e0a559497bb656deac11440c4325bb645d4cded61d43e18a4",
+    "snapshot_bytes": 22277,
+    "current_exists": true,
+    "current_sha256": "1f7692f17848cf3c172b2c1758e91ed138e3464a6ae3d337d1d55a592ba22f0e",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__action-usage.md",
+    "original_path": "docs/action-usage.md",
+    "snapshot_sha256": "8173fd0912543aa759cc221dc8ab0b565b6d00be5025a38cd8f9378322436227",
+    "snapshot_bytes": 3780,
+    "current_exists": true,
+    "current_sha256": "43d5507fb0189c2ca5d7d2a7bd8bbf6e869f5671ba98a815e245eee0e0efa951",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-000-template.md",
+    "original_path": "docs/adr/ADR-000-template.md",
+    "snapshot_sha256": "453b0440d94d480fbb561e0c4a4d80d3073147071cf2276bcd4305f613eb413c",
+    "snapshot_bytes": 515,
+    "current_exists": true,
+    "current_sha256": "453b0440d94d480fbb561e0c4a4d80d3073147071cf2276bcd4305f613eb413c",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-001-libclang.md",
+    "original_path": "docs/adr/ADR-001-libclang.md",
+    "snapshot_sha256": "2ae7ee9cd11a81dc8a9946f35f2b934322b0df9a711a5e27d254059a08ed9e8e",
+    "snapshot_bytes": 2041,
+    "current_exists": true,
+    "current_sha256": "7459e8121165edb128363f8d902dbbf12c839e0056ff2de6b26d166818c45c2e",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-002-xgboost.md",
+    "original_path": "docs/adr/ADR-002-xgboost.md",
+    "snapshot_sha256": "1f6f2b6178a0ecdcec97015de8c566e76468ed70d8d23e1253a65a81d10536f9",
+    "snapshot_bytes": 1998,
+    "current_exists": true,
+    "current_sha256": "b7ee9a26b88a86dda8618e263dc78ef9736f73bda23bfd7cef890acb7cd5eeae",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-003-monorepo.md",
+    "original_path": "docs/adr/ADR-003-monorepo.md",
+    "snapshot_sha256": "5d6e8e9d5c4e52f57f94293c5a94804a146e78fa848729ef5ba1591248a8dd97",
+    "snapshot_bytes": 1645,
+    "current_exists": true,
+    "current_sha256": "5d6e8e9d5c4e52f57f94293c5a94804a146e78fa848729ef5ba1591248a8dd97",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-004-json-comms.md",
+    "original_path": "docs/adr/ADR-004-json-comms.md",
+    "snapshot_sha256": "edc5dce016728207b1fb200d2d423990844bd08dd20311b42c46399faf51c3a3",
+    "snapshot_bytes": 1882,
+    "current_exists": true,
+    "current_sha256": "edc5dce016728207b1fb200d2d423990844bd08dd20311b42c46399faf51c3a3",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-005-pdf-report.md",
+    "original_path": "docs/adr/ADR-005-pdf-report.md",
+    "snapshot_sha256": "676be6b5a160adb43b78397cffccf958609a2a434975f17645eae70e0a983e40",
+    "snapshot_bytes": 1831,
+    "current_exists": true,
+    "current_sha256": "676be6b5a160adb43b78397cffccf958609a2a434975f17645eae70e0a983e40",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__adr__ADR-006-production-readiness.md",
+    "original_path": "docs/adr/ADR-006-production-readiness.md",
+    "snapshot_sha256": "d97a434fa9d87eb09bcd950a1e0f952505202ebec65a9fcd4d4b17f11ea0b654",
+    "snapshot_bytes": 7355,
+    "current_exists": true,
+    "current_sha256": "af133e211ad67b1add00468d39481a3dc7b0a76ef46225956c609293ae39ee5c",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__architecture.md",
+    "original_path": "docs/architecture.md",
+    "snapshot_sha256": "c1adc4bc53ca492fe78c6bc43e61139c6513d4e4f00db572611a368868d4be5c",
+    "snapshot_bytes": 8004,
+    "current_exists": true,
+    "current_sha256": "480f0737fd46f81dedf163b57438aefb986e1d3a397406eccfc68fc2bb00b33e",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__portfolio__cppulse-project-overview.md",
+    "original_path": "docs/portfolio/cppulse-project-overview.md",
+    "snapshot_sha256": "f0d7bfa87181b63819fe24f83cad5c3a8c8d234e3ee84cca53e6f789112400df",
+    "snapshot_bytes": 2554,
+    "current_exists": true,
+    "current_sha256": "3b54c574f9e447e7476350d36b480237ca5b982723370fec254f85e9a0829d6a",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__research__cpp-analysis-tool-landscape.md",
+    "original_path": "docs/research/cpp-analysis-tool-landscape.md",
+    "snapshot_sha256": "777ea9ae296133d6f71e07bd3b9113a9325ebe75ab44b9d7c59144be29b9852d",
+    "snapshot_bytes": 17390,
+    "current_exists": true,
+    "current_sha256": "777ea9ae296133d6f71e07bd3b9113a9325ebe75ab44b9d7c59144be29b9852d",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__research__cppulse-product-discovery.md",
+    "original_path": "docs/research/cppulse-product-discovery.md",
+    "snapshot_sha256": "b11973a191bf84c62b613fe1b92e8e1cd04e0a2d7f3fbafa18a89418b913b074",
+    "snapshot_bytes": 26031,
+    "current_exists": true,
+    "current_sha256": "b11973a191bf84c62b613fe1b92e8e1cd04e0a2d7f3fbafa18a89418b913b074",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__research__cppulse-review-index.md",
+    "original_path": "docs/research/cppulse-review-index.md",
+    "snapshot_sha256": "52db5a973c691838b99f7499c8b7c6c3d33004284360f1f4a74406154a1192bb",
+    "snapshot_bytes": 12055,
+    "current_exists": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__analyzer-core-cmake__design.md",
+    "original_path": "docs/specs/analyzer-core-cmake/design.md",
+    "snapshot_sha256": "a17dbb1628555d3a2712c5145be7619cfecb44505d88e9336c8c29381de67c96",
+    "snapshot_bytes": 5127,
+    "current_exists": true,
+    "current_sha256": "3106d56f84d7cb7fd9b849ca6260ba2b2623800327c5c6a4c04e48821d63abd2",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__analyzer-core-cmake__requirements.md",
+    "original_path": "docs/specs/analyzer-core-cmake/requirements.md",
+    "snapshot_sha256": "0d8b586ace78727c7fd179467ea7ae3449366a4471ff10129e0e0bcd876ab9d5",
+    "snapshot_bytes": 3833,
+    "current_exists": true,
+    "current_sha256": "f73915e6d38e2a125b37b53732a2b88c51a2c9baad6d4af1e3ebdf8cb827f9a9",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__analyzer-core-cmake__tasks.md",
+    "original_path": "docs/specs/analyzer-core-cmake/tasks.md",
+    "snapshot_sha256": "0c48f8abd61f8edb22e79d8859c9e52681a7720c127c9dad29cc3a442b8dbf2f",
+    "snapshot_bytes": 2654,
+    "current_exists": true,
+    "current_sha256": "1505a92af3e92a32865d351791230b9b0ea4fabca4babaa6792545adb70de4c0",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__production-platform__design.md",
+    "original_path": "docs/specs/production-platform/design.md",
+    "snapshot_sha256": "ea33a09872a83b0b65452fff65994e3e42a4329903f84e922cccc0da29a8b531",
+    "snapshot_bytes": 26877,
+    "current_exists": true,
+    "current_sha256": "ea33a09872a83b0b65452fff65994e3e42a4329903f84e922cccc0da29a8b531",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__production-platform__requirements.md",
+    "original_path": "docs/specs/production-platform/requirements.md",
+    "snapshot_sha256": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+    "snapshot_bytes": 28807,
+    "current_exists": true,
+    "current_sha256": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/docs__specs__production-platform__tasks.md",
+    "original_path": "docs/specs/production-platform/tasks.md",
+    "snapshot_sha256": "0adf5fd834351ceffd56d50d32cd5334241c962a7139dc24c773d66d6e6a9c71",
+    "snapshot_bytes": 20451,
+    "current_exists": true,
+    "current_sha256": "0adf5fd834351ceffd56d50d32cd5334241c962a7139dc24c773d66d6e6a9c71",
+    "bytes_identical": true,
+    "text_identical_after_line_endings": true
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__fmt__README.md",
+    "original_path": "examples/fmt/README.md",
+    "snapshot_sha256": "e5a5672a048a6d0a14cc91a7231695c16b53c733d4c20fe0798c16a96067b1e1",
+    "snapshot_bytes": 3984,
+    "current_exists": true,
+    "current_sha256": "8685bfe70f31f7cef45176de2226bef6fe2bd6c029d6dcb15537a23b17c4f49b",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__grpc__README.md",
+    "original_path": "examples/grpc/README.md",
+    "snapshot_sha256": "92625e0ee0335ef85dfbdea1df2d345332154ea811f05e3bb3767062bfcc7869",
+    "snapshot_bytes": 4478,
+    "current_exists": true,
+    "current_sha256": "c53d0ee6525dca931cbf9bd7444e1f5a7517a4568ddeaefa43dd30c0f8e44e95",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__json__README.md",
+    "original_path": "examples/json/README.md",
+    "snapshot_sha256": "1944c901745c6777d62d45ff4906ad3f2cd02209da407a98eb7d53177844bdc0",
+    "snapshot_bytes": 4325,
+    "current_exists": true,
+    "current_sha256": "56413b669d946d4adcf019cdadacdfcf6bad0c8475fb19d13d0e9f086fdc9a21",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__leveldb__README.md",
+    "original_path": "examples/leveldb/README.md",
+    "snapshot_sha256": "e84198d9bdab5565fa0fd8e0e9dbfa9fde5ab454cc534fc64c5bc971f50ad653",
+    "snapshot_bytes": 4017,
+    "current_exists": true,
+    "current_sha256": "ee3291acaeac94bb2af68bf8d8330433533dae0cb0ba83bb7c3e870c56f1e3bb",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__poco__README.md",
+    "original_path": "examples/poco/README.md",
+    "snapshot_sha256": "c52687edfb5acf4d76bf2f6790cd92843e09a7c5b8ebea33f1cffa24bbea6d63",
+    "snapshot_bytes": 4416,
+    "current_exists": true,
+    "current_sha256": "bd7098c7ed030dcf2e921f63d07ad3c18ebcf88a5d5d4058ef53eed8fc110911",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  },
+  {
+    "archive_name": "cppulse-markdown-files/examples__protobuf__README.md",
+    "original_path": "examples/protobuf/README.md",
+    "snapshot_sha256": "ccb1beecd1af6c6ba58a5695aa152a0894980466e2830c8819d02b3055451753",
+    "snapshot_bytes": 4522,
+    "current_exists": true,
+    "current_sha256": "0d5482cd37ddee57e96bbbbd6604a7e1e5542d9aa99d21ba6467a10029380b87",
+    "bytes_identical": false,
+    "text_identical_after_line_endings": false
+  }
+]

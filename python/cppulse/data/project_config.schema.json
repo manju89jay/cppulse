@@ -4,20 +4,51 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "profile": {"enum": ["default", "safety-critical"]},
-    "exclude_paths": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "profile": {
+      "enum": [
+        "default",
+        "safety-critical"
+      ]
+    },
+    "exclude_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
     "rules": {
       "type": "object",
-      "propertyNames": {"pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-[0-9]{3}$"},
+      "propertyNames": {
+        "pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-[0-9]{3}$"
+      },
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "enabled": {"type": "boolean"},
-          "warning_threshold": {"type": "integer", "minimum": 0, "maximum": 2147483647},
-          "error_threshold": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+          "enabled": {
+            "type": "boolean"
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "error_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
         }
       }
+    },
+    "max_file_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807,
+      "default": 16777216,
+      "description": "Maximum bytes per native analyzed file; exceeding the limit retains an explicit skipped/incomplete outcome. This is not a process memory limit."
     }
   }
 }

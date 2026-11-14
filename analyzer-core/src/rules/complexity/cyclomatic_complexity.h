@@ -13,9 +13,16 @@
 
 namespace cppulse {
 
+/** @brief Measure semantic decisions in a callable, excluding nested callable bodies. */
+[[nodiscard]] int measure_cyclomatic_complexity(CXCursor cursor);
+
 /**
- * @brief Computes the cyclomatic complexity of each function by counting
- *        decision points (if, for, while, do, case, &&, ||, ?:).
+ * @brief Counts one base path plus decision points in function definitions,
+ *        including uninstantiated templates (if, for, while, do, case, &&, ||, ?:).
+ *
+ * Nested callable bodies and parameter defaults are separate scopes. Lambda
+ * capture initializers belong to the enclosing function. Logical operators use
+ * semantic AST opcodes, so overloaded calls are not short-circuit decisions.
  *
  * Thresholds:
  *  - complexity > 15  → warning

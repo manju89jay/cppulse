@@ -1,0 +1,222 @@
+Internal ctest changing into directory: /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build
+Test project /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build
+    Start 49: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+1/7 Test #49: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean .................***Failed    0.03 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:86: Failure
+Expected equality of these values:
+  results.size()
+    Which is: 8
+  2u
+    Which is: 2
+
+[  FAILED  ] RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean (7 ms)
+[----------] 1 test from RuleRegressionFixture (7 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (7 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+
+ 1 FAILED TEST
+
+    Start 50: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+2/7 Test #50: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode .................***Failed    0.02 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:71: Failure
+Expected equality of these values:
+  result->message.find(prefix + std::to_string(expected) + " ")
+    Which is: 18446744073709551615
+  0u
+    Which is: 0
+Function 'logical_chain' has cyclomatic complexity of 5 (threshold: warning>0, error>25)
+
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:71: Failure
+Expected equality of these values:
+  result->message.find(prefix + std::to_string(expected) + " ")
+    Which is: 18446744073709551615
+  0u
+    Which is: 0
+Function 'alternative_chain' has cyclomatic complexity of 2 (threshold: warning>0, error>25)
+
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:71: Failure
+Expected equality of these values:
+  result->message.find(prefix + std::to_string(expected) + " ")
+    Which is: 18446744073709551615
+  0u
+    Which is: 0
+Function 'nested_comparison' has cyclomatic complexity of 4 (threshold: warning>0, error>25)
+
+[  FAILED  ] RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode (6 ms)
+[----------] 1 test from RuleRegressionFixture (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+
+ 1 FAILED TEST
+
+    Start 51: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+3/7 Test #51: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce ..............***Failed    0.03 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:71: Failure
+Expected equality of these values:
+  result->message.find(prefix + std::to_string(expected) + " ")
+    Which is: 18446744073709551615
+  0u
+    Which is: 0
+Function 'macro_chain' has cyclomatic complexity of 5 (threshold: warning>0, error>25)
+
+[  FAILED  ] RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce (5 ms)
+[----------] 1 test from RuleRegressionFixture (5 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (5 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+
+ 1 FAILED TEST
+
+    Start 52: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+4/7 Test #52: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction ...***Failed    0.03 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:71: Failure
+Expected equality of these values:
+  result->message.find(prefix + std::to_string(expected) + " ")
+    Which is: 18446744073709551615
+  0u
+    Which is: 0
+Function 'contains_lambda' has cyclomatic complexity of 4 (threshold: warning>0, error>25)
+
+[  FAILED  ] RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction (5 ms)
+[----------] 1 test from RuleRegressionFixture (5 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (5 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+
+ 1 FAILED TEST
+
+    Start 53: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+5/7 Test #53: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates .....***Failed    0.03 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:67: Failure
+Expected equality of these values:
+  matching
+    Which is: 0
+  1
+template_branch
+
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:67: Failure
+Expected equality of these values:
+  matching
+    Which is: 0
+  1
+member_template
+
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates (6 ms)
+[----------] 1 test from RuleRegressionFixture (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+
+ 1 FAILED TEST
+
+    Start 54: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+6/7 Test #54: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength .................***Failed    0.02 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:138: Failure
+Expected equality of these values:
+  matching
+    Which is: 0
+  1
+
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedTemplateLength (5 ms)
+[----------] 1 test from RuleRegressionFixture (5 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (5 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+
+ 1 FAILED TEST
+
+    Start 55: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+7/7 Test #55: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters .............***Failed    0.03 sec
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RuleRegressionFixture
+[ RUN      ] RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/tests/test_rule_regressions.cpp:150: Failure
+Expected equality of these values:
+  matching
+    Which is: 0
+  1
+
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters (9 ms)
+[----------] 1 test from RuleRegressionFixture (9 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (9 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+
+ 1 FAILED TEST
+
+
+0% tests passed, 7 tests failed out of 7
+
+Total Test time (real) =   0.20 sec
+
+The following tests FAILED:
+	 49 - RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean (Failed)
+	 50 - RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode (Failed)
+	 51 - RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce (Failed)
+	 52 - RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction (Failed)
+	 53 - RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates (Failed)
+	 54 - RuleRegressionFixture.MeasuresUninstantiatedTemplateLength (Failed)
+	 55 - RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters (Failed)
+Errors while running CTest

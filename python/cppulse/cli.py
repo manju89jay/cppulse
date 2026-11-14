@@ -132,6 +132,11 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--version", action="version", version=__version__)
     subcommands = parser.add_subparsers(dest="command", required=True)
+    capability = subcommands.add_parser(
+        "capabilities",
+        help="Print public client protocol versions without executing tools",
+    )
+    capability.add_argument("--format", choices=["json"], default="json")
     subcommands.add_parser(
         "doctor", help="Inspect installed capabilities; never installs dependencies"
     )
@@ -428,7 +433,6 @@ def _new_command(args: argparse.Namespace) -> tuple[dict[str, Any] | None, int]:
                     "INPUT_CHANGED",
                 }
                 or isinstance(error, IntegrityError)
-                or not isinstance(failure, CppulseError)
                 else 2
             )
         if operation in {"explain", "export-sarif"}:
@@ -488,11 +492,17 @@ def main(argv: list[str] | None = None) -> int:
         level=logging.INFO,
         format="%(levelname)s %(name)s: %(message)s",
     )
+    exit_code = 0
     try:
+        if args.command == "capabilities":
+            from cppulse.client_contract import capabilities
+
+            print(json.dumps(capabilities(), indent=2))
+            return 0
         if args.command == "doctor":
             result = doctor()
             print(json.dumps(result, indent=2))
-            return 0 if result["native"]["available"] else 1
+            return 0 if result["native"]["available"] else 2
         if args.command == "init":
             result = {"config": str(initialize(args.repo))}
         elif args.command == "diagnostics":
@@ -573,6 +583,7 @@ def main(argv: list[str] | None = None) -> int:
                     result = analyze(
                         config, report_format=args.format, timeout=args.timeout
                     )
+                    exit_code = 0 if result.get("analysis_status") == "completed" else 3
                     count += 1
                     if args.command != "watch" or (
                         args.iterations is not None and count >= args.iterations
@@ -581,7 +592,7 @@ def main(argv: list[str] | None = None) -> int:
                     print(json.dumps(result), flush=True)
                     time.sleep(args.interval)
         print(json.dumps(result, indent=2))
-        return 0
+        return exit_code
     except KeyboardInterrupt:
         print("cppulse: cancelled", file=sys.stderr)
         return 130
@@ -593,13 +604,13 @@ def main(argv: list[str] | None = None) -> int:
             f"cppulse: missing dependency {exc.name}; reinstall cppulse with the requested feature extras",
             file=sys.stderr,
         )
-        return 1
+        return 2
     except (CppulseError, ValueError) as exc:
         print(f"cppulse: {exc}", file=sys.stderr)
         return 2
     except (OSError, RuntimeError, subprocess.SubprocessError) as exc:
         print(f"cppulse: {exc}", file=sys.stderr)
-        return 1
+        return 2
 
 
 if __name__ == "__main__":

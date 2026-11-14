@@ -14,6 +14,36 @@ import yaml
 from cppulse.errors import ContractError
 
 CONFIG_NAMES = (".cppulserc.yml", ".cppulserc.yaml", ".cppulserc.json")
+DEFAULT_MAX_FILE_BYTES = 16 * 1024 * 1024
+
+
+def _unique_pairs(pairs: list[tuple[Any, Any]]) -> dict[Any, Any]:
+    """Construct one data mapping without silently replacing a selected value."""
+    result: dict[Any, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate project configuration key: {key}")
+        result[key] = value
+    return result
+
+
+class _UniqueKeyLoader(yaml.SafeLoader):
+    """Keep safe YAML construction while rejecting root and nested duplicates."""
+
+    def construct_mapping(
+        self, node: yaml.nodes.MappingNode, deep: bool = False
+    ) -> dict[Any, Any]:
+        """Construct safe mappings while retaining duplicate-key diagnostics."""
+        self.flatten_mapping(node)
+        return _unique_pairs(
+            [
+                (
+                    self.construct_object(key, deep=deep),
+                    self.construct_object(value, deep=deep),
+                )
+                for key, value in node.value
+            ]
+        )
 
 
 @dataclass(frozen=True)
@@ -39,7 +69,11 @@ def read_settings(path: Path) -> dict[str, Any]:
     """Read safe JSON/YAML data and reject unsupported settings/types."""
     text = path.read_text(encoding="utf-8")
     try:
-        settings = json.loads(text) if path.suffix == ".json" else yaml.safe_load(text)
+        settings = (
+            json.loads(text, object_pairs_hook=_unique_pairs)
+            if path.suffix == ".json"
+            else yaml.load(text, Loader=_UniqueKeyLoader)
+        )
         schema = json.loads(
             resources.files("cppulse")
             .joinpath("data/project_config.schema.json")
@@ -70,13 +104,17 @@ def effective_config(
     repo = repo.resolve(strict=True)
     if not repo.is_dir():
         raise ContractError(f"Repository must be a directory: {repo}")
-    selected = (
-        config.resolve(strict=True)
-        if config
-        else next(
-            (repo / name for name in CONFIG_NAMES if (repo / name).is_file()), None
-        )
-    )
+    if config is not None:
+        selected = config.resolve(strict=True)
+    else:
+        candidates = [repo / name for name in CONFIG_NAMES if (repo / name).is_file()]
+        if len(candidates) > 1:
+            names = ", ".join(path.name for path in candidates)
+            raise ContractError(
+                f"Ambiguous project configuration in {repo}: {names}. "
+                "Select one explicitly with --config."
+            )
+        selected = candidates[0] if candidates else None
     settings = read_settings(selected) if selected else {}
     origin = (
         "command"
@@ -90,6 +128,7 @@ def effective_config(
         "profile": selected_profile,
         "exclude_paths": [],
         "rules": {},
+        "max_file_bytes": DEFAULT_MAX_FILE_BYTES,
         **settings,
     }
     settings["profile"] = selected_profile

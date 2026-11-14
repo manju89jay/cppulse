@@ -80,6 +80,36 @@ class GitSummary:
     is_knowledge_silo: bool = False
 
 
+@dataclass(frozen=True)
+class RankAvailability:
+    """Usability of one file's inputs for experimental ranking.
+
+    This does not qualify an observed build or consumer configuration. Inferred
+    parse arguments remain inferred in the original analysis inventory.
+    """
+
+    file: str
+    availability: str
+    reason_codes: tuple[str, ...] = ()
+    reasons: tuple[str, ...] = ()
+
+    @property
+    def eligible(self) -> bool:
+        """Whether the declared analysis and history inputs are usable."""
+        return self.availability == "available"
+
+    def unranked_record(self) -> dict[str, Any]:
+        """Serialize an unavailable file without a score or risk-level claim."""
+        if self.eligible:
+            raise ValueError("An eligible file is not an unranked observation")
+        return {
+            "file": self.file,
+            "availability": self.availability,
+            "reason_codes": list(self.reason_codes),
+            "reasons": list(self.reasons),
+        }
+
+
 def relative_identity(file: str, data: dict[str, Any]) -> str:
     """Normalize legacy absolute producer paths to repository-relative paths."""
     if not file:
@@ -175,7 +205,14 @@ class FeatureEngineer:
                 limitations.append(
                     "Full-scope health unavailable: legacy input has no parse-scope inventory."
                 )
-        attrs = {"health_availability": availability, "limitations": limitations}
+        ranking = self._ranking_scope(
+            findings_data, git_metrics_data, all_files, git_map
+        )
+        attrs = {
+            "health_availability": availability,
+            "limitations": limitations,
+            "rank_availability": ranking,
+        }
 
         if not all_files:
             empty = pd.DataFrame(columns=FEATURE_COLUMNS)
@@ -208,6 +245,79 @@ class FeatureEngineer:
         df = pd.DataFrame(rows, columns=FEATURE_COLUMNS)
         df.attrs.update(attrs)
         return df
+
+    @staticmethod
+    def _ranking_scope(
+        findings_data: dict[str, Any],
+        git_metrics_data: dict[str, Any],
+        feature_paths: set[str],
+        git_map: dict[str, GitSummary],
+    ) -> dict[str, RankAvailability]:
+        """Account for every non-excluded file and missing ranking prerequisite.
+
+        A skipped/failed unit stays in this inventory even when no feature row
+        can be engineered. Zero-filled convenience features are never evidence
+        that static analysis or Git history was actually observed.
+        """
+        analysis = findings_data.get("metadata", {}).get("analysis")
+        entries: dict[str, list[dict[str, Any]]] = {}
+        if analysis is not None:
+            for entry in analysis.get("files", []):
+                if entry["status"] != "excluded":
+                    file = coverage_identity(entry["path"], findings_data)
+                    entries.setdefault(file, []).append(entry)
+            paths = set(entries)
+        else:
+            paths = feature_paths
+        metadata = git_metrics_data.get("metadata", {})
+        history_status = metadata.get("history_status")
+        result: dict[str, RankAvailability] = {}
+        for file in sorted(paths):
+            codes: list[str] = []
+            reasons: list[str] = []
+            state = "available"
+            if analysis is None:
+                state = "unverified"
+                codes.append("missing_parse_inventory")
+                reasons.append(
+                    "No parse-scope inventory establishes this file's analysis."
+                )
+            else:
+                if not analysis.get("enabled_rules"):
+                    state = "unverified"
+                    codes.append("no_enabled_detectors")
+                    reasons.append(
+                        "No enabled detectors establish static ranking inputs."
+                    )
+                for entry in entries[file]:
+                    errors = entry.get("error_count", 0)
+                    if entry["status"] != "analyzed" or errors:
+                        state = "partial"
+                        if "partial_analysis" not in codes:
+                            codes.append("partial_analysis")
+                        reasons.append(
+                            f"Native analysis status is {entry['status']} with {errors} parse errors."
+                        )
+            if history_status != "available":
+                code = {
+                    "partial": "partial_history",
+                    "unavailable": "missing_history",
+                }.get(history_status, "unverified_history")
+                codes.append(code)
+                reasons.append(
+                    f"Git history is {history_status or 'unverified'}; missing history is not zero change activity."
+                )
+                if state == "available":
+                    state = "unavailable" if history_status else "unverified"
+            elif file not in git_map or git_map[file].change_frequency <= 0:
+                codes.append("missing_file_history")
+                reasons.append("No observed commit history is available for this file.")
+                if state == "available":
+                    state = "unavailable"
+            result[file] = RankAvailability(
+                file, state, tuple(dict.fromkeys(codes)), tuple(dict.fromkeys(reasons))
+            )
+        return result
 
     def _aggregate_findings(
         self, findings_data: dict[str, Any]

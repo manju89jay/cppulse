@@ -1,0 +1,83 @@
+{
+  "findings": [
+    {
+      "category": "misra",
+      "column": 5,
+      "confidence": 1.0,
+      "file": "main.cpp",
+      "line": 7,
+      "message": "Function 'main' has 2 return statements; MISRA Rule 6-6-5 requires a single exit point",
+      "rule_id": "MISRA-006",
+      "severity": "warning",
+      "suggestion": "Restructure function so all exit paths go through a single return"
+    }
+  ],
+  "metadata": {
+    "analysis": {
+      "enabled_rules": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003",
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-003",
+        "CPP-MOD-004",
+        "CPP-MOD-005",
+        "CPP-MOD-006",
+        "CPP-MOD-007",
+        "CPP-MOD-008",
+        "CPP-MOD-009",
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003",
+        "MISRA-001",
+        "MISRA-002",
+        "MISRA-003",
+        "MISRA-004",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ],
+      "files": [
+        {
+          "compile_context": "database",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/cppulse/demo/real-consumer/main.cpp",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        }
+      ],
+      "parser": {
+        "name": "libclang",
+        "version": "Debian clang version 19.1.7 (3+b1)"
+      }
+    },
+    "analyzed_at": "2026-11-14T10:40:11Z",
+    "file_count": 1,
+    "repo_path": "/workspace/scratch/b3d4e6fff494/cppulse/demo/real-consumer",
+    "total_loc": 14
+  },
+  "summary": {
+    "by_category": {
+      "complexity": 0,
+      "memory_safety": 0,
+      "misra": 1,
+      "modernization": 0
+    },
+    "by_severity": {
+      "error": 0,
+      "info": 0,
+      "warning": 1
+    },
+    "total_findings": 1
+  },
+  "version": "1.0.0"
+}

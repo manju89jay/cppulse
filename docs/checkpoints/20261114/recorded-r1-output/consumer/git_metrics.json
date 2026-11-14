@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "repo_path": "/workspace/scratch/b3d4e6fff494/cppulse/demo/real-consumer",
+    "analyzed_at": "2026-11-14T10:40:10.839303+00:00",
+    "commit_range": "empty",
+    "total_commits": 0,
+    "history_status": "unavailable",
+    "limitations": [
+      "No Git repository: static analysis may proceed, but history metrics are unavailable."
+    ]
+  },
+  "file_metrics": [],
+  "knowledge_silos": []
+}

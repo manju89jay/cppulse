@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.0.0, pluggy-1.7.0 -- /workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python
+rootdir: /workspace/scratch/b3d4e6fff494/cppulse
+configfile: pytest.ini
+plugins: cov-4.1.0, platformdirs-4.14.5, anyio-4.16.0
+collecting ... collected 23 items
+
+tests/test_work_unit_draft_contracts.py::test_request_reuses_v2_context_and_artifact_shapes PASSED [  4%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unusable_wall_bounds[0] PASSED [  8%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unusable_wall_bounds[-1] PASSED [ 13%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unusable_wall_bounds[True] PASSED [ 17%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unusable_wall_bounds[30] PASSED [ 21%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unusable_wall_bounds[None] PASSED [ 26%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[../sample.hpp] PASSED [ 30%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[/sample.hpp] PASSED [ 34%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a/../../b.cpp] PASSED [ 39%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[C:/a.cpp] PASSED [ 43%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a\\b.cpp] PASSED [ 47%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[.] PASSED [ 52%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a/./b.cpp] PASSED [ 56%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a//b.cpp] PASSED [ 60%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a/] PASSED [ 65%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_escaping_primary_paths[a.cpp\n] PASSED [ 69%]
+tests/test_work_unit_draft_contracts.py::test_request_rejects_unknown_execution_options PASSED [ 73%]
+tests/test_work_unit_draft_contracts.py::test_result_accepts_explicit_unknown_resource_measurements PASSED [ 78%]
+tests/test_work_unit_draft_contracts.py::test_cache_reuse_cannot_claim_a_new_native_execution PASSED [ 82%]
+tests/test_work_unit_draft_contracts.py::test_cached_partial_results_cannot_be_positive_hits PASSED [ 86%]
+tests/test_work_unit_draft_contracts.py::test_fresh_attempt_cannot_substitute_cache_origin_for_receipt PASSED [ 91%]
+tests/test_work_unit_draft_contracts.py::test_cache_entry_requires_complete_dependency_identity PASSED [ 95%]
+tests/test_work_unit_draft_contracts.py::test_cursor_pins_run_query_sort_and_bounded_page_size PASSED [100%]
+
+============================== 23 passed in 0.35s ==============================

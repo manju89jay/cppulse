@@ -1,0 +1,47 @@
+{
+  "recorded_at": "2026-11-14T10:26:23.314522+00:00",
+  "scope": "R1 public CLI/configuration and additive pipeline analysis availability; uncommitted changes.",
+  "files": [
+    "python/cppulse/cli.py",
+    "python/cppulse/config.py",
+    "python/cppulse/pipeline.py",
+    "tests/test_effective_config.py",
+    "tests/test_cli_exit_contract.py"
+  ],
+  "red": [
+    {
+      "log": "red.log",
+      "result": "11 failed,10 passed; ambiguity/partial exits/operational exits"
+    },
+    {
+      "log": "pipeline-red.log",
+      "result": "4 failed; analysis availability missing from successful archival summary"
+    },
+    {
+      "log": "budget-red.log",
+      "result": "2 failed; shared16MiB default absent and explicit budget rejected before schema gate"
+    },
+    {
+      "log": "duplicates-red.log",
+      "result": "4 failed; JSON/YAML root/nested duplicate values silently overrode selected requirements"
+    }
+  ],
+  "green": {
+    "log": "green-final.log",
+    "result": "70 passed,14 third-party deprecation warnings in15.46s",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m pytest -v -p no:cacheprovider tests/test_effective_config.py tests/test_cli_exit_contract.py tests/test_installed_cli.py tests/test_pipeline_failures.py tests/test_public_cli.py tests/test_assessment_workflows.py tests/test_cmake_check_helper.py"
+  },
+  "integration": "actual-verification.json:8 public subprocess cases outside checkout passed; native hash recorded. This precedes the upcoming native rebuild and is not final-candidate qualification.",
+  "decisions": [
+    "Multiple discovered config files are ambiguous; explicit --config selects only that file.",
+    "Analysis status is separate from archive-import completion. Partial/no-data analysis exits3; known failed policy gates remain1; invocation/operational failures2; cancellation130.",
+    "Finitewatch return reflects the latest iteration, while interruption/operational failures override.",
+    "Effective configuration exposes the actual16MiB default and retains user overrides; native counterparts owned by separate agent.",
+    "Public JSON and safe YAML project configuration reject duplicate keys at every mapping depth instead of last-value override."
+  ],
+  "limitations": [
+    "No commits/pushes/ref changes.",
+    "Does not implement broader CLI text defaults/changed-scope/init-kind workflows; retained in full plan.",
+    "Final full native and installed-artifact qualification is pending integrated root checks."
+  ]
+}

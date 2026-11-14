@@ -41,10 +41,23 @@ describe("SiloAlerts", () => {
   });
 
   it("shows empty state when no silos", () => {
-    render(<SiloAlerts silos={[]} />);
+    render(<SiloAlerts silos={[]} historyStatus="available" />);
     expect(
       screen.getByText(/No single-contributor alerts/)
     ).toBeInTheDocument();
+  });
+
+  it("does not infer absent knowledge risk from partial history", () => {
+    render(<SiloAlerts silos={[]} historyStatus="partial" limitations={["Only shallow history was available."]}/>);
+    expect(screen.getByText(/Insufficient history/)).toBeInTheDocument();
+    expect(screen.getByText("Only shallow history was available.")).toBeInTheDocument();
+    expect(screen.queryByText(/No single-contributor alerts/)).not.toBeInTheDocument();
+  });
+
+  it("treats missing legacy history metadata as unverified", () => {
+    render(<SiloAlerts silos={[]}/>);
+    expect(screen.getByText(/Insufficient history/)).toBeInTheDocument();
+    expect(screen.queryByText(/No single-contributor alerts/)).not.toBeInTheDocument();
   });
 
   it("shortens deep paths", () => {

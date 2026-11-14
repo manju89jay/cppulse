@@ -1,0 +1,75 @@
+{
+  "task": "scale_runtime_resume",
+  "state": "frozen immediately at explicit user stop; implementation incomplete",
+  "processes": "Both owned build sessions 3843 and 8999 exited; no owned subprocess remains. No child agent was spawned.",
+  "changed_files": [
+    "analyzer-core/src/native_execution_limits.h",
+    "analyzer-core/src/native_execution_limits.cpp",
+    "analyzer-core/src/main.cpp",
+    "analyzer-core/src/analyzer.h",
+    "analyzer-core/src/analyzer.cpp",
+    "analyzer-core/tests/test_work_unit_selection.cpp",
+    "python/cppulse/execution.py",
+    "python/cppulse/contracts/schemas/work_units_private/work_request.schema.json",
+    "python/cppulse/contracts/schemas/work_units_private/work_result.schema.json",
+    "python/cppulse/contracts/schemas/work_units_private/cache_entry.schema.json",
+    "python/cppulse/contracts/schemas/work_units_private/query_cursor.schema.json",
+    "tests/test_work_unit_runtime.py"
+  ],
+  "absent_required_implementation": [
+    "python/cppulse/work_units.py",
+    "actual bounded per-unit scheduler",
+    "checked fresh work-unit adapter",
+    "accepted-unit checkpoints/resume",
+    "checked dependency-closure cache/reuse lineage",
+    "SQLite committed-RunStore index/cursors",
+    "public pipeline integration",
+    "actual 1K/10K/100K native benchmarks"
+  ],
+  "checks": {
+    "draft_contracts": "python -m pytest tests/test_work_unit_draft_contracts.py -q: 23 passed in 0.33s; p5-resume/draft-contracts-check.log",
+    "native_red": "cmake --build analyzer-core/build-production-work-units -j2 exited 2 before native_execution_limits.h existed; p5-resume/native-red.log",
+    "native_intermediate_build": "cmake --build analyzer-core/build-production-work-units -j2 exited 0; p5-resume/native-build.log. This is BEFORE the last file_size_bytes/RLIMIT_FSIZE additions, NOT a current-source verification.",
+    "runtime_red": "python -m pytest tests/test_work_unit_runtime.py -q exited 2: missing cppulse.work_units module; p5-resume/runtime-red.log",
+    "unrun": [
+      "ctest on new native cases/full suite",
+      "current native rebuild after latest flags",
+      "all new runtime tests (collection currently fails)",
+      "public execution wrapper regressions",
+      "black/ruff current Python",
+      "clang-format latest file-size additions",
+      "native real CPU/memory/output exhaustion and cancellation qualification"
+    ]
+  },
+  "native_partial_state": {
+    "selection": "--file-list bounded 8-MiB JSON array, 1..100000 selected canonical relative supported C++ regular files, reject duplicates/escapes/symlink source components; optional fifth FileAnalyzer selected_files arg; default discovery preserved",
+    "guards": "Actual native Linux getrlimit/setrlimit guards before AST initialization: --address-space-bytes, --cpu-seconds, --file-size-bytes. Main can write --execution-limits-report JSON. Address space below initial /proc/self/statm mappings +16MiB headroom rejects explicitly. Other platforms reject requested guards.",
+    "known_followups": [
+      "last file-size guard addition unbuilt/unformatted",
+      "guard report requested object still lacks file_size_bytes although applied.file_size exists",
+      "fix ignored-nodiscard test warnings with static_cast<void>",
+      "verify CLI11 std::optional numeric parsing and all malformed limits/selection cases on actual executable",
+      "report does not measure CPU/RSS usage, address space is per native process only"
+    ]
+  },
+  "python_partial_state": "execution.py exposes ProcessOutcome (private _ProcessOutcome alias retained) and new run_bounded_process explicit-argv wrapper around existing bounded wall/log/group supervisor. It rejects non-POSIX, malformed argv/timeout and cancellation before launch. No memory/CPU claim. This patch is unformatted/unverified. Private schema copies remain unregistered. Runtime tests are intentionally red pending work_units.py.",
+  "shared_file_coordination": "native_metrics_resume owns analyze_file, coverage/metrics/outputwriter/config budget. I changed only analyzer.cpp constructor, include native_execution_limits.h, run() selected files and run max_token_records initialization. Preserve all concurrent native metrics edits.",
+  "critical_decisions": [
+    "Receipt argv[0] must be the actual native executable and observed hash. Native child applies CPU/address-space; never spoof a Python wrapper command.",
+    "Legacy analysis._bound_facts keeps its output-inside-workspace restriction. Implement a new explicit source_root/work_root checked unit adapter; never use slash as an ancestor hack.",
+    "Do not enable positive cache reuse from schema shape, primary-only hashes, asserted inventory_complete or clang_getInclusions alone. Unknown external/negative-lookup closure is a miss.",
+    "Cache hits preserve original committed run/artifact/receipt lineage, mode reused and no new execution receipt. Runtime verification evidence is never revalidated solely by analysis cache.",
+    "RunStore remains authoritative; SQLite is disposable index keyed by exact committed run+manifest pin. No alternate store/evaluator.",
+    "100K requests/futures/source-manifest duplication must not be materialized. Bound queued futures by jobs; streaming aggregate/index acceptance still required.",
+    "No project commit/push/ref/GitHub writes/publish/deploy/messages authorized. No README or DECISIONS edit was made by this agent."
+  ],
+  "next_commands": [
+    "source review/environment.sh",
+    "../git-checkpoint-20261114/format-tool/clang_format/data/bin/clang-format -i analyzer-core/src/native_execution_limits.h analyzer-core/src/native_execution_limits.cpp analyzer-core/src/main.cpp analyzer-core/src/analyzer.h analyzer-core/tests/test_work_unit_selection.cpp",
+    "cmake --build analyzer-core/build-production-work-units -j2",
+    "ctest --test-dir analyzer-core/build-production-work-units --output-on-failure -j2",
+    "python -m pytest tests/test_work_unit_draft_contracts.py tests/test_execution.py tests/test_work_unit_runtime.py -q"
+  ],
+  "resume_order": "Read TASK_SPEC first, AGENTS/CLAUDE/styles, full production req/design/tasks + full completion plan/ledger and docs/contracts/work-units.md. Finish and verify fresh native producer first; then implement bounded scheduler and checked adapter; only after gates add cache/index consumers. Large initial combined documentation output was truncated, so do not assume every full document was reviewed by this agent.",
+  "environment": "review/environment.sh defines local toolchain/libclang/Python paths. Own build dir analyzer-core/build-production-work-units. Do not race canonical/other-agent builds."
+}

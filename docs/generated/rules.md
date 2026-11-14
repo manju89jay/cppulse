@@ -33,9 +33,9 @@ The `default` scoring profile excludes MISRA findings from scores and ranking; i
 
 ## Detection scope
 
-- **CPP-CX-001:** Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
-- **CPP-CX-002:** Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
-- **CPP-CX-003:** Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
+- **CPP-CX-001:** Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged.
+- **CPP-CX-002:** Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged.
+- **CPP-CX-003:** Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged.
 - **CPP-MEM-001:** Detect use of raw `new` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MEM-002:** Detect explicit `delete` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MEM-003:** Detect C-style array parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
@@ -43,7 +43,7 @@ The `default` scoring profile excludes MISRA findings from scores and ranking; i
 - **CPP-MOD-002:** Detect inclusion of deprecated C headers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MOD-003:** Detect virtual methods that are missing the override keyword. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MOD-004:** Detect string literals with many escape sequences. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
-- **CPP-MOD-005:** Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
+- **CPP-MOD-005:** Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged.
 - **CPP-MOD-006:** Suggest range-based for loops for index-based loops. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MOD-007:** Detect use of NULL macro or integer 0 as a null pointer. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.
 - **CPP-MOD-008:** Detect unscoped (plain) enum declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence.

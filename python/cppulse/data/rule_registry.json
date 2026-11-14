@@ -3,7 +3,7 @@
   "rules": [
     {
       "id": "CPP-CX-001",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "complexity",
       "required_capabilities": [
@@ -37,11 +37,11 @@
           }
         }
       },
-      "documentation": "Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
     },
     {
       "id": "CPP-CX-002",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "complexity",
       "required_capabilities": [
@@ -75,11 +75,11 @@
           }
         }
       },
-      "documentation": "Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
     },
     {
       "id": "CPP-CX-003",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "complexity",
       "required_capabilities": [
@@ -113,7 +113,7 @@
           }
         }
       },
-      "documentation": "Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
     },
     {
       "id": "CPP-MEM-001",
@@ -299,7 +299,7 @@
     },
     {
       "id": "CPP-MOD-005",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "modernization",
       "required_capabilities": [
@@ -321,7 +321,7 @@
           }
         }
       },
-      "documentation": "Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
     },
     {
       "id": "CPP-MOD-006",

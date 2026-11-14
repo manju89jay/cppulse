@@ -213,6 +213,55 @@
                   "ubsan",
                   "tsan"
                 ]
+              },
+              "metric_version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "units": {
+                "type": "string",
+                "minLength": 1
+              },
+              "level": {
+                "enum": [
+                  "file",
+                  "symbol"
+                ]
+              },
+              "aggregation": {
+                "enum": [
+                  "each",
+                  "max",
+                  "min",
+                  "maximum",
+                  "minimum",
+                  "sum",
+                  "mean"
+                ]
+              },
+              "reviewer_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "minimum_reviewers": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "required_artifact_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "identity_requirement": {
+                "const": "declared"
               }
             }
           },

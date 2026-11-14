@@ -1,0 +1,104 @@
+{
+  "authority": "Proposal for owner review only. No further implementation, commits, pushes or publication authorized by this audit.",
+  "sequence_inside_each_stage": "Contracts and meaningful failing cases -> producers and component checks -> consumers/evaluators and checks -> presentation and checks -> orchestration/build interfaces and checks -> installed integration, compatibility and resource verification -> review gate.",
+  "stages": [
+    {
+      "id": "R0",
+      "scope": "Reconcile goals, contradictions and traceability (full M0–M9)",
+      "depends_on": [],
+      "kind": "Review and compatibility decisions",
+      "work": "Retain all 118 numbered requirements, 60 tasks and design obligations. Resolve score formula/version, C++17 style conflicts, CMake minimum and supported environments. Preserve both decision histories with unique identifiers. Correct the S7 completion narrative and keep broad maintenance analysis plus focused library verification visible.",
+      "acceptance": "Every requirement has exact implementation/evidence/status/gap; owner can review scope without implied approval of publication. Missing documents remain listed. A new plan never counts as completed functionality."
+    },
+    {
+      "id": "R1",
+      "scope": "Correct delivered defects and result semantics (M0)",
+      "depends_on": ["R0"],
+      "kind": "Defect repair, including inherited defects",
+      "work": "Add regression cases for already-auto declarations, logical-operator complexity and templates, partial-file ranking, partial analyze exits, ambiguous config, inconsistent native option/type/rule validation and large-header limits. Fix the causes and per-file/context availability contracts. Replace misleading low-risk/no-silo conclusions with appropriate insufficient-data states. Preserve working native and legacy entry points.",
+      "acceptance": "Each supplied reproduction fails before and passes after its fix, with neighboring clean cases. Partial analysis exits 3, known failed gates 1, operational errors 2, cancellation 130. No incomplete file gains a clean or low-risk conclusion. Large-file skips remain visible and limits are configurable. Affected CTest, Python/component, contract and interface checks pass before dependent changes."
+    },
+    {
+      "id": "R2",
+      "scope": "Complete repeatable development and exact candidate foundation (M1)",
+      "depends_on": ["R1"],
+      "kind": "Complete partially implemented engineering features",
+      "work": "Unify doctor, changed/full verification, generation, benchmark, package and release dry-run under a documented local facade. Include native formatting, required component suites, contract checks and installed smoke tests. Existing CI wrappers call that same facade. Complete registry generation and real extension fixtures, optional Git/risk dependencies, install/CPack approach, locks, notices, dependency inventory, versions and compatibility metadata.",
+      "acceptance": "One local command records every required check and meaningful failures. Candidate bytes identify their exact source revision/tree and dependency set. Source-hidden outside-checkout core and optional-component journeys execute from the newly built candidate. Release dry-run changes no external state. Existing dependency/profile/schema compatibility is tested."
+    },
+    {
+      "id": "R3",
+      "scope": "Bounded, resumable and incremental execution (M2)",
+      "depends_on": ["R2"],
+      "kind": "Missing scale features and resource qualification",
+      "work": "Isolate per-TU/context native workers; enforce configured jobs/time/memory where supported; preserve partial facts after crashes and interruption. Implement dependency-aware facts caching, independent assessment reuse, one reusable streamed Git history, checkpoint/resume, indexed run/history catalog and stable run-bound pagination. Establish resource baselines before freezing budgets.",
+      "acceptance": "Clean results equal warm, source-edit, shared-header, macro/flag, dependency/tool, policy-only and history-append runs. Unknown dependencies invalidate conservatively; policy-only edits avoid AST work. Crash/timeout/cancel/disk-write tests leave coherent partial manifests and no stale success. Repeated 1K/10K/100K-file and increasing-history measurements record wall/CPU/peak memory/completeness on a named host; noisy single measurements do not define gates."
+    },
+    {
+      "id": "R4",
+      "scope": "Friendly installed CLI and build checks (M3 / Release A)",
+      "depends_on": ["R3"],
+      "kind": "Complete proposed developer workflows",
+      "work": "Finish concise text defaults, structured JSON/SARIF, init kinds, doctor/effective config, check --changed with dependency invalidation, stable symbol/token-aware baselines or explicitly versioned fallback, and local diagnostics. Complete documented installed CMake discovery/check/target dependencies/optional ordinary-build enforcement and fix the agreed compatibility minimum. Keep collection explicit and separate from analysis.",
+      "acceptance": "A developer installs outside the checkout, follows the quickstart on application, compiled-library and header-only cases, adds one CMake target and gates a new finding without custom parsing. Namesake files, renames, repeated findings, unknown context and old baselines produce correct results or actionable migration errors. Validate an actual Release A candidate; any release/marketplace publication remains a separate authorized action."
+    },
+    {
+      "id": "R5",
+      "scope": "Measured maintenance analysis and useful reports (M4)",
+      "depends_on": ["R4"],
+      "kind": "Major missing analytical functionality",
+      "work": "Emit versioned analyzed LOC, function length, cyclomatic complexity, nesting, parameters and duplication; add cohesion/compound smells only after validation. Implement the agreed density/caps/weights/per-required-context health model with migration. Use measured complexity/history/debt for hotspots; link roadmap actions to exact evidence, label effort estimates, add trends/drill-down/critical markers/basic goals and compatibility boundaries.",
+      "acceptance": "Hand-reviewed ordinary/template/macro positive and negative fixtures give exact measured values; independent calculations reproduce health and context aggregation. Missing contexts make full health unavailable. All original six repositories (fmt, grpc, json, leveldb, poco, protobuf) are pinned with adequate real history, checked totals/paths, reviewed diagnostic samples and resource records. utfcpp remains an additional header-only case. Maintainers can identify a useful action and explain its supporting evidence; no invented accuracy threshold or benchmark is claimed."
+    },
+    {
+      "id": "R6",
+      "scope": "Complete library evidence and configurable policies (M5 / Release B)",
+      "depends_on": ["R5"],
+      "kind": "Complete partially delivered assurance features",
+      "work": "Retain working six predicates and add supported numeric-metric and reviewed-evidence evaluators, full attestation scope/rationale/reviewer/expiry handling, extensions and policy history compatibility. Expand exact distributed-artifact and actual consumer-context inventories and adapter qualification. Complete general/custom library packs; prepare explicitly incomplete automotive/medical starters with authorized edition review, coverage and unmapped obligations. No certification inference.",
+      "acceptance": "Compiled library, above-limit amalgamated header and local consumer cover selected GCC/Clang/C++17/C++20/options/linking/test configurations; undeclared or missing variants stay unknown. Seeded no-exceptions failure, stale/wrong artifact, zero/all-skipped tests, unsupported sanitizer, uninstrumented dependency, typed coverage and modified reports cannot manufacture a pass. Independent policy equations, required-failure/unknown precedence and expiring deviations agree across CLI/HTML/PDF/API/dashboard on one immutable run. Rebuild and test the exact Release B candidate."
+    },
+    {
+      "id": "R7",
+      "scope": "Behavioral intelligence and experimental model validation (M6)",
+      "depends_on": ["R3", "R5"],
+      "kind": "Major missing analytical features",
+      "work": "Implement aliases/bots/former and pair authors, configurable bulk/merge/window semantics, weighted ownership/familiarity/fragmentation, file and later symbol coupling, component maps, offboarding and historical priorities. Preserve SZZ limitations. Evaluate optional models with time cutoffs, temporal holdouts and calibration; separate ranking from probability.",
+      "acceptance": "Known synthetic histories with aliases/renames/merges/shallow boundaries/rewrite/bulk changes match hand calculations and resumed runs. Real-history corpus records missingness and support counts. No future information enters model training features or validation labels. Publish measured evaluation and uncertainty, or keep outputs explicitly unvalidated experimental rankings. History queries meet measured resource budgets."
+    },
+    {
+      "id": "R8",
+      "scope": "VS Code, MCP and reusable distribution integrations (M7 / Release C)",
+      "depends_on": ["R4", "R6", "R7"],
+      "kind": "Missing proposed integrations",
+      "work": "Build read-first public editor/MCP contracts and an actual VS Code extension: installed CLI discovery, diagnostics at real locations, rule explanations, run/completeness/context/policy gaps and links to retained evidence. Reuse the same evaluator and snapshots; make execution explicit. Complete consumer/pre-commit/Git-host templates and a portable text skill using only released commands.",
+      "acceptance": "Install a VSIX in a clean VS Code environment; open real C++ consumer projects and compare diagnostics/status/versions/evidence links with CLI/API/SARIF. Verify stale-run replacement, cancellation, configuration errors and no hidden project command execution. MCP clients see identical results and capability limits. A clean agent session uses documented installed commands; loading skill text is never claimed to install the analyzer. Verify exact Release C artifacts; publication/submission separately authorized."
+    },
+    {
+      "id": "R9",
+      "scope": "Release qualification gates at A, B and C, not a substitute for feature work",
+      "depends_on": ["R2"],
+      "apply_at_release_boundaries": ["R4", "R6", "R8"],
+      "kind": "Verification and usability evidence",
+      "work": "Apply relevant gates to each actual candidate as its release boundary is reached: full shared checks, meaningful regression/corpus/resource review, installed core/optional packages, schemas/migrations, generated docs, dependency refresh, checksums/notices/SBOM, API/browser/PDF and Docker volume extraction. Qualify Linux GCC and Clang/libclang; Windows MinGW and MSVC and macOS separately before advertising them; verify declared Python and analyzed-standard combinations. Record observed setup effort, review burden and useful developer decisions against existing scripts/tools.",
+      "acceptance": "Candidate manifests tie source tree, artifact hashes, environment and actual command results together. Docker/Compose one-shot services terminate successfully, long-lived API/dashboard remain usable, and host-visible outputs use the declared bind mounts or are extracted where named volumes apply, then validated. Unsupported environments remain explicit limitations. Upgrade/rollback preserves prior artifacts; no forced updates. User usefulness, detector correctness, performance and certification are separate claims with separate evidence. Publication is a final separately authorized action on those same verified bytes."
+    },
+    {
+      "id": "R10",
+      "scope": "Organization and portfolio expansion (all M8-01–05)",
+      "depends_on": ["R5", "R6", "R7", "R8"],
+      "kind": "Unimplemented proposed expansion, not defects in initial demo",
+      "work": "Write provider/data sub-specifications, then implement team alignment and historical ownership; multi-repository portfolio/goals/schedules; branch/delivery analytics; issue-tracker and cost/ROI views; report/notification adapters. Keep explicit access and delivery configuration.",
+      "acceptance": "Identity/team-history changes are explained; project and aggregate totals reproduce; branch/merge/task/window semantics handle missing data; provider contract tests pass; estimated costs are distinguished from observed data; delivery outcomes are recorded. External writes/messages require their own authorization."
+    },
+    {
+      "id": "R11",
+      "scope": "Advanced optional expansion (all M9-01–05)",
+      "depends_on": ["R6", "R8"],
+      "kind": "Unimplemented proposed expansion requiring detailed sub-specifications",
+      "work": "Implement narrow deterministic fix/dry-run patches first, then separately designed semantic AI refactoring/PR repair; API/ABI/fuzzing/dependency adapters; additional analyzed languages; SSO/RBAC and optional managed hosting. Independent features need only their relevant preceding capabilities rather than an artificial dependency on every organization feature.",
+      "acceptance": "Fixes are precise/idempotent/reviewable with compilation and relevant behavior tests. AI repair has language-specific behavioral validation and failure handling before promotion. Each adapter/language has real supported-format/version fixtures and calibration. Identity/hosting has explicit access/data-ownership/deployment/cost contracts. No deployment, PR write, marketplace submission or publication occurs without separate authorization."
+    }
+  ],
+  "review_rule": "At each stage present the changed requirement rows, actual failing/passing evidence, exact candidate/source identities and remaining limitations for review. Do not mark a milestone complete from scaffolding, source presence, planned tests or aggregate test counts. Keep M8/M9 visible with their original optional/expansion classification."
+}

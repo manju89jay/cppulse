@@ -1,6 +1,8 @@
 # ── Build outputs ──────────────────────────────────────────────────────────
 analyzer-core/build/
+analyzer-core/build-*/
 cli/build/
+cli/build-*/
 /build/
 *.o
 *.a

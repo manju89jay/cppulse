@@ -1,0 +1,822 @@
+{
+  "findings": [],
+  "metadata": {
+    "analysis": {
+      "enabled_rules": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003",
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-003",
+        "CPP-MOD-004",
+        "CPP-MOD-005",
+        "CPP-MOD-006",
+        "CPP-MOD-007",
+        "CPP-MOD-008",
+        "CPP-MOD-009",
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003",
+        "MISRA-001",
+        "MISRA-002",
+        "MISRA-003",
+        "MISRA-004",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ],
+      "files": [
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build/CMakeFiles/3.31.6/CompilerIdCXX/CMakeCXXCompilerId.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/args.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/chrono.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/color.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/compile.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/core.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/format-inl.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/format.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/os.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/ostream.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/printf.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/ranges.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/std.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-x",
+            "c++-header",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include/fmt/xchar.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 20,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/src/fmt.cc",
+          "status": "partial",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "database",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/src/format.cc",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "database",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-O3",
+            "-DNDEBUG",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/src/os.cc",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/add-subdirectory-test/main.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/args-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/assert-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/chrono-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/color-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/compile-fp-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/compile-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/core-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/cuda-test/cpp14.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/detect-stdfs.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/enforce-checks-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/find-package-test/main.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/format-impl-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/format-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/chrono-duration.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/chrono-timepoint.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/float.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/fuzzer-common.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/main.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/named-arg.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/one-arg.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/fuzzing/two-args.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest/gmock/gmock.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest/gmock-gtest-all.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest/gtest/gtest-spi.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest/gtest/gtest.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest-extra-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest-extra.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/gtest-extra.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/header-only-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/mock-allocator.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/module-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/noexception-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/os-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/ostream-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/posix-mock-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/posix-mock.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/printf-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/ranges-odr-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/ranges-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/scan-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/scan.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/static-export-test/library.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/static-export-test/main.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/std-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/test-assert.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/test-main.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/unicode-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/util.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/util.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/test/xchar-test.cc",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        }
+      ],
+      "parser": {
+        "name": "libclang",
+        "version": "Debian clang version 19.1.7 (3+b1)"
+      }
+    },
+    "analyzed_at": "2026-11-14T10:40:01Z",
+    "file_count": 16,
+    "repo_path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt",
+    "total_loc": 16297
+  },
+  "summary": {
+    "by_category": {
+      "complexity": 0,
+      "memory_safety": 0,
+      "misra": 0,
+      "modernization": 0
+    },
+    "by_severity": {
+      "error": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total_findings": 0
+  },
+  "version": "1.0.0"
+}

@@ -48,10 +48,18 @@
             "parser": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["name", "version"],
+              "required": [
+                "name",
+                "version"
+              ],
               "properties": {
-                "name": {"const": "libclang"},
-                "version": {"type": "string", "minLength": 1}
+                "name": {
+                  "const": "libclang"
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1
+                }
               },
               "description": "Actual native parser identity returned by clang_getClangVersion; not the compiler named by a build recipe."
             },
@@ -101,17 +109,399 @@
                     "minimum": 0
                   },
                   "parse_arguments": {
-                    "type": ["array", "null"],
-                    "items": {"type": "string"},
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "string"
+                    },
                     "description": "Exact ordered arguments passed to clang_parseTranslationUnit, retaining duplicates and working-directory flags; null means no observed parse attempt."
                   },
                   "working_directory": {
-                    "type": ["string", "null"],
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "minLength": 1,
                     "description": "Observed process cwd at the parse call, not an inferred effective directory after Clang argument processing; null means no observed cwd."
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Explicit reason for skipped, excluded, failed or partial work. Absence is retained when reading older prototype reports."
                   }
                 }
               }
+            },
+            "native_metrics": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "version": {
+                  "const": "1.0.0"
+                },
+                "metric_version": {
+                  "const": "cppulse-metrics-1"
+                },
+                "max_token_records": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9223372036854775807
+                },
+                "definitions": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "additionalProperties": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "files": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "path": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "status": {
+                        "enum": [
+                          "analyzed",
+                          "partial",
+                          "failed",
+                          "skipped",
+                          "excluded",
+                          "not_attempted"
+                        ]
+                      },
+                      "error_count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "measurement_complete": {
+                        "type": "boolean"
+                      },
+                      "physical_loc": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "code_loc": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "function_count": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "functions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "symbol": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "identity_kind": {
+                              "enum": [
+                                "usr",
+                                "source-location-fallback"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "kind": {
+                              "enum": [
+                                "function",
+                                "method",
+                                "constructor",
+                                "destructor",
+                                "conversion",
+                                "function_template",
+                                "lambda"
+                              ]
+                            },
+                            "line": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 1
+                            },
+                            "column": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 1
+                            },
+                            "end_line": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 1
+                            },
+                            "end_column": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 1
+                            },
+                            "function_length": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "cyclomatic_complexity": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "nesting_depth": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "parameter_count": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "availability": {
+                              "enum": [
+                                "measured",
+                                "partial",
+                                "unavailable"
+                              ]
+                            },
+                            "limitations": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "required": [
+                            "symbol",
+                            "identity_kind",
+                            "name",
+                            "kind",
+                            "line",
+                            "column",
+                            "end_line",
+                            "end_column",
+                            "function_length",
+                            "cyclomatic_complexity",
+                            "nesting_depth",
+                            "parameter_count",
+                            "availability",
+                            "limitations"
+                          ]
+                        }
+                      },
+                      "token_stream": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "method": {
+                            "const": "cppulse-spelled-tokens-1"
+                          },
+                          "availability": {
+                            "enum": [
+                              "measured",
+                              "partial",
+                              "unavailable"
+                            ]
+                          },
+                          "record_limit": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 9223372036854775807
+                          },
+                          "complete": {
+                            "type": "boolean"
+                          },
+                          "total_tokens": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "retained_tokens": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "records": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "kind": {
+                                  "enum": [
+                                    "punctuation",
+                                    "keyword",
+                                    "identifier",
+                                    "literal"
+                                  ]
+                                },
+                                "spelling": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "line": {
+                                  "type": "integer",
+                                  "minimum": 1
+                                },
+                                "column": {
+                                  "type": "integer",
+                                  "minimum": 1
+                                },
+                                "end_line": {
+                                  "type": "integer",
+                                  "minimum": 1
+                                },
+                                "end_column": {
+                                  "type": "integer",
+                                  "minimum": 1
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "spelling",
+                                "line",
+                                "column",
+                                "end_line",
+                                "end_column"
+                              ]
+                            }
+                          },
+                          "limitations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        },
+                        "required": [
+                          "method",
+                          "availability",
+                          "record_limit",
+                          "complete",
+                          "total_tokens",
+                          "retained_tokens",
+                          "records",
+                          "limitations"
+                        ]
+                      },
+                      "includes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "target": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "target_kind": {
+                              "enum": [
+                                "project",
+                                "external",
+                                "unresolved"
+                              ]
+                            },
+                            "direct": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "target",
+                            "target_kind",
+                            "direct"
+                          ]
+                        }
+                      },
+                      "limitations": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "source_content_sha256": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^[a-f0-9]{64}$",
+                        "description": "SHA-256 of the actual libclang source buffer; null when no buffer was observed."
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "status",
+                      "error_count",
+                      "measurement_complete",
+                      "physical_loc",
+                      "code_loc",
+                      "function_count",
+                      "functions",
+                      "token_stream",
+                      "includes",
+                      "limitations"
+                    ]
+                  }
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "required": [
+                "version",
+                "metric_version",
+                "max_token_records",
+                "definitions",
+                "files",
+                "limitations"
+              ]
             }
           }
         }

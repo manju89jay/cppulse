@@ -14,7 +14,8 @@
 namespace cppulse {
 
 /**
- * @brief Flags function definitions whose body spans too many source lines.
+ * @brief Flags function definitions whose source extent spans too many lines,
+ *        including an uninstantiated template's declaration prefix.
  *
  * Thresholds:
  *  - lines > 80   → warning

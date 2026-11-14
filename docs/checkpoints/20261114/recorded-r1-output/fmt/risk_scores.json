@@ -1,0 +1,212 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-11-14T10:40:03.954739+00:00",
+    "model_type": "heuristic",
+    "profile": "default",
+    "score_model": "weighted-findings-per-attempted-file-v2",
+    "experimental": true,
+    "hotspot_formula": "change_frequency * (max_severity / 3) * findings / max(age_days / 365, 1)",
+    "feature_count": 5,
+    "active_features": [
+      "memory_findings",
+      "complexity_findings",
+      "modernization_findings",
+      "churn_rate",
+      "bug_fix_commits"
+    ],
+    "training_samples": 0,
+    "evaluation_status": "not_evaluated",
+    "evaluation_folds": 0,
+    "fallback_reason": "insufficient_samples",
+    "limitations": [
+      "Full-scope health unavailable: some declared source units were not completely analyzed.",
+      "Shallow history: earlier changes and contributors are unavailable.",
+      "History delta unavailable for e69e5f97: GitCommandError.",
+      "Labels are derived from features; cross-validation is not evidence of future-defect predictive accuracy."
+    ],
+    "f1_score": null,
+    "ranking_scope": {
+      "version": "file-eligibility-1",
+      "declared_files": 16,
+      "ranked_files": 0,
+      "unranked_files": 16
+    },
+    "label_source": "feature_derived_heuristic"
+  },
+  "health_score": {
+    "overall": null,
+    "status": "partial",
+    "by_category": {
+      "memory_safety": null,
+      "modernization": null,
+      "complexity": null
+    }
+  },
+  "file_risks": [],
+  "unranked_files": [
+    {
+      "file": "include/fmt/args.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/chrono.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/color.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/compile.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/core.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/format-inl.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/format.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/os.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/ostream.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/printf.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/ranges.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/std.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "include/fmt/xchar.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "src/fmt.cc",
+      "availability": "partial",
+      "reason_codes": [
+        "partial_analysis",
+        "partial_history"
+      ],
+      "reasons": [
+        "Native analysis status is partial with 20 parse errors.",
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "src/format.cc",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "src/os.cc",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    }
+  ],
+  "hotspots": []
+}

@@ -30,7 +30,10 @@ class ConfigYamlTest : public ::testing::Test {
     std::filesystem::path tmp_dir_;
 
     void SetUp() override {
-        tmp_dir_ = std::filesystem::temp_directory_path() / "cppulse_config_test";
+        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
+        tmp_dir_ = std::filesystem::temp_directory_path() /
+                   (std::string{"cppulse_config_"} + info->name());
+        std::filesystem::remove_all(tmp_dir_);
         std::filesystem::create_directories(tmp_dir_);
     }
 
@@ -186,12 +189,92 @@ TEST_F(ConfigYamlTest, FindConfigReturnsNulloptWhenMissing) {
     EXPECT_FALSE(found.has_value());
 }
 
-TEST_F(ConfigYamlTest, FindConfigPrefersYmlOverJson) {
+TEST_F(ConfigYamlTest, FindConfigRejectsAmbiguousDiscovery) {
     write_temp_file(tmp_dir_, ".cppulserc.yml", "profile: safety-critical\n");
     write_temp_file(tmp_dir_, ".cppulserc.json", "{\"profile\": \"default\"}");
-    auto found = cppulse::find_config(tmp_dir_);
-    ASSERT_TRUE(found.has_value());
-    EXPECT_EQ(found->filename().string(), ".cppulserc.yml");
+    EXPECT_THROW(static_cast<void>(cppulse::find_config(tmp_dir_)), std::runtime_error);
+}
+
+TEST_F(ConfigYamlTest, RejectsUnknownJsonKeyRatherThanIgnoringIt) {
+    auto path = write_temp_file(tmp_dir_, ".cppulserc.json", "{\"profiel\":\"default\"}");
+    EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error);
+}
+
+TEST_F(ConfigYamlTest, RejectsWrongJsonTypesRatherThanApplyingDefaults) {
+    for (const auto& content :
+         {"[]", "{\"profile\":42}", "{\"exclude_paths\":[42]}", "{\"rules\":[]}",
+          "{\"rules\":{\"CPP-MEM-001\":{\"enabled\":\"false\"}}}"}) {
+        auto path = write_temp_file(tmp_dir_, ".cppulserc.json", content);
+        EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error) << content;
+    }
+}
+
+TEST_F(ConfigYamlTest, RejectsUnknownRuleAndProperty) {
+    for (const auto& content : {"{\"rules\":{\"CPP-MEM-999\":{\"enabled\":false}}}",
+                                "{\"rules\":{\"CPP-CX-001\":{\"warn_threshold\":20}}}"}) {
+        auto path = write_temp_file(tmp_dir_, ".cppulserc.json", content);
+        EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error) << content;
+    }
+}
+
+TEST_F(ConfigYamlTest, RejectsUnsupportedYamlRatherThanMisreadingIt) {
+    for (const auto& content : {"profiel: default\n", "profile: &shared default\n",
+                                "rules:\n  CPP-MEM-999:\n    enabled: false\n",
+                                "rules:\n  CPP-MEM-001:\n    enabled: maybe\n",
+                                "rules:\n  CPP-CX-001:\n    warning_threshold: 20garbage\n"}) {
+        auto path = write_temp_file(tmp_dir_, ".cppulserc.yml", content);
+        EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error) << content;
+    }
+}
+
+TEST_F(ConfigYamlTest, PreservesQuotedHashInYamlPath) {
+    auto path = write_temp_file(tmp_dir_, ".cppulserc.yml",
+                                "exclude_paths:\n  - 'vendor#generated/**' # note\n");
+    const auto config = cppulse::load_config(path);
+    ASSERT_EQ(config.exclude_paths.size(), 1u);
+    EXPECT_EQ(config.exclude_paths.front(), "vendor#generated/**");
+}
+
+TEST_F(ConfigYamlTest, PreservesApostropheInsidePlainYamlPath) {
+    auto path = write_temp_file(tmp_dir_, ".cppulserc.yml",
+                                "exclude_paths:\n  - vendor's/generated/** # comment\n");
+    const auto config = cppulse::load_config(path);
+    ASSERT_EQ(config.exclude_paths.size(), 1u);
+    EXPECT_EQ(config.exclude_paths.front(), "vendor's/generated/**");
+}
+
+TEST_F(ConfigYamlTest, RejectsDuplicateYamlKeys) {
+    auto path =
+        write_temp_file(tmp_dir_, ".cppulserc.yml", "profile: default\nprofile: safety-critical\n");
+    EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error);
+}
+
+TEST_F(ConfigYamlTest, RejectsDuplicateJsonKeysAtEachObjectDepth) {
+    for (const auto& content :
+         {"{\"profile\":\"default\",\"profile\":\"safety-critical\"}",
+          "{\"rules\":{\"CPP-MEM-001\":{\"enabled\":true,\"enabled\":false}}}"}) {
+        auto path = write_temp_file(tmp_dir_, ".cppulserc.json", content);
+        EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error) << content;
+    }
+}
+
+TEST_F(ConfigYamlTest, RejectsInvalidThresholdValues) {
+    for (const auto& value : {"-1", "true", "1.5", "2147483648", "\"12\""}) {
+        const auto content =
+            std::string{"{\"rules\":{\"CPP-CX-001\":{\"warning_threshold\":"} + value + "}}}";
+        auto path = write_temp_file(tmp_dir_, ".cppulserc.json", content);
+        EXPECT_THROW(static_cast<void>(cppulse::load_config(path)), std::runtime_error) << content;
+    }
+}
+
+TEST_F(ConfigYamlTest, ParsesFileLimitAndEmptyMappingsInYaml) {
+    auto path =
+        write_temp_file(tmp_dir_, ".cppulserc.yml",
+                        "profile: default\nmax_file_bytes: 1024\nexclude_paths: []\nrules: {}\n");
+    const auto config = cppulse::load_config(path);
+    EXPECT_EQ(config.max_file_bytes, 1024u);
+    EXPECT_TRUE(config.rules.empty());
+    EXPECT_TRUE(config.exclude_paths.empty());
 }
 
 // ---------------------------------------------------------------------------

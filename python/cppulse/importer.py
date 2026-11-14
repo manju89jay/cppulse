@@ -113,6 +113,7 @@ def import_pipeline(
             raise AssertionError(f"Archive changed original {name}")
     return {
         "run_id": snapshot.run_id,
+        "manifest_sha256": snapshot.manifest_sha256,
         "store": str(store.root),
         "input_verification": snapshot.manifest["input_verification"],
         "operation": "archive-import",

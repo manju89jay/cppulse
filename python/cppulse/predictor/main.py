@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import math
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,7 +29,12 @@ from cppulse.contracts import load_schema
 import numpy as np
 import pandas as pd
 
-from .feature_engineer import FEATURE_COLUMNS, FeatureEngineer, relative_identity
+from .feature_engineer import (
+    FEATURE_COLUMNS,
+    FeatureEngineer,
+    RankAvailability,
+    relative_identity,
+)
 from .health_scorer import HealthScorer
 from .model import BugPredictor
 from .roadmap_generator import RoadmapGenerator
@@ -230,15 +236,37 @@ def build_risk_scores(
 
     file_risks: list[dict[str, Any]] = []
     hotspot_scores: list[dict[str, Any]] = []
+    availability = dict(features_df.attrs.get("rank_availability", {}))
+    for file in features_df["file"]:
+        availability.setdefault(
+            file,
+            RankAvailability(
+                file,
+                "unverified",
+                ("missing_rank_scope",),
+                ("No per-file analysis/history inventory establishes ranking inputs.",),
+            ),
+        )
 
     for i, (_, row) in enumerate(features_df.iterrows()):
-        prob = float(probabilities[i]) if i < len(probabilities) else 0.0
+        file = str(row["file"])
+        if not availability[file].eligible:
+            continue
+        prob = float(probabilities[i]) if i < len(probabilities) else None
+        if prob is None or not math.isfinite(prob) or not 0 <= prob <= 1:
+            availability[file] = RankAvailability(
+                file,
+                "unavailable",
+                ("unavailable_model_output",),
+                ("The model did not produce a finite ranking value for this file.",),
+            )
+            continue
         risk_level = _assign_risk_level(prob)
         top_factors = explanations[i]["top_factors"] if i < len(explanations) else []
 
         file_risks.append(
             {
-                "file": str(row["file"]),
+                "file": file,
                 "bug_probability": round(prob, 6),
                 "risk_level": risk_level,
                 "top_factors": top_factors,
@@ -264,6 +292,11 @@ def build_risk_scores(
         if predictor.use_heuristic
         else list(predictor._features)
     )
+    unranked = [
+        entry.unranked_record()
+        for _, entry in sorted(availability.items())
+        if not entry.eligible
+    ]
     return {
         "version": "1.0.0",
         "metadata": {
@@ -285,6 +318,12 @@ def build_risk_scores(
                 if predictor.metrics.f1 is not None
                 else None
             ),
+            "ranking_scope": {
+                "version": "file-eligibility-1",
+                "declared_files": len(file_risks) + len(unranked),
+                "ranked_files": len(file_risks),
+                "unranked_files": len(unranked),
+            },
         },
         "health_score": {
             "overall": round(health.overall, 2) if health.overall is not None else None,
@@ -295,6 +334,7 @@ def build_risk_scores(
             },
         },
         "file_risks": file_risks,
+        "unranked_files": unranked,
         "hotspots": hotspots,
     }
 
@@ -362,13 +402,18 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
 
     logger.info("Training bug predictor...")
     predictor = BugPredictor(profile=profile)
+    eligibility = features_df.attrs["rank_availability"]
+    eligible_mask = (
+        features_df["file"].map(lambda file: eligibility[file].eligible).astype(bool)
+    )
+    training = features_df.loc[eligible_mask].copy()
     label_source = (
         "szz"
-        if features_df["szz_bug_introductions"].sum() > 0
+        if training["szz_bug_introductions"].sum() > 0
         else "feature_derived_heuristic"
     )
-    labels = _derive_labels(features_df, profile=profile)
-    predictor.train(features_df, labels)
+    labels = _derive_labels(training, profile=profile)
+    predictor.train(training, labels)
 
     logger.info("Generating predictions...")
     probabilities = predictor.predict(features_df)

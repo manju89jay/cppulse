@@ -1,0 +1,145 @@
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = NativeMetricsFixture.*
+[==========] Running 20 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 20 tests from NativeMetricsFixture
+[ RUN      ] NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding
+[2026-11-14 16:52:23.670] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.670] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MeasuresOrdinaryFunctionWithoutThresholdFinding/repo
+[2026-11-14 16:52:23.680] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:52:23.680] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_MeasuresOrdinaryFunctionWithoutThresholdFinding/output/findings.json
+[       OK ] NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding (12 ms)
+[ RUN      ] NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters
+[2026-11-14 16:52:23.682] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.682] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters/repo
+[2026-11-14 16:52:23.685] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.685] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters/output/findings.json
+[       OK ] NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters (4 ms)
+[ RUN      ] NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce
+[2026-11-14 16:52:23.687] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.687] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_CountsExpandedSemanticLogicalDecisionsOnce/repo
+[2026-11-14 16:52:23.689] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:52:23.690] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_CountsExpandedSemanticLogicalDecisionsOnce/output/findings.json
+[       OK ] NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce (4 ms)
+[ RUN      ] NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction
+[2026-11-14 16:52:23.692] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.692] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_SeparatesNestedLambdaBodyFromItsEnclosingFunction/repo
+[2026-11-14 16:52:23.695] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:52:23.696] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_SeparatesNestedLambdaBodyFromItsEnclosingFunction/output/findings.json
+[       OK ] NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction (5 ms)
+[ RUN      ] NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction
+[2026-11-14 16:52:23.698] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.698] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_AttributesLambdaCaptureInitializerToEnclosingFunction/repo
+[2026-11-14 16:52:23.700] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:52:23.701] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_AttributesLambdaCaptureInitializerToEnclosingFunction/output/findings.json
+[       OK ] NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction (4 ms)
+[ RUN      ] NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent
+[2026-11-14 16:52:23.702] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.702] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_DistinguishesCommentsBlanksAndPhysicalFunctionExtent/repo
+[2026-11-14 16:52:23.704] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.704] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_DistinguishesCommentsBlanksAndPhysicalFunctionExtent/output/findings.json
+[       OK ] NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent (2 ms)
+[ RUN      ] NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions
+[2026-11-14 16:52:23.705] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.705] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_EmptySourceHasMeasuredZeroScopeAndNoFunctions/repo
+[2026-11-14 16:52:23.706] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.707] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_EmptySourceHasMeasuredZeroScopeAndNoFunctions/output/findings.json
+[       OK ] NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions (2 ms)
+[ RUN      ] NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount
+[2026-11-14 16:52:23.707] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.707] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo
+[2026-11-14 16:52:23.709] [warning] FileAnalyzer: partial AST for '/tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo/source.cpp': /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo/source.cpp:1:10: fatal error: 'missing.hpp' file not found
+[2026-11-14 16:52:23.710] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.710] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/output/findings.json
+[       OK ] NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount (4 ms)
+[ RUN      ] NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget
+[2026-11-14 16:52:23.712] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.712] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_LargeHeaderIsMeasuredUnderConfiguredByteBudget/repo
+[2026-11-14 16:52:23.763] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.763] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_LargeHeaderIsMeasuredUnderConfiguredByteBudget/output/findings.json
+[       OK ] NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget (52 ms)
+[ RUN      ] NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory
+[2026-11-14 16:52:23.764] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.764] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory/repo
+[2026-11-14 16:52:23.766] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.767] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory/output/findings.json
+[       OK ] NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory (4 ms)
+[ RUN      ] NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine
+[2026-11-14 16:52:23.768] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.768] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine/repo
+[2026-11-14 16:52:23.770] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.770] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine/output/findings.json
+[       OK ] NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine (2 ms)
+[ RUN      ] NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration
+[2026-11-14 16:52:23.771] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.771] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_NestingCountsControlDepthAndParameterPackAsOneDeclaration/repo
+[2026-11-14 16:52:23.774] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.774] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_NestingCountsControlDepthAndParameterPackAsOneDeclaration/output/findings.json
+[       OK ] NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration (5 ms)
+[ RUN      ] NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns
+[2026-11-14 16:52:23.776] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.776] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/repo
+[2026-11-14 16:52:23.778] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.778] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/output/findings.json
+[2026-11-14 16:52:23.779] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.779] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/repo
+[2026-11-14 16:52:23.781] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.781] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/output/findings.json
+[       OK ] NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns (6 ms)
+[ RUN      ] NativeMetricsFixture.SourceFingerprintMatchesObservedBytesAndChangesWithSource
+[2026-11-14 16:52:23.783] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.783] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_SourceFingerprintMatchesObservedBytesAndChangesWithSource/repo
+[2026-11-14 16:52:23.784] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.785] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_SourceFingerprintMatchesObservedBytesAndChangesWithSource/output/findings.json
+[2026-11-14 16:52:23.785] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.785] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_SourceFingerprintMatchesObservedBytesAndChangesWithSource/repo
+[2026-11-14 16:52:23.787] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.787] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_SourceFingerprintMatchesObservedBytesAndChangesWithSource/output/findings.json
+[       OK ] NativeMetricsFixture.SourceFingerprintMatchesObservedBytesAndChangesWithSource (5 ms)
+[ RUN      ] NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements
+[2026-11-14 16:52:23.788] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.788] [info] FileAnalyzer: found 2 file(s) under /tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/repo
+[2026-11-14 16:52:23.788] [warning] FileAnalyzer: skipping '/tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/repo/source.cpp': 26 bytes exceed max_file_bytes=1
+[2026-11-14 16:52:23.788] [info] FileAnalyzer: excluded 1 file(s) by config
+[2026-11-14 16:52:23.788] [info] FileAnalyzer: analysis complete — 0 file(s), 0 finding(s)
+[2026-11-14 16:52:23.789] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/output/findings.json
+[       OK ] NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements (1 ms)
+[ RUN      ] NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation
+[2026-11-14 16:52:23.790] [info] Loading config from: /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/config.json
+[2026-11-14 16:52:23.790] [info] Config loaded: profile=default, exclude_paths=0, rule_overrides=0, max_file_bytes=16777216
+[2026-11-14 16:52:23.790] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.790] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/repo
+[2026-11-14 16:52:23.792] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.792] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/output/findings.json
+[       OK ] NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation (2 ms)
+[ RUN      ] NativeMetricsFixture.TokenRecordConfigurationRejectsInvalidBoundsAndTypes
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationRejectsInvalidBoundsAndTypes/config.json
+[       OK ] NativeMetricsFixture.TokenRecordConfigurationRejectsInvalidBoundsAndTypes (0 ms)
+[ RUN      ] NativeMetricsFixture.TokenRecordConfigurationAcceptsBothInclusiveBounds
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationAcceptsBothInclusiveBounds/config.json
+[2026-11-14 16:52:23.793] [info] Config loaded: profile=default, exclude_paths=0, rule_overrides=0, max_file_bytes=16777216
+[2026-11-14 16:52:23.793] [info] Loading config from: /tmp/cppulse_metrics_TokenRecordConfigurationAcceptsBothInclusiveBounds/config.json
+[2026-11-14 16:52:23.793] [info] Config loaded: profile=default, exclude_paths=0, rule_overrides=0, max_file_bytes=16777216
+[       OK ] NativeMetricsFixture.TokenRecordConfigurationAcceptsBothInclusiveBounds (0 ms)
+[ RUN      ] NativeMetricsFixture.DefaultTokenRecordBudgetIsExplicitInEveryStream
+[2026-11-14 16:52:23.793] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.793] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_DefaultTokenRecordBudgetIsExplicitInEveryStream/repo
+[2026-11-14 16:52:23.795] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:52:23.795] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_DefaultTokenRecordBudgetIsExplicitInEveryStream/output/findings.json
+[       OK ] NativeMetricsFixture.DefaultTokenRecordBudgetIsExplicitInEveryStream (5 ms)
+[ RUN      ] NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets
+[2026-11-14 16:52:23.799] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:52:23.799] [info] FileAnalyzer: found 2 file(s) under /tmp/cppulse_metrics_IncludeEdgesIdentifyProjectAndExternalTargets/repo
+[2026-11-14 16:52:23.803] [info] FileAnalyzer: analysis complete — 2 file(s), 0 finding(s)
+[2026-11-14 16:52:23.804] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_IncludeEdgesIdentifyProjectAndExternalTargets/output/findings.json
+[       OK ] NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets (6 ms)
+[----------] 20 tests from NativeMetricsFixture (136 ms total)
+
+[----------] Global test environment tear-down
+[==========] 20 tests from 1 test suite ran. (136 ms total)
+[  PASSED  ] 20 tests.

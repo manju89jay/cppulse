@@ -35,6 +35,8 @@ _SUPPORTED = {
     "minimum_analysis_coverage",
     "minimum_coverage",
     "sanitizer_outcome",
+    "metric_threshold",
+    "reviewed_evidence",
 }
 _APPLICABLE = {"application", "library", "header-only"}
 EVALUATOR_VERSION = "1.0.0"
@@ -895,6 +897,14 @@ def evaluate_policy(
                 result = _sanitizer(
                     control, bundle, evidence, receipts, files, requested, now
                 )
+            elif control["kind"] == "metric_threshold":
+                from cppulse.policy_extensions import metric_threshold
+
+                result = metric_threshold(control, bundle, files, requested)
+            elif control["kind"] == "reviewed_evidence":
+                from cppulse.policy_extensions import reviewed_evidence
+
+                result = reviewed_evidence(control, bundle, files, requested, now)
             else:
                 result = _parse_coverage(control, analysis, files, requested)
             for evidence_id in result.evidence_ids:
@@ -946,7 +956,7 @@ def evaluate_policy(
             "context_ids": list(requested),
             "incomplete": result.incomplete,
         }
-        if control["kind"] in {"minimum_coverage", "sanitizer_outcome"}:
+        if control["kind"] in {"minimum_coverage", "sanitizer_outcome", "metric_threshold"}:
             evaluated[identifier]["fact_ids"] = list(result.fact_ids)
         for dependent in reverse[identifier]:
             degree[dependent] -= 1
@@ -983,9 +993,13 @@ def evaluate_policy(
             "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
         ],
     }
-    if evaluator_version == "1.1.0":
+    if evaluator_version in {"1.1.0", "1.2.0"}:
         assessment["limitations"].append(
             "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        )
+    if evaluator_version == "1.2.0":
+        assessment["limitations"].append(
+            "Review decisions and quorums count self-declared configured identifiers, not authenticated people or proof of independent review; numeric thresholds cover only supplied observed metric/file/job cells."
         )
     validate_bundle({**bundle, "assessment": assessment})
     return assessment

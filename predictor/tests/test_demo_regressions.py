@@ -55,13 +55,26 @@ def test_explicit_default_is_distinct_from_omitted_profile() -> None:
 def test_run_writes_valid_profile_specific_outputs(tmp_path: Path) -> None:
     """Exercise schema inputs, training fallback, roadmap and result serialization."""
     import json
+    from copy import deepcopy
     from tests.test_feature_engineer import SAMPLE_FINDINGS, SAMPLE_GIT_METRICS
     from src.main import run
 
-    for name, data in [
-        ("findings", SAMPLE_FINDINGS),
-        ("git_metrics", SAMPLE_GIT_METRICS),
-    ]:
+    findings = deepcopy(SAMPLE_FINDINGS)
+    findings["metadata"]["analysis"] = {
+        "enabled_rules": ["CPP-MEM-001", "CPP-MOD-004", "MISRA-001", "CPP-CX-013"],
+        "files": [
+            {
+                "path": "/repo/" + file,
+                "status": "analyzed",
+                "compile_context": "database",
+                "error_count": 0,
+            }
+            for file in ["src/foo.cpp", "src/bar.cpp", "src/baz.cpp"]
+        ],
+    }
+    history = deepcopy(SAMPLE_GIT_METRICS)
+    history["metadata"]["history_status"] = "available"
+    for name, data in [("findings", findings), ("git_metrics", history)]:
         (tmp_path / f"{name}.json").write_text(json.dumps(data))
     for profile in ["default", "safety-critical"]:
         output = tmp_path / profile

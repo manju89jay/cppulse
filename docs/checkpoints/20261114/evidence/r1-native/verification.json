@@ -1,0 +1,116 @@
+{
+  "recorded_at": "2026-11-14T10:30:27.284260+00:00",
+  "source_base": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "stage": "R1 native detector defects",
+  "git_writes": false,
+  "implementation_files_finished": true,
+  "changes": [
+    "CPP-MOD-005 inspects written Auto type through pointer/reference wrappers; already-auto, const auto, decltype(auto), macro and nested initializer cases remain correctly distinguished.",
+    "CPP-CX-001 counts semantic logical AST nodes once, including alternative tokens and macro expansions, with nested callable/default-argument scope separation.",
+    "Uninstantiated function/member templates are handled by complexity, source-length and declared-parameter checks.",
+    "Lambda capture initializers omitted by libclang visitation are recovered through actual token annotations and maximal expression-root traversal; nested lambda bodies and overloaded operators stay excluded."
+  ],
+  "checks": [
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "analyzer-core/build",
+        "-j",
+        "4"
+      ],
+      "status": "passed",
+      "log": "review/production-20261114/r1-native/final-build.log"
+    },
+    {
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "analyzer-core/build",
+        "--output-on-failure",
+        "--no-tests=error",
+        "-R",
+        "RuleRegressionFixture"
+      ],
+      "phase": "pre-fix",
+      "expected_exit": 8,
+      "result": "7/7 regression cases failed before production edits",
+      "log": "review/production-20261114/r1-native/red-ctest.log"
+    },
+    {
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "analyzer-core/build",
+        "--output-on-failure",
+        "--no-tests=error",
+        "-R",
+        "RuleRegressionFixture"
+      ],
+      "phase": "post-fix",
+      "exit_code": 0,
+      "result": "13/13 meaningful regression/neighboring cases passed",
+      "elapsed_seconds": 0.38,
+      "log": "review/production-20261114/r1-native/final-regressions.log"
+    },
+    {
+      "tool": "clang-format",
+      "version": "19.1.7",
+      "result": "owned implementation/header/test source formatted"
+    }
+  ],
+  "test_authoring_note": "Initial fixture test compile used two incorrect setter names; corrected before the retained product red run. This was not counted as a product defect or passing verification.",
+  "limits": [
+    "Named libclang header/runtime qualified here:19.1.7 only. Semantic binary-opcode API availability on other target pairs requires qualification.",
+    "This corrects existing threshold-rule behavior; it does not implement the complete measured metrics pipeline or emit independent lambda-body metrics.",
+    "Focused tests are not full native/Python/integration or performance qualification; root is coordinating final full native gate.",
+    "Token annotation recovery is source-range based and conservatively ignores unavailable/non-local ranges; arbitrary template instantiations and all macro configurations are not exhaustively verified."
+  ],
+  "decision_for_root": "Version CPP-MOD-005 and CPP-CX-001/002/003 detector semantics with generated registry/docs; disclose named libclang qualification. Keep decision text centralized; no concurrent DECISIONS edit.",
+  "files": [
+    {
+      "path": "analyzer-core/src/rules/modernization/auto_usage.cpp",
+      "sha256": "8725d46685d46281dc75ab21a183aa821c64847bdf05f892abaaf72a9a57ee69"
+    },
+    {
+      "path": "analyzer-core/src/rules/modernization/auto_usage.h",
+      "sha256": "8f9c7f66bc77d2946aea605e587b13c4ab8baa13538e1f89f22f4cc8d5c879bb"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/cyclomatic_complexity.cpp",
+      "sha256": "cc72edb0a537be65c2f4258a0c8f4ad8d4b65e240ed905b2d5cf1c534c555eab"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/cyclomatic_complexity.h",
+      "sha256": "669d0fa8fc2b6d8aeaab5af33689e36d5453293719bb766e5c6fbaad1e837b7a"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/function_length.cpp",
+      "sha256": "4dc6b4daa7176ebd92e73dd85e9351066f7f14445058bf1f13ff82d65c7ae978"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/function_length.h",
+      "sha256": "010a92dbdffecaf7416aeb0ec3612c8e2abcd834ecea542c1495b6e0d18ac74b"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/parameter_count.cpp",
+      "sha256": "b70e834d0b6de1dd4bbdb0f54b47310412f043ecf2e5ba8c3de4588b07e46a97"
+    },
+    {
+      "path": "analyzer-core/src/rules/complexity/parameter_count.h",
+      "sha256": "4ea27993a334bb7ba83b71d72144d1ffa56cab90bb75250e4290dcb1933c1f4d"
+    },
+    {
+      "path": "analyzer-core/tests/test_rule_regressions.cpp",
+      "sha256": "8cef30617e04ad8023d6fb402797597d4a4f2bbe455ae5bb321dc5d21953adf2"
+    },
+    {
+      "path": "analyzer-core/tests/fixtures/iterator_deduction_regressions.cpp",
+      "sha256": "d2b5ad4dec7ad08d64f545a7fc65851a8bdaee29aea8f066bbbddff38979990b"
+    },
+    {
+      "path": "analyzer-core/tests/fixtures/complexity_regressions.cpp",
+      "sha256": "0f95e8b9a521c45c9c0de9b63cb24f9c170267154726b6a3c634b26d4b562e98"
+    }
+  ]
+}

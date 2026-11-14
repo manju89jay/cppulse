@@ -6,7 +6,7 @@ from copy import deepcopy
 from typing import Any
 
 from cppulse.contracts import validate
-from cppulse.errors import CompatibilityError, UnsupportedVersion
+from cppulse.errors import CompatibilityError, ContractError, UnsupportedVersion
 
 
 def read_prototype_document(kind: str, document: dict[str, Any]) -> dict[str, Any]:
@@ -43,6 +43,13 @@ def read_risk_scores(
         return deepcopy(document)
     if version != "1.0.0":
         raise UnsupportedVersion(f"Cannot read risk_scores version {version!r}")
+    if not allow_prototype_v1 and (
+        "unranked_files" in document or "ranking_scope" in document.get("metadata", {})
+    ):
+        raise ContractError(
+            "Per-file availability uses the unreleased prototype contract; select the explicit prototype reader.",
+            code="EXPLICIT_PROTOTYPE_READER_REQUIRED",
+        )
     validate(
         "risk_scores",
         document,
@@ -114,6 +121,10 @@ def read_risk_scores(
     }
     if "feature_count" in metadata:
         result["metadata"]["legacy_reported_feature_count"] = metadata["feature_count"]
+    if allow_prototype_v1 and "unranked_files" in document:
+        result["unranked_files"] = deepcopy(document["unranked_files"])
+    if allow_prototype_v1 and "ranking_scope" in metadata:
+        result["metadata"]["ranking_scope"] = deepcopy(metadata["ranking_scope"])
     validate("risk_scores", result)
     return result
 
@@ -125,6 +136,11 @@ def export_legacy_risk_scores(document: dict[str, Any]) -> dict[str, Any]:
     in the original v1 probability/numeric-health contract. Callers can keep
     an original valid v1 object unchanged, but cannot silently downgrade v2.
     """
+    if "unranked_files" in document or "ranking_scope" in document.get("metadata", {}):
+        raise CompatibilityError(
+            "Per-file ranking availability cannot be exported as the original legacy risk contract.",
+            code="LEGACY_EXPORT_NOT_REPRESENTABLE",
+        )
     if document.get("version") == "1.0.0":
         validate("risk_scores", document, version="1.0.0")
         return deepcopy(document)

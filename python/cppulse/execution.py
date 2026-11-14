@@ -110,7 +110,8 @@ class CollectionResult:
 
 
 @dataclass
-class _ProcessOutcome:
+class ProcessOutcome:
+    """Observed process exit and bounded log capture, without inferred resources."""
     status: str
     reason: str
     returncode: int | None
@@ -119,6 +120,10 @@ class _ProcessOutcome:
     captured_bytes: int = 0
     limitations: list[str] = field(default_factory=list)
 
+
+
+# Retained for existing private callers.
+_ProcessOutcome = ProcessOutcome
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -393,6 +398,37 @@ def _signal_group(process_id: int, value: int) -> None:
         os.killpg(process_id, value)
     except ProcessLookupError:
         pass
+
+
+def run_bounded_process(
+    argv: list[str],
+    *,
+    cwd: Path,
+    stdout: BinaryIO,
+    stderr: BinaryIO,
+    timeout_seconds: float,
+    limits: ProcessLimits | None = None,
+    cancel: CancellationToken | None = None,
+    environment: dict[str, str] | None = None,
+) -> ProcessOutcome:
+    """Run actual argv with wall/log bounds and owned POSIX group cancellation.
+
+    This primitive makes no CPU or memory enforcement claim. Native producers
+    must apply and report their own guards before doing analysis work.
+    """
+    if os.name != "posix":
+        raise ContractError("Bounded process supervision is qualified only on POSIX")
+    if not argv or any(not isinstance(item, str) or "\x00" in item for item in argv):
+        raise ContractError("An explicit nonempty argv without NUL is required")
+    if isinstance(timeout_seconds, bool) or not isinstance(timeout_seconds, (int, float)) or not math.isfinite(timeout_seconds) or timeout_seconds <= 0:
+        raise ContractError("timeout_seconds must be finite and positive")
+    selected_cancel = cancel or CancellationToken()
+    if selected_cancel.is_cancelled():
+        return ProcessOutcome("cancelled", "Cancellation requested before launch", None)
+    return _run_process(
+        {"argv": argv, "timeout_seconds": timeout_seconds, "environment": environment or {}},
+        cwd, stdout, stderr, limits or ProcessLimits(), selected_cancel,
+    )
 
 
 def _run_process(

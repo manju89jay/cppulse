@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-11-14T10:39:47.154486+00:00",
+  "scope": "R1 unavailable-ranking and insufficient-history consumers",
+  "source_sha256": {
+    "python/cppulse/report_engine/api.py": "f04f44a790f9766df61834e776ae28ca32d2477be14a3406cbf79d10a1d3da08",
+    "python/cppulse/report_engine/pdf_generator.py": "252a28662a5c83cdb5ba2309af386f400c09582d4d8d221b17d1803945dcf9aa",
+    "python/cppulse/report_engine/templates/report.html": "d4b63efd539c640f511f540ce4439a0978c81ae3ede0a0383a8dbbb5e2f8ee2c",
+    "python/cppulse/report_engine/templates/snapshot.html": "71184178d124f847a06aa2a5ba1cc975fa3ff95af734b7a95347cccc46ccd386",
+    "dashboard/src/App.tsx": "93cf68009471762f50a35a39ae4a3b1ba29fd85ae651597361ab7341dd5c8c38",
+    "dashboard/src/api/client.ts": "e9a5746b86a561dfaa3dfa4df1e1fac43b0ae4a01f8c445ff98f01a48492fa56",
+    "dashboard/src/types/index.ts": "230eb25533ed622f8c63f7cc6e9aada31c5c0ef8fdb50dcf74073b5e00492b60",
+    "dashboard/src/components/RiskPrediction.tsx": "abd7f770aaeb179a27ba05e9c67372420f2ed06992cdf095a2d41d65bb7b8cc1",
+    "dashboard/src/components/SiloAlerts.tsx": "0ef8ead25609d7e6803394ed110ef8b4f70cbfc0d9e30d5cfb4c04aaaa3d0098"
+  },
+  "contract": "Additive v1API fields retain observed numeric items/total; unavailable files and history availability are separate. Raw retained data remains unchanged.",
+  "red": [
+    {
+      "log": "red-python.log",
+      "result": "10failed: API metadata and legacy/snapshotreport behavior"
+    },
+    {
+      "log": "red-dashboard.log",
+      "result": "5failed/15passed: unavailablefile adaptation/rendering and unknownhistory"
+    }
+  ],
+  "green": [
+    {
+      "log": "green-python-focused.log",
+      "result": "26passed: availability consumers and existing snapshot presentation"
+    },
+    {
+      "log": "report-engine-tests.log",
+      "command": "python -m pytest -v --cov=src --cov=cppulse.report_engine --cov-report=term-missing tests/ (cwd report-engine)",
+      "result": "125passed; combinedcanonical/legacy coverage94%;20 third-partydeprecationwarnings"
+    },
+    {
+      "log": "green-snapshot-contracts.log",
+      "result": "77passed; snapshot/rawdocumentcompatibility and packagedpresentation contracts"
+    },
+    {
+      "log": "dashboard-tests.log",
+      "command": "npm test (cwd dashboard)",
+      "result": "57passed across8files"
+    },
+    {
+      "log": "dashboard-build.log",
+      "command": "npm run build (cwd dashboard)",
+      "result": "passed; existingbundle-size/browserslist/buildtooldeprecationwarnings retained"
+    },
+    {
+      "log": "packaged-dashboard-assets.log",
+      "command": "python scripts/build_dashboard_assets.py",
+      "result": "passed;3packagedfiles;currentdashboard source/lock hashes verified"
+    }
+  ],
+  "independent_review": "independent-source-review.json: no blocking source issue; doesnotclaim separate runtime rerun.",
+  "actual_fresh_integration": {
+    "status": "passed",
+    "record": "actual-utfcpp-retry/verification.json",
+    "selected_data": "output/production-r1-real-20261114-retry/utfcpp",
+    "result": "Actual API/package assets/browser:0ranked7unranked,partialhistory0observedsilos; reasonsvisible,nobrowsererrors. DownloadedPDF42958B,9nonemptypages,all7sections.",
+    "producer_boundary": "Root full native/predictor pipeline retry supplies selectedinputfacts; this presentation verifier hashes those documents and performs no additional native scan."
+  },
+  "limitations": [
+    "No fullscalability/historypaging implementation claimed. Report/UI show first50 unavailablefiles with counts and explicittruncation; complete records remaininJSON/API.",
+    "Historical predictionheadings retainedwith experimentaldisclaimers.",
+    "No commitorpush/refchanges; edits uncommitted."
+  ]
+}

@@ -68,6 +68,22 @@ export interface FileRisk {
   top_factors: string[];
 }
 
+export interface UnrankedFile {
+  file: string;
+  availability: "partial" | "unverified" | "unavailable";
+  reason_codes: string[];
+  reasons: string[];
+}
+
+export interface RankingScope {
+  version: "file-eligibility-1";
+  declared_files: number;
+  ranked_files: number;
+  unranked_files: number;
+}
+
+export type GitHistoryStatus = "available" | "partial" | "unavailable" | "unverified";
+
 export interface Hotspot {
   file: string;
   hotspot_score: number;
@@ -79,6 +95,8 @@ export interface Hotspot {
 export interface RiskScores {
   health_score: HealthScore;
   file_risks: FileRisk[];
+  unranked_files?: UnrankedFile[];
+  ranking_scope?: RankingScope | null;
   hotspots: Hotspot[];
 }
 
@@ -96,13 +114,14 @@ export interface RoadmapItem {
 // Summary type returned by report-engine API
 
 export interface Summary {
-  model_metadata?: {model_type: string; profile: string; experimental: boolean; limitations?: string[]};
+  model_metadata?: {model_type: string; profile: string; experimental: boolean; limitations?: string[]; ranking_scope?: RankingScope};
   repository: string;
   analysis_date: string;
   health_score: HealthScore;
   total_findings: number;
   critical_files: number;
   knowledge_silos: number;
+  knowledge_silos_status?: GitHistoryStatus;
 }
 
 export interface ArtifactDescriptor {
@@ -138,12 +157,16 @@ export interface LegacyRisks {
   file_risks: (Omit<FileRisk, "top_factors"> & {
     top_factors: { feature: string; importance: number; value: number }[];
   })[];
+  unranked_files?: UnrankedFile[];
   hotspots: Hotspot[];
 }
 
 export interface LegacySlots {
   findings: Pick<StoredDocument<LegacyFindings>, "document"> | null;
-  git_metrics: Pick<StoredDocument<{ knowledge_silos: (KnowledgeSilo & { last_commit_date: string })[] }>, "document"> | null;
+  git_metrics: Pick<StoredDocument<{
+    metadata?: { history_status?: GitHistoryStatus; limitations?: string[] };
+    knowledge_silos: (KnowledgeSilo & { last_commit_date: string })[];
+  }>, "document"> | null;
   risk_scores: Pick<StoredDocument<LegacyRisks>, "document"> | null;
   roadmap: Pick<StoredDocument<{ items: RoadmapItem[] }>, "document"> | null;
 }

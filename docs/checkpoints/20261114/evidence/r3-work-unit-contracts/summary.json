@@ -1,0 +1,27 @@
+{
+  "status": "draft contracts/design only; no scheduler/cache/index runtime implemented",
+  "files": [
+    "docs/contracts/work-units.md",
+    "docs/schemas/drafts/work_units/work_request.schema.json",
+    "docs/schemas/drafts/work_units/work_result.schema.json",
+    "docs/schemas/drafts/work_units/cache_entry.schema.json",
+    "docs/schemas/drafts/work_units/query_cursor.schema.json",
+    "tests/test_work_unit_draft_contracts.py"
+  ],
+  "checks": {
+    "initial_invocation": "Pytest reserved fixture name corrected; initial-invocation-error.log retained",
+    "red": "18 failed before draft schemas existed; red.log",
+    "green": "23 passed after canonical-path countercases; final-tests.log",
+    "format": "final-format.log",
+    "lint": "final-lint.log",
+    "record": "check-results.json records exact argv/returncodes"
+  },
+  "scope": "Structural contracts reference existing v2 context/artifact/receipt definitions. No production validator registration or shared runtime/source edits. Semantics such as dependency completeness and current input binding require producer+consumer tests before positive reuse.",
+  "native_test_isolation": "ConfigYamlTest per-test temporary roots; 24 cases passed with ctest -j4; review/production-20261114/r2-native-test-isolation/ctest-parallel.log",
+  "open_contract_decisions": [
+    "Checked reuse profile/lineage preserving original receipts, no promotion of runtime evidence",
+    "Selected-file native producer/normalizer extension and separate authorized source/work roots",
+    "Named-platform early native budget flags and measurements before AST execution",
+    "Streaming canonical identity/ingestion and pinned indexed reads"
+  ]
+}

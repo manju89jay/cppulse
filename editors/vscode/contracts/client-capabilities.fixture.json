@@ -1,0 +1,9 @@
+{
+  "contract_version": "1.0.0",
+  "tool_version": "0.2.0.dev2",
+  "snapshot_view_versions": ["2.0.0"],
+  "sarif_versions": ["2.1.0"],
+  "sarif_column_kinds": ["unicodeCodePoints"],
+  "commands": ["doctor", "init", "config", "analyze", "watch", "report", "collect", "assess", "check", "explain", "baseline", "export-sarif", "compare", "diagnostics", "serve", "scaffold", "capabilities"],
+  "execution_on_open": false
+}

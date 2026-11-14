@@ -1,5 +1,11 @@
 # cppulse staged implementation and review plan
 
+> Scope update, 2026-11-14: the user now requires completion planning for the
+> FULL production specification without narrowing. The earlier S0–S7 execution
+> limit below is historical and is superseded by
+> [the full production completion plan](cppulse-production-completion-plan.md).
+> All M0–M9 tasks remain tracked; later releases are not a stopping boundary.
+
 Date: 2026-11-13. Status: Core S0-S7 authorized for autonomous execution; later stages remain roadmap items.
 
 The subsequent autonomous-execution instruction replaces manual blocking reviews for the core track with technical self-reviews and retained review packets. Genuine access blockers and external publication decisions remain separate.

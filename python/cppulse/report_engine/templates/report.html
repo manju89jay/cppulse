@@ -211,8 +211,14 @@
   <h2>5. Knowledge Silo Alerts</h2>
   <p style="font-size:9pt; color:#6b7280;">
     Files where only one contributor has committed in the last 12 months.
-    These represent bus-factor risk.
+    Authorship is a knowledge proxy and does not establish expertise or bus factor.
   </p>
+
+  {% if history_status != "available" %}
+  <p>Insufficient history for a complete knowledge assessment. History status: {{ history_status }}.
+    Observed alerts below describe only the retained history; an empty list cannot establish absent knowledge risk.</p>
+  {% if history_limitations %}<ul>{% for limitation in history_limitations %}<li>{{ limitation }}</li>{% endfor %}</ul>{% endif %}
+  {% endif %}
 
   {% if silos %}
   <table>
@@ -241,8 +247,8 @@
       {% endfor %}
     </tbody>
   </table>
-  {% else %}
-  <p style="color:#9ca3af; font-style:italic;">No knowledge silos detected.</p>
+  {% elif history_status == "available" %}
+  <p style="color:#9ca3af; font-style:italic;">No single-contributor alerts in the available history.</p>
   {% endif %}
 
   <!-- ══════════════════════════════════════════════════════════
@@ -253,6 +259,8 @@
   <p style="font-size:9pt; color:#6b7280;">
     Model: {{ model_metadata.get("model_type", "unknown") }}. Uncalibrated experimental ranking, not a measured probability of future defects. Factors may be global importance proxies.
   </p>
+  {% if ranking_scope %}<p>Declared files: {{ ranking_scope.declared_files }};
+    ranked: {{ ranking_scope.ranked_files }}; without a usable rank: {{ ranking_scope.unranked_files }}.</p>{% endif %}
 
   {% if file_risks %}
   <table>
@@ -290,6 +298,16 @@
   </table>
   {% else %}
   <p style="color:#9ca3af; font-style:italic;">No risk score data available.</p>
+  {% endif %}
+
+  {% if unranked_files %}
+  <h3>Files without a usable rank</h3>
+  <p>Showing {{ unranked_files|length }} of {{ unranked_total }} unavailable files.
+    These files receive no numeric score or low-risk label. Complete records remain in risk_scores.json.</p>
+  <table><thead><tr><th>File</th><th>Availability</th><th>Reason</th></tr></thead><tbody>
+    {% for item in unranked_files %}<tr><td class="file-path">{{ item.file }}</td><td>{{ item.availability }}</td>
+      <td>{{ item.reason_codes|join(', ') }}<br>{{ item.reasons|join(' ') }}</td></tr>{% endfor %}
+  </tbody></table>
   {% endif %}
 
   <!-- ══════════════════════════════════════════════════════════

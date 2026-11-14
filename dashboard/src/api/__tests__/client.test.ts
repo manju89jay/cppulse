@@ -1,5 +1,5 @@
 import { it, expect, vi, afterEach } from "vitest";
-import { fetchArtifact, fetchSnapshotReport, fetchSnapshotView, fetchFindings, fetchHotspots, fetchRisks, fetchRoadmap, fetchSilos, fetchSummary } from "../client";
+import { fetchArtifact, fetchSnapshotReport, fetchSnapshotView, fetchFindings, fetchHotspots, fetchRisks, fetchRoadmap, fetchSilos, fetchSummary, legacySections } from "../client";
 import type { SnapshotView } from "../../types";
 afterEach(() => vi.unstubAllGlobals());
 it("adapts actual API envelopes, nested scores and factor objects", async () => {
@@ -73,4 +73,28 @@ it("refuses a partial run selection before making any request", async () => {
   const fetcher=vi.fn();vi.stubGlobal("fetch",fetcher);
   await expect(fetchSnapshotView({runId:"selected-run"})).rejects.toThrow(/both/);
   expect(fetcher).not.toHaveBeenCalled();
+});
+
+it("preserves unavailable files through the risk API adapter", async () => {
+  const unavailable = [{file:"src/incomplete.hpp",availability:"partial",reason_codes:["PARTIAL_ANALYSIS"],reasons:["Selected parse failed."]}];
+  const payloads:Record<string, unknown> = {
+    summary:{health_score:{overall:null,status:"partial",by_category:{}},findings_summary:{total_findings:0},metadata:{repo_path:"/fixture",analyzed_at:"today"}},
+    risks:{items:[],total:0,unranked_files:unavailable,unranked_total:1},
+    hotspots:{items:[],total:0},
+  };
+  vi.stubGlobal("fetch",vi.fn(async(url:string)=>({ok:true,json:async()=>payloads[url.split("/").pop()!]})));
+  expect((await fetchRisks()).unranked_files).toEqual(unavailable);
+});
+
+it("keeps history availability separate from the observed silo count", () => {
+  const result=legacySections({
+    findings:{document:{metadata:{repo_path:"/fixture",analyzed_at:"today"},summary:{total_findings:0},findings:[]}},
+    risk_scores:{document:{health_score:{overall:null,status:"partial",by_category:{}},file_risks:[],unranked_files:[{file:"incomplete.hpp",availability:"partial",reason_codes:["PARTIAL_ANALYSIS"],reasons:["Parse failed."]}],hotspots:[]}},
+    git_metrics:{document:{metadata:{history_status:"partial",limitations:["Shallow history."]},knowledge_silos:[]}},roadmap:null,
+  });
+  expect(result.summary?.knowledge_silos).toBe(0);
+  expect(result.summary?.knowledge_silos_status).toBe("partial");
+  expect(result.historyStatus).toBe("partial");
+  expect(result.historyLimitations).toEqual(["Shallow history."]);
+  expect(result.risks?.unranked_files?.[0].file).toBe("incomplete.hpp");
 });

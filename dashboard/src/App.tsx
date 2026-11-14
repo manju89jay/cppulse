@@ -28,7 +28,7 @@ function Limitations({ values }: { values: string[] }): React.ReactElement {
 function SummaryBanner({ summary }: { summary: Summary }): React.ReactElement {
   return <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 my-4">{[
     ["Repository", summary.repository], ["Total findings", summary.total_findings],
-    ["Critical ranked files", summary.critical_files], ["Knowledge silos", summary.knowledge_silos],
+    ["Critical ranked files", summary.critical_files], ["Knowledge silos", summary.knowledge_silos_status === "available" ? summary.knowledge_silos : "Unavailable"],
   ].map(([label, value]) => <div key={label} className="bg-white rounded-lg shadow p-4"><p className="text-xs text-gray-500 uppercase">{label}</p><p className="text-sm font-semibold mt-2 break-all">{value}</p></div>)}</div>;
 }
 
@@ -186,8 +186,8 @@ export default function App(): React.ReactElement {
     if (activeSection === "artifacts") return snapshot ? <section><h1 className="text-2xl font-bold mb-4">Pinned raw artifacts</h1><p className="text-sm mb-4">Each download selects this exact run and manifest hash. Raw files can contain source, paths or logs.</p><div className="space-y-3">{snapshot.artifacts.map(artifact => <article key={artifact.id} className="bg-white p-4 rounded-lg shadow"><h2 className="font-semibold break-all">{artifact.path}</h2><p className="text-xs break-all" title={artifact.id}>{shortId(artifact.id)}</p><p className="text-xs break-all font-mono">{artifact.sha256}</p><p className="text-xs">{artifact.size_bytes} bytes; {artifact.media_type}</p><button className="mt-2 text-blue-700 underline text-sm" onClick={() => { void download(artifact.id); }}>Download {artifact.path}</button></article>)}</div></section> : <p>Legacy flat compatibility has no pinned artifact downloads.</p>;
     if (activeSection === "findings") return <div className="space-y-6">{snapshot && <TypedObservations view={snapshot} onDownload={id => { void download(id); }}/>} {legacy.findings && <section><h2 className="text-lg font-semibold mb-3">Legacy static findings</h2><FindingsList findings={legacy.findings}/></section>}{!snapshot && !legacy.findings && missing("findings")}</div>;
     if (activeSection === "hotspots") return legacy.hotspots ? <HotspotTable hotspots={legacy.hotspots}/> : missing("risk scores");
-    if (activeSection === "silos") return legacy.silos ? <SiloAlerts silos={legacy.silos}/> : missing("git metrics");
-    if (activeSection === "risks") return legacy.risks ? <RiskPrediction fileRisks={legacy.risks.file_risks}/> : missing("risk scores");
+    if (activeSection === "silos") return legacy.silos ? <SiloAlerts silos={legacy.silos} historyStatus={legacy.historyStatus} limitations={legacy.historyLimitations}/> : missing("git metrics");
+    if (activeSection === "risks") return legacy.risks ? <RiskPrediction fileRisks={legacy.risks.file_risks} unrankedFiles={legacy.risks.unranked_files} rankingScope={legacy.risks.ranking_scope}/> : missing("risk scores");
     return legacy.roadmap ? <Roadmap items={legacy.roadmap}/> : missing("roadmap");
   }
 

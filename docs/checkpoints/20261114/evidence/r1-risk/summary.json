@@ -1,0 +1,102 @@
+{
+  "finished_at": "2026-11-14T10:29:59.959477+00:00",
+  "base_revision": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "worktree_changes_uncommitted": true,
+  "scope": "R1 per-file experimental ranking availability; no health-formula change, full metrics implementation or model-accuracy qualification",
+  "contract_change": "Optional unranked_files inventory and metadata.ranking_scope version file-eligibility-1 in unreleased prototype/v2. Frozen original legacy schema unchanged. Legacy export refuses the new availability semantics; prototype-v1 input with those fields requires its explicit reader instead of silently dropping unavailable files.",
+  "red_checks": [
+    {
+      "command": "python -m pytest -v -p no:cacheprovider tests/test_rank_availability_contract.py",
+      "result": "13 failed, 13 passed before contract implementation",
+      "log": "contracts-red.log"
+    },
+    {
+      "command": "python -m pytest -v -p no:cacheprovider tests/test_rank_availability.py",
+      "cwd": "predictor",
+      "result": "9 failed before producer implementation",
+      "log": "producer-red.log"
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider tests/test_rank_availability_contract.py",
+      "result": "2 failed, 26 passed before migration/source-boundary corrections",
+      "log": "contract-boundary-red.log"
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider tests/test_rank_availability_contract.py",
+      "result": "1 failed, 28 passed before original-legacy export rejection",
+      "log": "export-red.log"
+    },
+    {
+      "command": "python -m pytest -q -p no:cacheprovider tests/test_rank_availability_contract.py",
+      "result": "1 failed, 29 passed before explicit prototype-reader enforcement",
+      "log": "reader-red.log"
+    }
+  ],
+  "green_checks": [
+    {
+      "command": "python -m pytest -v -p no:cacheprovider tests/test_rank_availability_contract.py tests/test_contracts_v2.py tests/test_compatibility_v2.py",
+      "result": "128 passed",
+      "log": "contracts-green.log"
+    },
+    {
+      "command": "python -m pytest -v --cov=src --cov=cppulse.predictor --cov-report=term-missing tests/",
+      "cwd": "predictor",
+      "result": "110 passed, combined coverage91%",
+      "log": "predictor-green.log"
+    },
+    {
+      "command": "python -m pytest -v -p no:cacheprovider tests/test_rank_availability_contract.py tests/test_contracts_v2.py tests/test_compatibility_v2.py tests/test_analysis_normalization_regressions.py tests/test_analysis_inventory.py tests/test_run_store_reader.py tests/test_run_store_v2.py tests/test_snapshot_view_contract.py",
+      "result": "296 passed",
+      "log": "integration-green.log"
+    },
+    {
+      "command": "python -m black --check python/cppulse/predictor python/cppulse/compatibility.py python/cppulse/contracts/validation.py tests/test_rank_availability_contract.py predictor/tests/test_rank_availability.py predictor/tests/test_demo_regressions.py",
+      "result": "12 files unchanged"
+    },
+    {
+      "command": "python -m ruff check python/cppulse/predictor python/cppulse/compatibility.py tests/test_rank_availability_contract.py predictor/tests/test_rank_availability.py predictor/tests/test_demo_regressions.py",
+      "result": "exit0"
+    }
+  ],
+  "retained_input_replay": {
+    "operation": "Predictor replay using retained current-branch native/Git facts; not a new C++ analysis or upstream test run",
+    "input_sha256": {
+      "findings.json": "8cdac8b89dc9f8c0e2f16c18c1e0c0e90402a4a7b69bc79f54b0e88e95715c8f",
+      "git_metrics.json": "bf247b50c715eb59c298a2ce73e10cc6c93337420ad6e8e2a3ebeacc600c7c40"
+    },
+    "output": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-20261114/r1-risk/utfcpp",
+    "ranked_files": 0,
+    "unranked_files": 7,
+    "cpp20_header": {
+      "file": "source/utf8/cpp20.h",
+      "availability": "partial",
+      "reason_codes": [
+        "partial_analysis",
+        "partial_history"
+      ],
+      "reasons": [
+        "Native analysis status is partial with 20 parse errors.",
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    "health": {
+      "overall": null,
+      "status": "partial",
+      "by_category": {
+        "memory_safety": null,
+        "modernization": null,
+        "complexity": null
+      }
+    }
+  },
+  "remaining_limits": [
+    "Presentation of unranked files/insufficient knowledge history is a separate dependent stage.",
+    "No new upstream builds or tests, no current candidate packaging, no Docker/platform qualification in this slice.",
+    "Risk remains experimental; complete static/history inputs do not prove calibrated predictive accuracy or consumer configuration coverage.",
+    "Existing full-scope health method remains the audited attempted-file method pending the separately required metrics/scorer work."
+  ],
+  "invocation_error": {
+    "log": "integration-invocation-error.log",
+    "reason": "Initial command named nonexistent tests/test_analysis.py and tests/test_reader.py; no tests ran. Corrected actual files then294passed."
+  }
+}

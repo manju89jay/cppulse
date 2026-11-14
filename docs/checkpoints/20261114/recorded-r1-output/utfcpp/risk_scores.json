@@ -1,0 +1,123 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "generated_at": "2026-11-14T10:40:08.921928+00:00",
+    "model_type": "heuristic",
+    "profile": "default",
+    "score_model": "weighted-findings-per-attempted-file-v2",
+    "experimental": true,
+    "hotspot_formula": "change_frequency * (max_severity / 3) * findings / max(age_days / 365, 1)",
+    "feature_count": 5,
+    "active_features": [
+      "memory_findings",
+      "complexity_findings",
+      "modernization_findings",
+      "churn_rate",
+      "bug_fix_commits"
+    ],
+    "training_samples": 0,
+    "evaluation_status": "not_evaluated",
+    "evaluation_folds": 0,
+    "fallback_reason": "insufficient_samples",
+    "limitations": [
+      "Full-scope health unavailable: some declared source units were not completely analyzed.",
+      "Shallow history: earlier changes and contributors are unavailable.",
+      "Merge history uses first-parent deltas; cross-branch rename lineage is not verified.",
+      "History delta unavailable for 6be08bbe: GitCommandError.",
+      "Labels are derived from features; cross-validation is not evidence of future-defect predictive accuracy."
+    ],
+    "f1_score": null,
+    "ranking_scope": {
+      "version": "file-eligibility-1",
+      "declared_files": 7,
+      "ranked_files": 0,
+      "unranked_files": 7
+    },
+    "label_source": "feature_derived_heuristic"
+  },
+  "health_score": {
+    "overall": null,
+    "status": "partial",
+    "by_category": {
+      "memory_safety": null,
+      "modernization": null,
+      "complexity": null
+    }
+  },
+  "file_risks": [],
+  "unranked_files": [
+    {
+      "file": "source/utf8.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/checked.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/core.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/cpp11.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/cpp17.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/cpp20.h",
+      "availability": "partial",
+      "reason_codes": [
+        "partial_analysis",
+        "partial_history"
+      ],
+      "reasons": [
+        "Native analysis status is partial with 20 parse errors.",
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    },
+    {
+      "file": "source/utf8/unchecked.h",
+      "availability": "unavailable",
+      "reason_codes": [
+        "partial_history"
+      ],
+      "reasons": [
+        "Git history is partial; missing history is not zero change activity."
+      ]
+    }
+  ],
+  "hotspots": []
+}

@@ -72,6 +72,34 @@
               "minLength": 1
             },
             "minItems": 0
+          },
+          "location": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "column": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "end_line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "end_column": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "line",
+              "column",
+              "end_line",
+              "end_column"
+            ]
           }
         },
         "required": [
@@ -88,6 +116,12 @@
         ]
       },
       "minItems": 0
+    },
+    "analysis_inventory_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "job_context_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
     }
   },
   "required": [

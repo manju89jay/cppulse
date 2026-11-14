@@ -11,12 +11,27 @@ namespace cppulse {
 
 void ParameterCountRule::check_impl(CXCursor cursor, const std::string& file_path) {
     const CXCursorKind kind = clang_getCursorKind(cursor);
-    if (kind != CXCursor_FunctionDecl && kind != CXCursor_CXXMethod &&
-        kind != CXCursor_Constructor) {
+    if (kind != CXCursor_FunctionDecl && kind != CXCursor_FunctionTemplate &&
+        kind != CXCursor_CXXMethod && kind != CXCursor_Constructor) {
         return;
     }
 
-    const int num_params = clang_Cursor_getNumArguments(cursor);
+    int num_params = clang_Cursor_getNumArguments(cursor);
+    if (kind == CXCursor_FunctionTemplate) {
+        // The C API reports -1 arguments on a FunctionTemplate wrapper. Its
+        // immediate ParmDecl children are function parameters; template type
+        // and non-type parameters must not inflate the count.
+        num_params = 0;
+        clang_visitChildren(
+            cursor,
+            [](CXCursor child, CXCursor, CXClientData data) {
+                if (clang_getCursorKind(child) == CXCursor_ParmDecl) {
+                    ++(*static_cast<int*>(data));
+                }
+                return CXChildVisit_Continue;
+            },
+            &num_params);
+    }
     if (num_params < 0) {
         return;  // Not a function-type cursor.
     }

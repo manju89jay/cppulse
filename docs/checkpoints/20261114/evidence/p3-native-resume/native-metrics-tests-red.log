@@ -1,0 +1,178 @@
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = NativeMetricsFixture.*
+[==========] Running 16 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 16 tests from NativeMetricsFixture
+[ RUN      ] NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding
+[2026-11-14 16:50:49.320] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.320] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MeasuresOrdinaryFunctionWithoutThresholdFinding/repo
+[2026-11-14 16:50:49.328] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:50:49.328] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_MeasuresOrdinaryFunctionWithoutThresholdFinding/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding (8 ms)
+[ RUN      ] NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters
+[2026-11-14 16:50:49.328] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.328] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters/repo
+[2026-11-14 16:50:49.330] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.331] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters (2 ms)
+[ RUN      ] NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce
+[2026-11-14 16:50:49.331] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.331] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_CountsExpandedSemanticLogicalDecisionsOnce/repo
+[2026-11-14 16:50:49.332] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:50:49.332] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_CountsExpandedSemanticLogicalDecisionsOnce/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce (2 ms)
+[ RUN      ] NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction
+[2026-11-14 16:50:49.333] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.333] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_SeparatesNestedLambdaBodyFromItsEnclosingFunction/repo
+[2026-11-14 16:50:49.335] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:50:49.335] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_SeparatesNestedLambdaBodyFromItsEnclosingFunction/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction (2 ms)
+[ RUN      ] NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction
+[2026-11-14 16:50:49.336] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.336] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_AttributesLambdaCaptureInitializerToEnclosingFunction/repo
+[2026-11-14 16:50:49.337] [info] FileAnalyzer: analysis complete — 1 file(s), 1 finding(s)
+[2026-11-14 16:50:49.338] [info] write_findings_json: wrote 1 finding(s) to /tmp/cppulse_metrics_AttributesLambdaCaptureInitializerToEnclosingFunction/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction (2 ms)
+[ RUN      ] NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent
+[2026-11-14 16:50:49.338] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.338] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_DistinguishesCommentsBlanksAndPhysicalFunctionExtent/repo
+[2026-11-14 16:50:49.339] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.339] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_DistinguishesCommentsBlanksAndPhysicalFunctionExtent/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent (1 ms)
+[ RUN      ] NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions
+[2026-11-14 16:50:49.340] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.340] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_EmptySourceHasMeasuredZeroScopeAndNoFunctions/repo
+[2026-11-14 16:50:49.341] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.341] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_EmptySourceHasMeasuredZeroScopeAndNoFunctions/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions (1 ms)
+[ RUN      ] NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount
+[2026-11-14 16:50:49.341] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.341] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo
+[2026-11-14 16:50:49.342] [warning] FileAnalyzer: partial AST for '/tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo/source.cpp': /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/repo/source.cpp:1:10: fatal error: 'missing.hpp' file not found
+[2026-11-14 16:50:49.343] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.343] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_PartialAstRetainsObservedFactsWithoutCompleteFunctionCount/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount (1 ms)
+[ RUN      ] NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget
+[2026-11-14 16:50:49.344] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.344] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_LargeHeaderIsMeasuredUnderConfiguredByteBudget/repo
+[2026-11-14 16:50:49.346] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.346] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_LargeHeaderIsMeasuredUnderConfiguredByteBudget/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget (3 ms)
+[ RUN      ] NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory
+[2026-11-14 16:50:49.346] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.346] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory/repo
+[2026-11-14 16:50:49.348] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.348] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory (1 ms)
+[ RUN      ] NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine
+[2026-11-14 16:50:49.348] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.348] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine/repo
+[2026-11-14 16:50:49.357] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.358] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine (9 ms)
+[ RUN      ] NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration
+[2026-11-14 16:50:49.358] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.358] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_NestingCountsControlDepthAndParameterPackAsOneDeclaration/repo
+[2026-11-14 16:50:49.359] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.360] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_NestingCountsControlDepthAndParameterPackAsOneDeclaration/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration (2 ms)
+[ RUN      ] NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns
+[2026-11-14 16:50:49.360] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.360] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/repo
+[2026-11-14 16:50:49.361] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.361] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns (1 ms)
+[ RUN      ] NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements
+[2026-11-14 16:50:49.362] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.362] [info] FileAnalyzer: found 2 file(s) under /tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/repo
+[2026-11-14 16:50:49.362] [warning] FileAnalyzer: skipping '/tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/repo/source.cpp': 26 bytes exceed max_file_bytes=1
+[2026-11-14 16:50:49.362] [info] FileAnalyzer: excluded 1 file(s) by config
+[2026-11-14 16:50:49.362] [info] FileAnalyzer: analysis complete — 0 file(s), 0 finding(s)
+[2026-11-14 16:50:49.362] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_SkippedAndExcludedFilesHaveUnavailableMeasurements/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements (0 ms)
+[ RUN      ] NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation
+[2026-11-14 16:50:49.363] [info] Loading config from: /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/config.json
+[2026-11-14 16:50:49.363] [info] Config loaded: profile=default, exclude_paths=0, rule_overrides=0, max_file_bytes=16777216
+[2026-11-14 16:50:49.363] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.363] [info] FileAnalyzer: found 1 file(s) under /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/repo
+[2026-11-14 16:50:49.364] [info] FileAnalyzer: analysis complete — 1 file(s), 0 finding(s)
+[2026-11-14 16:50:49.364] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation (2 ms)
+[ RUN      ] NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets
+[2026-11-14 16:50:49.365] [info] FileAnalyzer: no compilation database found — parsing with default flags (type-dependent rules may degrade; generate compile_commands.json for best results)
+[2026-11-14 16:50:49.365] [info] FileAnalyzer: found 2 file(s) under /tmp/cppulse_metrics_IncludeEdgesIdentifyProjectAndExternalTargets/repo
+[2026-11-14 16:50:49.368] [info] FileAnalyzer: analysis complete — 2 file(s), 0 finding(s)
+[2026-11-14 16:50:49.368] [info] write_findings_json: wrote 0 finding(s) to /tmp/cppulse_metrics_IncludeEdgesIdentifyProjectAndExternalTargets/output/findings.json
+unknown file: Failure
+C++ exception with description "[json.exception.out_of_range.403] key 'native_metrics' not found" thrown in the test body.
+
+[  FAILED  ] NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets (3 ms)
+[----------] 16 tests from NativeMetricsFixture (48 ms total)
+
+[----------] Global test environment tear-down
+[==========] 16 tests from 1 test suite ran. (48 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 16 tests, listed below:
+[  FAILED  ] NativeMetricsFixture.MeasuresOrdinaryFunctionWithoutThresholdFinding
+[  FAILED  ] NativeMetricsFixture.MeasuresUninstantiatedTemplateWithPrefixAndOrdinaryParameters
+[  FAILED  ] NativeMetricsFixture.CountsExpandedSemanticLogicalDecisionsOnce
+[  FAILED  ] NativeMetricsFixture.SeparatesNestedLambdaBodyFromItsEnclosingFunction
+[  FAILED  ] NativeMetricsFixture.AttributesLambdaCaptureInitializerToEnclosingFunction
+[  FAILED  ] NativeMetricsFixture.DistinguishesCommentsBlanksAndPhysicalFunctionExtent
+[  FAILED  ] NativeMetricsFixture.EmptySourceHasMeasuredZeroScopeAndNoFunctions
+[  FAILED  ] NativeMetricsFixture.PartialAstRetainsObservedFactsWithoutCompleteFunctionCount
+[  FAILED  ] NativeMetricsFixture.LargeHeaderIsMeasuredUnderConfiguredByteBudget
+[  FAILED  ] NativeMetricsFixture.InactiveDefinitionsRemainInLexicalLocButNotFunctionInventory
+[  FAILED  ] NativeMetricsFixture.MultilineLiteralCountsAllSpelledLinesAndNoTerminalPhantomLine
+[  FAILED  ] NativeMetricsFixture.NestingCountsControlDepthAndParameterPackAsOneDeclaration
+[  FAILED  ] NativeMetricsFixture.OverloadsHaveDistinctStableUsrIdentitiesAcrossRuns
+[  FAILED  ] NativeMetricsFixture.SkippedAndExcludedFilesHaveUnavailableMeasurements
+[  FAILED  ] NativeMetricsFixture.ConfiguredTokenBoundRetainsObservedTotalsAndVisibleTruncation
+[  FAILED  ] NativeMetricsFixture.IncludeEdgesIdentifyProjectAndExternalTargets
+
+16 FAILED TESTS

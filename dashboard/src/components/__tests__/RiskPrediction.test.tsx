@@ -37,7 +37,7 @@ describe("RiskPrediction", () => {
     expect(screen.getByText("low")).toBeInTheDocument();
   });
 
-  it("renders bug probabilities as percentages", () => {
+  it("renders stored experimental scores as percentages", () => {
     render(<RiskPrediction fileRisks={sampleRisks} />);
     expect(screen.getByText("82%")).toBeInTheDocument();
     expect(screen.getByText("40%")).toBeInTheDocument();
@@ -54,5 +54,18 @@ describe("RiskPrediction", () => {
   it("shows empty state when no risks", () => {
     render(<RiskPrediction fileRisks={[]} />);
     expect(screen.getByText("No risk data available.")).toBeInTheDocument();
+  });
+
+  it("keeps unavailable files and their reasons visible without low-risk values", () => {
+    render(<RiskPrediction fileRisks={[]} unrankedFiles={[{
+      file: "src/incomplete.hpp", availability: "partial",
+      reason_codes: ["PARTIAL_ANALYSIS"], reasons: ["A selected context failed to parse."],
+    }]}/>);
+    expect(screen.getByText("src/incomplete.hpp")).toBeInTheDocument();
+    expect(screen.getByText("A selected context failed to parse.")).toBeInTheDocument();
+    expect(screen.getByText("PARTIAL_ANALYSIS")).toBeInTheDocument();
+    expect(screen.getByRole("heading", {name: /Files without a usable rank/})).toBeInTheDocument();
+    expect(screen.queryByText("low")).not.toBeInTheDocument();
+    expect(screen.queryByText("0%")).not.toBeInTheDocument();
   });
 });

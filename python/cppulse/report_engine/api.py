@@ -586,11 +586,19 @@ def risks() -> dict[str, Any]:
     """Return per-file risk scores from the predictor output.
 
     Returns:
-        Dict with ``items`` (list of file risk objects) and ``total``.
+        Compatible ranked ``items`` and ``total``, plus separately unavailable
+        files, their count and the producer's optional ranking-scope metadata.
     """
     risk = _load_json("risk_scores")
     items: list[dict[str, Any]] = risk.get("file_risks", [])
-    return {"items": items, "total": len(items)}
+    unranked = risk.get("unranked_files", [])
+    return {
+        "items": items,
+        "total": len(items),
+        "unranked_files": unranked,
+        "unranked_total": len(unranked),
+        "ranking_scope": risk.get("metadata", {}).get("ranking_scope"),
+    }
 
 
 @app.get("/api/v1/silos", dependencies=_DATA_DEPENDENCIES)
@@ -598,11 +606,18 @@ def silos() -> dict[str, Any]:
     """Return knowledge silo alerts from git metrics.
 
     Returns:
-        Dict with ``items`` (list of silo objects) and ``total``.
+        Observed ``items`` and ``total``, with explicit history availability and
+        limitations. An empty observed list does not establish absent risk.
     """
     git = _load_json("git_metrics")
     items: list[dict[str, Any]] = git.get("knowledge_silos", [])
-    return {"items": items, "total": len(items)}
+    metadata = git.get("metadata", {})
+    return {
+        "items": items,
+        "total": len(items),
+        "history_status": metadata.get("history_status", "unverified"),
+        "limitations": metadata.get("limitations", []),
+    }
 
 
 @app.get("/api/v1/roadmap", dependencies=_DATA_DEPENDENCIES)

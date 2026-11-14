@@ -1,0 +1,8 @@
+[  2%] Building CXX object CMakeFiles/cppulse-analyzer-lib.dir/src/config.cpp.o
+[  5%] Linking CXX static library libcppulse-analyzer-lib.a
+[ 70%] Built target cppulse-analyzer-lib
+[ 72%] Linking CXX executable cppulse-analyzer
+[ 75%] Building CXX object CMakeFiles/cppulse-analyzer-tests.dir/tests/test_config.cpp.o
+[ 77%] Built target cppulse-analyzer
+[ 80%] Linking CXX executable cppulse-analyzer-tests
+[100%] Built target cppulse-analyzer-tests

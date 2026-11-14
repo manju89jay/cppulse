@@ -287,6 +287,10 @@ class PDFGenerator:
             reverse=True,
         )[:10]
         file_risks = [{**r, "file": strip(r.get("file", ""))} for r in raw_file_risks]
+        unranked = risk_scores.get("unranked_files", [])
+        unranked_files = [
+            {**item, "file": strip(item["file"])} for item in unranked[:50]
+        ]
 
         # Findings — strip prefix then cluster
         raw_findings: list[dict[str, Any]] = findings.get("findings", [])
@@ -323,9 +327,18 @@ class PDFGenerator:
             and chart_b64 is None,
             "hotspots": hotspots,
             "file_risks": file_risks,
+            "unranked_files": unranked_files,
+            "unranked_total": len(unranked),
+            "ranking_scope": risk_scores.get("metadata", {}).get("ranking_scope"),
             "findings_clustered": findings_clustered,
             "findings_summary": findings_summary,
             "silos": silos,
+            "history_status": git_metrics.get("metadata", {}).get(
+                "history_status", "unverified"
+            ),
+            "history_limitations": git_metrics.get("metadata", {}).get(
+                "limitations", []
+            ),
             "roadmap_items": roadmap_items,
         }
 

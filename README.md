@@ -1,519 +1,343 @@
 # cppulse
 
-**Engineering prototype for C++ codebase analysis.** C++17/libclang checks,
-Python Git mining and experimental ranking, explicit local verification recipes,
-immutable evidence snapshots, PDF, FastAPI and a React dashboard. Scores are prioritization aids, not certification,
-validated defect probabilities or production-readiness judgments.
+**Understand your C++ code. See which checks support your next release.**
 
-## Current checkpoint: 0.2.0.dev2 (2026-11-14)
+cppulse brings C++ source findings, Git history and selected build/test evidence
+into one local workflow. It helps developers inspect maintenance problems,
+maintainers review declared library configurations, and integrators identify
+the checks their application still needs.
 
-The S7 source checkpoint passes **all 15 shared checks, 2,499 tests and the
-dashboard production build**. Public commands now collect explicit recipes,
-assess retained facts, check policy or finding regressions, create baselines,
-compare consumer evidence, explain historical runs and export SARIF. The
-packaged API/UI and evidence JSON/HTML/PDF read the same manifest-bound snapshot;
-the bundled dashboard needs no Node process at runtime. See
-[public CLI](docs/development/public-cli.md) and
-[shared results](review/autonomous/s7-shared-summary.json).
+[Get started](#get-started) · [Evidence demo](#try-three-evidence-outcomes) ·
+[CLI guide](docs/development/public-cli.md) ·
+[Rules](docs/generated/rules.md) · [MIT license](LICENSE)
 
-Fresh public C++ demonstrations produce passed, failed and insufficient-evidence
-gates. The finding workflow exercises **24 public commands and 43 checked
-snapshots**, including line shifts, stale headers, new findings, duplicate
-basenames, ambiguous anchors and explicit rename limits. Completion of collection
-or baseline creation is separate from a passed check. Missing proof stays unknown.
+> **Development preview — 0.2.0.dev2.** The full production specification is
+> being implemented. The current tool has tested local workflows and known
+> limitations; it is not a production-qualified release. See the current
+> [delivery status](docs/plans/production-delivery-status.md) and
+> [requirement/evidence ledger](docs/plans/production-delivery-ledger.json).
 
-These are source-checkpoint results. **Final dev2 installed-candidate acceptance
-is recorded separately in [S7 review](review/autonomous/S7-REVIEW.md) once
-completed**; an older installed proof does not qualify these new artifact bytes.
-The verified work is now preserved on the local review branch
-`codex/cppulse-local-core-20261114`; no candidate has been published.
-The verification records describe the original pre-commit worktree.
+## Start with the decision you need to make
 
-## Verified job-application demo
+| Your question | Start here | What to inspect |
+| --- | --- | --- |
+| What deserves attention in this C++ project? | `cppulse analyze` | Rule findings, parsing gaps, available Git signals and experimental priorities |
+| Does this candidate satisfy our configured checks? | `cppulse collect`, then `cppulse check --policy` | Executed checks, selected inputs, failed controls and missing evidence |
+| Does upstream library evidence apply to our application? | `cppulse compare` | Configuration correspondence, artifact identity and required local checks |
+| Did this change introduce findings beyond an agreed baseline? | `cppulse baseline create`, then `cppulse check --findings` | New, unchanged and unknown occurrences within explicit scope |
+| Why did a check produce this result? | `cppulse explain` or an evidence report | One retained run, control reasons, original artifacts and limitations |
 
-Baseline: `codex/job-application-demo-20261113` at
-`b89dce9d22b37ef44843a68eb3373c525b4b8e94`, plus the stabilization work
-now saved on `codex/cppulse-local-core-20261114`.
-The fresh `output/s7-legacy-demo` synthetic two-file run produces **5 findings**, health **95.5**, heuristic
-ranking and a readable **7-page PDF**. The clean file has no findings. This is a
-functional demonstration, not an accuracy or performance benchmark.
+Compilers, analyzers, test runners and runtime tools remain the producers of
+their diagnostics. cppulse connects their results to a declared scope so you
+can inspect the facts behind a decision.
 
-Native CTest, Python suites, dashboard tests/build, artifact validation and the
-built dashboard against the actual API were run in Linux. Docker is absent in
-the verification environment: Compose definitions were corrected but **not
-executed**. See [demo and verification](docs/portfolio/demo-verification.md).
+For compiled and header-only libraries, select consumer programs, compiler
+options and tests explicitly. A passing sample covers those selected uses;
+untested platforms, macros and template instantiations remain separate work.
 
-After setup, the existing four-artifact demo remains `bash scripts/demo.sh`.
-For the public evidence journey in the recorded cloud environment:
+## What works today
 
-```bash
-source review/environment.sh
-PYTHONPATH=python python scripts/demo_evidence.py \
-  --analyzer analyzer-core/build/cppulse-analyzer \
-  --resource-dir "$CPPULSE_CLANG_RESOURCE_DIR" \
-  --fixture demo/policy-fixture --output output/public-evidence-demo \
-  --scenario all --formats json,html,pdf
-```
+- **Native analysis:** a C++17/libclang engine with 22 experimental pattern
+  checks, rule configuration, compilation databases and visible parse outcomes.
+  Inferred header arguments remain distinct from observed consumer builds.
+- **History and prioritization:** current-file churn/contributor signals,
+  descriptive health and experimental heuristic/optional XGBoost ranking.
+- **Explicit evidence:** finite argv recipes retain selected source/output
+  identities, bounded command logs and supported test/coverage/sanitizer results.
+- **Local gates:** versioned policies, scoped finding baselines, suppressions and
+  SARIF. Six supported predicates cover findings, analysis coverage, tests,
+  contexts, coverage and sanitizers.
+- **Retained views:** JSON/HTML/optional PDF, API and a bundled React dashboard
+  read stored results. Run/hash pins support reproducible historical review.
+- **Opt-in integration:** an installed CLI, CMake helper and local hook template.
+  Core operation requires no cppulse account or hosted service.
 
-Its summary pins actual captures, assessments, checks and reports. Use
-`--formats json,html` for a core-only environment. This deliberately synthetic
-recipe executes its selected native/CMake/CTest commands; loading a policy or
-running `check` never silently builds the target project. The clean case also
-exercises the opt-in CMake check and rejection of changed source/binary material.
+Measured maintenance metrics, density/context scoring, richer Git intelligence,
+incremental analysis, large-project qualification, VS Code/MCP and the remaining
+production program are tracked work. See [scope and maturity](#scope-and-maturity).
 
-## Quickstart: native checkout
+## Get started
 
-Prerequisites: C++17 compiler, CMake, libclang development headers/library,
-nlohmann-json, spdlog, fmt, CLI11 and GoogleTest CMake packages; Python 3.11/3.12;
-Node 24; Pango/Cairo/font libraries for WeasyPrint. Ubuntu/Debian package names
-include `g++ cmake libclang-dev nlohmann-json3-dev libspdlog-dev libcli11-dev
-libgtest-dev libpango-1.0-0 libpangoft2-1.0-0 libcairo2 fonts-dejavu-core`.
+Use a source checkout or a locally prepared candidate. These instructions do
+not assume a published PyPI package or production binary. The Python CLI and
+native analyzer are separate installation components.
 
-Run from the checkout root:
+### Build prerequisites
+
+Use Linux with a C++17 compiler, CMake, libclang development headers/library,
+nlohmann/json, spdlog/fmt, CLI11 and GoogleTest. Python **3.11–3.12** is declared;
+retained cloud checks exercised **3.12.14**.
+
+Typical Debian/Ubuntu package names are `build-essential`, `cmake`,
+`libclang-dev`, `nlohmann-json3-dev`, `libspdlog-dev`, `libfmt-dev`, `libcli11-dev`
+and `libgtest-dev`. Packages and LLVM layouts vary by distribution.
+Set `LIBCLANG_ROOT` for a nonstandard LLVM prefix.
+
+### Build and run
+
+From the checkout root:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-CXX=g++ CC=gcc pip install -r git-miner/requirements.txt -r predictor/requirements.txt -r report-engine/requirements.txt -r requirements-demo.txt
-cmake -S analyzer-core -B analyzer-core/build
+python -m pip install -e '.[dev]'
+
+cmake -S analyzer-core -B analyzer-core/build -DBUILD_TESTING=ON
 cmake --build analyzer-core/build -j4
-cmake -S cli -B cli/build
+ctest --test-dir analyzer-core/build --output-on-failure
+
+export CPPULSE_ANALYZER="$PWD/analyzer-core/build/cppulse-analyzer"
+cppulse doctor
+
+cppulse analyze --repo demo/fixture --output output/first-run --format html
+cppulse report --input output/first-run --format json \
+  --output output/first-run/report.json
+```
+
+Check that doctor reports `native.available: true`, then open the HTML path
+printed by analyze. Detecting an optional package is not execution verification.
+The demo contains a clean file and intentional synthetic rule triggers; the
+triggers are analyzed, not executed. Static input does not require `.git`.
+
+For your CMake project, generate and supply its actual compilation database:
+
+```bash
+cmake -S /path/to/project -B /path/to/project/build \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cppulse analyze --repo /path/to/project \
+  --compilation-database /path/to/project/build/compile_commands.json \
+  --output output/my-project --format html
+```
+
+Use a generator that emits the database, such as Makefiles or Ninja. Missing
+commands can lead to inferred/fallback parsing. `analyze` runs source/history
+analysis without building or testing your project. Its compatibility snapshot
+uses conservative, unverified evidence binding. Use collection and policy checks
+for the explicit evidence workflow.
+
+Create editable settings with `cppulse init --repo /path/to/project`, then use
+`cppulse config --repo /path/to/project --output output/my-project` to inspect
+effective settings. Exclusions and detector switches belong in `.cppulserc.json`
+or YAML; policy controls are separate. Explicit options override the selected
+config and defaults. If several config files are present, select one with
+`--config /path/to/.cppulserc.json`. The default profile excludes MISRA-labeled
+findings from scoring; it does not disable those detectors.
+
+If libclang cannot find built-in headers such as `stddef.h`, set
+`CPPULSE_CLANG_RESOURCE_DIR` to its matching resource directory containing
+`include/stddef.h`. A standalone analyzer reports less installation metadata
+than a prepared native bundle. The [candidate guide](docs/development/candidate.md)
+documents host dependencies, offline installation and upgrade/rollback.
+
+### Add the dashboard or PDF
+
+```bash
+python -m pip install -e '.[web,pdf]'
+cppulse serve --input output/first-run --host 127.0.0.1 --port 8000
+```
+
+Open <http://127.0.0.1:8000>. The package includes the built dashboard; Node is
+needed for dashboard development, not this runtime. In another terminal:
+
+```bash
+cppulse report --input output/first-run --format pdf \
+  --output output/first-run/report.pdf
+```
+
+PDF needs native Pango/font libraries, typically `libpango-1.0-0`,
+`libpangoft2-1.0-0`, `libcairo2` and `fonts-dejavu-core` on Debian/Ubuntu.
+HTML/JSON reporting works without PDF or web extras.
+
+## Try three evidence outcomes
+
+A release check must distinguish a failed check from one that was never
+demonstrated. The evidence demo builds/tests a clearly synthetic C++ fixture:
+
+| Scenario | Meaning | Expected check exit |
+| --- | --- | ---: |
+| Clean | Selected required checks have usable passing evidence | `0` |
+| Intentional findings | A configured control has a known failure | `1` |
+| Missing tests | Required evidence is absent | `3` |
+
+After source setup:
+
+```bash
+python scripts/demo_evidence.py \
+  --analyzer "$CPPULSE_ANALYZER" \
+  --fixture demo/policy-fixture --output output/evidence-demo \
+  --scenario all --formats json,html
+```
+
+Add `--resource-dir "$CPPULSE_CLANG_RESOURCE_DIR"` for a custom LLVM layout.
+Add `pdf` to `--formats` when PDF dependencies are installed. The summary
+retains actual commands, outcomes and run pins. These are functional examples,
+not accuracy or performance benchmarks.
+
+For your own project, review and adapt a collection request and policy:
+
+```bash
+cppulse collect --request /path/to/collection-request.json \
+  --workspace /path/to/project --store /path/to/evidence-store
+cppulse check --store /path/to/evidence-store \
+  --workspace /path/to/project --policy /path/to/policy.json
+cppulse report --input /path/to/evidence-store --evidence --format html \
+  --output /path/to/evidence-report.html
+```
+
+These are placeholder paths for your reviewed files. Collection executes the
+declared commands. Checking and rendering do not silently rebuild or run tests.
+A completed collection can retain a failed test; completion is not a policy pass.
+Changed selected source/output needs new usable evidence. Imported reports
+remain identified as imported claims.
+
+See the [CLI guide](docs/development/public-cli.md) for request structure,
+baseline checks, comparison, selectors and exit semantics. Historical review
+uses both `--run-id` and `--manifest-sha256`; an old pinned pass remains historical.
+
+| Exit | Meaning |
+| --- | --- |
+| `0` | Requested operation completed; for a check, the selected gate passed |
+| `1` | A policy/finding gate has a known failure |
+| `2` | Invalid input, missing required capability or an operational failure |
+| `3` | Partial analysis or insufficient evidence for the requested decision |
+| `130` | Explicit cancellation |
+
+## Add an explicit build check
+
+The packaged CMake helper calls the same `cppulse check` engine. Its target
+checks retained current material and supports selected build dependencies;
+collection is a separate explicit recipe. Locate the helper with:
+
+```bash
+python -c 'from importlib.resources import files; print(files("cppulse").joinpath("data/Cppulse.cmake"))'
+```
+
+Follow the [CMake/local hook guide](docs/development/local-check-integrations.md)
+to set the store, workspace and policy. Checks are opt-in and outside ordinary
+builds unless enforcement is selected. The current helper uses CMake 3.21+
+options, with 3.31.6 exercised; the production minimum-version decision is open.
+
+## Read the four results separately
+
+| Result | Meaning | Interpretation boundary |
+| --- | --- | --- |
+| Maintenance health | Versioned summary of observed findings | Current scoring uses weighted findings per attempted file; density/context scoring remains work in progress |
+| Experimental ranking | Heuristic or optional model prioritization | No demonstrated accuracy or calibrated future-defect probability |
+| Evidence completeness | Available evidence for applicable controls | Limited to declared scope, contexts and accepted producers |
+| Policy acceptance | Satisfaction of the selected policy and gates | A scoped decision, not universal production readiness |
+
+Inspect parse gaps, disabled rules, inferred contexts and history limitations
+beside findings. A score cannot replace a required test, authenticate an
+upstream producer or establish every template instantiation. MISRA-labeled
+checks are a limited pattern subset; no MISRA/ISO 26262/IEC 62304 compliance,
+certification or safety classification is inferred.
+
+| Analysis artifact | Contents |
+| --- | --- |
+| `findings.json` | Findings, selected rule/configuration metadata and parse scope |
+| `git_metrics.json` | Available current-file history signals and limitations |
+| `risk_scores.json` | Stored health, experimental ranks, model metadata and hotspots |
+| `roadmap.json` | Suggested work with heuristic effort/impact estimates |
+
+Evidence workflows also retain immutable run manifests, producer receipts,
+original logs/reports, typed evidence and assessments. API/report consumers
+select one snapshot. See [contracts](docs/contracts/v2.md) and
+[snapshot presentation](docs/development/snapshot-presentation.md).
+
+## Scope and maturity
+
+Updated **2026-11-14**. Capability claims depend on exact source/artifact bytes,
+environment and check scope.
+
+| Area | Current qualification |
+| --- | --- |
+| Linux workflows | Exercised on Linux x86-64, GCC 14.2, libclang 19, CMake 3.31.6 and Python 3.12.14 |
+| Real C++ inputs | Selected pinned fmt/utfcpp and a tiny consumer; partial parsing remains visible; full upstream suites were not run |
+| Installed package | An earlier dev2 candidate ran outside the checkout; it does not qualify subsequent source changes |
+| Evidence adapters | Selected Linux/GNU/CTest/report dialects with explicit capability/version limits |
+| Docker/Compose | Definitions and integration script exist; Docker was unavailable in the recorded cloud environment |
+| Other environments | Windows/MSVC/MinGW, macOS, other Python/compiler combinations and broad C++20 coverage require separate qualification |
+| Production program | Metrics/trends, incremental scale, deeper Git, complete policies, VS Code/MCP and M8/M9 remain tracked work |
+
+The current audit identified detector, configuration, incomplete-ranking and CLI
+defects under correction. The [delivery ledger](docs/plans/production-delivery-ledger.json)
+records their status. The [full completion plan](docs/plans/cppulse-production-completion-plan.md)
+preserves all 118 numbered requirements and 60 original tasks. A smaller demo
+or early release does not replace that scope.
+
+Historical [example analyses](examples/) have inconsistent totals and cannot
+serve as current benchmarks. [Checkpoint checks](review/checkpoint-20261114/summary.json)
+and the [installed-candidate review](review/autonomous/S7-REVIEW.md) retain their
+own version boundaries. Aggregate test counts do not establish detector accuracy.
+
+## Local operation
+
+Core workflows need no cppulse account and add no runtime dependency to an
+analyzed C++ library. Offline use requires dependencies and policy material to
+be installed first. Collection commands execute project code with your local
+permissions; review recipes before execution. This is not a hostile-code sandbox.
+
+Hashes identify bytes without authenticating producers or proving complete
+dependency coverage. Matching upstream configuration does not replace local
+integration tests. Local diagnostic bundles omit source excerpts and unrestricted
+environment dumps by default; uploading one is a separate action.
+
+On a Docker-enabled host, the existing workflow uses host-output bind mounts:
+
+```bash
+REPO_PATH=/absolute/path/to/cpp-project docker compose up --build
+bash scripts/integration_test.sh
+```
+
+`OUTPUT_PATH` overrides host `./output`. Analysis/PDF jobs are one-shot services;
+API/dashboard remain running. This path needs actual Docker verification before
+it can be described as passed.
+
+## Development and architecture
+
+The native engine exchanges schema-validated artifacts with namespaced Python
+analysis/evaluation packages. CLI, API, reports and dashboard consume retained
+results; the dashboard does not independently calculate policy gates.
+
+| Component | Responsibility |
+| --- | --- |
+| `analyzer-core/` | C++17/libclang parsing and native checks |
+| `python/cppulse/` | Contracts, orchestration, evidence, policy, analysis and presentation |
+| `git-miner/`, `predictor/`, `report-engine/` | Preserved component entry points and tests |
+| `cli/` | Preserved C++17 orchestration interface |
+| `dashboard/` | React/TypeScript UI and development build |
+| `docs/`, `demo/`, `scripts/` | Decisions, contracts, labeled fixtures and local checks |
+
+After installing component prerequisites, build the legacy CLI and dashboard
+when exercising those components, then run the shared checks:
+
+```bash
+cmake -S cli -B cli/build -DBUILD_TESTING=ON
 cmake --build cli/build -j4
-(cd dashboard && npm ci && npm run build)
-bash scripts/demo.sh
-```
-
-The reproducible demo command is **`bash scripts/demo.sh`** after setup.
-It creates an explicitly synthetic local Git fixture in `tests/tmp/`, using
-current timestamps and an automation identity, and records its revision in
-`output/demo/fixture-revision.txt`. It never commits to this project or uploads.
-Source contents are fixed in `demo/fixture/`; generated fixture commit IDs and
-timestamps vary. Outputs include all four JSON contracts, `report.pdf`,
-`report.json` (an aggregate JSON report), and extracted PDF text.
-
-For a real checkout: `cli/build/cppulse analyze --repo /path/to/repo --output ./output/my-run`.
-The legacy C++ CLI resolves caller-relative paths before entering component directories.
-It uses its configured source checkout root; override with `--project-root` if
-that checkout moves. Activate the Python environment before invoking it.
-`--profile` controls scoring/ranking/roadmap; detector switches remain in config.
-An explicit `--profile default` overrides a config profile.
-
-Serve the fresh demo in two terminals:
-
-```bash
-(cd report-engine && DATA_DIR="$PWD/../output/demo" ../.venv/bin/uvicorn src.api:app --port 8000)
-(cd dashboard && npm run preview -- --port 3000)
-```
-
-Open http://localhost:3000. The preview proxies `/api` to port 8000.
-`python scripts/verify_web_demo.py` starts and stops both services and checks
-routes, PDF download and every dashboard section. Install a Playwright Chromium
-browser first, or set `CPPULSE_BROWSER` to an available Chromium executable.
-
-For the canonical installed CLI, install the checkout with
-`python -m pip install -e .` or install an exact prepared wheel/core lock. `cppulse serve --input
-/path/to/run-store` serves the bundled built dashboard and API together; the
-`web` extra is required. `cppulse report --input /path/to/run-store --evidence
---format pdf` additionally requires the `pdf` extra. Historical explicit run
-selection uses the paired `--run-id` and `--manifest-sha256` options.
-
-Optional Docker host: `REPO_PATH=/absolute/git/repo docker compose up --build`.
-Outputs bind to host `./output` (override `OUTPUT_PATH`); `report-pdf` is a
-successful one-shot job, while API/dashboard remain running. Use
-`bash scripts/integration_test.sh` for local Compose verification. Docker was
-unavailable here, so this path still needs execution on a Docker-capable host.
-
-## Architecture
-
-The legacy analysis pipeline exchanges JSON artifacts in `./output/`
-([ADR-004](docs/adr/ADR-004-json-comms.md)). Explicit collection additionally retains
-typed command receipts, source/output identities and original report/log bytes in
-immutable local runs. Policy assessment, finding regression and historical views
-consume those facts separately; they do not reuse a health score as verification.
-
-```mermaid
-flowchart TB
-    subgraph Input
-        REPO["C++ source and optional Git history"]
-    end
-
-    subgraph Analysis ["Analysis Layer"]
-        direction LR
-        AC["C++17 / libclang analyzer"]
-        GM["Python Git miner"]
-    end
-
-    subgraph ML ["ML Layer"]
-        PR["Experimental ranking and health"]
-    end
-
-    subgraph Delivery ["Delivery Layer"]
-        RE["Report engine and API"]
-        DB["React dashboard"]
-    end
-
-    REPO --> AC
-    REPO --> GM
-    AC -- "findings.json" --> PR
-    GM -- "git_metrics.json" --> PR
-    PR -- "Risk scores and roadmap" --> RE
-    RE -- "REST API" --> DB
-```
-
-### Data Flow
-
-| Step | Component | Input | Output |
-|-----:|-----------|-------|--------|
-| 1 | **analyzer-core** | C++ source files | `findings.json` — findings from 22 registered checks unless disabled |
-| 2 | **git-miner** | git log | `git_metrics.json` — 10 behavioral metrics per file |
-| 3 | **predictor** | both JSONs | `risk_scores.json` + `roadmap.json` |
-| 4 | **report-engine** | all JSONs | PDF report + REST API on :8000 |
-| 5 | **dashboard** | REST API | Interactive visualization on :3000 |
-
-### Component Stack
-
-| Component | Language | Key Libraries |
-|-----------|----------|---------------|
-| [analyzer-core](analyzer-core/) | C++17 | libclang, nlohmann/json, spdlog |
-| [git-miner](git-miner/) | Python | gitpython, pandas |
-| [predictor](predictor/) | Python | xgboost, scikit-learn, pandas |
-| [report-engine](report-engine/) | Python | FastAPI, Jinja2, WeasyPrint |
-| [dashboard](dashboard/) | TypeScript | React, Recharts, Tailwind CSS |
-| [cli](cli/) | C++17 | CLI11, spdlog |
-
-## What You Get
-
-A report with 7 sections:
-
-| Section | What It Tells You |
-|---------|-------------------|
-| **Health Score** | Single 0-100 number. Memory safety weighted 3x. |
-| **Category Breakdown** | Per-category scores: memory safety, modernization, complexity |
-| **Hotspot Map** | Top 20 by change frequency × severity proxy × findings / max(age in years, 1) |
-| **Detection Findings** | 22 registered checks unless individually disabled in config |
-| **Knowledge Silos** | Files where only 1 person has committed in 12 months |
-| **Bug Risk Ranking** | Experimental XGBoost ranking with conditional CV, or heuristic fallback below 50 file samples; labels can be noisy or feature-derived |
-| **Refactoring Roadmap** | Prioritized suggestions with heuristic effort/impact estimates; no measured ROI |
-
-## Historical examples: inconsistent totals
-
-The stored examples and badges are historical, not fresh benchmark evidence.
-The 2026-11-13 audit found these inconsistencies; no old totals were reused in
-the synthetic demo and no historical files were regenerated.
-
-| Example | Findings array / summary total | Sum by category | Sum by severity |
-|---|---:|---:|---:|
-| fmt | 372 / 372 | 1,769 | 2,856 |
-| grpc | 38 / 38 | 9,408 | 56,844 |
-| json | 177 / 177 | 618 | 1,119 |
-| leveldb | 205 / 205 | 572 | 2,053 |
-| poco | 77 / 77 | 14,533 | 25,821 |
-| protobuf | 146 / 146 | 63,344 | 87,345 |
-
-These artifacts cannot support comparative health, detection accuracy, complete
-project coverage, throughput or production/safety claims.
-
-## Detection Rules
-
-All 22 detectors are registered by default. The default scoring profile excludes
-MISRA from health/ranking/roadmap; it does not disable those detectors.
-The seven checks labeled MISRA are a limited subset, not compliance verification.
-
-
-
-<details>
-<summary><b>Memory Safety</b> (3 rules, 3.0x weight)</summary>
-
-| ID | Rule | Detects |
-|----|------|---------|
-| CPP-MEM-001 | Raw pointer ownership | `new` without smart pointer wrapping |
-| CPP-MEM-002 | Manual memory management | Explicit `delete` / `delete[]` |
-| CPP-MEM-003 | Unsafe array access | C-style arrays in function parameters |
-
-</details>
-
-<details>
-<summary><b>Modernization</b> (9 rules, 1.0x weight)</summary>
-
-| ID | Rule | Detects |
-|----|------|---------|
-| CPP-MOD-001 | C-style cast | `(int)x` instead of `static_cast` |
-| CPP-MOD-002 | Deprecated headers | `<stdio.h>` instead of `<cstdio>` |
-| CPP-MOD-003 | Missing override | Virtual method without `override` |
-| CPP-MOD-004 | Raw string literal | Strings with excessive escaping |
-| CPP-MOD-005 | auto opportunity | Verbose type declarations |
-| CPP-MOD-006 | Range-for opportunity | Index-based loops |
-| CPP-MOD-007 | nullptr vs NULL | Use of `NULL` macro |
-| CPP-MOD-008 | Unscoped enum | `enum` without `class` |
-| CPP-MOD-009 | typedef vs using | `typedef` instead of `using` |
-
-</details>
-
-<details>
-<summary><b>Complexity</b> (3 rules, 1.5x weight)</summary>
-
-| ID | Rule | Threshold |
-|----|------|-----------|
-| CPP-CX-001 | Cyclomatic complexity | warn > 15, error > 25 |
-| CPP-CX-002 | Function length | warn > 80 lines, error > 150 |
-| CPP-CX-003 | Parameter count | warn > 5, error > 8 |
-
-</details>
-
-<details>
-<summary><b>MISRA-labeled subset</b> (7 checks; scoring weight 2.5x via <code>--profile safety-critical</code></summary>
-
-| ID | Rule | Based On |
-|----|------|----------|
-| MISRA-001 | No goto | Rule 6.6.2 |
-| MISRA-002 | No implicit narrowing | Rule 7.0.2 |
-| MISRA-003 | No union | Rule 12.3.1 |
-| MISRA-004 | No dynamic allocation | Rule 21.6.1 |
-| MISRA-005 | No recursion | Rule 17.2.1 |
-| MISRA-006 | Single exit point | Rule 15.5.1 |
-| MISRA-007 | Initialize all variables | Rule 8.1.1 |
-
-</details>
-
-## Health Score
-
-Current method: weighted findings divided by the eligible current attempted
-source-file count (not KLOC), `weighted-findings-per-attempted-file-v2`:
-
-```
-health = clamp(100 - (3 * memory_findings + 1.5 * complexity_findings
-                     + modernization_findings) / attempted_current_file_count, 0, 100)
-```
-
-The safety-critical scoring profile adds MISRA-labeled findings at 2.5x weight;
-it is not a safety assessment. A complete nonempty eligible scope with active
-rules and zero findings scores 100. Empty or materially incomplete analysis has
-no full-scope health score. This does not measure verification completeness.
-
-## Local build and hook integration
-
-The opt-in CMake target and local hook template consume the same explicit
-`cppulse check` engine. They do not collect or change refs automatically. See
-[local integrations](docs/development/local-check-integrations.md).
-The [action source](docs/action-usage.md) is a local check adapter whose Docker
-and GitHub runner execution remain unverified. It does not post comments or
-request a token; no new external CI workflow has been enabled or published.
-
-## Development
-
-### Prerequisites
-
-- C++17 compiler and libclang development libraries; exercised with GCC 14.2/libclang 19 on Linux x86_64
-- CMake/CTest 3.31.6 for the qualified verification adapters
-- Python 3.12.14 exercised; declared package range is 3.11–3.12, with 3.11 unqualified here
-- Node.js 24
-- Docker & Docker Compose (for full-stack runs)
-
-### Building
-
-Use the root-level native quickstart above. The individual component commands below
-are reference commands; return to the checkout root between components.
-
-```bash
-# C++ components
-cd analyzer-core && cmake -B build && cmake --build build
-cd ../cli && cmake -B build && cmake --build build
-
-# Python components
-pip install -r git-miner/requirements.txt
-pip install -r predictor/requirements.txt
-pip install -r report-engine/requirements.txt
-
-# Dashboard
-cd dashboard && npm ci && npm run build
-```
-
-### Compilation database
-
-analyzer-core looks for `compile_commands.json` in the analyzed repo root (or its
-`build/` directory) and parses each file with its recorded include paths, defines,
-and language standard — falling back to bare `-std=c++17` when absent. Generate one
-with `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` to supply recorded include paths,
-defines and language settings. Missing or unsupported contexts remain visible;
-the exercised cases do not quantify an accuracy improvement.
-
-### Testing
-
-```bash
-# From the repository root after setup: schemas, native CTest, each Python
-# component with coverage, dashboard tests and production build.
+(cd dashboard && npm ci && npm test && npm run build)
 python scripts/check_local.py
-
-# Explicit optional Docker section; blocked when Docker is unavailable.
-python scripts/check_local.py --section docker
 ```
 
-### Linting
+The runner invokes native CTest, Python components with coverage, contracts and
+dashboard checks. Docker verification is explicit:
+`python scripts/check_local.py --section docker`. Extra verification tools are
+listed in `requirements-verification.txt`; no new external CI service is needed.
+See [CONTRIBUTING](CONTRIBUTING.md), [architecture](docs/architecture.md),
+[decisions](docs/DECISIONS.md) and [rule reference](docs/generated/rules.md).
 
-```bash
-clang-tidy analyzer-core/src/*.cpp -- -std=c++17
-ruff check . && black --check .
-```
+Development uses AI-assisted implementation and review. Automation and authorship
+remain transparent; claims require reproducible artifacts and actual checks.
 
-## Research References
+## Product direction and license
 
-- [Product discovery and working direction](docs/research/cppulse-product-discovery.md) -
-  Consolidated findings, current source capabilities, C++ pain points, proposed
-  distinctions, and maintainer/consumer workflows. Updated 2026-11-11;
-  proposed capabilities and validation gaps are marked explicitly.
-- [C++ analysis tool landscape](docs/research/cpp-analysis-tool-landscape.md) -
-  High-level features, availability, and official sources for tools relevant to
-  cppulse. Research snapshot dated 2026-11-05 for the goal-selection discussion.
+Read the [product discovery](docs/research/cppulse-product-discovery.md),
+[tool landscape](docs/research/cpp-analysis-tool-landscape.md), and complete
+[requirements](docs/specs/production-platform/requirements.md),
+[design](docs/specs/production-platform/design.md) and
+[tasks](docs/specs/production-platform/tasks.md). Similar capabilities exist
+elsewhere; this combined workflow's adoption value still needs validation with
+maintainers and integrators.
 
-## Architecture Decisions
-
-| ADR | Decision | Rationale |
-|-----|----------|-----------|
-| [ADR-001](docs/adr/ADR-001-libclang.md) | Use libclang for AST analysis | Compiler parsing with explicit tested/partial contexts; detector coverage remains limited |
-| [ADR-002](docs/adr/ADR-002-xgboost.md) | Experimental ranking | Conditional ML with heuristic fallback; predictive utility is not established |
-| [ADR-003](docs/adr/ADR-003-monorepo.md) | Monorepo layout | Atomic changes across components, shared CI |
-| [ADR-004](docs/adr/ADR-004-json-comms.md) | JSON for inter-component data | Schema-validated, human-readable, component isolation |
-| [ADR-005](docs/adr/ADR-005-pdf-report.md) | WeasyPrint for PDF generation | HTML/CSS layout; requires native Pango/font libraries |
-
-## Project Structure
-
-```
-cppulse/
-  analyzer-core/    C++17 static analysis engine (libclang)
-  git-miner/        Python git history analyzer
-  predictor/        Python ML pipeline (XGBoost)
-  report-engine/    FastAPI REST API + PDF generation
-  dashboard/        React + TypeScript interactive UI
-  cli/              C++17 CLI orchestrator
-  docs/             ADRs, schemas, specs
-  examples/         Showcase analyses of real C++ projects
-```
-
-## License
-
-[MIT](LICENSE)
-
----
-
-Built with libclang, XGBoost, FastAPI, React, and Docker.
-
-## Autonomous implementation checkpoint
-
-The staged core roadmap is being implemented in the working tree without
-commits or remote writes. See [execution status](review/autonomous/STATUS.md)
-and [S0/S1 technical review](review/autonomous/S1-REVIEW.md) for fresh results.
-The current native run adds pinned fmt/utfcpp and a consuming application;
-explicit incomplete compiler contexts remain visible. Run
-`python3 scripts/run_real_corpus.py --fetch` to explicitly permit downloading
-missing locked inputs, then build/test/analyze them. The upstream full test
-suites are not run by this selected consumer example.
-
-If a relocated libclang installation cannot find built-in headers such as
-stddef.h, install its matching resource headers and use the analyzer's
-`--resource-dir` or inherited `CPPULSE_CLANG_RESOURCE_DIR`. A resource directory
-must contain include/stddef.h; invalid overrides fail clearly. The top-level
-analyze/watch CLI now forwards `--compilation-database` files or directories.
-
-## Versioned local foundation
-
-The accepted S2 technical review adds packaged v2 contracts, conservative legacy readers, content identities and coherent local run snapshots. It passed 203 targeted checks, including the installation-metadata contract prerequisite. A completed collection and a passed policy are different results; S2 alone did not implement an evaluator. See [contracts](docs/contracts/v2.md) and [S2 review](review/autonomous/S2-REVIEW.md).
-
-The S3 local wheel/native candidate passed fresh core-only installation with the original checkout path temporarily absent. It also analyzed an external application consuming the pinned fmt/utfcpp sources with its compilation database. Source entry points remain compatible. Schemas and templates live in the canonical cppulse namespace; component coverage includes that namespace because src modules are compatibility aliases. Docker, Windows and macOS remain unqualified. See [S3 review](review/autonomous/S3-REVIEW.md) and [candidate preparation](docs/development/candidate.md).
-
-For a prepared candidate, create a fresh environment and use its exact offline
-core lock (host native requirements still apply). Replace these placeholder
-paths with the candidate/prefix recorded in its completed installed review:
-
-```bash
-candidate="/absolute/path/to/cppulse-0.2.0.dev2-linux-x86_64-candidate"
-python3 -m venv /tmp/cppulse-demo-env
-/tmp/cppulse-demo-env/bin/python -m pip install --no-index --find-links "$candidate/core-wheelhouse" --require-hashes -r "$candidate/core-requirements.lock"
-export CPPULSE_NATIVE_PREFIX="/absolute/path/to/extracted/cppulse-native-0.2.0.dev2-linux-x86_64"
-/tmp/cppulse-demo-env/bin/cppulse doctor
-/tmp/cppulse-demo-env/bin/cppulse analyze --repo /path/to/cpp-project --output /tmp/cppulse-results --format html
-```
-
-The installed default generates self-contained HTML; JSON works in the same
-core environment. PDF and API serving require their optional extras. `init`,
-`config`, `doctor` and explicitly local redacted `diagnostics` are available.
-Analysis runs the native analyzer and history/ranking/report components; it
-does not run the target project's build. The public evidence commands use an
-explicit request instead; see [public workflow commands](docs/development/public-cli.md).
-
-Installed analysis retains coherent run snapshots and compatibility flat files.
-Reports/API resolve one snapshot; newer incomplete attempts are visible rather
-than silently reusing old results. Source binding for this archive-style analysis
-is conservatively unverified. A completed collection is not a policy pass.
-
-Directories without `.git` remain useful static-analysis inputs. Their history
-metadata is explicitly unavailable; historical churn and positive Git hotspots
-are not invented for them.
-
-## Earlier S5 evidence checkpoint (2026-11-14)
-
-The selected CMake/CTest/native workflow retains actual commands,
-bounded logs, source/artifact identities and exact libclang parse contexts in
-immutable snapshots. A pure policy evaluator supports finding limits, analysis
-parse coverage, named test outcomes and required jobs. Missing, disabled, stale
-or mismatched evidence cannot become a clean finding result. Policy scores stay
-separate from experimental maintenance health/ranking.
-
-The six-case synthetic demo verifies clean, intentional-finding, partial-parse,
-disabled-rule, failed-test and missing-report outcomes. All 18 original/derived
-snapshots verify. The fresh dev1 core-only installation reproduced one passed,
-three failed and two insufficient-evidence gates outside the checkout, without
-optional ML/PDF/web/Node. All 15 shared checks passed: **1,604 tests and dashboard
-production build**. These are functional checks, not accuracy benchmarks.
-
-In the recorded cloud environment:
-
-```bash
-source review/environment.sh
-PYTHONPATH=python python scripts/demo_policy.py
-```
-
-On other configured hosts, select the analyzer/resource paths with the driver's
-explicit options. See [walkthrough](review/autonomous/POLICY-DEMO.md),
-[S5 review](review/autonomous/S5-REVIEW.md) and
-[policy API](docs/development/policy-engine.md). The selected compiler/CTest
-versions and finite resource inventory bound this historical S5 evidence. The
-current S7 public workflow adds request validation, source and generated-output
-freshness, policy-only reassessment with current expiry, and one snapshot view
-across JSON/HTML/PDF/API/UI. A stale new attempt is visible without presenting an
-old passed assessment as current. Historical pinned reads preserve their labels.
-Docker/Compose is still unexecuted; no candidate has been published.
-
-### Verification adapters and consumer applicability
-
-The accepted S6 native source checkpoint passes **2,042 tests**, all 15 shared
-checks and the dashboard production build. LCOV/Cobertura retain exact counts
-and measurement kinds; explicit policy profile 1.1 adds coverage and sanitizer
-predicates while omitted/1.0 retains the earlier four meanings. Actual selected
-coverage is 5/8 lines and 1/2 branches; LCOV also records 2/3 functions. These
-figures describe the deliberately small fixture, not cppulse detector accuracy.
-
-Actual ASan/UBSan/TSan cases distinguish clean execution, real diagnostics and
-unsupported proof. A recovering UBSan finding fails despite a successful CTest
-exit. Pinned fmt/utfcpp distributed packages are compiled and consumed; compatible
-upstream configuration remains separate from required local application tests.
-Five consumer cases cover clean, missing-test, C++20 mismatch, a clearly synthetic
-no-exceptions failure and a changed package. Transferred reports retain separate
-source namespaces and unauthenticated import labels. Empty external diagnostic
-reports never prove a complete clean scan.
-
-```bash
-source review/environment.sh
-PYTHONPATH=python python scripts/demo_coverage.py --gcovr "$PWD/../tooling/gcovr-8.8/bin/gcovr"
-PYTHONPATH=python python scripts/demo_sanitizers.py
-PYTHONPATH=python python scripts/demo_consumer.py
-```
-
-See [S6 review](review/autonomous/S6-REVIEW.md),
-[coverage](docs/development/coverage-normalization.md),
-[consumer applicability](docs/development/consumer-applicability.md) and
-[transfer](docs/development/evidence-transfer.md). Support is limited to the
-recorded Linux/GNU/CTest dialects and selected finite inputs; runtime authenticity,
-whole-program instrumentation and exhaustive template coverage are not proven.
-The frozen dev1 installed proof predates S6/S7 additions. Current source
-verification and final dev2 installed acceptance are separate records; consult
-[S7 review](review/autonomous/S7-REVIEW.md) for the latter once completed.
+cppulse is [MIT licensed](LICENSE) for public, private and commercial use.
+Third-party dependencies retain their licenses. Managed hosting and external
+model/API services, if added, have separate operating costs.

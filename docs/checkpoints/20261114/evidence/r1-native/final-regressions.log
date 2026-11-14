@@ -1,0 +1,32 @@
+Internal ctest changing into directory: /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build
+Test project /workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build
+      Start 61: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean
+ 1/13 Test #61: RuleRegressionFixture.AlreadyDeducedIteratorTypesStayClean .......................   Passed    0.03 sec
+      Start 62: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode
+ 2/13 Test #62: RuleRegressionFixture.CountsLogicalOperatorsOncePerAstNode .......................   Passed    0.03 sec
+      Start 63: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce
+ 3/13 Test #63: RuleRegressionFixture.CountsMacroExpandedLogicalOperatorsOnce ....................   Passed    0.03 sec
+      Start 64: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction
+ 4/13 Test #64: RuleRegressionFixture.NestedLambdaDecisionsDoNotInflateEnclosingFunction .........   Passed    0.03 sec
+      Start 65: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates
+ 5/13 Test #65: RuleRegressionFixture.MeasuresUninstantiatedFunctionAndMemberTemplates ...........   Passed    0.04 sec
+      Start 66: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength
+ 6/13 Test #66: RuleRegressionFixture.MeasuresUninstantiatedTemplateLength .......................   Passed    0.03 sec
+      Start 67: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters
+ 7/13 Test #67: RuleRegressionFixture.MeasuresUninstantiatedTemplateParameters ...................   Passed    0.03 sec
+      Start 68: RuleRegressionFixture.LambdaCaptureInitializerBelongsToEnclosingFunction
+ 8/13 Test #68: RuleRegressionFixture.LambdaCaptureInitializerBelongsToEnclosingFunction .........   Passed    0.03 sec
+      Start 69: RuleRegressionFixture.LocalClassBodyHasSeparateControlFlow
+ 9/13 Test #69: RuleRegressionFixture.LocalClassBodyHasSeparateControlFlow .......................   Passed    0.03 sec
+      Start 70: RuleRegressionFixture.BranchlessAndOverloadedOperatorCallsAreNotDecisions
+10/13 Test #70: RuleRegressionFixture.BranchlessAndOverloadedOperatorCallsAreNotDecisions ........   Passed    0.03 sec
+      Start 71: RuleRegressionFixture.CaptureRecoveryPreservesNestedLambdaAndOverloadSemantics
+11/13 Test #71: RuleRegressionFixture.CaptureRecoveryPreservesNestedLambdaAndOverloadSemantics ...   Passed    0.03 sec
+      Start 72: RuleRegressionFixture.RecoversDirectAndConditionalCaptureInitializers
+12/13 Test #72: RuleRegressionFixture.RecoversDirectAndConditionalCaptureInitializers ............   Passed    0.03 sec
+      Start 73: RuleRegressionFixture.LambdaDefaultArgumentsDoNotBelongToEnclosingFunction
+13/13 Test #73: RuleRegressionFixture.LambdaDefaultArgumentsDoNotBelongToEnclosingFunction .......   Passed    0.03 sec
+
+100% tests passed, 0 tests failed out of 13
+
+Total Test time (real) =   0.38 sec

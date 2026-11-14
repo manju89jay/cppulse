@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cppulse.local/schemas/development/benchmark-result-1.0.0.json",
+  "title": "Observed local benchmark measurements",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "suite_id", "suite_sha256", "started_at", "finished_at", "environment", "status", "exit_status", "measurements", "limitations"],
+  "properties": {
+    "version": {"const": "1.0.0"},
+    "suite_id": {"type": "string", "minLength": 1},
+    "suite_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "finished_at": {"type": "string", "format": "date-time"},
+    "environment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["platform", "machine", "hostname", "python", "cpu_count"],
+      "properties": {
+        "platform": {"type": "string"}, "machine": {"type": "string"},
+        "hostname": {"type": "string"}, "python": {"type": "string"},
+        "cpu_count": {"type": ["integer", "null"], "minimum": 1}
+      }
+    },
+    "status": {"enum": ["passed", "failed", "blocked", "interrupted"]},
+    "exit_status": {"enum": [0, 1, 2, 130]},
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["case_id", "repetition", "argv", "cwd", "status", "returncode", "expected_exit", "wall_seconds", "cpu_seconds", "peak_rss_bytes", "resource_scope", "log", "reason"],
+        "properties": {
+          "case_id": {"type": "string"}, "repetition": {"type": "integer", "minimum": 1},
+          "argv": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "cwd": {"type": "string"},
+          "status": {"enum": ["passed", "failed", "blocked", "interrupted"]},
+          "returncode": {"type": ["integer", "null"]},
+          "expected_exit": {"type": "integer"},
+          "wall_seconds": {"type": "number", "minimum": 0},
+          "cpu_seconds": {"type": ["number", "null"], "minimum": 0},
+          "peak_rss_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "resource_scope": {"type": "string"},
+          "log": {"type": "string"}, "reason": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  }
+}

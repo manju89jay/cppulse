@@ -1,0 +1,578 @@
+{
+  "findings": [
+    {
+      "category": "modernization",
+      "column": 72,
+      "confidence": 0.9,
+      "file": "source/utf8/checked.h",
+      "line": 220,
+      "message": "Verbose iterator type 'typename std::iterator_traits<octet_iterator>::difference_type' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 20,
+      "confidence": 0.9,
+      "file": "source/utf8/checked.h",
+      "line": 331,
+      "message": "Verbose iterator type 'iterator<octet_iterator>' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 20,
+      "confidence": 0.9,
+      "file": "source/utf8/checked.h",
+      "line": 342,
+      "message": "Verbose iterator type 'iterator<octet_iterator>' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 27,
+      "confidence": 1.0,
+      "file": "source/utf8/checked.h",
+      "line": 293,
+      "message": "typedef 'value_type' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t value_type' with 'using value_type = utfchar32_t'"
+    },
+    {
+      "category": "modernization",
+      "column": 28,
+      "confidence": 1.0,
+      "file": "source/utf8/checked.h",
+      "line": 294,
+      "message": "typedef 'pointer' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t * pointer' with 'using pointer = utfchar32_t *'"
+    },
+    {
+      "category": "modernization",
+      "column": 28,
+      "confidence": 1.0,
+      "file": "source/utf8/checked.h",
+      "line": 295,
+      "message": "typedef 'reference' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t & reference' with 'using reference = utfchar32_t &'"
+    },
+    {
+      "category": "modernization",
+      "column": 30,
+      "confidence": 1.0,
+      "file": "source/utf8/checked.h",
+      "line": 296,
+      "message": "typedef 'difference_type' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef std::ptrdiff_t difference_type' with 'using difference_type = std::ptrdiff_t'"
+    },
+    {
+      "category": "modernization",
+      "column": 47,
+      "confidence": 1.0,
+      "file": "source/utf8/checked.h",
+      "line": 297,
+      "message": "typedef 'iterator_category' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef std::bidirectional_iterator_tag iterator_category' with 'using iterator_category = std::bidirectional_iterator_tag'"
+    },
+    {
+      "category": "modernization",
+      "column": 37,
+      "confidence": 0.9,
+      "file": "source/utf8/core.h",
+      "line": 452,
+      "message": "Verbose iterator type 'std::string::const_iterator' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 10,
+      "confidence": 1.0,
+      "file": "source/utf8/core.h",
+      "line": 160,
+      "message": "Unscoped enum 'utf_error' pollutes the enclosing namespace and allows implicit integer conversion",
+      "rule_id": "CPP-MOD-008",
+      "severity": "warning",
+      "suggestion": "Replace 'enum utf_error' with 'enum class utf_error'"
+    },
+    {
+      "category": "modernization",
+      "column": 33,
+      "confidence": 1.0,
+      "file": "source/utf8/core.h",
+      "line": 59,
+      "message": "typedef 'utfchar8_t' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef unsigned char utfchar8_t' with 'using utfchar8_t = unsigned char'"
+    },
+    {
+      "category": "modernization",
+      "column": 29,
+      "confidence": 1.0,
+      "file": "source/utf8/core.h",
+      "line": 61,
+      "message": "typedef 'utfchar16_t' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef char16_t utfchar16_t' with 'using utfchar16_t = char16_t'"
+    },
+    {
+      "category": "modernization",
+      "column": 29,
+      "confidence": 1.0,
+      "file": "source/utf8/core.h",
+      "line": 62,
+      "message": "typedef 'utfchar32_t' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef char32_t utfchar32_t' with 'using utfchar32_t = char32_t'"
+    },
+    {
+      "category": "misra",
+      "column": 17,
+      "confidence": 1.0,
+      "file": "source/utf8/core.h",
+      "line": 143,
+      "message": "Function 'is_overlong_sequence' has 4 return statements; MISRA Rule 6-6-5 requires a single exit point",
+      "rule_id": "MISRA-006",
+      "severity": "warning",
+      "suggestion": "Restructure function so all exit paths go through a single return"
+    },
+    {
+      "category": "modernization",
+      "column": 42,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp17.h",
+      "line": 65,
+      "message": "Verbose iterator type 'std::string_view::const_iterator' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 37,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 44,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 65,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 72,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 104,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "misra",
+      "column": 23,
+      "confidence": 0.9,
+      "file": "source/utf8/cpp20.h",
+      "line": 111,
+      "message": "Variable 'result' of type 'int' declared without an initializer",
+      "rule_id": "MISRA-007",
+      "severity": "warning",
+      "suggestion": "Initialize 'result' at the point of declaration"
+    },
+    {
+      "category": "modernization",
+      "column": 76,
+      "confidence": 0.9,
+      "file": "source/utf8/unchecked.h",
+      "line": 175,
+      "message": "Verbose iterator type 'typename std::iterator_traits<octet_iterator>::difference_type' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 26,
+      "confidence": 0.9,
+      "file": "source/utf8/unchecked.h",
+      "line": 265,
+      "message": "Verbose iterator type 'iterator<octet_iterator>' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 26,
+      "confidence": 0.9,
+      "file": "source/utf8/unchecked.h",
+      "line": 276,
+      "message": "Verbose iterator type 'iterator<octet_iterator>' can be simplified with 'auto'",
+      "rule_id": "CPP-MOD-005",
+      "severity": "info",
+      "suggestion": "Replace the explicit iterator type with 'auto'"
+    },
+    {
+      "category": "modernization",
+      "column": 33,
+      "confidence": 1.0,
+      "file": "source/utf8/unchecked.h",
+      "line": 236,
+      "message": "typedef 'value_type' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t value_type' with 'using value_type = utfchar32_t'"
+    },
+    {
+      "category": "modernization",
+      "column": 34,
+      "confidence": 1.0,
+      "file": "source/utf8/unchecked.h",
+      "line": 237,
+      "message": "typedef 'pointer' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t * pointer' with 'using pointer = utfchar32_t *'"
+    },
+    {
+      "category": "modernization",
+      "column": 34,
+      "confidence": 1.0,
+      "file": "source/utf8/unchecked.h",
+      "line": 238,
+      "message": "typedef 'reference' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef utfchar32_t & reference' with 'using reference = utfchar32_t &'"
+    },
+    {
+      "category": "modernization",
+      "column": 36,
+      "confidence": 1.0,
+      "file": "source/utf8/unchecked.h",
+      "line": 239,
+      "message": "typedef 'difference_type' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef std::ptrdiff_t difference_type' with 'using difference_type = std::ptrdiff_t'"
+    },
+    {
+      "category": "modernization",
+      "column": 53,
+      "confidence": 1.0,
+      "file": "source/utf8/unchecked.h",
+      "line": 240,
+      "message": "typedef 'iterator_category' should use a C++11 type alias instead",
+      "rule_id": "CPP-MOD-009",
+      "severity": "info",
+      "suggestion": "Replace 'typedef std::bidirectional_iterator_tag iterator_category' with 'using iterator_category = std::bidirectional_iterator_tag'"
+    }
+  ],
+  "metadata": {
+    "analysis": {
+      "enabled_rules": [
+        "CPP-MEM-001",
+        "CPP-MEM-002",
+        "CPP-MEM-003",
+        "CPP-MOD-001",
+        "CPP-MOD-002",
+        "CPP-MOD-003",
+        "CPP-MOD-004",
+        "CPP-MOD-005",
+        "CPP-MOD-006",
+        "CPP-MOD-007",
+        "CPP-MOD-008",
+        "CPP-MOD-009",
+        "CPP-CX-001",
+        "CPP-CX-002",
+        "CPP-CX-003",
+        "MISRA-001",
+        "MISRA-002",
+        "MISRA-003",
+        "MISRA-004",
+        "MISRA-005",
+        "MISRA-006",
+        "MISRA-007"
+      ],
+      "files": [
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/checked.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/core.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/cpp11.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/cpp17.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 20,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/cpp20.h",
+          "status": "partial",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8/unchecked.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "inferred",
+          "error_count": 0,
+          "parse_arguments": [
+            "-working-directory=/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/consumer-build/fmt-build",
+            "--driver-mode=g++",
+            "-I/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/fmt/include",
+            "-x",
+            "c++-header",
+            "-std=gnu++17",
+            "-resource-dir=/workspace/scratch/b3d4e6fff494/toolchain/usr/lib/llvm-19/lib/clang/19"
+          ],
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/source/utf8.h",
+          "status": "analyzed",
+          "working_directory": "/workspace/scratch/b3d4e6fff494/cppulse"
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/apitests.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/negative.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/noexceptionstests.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_checked_api.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_checked_iterator.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_cpp11.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_cpp17.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_cpp20.cpp",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_unchecked_api.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        },
+        {
+          "compile_context": "none",
+          "error_count": 0,
+          "parse_arguments": null,
+          "path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp/tests/test_unchecked_iterator.h",
+          "reason": "matched configured exclude_paths",
+          "status": "excluded",
+          "working_directory": null
+        }
+      ],
+      "parser": {
+        "name": "libclang",
+        "version": "Debian clang version 19.1.7 (3+b1)"
+      }
+    },
+    "analyzed_at": "2026-11-14T10:40:07Z",
+    "file_count": 7,
+    "repo_path": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/corpus/utfcpp",
+    "total_loc": 1474
+  },
+  "summary": {
+    "by_category": {
+      "complexity": 0,
+      "memory_safety": 0,
+      "misra": 7,
+      "modernization": 22
+    },
+    "by_severity": {
+      "error": 0,
+      "info": 21,
+      "warning": 8
+    },
+    "total_findings": 29
+  },
+  "version": "1.0.0"
+}

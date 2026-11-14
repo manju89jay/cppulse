@@ -9,13 +9,23 @@ import json
 import os
 from pathlib import Path
 import shutil
+import signal
 import subprocess
 import sys
 from time import monotonic
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-SECTIONS = ("format", "generated", "root", "native", "python", "dashboard", "docker")
+SECTIONS = (
+    "format",
+    "generated",
+    "root",
+    "native",
+    "python",
+    "dashboard",
+    "integration",
+    "docker",
+)
 DEFAULT_SECTIONS = SECTIONS[:-1]
 
 
@@ -30,6 +40,7 @@ class Check:
     depends_on: tuple[str, ...] = ()
     coverage_namespace: str | None = None
     coverage_minimum: float | None = None
+    availability_probe: bool = False
 
 
 def _now() -> str:
@@ -50,6 +61,7 @@ def _changed_python_sources(root: Path) -> list[str]:
                 "--",
                 "scripts",
                 "tests",
+                "tools",
             ],
             cwd=root,
             capture_output=True,
@@ -77,11 +89,43 @@ def build_checks(
     cmake: str = "cmake",
     ctest: str = "ctest",
     npm: str = "npm",
+    clang_format: str | None = None,
     jobs: int = 4,
 ) -> list[Check]:
     """Create a deterministic contract/producer/consumer/presentation check order."""
     checks: list[Check] = []
     if "format" in sections:
+        native_sources = sorted(
+            path.relative_to(root).as_posix()
+            for component in ("analyzer-core", "cli")
+            for path in (root / component).rglob("*")
+            if path.is_file()
+            and path.suffix in {".cpp", ".h", ".hpp", ".hxx"}
+            and not {"build", "fixtures", "CMakeFiles", ".git"}.intersection(
+                path.relative_to(root / component).parts
+            )
+        )
+        if native_sources:
+            formatter = (
+                clang_format
+                or os.environ.get("CPPULSE_CLANG_FORMAT")
+                or shutil.which("clang-format-19")
+                or "clang-format"
+            )
+            checks.append(
+                Check(
+                    "native-format",
+                    "format",
+                    (
+                        formatter,
+                        "--dry-run",
+                        "--Werror",
+                        "--style=file",
+                        *native_sources,
+                    ),
+                    root,
+                )
+            )
         targets = [
             str(path.relative_to(root))
             for path in [
@@ -110,6 +154,14 @@ def build_checks(
                 ),
             ]
     if "generated" in sections:
+        checks.append(
+            Check(
+                "delivery-ledger",
+                "generated",
+                (python, "scripts/verify_delivery.py"),
+                root,
+            )
+        )
         checks.append(
             Check(
                 "generated-check",
@@ -164,7 +216,7 @@ def build_checks(
             ]
         )
 
-    if "native" in sections:
+    if "native" in sections or "integration" in sections:
         native("analyzer-core", "analyzer")
     if "python" in sections:
         for component, namespace, minimum in [
@@ -187,6 +239,8 @@ def build_checks(
                         "--cov=" + canonical,
                         "--cov-report=term",
                         "--cov-report=json:" + str(coverage_file),
+                        "--cov-report=xml:"
+                        + str(output / (component + "-coverage.xml")),
                         "tests/",
                     ),
                     root / component,
@@ -209,8 +263,33 @@ def build_checks(
                 ),
             ]
         )
-    if "native" in sections:
+    if "native" in sections or "integration" in sections:
         native("cli", "cli")
+    if "integration" in sections:
+        checks.append(
+            Check(
+                "native-integration-dependencies",
+                "integration",
+                (python, "-c", "import pypdf, weasyprint, matplotlib"),
+                root,
+                availability_probe=True,
+            )
+        )
+        prerequisites = ["analyzer-tests", "cli-tests"]
+        prerequisites.append("native-integration-dependencies")
+        if "python" in sections:
+            prerequisites += [
+                name + "-tests" for name in ("git-miner", "predictor", "report-engine")
+            ]
+        checks.append(
+            Check(
+                "native-integration",
+                "integration",
+                ("bash", "scripts/demo.sh", str(output / "native-demo")),
+                root,
+                tuple(prerequisites),
+            )
+        )
     if "docker" in sections:
         checks.append(
             Check(
@@ -238,6 +317,22 @@ def canonical_coverage(report: Path, namespace: str, root: Path, cwd: Path) -> f
     if not statements:
         raise ValueError(f"No canonical coverage statements recorded for {namespace}")
     return 100.0 * covered / statements
+
+
+def wait_command(process: subprocess.Popen[str]) -> int:
+    """Wait for an explicit developer command; cancellation is handled by its owner."""
+    return process.wait()
+
+
+def _cancel_command(process: subprocess.Popen[str]) -> None:
+    try:
+        if os.name == "posix":
+            os.killpg(process.pid, signal.SIGKILL)
+        else:
+            process.kill()
+    except ProcessLookupError:
+        pass
+    process.wait(timeout=10)
 
 
 def run_check(
@@ -269,19 +364,38 @@ def run_check(
                 "Docker executable is unavailable; Compose was not run"
             )
         with log.open("w", encoding="utf-8") as stream:
-            process = subprocess.run(
+            process = subprocess.Popen(
                 list(check.argv),
                 cwd=check.cwd,
                 env=environment,
                 stdout=stream,
                 stderr=subprocess.STDOUT,
                 shell=False,
-                check=False,
+                start_new_session=os.name == "posix",
             )
+            try:
+                wait_command(process)
+            except KeyboardInterrupt:
+                _cancel_command(process)
+                result.update(
+                    status="interrupted",
+                    returncode=process.returncode,
+                    reason="Explicit cancellation; selected process group was terminated on POSIX; other hosts terminate the immediate process",
+                )
+                stream.write("\nDeveloper check cancelled.\n")
+                result.update(
+                    finished_at=_now(), elapsed_seconds=round(monotonic() - start, 3)
+                )
+                return result
         result.update(
             returncode=process.returncode,
             status="passed" if process.returncode == 0 else "failed",
         )
+        if process.returncode and check.availability_probe:
+            result.update(
+                status="blocked",
+                reason="Required developer capability is unavailable; inspect the probe log",
+            )
         if process.returncode == 0 and check.coverage_namespace:
             report = output / (check.name.removesuffix("-tests") + "-coverage.json")
             if not report.is_file():
@@ -314,6 +428,8 @@ def run_check(
 
 def exit_status(results: list[dict[str, Any]]) -> int:
     """Never let a successful independent command mask failure or missing work."""
+    if any(result["status"] == "interrupted" for result in results):
+        return 130
     if any(result["status"] == "failed" for result in results):
         return 1
     return 2 if any(result["status"] == "blocked" for result in results) else 0
@@ -331,6 +447,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--cmake", default="cmake")
     parser.add_argument("--ctest", default="ctest")
     parser.add_argument("--npm", default="npm.cmd" if os.name == "nt" else "npm")
+    parser.add_argument("--clang-format")
     args = parser.parse_args(argv)
     if args.jobs < 1:
         parser.error("--jobs must be positive")
@@ -347,7 +464,7 @@ def main(argv: list[str] | None = None) -> int:
         "version": "1.0.0",
         "started_at": _now(),
         "sections": sorted(sections),
-        "format_scope": "Python implementation, legacy shims and changed scripts/tests; check-only",
+        "format_scope": "Native source/tests excluding build/fixtures; Python implementation, legacy shims and changed scripts/tests/tools; check-only",
         "docker": "requested" if "docker" in sections else "not_requested",
         "checks": [],
     }
@@ -359,6 +476,7 @@ def main(argv: list[str] | None = None) -> int:
         cmake=args.cmake,
         ctest=args.ctest,
         npm=args.npm,
+        clang_format=args.clang_format,
         jobs=args.jobs,
     ):
         prior = {result["name"]: result for result in document["checks"]}
@@ -382,16 +500,21 @@ def main(argv: list[str] | None = None) -> int:
         document["checks"].append(result)
         document["finished_at"] = _now()
         document["exit_status"] = exit_status(document["checks"])
-        document["status"] = {0: "passed", 1: "failed", 2: "blocked"}[
-            document["exit_status"]
-        ]
+        document["status"] = {
+            0: "passed",
+            1: "failed",
+            2: "blocked",
+            130: "interrupted",
+        }[document["exit_status"]]
         (output / "check-results.json").write_text(
             json.dumps(document, indent=2) + "\n", encoding="utf-8"
         )
         print(f'{result["status"].upper()}: {check.name}', flush=True)
+        if result["status"] == "interrupted":
+            break
     document["finished_at"] = _now()
     document["exit_status"] = exit_status(document["checks"])
-    document["status"] = {0: "passed", 1: "failed", 2: "blocked"}[
+    document["status"] = {0: "passed", 1: "failed", 2: "blocked", 130: "interrupted"}[
         document["exit_status"]
     ]
     (output / "check-results.json").write_text(

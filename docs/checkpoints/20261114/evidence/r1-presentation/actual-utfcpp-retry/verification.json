@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-14T10:42:35.987436+00:00",
+  "source_head": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "data_directory": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-r1-real-20261114-retry/utfcpp",
+  "input_sha256": {
+    "findings": "c24b9b72fbad7df53da8e8714f528a2108621f4872a1a0374646d1310e12a68c",
+    "git_metrics": "b27e3159bd6dde98b34d2e1e99f8d6315ff5faa2639c52fcc4e043d5df214bb2",
+    "risk_scores": "fd1c939c707d5a19b3e86089a84b697a4f321b77f0d3e14b94c2f1ed040b13e5",
+    "roadmap": "6ee75920bdf3da24c709fc0ce423c26f345a7be66dfdf127f43ee1c07578bb08"
+  },
+  "qualification": "Actual current packaged assets, API and PDF against selected recorded data. Native source freshness is established only by the separately referenced producer run, not this presentation verifier.",
+  "ranked_files": 0,
+  "unranked_files": 7,
+  "history_status": "partial",
+  "observed_silos": 0,
+  "browser_errors": [],
+  "pdf": {
+    "path": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-presentation/actual-utfcpp-retry/availability-report.pdf",
+    "sha256": "cbe4b1421ea1dd22fc55bc22679c2da5f9a455af4b6323c2f297b0d52f6db9a6",
+    "bytes": 42958,
+    "pages": 9,
+    "nonempty_pages": 9
+  },
+  "status": "passed"
+}

@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.0.0, pluggy-1.7.0 -- /workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python
+rootdir: /workspace/scratch/b3d4e6fff494/cppulse
+configfile: pytest.ini
+plugins: cov-4.1.0, platformdirs-4.14.5, anyio-4.16.0
+collecting ... collected 43 items
+
+tests/test_pipeline_validation.py::test_non_demo_static_only_results_validate PASSED [  2%]
+tests/test_pipeline_validation.py::test_corrupt_summary_is_rejected PASSED [  4%]
+tests/test_pipeline_validation.py::test_duplicate_risk_identity_is_rejected PASSED [  6%]
+tests/test_pipeline_validation.py::test_external_or_noncanonical_identity_is_rejected[/etc/source.cpp] PASSED [  9%]
+tests/test_pipeline_validation.py::test_external_or_noncanonical_identity_is_rejected[C:\\source.cpp] PASSED [ 11%]
+tests/test_pipeline_validation.py::test_external_or_noncanonical_identity_is_rejected[src/../source.cpp] PASSED [ 13%]
+tests/test_pipeline_validation.py::test_empty_risk_scope_cannot_be_perfect PASSED [ 16%]
+tests/test_pipeline_validation.py::test_clean_source_missing_from_risk_scope_is_rejected PASSED [ 18%]
+tests/test_pipeline_validation.py::test_valid_findings_remain_in_scope_when_ranking_is_unavailable PASSED [ 20%]
+tests/test_pipeline_validation.py::test_ranking_inventory_counts_cannot_hide_an_unranked_file PASSED [ 23%]
+tests/test_pipeline_validation.py::test_file_cannot_be_both_ranked_and_unranked PASSED [ 25%]
+tests/test_pipeline_validation.py::test_hotspot_cannot_use_an_explicitly_unranked_file PASSED [ 27%]
+tests/test_pipeline_validation.py::test_unranked_scope_without_counts_cannot_be_silently_accepted PASSED [ 30%]
+tests/test_rank_availability_contract.py::test_explicit_unranked_file_has_no_score_and_preserves_old_rank PASSED [ 32%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[numeric_score-v2] PASSED [ 34%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[numeric_score-prototype_v1] PASSED [ 37%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[low_label-v2] PASSED [ 39%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[low_label-prototype_v1] PASSED [ 41%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_reason-v2] PASSED [ 44%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_reason-prototype_v1] PASSED [ 46%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_reason_code-v2] PASSED [ 48%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_reason_code-prototype_v1] PASSED [ 51%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[duplicate-v2] PASSED [ 53%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[duplicate-prototype_v1] PASSED [ 55%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[ranked_and_unranked-v2] PASSED [ 58%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[ranked_and_unranked-prototype_v1] PASSED [ 60%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[unsafe_path-v2] PASSED [ 62%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[unsafe_path-prototype_v1] PASSED [ 65%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_total-v2] PASSED [ 67%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_total-prototype_v1] PASSED [ 69%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_ranked_count-v2] PASSED [ 72%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_ranked_count-prototype_v1] PASSED [ 74%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_unranked_count-v2] PASSED [ 76%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[wrong_unranked_count-prototype_v1] PASSED [ 79%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_scope-v2] PASSED [ 81%]
+tests/test_rank_availability_contract.py::test_unranked_inventory_cannot_hide_or_contradict_a_rank[no_scope-prototype_v1] PASSED [ 83%]
+tests/test_rank_availability_contract.py::test_prototype_migration_preserves_explicit_unavailable_scope PASSED [ 86%]
+tests/test_rank_availability_contract.py::test_previous_v2_without_inventory_remains_readable PASSED [ 88%]
+tests/test_rank_availability_contract.py::test_original_legacy_schema_is_not_redefined_by_new_availability PASSED [ 90%]
+tests/test_rank_availability_contract.py::test_prototype_migration_preserves_scope_with_no_unranked_files PASSED [ 93%]
+tests/test_rank_availability_contract.py::test_unranked_files_are_bound_to_the_bundle_source_inventory PASSED [ 95%]
+tests/test_rank_availability_contract.py::test_prototype_availability_is_not_silently_exported_as_original_legacy PASSED [ 97%]
+tests/test_rank_availability_contract.py::test_prototype_availability_requires_the_explicit_prototype_reader PASSED [100%]
+
+============================== 43 passed in 0.22s ==============================

@@ -121,6 +121,23 @@ def test_original_output_edits_do_not_change_archive(
     snapshot.verify()
 
 
+def test_import_summary_pins_its_run_after_latest_changes(
+    bundle: tuple[Path, Path, Path]
+) -> None:
+    """A client never needs to resolve mutable latest to recover its own result."""
+    output, source, store = bundle
+    first = import_pipeline(output, source, store, run_id="first-client")
+    second = import_pipeline(output, source, store, run_id="second-client")
+    selected = RunStore.open_existing(store).open_run(
+        first["run_id"], manifest_sha256=first["manifest_sha256"]
+    )
+    assert selected.run_id == "first-client"
+    assert first["manifest_sha256"] != second["manifest_sha256"]
+    assert (
+        RunStore.open_existing(store).resolve_latest_attempt().run_id == "second-client"
+    )
+
+
 def test_changed_artifact_cannot_publish_mixed_import(
     bundle: tuple[Path, Path, Path], monkeypatch: pytest.MonkeyPatch
 ) -> None:
