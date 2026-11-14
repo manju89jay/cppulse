@@ -1,43 +1,57 @@
-name: 'cppulse Health Report'
-description: 'Run cppulse C++ codebase health analysis and post results as a PR comment'
+name: 'cppulse Local Check (development draft)'
+description: 'Apply the installed local check engine to an explicitly supplied evidence store; container execution is unqualified.'
 branding:
   icon: 'activity'
   color: 'blue'
-
 inputs:
   repo-path:
-    description: 'Path to the C++ repository to analyze'
+    description: 'Current workspace, relative to the runner workspace or absolute'
     default: '.'
+  store-path:
+    description: 'Explicit local evidence store; no collection or download is performed'
+    required: true
+  policy-file:
+    description: 'Policy JSON; select this or finding-request'
+    default: ''
+  finding-request:
+    description: 'Versioned finding comparison request; select this or policy-file'
+    default: ''
+  run-id:
+    description: 'Optional named run, paired with manifest-sha256'
+    default: ''
+  manifest-sha256:
+    description: 'Exact named manifest SHA256, paired with run-id'
+    default: ''
   base-ref:
-    description: 'Base branch/ref for diff comparison (e.g. origin/main)'
+    description: 'Deprecated and rejected; use a checked baseline reference'
     default: ''
   post-comment:
-    description: 'Post results as a PR comment (true/false)'
-    default: 'true'
-  generate-pdf:
-    description: 'Generate PDF report as artifact (true/false)'
-    default: 'false'
-  fail-on-regression:
-    description: 'Fail the action if health score decreases vs base (true/false)'
+    description: 'Deprecated and rejected when true; no remote messaging is supported'
     default: 'false'
   github-token:
-    description: 'GitHub token for posting PR comments'
-    default: ${{ github.token }}
-
+    description: 'Deprecated and unused; no token is requested or forwarded'
+    default: ''
+  generate-pdf:
+    description: 'Deprecated and rejected when true; run report explicitly'
+    default: 'false'
+  fail-on-regression:
+    description: 'Deprecated and rejected when true; the selected check supplies the gate'
+    default: 'false'
 outputs:
-  health-score:
-    description: 'Overall health score (0-100)'
-  findings-count:
-    description: 'Total number of findings'
-  new-findings:
-    description: 'Number of new findings introduced in this PR'
-
+  exit-code:
+    description: 'Actual shared CLI exit code'
+  result-path:
+    description: 'Unique local JSON result in the workspace; never uploaded by this adapter'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    GITHUB_TOKEN: ${{ inputs.github-token }}
     INPUT_REPO_PATH: ${{ inputs.repo-path }}
+    INPUT_STORE_PATH: ${{ inputs.store-path }}
+    INPUT_POLICY_FILE: ${{ inputs.policy-file }}
+    INPUT_FINDING_REQUEST: ${{ inputs.finding-request }}
+    INPUT_RUN_ID: ${{ inputs.run-id }}
+    INPUT_MANIFEST_SHA256: ${{ inputs.manifest-sha256 }}
     INPUT_BASE_REF: ${{ inputs.base-ref }}
     INPUT_POST_COMMENT: ${{ inputs.post-comment }}
     INPUT_GENERATE_PDF: ${{ inputs.generate-pdf }}

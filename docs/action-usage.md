@@ -1,123 +1,58 @@
-# Using cppulse in Your CI Pipeline
+# Local check adapter and unqualified action draft
 
-> Add automated C++ health analysis to any GitHub repository in 2 minutes.
+The action source now delegates to the same installed `cppulse check` engine.
+It consumes an explicitly supplied local store, workspace and policy or finding
+request. It performs no checkout, collection, comment, credential lookup or
+upload. No workflow was added, executed or published during this implementation.
 
-## Quick Setup
+**Docker and the GitHub runner are unverified.** Local Bash control tests and
+public CLI tests have separate retained evidence. Do not treat the old `@main`
+examples as installation instructions for these uncommitted changes.
 
-Add this workflow file to your repository at `.github/workflows/cppulse.yml`:
+## Run the adapter locally
 
-```yaml
-name: cppulse Health Report
+With the candidate installed and the selected store already collected:
 
-on:
-  pull_request:
-    paths: ['**/*.cpp', '**/*.h', '**/*.hpp']
-
-permissions:
-  contents: read
-  pull-requests: write
-
-jobs:
-  cppulse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: manju89jay/cppulse/.github/actions/cppulse@main
-        with:
-          post-comment: 'true'
+```bash
+GITHUB_WORKSPACE="$PWD" \
+INPUT_STORE_PATH=/absolute/evidence-store \
+INPUT_POLICY_FILE=/absolute/policy.json \
+bash .github/actions/cppulse/entrypoint.sh
 ```
 
-That's it. Every PR that touches C++ files will get a health report comment.
+Alternatively set `INPUT_FINDING_REQUEST` and leave `INPUT_POLICY_FILE` empty.
+The wrapper preserves the actual CLI exit and stdout JSON in a unique local
+`cppulse-check-result.*.json`. If `GITHUB_OUTPUT` names a local runner output
+file, it records `exit-code` and `result-path`; it never uploads that result.
+Optional `INPUT_RUN_ID` and `INPUT_MANIFEST_SHA256` select an exact historical
+run before checking its declared current materials.
 
-## What You Get
+| Input | Meaning |
+|---|---|
+| repo-path | Workspace relative to the runner workspace, or absolute; default `.` |
+| store-path | Required existing local evidence store |
+| policy-file | Policy JSON; mutually exclusive with finding-request |
+| finding-request | Versioned finding comparison request |
+| run-id / manifest-sha256 | Optional exact pair; both required together |
 
-On each PR, cppulse posts a comment with:
+Legacy `base-ref`, comments, implicit PDF generation and separate
+`fail-on-regression` switches are rejected with exit 2. The selected shared check
+already supplies the gate. `github-token` is deprecated and unused, defaults to
+empty, and is not mapped into the container environment. The historical comment
+and diff scripts remain draft source and are not invoked by this adapter.
 
-- **Health Score** (0-100) broken down by memory safety, modernization, complexity, and MISRA compliance
-- **Findings Summary** — errors, warnings, and info-level findings
-- **New Findings** — issues introduced by this specific PR (diff against base branch)
-- **Top Risk Files** — files with highest bug probability (ML-powered)
-- **Roadmap** — prioritized refactoring suggestions with estimated hours
+## Scope and result interpretation
 
-## Configuration
+Collection completion, policy satisfaction and finding regression are different
+results. Current checks validate selected source and generated-output bytes;
+changed material requires recollection. A matching upstream package does not
+replace application tests. A copied checksum is not producer authentication.
+See [public commands](development/public-cli.md) and
+[local integrations](development/local-check-integrations.md).
 
-| Input | Default | Description |
-|-------|---------|-------------|
-| `repo-path` | `.` | Path to the C++ source tree |
-| `base-ref` | auto | Base branch for diff (e.g., `origin/main`) |
-| `post-comment` | `true` | Post results as a PR comment |
-| `generate-pdf` | `false` | Generate PDF report as artifact |
-| `fail-on-regression` | `false` | Fail the check if new findings are introduced |
-| `github-token` | `${{ github.token }}` | Token for PR comments |
-
-## Outputs
-
-| Output | Description |
-|--------|-------------|
-| `health-score` | Overall health score (0-100) |
-| `findings-count` | Total number of findings |
-| `new-findings` | Number of new findings in this PR |
-
-### Using outputs in subsequent steps
-
-```yaml
-- uses: manju89jay/cppulse/.github/actions/cppulse@main
-  id: cppulse
-
-- run: echo "Health score is ${{ steps.cppulse.outputs.health-score }}"
-```
-
-## Advanced: Fail on Regression
-
-To block PRs that introduce new findings:
-
-```yaml
-- uses: manju89jay/cppulse/.github/actions/cppulse@main
-  with:
-    fail-on-regression: 'true'
-    base-ref: 'origin/${{ github.base_ref }}'
-```
-
-## Advanced: PDF Report as Artifact
-
-```yaml
-- uses: manju89jay/cppulse/.github/actions/cppulse@main
-  with:
-    generate-pdf: 'true'
-
-- uses: actions/upload-artifact@v4
-  with:
-    name: cppulse-report
-    path: cppulse-output/report.pdf
-```
-
-## Requirements
-
-- **Full git history**: Set `fetch-depth: 0` in `actions/checkout` for accurate git analysis. With shallow clones, git-miner is skipped and only static analysis runs.
-- **Permissions**: The workflow needs `pull-requests: write` to post comments.
-- **No API keys**: cppulse runs entirely locally — no external services or accounts needed.
-
-## Detection Rules (22)
-
-cppulse checks for 22 patterns across 4 categories:
-
-| Category | Rules | Examples |
-|----------|-------|---------|
-| Memory Safety (3) | CPP-MEM-001–003 | Raw `new`, `delete`, C-style arrays |
-| Modernization (9) | CPP-MOD-001–009 | C-casts, `typedef`, unscoped `enum`, missing `override` |
-| Complexity (3) | CPP-CX-001–003 | Cyclomatic complexity, function length, parameter count |
-| MISRA C++ (7) | MISRA-001–007 | `goto`, unions, `malloc`, recursion, uninitialized vars |
-
-## Performance
-
-| Repo Size | Analysis Time |
-|-----------|---------------|
-| < 10K LOC | < 1 minute |
-| 100K LOC | ~2 minutes |
-| 640K LOC (POCO) | ~5 minutes |
-| 1M+ LOC | ~10 minutes |
-
-For large repos, cppulse automatically analyzes only changed files in PR mode.
+The former two-minute setup promise, PR bug-probability/compliance language,
+changed-file shortcut and repository-size timing table were unverified draft
+claims. They are retired, not reused as benchmarks. Ranking remains experimental;
+detector accuracy, performance at scale and production suitability are unproven.
+Until dependency-aware invalidation is qualified, collect the full relevant
+declared scope rather than treating changed-file output as project-wide evidence.

@@ -1,0 +1,14 @@
+# Optional example: copy and adapt explicitly. This does not install a hook.
+# Collection uses a separate explicit recipe; this check executes no project commands.
+minimum_pre_commit_version: '4.3.0'
+repos:
+  - repo: local
+    hooks:
+      - id: cppulse-evidence
+        name: cppulse current evidence
+        language: system
+        entry: cppulse check --store cppulse-output --workspace . --policy cppulse-policy.json
+        pass_filenames: false
+        always_run: true
+        require_serial: true
+        stages: [pre-commit]
