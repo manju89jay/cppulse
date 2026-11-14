@@ -9,7 +9,9 @@
 #include <clang-c/Index.h>
 #include <spdlog/spdlog.h>
 
+#include <algorithm>
 #include <fstream>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -39,13 +41,11 @@ int count_lines(const std::filesystem::path& file_path) {
         return 0;
     }
     int lines = 0;
-    char ch = '\0';
-    while (ifs.get(ch)) {
-        if (ch == '\n') {
-            ++lines;
-        }
+    std::string line;
+    while (std::getline(ifs, line)) {
+        ++lines;
     }
-    return lines + 1;  // Include last line if file doesn't end with newline.
+    return lines;
 }
 
 /// @brief Check if a rule is enabled per the project config.
@@ -151,8 +151,8 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 
     // Only process cursors in the main file.
     CXSourceLocation loc = clang_getCursorLocation(cursor);
-    if (clang_Location_isInSystemHeader(loc)) {
-        return CXChildVisit_Continue;  // Skip but don't recurse into sys headers.
+    if (!clang_Location_isFromMainFile(loc)) {
+        return CXChildVisit_Continue;  // Each discovered header is analyzed in its own unit.
     }
 
     CheckVisitor checker{cursor, *data->file_path};
@@ -166,20 +166,26 @@ CXChildVisitResult ast_visitor(CXCursor cursor, CXCursor /*parent*/, CXClientDat
 }  // namespace
 
 FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<ProjectConfig> config,
-                           std::optional<std::filesystem::path> compilation_database)
+                           std::optional<std::filesystem::path> compilation_database,
+                           std::optional<std::filesystem::path> resource_directory)
     : repo_root_(std::move(repo_root)),
       config_(std::move(config)),
-      compilation_database_(std::move(compilation_database)) {}
+      compilation_database_(std::move(compilation_database)),
+      resource_directory_(std::move(resource_directory)) {}
 
 void FileAnalyzer::load_compilation_database() {
     compile_db_ = nullptr;
+    recorded_files_.clear();
 
     const std::vector<std::filesystem::path> candidates =
         compilation_database_.has_value()
             ? std::vector<std::filesystem::path>{*compilation_database_}
             : std::vector<std::filesystem::path>{repo_root_, repo_root_ / "build"};
-    for (const auto& candidate : candidates) {
+    for (const auto& supplied_path : candidates) {
         std::error_code ec;
+        const auto candidate = std::filesystem::is_regular_file(supplied_path, ec)
+                                   ? supplied_path.parent_path()
+                                   : supplied_path;
         if (!std::filesystem::exists(candidate / "compile_commands.json", ec) || ec) {
             continue;
         }
@@ -189,6 +195,21 @@ void FileAnalyzer::load_compilation_database() {
         if (db_error == CXCompilationDatabase_NoError && db != nullptr) {
             spdlog::info("FileAnalyzer: using compilation database from '{}'", candidate.string());
             compile_db_ = db;
+            // The exact database inventory distinguishes observed commands from
+            // libclang's interpolated commands for otherwise unrecorded files.
+            CXCompileCommands recorded = clang_CompilationDatabase_getAllCompileCommands(db);
+            for (unsigned index = 0; index < clang_CompileCommands_getSize(recorded); ++index) {
+                CXCompileCommand command = clang_CompileCommands_getCommand(recorded, index);
+                const std::filesystem::path directory{
+                    to_string_and_dispose(clang_CompileCommand_getDirectory(command))};
+                std::filesystem::path file{
+                    to_string_and_dispose(clang_CompileCommand_getFilename(command))};
+                if (file.is_relative()) {
+                    file = directory / file;
+                }
+                recorded_files_.push_back(std::filesystem::absolute(file).lexically_normal());
+            }
+            clang_CompileCommands_dispose(recorded);
             return;
         }
         if (db != nullptr) {
@@ -230,7 +251,11 @@ std::vector<std::string> FileAnalyzer::compile_args_for(
         if (!directory.empty()) {
             args.push_back("-working-directory=" + directory);
         }
-        const std::string file_name = file_path.filename().string();
+        const auto input_path = std::filesystem::absolute(file_path).lexically_normal();
+        const std::set<std::string> options_with_value{
+            "-include",  "-imacros",  "-I",      "-isystem", "-iquote", "-idirafter",
+            "-isysroot", "--sysroot", "-target", "--target", "-x",      "-D",
+            "-U",        "-MF",       "-MT",     "-MQ",      "-Xclang"};
         const unsigned num_args = clang_CompileCommand_getNumArgs(command);
 
         // Skip argv[0] (the compiler executable). Strip -c, -o <out>, and the
@@ -238,17 +263,31 @@ std::vector<std::string> FileAnalyzer::compile_args_for(
         // separately and chokes on output/source positional arguments.
         for (unsigned i = 1; i < num_args; ++i) {
             std::string arg = to_string_and_dispose(clang_CompileCommand_getArg(command, i));
-            if (arg == "-c") {
+            if (arg == "-c" || arg == "--") {
+                // libclang supplies an interpolated source after "--". The source
+                // operand is passed separately, so retain no option barrier that
+                // would turn later explicit overrides into positional filenames.
                 continue;
             }
             if (arg == "-o") {
                 ++i;  // Also skip the output path that follows.
                 continue;
             }
+            if (options_with_value.count(arg) > 0) {
+                args.push_back(std::move(arg));
+                if (i + 1 < num_args) {
+                    args.push_back(
+                        to_string_and_dispose(clang_CompileCommand_getArg(command, ++i)));
+                }
+                continue;
+            }
+            std::filesystem::path argument_path{arg};
+            if (argument_path.is_relative()) {
+                argument_path = std::filesystem::path{directory} / argument_path;
+            }
             const bool is_source_arg =
-                arg == file_path.string() || arg == file_path.generic_string() ||
-                (!arg.empty() && arg.front() != '-' &&
-                 std::filesystem::path(arg).filename().string() == file_name);
+                !arg.empty() && arg.front() != '-' &&
+                std::filesystem::absolute(argument_path).lexically_normal() == input_path;
             if (is_source_arg) {
                 continue;
             }
@@ -266,6 +305,7 @@ void FileAnalyzer::run() {
     db_parsed_count_ = 0;
     fallback_parsed_count_ = 0;
     coverage_ = {};
+    coverage_.parser_version = to_string_and_dispose(clang_getClangVersion());
     for (const auto& rule : make_rules(config_)) {
         coverage_.enabled_rules.push_back(
             std::visit([](const auto& value) { return std::string{value.rule_id()}; }, rule));
@@ -338,7 +378,11 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     // language standard); fall back to bare C++17 flags when the file is not
     // covered by a compilation database.
     const std::vector<std::string> db_args = compile_args_for(file_path);
-    outcome.compile_context = db_args.empty() ? "fallback" : "database";
+    const auto normalized_file = std::filesystem::absolute(file_path).lexically_normal();
+    const bool exact_command = std::find(recorded_files_.begin(), recorded_files_.end(),
+                                         normalized_file) != recorded_files_.end();
+    outcome.compile_context =
+        db_args.empty() ? "fallback" : (exact_command ? "database" : "inferred");
     std::vector<const char*> cmd_args;
     if (db_args.empty()) {
         cmd_args = {"-std=c++17", "-x", "c++"};
@@ -349,6 +393,30 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         }
         spdlog::debug("FileAnalyzer: '{}' parsed with {} compilation database arg(s)", path_str,
                       cmd_args.size());
+    }
+
+    std::string resource_argument;
+    if (resource_directory_.has_value()) {
+        resource_argument = "-resource-dir=" + resource_directory_->string();
+        cmd_args.push_back(resource_argument.c_str());
+        spdlog::debug("FileAnalyzer: using builtin resource directory '{}'",
+                      resource_directory_->string());
+    }
+
+    // Record the exact C API inputs, including repeated flags and explicit overrides.
+    // The process cwd is distinct from any -working-directory argument Clang resolves.
+    outcome.parse_arguments = std::vector<std::string>{};
+    outcome.parse_arguments->reserve(cmd_args.size());
+    for (const auto* argument : cmd_args) {
+        outcome.parse_arguments->emplace_back(argument);
+    }
+    std::error_code directory_error;
+    const auto process_directory = std::filesystem::current_path(directory_error);
+    if (!directory_error) {
+        outcome.working_directory = process_directory.generic_string();
+    } else {
+        spdlog::warn("FileAnalyzer: process cwd unavailable for '{}': {}", path_str,
+                     directory_error.message());
     }
 
     CXTranslationUnit tu = clang_parseTranslationUnit(
@@ -393,9 +461,15 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     clang_visitChildren(root, ast_visitor, &visitor_data);
 
     // Harvest findings from all rules.
-    FindingsVisitor harvester{findings_};
+    std::vector<Finding> file_findings;
+    FindingsVisitor harvester{file_findings};
     for (const auto& rule : rules) {
         std::visit(harvester, rule);
+    }
+
+    for (auto& finding : file_findings) {
+        finding.file = std::filesystem::relative(finding.file, repo_root_).generic_string();
+        findings_.push_back(std::move(finding));
     }
 
     clang_disposeTranslationUnit(tu);

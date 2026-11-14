@@ -12,6 +12,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # -- Generate compile_commands.json for clang-tidy -------------------------
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(GNUInstallDirs)
+include(CTest)
+
 # --------------------------------------------------------------------------
 # Dependencies
 # --------------------------------------------------------------------------
@@ -31,7 +34,8 @@ if(WIN32)
 endif()
 
 find_library(LIBCLANG_LIBRARY NAMES clang libclang
-    PATHS ${_LIBCLANG_HINT_PATHS} /usr/lib/llvm-18/lib /usr/lib/llvm-17/lib /usr/lib)
+    libclang-20.so.1 libclang-19.so.1 libclang-18.so.1 libclang-17.so.1
+    PATHS ${_LIBCLANG_HINT_PATHS} /usr/lib/llvm-20/lib /usr/lib/llvm-19/lib /usr/lib/llvm-18/lib /usr/lib/llvm-17/lib /usr/lib)
 
 set(_LIBCLANG_INCLUDE_HINTS "")
 foreach(_lib_dir ${_LIBCLANG_HINT_PATHS})
@@ -40,7 +44,7 @@ foreach(_lib_dir ${_LIBCLANG_HINT_PATHS})
 endforeach()
 
 find_path(LIBCLANG_INCLUDE_DIR NAMES clang-c/Index.h
-    PATHS ${_LIBCLANG_INCLUDE_HINTS} /usr/lib/llvm-18/include /usr/lib/llvm-17/include /usr/include)
+    PATHS ${_LIBCLANG_INCLUDE_HINTS} /usr/lib/llvm-20/include /usr/lib/llvm-19/include /usr/lib/llvm-18/include /usr/lib/llvm-17/include /usr/include)
 if(NOT LIBCLANG_LIBRARY OR NOT LIBCLANG_INCLUDE_DIR)
     message(FATAL_ERROR
         "libclang not found. Install libclang-dev (Ubuntu) or mingw-w64-x86_64-clang (MSYS2), "
@@ -59,9 +63,10 @@ set_target_properties(libclang PROPERTIES
 find_package(nlohmann_json REQUIRED CONFIG)
 find_package(spdlog REQUIRED CONFIG)
 find_package(CLI11 REQUIRED CONFIG)
-find_package(GTest REQUIRED CONFIG)
-include(GoogleTest)
-enable_testing()
+if(BUILD_TESTING)
+    find_package(GTest REQUIRED CONFIG)
+    include(GoogleTest)
+endif()
 
 # --------------------------------------------------------------------------
 # Target: cppulse-analyzer-lib (STATIC library)
@@ -99,26 +104,53 @@ set_target_properties(cppulse-analyzer PROPERTIES
     OUTPUT_NAME "cppulse-analyzer"
 )
 
+# The installed binary resolves packaged logging libraries relative to itself.
+# Keep build-tree dependency paths out of the installed RUNPATH.
+if(UNIX AND NOT APPLE)
+    file(RELATIVE_PATH _CPPULSE_RUNTIME_LIBRARY_PATH
+        "/${CMAKE_INSTALL_LIBEXECDIR}/cppulse"
+        "/${CMAKE_INSTALL_LIBDIR}/cppulse")
+    set_target_properties(cppulse-analyzer PROPERTIES
+        INSTALL_RPATH "$ORIGIN/${_CPPULSE_RUNTIME_LIBRARY_PATH}"
+        INSTALL_RPATH_USE_LINK_PATH FALSE
+    )
+endif()
+install(TARGETS cppulse-analyzer
+    RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/cppulse"
+)
+
 # --------------------------------------------------------------------------
 # Target: cppulse-analyzer-tests (test executable)
 # --------------------------------------------------------------------------
-# Collect test sources, excluding fixture files (sample C++ for analysis).
-file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "tests/*.cpp")
-list(FILTER TEST_SOURCES EXCLUDE REGEX "tests/fixtures/")
+if(BUILD_TESTING)
+    # Collect test sources, excluding fixture files (sample C++ for analysis).
+    file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "tests/*.cpp")
+    list(FILTER TEST_SOURCES EXCLUDE REGEX "tests/fixtures/")
 
-add_executable(cppulse-analyzer-tests ${TEST_SOURCES})
+    add_executable(cppulse-analyzer-tests ${TEST_SOURCES})
 
-target_include_directories(cppulse-analyzer-tests
-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+    target_include_directories(cppulse-analyzer-tests
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
+    )
 
-target_link_libraries(cppulse-analyzer-tests
-    PRIVATE
-        cppulse-analyzer-lib
-        GTest::gtest
-        GTest::gtest_main
-)
+    target_link_libraries(cppulse-analyzer-tests
+        PRIVATE
+            cppulse-analyzer-lib
+            GTest::gtest
+            GTest::gtest_main
+    )
 
-# Discovery launches the test binary at build time; first launch can exceed the
-# 5s default on Windows (libclang DLL load + AV scan), so allow more headroom.
-gtest_discover_tests(cppulse-analyzer-tests DISCOVERY_TIMEOUT 30)
+    # Discovery launches the test binary at build time; first launch can exceed the
+    # 5s default on Windows (libclang DLL load + AV scan), so allow more headroom.
+    gtest_discover_tests(cppulse-analyzer-tests DISCOVERY_TIMEOUT 30)
+
+    # Resource-directory override must work for both parse modes and fail clearly
+    # for invalid explicit/environment configuration.
+    foreach(_resource_mode valid_fallback valid_db invalid_flag invalid_env relative_repo valid_inferred valid_barrier)
+        add_test(NAME ResourceDirectoryCli.${_resource_mode}
+            COMMAND ${CMAKE_COMMAND}
+                -DANALYZER_BIN=$<TARGET_FILE:cppulse-analyzer>
+                -DMODE=${_resource_mode}
+                -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_resource_dir_cli.cmake)
+    endforeach()
+endif()

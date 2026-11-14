@@ -43,6 +43,26 @@ TEST_F(CoverageFixture, MissingIncludeIsPartialAndStillProducesFindings) {
     EXPECT_FALSE(analyzer.findings().empty());
 }
 
+TEST_F(CoverageFixture, FindingsUseRepositoryRelativeIdentity) {
+    write("src/sample.cpp", "typedef int Count;\n");
+    cppulse::FileAnalyzer analyzer{root_};
+    analyzer.run();
+    ASSERT_FALSE(analyzer.findings().empty());
+    for (const auto& finding : analyzer.findings()) {
+        EXPECT_EQ(finding.file, "src/sample.cpp");
+    }
+}
+
+TEST_F(CoverageFixture, CountsPhysicalLinesWithAndWithoutFinalNewline) {
+    for (const auto& [source, expected] : std::vector<std::pair<std::string, int>>{
+             {"", 0}, {"// one", 1}, {"// one\n", 1}, {"// one\n// two\n", 2}}) {
+        write("lines.cpp", source);
+        cppulse::FileAnalyzer analyzer{root_};
+        analyzer.run();
+        EXPECT_EQ(analyzer.total_loc(), expected) << source;
+    }
+}
+
 TEST_F(CoverageFixture, RecordsSkippedAndExcludedFiles) {
     write("large.cpp", std::string(501 * 1024, ' '));
     write("excluded.cpp", "void skipped() {}\n");
@@ -80,7 +100,9 @@ TEST_F(CoverageFixture, ExternalDatabaseResolvesRelativeIncludes) {
     ASSERT_GE(analyzer.coverage().files.size(), 1u);
     for (const auto& file : analyzer.coverage().files) {
         EXPECT_EQ(file.status, "analyzed") << file.path;
-        EXPECT_EQ(file.compile_context, "database");
+        EXPECT_EQ(file.compile_context, std::filesystem::path{file.path}.filename() == "sample.cpp"
+                                            ? "database"
+                                            : "inferred");
         EXPECT_EQ(file.error_count, 0);
     }
     ASSERT_TRUE(cppulse::write_findings_json(analyzer.findings(), root_.generic_string(),

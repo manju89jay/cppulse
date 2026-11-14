@@ -105,13 +105,26 @@ bool write_findings_json(const std::vector<Finding>& findings, const std::string
     if (coverage != nullptr) {
         auto files = nlohmann::json::array();
         for (const auto& file : coverage->files) {
-            files.push_back({{"path", file.path},
-                             {"status", file.status},
-                             {"compile_context", file.compile_context},
-                             {"error_count", file.error_count}});
+            nlohmann::json item{{"path", file.path},
+                                {"status", file.status},
+                                {"compile_context", file.compile_context},
+                                {"error_count", file.error_count},
+                                {"parse_arguments", nullptr},
+                                {"working_directory", nullptr}};
+            if (file.parse_arguments.has_value()) {
+                item["parse_arguments"] = file.parse_arguments.value();
+            }
+            if (file.working_directory.has_value()) {
+                item["working_directory"] = file.working_directory.value();
+            }
+            files.push_back(std::move(item));
         }
         root["metadata"]["analysis"] = {{"enabled_rules", coverage->enabled_rules},
                                         {"files", std::move(files)}};
+        if (!coverage->parser_version.empty()) {
+            root["metadata"]["analysis"]["parser"] = {{"name", "libclang"},
+                                                      {"version", coverage->parser_version}};
+        }
     }
     root["findings"] = std::move(findings_array);
     root["summary"] = {
