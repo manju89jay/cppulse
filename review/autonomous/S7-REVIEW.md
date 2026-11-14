@@ -1,5 +1,11 @@
 # S7 technical review — native local candidate accepted
 
+Historical verification record: this candidate proof preceded the user's
+authorization to create local checkpoint commits. Original hashes/ref inventories
+below describe that earlier worktree. The new local branch and its fresh shared
+checks are documented in `../checkpoint-20261114/summary.json`; the candidate
+was not rebuilt or published as part of saving the commits.
+
 The public local workflow and presentation source passes its complete native
 check boundary. The exact dev2 candidate also passes the fresh installed proof
 recorded below, including source-hidden runtime exercises and coherent pins.
