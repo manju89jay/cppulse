@@ -377,3 +377,10 @@ def test_api_key_protects_all_data_endpoints(data_dir: Path) -> None:
         response = client.get(endpoint)
         assert response.status_code == 401, f"{endpoint} should be protected"
     os.environ.pop("CPPULSE_API_KEY", None)
+
+
+def test_invalid_contract_returns_unavailable(data_dir: Path) -> None:
+    """Malformed result shapes cannot silently become empty API output."""
+    (data_dir / "findings.json").write_text('{"findings": []}')
+    client = _make_client(data_dir)
+    assert client.get("/api/v1/findings").status_code == 503

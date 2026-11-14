@@ -89,6 +89,7 @@ h3 {
 }
 
 .score-circle {
+    margin-right: 18px;
     font-size: 36pt;
     font-weight: 800;
     line-height: 1;
