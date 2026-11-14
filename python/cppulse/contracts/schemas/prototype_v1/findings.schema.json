@@ -1,0 +1,227 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse Static Analysis Findings",
+  "type": "object",
+  "required": [
+    "version",
+    "metadata",
+    "findings",
+    "summary"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "repo_path",
+        "analyzed_at",
+        "file_count",
+        "total_loc"
+      ],
+      "properties": {
+        "repo_path": {
+          "type": "string"
+        },
+        "analyzed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "file_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_loc": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "analysis": {
+          "type": "object",
+          "required": [
+            "enabled_rules",
+            "files"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "parser": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "version"],
+              "properties": {
+                "name": {"const": "libclang"},
+                "version": {"type": "string", "minLength": 1}
+              },
+              "description": "Actual native parser identity returned by clang_getClangVersion; not the compiler named by a build recipe."
+            },
+            "enabled_rules": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "status",
+                  "compile_context",
+                  "error_count"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "enum": [
+                      "analyzed",
+                      "partial",
+                      "failed",
+                      "excluded",
+                      "skipped"
+                    ]
+                  },
+                  "compile_context": {
+                    "enum": [
+                      "database",
+                      "fallback",
+                      "none",
+                      "inferred"
+                    ]
+                  },
+                  "error_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "parse_arguments": {
+                    "type": ["array", "null"],
+                    "items": {"type": "string"},
+                    "description": "Exact ordered arguments passed to clang_parseTranslationUnit, retaining duplicates and working-directory flags; null means no observed parse attempt."
+                  },
+                  "working_directory": {
+                    "type": ["string", "null"],
+                    "minLength": 1,
+                    "description": "Observed process cwd at the parse call, not an inferred effective directory after Clang argument processing; null means no observed cwd."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "category",
+          "severity",
+          "file",
+          "line",
+          "message"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-\\d{3}$"
+          },
+          "category": {
+            "enum": [
+              "memory_safety",
+              "modernization",
+              "complexity",
+              "misra"
+            ],
+            "description": "misra category only present when using --profile safety-critical"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ]
+          },
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "column": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "end_line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "message": {
+            "type": "string"
+          },
+          "suggestion": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_findings",
+        "by_category",
+        "by_severity"
+      ],
+      "properties": {
+        "total_findings": {
+          "type": "integer"
+        },
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "memory_safety": {
+              "type": "integer"
+            },
+            "modernization": {
+              "type": "integer"
+            },
+            "complexity": {
+              "type": "integer"
+            },
+            "misra": {
+              "type": "integer"
+            }
+          }
+        },
+        "by_severity": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "integer"
+            },
+            "warning": {
+              "type": "integer"
+            },
+            "info": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}
