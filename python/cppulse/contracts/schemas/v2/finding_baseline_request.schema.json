@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/finding_baseline_request.schema.json",
+  "title": "cppulse explicit finding baseline request v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "baseline_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "scope_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "context_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "rule_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "version",
+    "baseline_id",
+    "scope_files",
+    "context_ids",
+    "rule_ids",
+    "reason"
+  ]
+}

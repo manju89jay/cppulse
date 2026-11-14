@@ -1,0 +1,785 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/snapshot_view.schema.json",
+  "title": "cppulse pinned snapshot presentation view v2",
+  "description": "One immutable snapshot projection. Exact retained UTF-8 JSON strings bind descriptors and all displayed stored values. No new score, gate, authenticity or completeness claim is calculated.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "run_manifest_json": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "manifest_sha256": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "partial",
+            "cancelled"
+          ]
+        },
+        "input_verification": {
+          "enum": [
+            "verified",
+            "unverified"
+          ]
+        },
+        "source_digest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "inventory_complete": {
+          "type": "boolean"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "config_digest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "manifest_sha256",
+        "status",
+        "input_verification",
+        "source_digest",
+        "inventory_complete",
+        "started_at",
+        "finished_at",
+        "config_digest",
+        "limitations"
+      ]
+    },
+    "source": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/source"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/stage"
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/context"
+      }
+    },
+    "assessment": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "raw_json": {
+              "type": "string",
+              "minLength": 1
+            },
+            "display": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "version": {
+                  "const": "2.0.0"
+                },
+                "run_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "policy": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                    },
+                    "policy_version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "policy_version",
+                    "sha256"
+                  ]
+                },
+                "gate": {
+                  "enum": [
+                    "passed",
+                    "failed",
+                    "insufficient_evidence"
+                  ]
+                },
+                "generated_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "weights": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "passed": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                      "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                    },
+                    "failed": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                      "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                    },
+                    "unknown": {
+                      "type": "string",
+                      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                      "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                    }
+                  },
+                  "required": [
+                    "passed",
+                    "failed",
+                    "unknown"
+                  ]
+                },
+                "scores": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "readiness": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                          "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "evidence_completeness": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                          "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "observed_satisfaction": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                          "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "maximum_possible_readiness": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                          "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "readiness",
+                    "evidence_completeness",
+                    "observed_satisfaction",
+                    "maximum_possible_readiness"
+                  ]
+                },
+                "controls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                      },
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "status": {
+                        "enum": [
+                          "passed",
+                          "failed",
+                          "unknown",
+                          "not_applicable"
+                        ]
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "weight": {
+                        "type": "string",
+                        "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$",
+                        "description": "Exact text of a stored finite JSON number; consumers display it without JavaScript number conversion."
+                      },
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "evidence_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                        },
+                        "minItems": 0,
+                        "uniqueItems": true
+                      },
+                      "references": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0,
+                        "uniqueItems": true
+                      },
+                      "context_ids": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                        },
+                        "uniqueItems": true
+                      },
+                      "incomplete": {
+                        "type": "boolean"
+                      },
+                      "fact_ids": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                        },
+                        "uniqueItems": true
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "status",
+                      "reason",
+                      "weight",
+                      "required",
+                      "evidence_ids",
+                      "references"
+                    ]
+                  },
+                  "minItems": 0
+                },
+                "deviations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                      },
+                      "control_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                      },
+                      "source_digest": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{64}$"
+                      },
+                      "context_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                        },
+                        "minItems": 0,
+                        "uniqueItems": true
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "owner": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reviewer": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "approved_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "expires_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "gate": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "inactive_reason": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "control_id",
+                      "source_digest",
+                      "context_ids",
+                      "reason",
+                      "owner",
+                      "reviewer",
+                      "approved_at",
+                      "expires_at",
+                      "active"
+                    ]
+                  },
+                  "minItems": 0
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 0
+                },
+                "evaluator": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+                }
+              },
+              "required": [
+                "version",
+                "run_id",
+                "source_digest",
+                "policy",
+                "gate",
+                "generated_at",
+                "weights",
+                "scores",
+                "controls",
+                "deviations",
+                "limitations"
+              ]
+            }
+          },
+          "required": [
+            "artifact_id",
+            "sha256",
+            "size_bytes",
+            "raw_json",
+            "display"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "description": "A registered local v2 typed kind, excluding snapshot_view to keep the envelope finite."
+          },
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "sha256": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "raw_json": {
+            "type": "string",
+            "minLength": 1
+          },
+          "id": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "context_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "uniqueItems": true
+          },
+          "origin": {
+            "enum": [
+              "execution",
+              "import",
+              null
+            ]
+          },
+          "producer": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "usability": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "artifact_id",
+          "sha256",
+          "size_bytes",
+          "raw_json",
+          "id",
+          "context_ids",
+          "origin",
+          "producer",
+          "status",
+          "usability",
+          "limitations"
+        ]
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+      }
+    },
+    "legacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "findings": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "sha256": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "raw_json": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "document": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "sha256",
+                "size_bytes",
+                "raw_json",
+                "document"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "git_metrics": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "sha256": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "raw_json": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "document": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "sha256",
+                "size_bytes",
+                "raw_json",
+                "document"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "risk_scores": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "sha256": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "raw_json": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "document": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "sha256",
+                "size_bytes",
+                "raw_json",
+                "document"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "roadmap": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "sha256": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "raw_json": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "document": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "sha256",
+                "size_bytes",
+                "raw_json",
+                "document"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "findings",
+        "git_metrics",
+        "risk_scores",
+        "roadmap"
+      ]
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "run",
+              "assessment",
+              "control",
+              "fact"
+            ]
+          },
+          "id": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "message",
+          "artifact_ids"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "version",
+    "run_manifest_json",
+    "run",
+    "source",
+    "stages",
+    "contexts",
+    "assessment",
+    "facts",
+    "artifacts",
+    "legacy",
+    "gaps",
+    "limitations"
+  ]
+}
