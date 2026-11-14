@@ -1,5 +1,7 @@
 # ADR-006: Production Readiness Assessment and Gap Closure
 
+> **Historical proposed gap review — not a current acceptance report.** The original draft is preserved below. Its six-project, 2.2M LOC/90K+ findings “validated” statement is unsupported as a benchmark: the retained historical examples contain inconsistent finding/category/severity totals. Its gap list, estimates and suggested remedies describe that proposal, not the current implementation or completed work. No production readiness, prediction accuracy, safety, Windows/Docker execution or comprehensive review is established by this record. Consult the [current README and historical-totals qualification](../../README.md#historical-examples-inconsistent-totals), [stage evidence](../../review/autonomous/STATUS.md), [public workflow guide](../development/public-cli.md) and [candidate limits](../development/candidate.md) for recorded behavior and outstanding qualification.
+
 **Date:** 2026-04-07
 **Status:** Proposed
 **Deciders:** Manjunath Jayaramaiah

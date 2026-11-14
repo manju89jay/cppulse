@@ -1,5 +1,7 @@
 # cppulse Report: Protocol Buffers
 
+> **Historical, unverified example — not a current benchmark.** The original report and artifacts below are preserved. Their finding, category and severity totals disagree; scores, “Bug Probability,” risk labels and effort estimates cannot establish comparative health, calibrated defect risk, memory safety, accuracy or production suitability. No fresh upstream scan or complete project coverage is claimed. See the [historical totals audit](../../README.md#historical-examples-inconsistent-totals), [verified synthetic demo](../../docs/portfolio/demo-verification.md) and [current workflow scope](../../docs/development/public-cli.md).
+
 > Analyzed 2026-03-27 · 400,355 LOC · 1,085 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
 Protocol Buffers (protobuf) is Google's language-neutral, platform-neutral extensible mechanism for serializing structured data. Originally developed at Google to replace ad hoc XML formats, it is now the backbone of gRPC and countless internal Google systems, as well as a widely adopted standard across the industry.

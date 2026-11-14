@@ -1,0 +1,16 @@
+refs/heads/codex/job-application-demo-20261113 b89dce9d22b37ef44843a68eb3373c525b4b8e94
+refs/remotes/origin/HEAD 82120d26b51f99b64068f9d66f6e000fcaee97c2
+refs/remotes/origin/claude/build-mvp-phases-hRD8t dbf63bfba8a7b1920bdaccbb2ddc719bb8091da4
+refs/remotes/origin/codex/job-application-demo-20261113 b89dce9d22b37ef44843a68eb3373c525b4b8e94
+refs/remotes/origin/feat/analyzer-core d78c74073e5bd63ef011d4655d4f131474cc20d9
+refs/remotes/origin/feat/ci-pipeline 807ab6d17ec567492d5ebba4a8f71fafaf7932fc
+refs/remotes/origin/feat/dashboard-cli-docker 51ca9187d896e928e43f9b0f317ebe0b1606295c
+refs/remotes/origin/feat/git-miner aca3762954c4753de8207be4f840045abb1594e0
+refs/remotes/origin/feat/health-score-v2 95966ee97db711b4a65c6f08d60a24abe93a6c71
+refs/remotes/origin/feat/json-schemas bc6d144dc5cd1de65d2b5850dc61d67a9a161ff3
+refs/remotes/origin/feat/predictor 01db26091a18ade059f3033a7575884c643db190
+refs/remotes/origin/feat/report-engine 9d221856daefdc658376918f21fde51264d16e84
+refs/remotes/origin/feat/showcase 0e77ed283b3ace30844db145934b5b93a3bbf4a6
+refs/remotes/origin/feature/full-mvp 59914c26b72aeacfeaa2fa3287ab40f31f98beb1
+refs/remotes/origin/main 82120d26b51f99b64068f9d66f6e000fcaee97c2
+refs/remotes/origin/master 2058a47ba718f2ec153881a959e87add99a13cc2

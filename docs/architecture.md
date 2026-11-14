@@ -1,5 +1,7 @@
 # cppulse Architecture
 
+> **Historical architecture draft — superseded as a description of current behavior.** The original body below is preserved for context. Its 15-default/7-opt-in detector split, bug-probability/SHAP wording, KLOC health formula, crash/CVE-based weighting rationale and gRPC showcase are historical assertions, not current verified behavior or benchmarks. Historical example totals are internally inconsistent; no calibrated prediction accuracy, crash-risk reduction, standards compliance or safety conclusion is established. Current implementation registers 22 checks with separate scoring profiles, conditional explanations/fallbacks and eligible attempted-file health prerequisites. See the [current README](../README.md), [public workflows](development/public-cli.md), [policy semantics](development/policy-engine.md) and [snapshot presentation](development/snapshot-presentation.md). Linux source checks do not qualify other platforms or unexecuted Docker/Compose paths.
+
 ## System Overview
 
 ```mermaid

@@ -1,5 +1,7 @@
 # cppulse Report: LevelDB
 
+> **Historical, unverified example — not a current benchmark.** The original report and artifacts below are preserved. Their finding, category and severity totals disagree; scores, “Bug Probability,” risk labels and effort estimates cannot establish comparative health, calibrated defect risk, memory safety, accuracy or production suitability. No fresh upstream scan or complete project coverage is claimed. See the [historical totals audit](../../README.md#historical-examples-inconsistent-totals), [verified synthetic demo](../../docs/portfolio/demo-verification.md) and [current workflow scope](../../docs/development/public-cli.md).
+
 > Analyzed 2026-03-27 · 28,648 LOC · 132 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
 LevelDB is Google's fast on-disk key-value storage library, originally written by Jeff Dean and Sanjay Ghemawat and open-sourced in 2011. It underpins Chrome's IndexedDB and has been adopted by Bitcoin Core, Ethereum clients, and dozens of embedded database projects.

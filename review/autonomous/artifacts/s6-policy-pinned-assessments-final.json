@@ -1,0 +1,1954 @@
+{
+  "generated_at": "2026-11-14T00:58:27.842939+00:00",
+  "operation": "read-only policy assessment of checked pinned actual S6 facts; no project commands or run publication",
+  "source_freshness": "not rechecked; these are retained execution facts, not a current workspace claim",
+  "engine_sha256": "ebf8d37efbe9bf7a2701c63a215ef63e04338c1380ceeef05788c336722639ab",
+  "cases": [
+    {
+      "case": "asan-clean",
+      "run_id": "8062669a65564a49b826e4d07bc22f49",
+      "manifest_sha256": "06381526cbe35b412290b176e2a1f5d8f7655b6477da36b4bc802d7b90597d11",
+      "policy_sha256": "e1370f8c285f5a7cc664cde58789c2a15174f562778233a1341cef97d91ec46c",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-clean"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "8062669a65564a49b826e4d07bc22f49",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "e1370f8c285f5a7cc664cde58789c2a15174f562778233a1341cef97d91ec46c"
+        },
+        "gate": "passed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 1,
+          "failed": 0,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 100.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 100.0,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "passed",
+            "reason": "Observed asan instrumented selected-source/component scope and nonzero exercised binaries have no qualified diagnostic",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-clean"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "asan-clean"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-bad",
+      "run_id": "19013bedd13340819e46b13ce83ccb84",
+      "manifest_sha256": "3fc043541dfce10cd91d6e7f86e27076ec498d1524f745702c78910a0b131144",
+      "policy_sha256": "cf9f82a08264ba36f746afeb23a98c45e444f5dbf4019c61f2b597383b6d1602",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-bad"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "19013bedd13340819e46b13ce83ccb84",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "cf9f82a08264ba36f746afeb23a98c45e444f5dbf4019c61f2b597383b6d1602"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Credible observed asan diagnostic(s) in selected exercised binaries: asan-bad; raw process/test success does not erase runtime diagnostics",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "diagnostic:asan-bad:diagnostic-0",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-bad"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "asan-bad"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-plain-object",
+      "run_id": "026053acb2d34d1f88b6d1fb67133d66",
+      "manifest_sha256": "1e3540b8539702a0f235050b8d8dec8e073baf1cd041dc0054f107689d3f0f39",
+      "policy_sha256": "07ec4dc720d38e09354b42d85a19c76c7a20788339be1377d32e894d913ce9ce",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-plain-object"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "026053acb2d34d1f88b6d1fb67133d66",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "07ec4dc720d38e09354b42d85a19c76c7a20788339be1377d32e894d913ce9ce"
+        },
+        "gate": "insufficient_evidence",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 0,
+          "unknown": 1
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 0.0,
+          "observed_satisfaction": null,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "unknown",
+            "reason": "The selected asan clean instrumented/executed scope is not established; Typed fact is an import or unavailable execution claim: asan-plain-object; Missing observed asan instrumentation: main.cpp in job gcc-asan",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-plain-object"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-plain-object"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-substituted-binary",
+      "run_id": "eeb000c8f088402eadcbcd9c740c4eec",
+      "manifest_sha256": "45e05cf599576ddeeb4feeb8010179b8706b2a4a1d18dd6384279967a1d02f31",
+      "policy_sha256": "fd7fdd2f212abf7c6634047c390b19b22b86669bdd24d9337bc7b66785348319",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-substituted-binary"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "eeb000c8f088402eadcbcd9c740c4eec",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "fd7fdd2f212abf7c6634047c390b19b22b86669bdd24d9337bc7b66785348319"
+        },
+        "gate": "insufficient_evidence",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 0,
+          "unknown": 1
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 0.0,
+          "observed_satisfaction": null,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "unknown",
+            "reason": "The selected asan clean instrumented/executed scope is not established; Typed fact is an import or unavailable execution claim: asan-substituted-binary; Missing observed asan instrumentation: main.cpp in job gcc-asan",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [],
+            "references": [
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-substituted-binary"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-substituted-binary"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-zero-tests",
+      "run_id": "e23cc0214b79455baad50a4b6a4c2419",
+      "manifest_sha256": "f731f59590e6a365ee62cf398243a34742364e0e80625155e01d42d670bbe083",
+      "policy_sha256": "8735c3782a8c4f9a3edc031042948b656c69ddfd7eb2dbf864af75e56d266dfe",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-zero-tests"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "e23cc0214b79455baad50a4b6a4c2419",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "8735c3782a8c4f9a3edc031042948b656c69ddfd7eb2dbf864af75e56d266dfe"
+        },
+        "gate": "insufficient_evidence",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 0,
+          "unknown": 1
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 0.0,
+          "observed_satisfaction": null,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "unknown",
+            "reason": "The selected asan clean instrumented/executed scope is not established; Typed fact is an import or unavailable execution claim: asan-zero-tests; Missing observed asan instrumentation: main.cpp in job gcc-asan",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [],
+            "references": [
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-zero-tests"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-zero-tests"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-all-skipped",
+      "run_id": "24f47ba99afa45ee8f34a6ca24085120",
+      "manifest_sha256": "715f861b8bac5adaeed403f45f03e310337894c8cb85b0b9ffffba558d4abb04",
+      "policy_sha256": "470df259c138b0448b7f9c1b4e3fd6ace6dd341542c0d1ad154f981e6d2785fe",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-all-skipped"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "24f47ba99afa45ee8f34a6ca24085120",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "470df259c138b0448b7f9c1b4e3fd6ace6dd341542c0d1ad154f981e6d2785fe"
+        },
+        "gate": "insufficient_evidence",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 0,
+          "unknown": 1
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 0.0,
+          "observed_satisfaction": null,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "unknown",
+            "reason": "The selected asan clean instrumented/executed scope is not established; Typed fact is an import or unavailable execution claim: asan-all-skipped; Missing observed asan instrumentation: main.cpp in job gcc-asan",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [],
+            "references": [
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-all-skipped"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-all-skipped"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-prebuilt-gap",
+      "run_id": "d0387363ffa34a23b36842dd8faa97ec",
+      "manifest_sha256": "32114b0d2ae0f52429080b34481b422d79a056f8a36a4611c8ed542723cb5b8b",
+      "policy_sha256": "77b0ce616e102ed3733b76cb1b981f87c00fd002fb3a2ecce183b2942c26ca78",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-prebuilt-gap"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "d0387363ffa34a23b36842dd8faa97ec",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "77b0ce616e102ed3733b76cb1b981f87c00fd002fb3a2ecce183b2942c26ca78"
+        },
+        "gate": "insufficient_evidence",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 0,
+          "unknown": 1
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 0.0,
+          "observed_satisfaction": null,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "unknown",
+            "reason": "The selected asan clean instrumented/executed scope is not established; Typed fact is an import or unavailable execution claim: asan-prebuilt-gap; Missing observed asan instrumentation: main.cpp in job gcc-asan",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0fd154c0651f72a378c1e009bbe3364a8bbcbe2a971882ceefe5b2432a67492a",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-prebuilt-gap"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-prebuilt-gap"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "asan-prebuilt-gap-bad",
+      "run_id": "03cd875816374de7a56a49774f11b6d9",
+      "manifest_sha256": "9cae49257356554e51c863fc37b584f0c3a75141e5e7b07dfdae3474d22b5fdf",
+      "policy_sha256": "5eec9aae62c430b083cd942f5ba8bddf9f4cc79d5b85bf04bf688c9e46713182",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-asan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "asan-prebuilt-gap-bad"
+              ],
+              "sanitizer": "asan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "03cd875816374de7a56a49774f11b6d9",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "5eec9aae62c430b083cd942f5ba8bddf9f4cc79d5b85bf04bf688c9e46713182"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Credible observed asan diagnostic(s) in selected exercised binaries: asan-prebuilt-gap-bad; raw process/test success does not erase runtime diagnostics; Selected linked component instrumentation is incomplete: asan-prebuilt-gap-bad",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0fd154c0651f72a378c1e009bbe3364a8bbcbe2a971882ceefe5b2432a67492a",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "diagnostic:asan-prebuilt-gap-bad:diagnostic-0",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:asan-prebuilt-gap-bad"
+            ],
+            "context_ids": [
+              "gcc-asan"
+            ],
+            "incomplete": true,
+            "fact_ids": [
+              "asan-prebuilt-gap-bad"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "ubsan-clean",
+      "run_id": "acc95dd605c04e799889be94290dc33a",
+      "manifest_sha256": "31cdc2e6fa8a3393593196e7c9280d2a4c77777c75367256f868015257502118",
+      "policy_sha256": "6624319f972cc08507d9a1ddeff8e5c96d56ab174b44689c58ef006458ff2a20",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-ubsan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "ubsan-clean"
+              ],
+              "sanitizer": "ubsan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "acc95dd605c04e799889be94290dc33a",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "6624319f972cc08507d9a1ddeff8e5c96d56ab174b44689c58ef006458ff2a20"
+        },
+        "gate": "passed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 1,
+          "failed": 0,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 100.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 100.0,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "passed",
+            "reason": "Observed ubsan instrumented selected-source/component scope and nonzero exercised binaries have no qualified diagnostic",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:ubsan-clean"
+            ],
+            "context_ids": [
+              "gcc-ubsan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "ubsan-clean"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "ubsan-bad",
+      "run_id": "e287126d83be424fa9242701c6f1ca6f",
+      "manifest_sha256": "8f29b918861f784977d0f326347d1e0673fff6dd14ac39f9ee36ee16a5474ded",
+      "policy_sha256": "094bbc5480d1b6164681b184e190995485af7ffb291ca43048b76ad7b39c56db",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-ubsan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "ubsan-bad"
+              ],
+              "sanitizer": "ubsan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "e287126d83be424fa9242701c6f1ca6f",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "094bbc5480d1b6164681b184e190995485af7ffb291ca43048b76ad7b39c56db"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Credible observed ubsan diagnostic(s) in selected exercised binaries: ubsan-bad; raw process/test success does not erase runtime diagnostics",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "diagnostic:ubsan-bad:diagnostic-0",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:ubsan-bad"
+            ],
+            "context_ids": [
+              "gcc-ubsan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "ubsan-bad"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "tsan-clean",
+      "run_id": "45f8cf11b5c14e0e858bd209013f1c80",
+      "manifest_sha256": "8dbb3b62f96268b81abd81cec938a0c48f9f78cae153dd214cecfcf0dd93fc6e",
+      "policy_sha256": "3fdc70f493f7452aaa4fc255d32e280d14cb612be9c9721dc1a4eda8cac91569",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-tsan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "tsan-clean"
+              ],
+              "sanitizer": "tsan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "45f8cf11b5c14e0e858bd209013f1c80",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "3fdc70f493f7452aaa4fc255d32e280d14cb612be9c9721dc1a4eda8cac91569"
+        },
+        "gate": "passed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 1,
+          "failed": 0,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 100.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 100.0,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "passed",
+            "reason": "Observed tsan instrumented selected-source/component scope and nonzero exercised binaries have no qualified diagnostic",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:tsan-clean"
+            ],
+            "context_ids": [
+              "gcc-tsan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "tsan-clean"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "tsan-bad",
+      "run_id": "e9a1d36f5efb457db36c6face4625121",
+      "manifest_sha256": "34a5b75439d1af3e4c3ccf7517514a160e24c2a47274e2824a114bb67e6502e9",
+      "policy_sha256": "91f38cba274ab51663e222f1132c0835ed1b2ed0d4899ba6537c4831725f9da4",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-tsan"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "sanitizer_outcome",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "tsan-bad"
+              ],
+              "sanitizer": "tsan"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "e9a1d36f5efb457db36c6face4625121",
+        "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "91f38cba274ab51663e222f1132c0835ed1b2ed0d4899ba6537c4831725f9da4"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Credible observed tsan diagnostic(s) in selected exercised binaries: tsan-bad; raw process/test success does not erase runtime diagnostics",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "sanitizer-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-1591bab842cf42e12209a618805d0bfe6136a704906739c9eb2561826d3dc518",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-681aaaa7ac6cb355f269be42d075e35617e44116db0fb2a7bdac9801198c6eae",
+              "artifact:a-7b542c10e075674e7978d5440a4890fd880b972336131663168826549cc3beb0",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-8215757e1129e1bf85af1aa43e08b11ff87c83f5aa67ee732dae5adf0ad13d27",
+              "artifact:a-9a7752d50617376df6b066c1377b4424b217178d43fbcd6de0072c98c94caedf",
+              "artifact:a-9bb79d4304312ae874e60e996f4af93c5d26feb41105b8432966e0cdbf16671e",
+              "artifact:a-b092395e723e3dd969fceb8faad56b6c6f55f56fbadf78987a5a519484f817f8",
+              "artifact:a-c9f53569cc5647c378b4e5e70f1cc1e62f0b291e188bd191894896a14017e24a",
+              "artifact:a-cbe0a81473b87590db1e9b8f36a6a7716cc8dc49ea564b79974a9a6097a008af",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "diagnostic:tsan-bad:diagnostic-0",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:ctest-version",
+              "receipt:elf-binary",
+              "receipt:elf-object",
+              "receipt:inventory",
+              "receipt:link",
+              "receipt:nm-object",
+              "receipt:nm-version",
+              "receipt:readelf-version",
+              "receipt:tests",
+              "sanitizer_facts:tsan-bad"
+            ],
+            "context_ids": [
+              "gcc-tsan"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "tsan-bad"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "lcov-line-minimum-50",
+      "run_id": "5a87f5278800495b90915f365c1e48ef",
+      "manifest_sha256": "da33fb2d95a5085df66a315fdb905083e49d15d728815033f1b4813d27f7fbb3",
+      "policy_sha256": "5e832b3694b90d0280eadaf6822316975721094969b39c48bd83798ff64e8f1d",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-coverage-job"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "minimum_coverage",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86"
+              ],
+              "minimum": 50,
+              "measurement_kind": "line",
+              "method": "lcov-da-v1"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "5a87f5278800495b90915f365c1e48ef",
+        "source_digest": "e125355d095ea73743a507355a757e9ec1d44f37572e519096de14eca50bf70b",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "5e832b3694b90d0280eadaf6822316975721094969b39c48bd83798ff64e8f1d"
+        },
+        "gate": "passed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 1,
+          "failed": 0,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 100.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 100.0,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "passed",
+            "reason": "Observed line coverage (lcov-da-v1) is evaluated separately for each selected file/job; no averaging or report union. main.cpp in job gcc-coverage-job: 5/8 meets minimum 50%",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "coverage-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0ce991d4c7419cd2ba3279e6ac9f1e3f8226c141b85ac20ca0077eb86c1776bc",
+              "artifact:a-223db0bb5388c5a32fbc09eb31e5e3e7b57eabee701d33ec7625ecce635a4090",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-81b2ec15c05b8138ebdafefd013ba3ba43cd9ef22927f3dec4f8528d48ec030f",
+              "artifact:a-8b91c4a5e8a2afb057b498d0d6ecf1c386e98a3b9c5eb14dbf504ff5fb326e45",
+              "artifact:a-a35ed29c0727a20a6d44e8f2b990688f6e9cd6f222b7985ed35e9ec60d8e679e",
+              "artifact:a-d31117b0fba5b46d21e0806427cdc231b3a0bd871ed41aaa20e0a61f4c1b989a",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "coverage_facts:coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:configure-tests",
+              "receipt:coverage-report",
+              "receipt:ctest-inventory",
+              "receipt:ctest-version",
+              "receipt:gcov-version",
+              "receipt:gcovr-version",
+              "receipt:link",
+              "receipt:tests"
+            ],
+            "context_ids": [
+              "gcc-coverage-job"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "lcov-line-minimum-80",
+      "run_id": "5a87f5278800495b90915f365c1e48ef",
+      "manifest_sha256": "da33fb2d95a5085df66a315fdb905083e49d15d728815033f1b4813d27f7fbb3",
+      "policy_sha256": "67e868644f2b90a6129e5d51fabab0b2c13e79c0522358af5b7db2107ac518c2",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-coverage-job"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "minimum_coverage",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86"
+              ],
+              "minimum": 80,
+              "measurement_kind": "line",
+              "method": "lcov-da-v1"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "5a87f5278800495b90915f365c1e48ef",
+        "source_digest": "e125355d095ea73743a507355a757e9ec1d44f37572e519096de14eca50bf70b",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "67e868644f2b90a6129e5d51fabab0b2c13e79c0522358af5b7db2107ac518c2"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Observed line coverage (lcov-da-v1) is evaluated separately for each selected file/job; no averaging or report union. main.cpp in job gcc-coverage-job: 5/8 below minimum 80%",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "coverage-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0ce991d4c7419cd2ba3279e6ac9f1e3f8226c141b85ac20ca0077eb86c1776bc",
+              "artifact:a-223db0bb5388c5a32fbc09eb31e5e3e7b57eabee701d33ec7625ecce635a4090",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-81b2ec15c05b8138ebdafefd013ba3ba43cd9ef22927f3dec4f8528d48ec030f",
+              "artifact:a-8b91c4a5e8a2afb057b498d0d6ecf1c386e98a3b9c5eb14dbf504ff5fb326e45",
+              "artifact:a-a35ed29c0727a20a6d44e8f2b990688f6e9cd6f222b7985ed35e9ec60d8e679e",
+              "artifact:a-d31117b0fba5b46d21e0806427cdc231b3a0bd871ed41aaa20e0a61f4c1b989a",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "coverage_facts:coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:configure-tests",
+              "receipt:coverage-report",
+              "receipt:ctest-inventory",
+              "receipt:ctest-version",
+              "receipt:gcov-version",
+              "receipt:gcovr-version",
+              "receipt:link",
+              "receipt:tests"
+            ],
+            "context_ids": [
+              "gcc-coverage-job"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "coverage-5a615a5ddf08097ad80202c50d4d007790d52546b622651952814cbfaf1cdc86"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "cobertura-line-minimum-50",
+      "run_id": "2c8e606eb2984aac84fdefdf93142128",
+      "manifest_sha256": "1e06611cb96d858d12d59a0202ed6c579ecd05c29bd1740602036f4ca5ce67a1",
+      "policy_sha256": "1bade89c44ffcee39619583a90108fbe1c390655031e436202a0ac675f599d4f",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-coverage-job"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "minimum_coverage",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d"
+              ],
+              "minimum": 50,
+              "measurement_kind": "line",
+              "method": "cobertura-lines-v1"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "2c8e606eb2984aac84fdefdf93142128",
+        "source_digest": "e125355d095ea73743a507355a757e9ec1d44f37572e519096de14eca50bf70b",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "1bade89c44ffcee39619583a90108fbe1c390655031e436202a0ac675f599d4f"
+        },
+        "gate": "passed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 1,
+          "failed": 0,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 100.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 100.0,
+          "maximum_possible_readiness": 100.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "passed",
+            "reason": "Observed line coverage (cobertura-lines-v1) is evaluated separately for each selected file/job; no averaging or report union. main.cpp in job gcc-coverage-job: 5/8 meets minimum 50%",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "coverage-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0ce991d4c7419cd2ba3279e6ac9f1e3f8226c141b85ac20ca0077eb86c1776bc",
+              "artifact:a-223db0bb5388c5a32fbc09eb31e5e3e7b57eabee701d33ec7625ecce635a4090",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-81b2ec15c05b8138ebdafefd013ba3ba43cd9ef22927f3dec4f8528d48ec030f",
+              "artifact:a-8b91c4a5e8a2afb057b498d0d6ecf1c386e98a3b9c5eb14dbf504ff5fb326e45",
+              "artifact:a-caddccfd59fe5b94b904693c4f551c1dace58c440897576fc552b505882a5c13",
+              "artifact:a-d31117b0fba5b46d21e0806427cdc231b3a0bd871ed41aaa20e0a61f4c1b989a",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "coverage_facts:coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:configure-tests",
+              "receipt:coverage-report",
+              "receipt:ctest-inventory",
+              "receipt:ctest-version",
+              "receipt:gcov-version",
+              "receipt:gcovr-version",
+              "receipt:link",
+              "receipt:tests"
+            ],
+            "context_ids": [
+              "gcc-coverage-job"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    },
+    {
+      "case": "cobertura-line-minimum-80",
+      "run_id": "2c8e606eb2984aac84fdefdf93142128",
+      "manifest_sha256": "1e06611cb96d858d12d59a0202ed6c579ecd05c29bd1740602036f4ca5ce67a1",
+      "policy_sha256": "d99768be9b70dda8be5eca4907d27bb50e622800f13a9153ce09cee570bd3820",
+      "policy": {
+        "version": "2.0.0",
+        "id": "pinned-s6-integration",
+        "policy_version": "1.0.0",
+        "evaluator_profile": "1.1.0",
+        "standards": [],
+        "scope": {
+          "include": [
+            "main.cpp"
+          ],
+          "exclude": []
+        },
+        "contexts": [
+          "gcc-coverage-job"
+        ],
+        "gates": {
+          "minimum_readiness": 100,
+          "minimum_completeness": 100
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "kind": "minimum_coverage",
+            "weight": 1,
+            "required": true,
+            "parameters": {
+              "fact_ids": [
+                "coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d"
+              ],
+              "minimum": 80,
+              "measurement_kind": "line",
+              "method": "cobertura-lines-v1"
+            },
+            "depends_on": []
+          }
+        ]
+      },
+      "assessment": {
+        "version": "2.0.0",
+        "evaluator": {
+          "name": "cppulse.policy",
+          "version": "1.1.0"
+        },
+        "run_id": "2c8e606eb2984aac84fdefdf93142128",
+        "source_digest": "e125355d095ea73743a507355a757e9ec1d44f37572e519096de14eca50bf70b",
+        "policy": {
+          "id": "pinned-s6-integration",
+          "policy_version": "1.0.0",
+          "sha256": "d99768be9b70dda8be5eca4907d27bb50e622800f13a9153ce09cee570bd3820"
+        },
+        "gate": "failed",
+        "generated_at": "2026-11-14T00:58:27.842939+00:00",
+        "weights": {
+          "passed": 0,
+          "failed": 1,
+          "unknown": 0
+        },
+        "scores": {
+          "readiness": 0.0,
+          "evidence_completeness": 100.0,
+          "observed_satisfaction": 0.0,
+          "maximum_possible_readiness": 0.0
+        },
+        "controls": [
+          {
+            "id": "selected-verification",
+            "title": "Actual retained selected verification",
+            "status": "failed",
+            "reason": "Observed line coverage (cobertura-lines-v1) is evaluated separately for each selected file/job; no averaging or report union. main.cpp in job gcc-coverage-job: 5/8 below minimum 80%",
+            "weight": 1,
+            "required": true,
+            "evidence_ids": [
+              "coverage-tests"
+            ],
+            "references": [
+              "artifact:a-037d910777bb3001c33d4e0769a8cefc69e16b58bd87c8fb619abe63180b6eb1",
+              "artifact:a-0ce991d4c7419cd2ba3279e6ac9f1e3f8226c141b85ac20ca0077eb86c1776bc",
+              "artifact:a-223db0bb5388c5a32fbc09eb31e5e3e7b57eabee701d33ec7625ecce635a4090",
+              "artifact:a-22a03c33589a9b58aa62e286e4fbeedb6015a2663a8c0c1121e4643f8ad14449",
+              "artifact:a-36f22b6227ce2cedffc32a8bafa5ced465ad323d47532d354300fe5e61ed6e5b",
+              "artifact:a-4b45c8ab96b64440929b6a3d32c3022bfb70bb0cc83de298cecf9c6631c4924b",
+              "artifact:a-7e45bd1484f89b2fea6a055d863ffb01bfc0802d74294ec19c6398b2066d776f",
+              "artifact:a-81b2ec15c05b8138ebdafefd013ba3ba43cd9ef22927f3dec4f8528d48ec030f",
+              "artifact:a-8b91c4a5e8a2afb057b498d0d6ecf1c386e98a3b9c5eb14dbf504ff5fb326e45",
+              "artifact:a-caddccfd59fe5b94b904693c4f551c1dace58c440897576fc552b505882a5c13",
+              "artifact:a-d31117b0fba5b46d21e0806427cdc231b3a0bd871ed41aaa20e0a61f4c1b989a",
+              "artifact:a-f1adb4bd1ae1175e2f33fc900033b7d3bb8399097ffad953e787230824f21d8d",
+              "coverage_facts:coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d",
+              "receipt:compile",
+              "receipt:compiler-version",
+              "receipt:configure-tests",
+              "receipt:coverage-report",
+              "receipt:ctest-inventory",
+              "receipt:ctest-version",
+              "receipt:gcov-version",
+              "receipt:gcovr-version",
+              "receipt:link",
+              "receipt:tests"
+            ],
+            "context_ids": [
+              "gcc-coverage-job"
+            ],
+            "incomplete": false,
+            "fact_ids": [
+              "coverage-9fc11d720ab5853e625d9c12b926544392d728617ae3010279de2b4ba80dd87d"
+            ]
+          }
+        ],
+        "deviations": [],
+        "limitations": [
+          "Assessment covers only the supplied selected source inventory and explicit policy job contexts; it is not certification or a safety assurance.",
+          "Analysis parse coverage and selected-rule consideration are distinct; experimental rules and reported test outcomes do not establish runtime coverage or standards conformity.",
+          "Typed runtime coverage and sanitizer outcomes describe finite selected units, instrumented components and exercised workloads; they do not establish all-access/path coverage, loaded-runtime authenticity or absence of defects."
+        ]
+      }
+    }
+  ]
+}

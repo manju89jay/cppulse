@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-11-14T02:17:26.619529+00:00",
+  "status": "source checks passed; candidate installation pending",
+  "tool_version": "0.2.0.dev2",
+  "checks": 15,
+  "tests": {
+    "root-tests": 2040,
+    "analyzer-tests": 84,
+    "git-miner-tests": 90,
+    "predictor-tests": 98,
+    "report-engine-tests": 116,
+    "dashboard-tests": 51,
+    "cli-tests": 20
+  },
+  "total_tests": 2499,
+  "dashboard_build": "passed",
+  "check_results": "review/autonomous/logs/s7-final-shared/check-results.json",
+  "head": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "branch": "codex/job-application-demo-20261113",
+  "refs_unchanged": true,
+  "docker_executable": null,
+  "docker_socket": false,
+  "compose": "not run",
+  "key_sources": {
+    "python/cppulse/workflows.py": "123e4146b861e5a5080eedc86d31e2c12aa29a4fd08fba783e364c4a1d82386b",
+    "python/cppulse/cli.py": "81c3fe4196d9f91c0241527238e60b6ca56c0312ed443107a4eb0ef84f2a3f0d",
+    "python/cppulse/presentation.py": "4b2074f7995dc81f6eac9f7dbcd36c21c8bae234ee27f71f718d679b7253eb1a",
+    "python/cppulse/findings.py": "6700b410875d2e0a8f6c474d8e8c9d254a341a9dfe4f3b6b6bcd6e880e0e3c74",
+    "python/cppulse/sarif.py": "54ac44fe671ee3f1850dbefcf7a57f28e944dc45e2d4c8109028f957883fdb26",
+    "scripts/package_candidate.py": "03bbfcda45d1f62cbd522ae0b31801734aa0b130bb0ca0295b5d198bd0abbee9"
+  }
+}

@@ -1,5 +1,7 @@
 # cppulse Report: {fmt}
 
+> **Historical, unverified example — not a current benchmark.** The original report and artifacts below are preserved. Their finding, category and severity totals disagree; scores, “Bug Probability,” risk labels and effort estimates cannot establish comparative health, calibrated defect risk, memory safety, accuracy or production suitability. No fresh upstream scan or complete project coverage is claimed. See the [historical totals audit](../../README.md#historical-examples-inconsistent-totals), [verified synthetic demo](../../docs/portfolio/demo-verification.md) and [current workflow scope](../../docs/development/public-cli.md).
+
 > Analyzed 2026-03-27 · 54,423 LOC · 70 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
 {fmt} is Victor Zverovich's type-safe formatting library that became the direct basis for std::format in C++20. Widely deployed across game engines, embedded systems, and cloud infrastructure, fmt is valued for both its ergonomics and its near-zero runtime overhead.

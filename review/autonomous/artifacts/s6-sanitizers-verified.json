@@ -1,0 +1,447 @@
+{
+  "batch": "/workspace/scratch/b3d4e6fff494/cppulse/output/sanitizer-demo/batches/d0bce04348cf4ad1aff07495d1451550",
+  "cases": [
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-eaf5c010e8d5433d7198ffbaffc19d61d83ed940dd96b11943a8b0776a6f285c-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-eaf5c010e8d5433d7198ffbaffc19d61d83ed940dd96b11943a8b0776a6f285c.json",
+        "sha256": "69e41e21f55dca08d0209e4985b5ef20b1b2b2fed32ef416d589e8b1409582ae",
+        "size_bytes": 3544
+      },
+      "normalized_manifest_sha256": "06381526cbe35b412290b176e2a1f5d8f7655b6477da36b4bc802d7b90597d11",
+      "normalized_run_id": "8062669a65564a49b826e4d07bc22f49",
+      "original_artifacts_preserved": true,
+      "outcome": "passed",
+      "raw_manifest_sha256": "22792f76e72e6734350ed524e42b013959a5b125767396adc8d2d9680311156a",
+      "raw_run_id": "594ca65cd39a49d794742f2c65ea681d",
+      "sanitizer": "asan",
+      "scenario": "clean",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 1,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-bce20db65ac567582e3d135d683408c551267576dac7e02ed0680765cbd7c057-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-bce20db65ac567582e3d135d683408c551267576dac7e02ed0680765cbd7c057.json",
+        "sha256": "8a1a4cdfc17b76c07eababc6712e8190e5926214056264f0a490c3ab0d99180c",
+        "size_bytes": 4005
+      },
+      "normalized_manifest_sha256": "3fc043541dfce10cd91d6e7f86e27076ec498d1524f745702c78910a0b131144",
+      "normalized_run_id": "19013bedd13340819e46b13ce83ccb84",
+      "original_artifacts_preserved": true,
+      "outcome": "failed",
+      "raw_manifest_sha256": "3912678c4170c1347a490cc708739403ee589689f3651958cbc00b5ee4d7af4a",
+      "raw_run_id": "fdeb095fcd4b4efd9dfde84e061f7791",
+      "sanitizer": "asan",
+      "scenario": "bad",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 8,
+      "test_status": "failed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-8f59a51f557ac69c3d20371124759df7ee80ef066ff503742bf8457b4c9809e3-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-8f59a51f557ac69c3d20371124759df7ee80ef066ff503742bf8457b4c9809e3.json",
+        "sha256": "bb72fa4da17b4ebd7e36a765574f688bd78a26222969d204ba5860ff94baa106",
+        "size_bytes": 2992
+      },
+      "normalized_manifest_sha256": "1e3540b8539702a0f235050b8d8dec8e073baf1cd041dc0054f107689d3f0f39",
+      "normalized_run_id": "026053acb2d34d1f88b6d1fb67133d66",
+      "original_artifacts_preserved": true,
+      "outcome": "unsupported",
+      "raw_manifest_sha256": "8507fb51af0067f556d035dbec9e9a10ee6f9df62f0287704c90e9408d1749a6",
+      "raw_run_id": "8b27090eb1084d63be43ec0680da95a7",
+      "sanitizer": "asan",
+      "scenario": "plain-object",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "unsupported"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-9c186c480a1776dca8be71dab1a9d96d440a7177918287685c1285e15ba9c531-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-9c186c480a1776dca8be71dab1a9d96d440a7177918287685c1285e15ba9c531.json",
+        "sha256": "9aa5d36205a4d0f72a00b8237d90a74641f4e1cc1753fe961a47c79b9b7f9a4c",
+        "size_bytes": 3285
+      },
+      "normalized_manifest_sha256": "45e05cf599576ddeeb4feeb8010179b8706b2a4a1d18dd6384279967a1d02f31",
+      "normalized_run_id": "eeb000c8f088402eadcbcd9c740c4eec",
+      "original_artifacts_preserved": true,
+      "outcome": "unsupported",
+      "raw_manifest_sha256": "df549c5ea58af49712f2d7d333f229529090def4da1361e0707c3cdb9dcd10b1",
+      "raw_run_id": "294ff89c78414199baa054ef43f8deca",
+      "sanitizer": "asan",
+      "scenario": "substituted-binary",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "unsupported"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-e5c3e6af057803c1e0e7166f1603dc45a5ac9c7ee334e814eb6f5680a144fd3e-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-e5c3e6af057803c1e0e7166f1603dc45a5ac9c7ee334e814eb6f5680a144fd3e.json",
+        "sha256": "779dbeea462fbb8826a4b70a8c7107c542d504fbbe04aad3424cd93b650e00dd",
+        "size_bytes": 3305
+      },
+      "normalized_manifest_sha256": "f731f59590e6a365ee62cf398243a34742364e0e80625155e01d42d670bbe083",
+      "normalized_run_id": "e23cc0214b79455baad50a4b6a4c2419",
+      "original_artifacts_preserved": true,
+      "outcome": "unsupported",
+      "raw_manifest_sha256": "48feca5f81672fe8d9eab1dc24ee769131bd4d2af93cd478f41fff670ede911f",
+      "raw_run_id": "83f4ae7f3252429c921787071a4c8150",
+      "sanitizer": "asan",
+      "scenario": "zero-tests",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "total": 0
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "unsupported"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-9b823a08e81d5e7006a7bc36fddd6b35753642339ad544558d3eee5b670ebd14-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-9b823a08e81d5e7006a7bc36fddd6b35753642339ad544558d3eee5b670ebd14.json",
+        "sha256": "520b458103b749c6c1f9ddd1784d928e256e4ec6a338d1d9fbdb13dcbfdeff28",
+        "size_bytes": 3306
+      },
+      "normalized_manifest_sha256": "715f861b8bac5adaeed403f45f03e310337894c8cb85b0b9ffffba558d4abb04",
+      "normalized_run_id": "24f47ba99afa45ee8f34a6ca24085120",
+      "original_artifacts_preserved": true,
+      "outcome": "unsupported",
+      "raw_manifest_sha256": "d0b4fc0d77eded263b5fd81b0ee5af0a11770da90a70559530f78dbdca4e2117",
+      "raw_run_id": "4d285c0846344e87be23294841b2ccf9",
+      "sanitizer": "asan",
+      "scenario": "all-skipped",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "unsupported"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-1d909df077433bb87d4b0f22dd68080014d8d1b7ceb8c123e6ec95810abc42e0-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-1d909df077433bb87d4b0f22dd68080014d8d1b7ceb8c123e6ec95810abc42e0.json",
+        "sha256": "8c9432b2cd3e762edc6603c29928e5ec62aaae1b64c9d1ead623d930cb227b13",
+        "size_bytes": 3834
+      },
+      "normalized_manifest_sha256": "32114b0d2ae0f52429080b34481b422d79a056f8a36a4611c8ed542723cb5b8b",
+      "normalized_run_id": "d0387363ffa34a23b36842dd8faa97ec",
+      "original_artifacts_preserved": true,
+      "outcome": "unsupported",
+      "raw_manifest_sha256": "d81ddc897d849ed4aea3266cabfff4db657863824ebaef89d46857cad091f86a",
+      "raw_run_id": "10fad7eafdd5439d9db7201d7504d251",
+      "sanitizer": "asan",
+      "scenario": "prebuilt-gap",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "unsupported"
+    },
+    {
+      "diagnostic_count": 1,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-a51ae2cbbb870e7b1b5185948056fc090aeb6e927687fe8a7b3d93b132641680-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-a51ae2cbbb870e7b1b5185948056fc090aeb6e927687fe8a7b3d93b132641680.json",
+        "sha256": "769fbbe72f231e5aed68ae3c7de0f92ae007f0090f0db0557704780543de7a97",
+        "size_bytes": 4349
+      },
+      "normalized_manifest_sha256": "9cae49257356554e51c863fc37b584f0c3a75141e5e7b07dfdae3474d22b5fdf",
+      "normalized_run_id": "03cd875816374de7a56a49774f11b6d9",
+      "original_artifacts_preserved": true,
+      "outcome": "failed",
+      "raw_manifest_sha256": "bf9b555a92034fdad1dac95ecd7c86876483bdf8d8451886a70d20d50a80c26e",
+      "raw_run_id": "02ec051cfd12480eb43256682a4d8476",
+      "sanitizer": "asan",
+      "scenario": "prebuilt-gap-bad",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 8,
+      "test_status": "failed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-519e25275d2625c56ddb34b4ad11858e39d1bfd9daaa4e926c717e98ed544574-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-519e25275d2625c56ddb34b4ad11858e39d1bfd9daaa4e926c717e98ed544574.json",
+        "sha256": "7ab0aa94526f4c1f11d200cd1b2da46feb7b7e342228acecba993c0fa7253768",
+        "size_bytes": 3550
+      },
+      "normalized_manifest_sha256": "31cdc2e6fa8a3393593196e7c9280d2a4c77777c75367256f868015257502118",
+      "normalized_run_id": "acc95dd605c04e799889be94290dc33a",
+      "original_artifacts_preserved": true,
+      "outcome": "passed",
+      "raw_manifest_sha256": "233e36ae4b36fa3d33061a59143a6948f6877780a9283e384fdcb3c04bdfecd1",
+      "raw_run_id": "63a4a58795e54189a60ba3d3982ba207",
+      "sanitizer": "ubsan",
+      "scenario": "clean",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 1,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-4ea04633a805580725d8f473aa3a422373a9d8717b2c786d8adf8db478fba71f-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-4ea04633a805580725d8f473aa3a422373a9d8717b2c786d8adf8db478fba71f.json",
+        "sha256": "5101be8d5db17112061b55685ff9a06b3abd0ebc2397cbfd7f20c2e207437ed5",
+        "size_bytes": 3990
+      },
+      "normalized_manifest_sha256": "8f29b918861f784977d0f326347d1e0673fff6dd14ac39f9ee36ee16a5474ded",
+      "normalized_run_id": "e287126d83be424fa9242701c6f1ca6f",
+      "original_artifacts_preserved": true,
+      "outcome": "failed",
+      "raw_manifest_sha256": "cef7cf0181520f18eef72f5b4a65111b8e5601ba2b3c47588405ead65418ddeb",
+      "raw_run_id": "8eb49ca1cfc54a40984975059285dfaf",
+      "sanitizer": "ubsan",
+      "scenario": "bad",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 0,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-189fafd2405bee5c8148de7478a6869263c298ef0e2d4beaf930245db202b3bc-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-189fafd2405bee5c8148de7478a6869263c298ef0e2d4beaf930245db202b3bc.json",
+        "sha256": "79f240209bb49c346665179d2835dd2fa2bf789c7b166e2ec7172f5407b33d2f",
+        "size_bytes": 3566
+      },
+      "normalized_manifest_sha256": "8dbb3b62f96268b81abd81cec938a0c48f9f78cae153dd214cecfcf0dd93fc6e",
+      "normalized_run_id": "45f8cf11b5c14e0e858bd209013f1c80",
+      "original_artifacts_preserved": true,
+      "outcome": "passed",
+      "raw_manifest_sha256": "a31be865085421908639b6dcb44966d5b05b2565dcd3222e7dbf2aec64934353",
+      "raw_run_id": "2b2832a7c97a4dde8294744e096897de",
+      "sanitizer": "tsan",
+      "scenario": "clean",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 0,
+      "test_status": "passed",
+      "usability": "usable"
+    },
+    {
+      "diagnostic_count": 1,
+      "fact_artifact": {
+        "contract": {
+          "kind": "sanitizer_facts",
+          "version": "2.0.0"
+        },
+        "id": "sanitizer-a5bd0c09e51056b5ecc8132b86c590a35c79a52f5ff6533c88c7519d41b8d422-document",
+        "media_type": "application/json",
+        "path": "sanitizers/sanitizer-a5bd0c09e51056b5ecc8132b86c590a35c79a52f5ff6533c88c7519d41b8d422.json",
+        "sha256": "d4a1993f2656dba01e936590e9db45cf07e24c858a921cf048d2ffc5b5102de3",
+        "size_bytes": 3917
+      },
+      "normalized_manifest_sha256": "34a5b75439d1af3e4c3ccf7517514a160e24c2a47274e2824a114bb67e6502e9",
+      "normalized_run_id": "e9a1d36f5efb457db36c6face4625121",
+      "original_artifacts_preserved": true,
+      "outcome": "failed",
+      "raw_manifest_sha256": "63738218f88d88679f18dc62f3b9395d8ef8aa29db053ddefcd4293db822f5f2",
+      "raw_run_id": "e92a1921659f46da909fda3417513fae",
+      "sanitizer": "tsan",
+      "scenario": "bad",
+      "source_config_preserved": true,
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "test_exit_code": 8,
+      "test_status": "failed",
+      "usability": "usable"
+    }
+  ],
+  "exact_revision": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "limitations": [
+    "First supported direct-GCC/CTest selected-input slice only, not exhaustive runtime customization or hostile-program defense.",
+    "No actual TSan mapping failure observed in this batch; unsupported mapping diagnostic is tested with explicitly synthetic parser text.",
+    "Historical earlier batches lack final control/options/symbol evidence and are not relabeled as this final proof."
+  ],
+  "outcome_counts": {
+    "error": 0,
+    "failed": 4,
+    "missing": 0,
+    "passed": 3,
+    "unsupported": 5
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "producer_sources_sha256": {
+    "python/cppulse/adapters/gcc_sanitizer.py": "a04ab7f0ff3fd52b84fc7ac4daca0a8325b10f1ac6bbb74d8dbac7b3b68a9b5c",
+    "python/cppulse/sanitizers.py": "09e1962e109a04afc3c02347cfc6af222e337b8df5bf997269176e3d7eeca572",
+    "scripts/demo_sanitizers.py": "34036819dc3876c7f516e3540406b5367619a2292edf0c3434c726e47ca397f0"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "snapshots_verified": 24,
+  "summary_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/sanitizer-demo/latest-demo.json",
+  "summary_sha256": "1aff499f33c4e5d23319653545c20c3466418525a4f1586b0e4c393d81322452",
+  "tools": {
+    "ar": "/usr/bin/x86_64-linux-gnu-ar",
+    "cmake": "/workspace/scratch/b3d4e6fff494/toolchain/usr/bin/cmake",
+    "ctest": "/workspace/scratch/b3d4e6fff494/toolchain/usr/bin/ctest",
+    "g++": "/usr/bin/x86_64-linux-gnu-g++-14",
+    "nm": "/usr/bin/x86_64-linux-gnu-nm",
+    "readelf": "/usr/bin/x86_64-linux-gnu-readelf",
+    "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+    "target": "x86_64-linux-gnu",
+    "version": "14.2.0"
+  }
+}

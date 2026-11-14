@@ -1,5 +1,7 @@
 # cppulse Report: nlohmann/json
 
+> **Historical, unverified example — not a current benchmark.** The original report and artifacts below are preserved. Their finding, category and severity totals disagree; scores, “Bug Probability,” risk labels and effort estimates cannot establish comparative health, calibrated defect risk, memory safety, accuracy or production suitability. No fresh upstream scan or complete project coverage is claimed. See the [historical totals audit](../../README.md#historical-examples-inconsistent-totals), [verified synthetic demo](../../docs/portfolio/demo-verification.md) and [current workflow scope](../../docs/development/public-cli.md).
+
 > Analyzed 2026-03-27 · 97,669 LOC · 479 files · [Back to Leaderboard](../../README.md#analyzed-codebases)
 
 nlohmann/json is the most widely starred C++ JSON library on GitHub, created by Niels Lohmann. Its single-header design, intuitive API, and comprehensive test suite have made it the de facto standard for JSON handling in modern C++ projects across game engines, scientific computing, and cloud services.
