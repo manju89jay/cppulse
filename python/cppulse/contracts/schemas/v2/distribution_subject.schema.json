@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/distribution_subject.schema.json",
+  "title": "cppulse distribution_subject v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "kind": {
+      "enum": [
+        "compiled",
+        "header-only"
+      ]
+    },
+    "source_relation": {
+      "enum": [
+        "selected_sources",
+        "distribution_only"
+      ]
+    },
+    "source_files": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/source_file"
+      },
+      "minItems": 0
+    },
+    "distribution_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "sha256": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "artifact_id",
+          "sha256",
+          "size_bytes"
+        ]
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "kind",
+    "source_relation",
+    "source_files",
+    "distribution_files",
+    "limitations"
+  ]
+}

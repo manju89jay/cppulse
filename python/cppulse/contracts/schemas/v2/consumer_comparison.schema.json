@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/consumer_comparison.schema.json",
+  "title": "cppulse scoped imported consumer applicability v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "local_source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "upstream_source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "upstream_manifest_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "local_manifest_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "upstream_manifest_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "local_manifest_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "upstream_subject_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "upstream_matrix_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "upstream_subject_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "local_subject_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "upstream_matrix_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "local_matrix_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "import_origin": {
+      "const": "import"
+    },
+    "authentication": {
+      "const": "unverified"
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "upstream_case_id": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "compatible",
+              "incompatible",
+              "unknown"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "matching_dimensions": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "compiler",
+                "os",
+                "target",
+                "abi",
+                "language_standard",
+                "macros",
+                "exceptions",
+                "rtti",
+                "linking",
+                "dependencies",
+                "sanitizers"
+              ]
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "mismatches": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "compiler",
+                "os",
+                "target",
+                "abi",
+                "language_standard",
+                "macros",
+                "exceptions",
+                "rtti",
+                "linking",
+                "dependencies",
+                "sanitizers",
+                "distribution"
+              ]
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "local_test_status": {
+            "enum": [
+              "passed",
+              "failed",
+              "unknown"
+            ]
+          },
+          "local_test_evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "required_local_checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "missing_local_checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "case_id",
+          "upstream_case_id",
+          "status",
+          "reason",
+          "matching_dimensions",
+          "mismatches",
+          "local_test_status",
+          "local_test_evidence_ids",
+          "required_local_checks",
+          "missing_local_checks"
+        ]
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "local_source_digest",
+    "upstream_source_digest",
+    "upstream_manifest_sha256",
+    "local_manifest_sha256",
+    "upstream_manifest_artifact_id",
+    "local_manifest_artifact_id",
+    "upstream_subject_artifact_id",
+    "upstream_matrix_artifact_id",
+    "upstream_subject_id",
+    "local_subject_id",
+    "upstream_matrix_id",
+    "local_matrix_id",
+    "import_origin",
+    "authentication",
+    "producer",
+    "generated_at",
+    "cases",
+    "limitations"
+  ]
+}

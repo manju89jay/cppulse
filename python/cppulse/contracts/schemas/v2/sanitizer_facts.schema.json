@@ -1,0 +1,451 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/sanitizer_facts.schema.json",
+  "title": "cppulse emitted GCC sanitizer and exercised binary facts v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "context_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "requested_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "origin": {
+      "enum": [
+        "execution",
+        "import"
+      ]
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "const": "gcc-sanitizer"
+        },
+        "version": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ]
+    },
+    "sanitizer": {
+      "enum": [
+        "asan",
+        "ubsan",
+        "tsan"
+      ]
+    },
+    "compiler_version_receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "compile_receipt_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "link_receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "inspection_receipt_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "proof_receipt_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "binary_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "object_proofs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "compile_receipt_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "source_files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "sanitizer": {
+            "enum": [
+              "asan",
+              "ubsan",
+              "tsan"
+            ]
+          },
+          "method": {
+            "const": "elf-relocations-v1"
+          },
+          "observed_symbols": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "inspection_artifact_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "elf": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "class": {
+                "const": "ELF64"
+              },
+              "machine": {
+                "const": "x86_64"
+              },
+              "type": {
+                "enum": [
+                  "REL"
+                ]
+              }
+            },
+            "required": [
+              "class",
+              "machine",
+              "type"
+            ]
+          }
+        },
+        "required": [
+          "artifact_id",
+          "compile_receipt_id",
+          "source_files",
+          "sanitizer",
+          "method",
+          "observed_symbols",
+          "inspection_artifact_ids",
+          "elf"
+        ]
+      },
+      "minItems": 0
+    },
+    "linked_components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "instrumentation": {
+            "enum": [
+              "observed",
+              "unverified"
+            ]
+          }
+        },
+        "required": [
+          "subject_id",
+          "artifact_id",
+          "instrumentation"
+        ]
+      },
+      "minItems": 0
+    },
+    "runtime_proof": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inspection_artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "required_soname": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observed_needed": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0,
+              "uniqueItems": true
+            },
+            "elf": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "class": {
+                  "const": "ELF64"
+                },
+                "machine": {
+                  "const": "x86_64"
+                },
+                "type": {
+                  "enum": [
+                    "EXEC",
+                    "DYN"
+                  ]
+                }
+              },
+              "required": [
+                "class",
+                "machine",
+                "type"
+              ]
+            }
+          },
+          "required": [
+            "inspection_artifact_id",
+            "required_soname",
+            "observed_needed",
+            "elf"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "test_evidence_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "exercise_proofs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "test_receipt_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "test_case_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "artifact_id",
+          "test_receipt_id",
+          "test_case_ids"
+        ]
+      },
+      "minItems": 0
+    },
+    "diagnostic_artifact_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "line": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "test_case_id": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "message",
+          "file",
+          "line",
+          "artifact_id",
+          "test_case_id"
+        ]
+      },
+      "minItems": 0
+    },
+    "outcome": {
+      "enum": [
+        "passed",
+        "failed",
+        "error",
+        "unsupported",
+        "missing"
+      ]
+    },
+    "usability": {
+      "enum": [
+        "usable",
+        "stale",
+        "mismatched",
+        "unsupported",
+        "malformed",
+        "missing"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "context_id",
+    "requested_files",
+    "origin",
+    "producer",
+    "adapter",
+    "sanitizer",
+    "compiler_version_receipt_id",
+    "compile_receipt_ids",
+    "link_receipt_id",
+    "inspection_receipt_ids",
+    "proof_receipt_ids",
+    "binary_artifact_id",
+    "object_proofs",
+    "linked_components",
+    "runtime_proof",
+    "test_evidence_id",
+    "exercise_proofs",
+    "diagnostic_artifact_ids",
+    "diagnostics",
+    "outcome",
+    "usability",
+    "limitations"
+  ]
+}
