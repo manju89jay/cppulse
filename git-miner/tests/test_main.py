@@ -163,12 +163,16 @@ class TestRunFunction:
         result = run(bad_path, tmp_path / "out")
         assert result == 1
 
-    def test_run_non_git_dir_returns_1(self, tmp_path: Path) -> None:
-        """run() returns 1 when path exists but is not a git repo."""
+    def test_run_non_git_dir_records_unavailable_history(self, tmp_path: Path) -> None:
+        """A source-only directory keeps history explicitly unavailable."""
         plain_dir = tmp_path / "plain"
         plain_dir.mkdir()
         result = run(plain_dir, tmp_path / "out")
-        assert result == 1
+        assert result == 0
+        data = json.loads((tmp_path / "out/git_metrics.json").read_text())
+        assert data["metadata"]["history_status"] == "unavailable"
+        assert data["metadata"]["limitations"]
+        assert data["file_metrics"] == []
 
     def test_run_valid_repo_creates_output(self, tmp_path: Path) -> None:
         """run() returns 0 and creates git_metrics.json for a valid repo."""
