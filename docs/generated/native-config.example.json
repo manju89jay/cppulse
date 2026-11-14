@@ -1,0 +1,78 @@
+{
+  "profile": "default",
+  "exclude_paths": [],
+  "rules": {
+    "CPP-CX-001": {
+      "enabled": true,
+      "warning_threshold": 15,
+      "error_threshold": 25
+    },
+    "CPP-CX-002": {
+      "enabled": true,
+      "warning_threshold": 80,
+      "error_threshold": 150
+    },
+    "CPP-CX-003": {
+      "enabled": true,
+      "warning_threshold": 5,
+      "error_threshold": 8
+    },
+    "CPP-MEM-001": {
+      "enabled": true
+    },
+    "CPP-MEM-002": {
+      "enabled": true
+    },
+    "CPP-MEM-003": {
+      "enabled": true
+    },
+    "CPP-MOD-001": {
+      "enabled": true
+    },
+    "CPP-MOD-002": {
+      "enabled": true
+    },
+    "CPP-MOD-003": {
+      "enabled": true
+    },
+    "CPP-MOD-004": {
+      "enabled": true
+    },
+    "CPP-MOD-005": {
+      "enabled": true
+    },
+    "CPP-MOD-006": {
+      "enabled": true
+    },
+    "CPP-MOD-007": {
+      "enabled": true
+    },
+    "CPP-MOD-008": {
+      "enabled": true
+    },
+    "CPP-MOD-009": {
+      "enabled": true
+    },
+    "MISRA-001": {
+      "enabled": true
+    },
+    "MISRA-002": {
+      "enabled": true
+    },
+    "MISRA-003": {
+      "enabled": true
+    },
+    "MISRA-004": {
+      "enabled": true
+    },
+    "MISRA-005": {
+      "enabled": true
+    },
+    "MISRA-006": {
+      "enabled": true
+    },
+    "MISRA-007": {
+      "enabled": true
+    }
+  }
+}

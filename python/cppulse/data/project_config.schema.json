@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse compatible project analysis settings",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "profile": {"enum": ["default", "safety-critical"]},
+    "exclude_paths": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "rules": {
+      "type": "object",
+      "propertyNames": {"pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-[0-9]{3}$"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {"type": "boolean"},
+          "warning_threshold": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+          "error_threshold": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+        }
+      }
+    }
+  }
+}
