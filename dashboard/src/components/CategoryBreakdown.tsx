@@ -24,15 +24,16 @@ function getBarColor(value: number): string {
 export function CategoryBreakdown({
   healthScore,
 }: CategoryBreakdownProps): React.ReactElement {
-  const data = [
-    { name: "Memory Safety", score: Math.round(healthScore.memory_safety) },
-    { name: "Modernization", score: Math.round(healthScore.modernization) },
-    { name: "Complexity", score: Math.round(healthScore.complexity) },
-    {
-      name: "MISRA Compliance",
-      score: Math.round(healthScore.misra_compliance),
-    },
-  ];
+  const categories = [
+    { name: "Memory Safety", key: "memory_safety" },
+    { name: "Modernization", key: "modernization" },
+    { name: "Complexity", key: "complexity" },
+    { name: "MISRA subset", key: "misra_compliance" },
+  ] as const;
+  const data = categories.flatMap(({ name, key }) => {
+    const score = healthScore[key];
+    return typeof score === "number" ? [{ name, score: Math.round(score) }] : [];
+  });
 
   return (
     <div className="bg-white rounded-xl shadow p-6">
@@ -60,7 +61,7 @@ export function CategoryBreakdown({
           />
           <Bar dataKey="score" radius={[4, 4, 0, 0]}>
             {data.map((entry, index) => (
-              <Cell key={index} fill={getBarColor(entry.score)} />
+              <Cell key={index} fill={getBarColor(entry.score ?? 0)} />
             ))}
           </Bar>
         </BarChart>

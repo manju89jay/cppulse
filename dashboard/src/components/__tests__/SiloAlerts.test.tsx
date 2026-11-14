@@ -43,7 +43,7 @@ describe("SiloAlerts", () => {
   it("shows empty state when no silos", () => {
     render(<SiloAlerts silos={[]} />);
     expect(
-      screen.getByText(/No knowledge silos detected/)
+      screen.getByText(/No single-contributor alerts/)
     ).toBeInTheDocument();
   });
 

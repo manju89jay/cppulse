@@ -84,7 +84,7 @@ export function HotspotTable({
                   className={thClass}
                   onClick={() => handleSort("complexity_score")}
                 >
-                  Complexity{sortIndicator("complexity_score")}
+                  Severity proxy{sortIndicator("complexity_score")}
                 </th>
                 <th
                   className={thClass}

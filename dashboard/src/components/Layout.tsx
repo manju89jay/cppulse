@@ -2,6 +2,8 @@ import React from "react";
 
 type NavSection =
   | "overview"
+  | "evidence"
+  | "artifacts"
   | "findings"
   | "hotspots"
   | "silos"
@@ -16,6 +18,8 @@ interface LayoutProps {
 
 const NAV_ITEMS: { id: NavSection; label: string; icon: string }[] = [
   { id: "overview", label: "Overview", icon: "O" },
+  { id: "evidence", label: "Evidence", icon: "E" },
+  { id: "artifacts", label: "Raw Artifacts", icon: "A" },
   { id: "findings", label: "Findings", icon: "F" },
   { id: "hotspots", label: "Hotspots", icon: "H" },
   { id: "silos", label: "Knowledge Silos", icon: "S" },
@@ -42,6 +46,7 @@ export function Layout({
           {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
+              aria-label={item.label}
               onClick={() => onNavigate(item.id)}
               className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeSection === item.id
@@ -57,7 +62,7 @@ export function Layout({
           ))}
         </nav>
         <div className="px-4 py-3 border-t border-gray-700">
-          <p className="text-xs text-gray-500">cppulse v0.1.0</p>
+          <p className="text-xs text-gray-500">cppulse development candidate</p>
         </div>
       </aside>
 

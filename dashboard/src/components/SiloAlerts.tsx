@@ -23,7 +23,7 @@ export function SiloAlerts({ silos }: SiloAlertsProps): React.ReactElement {
 
       {silos.length === 0 ? (
         <p className="text-gray-400 text-sm">
-          No knowledge silos detected. Good team coverage!
+          No single-contributor alerts in the available history.
         </p>
       ) : (
         <div className="space-y-3">
@@ -45,7 +45,7 @@ export function SiloAlerts({ silos }: SiloAlertsProps): React.ReactElement {
                     <span className="font-semibold text-amber-700">
                       {silo.sole_contributor}
                     </span>{" "}
-                    &bull; {silo.commit_count} commits &bull; Last:{" "}
+                    &bull; Last:{" "}
                     {silo.last_commit}
                   </p>
                   {silo.risk_note && (
