@@ -1,0 +1,31 @@
+@page { size: A4; margin: 18mm 16mm; @bottom-right { content: counter(page) " / " counter(pages); font-size: 8pt; color: #526274; } }
+* { box-sizing: border-box; }
+body { font: 10pt/1.45 sans-serif; color: #1a293b; margin: 0; }
+h1 { font-size: 25pt; margin: 0 0 3mm; color: #12344b; }
+h2 { font-size: 15pt; color: #12344b; margin: 8mm 0 3mm; border-bottom: 1px solid #ccd6df; padding-bottom: 2mm; }
+h3 { font-size: 11pt; margin: 5mm 0 2mm; }
+p { margin: 2mm 0; }
+small, .subtle { color: #526274; font-size: 8.5pt; }
+code, pre { font-family: monospace; font-size: 8pt; white-space: pre-wrap; overflow-wrap: anywhere; word-wrap: break-word; }
+.identity { font-size: 8pt; overflow-wrap: anywhere; word-wrap: break-word; }
+.header { padding-bottom: 4mm; border-bottom: 3px solid #157f88; }
+.badge { display: inline-block; border-radius: 3px; padding: 1mm 2mm; background: #edf2f6; font-weight: bold; }
+.passed { color: #145b3c; background: #e4f4eb; }
+.failed { color: #8b2027; background: #fbe8e9; }
+.unknown, .insufficient_evidence, .partial, .cancelled { color: #80520e; background: #fff0ce; }
+.grid { display: table; width: 100%; border-spacing: 3mm 0; margin: 4mm -3mm; }
+.metric { display: table-cell; width: 25%; padding: 3mm; border: 1px solid #d8e1e8; vertical-align: top; }
+.metric strong { display: block; font-size: 16pt; margin-top: 2mm; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; table-layout: fixed; }
+th { background: #edf2f6; color: #233b50; font-weight: bold; }
+th, td { border: 1px solid #d5dee6; padding: 2mm; text-align: left; vertical-align: top; overflow-wrap: anywhere; word-wrap: break-word; }
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+a { color: #116c81; }
+ul { padding-left: 5mm; }
+li { margin-bottom: 1.5mm; }
+.reason { margin-top: 1.5mm; font-size: 9pt; }
+.note { background: #f4f7fa; border-left: 3px solid #157f88; padding: 3mm; margin: 4mm 0; }
+.page-break { break-before: page; }
+.compact { font-size: 8pt; overflow-wrap: anywhere; word-wrap: break-word; }
+@media screen { body { max-width: 1120px; margin: 24px auto; padding: 0 24px; } }
