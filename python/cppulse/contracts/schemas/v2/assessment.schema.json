@@ -286,6 +286,10 @@
     },
     "evaluator": {
       "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "native_input_binding": {
+      "const": "tu-buffer-coherence-v1",
+      "description": "Fresh native-derived predicates require verified TU buffer coherence; absence denotes historical evaluation semantics."
     }
   },
   "required": [

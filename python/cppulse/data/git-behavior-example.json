@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "window_days": 365,
+  "half_life_days": 180,
+  "max_commits": 10000,
+  "max_files_per_commit": 100,
+  "max_pair_records": 50000,
+  "minimum_support": 3,
+  "aliases": {},
+  "bot_ids": [],
+  "former_contributor_ids": [],
+  "offboarding_ids": [],
+  "teams": {},
+  "components": {
+    "analyzer": [
+      "analyzer-core/**"
+    ],
+    "cli": [
+      "cli/**"
+    ]
+  },
+  "exclude_paths": [
+    "generated/**",
+    "vendor/**",
+    "build/**"
+  ],
+  "exclude_commit_ids": [],
+  "include_merges": false,
+  "pair_attribution": "author_only"
+}

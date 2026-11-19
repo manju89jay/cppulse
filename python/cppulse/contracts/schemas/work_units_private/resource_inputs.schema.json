@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/resource_inputs.schema.json",
+  "title": "Private finite external builtin resource selection",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "https://schemas.cppulse.local/v2/source.schema.json"
+    }
+  },
+  "required": [
+    "version",
+    "root",
+    "source"
+  ]
+}

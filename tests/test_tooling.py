@@ -40,10 +40,16 @@ def test_registry_matches_native_registrations_and_categories(
         assert rule_id and category and class_name
         native[rule_id[1]] = (category[1], class_name[1])
     engine = (ROOT / "analyzer-core/src/analyzer.cpp").read_text()
-    registered = set(re.findall(r"add_rule\((\w+)\{\}\)", engine))
-    registered.update(re.findall(r"(\w+Rule) r;\s*apply_thresholds", engine))
+    bindings = load_rule_registry(include_native_bindings=True)["rules"]
+    registered = {
+        rule["configuration_schema"]["x-cppulse-native"]["class"]
+        for rule in bindings
+    }
     assert registered == {item[1] for item in native.values()}
     assert len(registered) == 22
+    assert "register_generated_native_rules(add_rule, apply_config)" in engine
+    # The compiled consumer test independently instantiates these real classes
+    # and checks their IDs, order and option capabilities against the registry.
     rules = registry["rules"]
     assert {rule["id"]: rule["category"] for rule in rules} == {
         rule_id: metadata[0] for rule_id, metadata in native.items()

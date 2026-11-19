@@ -9,8 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
-    libclang-dev \
-    llvm-dev \
+    libclang-19-dev \
     nlohmann-json3-dev \
     libspdlog-dev \
     libcli11-dev \
@@ -33,8 +32,8 @@ RUN cmake -B build && cmake --build build \
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libclang1 \
-    libclang-dev \
+    libclang1-19 \
+    libclang-common-19-dev \
     g++ \
     libspdlog-dev \
     && rm -rf /var/lib/apt/lists/*

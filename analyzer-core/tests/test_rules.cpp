@@ -5,6 +5,8 @@
 
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <algorithm>
 #include <filesystem>
 #include <string>
@@ -284,9 +286,7 @@ TEST(OutputWriterTest, WritesValidJson) {
                                         .suggestion = "Fix it",
                                         .confidence = 1.0});
 
-    const std::filesystem::path out_dir =
-        std::filesystem::temp_directory_path() / "cppulse_test_output";
-    std::filesystem::remove_all(out_dir);
+    const auto out_dir = cppulse::test::make_test_directory("cppulse_test_output");
 
     const bool ok = cppulse::write_findings_json(findings, "/tmp/test_repo", 1, 20, out_dir);
     ASSERT_TRUE(ok) << "write_findings_json returned false";
@@ -312,9 +312,7 @@ TEST(OutputWriterTest, WritesValidJson) {
 }
 
 TEST(OutputWriterTest, HandlesEmptyFindings) {
-    const std::filesystem::path out_dir =
-        std::filesystem::temp_directory_path() / "cppulse_test_empty";
-    std::filesystem::remove_all(out_dir);
+    const auto out_dir = cppulse::test::make_test_directory("cppulse_test_empty");
 
     const bool ok = cppulse::write_findings_json({}, "/tmp/empty_repo", 0, 0, out_dir);
     ASSERT_TRUE(ok);

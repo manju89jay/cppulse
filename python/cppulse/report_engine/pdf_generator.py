@@ -243,7 +243,7 @@ class PDFGenerator:
         category_labels = [
             "Memory Safety",
             "Modernization",
-            "Complexity",
+            "Complexity finding health",
             "MISRA Compliance",
         ]
         category_keys = [
@@ -319,6 +319,9 @@ class PDFGenerator:
             "analyzed_at": analyzed_at,
             "overall_score": overall,
             "health_status": health_status,
+            "health_calculation": risk_scores.get("metadata", {}).get(
+                "health_calculation", {}
+            ),
             "limitations": limitations,
             "model_metadata": risk_scores.get("metadata", {}),
             "by_category": by_category,

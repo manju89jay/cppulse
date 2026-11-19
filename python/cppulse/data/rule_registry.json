@@ -35,6 +35,11 @@
             "default": 25,
             "maximum": 2147483647
           }
+        },
+        "x-cppulse-native": {
+          "class": "CyclomaticComplexityRule",
+          "header": "rules/complexity/cyclomatic_complexity.h",
+          "order": 12
         }
       },
       "documentation": "Detect functions with high cyclomatic complexity. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
@@ -73,6 +78,11 @@
             "default": 150,
             "maximum": 2147483647
           }
+        },
+        "x-cppulse-native": {
+          "class": "FunctionLengthRule",
+          "header": "rules/complexity/function_length.h",
+          "order": 13
         }
       },
       "documentation": "Detect functions that are too long. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
@@ -111,6 +121,11 @@
             "default": 8,
             "maximum": 2147483647
           }
+        },
+        "x-cppulse-native": {
+          "class": "ParameterCountRule",
+          "header": "rules/complexity/parameter_count.h",
+          "order": 14
         }
       },
       "documentation": "Detect functions with too many parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
@@ -137,6 +152,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "RawPointerOwnershipRule",
+          "header": "rules/memory_safety/raw_pointer_ownership.h",
+          "order": 0
         }
       },
       "documentation": "Detect use of raw `new` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -163,6 +183,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "ManualMemoryMgmtRule",
+          "header": "rules/memory_safety/manual_memory_mgmt.h",
+          "order": 1
         }
       },
       "documentation": "Detect explicit `delete` expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -189,6 +214,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "UnsafeArrayAccessRule",
+          "header": "rules/memory_safety/unsafe_array_access.h",
+          "order": 2
         }
       },
       "documentation": "Detect C-style array parameters. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -215,6 +245,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "CStyleCastRule",
+          "header": "rules/modernization/c_style_cast.h",
+          "order": 3
         }
       },
       "documentation": "Detect C-style cast expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -241,6 +276,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "DeprecatedHeadersRule",
+          "header": "rules/modernization/deprecated_headers.h",
+          "order": 4
         }
       },
       "documentation": "Detect inclusion of deprecated C headers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -267,6 +307,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "MissingOverrideRule",
+          "header": "rules/modernization/missing_override.h",
+          "order": 5
         }
       },
       "documentation": "Detect virtual methods that are missing the override keyword. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -293,6 +338,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "RawStringLiteralRule",
+          "header": "rules/modernization/raw_string_literal.h",
+          "order": 6
         }
       },
       "documentation": "Detect string literals with many escape sequences. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -319,6 +369,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "AutoUsageRule",
+          "header": "rules/modernization/auto_usage.h",
+          "order": 7
         }
       },
       "documentation": "Suggest `auto` for verbose iterator type declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence. Detector semantics revised on 2026-11-14 with explicit written-type and function/template scope regressions; experimental maturity is unchanged."
@@ -345,6 +400,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "RangeForRule",
+          "header": "rules/modernization/range_for.h",
+          "order": 8
         }
       },
       "documentation": "Suggest range-based for loops for index-based loops. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -371,6 +431,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NullptrUsageRule",
+          "header": "rules/modernization/nullptr_usage.h",
+          "order": 9
         }
       },
       "documentation": "Detect use of NULL macro or integer 0 as a null pointer. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -397,6 +462,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "EnumClassRule",
+          "header": "rules/modernization/enum_class.h",
+          "order": 10
         }
       },
       "documentation": "Detect unscoped (plain) enum declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -423,6 +493,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "UsingVsTypedefRule",
+          "header": "rules/modernization/using_vs_typedef.h",
+          "order": 11
         }
       },
       "documentation": "Detect typedef declarations that should use `using`. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -449,6 +524,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NoGotoRule",
+          "header": "rules/misra/no_goto.h",
+          "order": 15
         }
       },
       "documentation": "Detect use of goto statements. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -475,6 +555,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NoImplicitConversionRule",
+          "header": "rules/misra/no_implicit_conversion.h",
+          "order": 16
         }
       },
       "documentation": "Detect implicit narrowing conversions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -501,6 +586,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NoUnionRule",
+          "header": "rules/misra/no_union.h",
+          "order": 17
         }
       },
       "documentation": "Detect union declarations. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -527,6 +617,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NoDynamicAllocRule",
+          "header": "rules/misra/no_dynamic_alloc.h",
+          "order": 18
         }
       },
       "documentation": "Detect dynamic memory allocation via C library functions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -553,6 +648,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "NoRecursionRule",
+          "header": "rules/misra/no_recursion.h",
+          "order": 19
         }
       },
       "documentation": "Detect direct recursive function calls. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -579,6 +679,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "SingleExitRule",
+          "header": "rules/misra/single_exit.h",
+          "order": 20
         }
       },
       "documentation": "Detect functions with multiple return statements. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
@@ -605,6 +710,11 @@
             "type": "boolean",
             "default": true
           }
+        },
+        "x-cppulse-native": {
+          "class": "InitAllVarsRule",
+          "header": "rules/misra/init_all_vars.h",
+          "order": 21
         }
       },
       "documentation": "Detect variable declarations without initializers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."

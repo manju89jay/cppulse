@@ -3,6 +3,8 @@
  */
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -14,10 +16,7 @@ namespace {
 class WorkUnitSelectionTest : public ::testing::Test {
    protected:
     void SetUp() override {
-        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
-        base_ =
-            std::filesystem::temp_directory_path() / (std::string{"cppulse_unit_"} + info->name());
-        std::filesystem::remove_all(base_);
+        base_ = cppulse::test::make_test_directory("cppulse_unit");
         root_ = base_ / "repo";
         std::filesystem::create_directories(root_ / "a");
         std::filesystem::create_directories(root_ / "b");

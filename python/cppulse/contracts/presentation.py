@@ -303,6 +303,24 @@ def semantic(document: dict[str, Any]) -> None:
             )
             _equal(raw, selected, path + "/raw_json")
 
+    if "external_relationships" in document:
+        from cppulse.external import external_relationships
+
+        external = [
+            json.loads(f["raw_json"])
+            for f in document["facts"]
+            if f["kind"] == "external_analysis_facts"
+        ]
+        native = [
+            json.loads(f["raw_json"])
+            for f in document["facts"]
+            if f["kind"] == "observations"
+        ]
+        _equal(
+            document["external_relationships"],
+            external_relationships(external, native),
+            "/external_relationships",
+        )
     for kind, wrapper in document["legacy"].items():
         if wrapper is not None:
             raw = payload(wrapper, kind, "/legacy/" + kind, "prototype_v1")

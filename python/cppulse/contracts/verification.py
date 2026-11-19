@@ -256,11 +256,21 @@ def semantic(kind: str, document: dict[str, Any]) -> None:
             _collection_path(row["path"], "/files/path")
             if not any(row["path"].startswith(prefix) for prefix in prefixes):
                 _fail("Transfer file lies outside every declared root", "/files/path")
-            if row["path"].split("/")[-1].casefold() in {
-                "latest.json",
-                "latest_attempt.json",
-                "transfer_bundle.json",
-            }:
+            if any(
+                part.casefold()
+                in {
+                    "latest.json",
+                    "latest_attempt.json",
+                    "heads.json",
+                    "store-format.json",
+                    ".migration-v3",
+                    ".publication.lock",
+                    ".coordination.lock",
+                    ".recovery",
+                    "transfer_bundle.json",
+                }
+                for part in row["path"].split("/")
+            ):
                 _fail(
                     "Publication pointers/transfer descriptor cannot be payload",
                     "/files/path",
@@ -272,12 +282,33 @@ def semantic(kind: str, document: dict[str, Any]) -> None:
         _unique(document["observations"], "id", "/observations")
         for path in document["scope_files"]:
             _safe_path(path, "/scope_files")
+        profiles = {
+            "gcc-json": ("gcc", "GNU-G++", "14.2.0"),
+            "clang-tidy-text": ("clang-tidy", "clang-tidy", "19.1.7"),
+            "cppcheck-xml": ("cppcheck", "Cppcheck", "2.17.1"),
+        }
+        namespace, producer_name, producer_version = profiles[
+            document.get("adapter", {"name": "gcc-json"})["name"]
+        ]
+        if document.get("producer_namespace", "gcc") != namespace:
+            _fail(
+                "External adapter namespace disagrees with producer profile",
+                "/producer_namespace",
+            )
         for row in document["observations"]:
             _safe_path(row["file"], "/observations/file")
             original = row["original_rule_id"]
-            expected = "gcc:" + original
-            if not re.fullmatch(r"[A-Za-z0-9_.:-]+", original) or len(expected) > 128:
-                expected = "gcc:option-" + hashlib.sha256(original.encode()).hexdigest()
+            expected = namespace + ":" + original
+            if (
+                not re.fullmatch(r"[A-Za-z0-9_.:-]+", original)
+                or len(expected) > 128
+                or re.fullmatch(r"option-[0-9a-f]{64}", original)
+            ):
+                expected = (
+                    namespace
+                    + ":option-"
+                    + hashlib.sha256(original.encode()).hexdigest()
+                )
             if (
                 row["namespaced_rule_id"] != expected
                 or row["rule_version"] != document["producer"]["version"]
@@ -293,9 +324,15 @@ def semantic(kind: str, document: dict[str, Any]) -> None:
                 )
         if document["usability"] == "usable" and any(
             document["producer"][key] != value
-            for key, value in {"name": "GNU-G++", "version": "14.2.0"}.items()
+            for key, value in {
+                "name": producer_name,
+                "version": producer_version,
+            }.items()
         ):
-            _fail("This external adapter supports GNU-G++ 14.2.0 only", "/producer")
+            _fail(
+                "External adapter supports only its declared producer/version profile",
+                "/producer",
+            )
         if document["origin"] == "import":
             if (
                 document["receipt_id"] is not None

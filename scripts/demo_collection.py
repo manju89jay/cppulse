@@ -12,6 +12,7 @@ from typing import Any
 from uuid import uuid4
 
 from cppulse.collection import collect
+from cppulse.errors import IntegrityError
 from cppulse.identities import context_identity, hash_artifact, snapshot_inputs
 from cppulse.run_store import RunStore
 
@@ -269,16 +270,23 @@ def main() -> None:
         directory = batch / scenario
         directory.mkdir()
         cases.append(run_case(scenario, directory, store, tools))
+    if store.format_version == "3.0.0":
+        _, latest_completed, latest_attempt = store.resolve_heads()
+    else:
+        latest_attempt = store.resolve_latest_attempt()
+        latest_completed = (
+            store.resolve_latest() if (store.root / "latest.json").exists() else None
+        )
+    if latest_attempt is None:
+        raise IntegrityError("Collection fixture did not publish an attempt")
     summary = {
         "verified_at": datetime.now(timezone.utc).isoformat(),
         "batch": str(batch),
         "store": str(store.root),
         "cases": cases,
-        "latest_attempt": store.resolve_latest_attempt().run_id,
+        "latest_attempt": latest_attempt.run_id,
         "latest_completed_collection": (
-            store.resolve_latest().run_id
-            if (store.root / "latest.json").exists()
-            else None
+            latest_completed.run_id if latest_completed is not None else None
         ),
         "limitations": [
             "Clearly labeled synthetic fixture, selected GCC/CMake/CTest only; this is not a benchmark, policy assessment, certification or whole-program verification.",

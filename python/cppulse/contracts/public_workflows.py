@@ -271,7 +271,8 @@ def _request(document: dict[str, Any]) -> None:
                     "/normalizers/context_id",
                     "UNRESOLVED_REFERENCE",
                 )
-            _absolute(item["source_root"], "/normalizers/source_root")
+            if kind != "test_import":
+                _absolute(item["source_root"], "/normalizers/source_root")
             identity = {key: value for key, value in item.items() if key != "id"}
             identity["scope_files"] = sorted(item["scope_files"])
             signature = (kind, json.dumps(identity, sort_keys=True))
@@ -377,9 +378,16 @@ def _result(kind: str, document: dict[str, Any]) -> None:
                 "coverage": {"coverage_facts"},
                 "sanitizer": {"sanitizer_facts"},
                 "gcc_import": {"external_analysis_facts"},
+                "external_import": {"external_analysis_facts"},
+                "test_import": {"evidence"},
             }[item["kind"]]
-            if {fact["kind"] for fact in item["fact_artifacts"]} != expected or any(
-                (fact["id"] is None) != (fact["kind"] == "observations")
+            actual = {fact["kind"] for fact in item["fact_artifacts"]}
+            optional = (
+                {"analysis_metrics"} if item["kind"] == "native_analysis" else set()
+            )
+            if not (expected <= actual <= expected | optional) or any(
+                (fact["id"] is None)
+                != (fact["kind"] in {"observations", "analysis_metrics", "evidence"})
                 for fact in item["fact_artifacts"]
             ):
                 _fail(
@@ -389,6 +397,7 @@ def _result(kind: str, document: dict[str, Any]) -> None:
             _unique(
                 item["fact_artifacts"], "artifact_id", "/normalizers/fact_artifacts"
             )
+            _unique(item["fact_artifacts"], "kind", "/normalizers/fact_artifacts")
         elif (
             item["run"] is not None
             or item["fact_artifacts"]

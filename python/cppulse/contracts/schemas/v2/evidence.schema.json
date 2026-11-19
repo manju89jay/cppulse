@@ -209,6 +209,17 @@
                 "minItems": 1,
                 "uniqueItems": true
               },
+              "reviewed_artifact_sha256": {
+                "type": "object",
+                "minProperties": 1,
+                "propertyNames": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
               "identity_assurance": {
                 "const": "self_declared"
               },
@@ -219,6 +230,111 @@
                   "minLength": 1
                 }
               }
+            }
+          },
+          "import_adapter": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "enum": [
+                  "ctest-junit",
+                  "generic-junit"
+                ]
+              },
+              "version": {
+                "const": "1.0.0"
+              }
+            },
+            "required": [
+              "name",
+              "version"
+            ]
+          },
+          "test_counts": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "total": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "passed": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "failed": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "skipped": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "errors": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "total",
+                  "passed",
+                  "failed",
+                  "skipped",
+                  "errors"
+                ]
+              }
+            ]
+          },
+          "test_cases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "identity": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "classname": {
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "passed",
+                    "failed",
+                    "skipped",
+                    "error"
+                  ]
+                },
+                "duration_seconds": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "identity",
+                "name",
+                "classname",
+                "status",
+                "duration_seconds"
+              ]
             }
           }
         },

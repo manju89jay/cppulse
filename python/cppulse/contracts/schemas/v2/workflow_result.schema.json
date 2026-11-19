@@ -135,7 +135,9 @@
               "native_analysis",
               "coverage",
               "sanitizer",
-              "gcc_import"
+              "gcc_import",
+              "external_import",
+              "test_import"
             ]
           },
           "status": {
@@ -178,7 +180,9 @@
                     "observations",
                     "coverage_facts",
                     "sanitizer_facts",
-                    "external_analysis_facts"
+                    "external_analysis_facts",
+                    "analysis_metrics",
+                    "evidence"
                   ]
                 },
                 "artifact_id": {

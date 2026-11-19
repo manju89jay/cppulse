@@ -1,0 +1,368 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/portfolio/v1/report.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+    },
+    "configuration_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "selection": {
+      "const": "historical-pinned"
+    },
+    "current_source_verified": {
+      "const": false
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "aggregate_health": {
+      "type": "null"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable"
+            ]
+          },
+          "collection_status": {
+            "enum": [
+              "completed",
+              "partial",
+              "cancelled"
+            ]
+          },
+          "input_verification": {
+            "enum": [
+              "verified",
+              "unverified"
+            ]
+          },
+          "source_digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "scope_digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "contexts": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "health": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "artifact_id": {
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "document": {
+                    "type": "object"
+                  },
+                  "scorer_digest": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "raw_json": {
+                    "type": "string",
+                    "maxLength": 33554432
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "sha256",
+                  "document",
+                  "scorer_digest",
+                  "raw_json"
+                ]
+              }
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10000
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finished_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "raw_manifest_json": {
+            "type": "string",
+            "maxLength": 33554432
+          },
+          "source_inventory_complete": {
+            "type": "boolean"
+          },
+          "subject_kind": {
+            "type": "string"
+          },
+          "source_limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10000
+          }
+        },
+        "required": [
+          "id",
+          "run_id",
+          "manifest_sha256",
+          "availability",
+          "health",
+          "limitations"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "availability": {
+                  "const": "available"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "collection_status",
+                "input_verification",
+                "source_digest",
+                "scope_digest",
+                "contexts",
+                "started_at",
+                "finished_at",
+                "raw_manifest_json",
+                "source_inventory_complete",
+                "subject_kind",
+                "source_limitations"
+              ]
+            }
+          }
+        ]
+      },
+      "maxItems": 64
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "project_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "minimum_health": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "scope_digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "scorer_digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "required_context_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "outcome": {
+            "enum": [
+              "observed_met",
+              "observed_unmet",
+              "unknown"
+            ]
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10000
+          },
+          "current_source_verified": {
+            "const": false
+          },
+          "interpretation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "project_id",
+          "minimum_health",
+          "scope_digest",
+          "scorer_digest",
+          "required_context_ids",
+          "outcome",
+          "value",
+          "reasons",
+          "current_source_verified",
+          "interpretation"
+        ]
+      },
+      "maxItems": 256
+    },
+    "teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "team_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "project_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+            },
+            "maxItems": 64
+          }
+        },
+        "required": [
+          "team_id",
+          "project_ids"
+        ]
+      },
+      "maxItems": 512
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 32
+    },
+    "team_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "team_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$"
+          },
+          "effective_from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "effective_until": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "project_id",
+          "team_id",
+          "effective_from",
+          "effective_until"
+        ]
+      },
+      "maxItems": 512
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "configuration_digest",
+    "generated_at",
+    "selection",
+    "current_source_verified",
+    "status",
+    "aggregate_health",
+    "projects",
+    "goals",
+    "teams",
+    "limitations",
+    "team_history"
+  ]
+}

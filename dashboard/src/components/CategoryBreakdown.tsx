@@ -27,7 +27,7 @@ export function CategoryBreakdown({
   const categories = [
     { name: "Memory Safety", key: "memory_safety" },
     { name: "Modernization", key: "modernization" },
-    { name: "Complexity", key: "complexity" },
+    { name: "Complexity finding health", key: "complexity" },
     { name: "MISRA subset", key: "misra_compliance" },
   ] as const;
   const data = categories.flatMap(({ name, key }) => {

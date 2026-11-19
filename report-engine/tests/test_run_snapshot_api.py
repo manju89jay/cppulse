@@ -90,11 +90,12 @@ def publish_attempt(
         )
 
 
-@pytest.fixture()
+@pytest.fixture(params=["2.0.0", "3.0.0"])
 def snapshot_api(
     tmp_path: Path,
     data_dir: Path,
     monkeypatch: pytest.MonkeyPatch,
+    request: pytest.FixtureRequest,
 ) -> tuple[TestClient, RunStore, Path]:
     """Start with valid old flat data which stored attempts must take precedence over."""
     from cppulse.report_engine import api
@@ -105,7 +106,7 @@ def snapshot_api(
     monkeypatch.setenv("DATA_DIR", str(data_dir))
     monkeypatch.delenv("CPPULSE_API_KEY", raising=False)
     api._json_cache.clear()
-    return TestClient(api.app), RunStore(data_dir), source
+    return TestClient(api.app), RunStore(data_dir, format_version=request.param), source
 
 
 def test_summary_binds_snapshot_once_when_latest_changes_between_reads(
@@ -212,10 +213,13 @@ def test_corrupt_store_never_falls_back_to_valid_flat_files(
 ) -> None:
     client, store, source = snapshot_api
     snapshot = publish_attempt(store, "current", source)
+    authority = store.root / (
+        "heads.json" if store.format_version == "3.0.0" else "latest_attempt.json"
+    )
     if corruption == "pointer":
-        (store.root / "latest_attempt.json").write_text("not JSON")
+        authority.write_text("not JSON")
     elif corruption == "missing_pointer":
-        (store.root / "latest_attempt.json").unlink()
+        authority.unlink()
     else:
         (snapshot.path / "legacy/risk_scores.json").write_text("{}")
     assert client.get("/api/v1/summary").status_code == 503
@@ -228,7 +232,10 @@ def test_run_metadata_and_store_failures_are_protected_by_api_key(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     client, store, _ = snapshot_api
-    (store.root / "latest_attempt.json").write_text("not JSON")
+    authority = store.root / (
+        "heads.json" if store.format_version == "3.0.0" else "latest_attempt.json"
+    )
+    authority.write_text("not JSON")
     monkeypatch.setenv("CPPULSE_API_KEY", "test-key")
     assert client.get("/api/v1/run").status_code == 401
     assert client.get("/api/v1/summary").status_code == 401

@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 import hashlib
 import json
+import re
 from typing import Any
 
 from cppulse.consumer import RetainedBlob, _manifest_bytes
@@ -95,6 +96,14 @@ def _json(content: bytes, name: str) -> dict[str, Any]:
 
 
 def _time(value: str) -> datetime:
+    # Python silently truncates longer fractions. In a suppression gate this
+    # can authorize a future approval or expire an exception at the wrong time.
+    # Preserve the existing timestamp contract, but reject precision that the
+    # producer cannot compare without changing the declared instant.
+    if isinstance(value, str) and re.search(r"\.[0-9]{7}", value):
+        raise ContractError(
+            "Finding timestamp precision beyond six fractional digits is unsupported"
+        )
     try:
         result = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except (ValueError, AttributeError) as error:
@@ -773,6 +782,9 @@ def compare_findings(
     applied = []
     baseline_sha = _sha(baseline_bytes)
     for request in raw_requests:
+        approved_at, expires_at = (
+            _time(request[field]) for field in ("approved_at", "expires_at")
+        )
         reason = None
         targets = [
             row
@@ -800,7 +812,7 @@ def compare_findings(
         ]
         if request["baseline_sha256"] != baseline_sha:
             reason = "Suppression names another exact baseline artifact"
-        elif _time(request["approved_at"]) > now or _time(request["expires_at"]) <= now:
+        elif approved_at > now or expires_at <= now:
             reason = "Suppression is not effective at this comparison time"
         elif (
             cell is None

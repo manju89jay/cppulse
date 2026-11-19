@@ -818,7 +818,24 @@ def analysis_documents(
     from cppulse.analysis import persist_native_analysis
     from test_analysis_inventory import native_snapshot
 
-    snapshot, selection = native_snapshot(tmp_path, mutate=mutate)
+    from test_measured_normalization import add_metrics
+
+    def current_buffers(report: dict[str, Any], root: Path) -> None:
+        if mutate is not None:
+            mutate(report, root)
+        add_metrics(report, root)
+        coverage = report["metadata"]["analysis"]["files"]
+        measured = report["metadata"]["analysis"]["native_metrics"]["files"]
+        assert (
+            len(coverage) == len(measured) == 1
+        ), "Explicit multi-file fixture required"
+        measured[0]["status"] = coverage[0]["status"]
+        measured[0]["error_count"] = coverage[0]["error_count"]
+        if coverage[0]["status"] != "analyzed" or coverage[0]["error_count"]:
+            measured[0]["measurement_complete"] = False
+            measured[0]["function_count"] = None
+
+    snapshot, selection = native_snapshot(tmp_path, mutate=current_buffers)
     if not database:
         selection["compilation_database_artifact_id"] = None
     derived = persist_native_analysis(
@@ -943,6 +960,7 @@ def test_disabled_detector_does_not_reduce_parse_coverage_or_prove_zero_findings
 def test_missing_typed_analysis_is_not_legacy_zero_success(tmp_path: Path) -> None:
     documents, stamp = analysis_documents(tmp_path)
     documents.pop("analysis_inventory")
+    documents.pop("analysis_metrics")
     documents.pop("observations")
     result = evaluate_policy(analysis_policy(), documents, generated_at=stamp)
     assert [row["status"] for row in result["controls"]] == ["unknown"] * 3

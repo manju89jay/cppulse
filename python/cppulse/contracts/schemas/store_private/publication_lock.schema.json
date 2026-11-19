@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/store/v2/publication_lock.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "pid": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "available",
+            "unavailable"
+          ]
+        },
+        "boot_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+        },
+        "start_ticks": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "pid_namespace": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]+:[0-9]+$"
+        },
+        "uid": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "boot_id",
+        "start_ticks",
+        "pid_namespace",
+        "uid",
+        "reason"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "available"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "boot_id": {
+                "type": "string"
+              },
+              "start_ticks": {
+                "type": "integer"
+              },
+              "pid_namespace": {
+                "type": "string"
+              },
+              "uid": {
+                "type": "integer"
+              },
+              "reason": {
+                "const": ""
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "boot_id": {
+                "type": "null"
+              },
+              "start_ticks": {
+                "type": "null"
+              },
+              "pid_namespace": {
+                "type": "null"
+              },
+              "uid": {
+                "type": "null"
+              },
+              "reason": {
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "run_id",
+    "token",
+    "pid",
+    "created_at",
+    "owner"
+  ]
+}

@@ -474,7 +474,9 @@ def test_native_normalizer_uses_observed_arguments_and_distinct_parse_context(
 ) -> None:
     from cppulse.analysis import normalize_native_analysis
 
-    snapshot, args = native_snapshot(tmp_path)
+    from test_measured_normalization import add_metrics
+
+    snapshot, args = native_snapshot(tmp_path, mutate=add_metrics)
     result = normalize_native_analysis(snapshot, **args)
     row = result.inventory["items"][0]
     assert row["context_match"] == "matched"
@@ -586,7 +588,11 @@ def test_unobserved_registry_rule_version_cannot_relabel_current_tool(
 def test_explicit_database_workspace_directory_is_supported(tmp_path: Path) -> None:
     from cppulse.analysis import normalize_native_analysis
 
-    snapshot, args = native_snapshot(tmp_path, database_directory=True)
+    from test_measured_normalization import add_metrics
+
+    snapshot, args = native_snapshot(
+        tmp_path, database_directory=True, mutate=add_metrics
+    )
     value = normalize_native_analysis(snapshot, **args)
     assert value.inventory["items"][0]["context_match"] == "matched"
 
@@ -632,9 +638,19 @@ def test_partial_ast_keeps_known_findings_without_completed_rule_claim(
 ) -> None:
     from cppulse.analysis import normalize_native_analysis
 
-    snapshot, args = native_snapshot(
-        tmp_path, mutate=lambda report, root: _finding(report, root, partial=True)
-    )
+    from test_measured_normalization import add_metrics
+
+    def current_partial(report: dict[str, Any], root: Path) -> None:
+        _finding(report, root, partial=True)
+        add_metrics(report, root)
+        report["metadata"]["analysis"]["native_metrics"]["files"][0].update(
+            status="partial",
+            error_count=1,
+            measurement_complete=False,
+            function_count=None,
+        )
+
+    snapshot, args = native_snapshot(tmp_path, mutate=current_partial)
     value = normalize_native_analysis(snapshot, **args)
     row = value.inventory["items"][0]
     assert row["status"] == "partial" and row["context_match"] == "matched"
@@ -651,6 +667,9 @@ def test_disabled_requested_rule_has_no_completed_zero_proof(tmp_path: Path) -> 
         config["rules"]["CPP-MOD-001"] = {"enabled": False}
         (root / "native-config.json").write_text(json.dumps(config))
         report["metadata"]["analysis"]["enabled_rules"].remove("CPP-MOD-001")
+        from test_measured_normalization import add_metrics
+
+        add_metrics(report, root)
 
     snapshot, args = native_snapshot(tmp_path, mutate=mutate)
     value = normalize_native_analysis(snapshot, **args)

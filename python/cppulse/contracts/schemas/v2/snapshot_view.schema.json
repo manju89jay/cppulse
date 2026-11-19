@@ -415,6 +415,10 @@
                 },
                 "evaluator": {
                   "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+                },
+                "native_input_binding": {
+                  "const": "tu-buffer-coherence-v1",
+                  "description": "Fresh native-derived predicates require verified TU buffer coherence; absence denotes historical evaluation semantics."
                 }
               },
               "required": [
@@ -765,6 +769,88 @@
       "items": {
         "type": "string",
         "minLength": 1
+      }
+    },
+    "external_relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "context_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "classification": {
+            "enum": [
+              "repeated_diagnostic",
+              "potential_location_overlap"
+            ]
+          },
+          "independent_confirmation": {
+            "const": false
+          },
+          "confidence_adjustment": {
+            "const": 0
+          },
+          "occurrences": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "observation_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "producer_namespace": {
+                  "enum": [
+                    "gcc",
+                    "clang-tidy",
+                    "cppcheck",
+                    "native"
+                  ]
+                },
+                "origin": {
+                  "enum": [
+                    "import",
+                    "native_observation"
+                  ]
+                },
+                "fingerprint": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "fact_id",
+                "observation_id",
+                "producer_namespace",
+                "origin",
+                "fingerprint"
+              ]
+            }
+          }
+        },
+        "required": [
+          "context_id",
+          "file",
+          "line",
+          "classification",
+          "independent_confirmation",
+          "confidence_adjustment",
+          "occurrences"
+        ]
       }
     }
   },

@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/git-history/private/result.schema.json",
+  "title": "Private checked Git history result",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "method": {
+      "const": "cppulse-git-raw-1"
+    },
+    "mode": {
+      "enum": [
+        "cold",
+        "warm",
+        "append",
+        "rewrite",
+        "resume",
+        "profile_rebuild",
+        "shallow_rebuild",
+        "bounded_rebuild",
+        "checkpoint_rebuild"
+      ]
+    },
+    "head": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "profile_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "checkpoint_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "ids_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "history_truncated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "count",
+        "ids_sha256",
+        "history_truncated"
+      ]
+    },
+    "records_extracted": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "records_reused": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "recovered_records": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "revision_traversals": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "history_truncated": {
+      "type": "boolean"
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_commits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "max_record_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 67108864
+        },
+        "max_cache_bytes": {
+          "type": "integer",
+          "minimum": 1048576,
+          "maximum": 8589934592
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3600
+        }
+      },
+      "required": [
+        "max_commits",
+        "max_record_bytes",
+        "max_cache_bytes",
+        "timeout_seconds"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "selected_records_complete": {
+      "type": "boolean"
+    },
+    "current_files_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "version",
+    "method",
+    "mode",
+    "head",
+    "profile_digest",
+    "checkpoint_sha256",
+    "selection",
+    "records_extracted",
+    "records_reused",
+    "recovered_records",
+    "revision_traversals",
+    "history_truncated",
+    "bounds",
+    "limitations",
+    "selected_records_complete",
+    "current_files_digest"
+  ]
+}

@@ -7,7 +7,7 @@
     "tasks.md": "0adf5fd834351ceffd56d50d32cd5334241c962a7139dc24c773d66d6e6a9c71",
     "design.md": "ea33a09872a83b0b65452fff65994e3e42a4329903f84e922cccc0da29a8b531"
   },
-  "plan_sha256": "0ec9625633ed2c8fdcdf6e7e7a883d23399d0b241a202aeea248ed6b7c3d7de6",
+  "plan_sha256": "09592a2247b92ba8a5e30fa1b3816effdb3cedc016347f287b0437d47ba7a8e3",
   "scope": "All numbered requirements/journeys/acceptance items, all M0-M9 tasks and explicit supplemental design/environment obligations. No S0-S7 stop boundary.",
   "completion_warning": "Coverage of this inventory is planning traceability, not implemented/production-complete percentage. Baseline implemented status applies only to recorded local support.",
   "phases": [
@@ -7582,7 +7582,27 @@
         "R14"
       ],
       "user_scope_change_required_to_remove": true
+    },
+    {
+      "id": "ENV-DOCKER-COMPOSE",
+      "source": "design.md\u00a74/9 + full completion plan P1/P9/P14",
+      "work": "Execute the existing container workflow, handle successful one-shot services and verify host-visible outputs through the declared mount strategy; extract named-volume outputs where named volumes are used.",
+      "kind": "supplemental_obligation",
+      "baseline_status": "partial_or_not_executed",
+      "remaining_work": [
+        "Docker executable and daemon available in fresh Cloud environment. Actual build uncovered TLS trust, LLVM API and disk constraints; complete Compose scenarios remain under execution; no pass inferred from daemon availability."
+      ],
+      "delivery_phases": [
+        "P1",
+        "P9"
+      ],
+      "review_gates": [
+        "R1",
+        "R9"
+      ],
+      "user_scope_change_required_to_remove": true
     }
   ],
-  "publication_boundary": "Current GitHub branch push completed. This planning pass does not authorize a binary/marketplace release, deployment, new external CI service or messages."
+  "publication_boundary": "Current GitHub branch push completed. This planning pass does not authorize a binary/marketplace release, deployment, new external CI service or messages.",
+  "cloud_reconciliation": "2026-11-16: Correct historical eight-obligation planning omission to nine; retain explicit Docker/Compose item already present in the 187-item execution ledger. No accepted requirement text changed."
 }

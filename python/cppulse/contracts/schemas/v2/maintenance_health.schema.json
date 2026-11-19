@@ -17,10 +17,16 @@
       "additionalProperties": false,
       "properties": {
         "id": {
-          "const": "analyzed-kloc-context-v3"
+          "enum": [
+            "analyzed-kloc-context-v3",
+            "analyzed-kloc-context-v4"
+          ]
         },
         "version": {
-          "const": "3.0.0"
+          "enum": [
+            "3.0.0",
+            "4.0.0"
+          ]
         },
         "profile": {
           "enum": [
@@ -88,6 +94,9 @@
         "configuration_digest": {
           "type": "string",
           "pattern": "^[a-f0-9]{64}$"
+        },
+        "requires_buffer_coherence": {
+          "const": true
         }
       },
       "required": [
@@ -101,6 +110,39 @@
         "required_rule_versions",
         "categories",
         "configuration_digest"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "id": {
+                "const": "analyzed-kloc-context-v4"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "requires_buffer_coherence"
+            ],
+            "properties": {
+              "version": {
+                "const": "4.0.0"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "version": {
+                "const": "3.0.0"
+              }
+            },
+            "not": {
+              "required": [
+                "requires_buffer_coherence"
+              ]
+            }
+          }
+        }
       ]
     },
     "consumer_assurance": {

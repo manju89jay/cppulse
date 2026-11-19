@@ -44,7 +44,9 @@ def read_risk_scores(
     if version != "1.0.0":
         raise UnsupportedVersion(f"Cannot read risk_scores version {version!r}")
     if not allow_prototype_v1 and (
-        "unranked_files" in document or "ranking_scope" in document.get("metadata", {})
+        "unranked_files" in document
+        or "ranking_scope" in document.get("metadata", {})
+        or "component_hotspots" in document
     ):
         raise ContractError(
             "Per-file availability uses the unreleased prototype contract; select the explicit prototype reader.",
@@ -125,6 +127,8 @@ def read_risk_scores(
         result["unranked_files"] = deepcopy(document["unranked_files"])
     if allow_prototype_v1 and "ranking_scope" in metadata:
         result["metadata"]["ranking_scope"] = deepcopy(metadata["ranking_scope"])
+    if allow_prototype_v1 and "component_hotspots" in document:
+        result["component_hotspots"] = deepcopy(document["component_hotspots"])
     validate("risk_scores", result)
     return result
 
@@ -136,7 +140,11 @@ def export_legacy_risk_scores(document: dict[str, Any]) -> dict[str, Any]:
     in the original v1 probability/numeric-health contract. Callers can keep
     an original valid v1 object unchanged, but cannot silently downgrade v2.
     """
-    if "unranked_files" in document or "ranking_scope" in document.get("metadata", {}):
+    if (
+        "unranked_files" in document
+        or "ranking_scope" in document.get("metadata", {})
+        or "component_hotspots" in document
+    ):
         raise CompatibilityError(
             "Per-file ranking availability cannot be exported as the original legacy risk contract.",
             code="LEGACY_EXPORT_NOT_REPRESENTABLE",

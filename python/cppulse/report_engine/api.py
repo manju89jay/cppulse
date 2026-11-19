@@ -17,10 +17,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 
-from cppulse.errors import CppulseError
+from cppulse.errors import ContractError, CppulseError, IntegrityError
 from cppulse.report_engine.pdf_generator import PDFGenerator
+from cppulse.report_engine.work_unit_api import register_work_unit_api
 from cppulse.report_engine.schema_validator import validate_document
 from cppulse.run_store import RunSnapshot, RunStore
+from cppulse.result_index import (
+    build_result_index,
+    make_index_request,
+    read_source_manifest_metadata,
+)
 
 
 def _cors_origins() -> list[str]:
@@ -177,6 +183,25 @@ def _open_snapshot(path: Path, run_id: str, manifest_sha256: str) -> RunSnapshot
         ) from error
 
 
+def _has_store_metadata(path: Path) -> bool:
+    """Keep damaged stores distinct from historical flat compatibility data."""
+    return any(
+        (path / name).exists() or (path / name).is_symlink()
+        for name in (
+            "latest_attempt.json",
+            "latest.json",
+            "runs",
+            ".staging",
+            "heads.json",
+            "store-format.json",
+            ".migration-v3",
+            ".coordination.lock",
+            ".publication.lock",
+            ".recovery",
+        )
+    )
+
+
 def _resolve_request_data(
     *, run_id: str | None = None, manifest_sha256: str | None = None
 ) -> _RequestData:
@@ -186,11 +211,7 @@ def _resolve_request_data(
         return _RequestData(path, _open_snapshot(path, run_id, manifest_sha256))
     # Existing store metadata, including a missing/corrupt current pointer,
     # must never cause a fallback to older flat compatibility exports.
-    is_store = any(
-        (path / name).exists() or (path / name).is_symlink()
-        for name in ("latest_attempt.json", "latest.json", "runs", ".staging")
-    )
-    if not is_store:
+    if not _has_store_metadata(path):
         return _RequestData(path, None)
     try:
         snapshot = RunStore.open_existing(path).resolve_latest_attempt()
@@ -225,13 +246,17 @@ def _current_data() -> _RequestData:
 
 
 def _require_completed(snapshot: RunSnapshot) -> None:
-    manifest = snapshot.manifest
+    _require_completed_manifest(snapshot.run_id, snapshot.manifest)
+
+
+def _require_completed_manifest(run_id: str, manifest: dict[str, Any]) -> None:
+    """Refuse unfinished attempts without opening original artifact bodies."""
     if manifest["status"] != "completed":
         raise HTTPException(
             status_code=409,
             detail={
                 "code": "RUN_INCOMPLETE",
-                "run_id": snapshot.run_id,
+                "run_id": run_id,
                 "status": manifest["status"],
                 "message": "Data is unavailable for this incomplete published attempt.",
             },
@@ -239,6 +264,87 @@ def _require_completed(snapshot: RunSnapshot) -> None:
 
 
 _DATA_DEPENDENCIES = [Depends(verify_api_key), Depends(_bind_request_data)]
+
+
+def _bounded_object(raw: bytes, maximum: int) -> dict[str, Any]:
+    """Decode small control/config documents with unique keys and finite JSON."""
+    if len(raw) > maximum:
+        raise ContractError("Findings index control document exceeds byte budget")
+
+    def pairs(rows: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in rows:
+            if key in result:
+                raise ContractError("Duplicate findings index control key")
+            result[key] = value
+        return result
+
+    def constant(value: str) -> None:
+        raise ContractError("Nonfinite findings index control value: " + value)
+
+    try:
+        value = json.loads(
+            raw.decode("utf-8"), object_pairs_hook=pairs, parse_constant=constant
+        )
+    except (ValueError, UnicodeError, RecursionError) as error:
+        raise ContractError("Invalid findings index control JSON") from error
+    if not isinstance(value, dict):
+        raise ContractError("Findings index control must be an object")
+    return value
+
+
+def _findings_selection(
+    path: Path, run_id: str | None, manifest_sha256: str | None
+) -> tuple[RunStore, str, str, dict[str, Any]] | None:
+    """Pin one attempt using metadata only, never an unchecked RunSnapshot."""
+    from cppulse.run_store import _read
+    from cppulse.store_heads import protocol, read_heads
+
+    _validate_pin(run_id, manifest_sha256)
+    if run_id is None and not _has_store_metadata(path):
+        return None
+    store = RunStore.open_existing(path)
+    if run_id is None:
+        if protocol(path) is not None:
+            reference = read_heads(path)["latest_attempt"]
+            if reference is None:
+                raise IntegrityError("No published attempt is available")
+        else:
+            reference = _bounded_object(
+                _read(path / "latest_attempt.json", max_bytes=65536), 65536
+            )
+            if (
+                set(reference) != {"version", "run_id", "manifest_sha256"}
+                or reference["version"] != "2.0.0"
+            ):
+                raise IntegrityError("Invalid current attempt pointer")
+        run_id, manifest_sha256 = reference.get("run_id"), reference.get(
+            "manifest_sha256"
+        )
+        if (
+            not isinstance(run_id, str)
+            or not isinstance(manifest_sha256, str)
+            or re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", run_id) is None
+            or re.fullmatch(r"[a-f0-9]{64}", manifest_sha256) is None
+        ):
+            raise IntegrityError("Invalid current attempt identity")
+    assert manifest_sha256 is not None
+    manifest = read_source_manifest_metadata(store, run_id, manifest_sha256)
+    _require_completed_manifest(run_id, manifest)
+    return store, run_id, manifest_sha256, manifest
+
+
+def _validate_findings_filter(value: str | None) -> None:
+    if value is None:
+        return
+    try:
+        if "\x00" in value or len(value.encode("utf-8")) > 4096:
+            raise ValueError("Invalid bounded findings filter")
+    except (ValueError, UnicodeError) as error:
+        raise HTTPException(
+            status_code=422,
+            detail="Filters require at most4096 UTF-8 bytes without NUL.",
+        ) from error
 
 
 class _JsonCache:
@@ -530,11 +636,28 @@ def summary() -> dict[str, Any]:
     }
 
 
-@app.get("/api/v1/findings", dependencies=_DATA_DEPENDENCIES)
+@app.get("/api/v1/findings", dependencies=[Depends(verify_api_key)])
 def findings(
-    page: int = Query(default=1, ge=1, description="Page number (1-based)"),
+    page: int = Query(
+        default=1, ge=1, le=2**63 - 1, description="Page number (1-based)"
+    ),
     per_page: int = Query(default=50, ge=1, le=200, description="Items per page"),
-    category: str | None = Query(default=None, description="Filter by category"),
+    category: str | None = Query(
+        default=None, max_length=4096, description="Filter by category"
+    ),
+    file: str | None = Query(
+        default=None, max_length=4096, description="Exact file path"
+    ),
+    text: str | None = Query(
+        default=None, max_length=4096, description="Literal message substring"
+    ),
+    run_id: str | None = Query(default=None),
+    manifest_sha256: str | None = Query(default=None),
+    artifact_id: str = Query(
+        default="findings",
+        pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+        max_length=128,
+    ),
 ) -> dict[str, Any]:
     """Return a paginated, optionally filtered list of static analysis findings.
 
@@ -548,11 +671,57 @@ def findings(
         Dict with ``items``, ``total``, ``page``, ``per_page``,
         and ``total_pages``.
     """
-    data = _load_json("findings")
+    for value in (category, file, text):
+        _validate_findings_filter(value)
+    if (page - 1) * per_page > 2**63 - 1:
+        raise HTTPException(
+            status_code=422, detail="Page offset exceeds finite query range."
+        )
+    # Unlike other whole-run endpoints, this route binds metadata only. The
+    # index verifies exactly the selected artifact and states that narrower scope.
+    path = _data_dir().absolute()
+    try:
+        selected = _findings_selection(path, run_id, manifest_sha256)
+        if selected is not None:
+            store, selected_id, digest, _ = selected
+            raw_limits = os.environ.get("CPPULSE_FINDINGS_INDEX_LIMITS")
+            limits = (
+                None
+                if raw_limits is None
+                else _bounded_object(raw_limits.encode("utf-8"), 4096)
+            )
+            request = make_index_request(
+                store, selected_id, digest, artifact_id, limits=limits
+            )
+            cache_path = Path(
+                os.environ.get("CPPULSE_FINDINGS_CACHE_DIR", str(path / ".query-index"))
+            )
+            index = build_result_index(store, cache_path, request)
+            return index.page(
+                page=page, per_page=per_page, category=category, file=file, text=text
+            )
+    except (CppulseError, OSError, UnicodeError) as error:
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "code": getattr(error, "code", "FINDINGS_UNAVAILABLE"),
+                "message": (
+                    "Selected run is unavailable: "
+                    if run_id is not None
+                    else "Current run is unavailable: "
+                )
+                + str(error),
+            },
+        ) from error
+    data = _json_cache.get(path / "findings.json")
     items: list[dict[str, Any]] = data.get("findings", [])
 
     if category is not None:
         items = [f for f in items if f.get("category") == category]
+    if file is not None:
+        items = [f for f in items if f.get("file") == file]
+    if text is not None:
+        items = [f for f in items if text in f.get("message", "")]
 
     total = len(items)
     start = (page - 1) * per_page
@@ -578,7 +747,13 @@ def hotspots() -> dict[str, Any]:
     """
     risk = _load_json("risk_scores")
     items: list[dict[str, Any]] = risk.get("hotspots", [])[:20]
-    return {"items": items, "total": len(items)}
+    metadata = risk.get("metadata", {})
+    return {
+        "items": items,
+        "total": len(items),
+        "method": metadata.get("hotspot_method", "legacy-severity-proxy"),
+        "scope": metadata.get("hotspot_scope"),
+    }
 
 
 @app.get("/api/v1/risks", dependencies=_DATA_DEPENDENCIES)
@@ -672,3 +847,7 @@ def report_pdf() -> Response:
         media_type="application/pdf",
         headers={"Content-Disposition": "attachment; filename=cppulse_report.pdf"},
     )
+
+
+# The optional private catalog reader never creates a catalog on API startup.
+register_work_unit_api(app, [Depends(verify_api_key)])

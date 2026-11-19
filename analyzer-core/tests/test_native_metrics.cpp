@@ -11,18 +11,32 @@
 
 #include "analyzer.h"
 #include "config.h"
+#include "metrics.h"
 #include "output_writer.h"
+#include "test_temp_directory.h"
 
 namespace {
+
+/** @brief Own the actual TU throughout source restoration and measurement. */
+struct ParsedTranslationUnit {
+    CXIndex index{clang_createIndex(0, 0)};
+    CXTranslationUnit unit{nullptr};
+    ParsedTranslationUnit() = default;
+    ParsedTranslationUnit(const ParsedTranslationUnit&) = delete;
+    ParsedTranslationUnit& operator=(const ParsedTranslationUnit&) = delete;
+    ~ParsedTranslationUnit() noexcept {
+        if (unit != nullptr)
+            clang_disposeTranslationUnit(unit);
+        if (index != nullptr)
+            clang_disposeIndex(index);
+    }
+};
 
 /** @brief Own source inputs and the serialized report for one real analyzer run. */
 class NativeMetricsFixture : public ::testing::Test {
    protected:
     void SetUp() override {
-        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
-        base_ = std::filesystem::temp_directory_path() /
-                (std::string{"cppulse_metrics_"} + info->name());
-        std::filesystem::remove_all(base_);
+        base_ = cppulse::test::make_test_directory("cppulse_metrics");
         root_ = base_ / "repo";
         std::filesystem::create_directories(root_);
     }
@@ -103,6 +117,39 @@ TEST_F(NativeMetricsFixture, MeasuresOrdinaryFunctionWithoutThresholdFinding) {
     measured(function(file, "choose"), 4, 3, 1, 2);
     for (const auto& finding : report.at("findings")) {
         EXPECT_NE(finding.at("rule_id"), "CPP-CX-001");
+    }
+}
+
+TEST_F(NativeMetricsFixture, CountsClangLineEndingsWithoutTerminalPhantomLines) {
+    for (const std::string newline : {"\n", "\r", "\r\n", "\n\r"}) {
+        for (const bool terminal : {false, true}) {
+            SCOPED_TRACE(::testing::Message() << "newline bytes=" << newline.size()
+                                              << " first=" << static_cast<int>(newline.front())
+                                              << " terminal=" << terminal);
+            write(root_ / "source.cpp", "// comment" + newline + newline + "int value() {" +
+                                            newline + "    return 1;" + newline + "}" +
+                                            (terminal ? newline : ""));
+            const auto report = analyze();
+            const auto file = metric_file(report);
+            const int physical = newline == "\n\r" ? (terminal ? 9 : 8) : 5;
+            EXPECT_EQ(file.at("physical_loc"), physical);
+            EXPECT_EQ(file.at("code_loc"), 3);
+            EXPECT_EQ(report.at("metadata").at("total_loc"), physical);
+            measured(function(file, "value"), newline == "\n\r" ? 5 : 3, 1, 0, 0);
+            for (const auto& token : file.at("token_stream").at("records")) {
+                EXPECT_LE(token.at("end_line").get<int>(), physical);
+            }
+        }
+    }
+}
+
+TEST_F(NativeMetricsFixture, CountsEmptyPhysicalLinesAcrossClangLineEndings) {
+    for (const std::string newline : {"\n", "\r", "\r\n", "\n\r"}) {
+        write(root_ / "source.cpp", newline + newline);
+        const auto file = metric_file(analyze());
+        EXPECT_EQ(file.at("physical_loc"), newline == "\n\r" ? 3 : 2);
+        EXPECT_EQ(file.at("code_loc"), 0);
+        EXPECT_EQ(file.at("function_count"), 0);
     }
 }
 
@@ -199,6 +246,36 @@ TEST_F(NativeMetricsFixture, PartialAstRetainsObservedFactsWithoutCompleteFuncti
     EXPECT_EQ(item.at("availability"), "partial");
     EXPECT_FALSE(item.at("limitations").empty());
     EXPECT_FALSE(file.at("limitations").empty());
+}
+
+TEST_F(NativeMetricsFixture, RetainsUnresolvedIncludeEdgesWithoutInventingTargets) {
+    write(root_ / "detail.hpp", "#include \"absent-detail.hpp\"\n");
+    write(root_ / "source.cpp",
+          "#include \"detail.hpp\"\n#include \"absent.hpp\"\n"
+          "int value() { return 1; }\n");
+    const auto file = metric_file(analyze());
+    bool direct_missing = false;
+    bool transitive_missing = false;
+    for (const auto& edge : file.at("includes")) {
+        if (edge.at("target_kind") != "unresolved")
+            continue;
+        EXPECT_EQ(edge.at("content_identity").at("status"), "unavailable");
+        EXPECT_TRUE(edge.at("content_identity").at("sha256").is_null());
+        EXPECT_TRUE(edge.at("content_identity").at("size_bytes").is_null());
+        if (edge.at("target") == "absent.hpp") {
+            EXPECT_EQ(edge.at("source"), "source.cpp");
+            EXPECT_TRUE(edge.at("direct"));
+            direct_missing = true;
+        }
+        if (edge.at("target") == "absent-detail.hpp") {
+            EXPECT_EQ(edge.at("source"), "detail.hpp");
+            EXPECT_FALSE(edge.at("direct"));
+            transitive_missing = true;
+        }
+    }
+    EXPECT_TRUE(direct_missing);
+    EXPECT_TRUE(transitive_missing);
+    EXPECT_FALSE(file.at("measurement_complete"));
 }
 
 TEST_F(NativeMetricsFixture, LargeHeaderIsMeasuredUnderConfiguredByteBudget) {
@@ -370,6 +447,93 @@ TEST_F(NativeMetricsFixture, IncludeEdgesIdentifyProjectAndExternalTargets) {
     EXPECT_TRUE(project_edge);
     EXPECT_TRUE(external_edge);
     EXPECT_EQ(file.at("function_count"), 1);
+}
+
+TEST_F(NativeMetricsFixture, ExportMacroExtentMatchesMeasuredLengthAndFindingLocation) {
+    write(root_ / "export.hpp", "#define EXPORTED __attribute__((visibility(\"default\")))\n");
+    write(root_ / "source.cpp", "#include \"export.hpp\"\n" + std::string(100, '\n') +
+                                    "EXPORTED int tiny() { return 1; }\n"
+                                    "EXPORTED int lengthy() {\n" +
+                                    std::string(85, '\n') + "    return 1;\n}\n");
+    const auto report = analyze();
+    const auto file = metric_file(report);
+    const auto tiny = function(file, "tiny");
+    EXPECT_EQ(tiny.at("line"), 102);
+    EXPECT_EQ(tiny.at("function_length"), 1);
+    const auto lengthy = function(file, "lengthy");
+    EXPECT_EQ(lengthy.at("line"), 103);
+    EXPECT_EQ(lengthy.at("function_length"), 88);
+    unsigned length_findings = 0;
+    for (const auto& finding : report.at("findings")) {
+        if (finding.at("rule_id") != "CPP-CX-002" || finding.at("file") != "source.cpp")
+            continue;
+        ++length_findings;
+        EXPECT_EQ(finding.at("line"), 103);
+        EXPECT_EQ(finding.at("column"), 1);
+        EXPECT_EQ(finding.at("end_line"), 190);
+        EXPECT_EQ(finding.at("severity"), "warning");
+        EXPECT_NE(finding.at("message").get<std::string>().find("'lengthy' is 88 lines"),
+                  std::string::npos);
+    }
+    EXPECT_EQ(length_findings, 1u);
+}
+
+TEST_F(NativeMetricsFixture, IncludeIdentityUsesParsedBufferAfterDiskBytesAreRestored) {
+    const auto source = root_ / "source.cpp";
+    write(root_ / "a.hpp", "#define BRANCH 1\n");
+    write(root_ / "empty.hpp", "");
+    write(root_ / "large.hpp", "#define BRANCH 1\n" + std::string(128 * 1024, ' '));
+    write(source,
+          "#include \"a.hpp\"\n#include \"empty.hpp\"\n#include \"large.hpp\"\n"
+          "int value(int x) {\n#if BRANCH\n if (x) return 1;\n#endif\n return 0;\n}\n");
+    ParsedTranslationUnit parsed;
+    ASSERT_NE(parsed.index, nullptr);
+    const char* arguments[] = {"-xc++", "-std=c++17"};
+    parsed.unit =
+        clang_parseTranslationUnit(parsed.index, source.string().c_str(), arguments, 2, nullptr, 0,
+                                   CXTranslationUnit_DetailedPreprocessingRecord);
+    ASSERT_NE(parsed.unit, nullptr);
+    ASSERT_EQ(clang_getNumDiagnostics(parsed.unit), 0u);
+    // A fresh filesystem read here would misattribute the already parsed CC2
+    // function to BRANCH0. The include identity must describe the TU buffer.
+    write(root_ / "a.hpp", "#define BRANCH 0\n");
+    write(root_ / "large.hpp", "#define BRANCH 0\n" + std::string(128 * 1024, ' '));
+    cppulse::FileCoverage outcome;
+    outcome.path = source.generic_string();
+    outcome.status = "analyzed";
+    const auto measured = cppulse::measure_native_file(parsed.unit, source, root_, outcome, 1000);
+    EXPECT_EQ(function(measured, "value").at("cyclomatic_complexity"), 2);
+    bool branch_found = false;
+    bool empty_found = false;
+    bool large_found = false;
+    for (const auto& edge : measured.at("includes")) {
+        if (edge.at("target") != "a.hpp" && edge.at("target") != "empty.hpp" &&
+            edge.at("target") != "large.hpp")
+            continue;
+        ASSERT_TRUE(edge.contains("content_identity")) << edge.dump();
+        const auto& identity = edge.at("content_identity");
+        EXPECT_EQ(identity.at("method"), "libclang-tu-buffer-sha256-v1");
+        EXPECT_EQ(identity.at("status"), "available");
+        if (edge.at("target") == "a.hpp") {
+            branch_found = true;
+            EXPECT_EQ(identity.at("size_bytes"), 17);
+            EXPECT_EQ(identity.at("sha256"),
+                      "61541cac460cbb2928af97c583fba9b9e1ae8bb73c121cf7925d1bce45ff0346");
+        } else if (edge.at("target") == "empty.hpp") {
+            empty_found = true;
+            EXPECT_EQ(identity.at("size_bytes"), 0);
+            EXPECT_EQ(identity.at("sha256"),
+                      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
+        } else {
+            large_found = true;
+            EXPECT_EQ(identity.at("size_bytes"), 131089);
+            EXPECT_EQ(identity.at("sha256"),
+                      "eb6773a62e2365efa97cefff3a93a80a9856b695a8013159b15608bdf21db96d");
+        }
+    }
+    EXPECT_TRUE(branch_found);
+    EXPECT_TRUE(empty_found);
+    EXPECT_TRUE(large_found);
 }
 
 }  // namespace

@@ -110,10 +110,6 @@ def verify(
     # A failed proxy also catches accidental ordinary HTTP download attempts.
     helpers = evidence / "runtime-bin"
     helpers.mkdir()
-    git = shutil.which("git")
-    if git is None:
-        raise RuntimeError("Git is required by the installed GitPython component")
-    (helpers / "git").symlink_to(git)
     environment["PATH"] = str(venv / "bin") + os.pathsep + str(helpers)
     for name in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy"):
         environment[name] = "http://127.0.0.1:9"
@@ -123,7 +119,7 @@ def verify(
         [
             python,
             "-c",
-            "import cppulse,json,sys,importlib.util,shutil,jsonschema; from cppulse.contracts import load_schema; from importlib import resources; from pathlib import Path; p=Path(cppulse.__file__); assert 'site-packages' in p.parts; missing=['xgboost','sklearn','shap','weasyprint','matplotlib','fastapi','uvicorn']; assert all(importlib.util.find_spec(x) is None for x in missing); assert shutil.which('node') is None; n=0\nfor group in ['v2','prototype_v1','legacy','install_v1']:\n for f in resources.files('cppulse.contracts').joinpath('schemas',group).iterdir():\n  if f.name.endswith('.json'): jsonschema.Draft7Validator.check_schema(json.loads(f.read_bytes())); n+=1\nprint(json.dumps({'origin':str(p),'schemas':n,'optional_absent':missing,'node_visible':False}))",
+            "import cppulse,json,sys,importlib.util,shutil,jsonschema; from cppulse.contracts import load_schema; from importlib import resources; from pathlib import Path; p=Path(cppulse.__file__); assert 'site-packages' in p.parts; missing=['git','xgboost','sklearn','shap','weasyprint','matplotlib','fastapi','uvicorn']; assert all(importlib.util.find_spec(x) is None for x in missing); assert shutil.which('node') is None; assert shutil.which('git') is None; n=0\nfor group in ['v2','prototype_v1','legacy','install_v1']:\n for f in resources.files('cppulse.contracts').joinpath('schemas',group).iterdir():\n  if f.name.endswith('.json'): jsonschema.Draft7Validator.check_schema(json.loads(f.read_bytes())); n+=1\nprint(json.dumps({'origin':str(p),'schemas':n,'optional_absent':missing,'node_visible':False,'git_visible':False}))",
         ]
     )
     cli = str(venv / "bin/cppulse")
@@ -179,10 +175,22 @@ def verify(
             raise AssertionError(f"Finding totals disagree: {field}")
     if any(Path(item["file"]).name == "clean.cpp" for item in findings["findings"]):
         raise AssertionError("Clean counterexample has findings")
-    if {row["file"] for row in risk["file_risks"]} != {"clean.cpp", "intentional.cpp"}:
+    ranked = {row["file"] for row in risk["file_risks"]}
+    unranked = {row["file"] for row in risk.get("unranked_files", [])}
+    if ranked & unranked or ranked | unranked != {"clean.cpp", "intentional.cpp"}:
         raise AssertionError(
             "Current risk universe or relative file identities disagree"
         )
+    history = json.loads((output / "git_metrics.json").read_bytes())
+    if (
+        history["metadata"]["history_status"] != "unavailable"
+        or history["file_metrics"]
+    ):
+        raise AssertionError("Absent Git tooling manufactured available file history")
+    if ranked or any(
+        "missing_history" not in row["reason_codes"] for row in risk["unranked_files"]
+    ):
+        raise AssertionError("Absent history was converted into ranked predictions")
     if any(row["file"] == "clean.cpp" for row in risk["hotspots"]):
         raise AssertionError("Clean input is incorrectly labeled a hotspot")
     inventory = findings["metadata"]["analysis"]["files"]
@@ -204,11 +212,11 @@ def verify(
         raise AssertionError("Installed HTML template/CSS resources missing")
     run([cli, "report", "--input", str(output), "--format", "json"])
     pdf_missing = run(
-        [cli, "report", "--input", str(output), "--format", "pdf"], expected=1
+        [cli, "report", "--input", str(output), "--format", "pdf"], expected=2
     )
     if "cppulse[pdf]" not in pdf_missing.stderr:
         raise AssertionError("Missing PDF dependency error is not actionable")
-    web_missing = run([cli, "serve", "--input", str(output)], expected=1)
+    web_missing = run([cli, "serve", "--input", str(output)], expected=2)
     if "cppulse[web]" not in web_missing.stderr:
         raise AssertionError("Missing web dependency error is not actionable")
     run([cli, "diagnostics", "--output", str(evidence / "diagnostics.zip")])
@@ -248,7 +256,7 @@ def verify(
     policy_result = None
     if policy_demo is not None:
         # Only this opt-in proof executes the explicitly selected CMake fixture.
-        # Earlier analysis checks retain their stricter Git-only executable PATH.
+        # Earlier static checks retain a PATH without any Git executable.
         required_tools = ("cmake", "ctest", "g++", "make", "as", "ld", "ar")
         selected_tools = {name: shutil.which(name) for name in required_tools}
         missing_tools = [name for name, path in selected_tools.items() if not path]

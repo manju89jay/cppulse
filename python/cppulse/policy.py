@@ -388,6 +388,7 @@ def _findings(
                     and row["status"] == "analyzed"
                     and row["error_count"] == 0
                     and row["context_match"] == "matched"
+                    and row.get("buffer_coherence") == "verified"
                     and rules <= set(row["executed_rules"])
                     for row in inventory["items"]
                 )
@@ -412,6 +413,7 @@ def _findings(
                 _usable_analysis(data, inventory, path)
                 and row["status"] in {"analyzed", "partial"}
                 and row["context_match"] == "matched"
+                and row.get("buffer_coherence") == "verified"
             ):
                 counted.add(observation["id"])
     limit = control["parameters"]["max_findings"]
@@ -442,6 +444,7 @@ def _parse_coverage(
                 and _usable_analysis(data, inventory, path)
                 for row in inventory["items"]
                 if row["file"] == path
+                and row.get("buffer_coherence") == "verified"
                 and (
                     row["status"] in {"skipped", "excluded"}
                     or row["context_match"] in {"matched", "mismatched"}
@@ -452,6 +455,7 @@ def _parse_coverage(
                 row["status"] == "analyzed"
                 and row["error_count"] == 0
                 and row["context_match"] == "matched"
+                and row.get("buffer_coherence") == "verified"
                 for row in rows
             )
     denominator = len(files) * len(requested)
@@ -494,6 +498,7 @@ def _analysis_presence(
                 and _usable_analysis(data, inventory, row["file"])
                 and row["status"] in {"analyzed", "partial", "failed"}
                 and row["context_match"] == "matched"
+                and row.get("buffer_coherence") == "verified"
             ):
                 coverage[inventory["job_context_id"]].add(row["file"])
     return coverage, _analysis_references(inventories)
@@ -956,7 +961,11 @@ def evaluate_policy(
             "context_ids": list(requested),
             "incomplete": result.incomplete,
         }
-        if control["kind"] in {"minimum_coverage", "sanitizer_outcome", "metric_threshold"}:
+        if control["kind"] in {
+            "minimum_coverage",
+            "sanitizer_outcome",
+            "metric_threshold",
+        }:
             evaluated[identifier]["fact_ids"] = list(result.fact_ids)
         for dependent in reverse[identifier]:
             degree[dependent] -= 1
@@ -967,6 +976,7 @@ def evaluate_policy(
     weights, scores = _scores(controls)
     assessment = {
         "version": "2.0.0",
+        "native_input_binding": "tu-buffer-coherence-v1",
         "evaluator": {"name": "cppulse.policy", "version": evaluator_version},
         "run_id": manifest["run_id"],
         "source_digest": source["digest"],

@@ -204,7 +204,9 @@ def _case_status(element: Element) -> Outcome:
         else (
             "failed"
             if "failure" in outcomes
-            else "skipped" if "skipped" in outcomes else "passed"
+            else "skipped"
+            if "skipped" in outcomes
+            else "passed"
         )
     )
     allowed = {
@@ -219,6 +221,10 @@ def _case_status(element: Element) -> Outcome:
 
 
 def _check_metadata(element: Element) -> None:
+    if element.tag in {"failure", "error", "skipped"} and len(element):
+        raise ValueError(
+            "Outcome metadata must contain text, not nested test/outcome elements"
+        )
     if element.tag in {"system-out", "system-err"} and len(element):
         raise ValueError("Output metadata must contain text, not nested test elements")
     if element.tag == "properties" and any(
@@ -415,7 +421,9 @@ def parse_test_report(
         else (
             "failed"
             if counts["failed"]
-            else "passed" if counts["passed"] else "skipped"
+            else "passed"
+            if counts["passed"]
+            else "skipped"
         )
     )
     limitations = [_ORIGIN_LIMIT]

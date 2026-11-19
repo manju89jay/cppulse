@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/work_unit_analysis_binding.schema.json",
+  "title": "Original work-unit binding for bounded normalized analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "analysis_scope_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "analysis_inventory_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "unit_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "request_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "result_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "receipt_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "uniqueItems": true
+    },
+    "request": {
+      "type": "object"
+    },
+    "result": {
+      "type": "object"
+    },
+    "sdk_used_inputs_artifact_id": {
+      "type": "string",
+      "const": "sdk-used-inputs"
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "analysis_scope_id",
+    "analysis_inventory_id",
+    "unit_id",
+    "request_artifact_id",
+    "result_artifact_id",
+    "receipt_artifact_id",
+    "inputs",
+    "outputs",
+    "request",
+    "result"
+  ]
+}

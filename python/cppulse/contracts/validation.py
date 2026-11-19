@@ -37,6 +37,9 @@ _KINDS = {
     "analysis_metrics",
     "maintenance_health",
     "analysis_inventory",
+    "analysis_scope",
+    "work_unit_analysis_binding",
+    "used_sdk_inputs",
     "execution_facts",
     "resource_manifest",
     "coverage_facts",
@@ -59,6 +62,7 @@ _KINDS = {
     "sanitizer_facts",
     "rule_registry",
     "risk_scores",
+    "shared_history",
 }
 _PROTOTYPE_KINDS = {"findings", "git_metrics", "risk_scores", "roadmap"}
 _ALIASES = {"risk_v2": "risk_scores"}
@@ -576,7 +580,20 @@ def _context(document: dict[str, Any], prefix: str = "") -> None:
 
 def _artifact(document: dict[str, Any], prefix: str = "") -> None:
     _safe_path(document["path"], prefix + "/path")
-    if document["path"] in {"run_manifest.json", "latest.json"}:
+    reserved = {
+        "run_manifest.json",
+        "latest.json",
+        "latest_attempt.json",
+        "heads.json",
+        "store-format.json",
+        ".migration-v3",
+        ".publication.lock",
+        ".coordination.lock",
+        ".recovery",
+    }
+    if any(
+        part.casefold() in reserved for part in PurePosixPath(document["path"]).parts
+    ):
         _fail("Reserved publication metadata cannot be an artifact", prefix + "/path")
 
 
@@ -997,6 +1014,12 @@ def _analysis_inventory(document: dict[str, Any]) -> None:
     for index, row in enumerate(document["items"]):
         pointer = f"/items/{index}"
         _collection_path(row["file"], pointer + "/file")
+        coherence = row.get("buffer_coherence")
+        if coherence == "verified" and row["status"] not in {"analyzed", "partial"}:
+            _fail(
+                "Unobserved AST cannot claim verified TU buffers",
+                pointer + "/buffer_coherence",
+            )
         if not set(row["executed_rules"]) <= enabled:
             _fail(
                 "Rule completion includes an actually disabled rule",
@@ -1074,6 +1097,11 @@ def _analysis_bundle(
     manifest: dict[str, Any],
     receipts: dict[str, dict[str, Any]],
 ) -> None:
+    from .work_unit_analysis import validate_work_unit_analysis_bundle
+    from .sdk_inputs import validate_sdk_bundle
+
+    validate_sdk_bundle(flat, manifest)
+    bounded_inventory_ids = validate_work_unit_analysis_bundle(flat, manifest, receipts)
     artifacts = {row["id"]: row for row in manifest["artifacts"]}
     sources = {row["path"]: row for row in manifest["source"]["files"]}
     contexts = {row["id"]: row for row in manifest["contexts"]}
@@ -1238,6 +1266,8 @@ def _analysis_bundle(
                     "SUBJECT_MISMATCH",
                 )
     for inventory in inventories:
+        if inventory["id"] in bounded_inventory_ids:
+            continue
         facts = facts_by_receipt.get(inventory["receipt_id"])
         if facts is None:
             _fail(
@@ -1438,7 +1468,19 @@ def _analysis_bundle(
 
 
 def _semantic(kind: str, document: dict[str, Any]) -> None:
-    if kind in {
+    if kind == "shared_history":
+        from .history_contract import semantic
+
+        semantic(document)
+    elif kind == "used_sdk_inputs":
+        from .sdk_inputs import validate_used_sdk_inputs
+
+        validate_used_sdk_inputs(document)
+    elif kind in {"analysis_scope", "work_unit_analysis_binding"}:
+        from .work_unit_analysis import semantic
+
+        semantic(kind, document)
+    elif kind in {
         "finding_baseline",
         "finding_comparison",
         "finding_suppressions",
@@ -1558,6 +1600,61 @@ def _semantic(kind: str, document: dict[str, Any]) -> None:
     elif kind == "evidence":
         _unique(document["records"], "id", "/records")
         for index, record in enumerate(document["records"]):
+            imported_fields = {"import_adapter", "test_counts", "test_cases"}
+            if imported_fields & record.keys():
+                if (
+                    not imported_fields <= record.keys()
+                    or record["kind"] != "tests"
+                    or record["origin"] != "import"
+                    or record["receipt_id"] is not None
+                ):
+                    _fail(
+                        "Imported test counts require a complete attributed import without an execution receipt",
+                        f"/records/{index}",
+                    )
+                counts, cases = record["test_counts"], record["test_cases"]
+                if record["usability"] != "usable":
+                    if counts is not None or cases:
+                        _fail(
+                            "Unavailable test import cannot supply clean/partial counts",
+                            f"/records/{index}",
+                        )
+                elif counts is None:
+                    _fail("Usable test import needs actual counts", f"/records/{index}")
+                if counts is not None:
+                    observed = {
+                        "total": len(cases),
+                        "passed": 0,
+                        "failed": 0,
+                        "skipped": 0,
+                        "errors": 0,
+                    }
+                    _unique(cases, "identity", f"/records/{index}/test_cases")
+                    for case in cases:
+                        observed[
+                            "errors" if case["status"] == "error" else case["status"]
+                        ] += 1
+                    if counts != observed or record["scope"]["tests"] != [
+                        c["identity"] for c in cases
+                    ]:
+                        _fail(
+                            "Imported counts/case identities disagree with retained occurrences",
+                            f"/records/{index}/test_counts",
+                        )
+                    outcome = (
+                        "error"
+                        if counts["errors"]
+                        else "failed"
+                        if counts["failed"]
+                        else "passed"
+                        if counts["passed"]
+                        else "skipped"
+                    )
+                    if record["status"] != outcome:
+                        _fail(
+                            "Imported test status disagrees with case counts",
+                            f"/records/{index}/status",
+                        )
             for position, path in enumerate(record["scope"]["files"]):
                 _safe_path(path, f"/records/{index}/scope/files/{position}")
             if (
@@ -1741,6 +1838,10 @@ def validate(
         _semantic(kind, document)
     if kind == "risk_scores" and selected in {_VERSION, "prototype_v1"}:
         _risk_availability(document)
+        if "component_hotspots" in document:
+            from .component_hotspots import validate_component_hotspots
+
+            validate_component_hotspots(document)
     if kind == "findings" and selected == "prototype_v1":
         from .maintenance import validate_native_metrics
 
@@ -1748,7 +1849,7 @@ def validate(
 
 
 def validate_bundle(
-    documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]]
+    documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
 ) -> None:
     """Validate a closed bundle and its cross-document identities/references.
 
@@ -2215,6 +2316,10 @@ def validate_bundle(
                                 and inventory["job_context_id"] == selected_context
                                 for item in inventory["items"]
                                 if item["context_match"] == "matched"
+                                and (
+                                    "native_input_binding" not in document
+                                    or item.get("buffer_coherence") == "verified"
+                                )
                                 and item["parse_context_id"] is not None
                                 and item["status"] in {"analyzed", "partial", "failed"}
                             }
@@ -2257,6 +2362,11 @@ def validate_bundle(
                                         item["file"] == path
                                         and item["status"] == "analyzed"
                                         and item["context_match"] == "matched"
+                                        and (
+                                            "native_input_binding" not in document
+                                            or item.get("buffer_coherence")
+                                            == "verified"
+                                        )
                                         and needed_rules <= set(item["executed_rules"])
                                         for item in inventory["items"]
                                     )
@@ -2301,6 +2411,11 @@ def validate_bundle(
                                         item
                                         for item in inventory["items"]
                                         if item["file"] == path
+                                        and (
+                                            "native_input_binding" not in document
+                                            or item.get("buffer_coherence")
+                                            == "verified"
+                                        )
                                         and (
                                             item["status"] in {"skipped", "excluded"}
                                             or item["context_match"]

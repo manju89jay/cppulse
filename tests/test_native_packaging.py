@@ -32,7 +32,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def native_configuration(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """Configure a real release build with mandatory test dependencies disabled."""
+    """Build the primary release target with mandatory test dependencies disabled."""
     build = tmp_path_factory.mktemp("native-build-without-tests")
     result = subprocess.run(
         [
@@ -45,6 +45,7 @@ def native_configuration(tmp_path_factory: pytest.TempPathFactory) -> Path:
             "-DBUILD_TESTING=OFF",
             "-DCMAKE_DISABLE_FIND_PACKAGE_GTest=TRUE",
             "-DCMAKE_INSTALL_LIBDIR=lib",
+            "-DCPPULSE_BUILD_RUNTIME_SUPERVISOR=TRUE",
         ],
         capture_output=True,
         text=True,
@@ -52,6 +53,13 @@ def native_configuration(tmp_path_factory: pytest.TempPathFactory) -> Path:
     assert result.returncode == 0, result.stdout + result.stderr
     assert "BUILD_TESTING:BOOL=OFF" in (build / "CMakeCache.txt").read_text()
     assert not (build / "cppulse-analyzer-tests").exists()
+    primary = subprocess.run(
+        ["cmake", "--build", str(build), "--target", "cppulse-analyzer", "-j", "2"],
+        capture_output=True,
+        text=True,
+    )
+    assert primary.returncode == 0, primary.stdout + primary.stderr
+    assert (build / "cppulse-runtime-supervisor").is_file()
     return build
 
 
@@ -81,7 +89,7 @@ def test_build_testing_off_needs_no_gtest(
 
 
 def test_manifest_is_relative_and_binary_digest_matches(
-    native_candidate: dict[str, str]
+    native_candidate: dict[str, str],
 ) -> None:
     prefix = Path(native_candidate["prefix"])
     metadata = json.loads(Path(native_candidate["manifest"]).read_text())
@@ -144,7 +152,7 @@ def test_relocated_binary_runs_without_checkout_or_loader_overrides(
 
 
 def test_archive_retains_notices_and_hash_inventory(
-    native_candidate: dict[str, str]
+    native_candidate: dict[str, str],
 ) -> None:
     prefix = Path(native_candidate["prefix"])
     archive = Path(native_candidate["archive"])
@@ -178,6 +186,23 @@ def test_archive_retains_notices_and_hash_inventory(
             assert not Path(member.name).is_absolute()
             assert ".." not in Path(member.name).parts
             assert not member.issym() and not member.islnk()
+
+
+def test_native_kit_retains_verified_runtime_helper(
+    native_candidate: dict[str, str],
+) -> None:
+    prefix = Path(native_candidate["prefix"])
+    relative = "libexec/cppulse/cppulse-runtime-supervisor"
+    helper = prefix / relative
+    inventory = json.loads((prefix / "share/cppulse/native-files.json").read_bytes())
+    indexed = {row["path"]: row for row in inventory["files"]}
+    assert (
+        indexed[relative]["sha256"] == hashlib.sha256(helper.read_bytes()).hexdigest()
+    )
+    proof = json.loads((prefix / "share/cppulse/native-verification.json").read_bytes())
+    assert proof["runtime_supervisor"]["status"] == "passed"
+    assert proof["runtime_supervisor"]["sha256"] == indexed[relative]["sha256"]
+    assert proof["runtime_supervisor"]["native_exit_code"] == 0
 
 
 def test_existing_native_candidate_is_never_replaced(

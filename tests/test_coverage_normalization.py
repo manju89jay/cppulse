@@ -155,7 +155,7 @@ def facts(state: dict[str, Any], receipt_id: str) -> dict[str, Any]:
 
 
 def test_actual_execution_has_distinct_exact_counts_and_source_hash(
-    actual: tuple[RunSnapshot, Path, dict[str, Any]]
+    actual: tuple[RunSnapshot, Path, dict[str, Any]],
 ) -> None:
     snapshot, _, selections = actual
     for adapter, expected in [
@@ -183,7 +183,7 @@ def test_actual_execution_has_distinct_exact_counts_and_source_hash(
 
 
 def test_imported_counts_never_acquire_execution_proof(
-    actual: tuple[RunSnapshot, Path, dict[str, Any]]
+    actual: tuple[RunSnapshot, Path, dict[str, Any]],
 ) -> None:
     snapshot, workspace, selections = actual
     selected = selections["lcov"]
@@ -363,6 +363,6 @@ def test_source_change_during_publication_does_not_promote_derived_run(
             if (store.root / "runs").exists()
             else True
         )
-        assert not (store.root / "latest_attempt.json").exists()
+        assert store.resolve_heads()[2] is None
     finally:
         source.write_bytes(original)

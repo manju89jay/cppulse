@@ -21,6 +21,7 @@ from cppulse.findings import compare_findings, create_finding_baseline
 from cppulse.identities import verify_inputs
 from cppulse.run_store import RunSnapshot, RunStore
 from cppulse.transfer import export_bundle
+from tests.native_buffer_fixture import add_parsed_buffer_fixture
 from test_analysis_inventory import _finding, native_snapshot
 
 TRIGGER = "int main() { return (int)0.5; }\n"
@@ -70,6 +71,8 @@ def normalized(
             report["metadata"]["analysis"]["files"][0]["parse_arguments"].append(
                 "-DS7_CHANGED_CONTEXT=1"
             )
+
+        add_parsed_buffer_fixture(report, workspace)
 
     raw, selection = native_snapshot(root, mutate=mutate, verified=verified)
     return persist_native_analysis(

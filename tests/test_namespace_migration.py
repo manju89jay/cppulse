@@ -162,7 +162,9 @@ else:
 run(Path("input"), Path("output"))
 result = json.loads(Path("output/risk_scores.json").read_text())
 assert result["metadata"]["model_type"] == "heuristic"
-assert result["file_risks"][0]["file"] == "clean.cpp"
+assert result["file_risks"] == []
+assert result["unranked_files"][0]["file"] == "clean.cpp"
+assert "missing_history" in result["unranked_files"][0]["reason_codes"]
 """,
         tmp_path,
         package,

@@ -84,7 +84,7 @@ def bundle(tmp_path: Path) -> tuple[Path, Path, Path]:
 
 
 def test_archive_retains_bytes_and_marks_binding_unverified(
-    bundle: tuple[Path, Path, Path]
+    bundle: tuple[Path, Path, Path],
 ) -> None:
     output, source, store = bundle
     result = import_pipeline(output, source, store, run_id="example")
@@ -110,7 +110,7 @@ def test_mismatched_source_root_cannot_be_attached(
 
 
 def test_original_output_edits_do_not_change_archive(
-    bundle: tuple[Path, Path, Path]
+    bundle: tuple[Path, Path, Path],
 ) -> None:
     output, source, store = bundle
     import_pipeline(output, source, store, run_id="archive")
@@ -122,7 +122,7 @@ def test_original_output_edits_do_not_change_archive(
 
 
 def test_import_summary_pins_its_run_after_latest_changes(
-    bundle: tuple[Path, Path, Path]
+    bundle: tuple[Path, Path, Path],
 ) -> None:
     """A client never needs to resolve mutable latest to recover its own result."""
     output, source, store = bundle
@@ -157,6 +157,6 @@ def test_changed_artifact_cannot_publish_mixed_import(
     monkeypatch.setattr(StagedRun, "copy_artifact", change_before_copy)
     with pytest.raises(InputChanged, match="changed while copying"):
         import_pipeline(output, source, store, run_id="changed")
-    assert not (store / "latest.json").exists()
-    assert not (store / "latest_attempt.json").exists()
+    assert RunStore.open_existing(store).resolve_heads()[1] is None
+    assert RunStore.open_existing(store).resolve_heads()[2] is None
     assert not (store / "runs" / "changed").exists()

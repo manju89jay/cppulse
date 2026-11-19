@@ -98,3 +98,10 @@ it("keeps history availability separate from the observed silo count", () => {
   expect(result.historyLimitations).toEqual(["Shallow history."]);
   expect(result.risks?.unranked_files?.[0].file).toBe("incomplete.hpp");
 });
+
+it("retains hotspot method even when other legacy slots are missing", () => {
+  const result = legacySections({findings:null, git_metrics:null, roadmap:null,
+    risk_scores:{document:{metadata:{model_type:"heuristic",profile:"default",experimental:true,hotspot_method:"measured-cc-physical-kloc-v1"},health_score:{overall:null,status:"partial",by_category:{}},file_risks:[],hotspots:[]}}});
+  expect(result.summary).toBeNull();
+  expect(result.risks?.hotspot_method).toBe("measured-cc-physical-kloc-v1");
+});

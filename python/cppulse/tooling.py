@@ -1,7 +1,7 @@
-"""Local development scaffolds and deterministic registry documentation.
+"""Local development scaffolds and deterministic registry-derived native helpers.
 
 Scaffolds are deliberately incomplete and never registered or executed here.
-The packaged registry describes the existing native checks; it does not load them.
+The packaged registry supplies native bindings, configuration and public metadata.
 """
 
 from __future__ import annotations
@@ -22,16 +22,22 @@ def _json(document: dict[str, Any]) -> str:
     return json.dumps(document, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
 
 
-def load_rule_registry() -> dict[str, Any]:
+def load_rule_registry(*, include_native_bindings: bool = False) -> dict[str, Any]:
     """Read and validate an independent copy of the packaged native registry.
 
-    Returns:
-        A rule_registry v2 document with experimental native check definitions.
+    Generator annotations are opt-in; existing public v2 consumers retain their
+    metadata and configuration schemas without implementation details.
     """
     content = resources.files("cppulse").joinpath("data", "rule_registry.json")
     document = json.loads(content.read_text(encoding="utf-8"))
     validate("rule_registry", document)
-    return document
+    if type(include_native_bindings) is not bool:
+        raise ValueError("include_native_bindings must be a boolean")
+    if include_native_bindings:
+        return document
+    from cppulse.native_rule_generator import public_rule_registry
+
+    return public_rule_registry(document)
 
 
 def _rule_files(name: str) -> dict[str, str]:
@@ -203,6 +209,9 @@ def scaffold(kind: str, name: str, destination: str | Path) -> Path:
 def generated_files() -> dict[str, str]:
     """Render deterministic source-controlled reference and native config files."""
     registry = load_rule_registry()
+    from cppulse.native_rule_generator import native_rule_headers
+
+    native_headers = native_rule_headers(load_rule_registry(include_native_bindings=True))
     schemas = {rule["id"]: rule["configuration_schema"] for rule in registry["rules"]}
     defaults = {
         rule_id: {key: spec["default"] for key, spec in schema["properties"].items()}
@@ -233,7 +242,7 @@ def generated_files() -> dict[str, str]:
         "Generated from `python/cppulse/data/rule_registry.json`. Regenerate with "
         "`python scripts/check_generated.py --write`; check with "
         "`python scripts/check_generated.py`.\n",
-        "All 22 checks are **experimental** and enabled by default. Availability "
+        f"All {len(registry['rules'])} checks are **experimental** and enabled by default. Availability "
         "depends on the selected successfully parsed C++ context and libclang AST. "
         "A registered check does not establish complete source coverage, correctness, "
         "MISRA compliance or certification. Zero findings can coexist with partial "
@@ -267,6 +276,7 @@ def generated_files() -> dict[str, str]:
         "",
     ]
     return {
+        **native_headers,
         "docs/generated/rules.md": "\n".join(lines),
         "docs/generated/native-config.schema.json": _json(config_schema),
         "docs/generated/native-config.example.json": _json(
@@ -297,7 +307,9 @@ Generated reference: edit `cppulse.tooling` or the packaged registry, then run
 `python scripts/check_generated.py --write` and review the resulting diff.
 `python scripts/check_generated.py` only checks; it exits nonzero for stale files.
 The local tooling tests also compare the registry with native rule registrations,
-categories and complexity defaults. A generator does not update native code.
+categories and complexity defaults. Generated native helpers define registered
+types, constructors, option capabilities and defaults. Detector implementations
+remain explicit C++ source with reviewed positive and negative fixtures.
 
 ## Draft scaffolds
 

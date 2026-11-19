@@ -884,10 +884,15 @@ def main() -> None:
         write_json(batch / "normalization-summary.json", summary)
     elif not args.collect_only:
         summary["cases"] = [finish_case(case, store) for case in summary["cases"]]
-    latest_attempt = store.resolve_latest_attempt()
-    latest_completed = (
-        store.resolve_latest() if (store.root / "latest.json").exists() else None
-    )
+    if store.format_version == "3.0.0":
+        _, latest_completed, latest_attempt = store.resolve_heads()
+    else:
+        latest_attempt = store.resolve_latest_attempt()
+        latest_completed = (
+            store.resolve_latest() if (store.root / "latest.json").exists() else None
+        )
+    if latest_attempt is None:
+        raise IntegrityError("Policy fixture did not publish an attempt")
     completed_collection = next(
         (
             case
@@ -901,7 +906,9 @@ def main() -> None:
         phase=(
             "collection"
             if args.collect_only
-            else "normalization" if args.normalize_only else "assessment"
+            else "normalization"
+            if args.normalize_only
+            else "assessment"
         ),
         tools=json.loads((batch / "tools.json").read_bytes()),
         selected_job_contexts={"native": NATIVE_JOB, "build_tests": BUILD_JOB},

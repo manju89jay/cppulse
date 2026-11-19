@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import json
+import math
 from pathlib import PurePosixPath, PureWindowsPath
 import re
 from typing import Any, Literal, Mapping, Sequence
@@ -64,6 +65,13 @@ class _Unsupported(ValueError):
     pass
 
 
+def _unicode_metadata(value: str, label: str) -> None:
+    try:
+        value.encode("utf-8", errors="strict")
+    except UnicodeError as error:
+        raise ContractError(label + " must contain valid Unicode") from error
+
+
 def _scope_path(value: str) -> str:
     if (
         not isinstance(value, str)
@@ -77,6 +85,7 @@ def _scope_path(value: str) -> str:
         or value == "."
     ):
         raise ContractError("Diagnostic scope needs canonical relative POSIX files")
+    _unicode_metadata(value, "Diagnostic scope")
     return value
 
 
@@ -126,7 +135,23 @@ def _check_tree(value: Any) -> None:
         nodes += 1
         if nodes > MAX_JSON_NODES or depth > MAX_JSON_DEPTH:
             raise _Unsupported("Diagnostic JSON node/depth limit exceeded")
-        if isinstance(current, dict):
+        if isinstance(current, str):
+            try:
+                current.encode("utf-8", errors="strict")
+            except UnicodeError as error:
+                raise _Unsupported(
+                    "Diagnostic JSON contains invalid Unicode"
+                ) from error
+        elif isinstance(current, float) and not math.isfinite(current):
+            raise _Unsupported("Diagnostic JSON number exceeds finite numeric profile")
+        elif isinstance(current, dict):
+            for key in current:
+                try:
+                    key.encode("utf-8", errors="strict")
+                except UnicodeError as error:
+                    raise _Unsupported(
+                        "Diagnostic JSON key contains invalid Unicode"
+                    ) from error
             pending.extend((item, depth + 1) for item in current.values())
         elif isinstance(current, list):
             pending.extend((item, depth + 1) for item in current)
@@ -181,7 +206,13 @@ def _read_diagnostics(
         if not isinstance(original, str) or not original:
             raise _Unsupported("Diagnostic rule identity is unavailable")
         namespaced = "gcc:" + original
-        if not re.fullmatch(r"[A-Za-z0-9_.:-]+", original) or len(namespaced) > 128:
+        if (
+            not re.fullmatch(r"[A-Za-z0-9_.:-]+", original)
+            or len(namespaced) > 128
+            or re.fullmatch(r"option-[0-9a-f]{64}", original)
+        ):
+            # Reserve this representation for hashed originals. Otherwise an
+            # accepted literal rule can impersonate another rule's hash slot.
             namespaced = "gcc:option-" + hashlib.sha256(original.encode()).hexdigest()
         identity = {
             "producer": _PRODUCER,
@@ -240,6 +271,7 @@ def parse_gcc_json(
     """
     if not isinstance(source_root, str):
         raise ContractError("Diagnostic source_root must be a POSIX string")
+    _unicode_metadata(source_root, "Diagnostic source_root")
     root = PurePosixPath(source_root)
     if (
         not root.is_absolute()
@@ -261,6 +293,8 @@ def parse_gcc_json(
         not isinstance(v, str) or not v for v in claim.values()
     ):
         raise ContractError("Producer claim requires nonempty name/version strings")
+    for value in claim.values():
+        _unicode_metadata(value, "Diagnostic producer claim")
     if not isinstance(content, bytes):
         raise ContractError("Diagnostic report must contain exact bytes")
     sha = hashlib.sha256(content).hexdigest()

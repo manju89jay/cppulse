@@ -445,6 +445,73 @@
                             },
                             "direct": {
                               "type": "boolean"
+                            },
+                            "content_identity": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "description": "Identity of the actual retained libclang TU include buffer; optional absence denotes legacy path-only observations, never verified dependency bytes.",
+                              "properties": {
+                                "method": {
+                                  "const": "libclang-tu-buffer-sha256-v1"
+                                },
+                                "status": {
+                                  "enum": [
+                                    "available",
+                                    "unavailable"
+                                  ]
+                                },
+                                "sha256": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "pattern": "^[a-f0-9]{64}$"
+                                },
+                                "size_bytes": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              },
+                              "required": [
+                                "method",
+                                "status",
+                                "sha256",
+                                "size_bytes"
+                              ],
+                              "allOf": [
+                                {
+                                  "if": {
+                                    "properties": {
+                                      "status": {
+                                        "const": "available"
+                                      }
+                                    }
+                                  },
+                                  "then": {
+                                    "properties": {
+                                      "sha256": {
+                                        "type": "string"
+                                      },
+                                      "size_bytes": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  },
+                                  "else": {
+                                    "properties": {
+                                      "sha256": {
+                                        "type": "null"
+                                      },
+                                      "size_bytes": {
+                                        "type": "null"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             }
                           },
                           "required": [
@@ -452,6 +519,28 @@
                             "target",
                             "target_kind",
                             "direct"
+                          ],
+                          "allOf": [
+                            {
+                              "if": {
+                                "properties": {
+                                  "target_kind": {
+                                    "const": "unresolved"
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "content_identity": {
+                                    "properties": {
+                                      "status": {
+                                        "const": "unavailable"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
                           ]
                         }
                       },

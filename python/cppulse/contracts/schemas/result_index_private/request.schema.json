@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Private selected-artifact result index request0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "kind",
+    "read_scope",
+    "source",
+    "limits"
+  ],
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "kind": {
+      "const": "prototype_findings"
+    },
+    "read_scope": {
+      "const": "selected_artifact_only"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "manifest_sha256",
+        "artifact_id",
+        "artifact_path",
+        "sha256",
+        "size_bytes"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+          "not": {
+            "pattern": "\n"
+          }
+        },
+        "manifest_sha256": {
+          "$ref": "#/definitions/sha256"
+        },
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "not": {
+            "pattern": "\n"
+          }
+        },
+        "artifact_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "$ref": "#/definitions/sha256"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17179869184
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_index_bytes",
+        "max_rows",
+        "max_item_bytes",
+        "sqlite_cache_kib",
+        "wall_seconds"
+      ],
+      "properties": {
+        "max_index_bytes": {
+          "type": "integer",
+          "minimum": 4096,
+          "maximum": 17179869184
+        },
+        "max_rows": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "max_item_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 33554432
+        },
+        "sqlite_cache_kib": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 65536
+        },
+        "wall_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3600
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    }
+  }
+}

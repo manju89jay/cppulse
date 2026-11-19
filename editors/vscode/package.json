@@ -41,10 +41,13 @@
       "properties": {
         "cppulse.executable":{"type":"string","default":"cppulse","description":"Installed CLI executable; one literal program path, never a shell command.","scope":"machine-overridable"},
         "cppulse.arguments":{"type":"array","items":{"type":"string"},"default":[],"description":"Literal prefix arguments, for example [\"-m\",\"cppulse\"] with a selected Python executable.","scope":"machine-overridable"},
-        "cppulse.storeDirectory":{"type":"string","default":".cppulse-output","description":"Retained run store. Relative paths resolve beneath the selected workspace."},
-        "cppulse.compilationDatabase":{"type":"string","default":"","description":"Optional compilation database path for explicit analysis."},
-        "cppulse.timeoutSeconds":{"type":"integer","minimum":1,"maximum":86400,"default":300,"description":"Wall-time limit for an explicit CLI action."},
-        "cppulse.openReports":{"type":"boolean","default":true,"description":"Open a report after explicit successful rendering."}
+        "cppulse.storeDirectory":{"scope":"resource","type":"string","default":".cppulse-output","description":"Retained run store. Relative paths resolve beneath the selected workspace."},
+        "cppulse.compilationDatabase":{"scope":"resource","type":"string","default":"","description":"Optional compilation database path for explicit analysis."},
+        "cppulse.timeoutSeconds":{"scope":"resource","type":"integer","minimum":1,"maximum":86400,"default":300,"description":"Wall-time limit for an explicit CLI action."},
+        "cppulse.responseLimitMiB":{"scope":"resource","type":"integer","minimum":1,"maximum":64,"default":16,"description":"Maximum MiB for each CLI response or imported SARIF. Overflow fails explicitly; results are never truncated."},
+        "cppulse.sourceLimitMiB":{"scope":"resource","type":"integer","minimum":1,"maximum":64,"default":16,"description":"Maximum MiB for one retained source or evidence artifact read. Larger inputs remain unavailable in this preview."},
+        "cppulse.diagnosticLimit":{"scope":"resource","type":"integer","minimum":1,"maximum":100000,"default":20000,"description":"Maximum diagnostic occurrences in one selected result, including repeated locations. Overflow fails explicitly."},
+        "cppulse.openReports":{"scope":"resource","type":"boolean","default":true,"description":"Open a report after explicit successful rendering."}
       }
     }
   },
@@ -53,6 +56,7 @@
     "test:contracts": "node --test test/contracts.test.cjs",
     "test:unit": "node --test test/*.test.cjs",
     "test:host": "node test/run-host.cjs",
+    "prepackage": "node test/preserve-vsix.cjs",
     "package": "vsce package --no-dependencies --out artifacts/cppulse-0.2.0-preview.vsix"
   },
   "devDependencies": {

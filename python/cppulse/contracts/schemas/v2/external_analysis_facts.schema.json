@@ -29,7 +29,11 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "const": "gcc-json"
+          "enum": [
+            "gcc-json",
+            "clang-tidy-text",
+            "cppcheck-xml"
+          ]
         },
         "version": {
           "const": "1.0.0"
@@ -41,7 +45,11 @@
       ]
     },
     "producer_namespace": {
-      "const": "gcc"
+      "enum": [
+        "gcc",
+        "clang-tidy",
+        "cppcheck"
+      ]
     },
     "report_artifact_id": {
       "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"

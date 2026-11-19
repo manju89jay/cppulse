@@ -422,3 +422,18 @@ def test_generate_pdf_with_partial_health(data_dir: Path) -> None:
     pdf = PDFGenerator(data_dir).generate_pdf()
     assert pdf.startswith(b"%PDF")
     assert len(pdf) > 1000
+
+
+def test_measured_hotspot_html_explains_actual_denominator(data_dir: Path) -> None:
+    import json
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    risk["metadata"]["hotspot_method"] = "measured-cc-physical-kloc-v1"
+    path.write_text(json.dumps(risk))
+    from cppulse.report_engine.pdf_generator import PDFGenerator
+
+    html = PDFGenerator(data_dir).render_html()
+    assert "maximum measured cyclomatic complexity" in html
+    assert "physical KLOC" in html
+    assert "Historical hotspot score" not in html

@@ -49,10 +49,32 @@ Every occurrence is retained, including duplicate basenames and stored suppresse
 observations. Gate/score values are displayed from the backend, never calculated
 in the editor.
 
+When a selected run contains measured maintenance health, its tree shows the
+stored full-scope value or explicit unavailable status, scorer version,
+configuration digest, original artifact hash, contexts and calculation inputs.
+Numeric JSON tokens retain their original spelling; the client does not round
+or recompute scores. Version 4 explains its parsed source/header byte requirement.
+Historical version 3 keeps its original identity and explicitly states that this
+byte verification was not required. Neither version establishes consumer
+assurance, predictive accuracy or standards certification.
+
+Changes to selected source files clear current diagnostics while retaining
+historical run pins. This includes explicitly selected roots outside the opened
+workspace and canonical source files selected through a directory alias. An
+in-progress read cannot publish diagnostics after a detected source change.
+Local monitoring subscribes synchronously to selected source parent directories,
+including canonical alias targets, before accepting their bytes. The preview
+supports at most 4,096 monitored directories across current and pending
+selections; exceeding that bound or losing monitoring makes current diagnostics
+unavailable. It does not recursively scan unrelated repository directories.
+
 ## Preview limits
 
-One response stream and one source read are bounded to 16 MiB. The selected view
-supports at most 20,000 diagnostic occurrences. Overflow is an explicit error,
+By default, each response stream and source read is bounded to 16 MiB and the
+selected view supports at most 20,000 diagnostic occurrences. Settings
+`cppulse.responseLimitMiB` and `cppulse.sourceLimitMiB` accept integers from 1
+to 64; `cppulse.diagnosticLimit` accepts 1 to 100,000 occurrences. These are
+local capture/read limits, not backend paging controls. Overflow is an explicit error,
 not a truncated clean result. These limits do not establish large-project
 scalability or indexed query support. Windows/macOS and full product views need
 their own qualification; this preview is not the full VS Code/MCP/skill roadmap.
@@ -83,12 +105,31 @@ extras are unnecessary. Set `CPPULSE_VSCODE_EXECUTABLE` to an existing pinned
 VS Code executable to avoid downloading a runtime. `CPPULSE_HOST_REPORT` selects
 an optional JSON result path. Then run `npm run test:host`.
 
-On Linux a working display or Xvfb is required. The current managed command
-environment prevents the X server's Unix sockets; attempts with both Xvfb and
-headless Ozone failed before extension tests could run. VSIX installation was
-successful, but no passing extension-host qualification is claimed. Windows,
-macOS, Restricted Mode, full command/cancellation UI and scale remain separate
-qualification requirements. A host report is written only after every case
-passes; it lists its exact limited coverage.
+The runner opens two isolated workspace folders to exercise per-folder settings.
+It compares installed code byte-for-byte with the selected VSIX and verifies all
+manifest fields except VS Code's installer-added `__metadata`. It records the
+archive and installed-file hashes. `CPPULSE_HOST_HEALTH_CASES` can name a JSON
+array of actual retained scenarios (`scenario`, `workspace`, `store`, `run_id`,
+`manifest_sha256`) for the same installed backend; these must include an actual
+retained artifact larger than 1 MiB for the configured read-limit regression.
+The host exercises malformed/oversize responses, missing executable, wall
+timeout, clear-driven cancellation, delayed responses and source changes during
+a pending read. It preserves diagnostics and CLI logs under
+`CPPULSE_HOST_ARTIFACTS`. Packaging keeps the previous VSIX in
+`artifacts/history/<sha256>.vsix` before creating the new local preview.
+Set `CPPULSE_HOST_VSIX` to an absolute preserved archive path when testing a
+fixed candidate while another local package is being prepared.
+
+On Linux a working display or Xvfb is required. The 16 November 2026 Cloud
+check passed ten installed-host cases using pinned VS Code 1.105.1, an isolated
+installed core wheel and a freshly analyzed disposable two-file C++ fixture.
+The local Xvfb used TCP (`DISPLAY=127.0.0.1:95`); see the editor guide for exact
+artifact hashes and limitations. The runner clears inherited `NODE_PATH` for
+Electron processes because unrelated global modules can break Electron's
+`original-fs` resolver. It also clears `PYTHONPATH` so the separately installed
+CLI does not import checkout modules. It never changes installed package files.
+Windows, macOS, Restricted Mode, full command/cancellation UI and scale remain
+separate qualification requirements. A host report is written only after every
+case passes; it lists its exact limited coverage.
 
 MIT licensed. Third-party SDK/testing dependencies retain their own licenses.

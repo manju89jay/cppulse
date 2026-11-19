@@ -60,7 +60,11 @@ class DiagnosticResult:
 def _bounded(text: str, sanitizer: str) -> str:
     if sanitizer not in SONAMES:
         raise UnsupportedSanitizerFormat(f"Unsupported sanitizer {sanitizer!r}")
-    if len(text.encode("utf-8")) > MAX_BYTES or "\x00" in text:
+    try:
+        oversized = len(text) > MAX_BYTES or len(text.encode("utf-8")) > MAX_BYTES
+    except UnicodeError as error:
+        raise UnsupportedSanitizerFormat("Evidence contains invalid Unicode") from error
+    if oversized or "\x00" in text:
         raise UnsupportedSanitizerFormat("Evidence exceeds byte limit or contains NUL")
     return text
 
@@ -188,41 +192,84 @@ def diagnostics(output: str, sanitizer: str) -> DiagnosticResult:
     _bounded(output, sanitizer)
     records: list[Diagnostic] = []
     runtime_error = None
-    if sanitizer == "asan":
-        for match in re.finditer(
-            r"^==[0-9]+==ERROR: AddressSanitizer: ([a-z][a-z0-9-]+)\b[^\n]*",
-            output,
-            re.M,
-        ):
-            kind = match[1]
-            if re.search(
-                r"^SUMMARY: AddressSanitizer: " + re.escape(kind) + r"\b", output, re.M
-            ):
-                records.append(Diagnostic(kind, match[0]))
-        if not records and ("AddressSanitizer" in output or "LeakSanitizer" in output):
-            runtime_error = "Unqualified AddressSanitizer diagnostic or runtime failure"
-    elif sanitizer == "ubsan":
-        for match in re.finditer(
-            r"^(.+?):([1-9][0-9]*):[0-9]+: runtime error: (signed integer overflow:[^\n]+)",
-            output,
-            re.M,
-        ):
-            records.append(
-                Diagnostic("signed-integer-overflow", match[0], match[1], int(match[2]))
+    if sanitizer == "ubsan":
+        for line in output.splitlines():
+            match = re.fullmatch(
+                r"(.+?):([1-9][0-9]*):[0-9]+: runtime error: (signed integer overflow:[^\n]+)",
+                line,
             )
-        if not records and "runtime error:" in output:
-            runtime_error = "Unsupported UBSan diagnostic kind"
-    else:
-        if "FATAL: ThreadSanitizer: unexpected memory mapping" in output:
+            if match:
+                try:
+                    number = int(match[2])
+                except ValueError as error:
+                    raise UnsupportedSanitizerFormat(
+                        "Unsupported UBSan source line"
+                    ) from error
+                records.append(
+                    Diagnostic("signed-integer-overflow", line, match[1], number)
+                )
+            elif "runtime error:" in line or "UndefinedBehaviorSanitizer" in line:
+                runtime_error = "Unsupported UBSan diagnostic kind"
+        return DiagnosticResult(tuple(records), runtime_error)
+
+    # A summary closes exactly one preceding report. Matching globally would
+    # let an earlier summary qualify a later truncated same-kind occurrence.
+    pending: Diagnostic | None = None
+    unknown = False
+    name = "AddressSanitizer" if sanitizer == "asan" else "ThreadSanitizer"
+    for line in output.splitlines():
+        if sanitizer == "asan":
+            header = re.fullmatch(
+                r"==[0-9]+==ERROR: AddressSanitizer: ([a-z][a-z0-9-]+)\b[^\n]*", line
+            )
+        else:
+            header = re.fullmatch(
+                r"WARNING: ThreadSanitizer: (data race)(?:[ \t].*)?", line
+            )
+        summary = re.fullmatch(
+            r"SUMMARY: " + name + r": ([a-z][a-z0-9-]*(?: race)?)(?:[ \t].*)?", line
+        )
+        if header:
+            if pending is not None:
+                unknown = True
+            kind = header[1] if sanitizer == "asan" else "data-race"
+            message = (
+                line if sanitizer == "asan" else "WARNING: ThreadSanitizer: data race"
+            )
+            pending = Diagnostic(kind, message)
+        elif summary:
+            kind = summary[1] if sanitizer == "asan" else summary[1].replace(" ", "-")
+            if pending is None or pending.kind != kind:
+                unknown = True
+            else:
+                records.append(pending)
+            pending = None
+        elif sanitizer == "tsan" and (
+            trailer := re.fullmatch(
+                r"ThreadSanitizer: reported ([0-9]+) warnings", line
+            )
+        ):
+            # A count is metadata, not a diagnostic. It must agree with the
+            # occurrences observed so far and cannot repair a missing summary.
+            try:
+                count = int(trailer[1])
+            except ValueError as error:
+                raise UnsupportedSanitizerFormat(
+                    "Unsupported TSan warning count"
+                ) from error
+            if pending is not None or count != len(records):
+                unknown = True
+        elif name in line or (sanitizer == "asan" and "LeakSanitizer" in line):
+            unknown = True
+    if pending is not None:
+        unknown = True
+    if unknown:
+        if sanitizer == "asan":
+            runtime_error = "Unqualified AddressSanitizer diagnostic or runtime failure"
+        elif "FATAL: ThreadSanitizer: unexpected memory mapping" in output:
             runtime_error = (
                 "ThreadSanitizer runtime startup failed: unexpected memory mapping"
             )
-        elif "WARNING: ThreadSanitizer: data race" in output and re.search(
-            r"^SUMMARY: ThreadSanitizer: data race\b", output, re.M
-        ):
-            records.append(
-                Diagnostic("data-race", "WARNING: ThreadSanitizer: data race")
-            )
-        elif "ThreadSanitizer" in output:
+        else:
             runtime_error = "Unsupported ThreadSanitizer diagnostic or runtime failure"
     return DiagnosticResult(tuple(records), runtime_error)

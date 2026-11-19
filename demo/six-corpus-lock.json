@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "methodology": {
+    "id": "original-six-native-and-history-1",
+    "frozen_at": "2026-11-16",
+    "history_depth": 100,
+    "selection": "All tracked supported C++ source/header paths; optional explicit max-files mode is a bounded smoke sample, not corpus qualification.",
+    "context": "Fallback C++17, with explicit matching libclang resource directory; no inferred consumer build is claimed.",
+    "acceptance": "Pinned clean sources, at least 100 retained real commits, native report schema and semantic totals/hashes; parse gaps remain visible and prevent full configuration qualification.",
+    "limitations": [
+      "Bounded shallow history is not full-history behavioral qualification.",
+      "Native measurements alone do not qualify full pipeline, upstream builds/tests, accuracy, performance, standards, or consumer configurations.",
+      "The original six repositories are retained; supplementary utfcpp does not replace one.",
+      "No predictive accuracy or production-readiness claim follows from successful native execution."
+    ]
+  },
+  "projects": [
+    {"id":"fmt","repository":"https://github.com/fmtlib/fmt","tag":"10.2.1","revision":"e69e5f977d458f2650bb346dadf2ad30c5320281"},
+    {"id":"grpc","repository":"https://github.com/grpc/grpc","tag":"v1.62.0","revision":"f78a54c5ad4e058734aa9b2beb9459940e4de342"},
+    {"id":"json","repository":"https://github.com/nlohmann/json","tag":"v3.11.3","revision":"9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03"},
+    {"id":"leveldb","repository":"https://github.com/google/leveldb","tag":"1.23","revision":"99b3c03b3284f5886f9ef9a4ef703d57373e61be"},
+    {"id":"poco","repository":"https://github.com/pocoproject/poco","tag":"poco-1.13.2-release","revision":"a8aea338d211d6dbce75f5f07d70c449b94f1605"},
+    {"id":"protobuf","repository":"https://github.com/protocolbuffers/protobuf","tag":"v25.3","revision":"4a2aef570deb2bfb8927426558701e8bfc26f2a4"}
+  ]
+}

@@ -128,6 +128,20 @@ def relative_identity(file: str, data: dict[str, Any]) -> str:
         return path.as_posix()
 
 
+def _repository_identity(data: dict[str, Any]) -> tuple[str, str] | None:
+    """Compare declared roots lexically, without filesystem or origin claims."""
+    root = data.get("metadata", {}).get("repo_path", "")
+    if not isinstance(root, str):
+        raise ValueError("Declared repository identity must be a string")
+    if not root.strip():
+        return None
+    windows = PureWindowsPath(root)
+    if windows.drive:
+        return "windows", windows.as_posix().casefold()
+    normalized = PurePosixPath(root.replace("\\", "/")).as_posix()
+    return None if normalized == "." else ("posix", normalized)
+
+
 def coverage_identity(file: str, data: dict[str, Any]) -> str:
     """Normalize legacy root-prefixed coverage paths without rewriting file IDs."""
     path = PurePosixPath(file.replace("\\", "/"))
@@ -153,6 +167,10 @@ class FeatureEngineer:
         self,
         findings_data: dict[str, Any],
         git_metrics_data: dict[str, Any],
+        *,
+        profile: str = "default",
+        maintenance_health: dict[str, Any] | None = None,
+        source_digest: str | None = None,
     ) -> pd.DataFrame:
         """Merge findings and git metrics into a feature DataFrame.
 
@@ -162,22 +180,56 @@ class FeatureEngineer:
         Args:
             findings_data: Parsed contents of findings.json.
             git_metrics_data: Parsed contents of git_metrics.json.
+            profile: The same default or safety-critical scoring selection.
+            maintenance_health: Existing normalized required-analysis decision;
+                its numeric calibration is not substituted for legacy scores.
+            source_digest: Selected original source digest binding that decision.
 
         Returns:
             DataFrame with columns defined in FEATURE_COLUMNS.
         """
+        findings_root = _repository_identity(findings_data)
+        history_root = _repository_identity(git_metrics_data)
+        has_history_rows = any(
+            row.get("file") for row in git_metrics_data.get("file_metrics", [])
+        )
+        if has_history_rows and findings_root is not None and history_root is not None:
+            if findings_root != history_root:
+                raise ValueError(
+                    "Cannot join findings and Git history from conflicting repository roots"
+                )
         findings_map = self._aggregate_findings(findings_data)
         git_map = self._aggregate_git_metrics(git_metrics_data)
+
+        # Reuse the measured scorer's profile/registry selection. A nonempty
+        # enabled set is not evidence that every required detector ran.
+        from cppulse.contracts import validate
+        from cppulse.contracts.maintenance import BASE_CATEGORIES
+        from cppulse.tooling import load_rule_registry
+        from .health_scorer import PROFILES
+
+        if profile not in PROFILES:
+            raise ValueError(f"Unknown health profile: {profile!r}")
+        categories = set(BASE_CATEGORIES)
+        if profile == "safety-critical":
+            categories.add("misra")
+        registry = load_rule_registry()
+        required_rules = {
+            row["id"]: row["version"] for row in registry["rules"]
+            if row["category"] in categories
+        }
 
         coverage = findings_data.get("metadata", {}).get("analysis")
         limitations = []
         availability = "scored"
         if coverage is not None:
             entries = coverage.get("files", [])
-            if not coverage.get("enabled_rules") and entries:
+            missing_rules = set(required_rules) - set(coverage.get("enabled_rules", []))
+            if missing_rules and entries:
                 availability = "partial"
                 limitations.append(
-                    "Full-scope health unavailable: no detectors were enabled."
+                    "Full-scope health unavailable: required detectors are disabled or absent: "
+                    + ", ".join(sorted(missing_rules)) + "."
                 )
             all_files = {
                 coverage_identity(entry["path"], findings_data)
@@ -205,13 +257,73 @@ class FeatureEngineer:
                 limitations.append(
                     "Full-scope health unavailable: legacy input has no parse-scope inventory."
                 )
+        qualified_prerequisites = False
+        if maintenance_health is None or source_digest is None:
+            availability = "partial"
+            limitations.append(
+                "Full-scope health unavailable: required analysis contexts, measurements and verified inputs were not supplied."
+            )
+        else:
+            validate("maintenance_health", maintenance_health)
+            scorer = maintenance_health["scorer"]
+            aggregate = maintenance_health["aggregate"]
+            if (
+                maintenance_health["source_digest"] != source_digest
+                or scorer["profile"] != profile
+                or set(scorer["required_rule_ids"]) != set(required_rules)
+                or scorer["required_rule_versions"] != required_rules
+            ):
+                availability = "partial"
+                limitations.append(
+                    "Full-scope health unavailable: the selected source, profile or required detectors do not match the analysis."
+                )
+            elif (
+                not maintenance_health["required_context_ids"]
+                or aggregate["availability"] != "scored"
+                or aggregate["overall"] is None
+                or aggregate["incomplete_required_context_ids"]
+            ):
+                availability = "partial"
+                limitations.append(
+                    "Full-scope health unavailable: required analysis evidence is incomplete or absent."
+                )
+            elif availability == "scored":
+                qualified_prerequisites = True
         ranking = self._ranking_scope(
             findings_data, git_metrics_data, all_files, git_map
         )
+        from .measured_hotspots import native_hotspot_metrics
+
+        measured = native_hotspot_metrics(findings_data)
         attrs = {
             "health_availability": availability,
+            "health_declared_file_count": (
+                sum(entry["status"] != "excluded" for entry in coverage.get("files", []))
+                if coverage is not None else len(all_files)
+            ),
+            "health_profile": profile,
+            "health_source_digest": source_digest,
+            "health_prerequisites": (
+                "normalized-required-context-v4" if qualified_prerequisites else None
+            ),
             "limitations": limitations,
             "rank_availability": ranking,
+            # Presence in the raw report is distinct from convenience zeros
+            # inserted below. These are declared proxy labels, not proof of
+            # confirmed defects or of the producer's authenticity.
+            "szz_observed_files": sorted(
+                relative_identity(row["file"], git_metrics_data)
+                for row in git_metrics_data.get("file_metrics", [])
+                if row.get("file") and "szz_bug_introductions" in row
+            ),
+            "measured_hotspot_metrics": measured,
+            "component_excluded_files": sorted(
+                {
+                    coverage_identity(entry["path"], findings_data)
+                    for entry in (coverage.get("files", []) if coverage else [])
+                    if entry["status"] == "excluded"
+                } - set(ranking)
+            ),
         }
 
         if not all_files:
@@ -271,11 +383,21 @@ class FeatureEngineer:
             paths = feature_paths
         metadata = git_metrics_data.get("metadata", {})
         history_status = metadata.get("history_status")
+        shared_root_declared = (
+            _repository_identity(findings_data) is not None
+            and _repository_identity(git_metrics_data) is not None
+        )
         result: dict[str, RankAvailability] = {}
         for file in sorted(paths):
             codes: list[str] = []
             reasons: list[str] = []
             state = "available"
+            if not shared_root_declared:
+                state = "unverified"
+                codes.append("missing_repository_identity")
+                reasons.append(
+                    "Missing declared repository identity does not establish a common origin for ranking inputs."
+                )
             if analysis is None:
                 state = "unverified"
                 codes.append("missing_parse_inventory")

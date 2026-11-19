@@ -43,7 +43,7 @@ def publish(
 
 
 def test_publish_roundtrip_and_frozen_latest(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     first = publish(store, "first")
     frozen = store.resolve_latest()
     second = publish(store, "second")
@@ -64,7 +64,7 @@ def test_publish_roundtrip_and_frozen_latest(tmp_path: Path) -> None:
 def test_partial_and_cancelled_runs_do_not_replace_completed_latest(
     tmp_path: Path, status: str
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     publish(store, "completed")
     retained = publish(store, status, status=status)
     assert retained.manifest["status"] == status
@@ -75,7 +75,7 @@ def test_partial_and_cancelled_runs_do_not_replace_completed_latest(
 
 
 def test_staging_is_not_readable_as_committed_run(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with pytest.raises(RuntimeError, match="interrupted"):
         with store.begin("unfinished") as stage:
             stage.write_json("source.json", source_document(), contract="source")
@@ -89,10 +89,10 @@ def test_staging_is_not_readable_as_committed_run(tmp_path: Path) -> None:
 
 
 def test_global_writer_lock_and_duplicate_run_are_explicit(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with store.begin("writer"):
         with pytest.raises(PublicationConflict):
-            RunStore(store.root).begin("other")
+            RunStore(store.root, format_version="2.0.0").begin("other")
     publish(store, "taken")
     with pytest.raises(PublicationConflict):
         store.begin("taken")
@@ -120,7 +120,7 @@ def test_global_writer_lock_and_duplicate_run_are_explicit(tmp_path: Path) -> No
 def test_unsafe_or_reserved_artifact_paths_are_rejected(
     tmp_path: Path, path: str
 ) -> None:
-    with RunStore(tmp_path / "output").begin("unsafe") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin("unsafe") as stage:
         with pytest.raises((ContractError, IntegrityError)):
             stage.write_json(path, source_document(), contract="source")
 
@@ -128,7 +128,9 @@ def test_unsafe_or_reserved_artifact_paths_are_rejected(
 def test_artifact_case_collisions_and_mutated_descriptors_do_not_alias(
     tmp_path: Path,
 ) -> None:
-    with RunStore(tmp_path / "output").begin("aliases") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin(
+        "aliases"
+    ) as stage:
         descriptor = stage.write_json(
             "Source.json", source_document(), contract="source"
         )
@@ -149,7 +151,7 @@ def test_artifact_case_collisions_and_mutated_descriptors_do_not_alias(
 def test_snapshot_rejects_corrupted_or_redirected_artifact(
     tmp_path: Path, mutation: str
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     snapshot = publish(store, "check")
     artifact = snapshot.path / "artifacts/source.json"
     outside = tmp_path / "outside.json"
@@ -172,7 +174,7 @@ def test_snapshot_rejects_corrupted_or_redirected_artifact(
 
 
 def test_pointer_digest_and_manifest_tampering_are_detected(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     snapshot = publish(store, "check")
     path = snapshot.path / "run_manifest.json"
     changed = snapshot.manifest
@@ -187,7 +189,7 @@ def test_pointer_digest_and_manifest_tampering_are_detected(tmp_path: Path) -> N
 def test_source_verification_is_explicit_and_mutation_blocks_publication(
     tmp_path: Path,
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     imported = publish(store, "imported")
     assert imported.manifest["input_verification"] == "unverified"
     assert any("freshness" in value for value in imported.manifest["limitations"])
@@ -212,7 +214,7 @@ def test_interruption_before_pointer_keeps_previous_latest(
 ) -> None:
     import cppulse.run_store as module
 
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     publish(store, "old")
     original_replace = module.os.replace
 
@@ -232,7 +234,7 @@ def test_interruption_before_pointer_keeps_previous_latest(
 
 
 def test_copy_artifact_and_explicit_prototype_contract(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     data = tmp_path / "input.bin"
     data.write_bytes(b"retained binary log\x00\xff")
     with store.begin("copy") as stage:
@@ -253,7 +255,7 @@ def test_copy_artifact_and_explicit_prototype_contract(tmp_path: Path) -> None:
 
 
 def test_inventory_mismatch_and_symlink_source_are_rejected(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     outside = tmp_path / "outside"
     outside.write_text("source")
     link = tmp_path / "link"
@@ -273,7 +275,7 @@ def test_inventory_mismatch_and_symlink_source_are_rejected(tmp_path: Path) -> N
 def test_completed_collection_can_contain_observed_check_failure(
     tmp_path: Path,
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with store.begin("observed-failure") as stage:
         artifact = stage.write_json("source.json", source_document(), contract="source")
         manifest = manifest_document()
@@ -288,7 +290,7 @@ def test_completed_collection_can_contain_observed_check_failure(
 def test_case_folded_parent_aliases_and_file_directory_collisions(
     tmp_path: Path,
 ) -> None:
-    with RunStore(tmp_path / "output").begin("paths") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin("paths") as stage:
         stage.write_json(
             "Artifacts/first.json",
             source_document(),
@@ -312,12 +314,12 @@ def test_store_root_and_staging_symlinks_are_rejected(tmp_path: Path) -> None:
     link = tmp_path / "output"
     link.symlink_to(outside, target_is_directory=True)
     with pytest.raises(IntegrityError):
-        RunStore(link)
+        RunStore(link, format_version="2.0.0")
     root = tmp_path / "normal"
     root.mkdir()
     (root / ".staging").symlink_to(outside, target_is_directory=True)
     with pytest.raises(IntegrityError):
-        RunStore(root)
+        RunStore(root, format_version="2.0.0")
 
 
 def test_artifact_fifo_is_rejected_without_waiting_for_a_writer(tmp_path: Path) -> None:
@@ -325,7 +327,7 @@ def test_artifact_fifo_is_rejected_without_waiting_for_a_writer(tmp_path: Path) 
 
     fifo = tmp_path / "fifo"
     os.mkfifo(fifo)
-    with RunStore(tmp_path / "output").begin("pipe") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin("pipe") as stage:
         with pytest.raises(IntegrityError, match="regular"):
             stage.copy_artifact("pipe", fifo, "pipe.bin")
 
@@ -335,14 +337,16 @@ def test_read_returns_the_same_bytes_it_verified(
 ) -> None:
     import cppulse.run_store as module
 
-    snapshot = publish(RunStore(tmp_path / "output"), "one-read")
+    snapshot = publish(
+        RunStore(tmp_path / "output", format_version="2.0.0"), "one-read"
+    )
     original_read = module._read
     artifact = snapshot.path / "artifacts/source.json"
     expected = artifact.read_bytes()
     reads = []
 
-    def replace_after_read(path: Path) -> bytes:
-        content = original_read(path)
+    def replace_after_read(path: Path, *, max_bytes: int | None = None) -> bytes:
+        content = original_read(path, max_bytes=max_bytes)
         if path == artifact:
             reads.append(path)
             artifact.write_text("changed after the checked descriptor was read")
@@ -361,7 +365,7 @@ def test_read_returns_the_same_bytes_it_verified(
 def test_noncanonical_run_ids_do_not_create_a_writer(
     tmp_path: Path, run_id: str
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with pytest.raises(IntegrityError):
         store.begin(run_id)
     assert not (store.root / ".publication.lock").exists()
@@ -370,7 +374,7 @@ def test_noncanonical_run_ids_do_not_create_a_writer(
 def test_partial_first_attempt_is_visible_without_a_completed_run(
     tmp_path: Path,
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     snapshot = publish(store, "first-partial", status="partial")
     assert store.resolve_latest_attempt().run_id == snapshot.run_id
     with pytest.raises(IntegrityError):
@@ -380,7 +384,7 @@ def test_partial_first_attempt_is_visible_without_a_completed_run(
 def test_staging_attempt_does_not_replace_either_published_pointer(
     tmp_path: Path,
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     publish(store, "finished")
     with store.begin("in-progress") as stage:
         stage.write_json("source.json", source_document(), contract="source")
@@ -391,7 +395,7 @@ def test_staging_attempt_does_not_replace_either_published_pointer(
 def test_explicit_nonpromotion_retains_last_completed_but_records_attempt(
     tmp_path: Path,
 ) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     publish(store, "prior")
     with store.begin("imported") as stage:
         artifact = stage.write_json("source.json", source_document(), contract="source")
@@ -403,7 +407,7 @@ def test_explicit_nonpromotion_retains_last_completed_but_records_attempt(
 
 
 def test_claimed_verification_without_checker_is_downgraded(tmp_path: Path) -> None:
-    with RunStore(tmp_path / "output").begin("claim") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin("claim") as stage:
         artifact = stage.write_json("source.json", source_document(), contract="source")
         manifest = manifest_document()
         manifest.update(
@@ -415,7 +419,7 @@ def test_claimed_verification_without_checker_is_downgraded(tmp_path: Path) -> N
 
 
 def test_published_run_is_closed_to_api_mutations(tmp_path: Path) -> None:
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with store.begin("immutable") as stage:
         artifact = stage.write_json("source.json", source_document(), contract="source")
         manifest = manifest_document()
@@ -431,7 +435,7 @@ def test_published_run_is_closed_to_api_mutations(tmp_path: Path) -> None:
 
 
 def test_unregistered_staged_file_is_not_silently_published(tmp_path: Path) -> None:
-    with RunStore(tmp_path / "output").begin("extra") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin("extra") as stage:
         artifact = stage.write_json("source.json", source_document(), contract="source")
         (stage.path / "unregistered.txt").write_text("not in manifest")
         manifest = manifest_document()
@@ -458,13 +462,13 @@ def test_writer_lock_is_exclusive_across_processes(tmp_path: Path) -> None:
     child_environment["PYTHONPATH"] = os.pathsep.join(
         [package_parent] + ([inherited_path] if inherited_path else [])
     )
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     program = """
 import sys
 from cppulse.errors import PublicationConflict
 from cppulse.run_store import RunStore
 try:
-    RunStore(sys.argv[1]).begin('competing-process')
+    RunStore(sys.argv[1],format_version="2.0.0").begin('competing-process')
 except PublicationConflict:
     sys.exit(0)
 sys.exit(1)
@@ -489,7 +493,7 @@ def test_full_policy_assessment_bundle_publication(
     policy, assessment = passed_policy_assessment()
     if policy_mismatch:
         assessment["policy"]["sha256"] = "0" * 64
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with store.begin("run-1") as stage:
         documents = [
             ("findings", "source", source_document()),
@@ -523,7 +527,7 @@ def test_full_policy_assessment_bundle_publication(
 
 def test_multiple_policy_artifacts_are_explicitly_rejected(tmp_path: Path) -> None:
     policy, _ = passed_policy_assessment()
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
     with store.begin("policies") as stage:
         stage.write_json("one.json", policy, artifact_id="one", contract="policy")
         stage.write_json("two.json", policy, artifact_id="two", contract="policy")
@@ -547,7 +551,9 @@ def test_artifact_id_path_cross_aliases_are_rejected(
     tmp_path: Path, first_id: str, first_path: str, second_id: str, second_path: str
 ) -> None:
     """ID-or-path reads must never acquire an ambiguous inventory reference."""
-    with RunStore(tmp_path / "output").begin("aliases") as stage:
+    with RunStore(tmp_path / "output", format_version="2.0.0").begin(
+        "aliases"
+    ) as stage:
         stage.write_json(
             first_path, source_document(), artifact_id=first_id, contract="source"
         )
@@ -570,7 +576,7 @@ def test_real_source_verification_rejects_same_size_input_mutation(
     selected = source_root / "main.cpp"
     selected.write_text("int main() { return 0; }\n")
     source = snapshot_inputs(source_root, ["main.cpp"])
-    store = RunStore(tmp_path / "output")
+    store = RunStore(tmp_path / "output", format_version="2.0.0")
 
     def check_selected_source() -> None:
         errors = verify_inputs(source_root, source)

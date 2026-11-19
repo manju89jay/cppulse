@@ -7,13 +7,14 @@ was locally collected. Empty reports never prove a completed clean analysis.
 from __future__ import annotations
 
 from copy import deepcopy
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime, timezone
 import json
 from pathlib import Path
 import tempfile
 from typing import Any, Mapping, Sequence
 
+from cppulse.adapters import gcc_diagnostics as _gcc
 from cppulse.adapters.gcc_diagnostics import parse_gcc_json
 from cppulse.contracts import validate
 from cppulse.errors import ContractError, InputChanged, IntegrityError
@@ -22,7 +23,7 @@ from cppulse.run_store import RunSnapshot, RunStore
 from cppulse.transfer import ImportedRun
 
 
-def normalize_gcc_import(
+def normalize_external_import(
     snapshot: RunSnapshot | ImportedRun,
     *,
     report_artifact_id: str,
@@ -30,6 +31,7 @@ def normalize_gcc_import(
     source_root: str,
     scope_files: Sequence[str],
     producer: Mapping[str, str] | None = None,
+    adapter: str = "gcc-json",
 ) -> dict[str, Any]:
     """Normalize checked report bytes, preserving import origin and every occurrence.
 
@@ -48,18 +50,59 @@ def normalize_gcc_import(
         ContractError: Invalid scope/context or unsupported metadata.
         IntegrityError: Changed, missing or corrupt snapshot bytes.
     """
+    profiles = {"gcc-json": ("gcc", parse_gcc_json)}
+    if adapter != "gcc-json":
+        from cppulse.adapters.external_analyzers import (
+            parse_clang_tidy_text,
+            parse_cppcheck_xml,
+        )
+
+        profiles.update(
+            {
+                "clang-tidy-text": ("clang-tidy", parse_clang_tidy_text),
+                "cppcheck-xml": ("cppcheck", parse_cppcheck_xml),
+            }
+        )
+    if adapter not in profiles:
+        raise ContractError("Unsupported external diagnostic adapter")
+    namespace, parser = profiles[adapter]
     snapshot.verify()
     manifest = snapshot.manifest
     if context_id not in {context["id"] for context in manifest["contexts"]}:
         raise ContractError("Imported diagnostic context is not declared")
     if not set(scope_files) <= {row["path"] for row in manifest["source"]["files"]}:
         raise ContractError("Imported diagnostic scope is outside the source manifest")
-    report = parse_gcc_json(
-        snapshot.read_bytes(report_artifact_id),
-        source_root=source_root,
-        scope_files=scope_files,
-        producer=producer,
-    )
+    matches = [row for row in manifest["artifacts"] if row["id"] == report_artifact_id]
+    if len(matches) != 1:
+        raise IntegrityError(
+            "Imported report must select one exact declared artifact ID"
+        )
+    entry = matches[0]
+    if entry["size_bytes"] > _gcc.MAX_REPORT_BYTES:
+        # The archive verification above SHA-checks this descriptor's bytes
+        # without materializing the opaque body. An unavailable adapter result
+        # needs that checked identity, not a fabricated parsed payload.
+        metadata = parser(
+            b"", source_root=source_root, scope_files=scope_files, producer=producer
+        )
+        report = replace(
+            metadata,
+            usability="unsupported",
+            diagnostics=(),
+            report_sha256=entry["sha256"],
+            size_bytes=entry["size_bytes"],
+            limitations=(
+                metadata.limitations[0],
+                "Diagnostic report byte limit exceeded; archive identity verified, oversized adapter body was not materialized.",
+            ),
+        )
+    else:
+        report = parser(
+            snapshot.read_bytes(report_artifact_id),
+            source_root=source_root,
+            scope_files=scope_files,
+            producer=producer,
+        )
     identity = {
         "source_digest": manifest["source"]["digest"],
         "context_id": context_id,
@@ -70,12 +113,16 @@ def normalize_gcc_import(
         "producer": {"name": report.producer_name, "version": report.producer_version},
         "adapter": {"name": report.adapter, "version": report.adapter_version},
     }
-    identifier = "gcc-import-" + digest_json(identity)
+    identifier = namespace + "-import-" + digest_json(identity)
     observations = []
     for index, observation in enumerate(report.diagnostics):
         row = asdict(observation)
-        row["id"] = "gcc-occurrence-" + digest_json(
-            {"fact": identifier, "index": index, "fingerprint": row["fingerprint"]}
+        row["id"] = (
+            namespace
+            + "-occurrence-"
+            + digest_json(
+                {"fact": identifier, "index": index, "fingerprint": row["fingerprint"]}
+            )
         )
         observations.append(row)
     result = {
@@ -86,7 +133,7 @@ def normalize_gcc_import(
         "origin": "import",
         "producer": identity["producer"],
         "adapter": identity["adapter"],
-        "producer_namespace": "gcc",
+        "producer_namespace": namespace,
         "report_artifact_id": report_artifact_id,
         "receipt_id": None,
         "producer_version_receipt_id": None,
@@ -102,10 +149,11 @@ def normalize_gcc_import(
         ],
     }
     validate("external_analysis_facts", result)
+    snapshot.verify()
     return result
 
 
-def persist_gcc_import(
+def persist_external_import(
     snapshot: RunSnapshot,
     *,
     workspace: str | Path,
@@ -131,10 +179,11 @@ def persist_gcc_import(
         raise ContractError(
             "Import into an unassessed collection, then assess the derived facts"
         )
-    document = normalize_gcc_import(snapshot, **selection)
+    document = normalize_external_import(snapshot, **selection)
     identifier = document["id"]
 
     def source_check() -> None:
+        snapshot.verify()
         issues = verify_inputs(Path(workspace), parent["source"])
         if issues:
             raise InputChanged(
@@ -171,7 +220,7 @@ def persist_gcc_import(
             artifact_id=identifier,
         )
         derivation = {
-            "operation": "import-gcc-json",
+            "operation": "import-" + document["adapter"]["name"],
             "parent_run_id": snapshot.run_id,
             "parent_manifest_sha256": snapshot.manifest_sha256,
             "created_at": datetime.now(timezone.utc).isoformat(),
@@ -211,10 +260,97 @@ def persist_gcc_import(
                 + document["usability"],
             }
         )
-        manifest["versions"]["gcc-json-import"] = "1.0.0"
+        manifest["versions"][document["adapter"]["name"] + "-import"] = "1.0.0"
         manifest["limitations"].append(
             "A derived import retains its parent's execution window and imported producer claims; no completed external scan or independent confirmation is inferred."
         )
         result = stage.publish(manifest, source_check=source_check)
     result.verify()
+    return result
+
+
+def normalize_gcc_import(
+    snapshot: RunSnapshot | ImportedRun, **selection: Any
+) -> dict[str, Any]:
+    """Compatibility API for the frozen GNU14.2 JSON import profile."""
+    return normalize_external_import(snapshot, **selection, adapter="gcc-json")
+
+
+def persist_gcc_import(
+    snapshot: RunSnapshot, *, workspace: str | Path, store: RunStore, **selection: Any
+) -> RunSnapshot:
+    """Publish the unchanged GCC profile through the shared import boundary."""
+    return persist_external_import(
+        snapshot, workspace=workspace, store=store, **selection, adapter="gcc-json"
+    )
+
+
+def external_relationships(
+    facts: Sequence[Mapping[str, Any]], native: Sequence[Mapping[str, Any]] = ()
+) -> list[dict[str, Any]]:
+    """Describe repeated diagnostics/potential location overlap, never confidence.
+
+    A shared line is a candidate relationship, not proof of an equivalent defect.
+    Equal imported bytes/fingerprints identify claims, not independent producers.
+    Original occurrences remain intact. This index uses linear storage rather than
+    constructing a quadratic list of pairwise confirmations.
+    """
+    groups: dict[tuple[str, str, int], list[dict[str, Any]]] = {}
+    for fact in facts:
+        for row in fact["observations"]:
+            key = (fact["context_id"], row["file"], row["line"])
+            groups.setdefault(key, []).append(
+                {
+                    "fact_id": fact["id"],
+                    "observation_id": row["id"],
+                    "producer_namespace": fact["producer_namespace"],
+                    "origin": "import",
+                    "fingerprint": row["fingerprint"],
+                    "signature": (
+                        fact["producer_namespace"],
+                        fact["producer"]["name"],
+                        fact["producer"]["version"],
+                        row["fingerprint"],
+                    ),
+                }
+            )
+    for observations in native:
+        for row in observations["items"]:
+            key = (row["context_id"], row["file"], row["line"])
+            if key in groups:
+                groups[key].append(
+                    {
+                        "fact_id": observations.get("analysis_inventory_id", "native"),
+                        "observation_id": row["id"],
+                        "producer_namespace": "native",
+                        "origin": "native_observation",
+                        "fingerprint": row["fingerprint"],
+                        "signature": (
+                            "native",
+                            row["producer"]["name"],
+                            row["producer"]["version"],
+                            row["fingerprint"],
+                        ),
+                    }
+                )
+    result = []
+    for (context, file, line), rows in sorted(groups.items()):
+        if len(rows) < 2:
+            continue
+        repeated = len({row["signature"] for row in rows}) == 1
+        result.append(
+            {
+                "context_id": context,
+                "file": file,
+                "line": line,
+                "classification": "repeated_diagnostic"
+                if repeated
+                else "potential_location_overlap",
+                "occurrences": [
+                    {k: v for k, v in row.items() if k != "signature"} for row in rows
+                ],
+                "independent_confirmation": False,
+                "confidence_adjustment": 0,
+            }
+        )
     return result

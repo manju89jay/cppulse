@@ -101,7 +101,7 @@ def test_cancelled_capture_retains_a_pin_without_executing(tmp_path: Path) -> No
     assert result["status"] == "cancelled" and result["exit_code"] == 130
     assert result["raw_run"]["status"] == "cancelled"
     assert not (tmp_path / "EXECUTED").exists()
-    assert not (tmp_path / "store/latest.json").exists()
+    assert RunStore.open_existing(tmp_path / "store").resolve_heads()[1] is None
 
 
 def test_request_control_size_limit_is_checked_before_commands(tmp_path: Path) -> None:
@@ -197,7 +197,9 @@ def test_native_routing_uses_original_receipt_roles_and_typed_producer(
     from test_public_workflow_contracts import normalizer
     import cppulse.workflows as workflows
 
-    snapshot, selection = native_snapshot(tmp_path)
+    from tests.native_buffer_fixture import add_parsed_buffer_fixture
+
+    snapshot, selection = native_snapshot(tmp_path, mutate=add_parsed_buffer_fixture)
     request = frozen_request(snapshot)
     item = normalizer("native_analysis")
     item.update(
@@ -242,6 +244,7 @@ def test_native_routing_uses_original_receipt_roles_and_typed_producer(
     assert {row["kind"] for row in result["normalizers"][0]["fact_artifacts"]} == {
         "analysis_inventory",
         "observations",
+        "analysis_metrics",
     }
     final = RunStore.open_existing(snapshot.path.parents[1]).open_run(
         result["final_run"]["run_id"]
@@ -249,6 +252,11 @@ def test_native_routing_uses_original_receipt_roles_and_typed_producer(
     assert (
         documents(final, "analysis_inventory")[0]["items"][0]["context_match"]
         == "matched"
+    )
+    assert all(
+        cell["availability"] == "unavailable"
+        for document in documents(final, "analysis_metrics")
+        for cell in document["items"]
     )
 
 

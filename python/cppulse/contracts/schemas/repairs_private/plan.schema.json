@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/repairs_private/plan.schema.json",
+  "title": "Finite native-bound dry-run repair plan, private v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "id",
+    "method",
+    "run",
+    "source_digest",
+    "status",
+    "edits",
+    "rejected",
+    "diff",
+    "diff_sha256",
+    "limitations"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^repair-[a-f0-9]{64}$"
+    },
+    "method": {
+      "const": "cppulse-builtin-typedef-to-using-v1"
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "manifest_sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "manifest_sha256": {
+          "$ref": "#/definitions/hash"
+        }
+      }
+    },
+    "source_digest": {
+      "$ref": "#/definitions/hash"
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "no_changes"
+      ]
+    },
+    "edits": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "before_sha256",
+          "after_sha256",
+          "start_byte",
+          "end_byte",
+          "before",
+          "after",
+          "observations"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "before_sha256": {
+            "$ref": "#/definitions/hash"
+          },
+          "after_sha256": {
+            "$ref": "#/definitions/hash"
+          },
+          "start_byte": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1048576
+          },
+          "end_byte": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1048576
+          },
+          "before": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "after": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 64,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "context_id",
+                "job_context_id",
+                "inventory_id",
+                "receipt_id",
+                "rule_version",
+                "registry_sha256",
+                "report_artifact_id",
+                "report_sha256"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "context_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "job_context_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "inventory_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "receipt_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "rule_version": {
+                  "const": "prototype-1"
+                },
+                "registry_sha256": {
+                  "$ref": "#/definitions/hash"
+                },
+                "report_artifact_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "report_sha256": {
+                  "$ref": "#/definitions/hash"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rejected": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "observation_id",
+          "reason"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "diff": {
+      "type": "string",
+      "maxLength": 4194304
+    },
+    "diff_sha256": {
+      "$ref": "#/definitions/hash"
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "definitions": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

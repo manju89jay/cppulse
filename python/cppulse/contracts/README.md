@@ -13,9 +13,14 @@ source/context/artifact identities without introducing another primary subject
 into a run. A schema is not qualification of every producer or platform.
 
 Policy evaluator_profile is absent for the original 1.0.0 behavior. Explicit
-1.1.0 adds typed minimum_coverage and sanitizer_outcome parameters; generic metric
-and review predicates remain unsupported. An assessment identifies the same
-evaluator profile and links typed verification through control fact_ids.
+1.1.0 adds typed minimum_coverage and sanitizer_outcome parameters. Explicit
+1.2.0 additionally evaluates numeric metric thresholds per file/job and current
+scoped declared reviews. Reviews require exact required-artifact SHA-256 bindings
+for a positive result; older review records without hashes remain readable and
+evaluate unknown. Configured reviewer IDs are not authenticated identities.
+Earlier profiles retain their original capability boundary. An assessment
+identifies the same evaluator profile and links typed verification/metrics
+through control fact_ids.
 
 The public workflow boundary additionally uses collection_request,
 workflow_result, check_result and assessment_lineage. Requests select finite

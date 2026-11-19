@@ -20,6 +20,7 @@ import shutil
 import subprocess
 import tarfile
 import tempfile
+import time
 from typing import Any, Mapping
 
 from cppulse import __version__
@@ -28,6 +29,90 @@ from cppulse.contracts import validate
 
 class NativePackageError(ValueError):
     """A native candidate cannot be built, relocated or honestly qualified."""
+
+
+def _verify_supervisor(helper: Path, native: Path, working: Path) -> dict[str, Any]:
+    """Exercise the exact installed helper and native bytes outside the checkout."""
+    output = working / "supervisor-output"
+    output.mkdir(mode=0o700)
+    status = output / ".cppulse-native-status.json"
+    process = subprocess.Popen(
+        [str(helper), str(status), str(native), "--help"],
+        cwd=working,
+        env=_runtime_environment(),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    try:
+        deadline = time.monotonic() + 10
+        while (
+            not status.exists()
+            and process.poll() is None
+            and time.monotonic() < deadline
+        ):
+            time.sleep(0.01)
+        if not status.is_file() or process.poll() is not None:
+            raise NativePackageError(
+                "Installed supervisor did not retain a completed native status"
+            )
+        from cppulse.frozen_container import _native_status
+
+        observed = _native_status(status.read_bytes())
+        if (
+            observed["native_exit_code"] != 0
+            or observed["native_exec_errno"] is not None
+        ):
+            raise NativePackageError(
+                "Installed supervisor native help execution failed"
+            )
+        read = subprocess.run(
+            [str(helper), "--read-status", str(status)],
+            cwd=working,
+            env=_runtime_environment(),
+            capture_output=True,
+            timeout=5,
+            check=True,
+        )
+        if read.stdout != status.read_bytes():
+            raise NativePackageError("Installed helper returned different status bytes")
+        collected = subprocess.run(
+            [str(helper), "--archive-output", str(output)],
+            cwd=working,
+            env=_runtime_environment(),
+            capture_output=True,
+            timeout=5,
+            check=True,
+        )
+        if len(collected.stdout) > 16 * 1024**2:
+            raise NativePackageError("Installed helper exceeded its archive boundary")
+        import io
+
+        with tarfile.open(fileobj=io.BytesIO(collected.stdout), mode="r:") as archive:
+            if archive.extractfile(status.name).read() != read.stdout:
+                raise NativePackageError(
+                    "Installed helper archive changed status bytes"
+                )
+            if b"--repo" not in archive.extractfile(".cppulse-native.stdout").read():
+                raise NativePackageError(
+                    "Installed helper did not retain original native help output"
+                )
+            stderr = archive.extractfile(".cppulse-native.stderr").read()
+        return {
+            "status": "passed",
+            "sha256": _sha256(helper),
+            "native_exit_code": 0,
+            "output_archive_sha256": hashlib.sha256(collected.stdout).hexdigest(),
+            "native_stderr_sha256": hashlib.sha256(stderr).hexdigest(),
+            "qualification": "Installed helper and native help only; no container, aggregate limits or runtime closure qualification.",
+        }
+    finally:
+        if process.poll() is None:
+            process.terminate()
+        try:
+            process.communicate(timeout=5)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.communicate(timeout=5)
 
 
 def _run(
@@ -189,7 +274,7 @@ def _verify_relocation(
             raise NativePackageError(
                 f"Installed standard-library parse is incomplete: {files!r}"
             )
-        return {
+        verification = {
             "relocation": "passed",
             "prefix_with_spaces": True,
             "loader_overrides_removed": True,
@@ -197,6 +282,12 @@ def _verify_relocation(
             "parse_errors": 0,
             "rpath": expected,
         }
+        helper = binary.with_name("cppulse-runtime-supervisor")
+        if helper.is_file():
+            verification["runtime_supervisor"] = _verify_supervisor(
+                helper, binary, working
+            )
+        return verification
 
 
 def build_package(
@@ -250,6 +341,40 @@ def build_package(
     )
     binary = build_dir / "cppulse-analyzer"
     dependencies = _dependencies(binary)
+    cache = (build_dir / "CMakeCache.txt").read_text(encoding="utf-8")
+    selection = re.search(
+        r"^CPPULSE_BUILD_RUNTIME_SUPERVISOR:[^=]+=(.*)$", cache, re.MULTILINE
+    )
+    enabled = selection.group(1).strip().upper() if selection else "OFF"
+    if enabled not in {
+        "",
+        "0",
+        "OFF",
+        "FALSE",
+        "NO",
+        "N",
+        "IGNORE",
+        "NOTFOUND",
+    } and not enabled.endswith("-NOTFOUND"):
+        _run(
+            [
+                cmake,
+                "--build",
+                str(build_dir),
+                "--target",
+                "cppulse-runtime-supervisor",
+                "-j",
+                str(jobs),
+            ]
+        )
+        for name, path in _dependencies(
+            build_dir / "cppulse-runtime-supervisor"
+        ).items():
+            if name in dependencies and _sha256(dependencies[name]) != _sha256(path):
+                raise NativePackageError(
+                    "Selected analyzer and supervisor runtime bytes conflict"
+                )
+            dependencies[name] = path
     clang = next(
         (name for name in dependencies if re.match(r"libclang-\d+\.so", name)), None
     )

@@ -264,6 +264,19 @@ def build_snapshot_view(
             )
         ),
     }
+    from cppulse.external import external_relationships
+
+    external = [
+        documents[f["artifact_id"]]
+        for f in facts
+        if f["kind"] == "external_analysis_facts"
+    ]
+    native = [documents[f["artifact_id"]] for f in facts if f["kind"] == "observations"]
+    if external:
+        view["external_relationships"] = external_relationships(external, native)
+        view["limitations"].append(
+            "External repeated diagnostics and potential location overlaps are retained claims, not independent confirmation. Hashes bind report bytes, not producer authenticity; confidence is not increased."
+        )
     view["gaps"] = _gaps(view, documents)
     validate("snapshot_view", view)
     return view
@@ -307,10 +320,15 @@ def _render_details(view: dict[str, Any]) -> dict[str, Any]:
     fact_refs: dict[str, list[str]] = {}
     native_rows = []
     external_rows = []
+    test_imports = []
     analysis = []
     coverage = []
     sanitizers = []
     comparisons = []
+    measured_health = []
+    measured_metrics = []
+    evidence_records = []
+    evidence_record_count = 0
     for fact, raw in records:
         identifier = fact["artifact_id"]
         kind = fact["kind"]
@@ -329,7 +347,14 @@ def _render_details(view: dict[str, Any]) -> dict[str, Any]:
             labels[identifier] = raw["id"] + " receipt"
         elif kind == "evidence":
             for record in raw["records"]:
+                evidence_record_count += 1
+                if len(evidence_records) < 50:
+                    evidence_records.append(
+                        {"record": record, "artifact_id": identifier}
+                    )
                 evidence_refs.setdefault(record["id"], []).append(identifier)
+                if "import_adapter" in record:
+                    test_imports.append(record)
             labels[identifier] = "Recorded evidence"
         elif kind == "observations":
             inventory = inventories.get(raw.get("analysis_inventory_id"), {})
@@ -358,6 +383,12 @@ def _render_details(view: dict[str, Any]) -> dict[str, Any]:
         elif kind == "analysis_inventory":
             labels[identifier] = "Analysis inventory: " + raw["job_context_id"]
             analysis.append({"fact": raw, "artifact_id": identifier})
+        elif kind == "maintenance_health":
+            labels[identifier] = "Measured maintenance health: " + raw["scorer"]["id"]
+            measured_health.append({"fact": raw, "artifact_id": identifier})
+        elif kind == "analysis_metrics":
+            labels[identifier] = "Measured metrics: " + raw["job_context_id"]
+            measured_metrics.append({"fact": raw, "artifact_id": identifier})
         elif kind == "coverage_facts":
             labels[identifier] = "Coverage: " + raw["context_id"]
             coverage.append({"fact": raw, "artifact_id": identifier})
@@ -398,10 +429,15 @@ def _render_details(view: dict[str, Any]) -> dict[str, Any]:
         "references": references,
         "native_rows": native_rows,
         "external_rows": external_rows,
+        "test_imports": test_imports,
+        "evidence_records": evidence_records,
+        "evidence_record_count": evidence_record_count,
         "analysis": analysis,
         "coverage": coverage,
         "sanitizers": sanitizers,
         "comparisons": comparisons,
+        "measured_health": measured_health,
+        "measured_metrics": measured_metrics,
     }
 
 

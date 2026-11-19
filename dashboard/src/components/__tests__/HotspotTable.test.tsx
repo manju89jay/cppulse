@@ -71,3 +71,17 @@ describe("HotspotTable", () => {
     expect(screen.getByText("src/main.cpp")).toBeInTheDocument();
   });
 });
+
+it("identifies measured CC and retains stored producer values", () => {
+  render(<HotspotTable hotspots={sampleHotspots} method="measured-cc-physical-kloc-v1" />);
+  expect(screen.getByText(/Maximum CC/)).toBeInTheDocument();
+  expect(screen.getByText(/physical KLOC/)).toBeInTheDocument();
+  expect(screen.getByText("184.50")).toBeInTheDocument();
+  expect(screen.queryByText(/Historical severity proxy/)).not.toBeInTheDocument();
+});
+
+it("labels old reports as a severity proxy", () => {
+  render(<HotspotTable hotspots={sampleHotspots} />);
+  expect(screen.getByText(/Historical severity proxy/)).toBeInTheDocument();
+  expect(screen.queryByText(/Maximum CC/)).not.toBeInTheDocument();
+});

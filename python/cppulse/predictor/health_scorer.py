@@ -81,8 +81,21 @@ class HealthScorer:
 
         Returns:
             HealthScore with overall score and by_category breakdown.
+
+        Bare frames retain the historical calibration-math API. They do not
+        establish full-scope analysis; public risk output requires the explicit
+        FeatureEngineer prerequisite attributes before publishing these values.
         """
-        if features_df.empty:
+        declared = features_df.attrs.get("health_availability")
+        if features_df.empty or (
+            declared is not None
+            and (
+                declared != "scored"
+                or features_df.attrs.get("health_profile") != self.profile_name
+                or features_df.attrs.get("health_prerequisites")
+                != "normalized-required-context-v4"
+            )
+        ):
             return HealthScore(
                 overall=None,
                 by_category={cat: None for cat in self._profile["categories"]},

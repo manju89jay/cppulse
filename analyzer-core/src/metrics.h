@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <filesystem>
+#include <iosfwd>
 #include <nlohmann/json.hpp>
 
 #include "analysis_coverage.h"
@@ -29,6 +30,9 @@ namespace cppulse {
 
 /** @brief Serialize all native observations, retaining unavailable inventory rows. */
 [[nodiscard]] nlohmann::json native_metrics_document(const AnalysisCoverage& coverage);
+
+/** @brief Stream native facts without copying the retained metric inventory. */
+void write_native_metrics(std::ostream& stream, const AnalysisCoverage& coverage);
 
 }  // namespace cppulse
 #endif

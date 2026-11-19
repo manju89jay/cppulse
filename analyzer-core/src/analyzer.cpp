@@ -4,6 +4,7 @@
  */
 
 #include "analyzer.h"
+#include "generated_rule_registration.h"
 #include "native_execution_limits.h"
 
 #include <clang-c/CXCompilationDatabase.h>
@@ -34,12 +35,13 @@ std::string to_string_and_dispose(CXString cx_str) {
 }
 
 /// @brief Check if a rule is enabled per the project config.
-bool is_rule_enabled(const std::string& rule_id, const std::optional<ProjectConfig>& config) {
+bool is_rule_enabled(const std::string& rule_id, const std::optional<ProjectConfig>& config,
+                     bool default_enabled) {
     if (!config.has_value())
-        return true;
+        return default_enabled;
     const auto it = config->rules.find(rule_id);
     if (it == config->rules.end())
-        return true;
+        return default_enabled;
     return it->second.enabled;
 }
 
@@ -63,60 +65,17 @@ void apply_thresholds(Rule& rule, const std::optional<ProjectConfig>& config) {
 /// @brief Build the set of analysis rules, applying config overrides.
 std::vector<AnyRule> make_rules(const std::optional<ProjectConfig>& config) {
     std::vector<AnyRule> rules;
-    rules.reserve(22);
-
-    // Helper lambda to conditionally add a rule.
-    auto add_rule = [&](auto rule) {
+    rules.reserve(generated_native_rule_count);
+    auto add_rule = [&](auto rule, bool default_enabled) {
         const std::string id{rule.rule_id()};
-        if (is_rule_enabled(id, config)) {
+        if (is_rule_enabled(id, config, default_enabled)) {
             rules.emplace_back(std::move(rule));
         } else {
             spdlog::info("Rule {} disabled by config", id);
         }
     };
-
-    // Memory Safety
-    add_rule(RawPointerOwnershipRule{});
-    add_rule(ManualMemoryMgmtRule{});
-    add_rule(UnsafeArrayAccessRule{});
-
-    // Modernization
-    add_rule(CStyleCastRule{});
-    add_rule(DeprecatedHeadersRule{});
-    add_rule(MissingOverrideRule{});
-    add_rule(RawStringLiteralRule{});
-    add_rule(AutoUsageRule{});
-    add_rule(RangeForRule{});
-    add_rule(NullptrUsageRule{});
-    add_rule(EnumClassRule{});
-    add_rule(UsingVsTypedefRule{});
-
-    // Complexity — apply threshold overrides.
-    {
-        CyclomaticComplexityRule r;
-        apply_thresholds(r, config);
-        add_rule(std::move(r));
-    }
-    {
-        FunctionLengthRule r;
-        apply_thresholds(r, config);
-        add_rule(std::move(r));
-    }
-    {
-        ParameterCountRule r;
-        apply_thresholds(r, config);
-        add_rule(std::move(r));
-    }
-
-    // MISRA
-    add_rule(NoGotoRule{});
-    add_rule(NoImplicitConversionRule{});
-    add_rule(NoUnionRule{});
-    add_rule(NoDynamicAllocRule{});
-    add_rule(NoRecursionRule{});
-    add_rule(SingleExitRule{});
-    add_rule(InitAllVarsRule{});
-
+    auto apply_config = [&](auto& rule) { apply_thresholds(rule, config); };
+    register_generated_native_rules(add_rule, apply_config);
     return rules;
 }
 

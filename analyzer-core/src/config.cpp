@@ -18,6 +18,7 @@
 #include <stdexcept>
 
 #include "rule_engine.h"
+#include "generated_rule_registration.h"
 
 namespace cppulse {
 
@@ -124,8 +125,9 @@ ProjectConfig parse_settings(const nlohmann::json& doc) {
             if (!known_rule(id)) {
                 throw std::runtime_error("Unknown rule ID: " + id);
             }
-            require_keys(props, {"enabled", "warning_threshold", "error_threshold"}, "rule " + id);
+            require_keys(props, generated_native_rule_options(id), "rule " + id);
             RuleConfig rule;
+            rule.enabled = generated_native_rule_default_enabled(id);
             if (props.contains("enabled")) {
                 if (!props["enabled"].is_boolean()) {
                     throw std::runtime_error(id + ".enabled must be a boolean");

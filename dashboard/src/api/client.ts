@@ -12,7 +12,7 @@ interface WireSummary {
   health_score: WireHealth;
   findings_summary: { total_findings: number };
   metadata: { repo_path: string; analyzed_at: string };
-  model_metadata?: { model_type: string; profile: string; experimental: boolean; limitations?: string[] };
+  model_metadata?: Summary["model_metadata"];
 }
 function healthView(health: WireHealth, limitations: string[] = []): HealthScore {
   return {
@@ -52,7 +52,7 @@ export async function fetchHotspots(): Promise<Hotspot[]> { return (await apiFet
 export async function fetchRisks(): Promise<RiskScores> {
   const [summary, risks, hotspots] = await Promise.all([apiFetch<WireSummary>("/summary"),
     apiFetch<Envelope<Omit<FileRisk, "top_factors"> & { top_factors: {feature: string; importance: number; value: number}[] }> & {unranked_files?: UnrankedFile[]; ranking_scope?: RankingScope | null}>("/risks"), fetchHotspots()]);
-  return { health_score: healthView(summary.health_score, summary.model_metadata?.limitations), hotspots,
+  return { hotspot_method: summary.model_metadata?.hotspot_method, health_score: healthView(summary.health_score, summary.model_metadata?.limitations), hotspots,
     unranked_files: risks.unranked_files ?? [], ranking_scope: risks.ranking_scope,
     file_risks: risks.items.map(r => ({...r, top_factors: r.top_factors.map(f => f.feature)})) };
 }
@@ -121,6 +121,7 @@ export function legacySections(slots: LegacySlots): {
   const historyLimitations = git?.metadata?.limitations ?? [];
   const silos = git?.knowledge_silos.map(item => ({ ...item, last_commit: item.last_commit_date })) ?? null;
   const risks = risk ? {
+    hotspot_method: risk.metadata?.hotspot_method,
     health_score: healthView(risk.health_score, risk.metadata?.limitations),
     hotspots: risk.hotspots,
     unranked_files: risk.unranked_files ?? [], ranking_scope: risk.metadata?.ranking_scope,

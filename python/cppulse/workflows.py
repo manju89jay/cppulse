@@ -33,10 +33,12 @@ from cppulse.identities import snapshot_inputs, verify_inputs
 from cppulse.run_store import RunSnapshot, RunStore
 
 _FACTS = {
-    "native_analysis": {"analysis_inventory", "observations"},
+    "native_analysis": {"analysis_inventory", "observations", "analysis_metrics"},
     "coverage": {"coverage_facts"},
     "sanitizer": {"sanitizer_facts"},
     "gcc_import": {"external_analysis_facts"},
+    "external_import": {"external_analysis_facts"},
+    "test_import": {"evidence"},
 }
 
 
@@ -437,6 +439,33 @@ def _normalize(
         return persist_gcc_sanitizer(
             snapshot, workspace=workspace, store=store, selection=selection
         )
+    if kind == "test_import":
+        from cppulse.test_import import persist_test_import
+
+        return persist_test_import(
+            snapshot,
+            workspace=workspace,
+            store=store,
+            adapter=item["adapter"],
+            report_artifact_id=_role(snapshot, item["report"]),
+            context_id=item["context_id"],
+            scope_files=item["scope_files"],
+            producer=item["producer"],
+        )
+    if kind == "external_import":
+        from cppulse.external import persist_external_import
+
+        return persist_external_import(
+            snapshot,
+            workspace=workspace,
+            store=store if isinstance(store, RunStore) else RunStore(store),
+            adapter=item["adapter"],
+            report_artifact_id=_role(snapshot, item["report"]),
+            context_id=item["context_id"],
+            source_root=item["source_root"],
+            scope_files=item["scope_files"],
+            producer=item["producer"],
+        )
     from cppulse.external import persist_gcc_import
 
     runtime = store if isinstance(store, RunStore) else RunStore(store)
@@ -466,14 +495,23 @@ def _record(
                 {"kind": kind, "artifact_id": entry["id"], "id": value.get("id")}
             )
             values.append(value)
+    usabilities = [value["usability"] for value in values if "usability" in value]
+    usabilities.extend(
+        record["usability"]
+        for value in values
+        for record in value.get("records", [])
+        if "usability" in record
+    )
+    usability = next(
+        (value for value in usabilities if value != "usable"),
+        "usable" if usabilities else None,
+    )
     return {
         "id": item["id"],
         "kind": item["kind"],
         "status": "completed",
         "outcome": next((row["outcome"] for row in values if "outcome" in row), None),
-        "usability": next(
-            (row["usability"] for row in values if "usability" in row), None
-        ),
+        "usability": usability,
         "fact_artifacts": facts,
         "run": run_reference(child),
         "reason": "Accepted normalizer retained typed facts; this is not a policy gate.",

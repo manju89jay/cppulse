@@ -11,6 +11,7 @@ import json
 import logging
 import math
 import sys
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -78,6 +79,31 @@ def _load_json(path: Path) -> dict[str, Any]:
         sys.exit(1)
 
 
+def _szz_label_mask(features_df: pd.DataFrame) -> pd.Series:
+    """Identify declared SZZ observations without confusing absent and zero."""
+    if "szz_bug_introductions" not in features_df.columns:
+        return pd.Series(False, index=features_df.index, dtype=bool)
+    present = features_df["szz_bug_introductions"].notna()
+    observed = features_df.attrs.get("szz_observed_files")
+    if observed is not None:
+        if "file" not in features_df.columns:
+            raise ValueError("Declared SZZ provenance requires file identities")
+        present = present & features_df["file"].isin(observed)
+    return present
+
+
+def _label_source(features_df: pd.DataFrame) -> str:
+    """Describe the labels used for this exact eligible training cohort."""
+    if features_df.empty:
+        return "unavailable"
+    mask = _szz_label_mask(features_df)
+    if mask.all():
+        return "szz"
+    if mask.any():
+        return "mixed_szz_and_feature_derived_heuristic"
+    return "feature_derived_heuristic"
+
+
 def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Series:
     """Derive training labels from git history.
 
@@ -99,22 +125,26 @@ def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Se
     Returns:
         Binary pandas Series of integer labels (0 or 1).
     """
-    if (
-        "szz_bug_introductions" in features_df.columns
-        and features_df["szz_bug_introductions"].sum() > 0
-    ):
+    if features_df.empty:
+        return pd.Series(index=features_df.index, dtype=int)
+    observed = _szz_label_mask(features_df)
+    if observed.all():
         return (features_df["szz_bug_introductions"] >= 1).astype(int)
 
     logger.warning(
-        "No SZZ bug-introduction data in git_metrics — falling back to "
-        "heuristic labels (memory findings / bug-fix commits). CV metrics "
-        "will be optimistic; re-run git-miner to produce SZZ labels."
+        "Some eligible files lack declared SZZ observations — falling back to "
+        "heuristic labels for those files (memory findings / bug-fix commits). "
+        "CV metrics can be optimistic because heuristic labels overlap model inputs; proxy-label evaluation is not future-defect validation."
     )
     buggy = (features_df["memory_findings"] >= 1) | (
         features_df["bug_fix_commits"] >= 3
     )
     if profile == "safety-critical":
         buggy = buggy | (features_df["misra_findings"] >= 1)
+    if observed.any():
+        buggy.loc[observed] = (
+            features_df.loc[observed, "szz_bug_introductions"] >= 1
+        )
     return buggy.astype(int)
 
 
@@ -183,29 +213,20 @@ def _build_feature_importance(predictor: BugPredictor) -> dict[str, float]:
     return {feat: w / total for feat, w in predictor._heuristic_weights.items()}
 
 
-def _compute_hotspot_score(row: pd.Series) -> float:
-    """Compute the hotspot score for a file row.
+def _compute_hotspot_score(
+    row: pd.Series, metrics: dict[str, Any] | None = None
+) -> dict[str, float] | None:
+    """Use measured CC and physical LOC, never severity or a Git LOC proxy."""
+    if metrics is None:
+        return None
+    from cppulse.maintenance import measured_hotspot_calculation
 
-    hotspot_score = change_frequency * normalized_complexity * debt_density
-
-    Normalized complexity maps max_severity (1–3) to [0.33, 1.0].
-    Debt density = finding_count / max(1, age_days / 365).
-
-    Args:
-        row: One row from the feature DataFrame.
-
-    Returns:
-        Non-negative float hotspot score.
-    """
-    change_freq = float(row.get("change_frequency", 0))
-    max_sev = float(row.get("max_severity", 0))
-    finding_count = float(row.get("finding_count", 0))
-    age_days = float(row.get("age_days", 1)) or 1.0
-
-    normalized_complexity = max_sev / 3.0 if max_sev > 0 else 0.0
-    debt_density = finding_count / max(age_days / 365.0, 1.0)
-
-    return change_freq * normalized_complexity * debt_density
+    return measured_hotspot_calculation(
+        change_frequency=int(row.get("change_frequency", 0)),
+        complexity=metrics["complexity_score"],
+        finding_count=int(row.get("finding_count", 0)),
+        physical_loc=metrics["physical_loc"],
+    )
 
 
 def build_risk_scores(
@@ -213,6 +234,8 @@ def build_risk_scores(
     probabilities: np.ndarray,
     predictor: BugPredictor,
     health_scorer: HealthScorer,
+    *,
+    behavior: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Assemble the risk_scores.json payload.
 
@@ -227,15 +250,27 @@ def build_risk_scores(
     """
     health = health_scorer.compute(features_df)
     health_status = "no_data" if health.overall is None else "scored"
-    if features_df.attrs.get("health_availability") == "partial":
+    limitations = list(features_df.attrs.get("limitations", []))
+    if (not features_df.empty or features_df.attrs.get("health_declared_file_count", 0)) and (
+        features_df.attrs.get("health_availability") != "scored"
+        or features_df.attrs.get("health_profile") != health_scorer.profile_name
+        or features_df.attrs.get("health_prerequisites")
+        != "normalized-required-context-v4"
+    ):
         health.overall = None
         health.by_category = {category: None for category in health.by_category}
         health_status = "partial"
+        if not any("Full-scope health unavailable" in text for text in limitations):
+            limitations.append(
+                "Full-scope health unavailable: a feature frame alone does not establish required analysis prerequisites."
+            )
 
     explanations = predictor.explain(features_df)
 
     file_risks: list[dict[str, Any]] = []
     hotspot_scores: list[dict[str, Any]] = []
+    measured = features_df.attrs.get("measured_hotspot_metrics", {})
+    measured_files: set[str] = set()
     availability = dict(features_df.attrs.get("rank_availability", {}))
     for file in features_df["file"]:
         availability.setdefault(
@@ -273,16 +308,19 @@ def build_risk_scores(
             }
         )
 
-        hs = _compute_hotspot_score(row)
-        hotspot_scores.append(
-            {
-                "file": str(row["file"]),
-                "hotspot_score": round(hs, 6),
-                "change_frequency": int(row.get("change_frequency", 0)),
-                "complexity_score": round(float(row.get("max_severity", 0)) / 3.0, 4),
-                "finding_count": int(row.get("finding_count", 0)),
-            }
-        )
+        metrics = measured.get(file)
+        calculation = _compute_hotspot_score(row, metrics)
+        if calculation is not None:
+            measured_files.add(file)
+            hotspot_scores.append(
+                {
+                    "file": file,
+                    **calculation,
+                    "change_frequency": int(row.get("change_frequency", 0)),
+                    "finding_count": int(row.get("finding_count", 0)),
+                    **metrics,
+                }
+            )
 
     hotspot_scores.sort(key=lambda x: x["hotspot_score"], reverse=True)
     hotspots = [item for item in hotspot_scores if item["hotspot_score"] > 0][:20]
@@ -297,22 +335,54 @@ def build_risk_scores(
         for _, entry in sorted(availability.items())
         if not entry.eligible
     ]
-    return {
+    result = {
         "version": "1.0.0",
         "metadata": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "model_type": "heuristic" if predictor.use_heuristic else "xgboost",
             "profile": health_scorer.profile_name,
             "score_model": "weighted-findings-per-attempted-file-v2",
+            "health_calculation": {
+                "method": "weighted-findings-per-attempted-file-v2",
+                "version": "2",
+                "formula": "clamp(100 - sum(category_weight * finding_count) / denominator_files, 0, 100)",
+                "profile": health_scorer.profile_name,
+                "weights": dict(health_scorer._profile["weights"]),
+                "category_scales": {
+                    category: scale
+                    for category, (_, scale) in health_scorer._profile["categories"].items()
+                },
+                "denominator_files": len(features_df),
+                "declared_files": features_df.attrs.get("health_declared_file_count"),
+                "availability": health_status,
+            },
             "experimental": True,
-            "hotspot_formula": "change_frequency * (max_severity / 3) * findings / max(age_days / 365, 1)",
+            "hotspot_formula": "change_frequency * max_measured_callable_CC * findings / physical_KLOC",
+            "hotspot_method": "measured-cc-physical-kloc-v1",
+            "hotspot_scope": {
+                "status": (
+                    "available"
+                    if measured_files and len(measured_files) == len(availability)
+                    else "partial" if measured_files else "unavailable"
+                ),
+                "declared_files": len(availability),
+                "measured_files": len(measured_files),
+                "unavailable_files": [
+                    {
+                        "file": file,
+                        "reason": "Complete measured callable complexity, physical LOC and ranking prerequisites are required.",
+                    }
+                    for file in sorted(availability)
+                    if file not in measured_files
+                ],
+            },
             "feature_count": len(active_features),
             "active_features": active_features,
             "training_samples": predictor.metrics.training_samples,
             "evaluation_status": predictor.metrics.evaluation_status,
             "evaluation_folds": predictor.metrics.evaluation_folds,
             "fallback_reason": predictor.metrics.fallback_reason,
-            "limitations": features_df.attrs.get("limitations", []),
+            "limitations": limitations,
             "f1_score": (
                 round(predictor.metrics.f1, 4)
                 if predictor.metrics.f1 is not None
@@ -337,6 +407,16 @@ def build_risk_scores(
         "unranked_files": unranked,
         "hotspots": hotspots,
     }
+    if behavior is not None:
+        from cppulse.component_hotspots import aggregate_component_hotspots
+
+        result["component_hotspots"] = aggregate_component_hotspots(
+            behavior=behavior,
+            declared_files=availability,
+            hotspot_scores=hotspot_scores,
+            excluded_files=features_df.attrs.get("component_excluded_files", []),
+        )
+    return result
 
 
 def build_roadmap(
@@ -376,7 +456,14 @@ def build_roadmap(
     }
 
 
-def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
+def run(
+    input_dir: Path,
+    output_dir: Path,
+    profile: str = "default",
+    *,
+    maintenance_health: dict[str, Any] | None = None,
+    source_digest: str | None = None,
+) -> None:
     """Execute the full predictor pipeline.
 
     Args:
@@ -384,10 +471,57 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
         output_dir: Directory to write risk_scores.json and roadmap.json.
         profile: Analysis profile. "default" excludes MISRA rules,
             "safety-critical" includes them.
+        maintenance_health: Existing same-stage normalized analysis decision;
+            only prerequisite availability is reused, not its scoring formula.
+        source_digest: Selected original source digest of that decision.
     """
+    from tempfile import TemporaryDirectory
+    import os
+    from .input_projection import open_predictor_inputs
+
+    # Keep candidate outputs private until the original input's final guard
+    # succeeds. Use the destination filesystem for the existing per-file replace
+    # protocol; this does not promise an atomic two-file publication.
+    output_dir.parent.mkdir(parents=True, exist_ok=True)
+    with TemporaryDirectory(prefix=".cppulse-predictor-", dir=output_dir.parent) as scratch:
+        stage = Path(scratch) / "output"
+        with open_predictor_inputs(
+            input_dir / "findings.json", directory=Path(scratch) / "projection"
+        ) as inputs:
+            qualification = {}
+            if maintenance_health is not None:
+                qualification["maintenance_health"] = maintenance_health
+            if source_digest is not None:
+                qualification["source_digest"] = source_digest
+            _run_projected(
+                input_dir, stage, profile, inputs.findings,
+                inputs.measured_hotspot_metrics,
+                **qualification,
+            )
+        output_dir.mkdir(parents=True, exist_ok=True)
+        for name in ["risk_scores.json", "roadmap.json"]:
+            os.replace(stage / name, output_dir / name)
+
+
+def _run_projected(
+    input_dir: Path,
+    output_dir: Path,
+    profile: str,
+    findings_data: dict[str, Any],
+    measured_hotspot_metrics: dict[str, dict[str, Any]],
+    *,
+    maintenance_health: dict[str, Any] | None = None,
+    source_digest: str | None = None,
+) -> None:
+    """Consume copied feature inputs while the checked original remains pinned."""
     logger.info("Loading inputs from %s", input_dir)
-    findings_data = _load_json(input_dir / "findings.json")
     git_metrics_data = _load_json(input_dir / "git_metrics.json")
+    behavior_path = input_dir / "git_behavior.json"
+    behavior = _load_json(behavior_path) if behavior_path.exists() else None
+    if behavior is not None:
+        from cppulse.git_miner.behavior import validate_behavior_report
+
+        validate_behavior_report(behavior)
 
     for name, data in [("findings", findings_data), ("git_metrics", git_metrics_data)]:
         schema = load_schema(name, "prototype_v1")
@@ -397,7 +531,11 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
 
     logger.info("Engineering features...")
     engineer = FeatureEngineer()
-    features_df = engineer.build_features(findings_data, git_metrics_data)
+    features_df = engineer.build_features(
+        findings_data, git_metrics_data, profile=profile,
+        maintenance_health=maintenance_health, source_digest=source_digest,
+    )
+    features_df.attrs["measured_hotspot_metrics"] = measured_hotspot_metrics
     logger.info("Feature matrix shape: %s", features_df.shape)
 
     logger.info("Training bug predictor...")
@@ -407,11 +545,7 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
         features_df["file"].map(lambda file: eligibility[file].eligible).astype(bool)
     )
     training = features_df.loc[eligible_mask].copy()
-    label_source = (
-        "szz"
-        if training["szz_bug_introductions"].sum() > 0
-        else "feature_derived_heuristic"
-    )
+    label_source = _label_source(training)
     labels = _derive_labels(training, profile=profile)
     predictor.train(training, labels)
 
@@ -423,16 +557,32 @@ def run(input_dir: Path, output_dir: Path, profile: str = "default") -> None:
 
     logger.info("Building risk scores output...")
     risk_scores = build_risk_scores(
-        features_df, probabilities, predictor, health_scorer
+        features_df, probabilities, predictor, health_scorer, behavior=behavior
     )
 
     risk_scores["metadata"]["label_source"] = label_source
+    szz_mask = _szz_label_mask(training)
+    risk_scores["metadata"]["training_label_provenance"] = {
+        "kind": "declared_experimental_proxy_labels",
+        "training_files": training["file"].tolist(),
+        "szz_files": training.loc[szz_mask, "file"].tolist(),
+        "feature_derived_files": training.loc[~szz_mask, "file"].tolist(),
+    }
+    szz_provenance = git_metrics_data.get("metadata", {}).get("szz")
+    if isinstance(szz_provenance, dict):
+        risk_scores["metadata"]["szz"] = deepcopy(szz_provenance)
     risk_scores["metadata"]["limitations"].extend(
         git_metrics_data.get("metadata", {}).get("limitations", [])
     )
-    if label_source != "szz":
+    if label_source in {
+        "feature_derived_heuristic", "mixed_szz_and_feature_derived_heuristic"
+    }:
         risk_scores["metadata"]["limitations"].append(
             "Labels are derived from features; cross-validation is not evidence of future-defect predictive accuracy."
+        )
+    if label_source == "unavailable":
+        risk_scores["metadata"]["limitations"].append(
+            "No eligible training labels are available; missing data is not a clean example."
         )
 
     logger.info("Validating risk_scores.json schema...")

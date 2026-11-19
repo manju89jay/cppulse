@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/analysis_execution_summary.schema.json",
+  "title": "Private bounded analysis execution summary",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "plan_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "partial",
+        "cancelled",
+        "input_changed"
+      ]
+    },
+    "input_verification": {
+      "enum": [
+        "verified",
+        "changed",
+        "unavailable"
+      ]
+    },
+    "unit_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "completed_units": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "resumed_units": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "result_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "resumed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "unit_id",
+          "result_path",
+          "sha256",
+          "resumed"
+        ]
+      }
+    },
+    "report_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_observations_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "interruption": {
+      "enum": [
+        "none",
+        "keyboard_interrupt",
+        "deadline",
+        "cancellation"
+      ]
+    },
+    "rejected_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "unit_id",
+          "reason"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "plan_sha256",
+    "source_digest",
+    "status",
+    "input_verification",
+    "unit_count",
+    "completed_units",
+    "resumed_units",
+    "outcomes",
+    "results",
+    "report_sha256",
+    "limitations",
+    "started_at",
+    "finished_at"
+  ]
+}

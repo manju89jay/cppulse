@@ -101,6 +101,8 @@ def build_assets(root: Path = ROOT, destination: Path = DESTINATION) -> dict[str
             "Refusing to replace a directory without our dashboard asset manifest"
         )
     before = source_inventory(root)
+    notice = root / "dashboard/src/third-party-notices.txt"
+    digest(notice)  # Missing or symlinked license input must fail before building.
     with tempfile.TemporaryDirectory(prefix="cppulse-dashboard-") as temporary:
         built = Path(temporary) / "dist"
         subprocess.run(
@@ -108,6 +110,7 @@ def build_assets(root: Path = ROOT, destination: Path = DESTINATION) -> dict[str
             cwd=root / "dashboard",
             check=True,
         )
+        shutil.copyfile(notice, built / "assets/third-party-notices.txt")
         files = asset_inventory(built)
         if source_inventory(root) != before:
             raise ValueError("Dashboard source changed during the production build")

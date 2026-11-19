@@ -49,6 +49,11 @@ def validate_profile_12_control(control: dict[str, Any], path: str) -> None:
                 "minimum_reviewers exceeds the configured distinct declared reviewer IDs",
                 path=path + "/parameters/minimum_reviewers",
             )
+        if parameters["minimum_reviewers"] > len(parameters["evidence_ids"]):
+            raise ContractError(
+                "minimum_reviewers exceeds the selected review evidence record count",
+                path=path + "/parameters/minimum_reviewers",
+            )
 
 
 def _utc(value: str, path: str) -> datetime:
@@ -78,18 +83,28 @@ def validate_review_details(record: dict[str, Any], path: str) -> None:
                 f"Review {name} must not be blank", path=f"{path}/review_details/{name}"
             )
     if not record["reviewer"].strip():
-        raise ContractError("Declared reviewer must not be blank", path=path + "/reviewer")
+        raise ContractError(
+            "Declared reviewer must not be blank", path=path + "/reviewer"
+        )
     if not set(details["reviewed_artifact_ids"]) <= set(record["artifact_ids"]):
         raise ContractError(
             "reviewed_artifact_ids must refer to this evidence record's retained artifacts",
             path=path + "/review_details/reviewed_artifact_ids",
+        )
+    if not set(details.get("reviewed_artifact_sha256", {})) <= set(
+        details["reviewed_artifact_ids"]
+    ):
+        raise ContractError(
+            "Reviewed artifact hashes must name this review's declared artifacts",
+            path=path + "/review_details/reviewed_artifact_sha256",
         )
     reviewed = _utc(details["reviewed_at"], path + "/review_details/reviewed_at")
     recorded = _utc(details["recorded_at"], path + "/review_details/recorded_at")
     expires = _utc(record["expires_at"], path + "/expires_at")
     if recorded < reviewed:
         raise ContractError(
-            "Review recorded_at precedes reviewed_at", path=path + "/review_details/recorded_at"
+            "Review recorded_at precedes reviewed_at",
+            path=path + "/review_details/recorded_at",
         )
     if reviewed >= expires or recorded >= expires:
         raise ContractError(
@@ -114,6 +129,15 @@ def validate_profile_12_assessment(
         if kind == "run_manifest":
             continue
         bundle.setdefault(kind, []).append(document)
+    if "native_input_binding" not in assessment:
+        # Replay the historical predicate semantics only for unmarked stored
+        # assessments. Never promote or mutate supplied facts for fresh compute.
+        from copy import deepcopy
+
+        bundle = deepcopy(bundle)
+        for inventory in bundle.get("analysis_inventory", []):
+            for row in inventory["items"]:
+                row["buffer_coherence"] = "verified"
     selected = set(
         policy_scope_paths(policy, [row["path"] for row in manifest["source"]["files"]])
     )
@@ -138,7 +162,9 @@ def validate_profile_12_assessment(
         status, incomplete = raw.status, raw.incomplete
         if manifest.get("input_verification") != "verified":
             status, incomplete = "unknown", True
-        prerequisites = [results[key] for key in control["depends_on"] if key in results]
+        prerequisites = [
+            results[key] for key in control["depends_on"] if key in results
+        ]
         blocked = any(
             row["status"] in {"failed", "unknown"} or row.get("incomplete", False)
             for row in prerequisites

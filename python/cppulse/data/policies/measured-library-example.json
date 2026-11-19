@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "id": "measured-library-example",
+  "policy_version": "1.0.0",
+  "evaluator_profile": "1.2.0",
+  "standards": [],
+  "scope": {
+    "include": [
+      "**/*.cpp",
+      "**/*.cc",
+      "**/*.cxx",
+      "**/*.h",
+      "**/*.hpp"
+    ],
+    "exclude": [
+      "build/**",
+      "vendor/**"
+    ]
+  },
+  "contexts": [
+    "native-analysis"
+  ],
+  "gates": {
+    "minimum_readiness": 100,
+    "minimum_completeness": 100
+  },
+  "controls": [
+    {
+      "id": "selected-parses",
+      "title": "Selected library sources and headers parse in the declared job",
+      "kind": "minimum_analysis_coverage",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "minimum": 100
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-complexity",
+      "title": "Every measured function meets the chosen complexity limit",
+      "kind": "metric_threshold",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "metric": "cyclomatic_complexity",
+        "metric_version": "cppulse-metrics-1",
+        "units": "count",
+        "level": "symbol",
+        "aggregation": "each",
+        "operator": "lte",
+        "threshold": 15
+      },
+      "depends_on": [
+        "selected-parses"
+      ]
+    }
+  ]
+}

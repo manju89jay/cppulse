@@ -12,6 +12,7 @@ import pytest
 
 from cppulse.collection import collect
 from cppulse.errors import ContractError
+from cppulse.run_store import RunStore
 from cppulse.identities import context_identity, snapshot_inputs
 
 
@@ -302,7 +303,7 @@ def test_preselected_cancellation_is_retained_without_execution(tmp_path: Path) 
     assert snapshot.manifest["status"] == "cancelled"
     assert not (tmp_path / "marker").exists()
     assert documents(snapshot, "execution_receipt")[0]["status"] == "cancelled"
-    assert not (tmp_path / "store/latest.json").exists()
+    assert RunStore.open_existing(tmp_path / "store").resolve_heads()[1] is None
 
 
 def ctest_fixture(
@@ -565,7 +566,7 @@ def test_publication_source_race_republishes_without_rerunning_commands(
     )
     assert documents(snapshot, "evidence")[0]["records"][0]["usability"] == "stale"
     assert (tmp_path / "store/.staging" / calls[0]).is_dir()
-    assert not (tmp_path / "store/latest.json").exists()
+    assert RunStore.open_existing(tmp_path / "store").resolve_heads()[1] is None
 
 
 def test_unexpected_publication_error_preserves_staging(
@@ -591,7 +592,7 @@ def test_unexpected_publication_error_preserves_staging(
             store=tmp_path / "store",
         )
     assert list((tmp_path / "store/.staging").glob("*"))
-    assert not (tmp_path / "store/latest_attempt.json").exists()
+    assert RunStore.open_existing(tmp_path / "store").resolve_heads()[2] is None
     assert any(
         "Private collection material retained" in note for note in error.value.__notes__
     )
@@ -881,7 +882,7 @@ def test_timeout_retains_operational_status_without_passed_evidence(
     assert snapshot.manifest["status"] == "partial"
     assert documents(snapshot, "execution_receipt")[0]["status"] == "timed_out"
     assert documents(snapshot, "evidence")[0]["records"][0]["status"] == "timed_out"
-    assert not (tmp_path / "store/latest.json").exists()
+    assert RunStore.open_existing(tmp_path / "store").resolve_heads()[1] is None
 
 
 def test_maximum_length_user_ids_do_not_become_unsafe_artifact_paths(

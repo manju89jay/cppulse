@@ -1,0 +1,308 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "version",
+    "provider",
+    "repository",
+    "status",
+    "issue_count",
+    "issues",
+    "pages",
+    "costs",
+    "request_sha256",
+    "limitations",
+    "transport",
+    "started_at",
+    "finished_at",
+    "window",
+    "excluded",
+    "cost_method"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "provider": {
+      "const": "github-rest-2022-11-28"
+    },
+    "repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,99}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "unavailable"
+      ]
+    },
+    "issue_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "issues": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "number",
+          "title",
+          "url",
+          "created_at",
+          "updated_at",
+          "closed_at_observed",
+          "state_observed",
+          "historical_state"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "url": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closed_at_observed": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "state_observed": {
+            "enum": [
+              "open",
+              "closed"
+            ]
+          },
+          "historical_state": {
+            "const": "unknown"
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "http_status",
+          "path",
+          "sha256",
+          "size_bytes",
+          "truncated",
+          "link",
+          "etag",
+          "parse_status"
+        ],
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "http_status": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^page-[0-9]{3}\\.body$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8388608
+          },
+          "truncated": {
+            "type": "boolean"
+          },
+          "link": {
+            "type": "string",
+            "maxLength": 16384
+          },
+          "etag": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "parse_status": {
+            "enum": [
+              "not_attempted",
+              "attempted",
+              "complete"
+            ]
+          }
+        }
+      }
+    },
+    "costs": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "issue",
+          "basis",
+          "currency",
+          "cost",
+          "benefit",
+          "status",
+          "roi_ratio",
+          "input_ids",
+          "evidence_status"
+        ],
+        "properties": {
+          "issue": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "basis": {
+            "enum": [
+              "estimated",
+              "observed"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "cost": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "benefit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "issue_not_observed",
+              "missing_cost",
+              "missing_benefit",
+              "zero_cost_denominator",
+              "calculated"
+            ]
+          },
+          "roi_ratio": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "input_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_status": {
+            "const": "caller_claim_unverified"
+          }
+        }
+      }
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "transport": {
+      "enum": [
+        "https-public-github",
+        "caller_transport"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "excluded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pull_requests",
+        "outside_created_window",
+        "future_cost_inputs"
+      ],
+      "properties": {
+        "pull_requests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "outside_created_window": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "future_cost_inputs": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "cost_method": {
+      "const": "declared-monetary-inputs-decimal400-v1"
+    }
+  },
+  "additionalProperties": false
+}

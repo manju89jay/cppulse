@@ -21,6 +21,7 @@ import os
 from pathlib import Path
 import re
 import stat
+import unicodedata
 from typing import Any, Literal
 
 MAX_LOG_BYTES = 10 * 1024 * 1024
@@ -88,7 +89,12 @@ def _read_log(path: Path) -> bytes:
 
 
 def _literal(value: str, field: str, *, empty: bool = False) -> str:
-    if (not value and not empty) or any(not char.isprintable() for char in value):
+    # Unicode space separators inside quoted/structurally delimited fields are
+    # literal data, just like ASCII space. Keep line/paragraph separators,
+    # controls and formatting characters outside this reviewed profile.
+    if (not value and not empty) or any(
+        not char.isprintable() and unicodedata.category(char) != "Zs" for char in value
+    ):
         raise _Unsupported(f"Unsupported empty/control-character {field}")
     return value
 

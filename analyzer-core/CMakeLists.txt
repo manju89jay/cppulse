@@ -60,6 +60,30 @@ set_target_properties(libclang PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${LIBCLANG_INCLUDE_DIR}"
 )
 
+# Counting semantic logical operators requires the binary-opcode API. Detect
+# header/library mismatches at configure time rather than during a long build.
+include(CheckCXXSourceCompiles)
+include(CMakePushCheckState)
+cmake_push_check_state(RESET)
+set(CMAKE_REQUIRED_INCLUDES "${LIBCLANG_INCLUDE_DIR}")
+set(CMAKE_REQUIRED_LIBRARIES "${LIBCLANG_LIBRARY}")
+# A caller can change the selected pair in an existing build directory.
+unset(CPPULSE_LIBCLANG_HAS_BINARY_OPCODE CACHE)
+check_cxx_source_compiles("
+#include <clang-c/Index.h>
+int main() {
+    return clang_Cursor_getBinaryOpcode(clang_getNullCursor()) == CX_BO_LAnd ? 0 : 1;
+}" CPPULSE_LIBCLANG_HAS_BINARY_OPCODE)
+cmake_pop_check_state()
+if(NOT CPPULSE_LIBCLANG_HAS_BINARY_OPCODE)
+    message(FATAL_ERROR
+        "Selected libclang headers/library lack the required binary-opcode API "
+        "(clang_Cursor_getBinaryOpcode / CX_BO_LAnd). Use a matching LLVM 19 or "
+        "newer development/runtime pair, or set LIBCLANG_INCLUDE_DIR and "
+        "LIBCLANG_LIBRARY explicitly. Headers: ${LIBCLANG_INCLUDE_DIR}; "
+        "library: ${LIBCLANG_LIBRARY}")
+endif()
+
 find_package(nlohmann_json REQUIRED CONFIG)
 find_package(spdlog REQUIRED CONFIG)
 find_package(CLI11 REQUIRED CONFIG)
@@ -119,6 +143,32 @@ install(TARGETS cppulse-analyzer
     RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/cppulse"
 )
 
+# This finite Linux runtime profile uses the same declared host C++ runtime as
+# the analyzer. The helper is dynamically linked in installed native kits.
+set(_CPPULSE_RUNTIME_SUPERVISOR_DEFAULT OFF)
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(_CPPULSE_RUNTIME_SUPERVISOR_DEFAULT ON)
+endif()
+option(CPPULSE_BUILD_RUNTIME_SUPERVISOR
+    "Build the bounded Linux runtime observation helper"
+    ${_CPPULSE_RUNTIME_SUPERVISOR_DEFAULT})
+if(CPPULSE_BUILD_RUNTIME_SUPERVISOR)
+    if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        message(FATAL_ERROR "The runtime observation helper currently requires Linux")
+    endif()
+    add_executable(cppulse-runtime-supervisor
+        "${CMAKE_CURRENT_SOURCE_DIR}/../tools/frozen_container_supervisor.cpp")
+    # Keep a primary-target build sufficient for the default installation.
+    add_dependencies(cppulse-analyzer cppulse-runtime-supervisor)
+    target_compile_options(cppulse-runtime-supervisor PRIVATE -Wall -Wextra -Werror)
+    set_target_properties(cppulse-runtime-supervisor PROPERTIES
+        INSTALL_RPATH ""
+        INSTALL_RPATH_USE_LINK_PATH FALSE)
+    install(TARGETS cppulse-runtime-supervisor
+        RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/cppulse"
+        COMPONENT runtime-supervisor)
+endif()
+
 # --------------------------------------------------------------------------
 # Target: cppulse-analyzer-tests (test executable)
 # --------------------------------------------------------------------------
@@ -143,6 +193,12 @@ if(BUILD_TESTING)
     # Discovery launches the test binary at build time; first launch can exceed the
     # 5s default on Windows (libclang DLL load + AV scan), so allow more headroom.
     gtest_discover_tests(cppulse-analyzer-tests DISCOVERY_TIMEOUT 30)
+
+    add_test(NAME LibclangCapability.RejectsMissingBinaryOpcode
+        COMMAND ${CMAKE_COMMAND}
+            -DANALYZER_SOURCE=${CMAKE_CURRENT_SOURCE_DIR}
+            -DLIBCLANG_LIBRARY=${LIBCLANG_LIBRARY}
+            -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_libclang_capability.cmake)
 
     # Resource-directory override must work for both parse modes and fail clearly
     # for invalid explicit/environment configuration.

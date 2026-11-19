@@ -20,8 +20,9 @@ Every initial predicate permits an optional nonempty parameters.contexts subset
 of the explicit nonempty policy job contexts. required_contexts requires it.
 This separates test jobs from analyzer jobs. Missing expected jobs remain unknown;
 configuration presence is not proof of execution. Unsupported predicate/profile
-versions fail explicitly. Generic metrics and reviewed-evidence evaluation remain
-unsupported. Defining a contract does not qualify its producer or integration.
+versions fail explicitly. Untagged and profile 1.1.0 policies do not acquire
+numeric or reviewed-evidence semantics. Defining a contract does not qualify its
+producer or integration.
 
 Policies without evaluator_profile retain profile 1.0.0. Explicit profile 1.1.0
 adds two typed predicates while preserving the four earlier meanings:
@@ -45,6 +46,54 @@ Underlying test expiry and every used proof receipt's finish time constrain a
 current assessment. Explicit evaluator versions must match the policy profile;
 an API override cannot silently upgrade an untagged policy. See verification.md
 for the producer proof contracts and current scope limits.
+
+Explicit profile 1.2.0 adds the following predicates:
+
+| Predicate | Required parameters | Meaning |
+| --- | --- | --- |
+| metric_threshold | metric, metric_version, units, level, aggregation, operator, threshold | Evaluate every selected file/job cell using its observed matched native inventory and exact named measurement method |
+| reviewed_evidence | evidence_ids, reviewer_ids, minimum_reviewers, required_artifact_ids, identity_requirement | Require a current scoped quorum of distinct configured self-declared reviewer IDs over the selected source and exact retained artifact hashes |
+
+Both allow an optional contexts subset. A numeric level is file or symbol;
+aggregation is each, max/maximum, min/minimum, sum or mean. Operators are lt,
+lte, eq, gte and gt. Fractions preserve exact decimal thresholds and means.
+Values never pool across files or jobs. Complete symbol aggregation requires
+an observed function_count in the same file, parse context and metric method.
+No observed candidates, including a zero-function file, remain unknown rather
+than a vacuous pass. Missing/incompatible cells and contradictory inventories
+are unknown. A partial each breach, monotonic max/min breach, or nonnegative
+native sum upper-bound breach can establish failure while retaining incomplete;
+a partial mean cannot. Reasons retain the observed breach values and threshold.
+
+Review evidence must have origin attestation, kind review, no receipt, usable
+status, a configured reviewer, and review_details with source_digest,
+statement/rationale, reviewed_at, recorded_at, recorded_by, reviewed_artifact_ids,
+identity_assurance self_declared and limitations. The additive optional
+reviewed_artifact_sha256 object maps reviewed artifact IDs to lowercase SHA-256
+digests. Profile 1.2.0 requires every policy-required artifact's digest to match
+the current manifest descriptor. Earlier records without hashes remain readable
+but cannot establish a current positive review result. Artifact IDs alone do
+not bind bytes across runs. Hashes must name declared reviewed artifacts.
+
+Review and recording times must be UTC, ordered, no later than assessment time,
+and before expiry. Each selected file/job needs its own reviewer quorum; repeat
+records from one ID do not add reviewers. A current scoped rejection fails even
+when other reviewers/jobs are missing, retaining incomplete. Stale, foreign,
+expired or artifact-mismatched claims are unknown. Configured IDs, recording
+metadata and hashes do not authenticate people or prove independent review.
+
+Packaged `data/policies/measured-library-example.json` selects profile 1.2.0
+for source/header parse coverage and a chosen per-function complexity limit.
+`organization-reviewed-example.json` adds a declared two-ID review quorum.
+Copy and configure the actual job/evidence/artifact/reviewer IDs and thresholds
+for the intended project before calling `cppulse assess --policy <file>`.
+The templates do not supply execution or review records. Their threshold is an
+example choice, not an empirically qualified safety limit. Selecting headers
+does not establish self-containment, arbitrary template instantiations or
+consumer configuration coverage; declare and execute those jobs separately.
+Both templates deliberately have no standards mappings. Automotive/medical
+edition-bound mappings remain blocked pending authorized editions and qualified
+review, rather than deriving clauses or certification from these predicates.
 
 Analysis parse coverage counts matched, error-free parsed file/job cells over
 selected policy files multiplied by requested job contexts. It is separate from
@@ -71,7 +120,7 @@ or an implicit current-time lookup.
 ## Outcomes and gates
 
 Outputs identify evaluator name cppulse.policy and the explicit selected profile,
-1.0.0 or 1.1.0. Unknown
+1.0.0, 1.1.0 or 1.2.0. Unknown
 identities fail. Untagged older v2 documents remain descriptive archives. Current
 unverified source makes both passed and failed raw signals unknown for assessment.
 Tagged assessments cannot predate their run or used receipts.

@@ -96,10 +96,17 @@ def validate_metrics(document: dict[str, Any]) -> None:
         if name not in units or row["units"] != units[name]:
             _fail("Named metric or units do not match the measured profile", path)
         if row["metric_version"] == DUPLICATION_VERSION and name not in {
-            "duplicate_tokens", "duplicate_lines"
+            "duplicate_tokens",
+            "duplicate_lines",
         }:
             _fail("Duplication method cannot claim an unrelated metric", path)
-        key = (row["file"], row["context_id"], row["symbol"], name, row["metric_version"])
+        key = (
+            row["file"],
+            row["context_id"],
+            row["symbol"],
+            name,
+            row["metric_version"],
+        )
         if key in cells:
             _fail("Duplicate measured metric cell", path)
         cells.add(key)
@@ -112,7 +119,10 @@ def validate_metrics(document: dict[str, Any]) -> None:
                     "Measured function length/complexity needs a positive count",
                     path + "/value",
                 )
-            if name in {"duplicate_tokens", "duplicate_lines"} and row["metric_version"] == METRIC_VERSION:
+            if (
+                name in {"duplicate_tokens", "duplicate_lines"}
+                and row["metric_version"] == METRIC_VERSION
+            ):
                 _fail(
                     "Initial metric profile has no qualified duplication producer",
                     path + "/metric",
@@ -136,6 +146,8 @@ def validate_metrics(document: dict[str, Any]) -> None:
     for value in values.values():
         if value.get("code_loc", 0) > value.get("physical_loc", float("inf")):
             _fail("Code LOC exceeds measured physical LOC", "/analysis_metrics/items")
+        if value.get("duplicate_lines", 0) > value.get("physical_loc", float("inf")):
+            _fail("Duplicate lines exceed measured physical LOC", "/analysis_metrics/items")
 
 
 def validate_native_metrics(findings: dict[str, Any]) -> None:
@@ -468,6 +480,16 @@ def validate_maintenance_bundle(
     execution = {
         doc["receipt"]["id"]: doc for kind, doc in flat if kind == "execution_facts"
     }
+    scopes = _unique(
+        [doc for kind, doc in flat if kind == "analysis_scope"],
+        "job_context_id",
+        "/analysis_scope",
+    )
+    bounded = {
+        doc["analysis_inventory_id"]: doc
+        for kind, doc in flat
+        if kind == "work_unit_analysis_binding"
+    }
     metrics: dict[str, dict[str, Any]] = {}
     for kind, document in flat:
         if kind != "analysis_metrics" or "analysis_inventory_id" not in document:
@@ -507,36 +529,80 @@ def validate_maintenance_bundle(
                     "/analysis_metrics/items",
                 )
             if metric["availability"] == "available":
-                facts = execution.get(inventory["receipt_id"])
-                if (
-                    facts is None
-                    or manifest.get("input_verification") != "verified"
-                    or facts["binding"]["status"] != "verified"
-                    or facts["material_status"] != "available"
-                    or facts["receipt"]["status"] != "passed"
-                ):
-                    _fail(
-                        "Available measured metrics require verified native execution/source binding",
-                        "/analysis_metrics/items",
-                    )
-                before = {row["path"]: row for row in facts["input_facts"]}
-                after = {row["path"]: row for row in facts["input_after_facts"]}
-                frozen = {row["path"] for row in facts["binding"]["input_artifacts"]}
-                file = metric["file"]
-                if (
-                    file not in before
-                    or file not in after
-                    or file not in frozen
-                    or any(
-                        before[file][key] != source_files[file][key]
-                        or after[file][key] != source_files[file][key]
-                        for key in ["sha256", "size_bytes"]
-                    )
-                ):
-                    _fail(
-                        "Measured metric input is not a frozen unchanged selected source",
-                        "/analysis_metrics/items",
-                    )
+                binding = bounded.get(inventory["id"])
+                if binding is not None:
+                    if metric["metric"] in {"duplicate_tokens", "duplicate_lines"}:
+                        scope = scopes.get(inventory["job_context_id"])
+                        peers = [
+                            peer
+                            for peer in inventories.values()
+                            if peer["job_context_id"] == inventory["job_context_id"]
+                        ]
+                        if (
+                            scope is None
+                            or not scope["inventory_complete"]
+                            or scope["discovery_gaps"]
+                            or scope["input_verification"] != "verified"
+                            or {unit["primary_file"] for unit in scope["units"]}
+                            != {row["file"] for peer in peers for row in peer["items"]}
+                            or any(
+                                unit["execution"] is None
+                                or unit["outcome"] != "complete"
+                                or unit["parse_status"] not in {"analyzed", "excluded"}
+                                for unit in scope["units"]
+                            )
+                        ):
+                            _fail(
+                                "Available global duplication lacks complete declared peer scope",
+                                "/analysis_metrics/items",
+                            )
+                    # The preceding work-unit bundle kernel checks original
+                    # request/result/receipt and retained input/output pins.
+                    if (
+                        manifest.get("input_verification") != "verified"
+                        or binding["result"]["outcome"] != "complete"
+                        or binding["result"]["execution_receipt"]["status"] != "passed"
+                        or binding["request"]["primary_file"] != metric["file"]
+                        or binding["request"]["primary_sha256"]
+                        != source_files[metric["file"]]["sha256"]
+                    ):
+                        _fail(
+                            "Available metrics lack complete original work-unit binding",
+                            "/analysis_metrics/items",
+                        )
+                else:
+                    facts = execution.get(inventory["receipt_id"])
+                    if (
+                        facts is None
+                        or manifest.get("input_verification") != "verified"
+                        or facts["binding"]["status"] != "verified"
+                        or facts["material_status"] != "available"
+                        or facts["receipt"]["status"] != "passed"
+                    ):
+                        _fail(
+                            "Available measured metrics require verified native execution/source binding",
+                            "/analysis_metrics/items",
+                        )
+                    before = {row["path"]: row for row in facts["input_facts"]}
+                    after = {row["path"]: row for row in facts["input_after_facts"]}
+                    frozen = {
+                        row["path"] for row in facts["binding"]["input_artifacts"]
+                    }
+                    file = metric["file"]
+                    if (
+                        file not in before
+                        or file not in after
+                        or file not in frozen
+                        or any(
+                            before[file][key] != source_files[file][key]
+                            or after[file][key] != source_files[file][key]
+                            for key in ["sha256", "size_bytes"]
+                        )
+                    ):
+                        _fail(
+                            "Measured metric input is not a frozen unchanged selected source",
+                            "/analysis_metrics/items",
+                        )
             if (
                 metric["metric"] == "physical_loc"
                 and metric["value"] is not None
@@ -599,8 +665,28 @@ def validate_maintenance_bundle(
                 for file, row in by_file.items()
                 if row["status"] != "excluded"
             }
+            scope = scopes.get(context["job_context_id"])
+            if scope is not None and context["availability"] == "scored":
+                if (
+                    {row["primary_file"] for row in scope["units"]} != set(by_file)
+                    or not scope["inventory_complete"]
+                    or scope["discovery_gaps"]
+                    or scope["input_verification"] != "verified"
+                    or any(
+                        row["execution"] is None
+                        or row["parse_status"] not in {"analyzed", "excluded"}
+                        or row["outcome"] != "complete"
+                        for row in scope["units"]
+                    )
+                ):
+                    _fail(
+                        "Scored health omits or lacks complete declared work-unit scope",
+                        "/maintenance_health/contexts",
+                    )
             expected_counts = {
-                "declared_files": len(by_file),
+                "declared_files": (
+                    len(scope["units"]) if scope is not None else len(by_file)
+                ),
                 "excluded_files": len(by_file) - len(applicable),
                 "analyzed_files": sum(
                     row["status"] == "analyzed" and row["error_count"] == 0
@@ -614,6 +700,11 @@ def validate_maintenance_bundle(
                 )
             parse_counts = {
                 name: sum(row["context_source"] == name for row in applicable.values())
+                + (
+                    len({row["primary_file"] for row in scope["units"]} - set(by_file))
+                    if name == "none" and scope is not None
+                    else 0
+                )
                 for name in ["database", "inferred", "fallback", "none"]
             }
             if context["parse_context_counts"] != parse_counts:
@@ -690,6 +781,14 @@ def validate_maintenance_bundle(
                     "/maintenance_health/scorer/categories",
                 )
             for file, row in applicable.items():
+                if (
+                    health["scorer"].get("requires_buffer_coherence")
+                    and row.get("buffer_coherence") != "verified"
+                ):
+                    _fail(
+                        "Scored health cannot bypass unknown or mismatched native buffer inputs",
+                        "/maintenance_health/contexts",
+                    )
                 if (
                     row["status"] != "analyzed"
                     or row["error_count"]

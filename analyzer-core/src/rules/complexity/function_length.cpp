@@ -7,6 +7,8 @@
 
 #include <clang-c/Index.h>
 
+#include <limits>
+
 namespace cppulse {
 
 void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_path) {
@@ -26,8 +28,22 @@ void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_pat
 
     unsigned int start_line = 0;
     unsigned int end_line = 0;
-    clang_getSpellingLocation(start, nullptr, &start_line, nullptr, nullptr);
-    clang_getSpellingLocation(end, nullptr, &end_line, nullptr, nullptr);
+    unsigned int col = 0;
+    CXFile start_file = nullptr;
+    CXFile end_file = nullptr;
+    CXFile cursor_file = nullptr;
+    // An exported declaration can start with an attribute spelled in a header
+    // macro. Its expansion, not that unrelated header line, bounds the function.
+    clang_getExpansionLocation(start, &start_file, &start_line, &col, nullptr);
+    clang_getExpansionLocation(end, &end_file, &end_line, nullptr, nullptr);
+    clang_getExpansionLocation(clang_getCursorLocation(cursor), &cursor_file, nullptr, nullptr,
+                               nullptr);
+    if (start_file == nullptr || end_file == nullptr || cursor_file == nullptr ||
+        !clang_File_isEqual(start_file, end_file) || !clang_File_isEqual(start_file, cursor_file) ||
+        start_line == 0 || col == 0 || end_line < start_line ||
+        end_line > static_cast<unsigned int>(std::numeric_limits<int>::max())) {
+        return;
+    }
 
     const int line_count = static_cast<int>(end_line) - static_cast<int>(start_line) + 1;
 
@@ -41,9 +57,6 @@ void FunctionLengthRule::check_impl(CXCursor cursor, const std::string& file_pat
     const char* func_name = clang_getCString(spelling);
     std::string name_str = (func_name != nullptr) ? func_name : "<unnamed>";
     clang_disposeString(spelling);
-
-    unsigned int col = 0;
-    clang_getSpellingLocation(start, nullptr, nullptr, &col, nullptr);
 
     add_finding(Finding{.rule_id = "CPP-CX-002",
                         .category = "complexity",

@@ -88,3 +88,36 @@ test('configured client limits are finite and overflow remains an explicit error
     locations:Array.from({length:2},()=>({physicalLocation:{artifactLocation:{uri:'one/same.cpp'},region:{startLine:1}}}))}];
   assert.throws(()=>protocol.parseSarif(JSON.stringify(document),undefined,limits),/occurrences/);
 });
+
+test('editor settings expose the same finite limits accepted by the runtime', () => {
+  const settings = require('../package.json').contributes.configuration.properties;
+  const cases = [['responseLimitMiB',16,64,'maxResponseBytes',1024*1024],
+    ['sourceLimitMiB',16,64,'maxSourceBytes',1024*1024],
+    ['diagnosticLimit',20000,100000,'maxDiagnostics',1]];
+  for (const [key, fallback, maximum, field, multiplier] of cases) {
+    const setting = settings[`cppulse.${key}`];
+    assert.ok(setting, `Missing setting cppulse.${key}`);
+    assert.equal(setting.type,'integer');
+    assert.equal(setting.default,fallback);
+    assert.equal(setting.minimum,1);
+    assert.equal(setting.maximum,maximum);
+    assert.equal(protocol.clientLimits({[key]:setting.default})[field],fallback*multiplier);
+    assert.equal(protocol.clientLimits({[key]:maximum})[field],maximum*multiplier);
+    assert.throws(()=>protocol.clientLimits({[key]:maximum+1}),/limit/i);
+  }
+});
+
+test('source lines follow native CR, LF, CRLF and LFCR coordinates', () => {
+  for (const separator of ['\n','\r','\r\n']) {
+    assert.deepEqual(protocol.splitSourceLines(`one${separator}two${separator}`),['one','two','']);
+  }
+  assert.deepEqual(protocol.splitSourceLines('one\n\rtwo'),['one','','two']);
+  assert.deepEqual(protocol.splitSourceLines('one\n\r\n\rtwo'),['one','','','two']);
+});
+
+test('project-specific editor settings support actual multi-root folder overrides',()=>{
+  const settings=require('../package.json').contributes.configuration.properties;
+  for(const key of ['storeDirectory','compilationDatabase','timeoutSeconds','responseLimitMiB','sourceLimitMiB','diagnosticLimit','openReports']){
+    assert.equal(settings[`cppulse.${key}`].scope,'resource',key);
+  }
+});

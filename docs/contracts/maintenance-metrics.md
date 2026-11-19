@@ -70,6 +70,38 @@ stream. Token record bounds are explicit: truncation remains visible and prevent
 a claim of complete duplication analysis. Include paths alone do not establish
 external dependency content identity or complete dependency closure.
 
+## Historical per-file report calculation
+
+The legacy risk/report method `weighted-findings-per-attempted-file-v2`
+(version `2`) remains distinct from physical-KLOC maintenance health. For a
+nonempty feature frame, its overall score is
+`clamp(100 - sum(category_weight * finding_count) / denominator_files, 0, 100)`.
+Category scores use `clamp(100 - category_count / denominator_files * scale, 0, 100)`.
+The stored calculation metadata records the actual feature-row denominator,
+profile, weights, category scales and prerequisite availability. Declared
+nonexcluded file scope is reported only when explicitly supplied; historical
+documents without those fields remain unknown. Empty frames or unmet required
+analysis prerequisites yield null public health, never an inferred perfect score.
+The historical number is not relabelled as a v4 result or compared across methods.
+
+## Snapshot comparison compatibility
+
+`compare_maintenance_snapshots(before, after)` consumes checked snapshot mappings
+containing `health`, `inventories`, `metrics` and `observations`. It retains the
+metric evidence identities and method versions. Comparison requires identical
+scorer configuration (including profile, rule versions, caps and weights),
+required and optional job-context lists, and selected file scope. Scope includes
+each file's status, effective parse-context identity, context source and match.
+Changes to these inputs break comparability and return explicit limitations and
+null deltas. Source content may change within compatible scope; this is the
+purpose of a trend, not a claim of identical source bytes.
+
+Metric cells are matched by job context, file, symbol, metric and metric version.
+Missing or unavailable cells retain null deltas rather than fabricated zero.
+An unavailable overall health measurement prevents a comparable overall trend.
+No automatic rename migration, symbol lineage or calibration equivalence is
+implied. Consumers must retain these compatibility limitations beside deltas.
+
 ## Authoritative health result
 
 `maintenance_health` v2 is the authoritative calculation. A normalized risk
@@ -77,7 +109,18 @@ document can name its exact retained `maintenance_health_artifact_id`. Consumers
 display the stored result instead of implementing their own scorer. Closed-bundle
 validation resolves that artifact and source identity.
 
-Initial method: `analyzed-kloc-context-v3`, scorer version `3.0.0`.
+Current method: `analyzed-kloc-context-v4`, scorer version `4.0.0`.
+The additional `requires_buffer_coherence:true` prerequisite separates matching
+compiler arguments from verified actual TU source/header buffers. Inventory
+`buffer_coherence` must be `verified`; missing legacy proof, mismatched buffers,
+opaque/precompiled/module/overlay inputs and known unqualified filesystem/time
+preprocessing inputs cannot be bypassed by `allow_inferred_parse`.
+Historical `analyzed-kloc-context-v3` / `3.0.0` documents remain readable with
+their original stored values and distinct method identity. They are not silently
+reinterpreted as v4. New policy assessments likewise stamp
+`native_input_binding:tu-buffer-coherence-v1`; historical unstamped assessments
+keep their original replay semantics, while fresh evaluation requires current
+buffer proof.
 The scorer records its profile, metric version, `physical_loc` denominator,
 `allow_inferred_parse`, category weights/caps and a canonical configuration digest.
 It also pins required rule identities and versions. Default requires the 15

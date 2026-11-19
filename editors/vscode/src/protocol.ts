@@ -241,3 +241,8 @@ export class Generation {
   current(value: number): boolean { return value === this.epoch; }
   invalidate(): void { ++this.epoch; }
 }
+
+/** Match libclang source lines: CRLF is one terminator, LFCR is two. */
+export function splitSourceLines(text: string): string[] {
+  return text.split(/\r\n|\r|\n/);
+}

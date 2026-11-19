@@ -74,6 +74,8 @@ def import_pipeline(
             ("report.json", "application/json"),
             ("analyzer.log", "text/plain"),
             ("effective_config.json", "application/json"),
+            ("git_behavior.json", "application/json"),
+            ("git_history.json", "application/json"),
         ]:
             if (data / name).is_file():
                 stage.copy_artifact(

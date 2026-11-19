@@ -7,6 +7,8 @@
 
 #include <spdlog/spdlog.h>
 
+#include <atomic>
+#include <cerrno>
 #include <chrono>
 #include <fstream>
 #include <iomanip>
@@ -14,6 +16,14 @@
 #include <sstream>
 
 #include "metrics.h"
+
+#ifdef _WIN32
+#include <process.h>
+#include <windows.h>
+#else
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
 
 namespace cppulse {
 
@@ -32,6 +42,121 @@ std::string utc_timestamp() {
     std::ostringstream oss;
     oss << std::put_time(&utc_tm, "%Y-%m-%dT%H:%M:%SZ");
     return oss.str();
+}
+
+std::filesystem::path pending_path(const std::filesystem::path& output) {
+    static std::atomic<std::uint64_t> sequence{0};
+#ifdef _WIN32
+    const auto process = _getpid();
+#else
+    const auto process = getpid();
+#endif
+    return output /
+           (".findings.json.partial." + std::to_string(process) + "." + std::to_string(++sequence));
+}
+
+// Exclusive directory creation establishes ownership before opening any file.
+// Existing staging symlinks/directories are collisions, never cleanup targets.
+struct PendingReport {
+    std::filesystem::path directory;
+    std::filesystem::path path;
+
+    explicit PendingReport(const std::filesystem::path& output) {
+        for (unsigned attempt = 0; attempt < 64; ++attempt) {
+            auto candidate = pending_path(output);
+#ifdef _WIN32
+            std::error_code error;
+            if (!std::filesystem::create_directory(candidate, error)) {
+                if (!error || error == std::errc::file_exists)
+                    continue;
+                return;
+            }
+#else
+            // mkdir is exclusive and applies owner-only permissions atomically.
+            if (::mkdir(candidate.c_str(), S_IRWXU) != 0) {
+                if (errno == EEXIST)
+                    continue;
+                return;
+            }
+#endif
+            directory = std::move(candidate);
+            try {
+                path = directory / "report.json";
+            } catch (...) {
+                std::error_code ignored;
+                std::filesystem::remove(directory, ignored);
+                throw;
+            }
+            return;
+        }
+    }
+    PendingReport(const PendingReport&) = delete;
+    PendingReport& operator=(const PendingReport&) = delete;
+    ~PendingReport() noexcept {
+        if (!directory.empty()) {
+            std::error_code ignored;
+            std::filesystem::remove(path, ignored);
+            std::filesystem::remove(directory, ignored);
+        }
+    }
+};
+
+bool publish_report(const std::filesystem::path& pending, const std::filesystem::path& final) {
+#ifdef _WIN32
+    // Windows rename does not replace an existing target; retain atomic replacement.
+    if (MoveFileExW(pending.c_str(), final.c_str(),
+                    MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH))
+        return true;
+    spdlog::error("write_findings_json: cannot publish {}: Windows error {}", final.string(),
+                  GetLastError());
+    return false;
+#else
+    std::error_code error;
+    std::filesystem::rename(pending, final, error);
+    if (!error)
+        return true;
+    spdlog::error("write_findings_json: cannot publish {}: {}", final.string(), error.message());
+    return false;
+#endif
+}
+
+// The small envelope remains a JSON object; the large metrics inventory is
+// streamed directly from its retained rows instead of being copied into it.
+void stream_report(std::ostream& stream, const nlohmann::json& root,
+                   const AnalysisCoverage* coverage) {
+    using Json = nlohmann::json;
+    stream << '{';
+    bool first = true;
+    for (const auto& member : root.items()) {
+        if (!first)
+            stream << ',';
+        first = false;
+        stream << Json(member.key()) << ':';
+        if (member.key() != "metadata" || coverage == nullptr) {
+            stream << member.value();
+            continue;
+        }
+        stream << '{';
+        bool first_metadata = true;
+        for (const auto& metadata : member.value().items()) {
+            if (!first_metadata)
+                stream << ',';
+            first_metadata = false;
+            stream << Json(metadata.key()) << ':';
+            if (metadata.key() != "analysis") {
+                stream << metadata.value();
+                continue;
+            }
+            stream << '{';
+            for (const auto& analysis : metadata.value().items())
+                stream << Json(analysis.key()) << ':' << analysis.value() << ',';
+            stream << "\"native_metrics\":";
+            write_native_metrics(stream, *coverage);
+            stream << '}';
+        }
+        stream << '}';
+    }
+    stream << "}\n";
 }
 
 }  // namespace
@@ -126,7 +251,6 @@ bool write_findings_json(const std::vector<Finding>& findings, const std::string
         }
         root["metadata"]["analysis"] = {{"enabled_rules", coverage->enabled_rules},
                                         {"files", std::move(files)}};
-        root["metadata"]["analysis"]["native_metrics"] = native_metrics_document(*coverage);
         if (!coverage->parser_version.empty()) {
             root["metadata"]["analysis"]["parser"] = {{"name", "libclang"},
                                                       {"version", coverage->parser_version}};
@@ -144,16 +268,26 @@ bool write_findings_json(const std::vector<Finding>& findings, const std::string
          {{"error", count_error}, {"warning", count_warning}, {"info", count_info}}}};
 
     const std::filesystem::path out_file = output_dir / "findings.json";
-    std::ofstream ofs(out_file);
+    const PendingReport pending{output_dir};
+    if (pending.path.empty()) {
+        spdlog::error("write_findings_json: cannot exclusively create staging directory in {}",
+                      output_dir.string());
+        return false;
+    }
+    std::ofstream ofs(pending.path, std::ios::binary | std::ios::trunc);
     if (!ofs) {
         spdlog::error("write_findings_json: cannot open {} for writing", out_file.string());
         return false;
     }
-    ofs << root.dump(2) << '\n';
+    stream_report(ofs, root, coverage);
+    ofs.flush();
+    ofs.close();
     if (!ofs) {
         spdlog::error("write_findings_json: write error on {}", out_file.string());
         return false;
     }
+    if (!publish_report(pending.path, out_file))
+        return false;
     spdlog::info("write_findings_json: wrote {} finding(s) to {}", findings.size(),
                  out_file.string());
     return true;

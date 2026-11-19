@@ -4,7 +4,9 @@ Generated reference: edit `cppulse.tooling` or the packaged registry, then run
 `python scripts/check_generated.py --write` and review the resulting diff.
 `python scripts/check_generated.py` only checks; it exits nonzero for stale files.
 The local tooling tests also compare the registry with native rule registrations,
-categories and complexity defaults. A generator does not update native code.
+categories and complexity defaults. Generated native helpers define registered
+types, constructors, option capabilities and defaults. Detector implementations
+remain explicit C++ source with reviewed positive and negative fixtures.
 
 ## Draft scaffolds
 

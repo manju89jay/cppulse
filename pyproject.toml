@@ -10,7 +10,6 @@ readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = {file = "LICENSE"}
 dependencies = [
-  "GitPython==3.1.41",
   "jsonschema==4.21.1",
   "numpy==1.26.4",
   "pandas==2.2.0",
@@ -19,10 +18,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+git = ["GitPython==3.1.41"]
 ml = ["xgboost==2.0.3", "scikit-learn==1.4.0", "joblib==1.3.2", "shap==0.44.1"]
 pdf = ["weasyprint==61.2", "pydyf==0.10.0", "matplotlib==3.8.3"]
 web = ["fastapi==0.109.2", "uvicorn==0.27.1"]
-dev = ["pytest==8.0.0", "pytest-cov==4.1.0", "httpx==0.26.0", "black==24.1.1", "ruff==0.2.1", "build==1.2.2.post1"]
+dev = ["GitPython==3.1.41", "pytest==8.0.0", "pytest-cov==4.1.0", "httpx==0.26.0", "black==24.1.1", "ruff==0.2.1", "build==1.2.2.post1"]
 
 [project.scripts]
 cppulse = "cppulse.cli:main"

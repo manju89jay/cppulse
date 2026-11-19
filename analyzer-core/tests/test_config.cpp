@@ -5,6 +5,8 @@
 
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <filesystem>
 #include <fstream>
 
@@ -30,11 +32,7 @@ class ConfigYamlTest : public ::testing::Test {
     std::filesystem::path tmp_dir_;
 
     void SetUp() override {
-        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
-        tmp_dir_ = std::filesystem::temp_directory_path() /
-                   (std::string{"cppulse_config_"} + info->name());
-        std::filesystem::remove_all(tmp_dir_);
-        std::filesystem::create_directories(tmp_dir_);
+        tmp_dir_ = cppulse::test::make_test_directory("cppulse_config");
     }
 
     void TearDown() override {

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/git-history/private/options.schema.json",
+  "title": "Private checked Git history options",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cache_dir": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "max_commits": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    },
+    "max_record_bytes": {
+      "type": "integer",
+      "minimum": 1024,
+      "maximum": 67108864
+    },
+    "max_cache_bytes": {
+      "type": "integer",
+      "minimum": 1048576,
+      "maximum": 8589934592
+    },
+    "timeout_seconds": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 3600
+    }
+  },
+  "required": []
+}

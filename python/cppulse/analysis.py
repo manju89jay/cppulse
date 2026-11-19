@@ -6,6 +6,7 @@ normalization. The publication wrapper separately checks current finite sources.
 
 from __future__ import annotations
 
+from contextlib import ExitStack
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -15,9 +16,12 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import posixpath
+import re
 import stat
 import tempfile
 from typing import Any
+
+from cppulse.measurements import DuplicateCount
 
 import jsonschema
 import yaml
@@ -51,6 +55,14 @@ class NormalizedAnalysis:
     inventory: dict[str, Any]
     observations: dict[str, Any]
     derived_parse_contexts: list[dict[str, Any]]
+    metrics: dict[str, Any] | None = None
+
+
+def _physical_loc(content: bytes) -> int:
+    """Count Clang physical lines: CRLF is paired, LFCR is not."""
+    return len(re.findall(rb"\r\n|\r|\n", content)) + int(
+        bool(content) and content[-1] not in (10, 13)
+    )
 
 
 def _id(label: str) -> str:
@@ -415,7 +427,144 @@ def _validate_result(
         )
     documents.setdefault("analysis_inventory", []).append(inventory)
     documents.setdefault("observations", []).append(result.observations)
+    if result.metrics is not None:
+        documents.setdefault("analysis_metrics", []).append(result.metrics)
     validate_bundle({"run_manifest": manifest, **documents})
+
+
+def _include_binding(
+    native: dict[str, Any] | None,
+    *,
+    arguments: list[str],
+    workspace: str,
+    repo: str,
+    sources: dict[str, Any],
+    input_facts: dict[str, Any],
+    input_links: dict[str, str],
+    read_content: Any,
+    external_buffers: dict[str, bytes] | None = None,
+) -> tuple[str, list[str], list[dict[str, Any]]]:
+    """Compare actual TU include bytes with the finite frozen native inputs."""
+    if native is None:
+        return (
+            "unverified",
+            ["Legacy native report lacks an observed TU include-buffer inventory."],
+            [
+                {
+                    "id": "unobserved-native-include-buffers",
+                    "sha256": None,
+                    "availability": "unavailable",
+                }
+            ],
+        )
+    paths = {_relative(native["path"], workspace, base=repo)}
+    edges = native["includes"]
+    dependencies = [
+        {
+            "id": "native-tu-includes-" + digest_json(native["path"]),
+            "sha256": digest_json(edges),
+            "availability": "available",
+        }
+    ]
+    opaque = any(
+        argument.startswith(
+            (
+                "@",
+                "-include",
+                "-imacros",
+                "-fmodule",
+                "-ivfsoverlay",
+                "-ast-merge",
+                "-fpch",
+                "-Wp,",
+            )
+        )
+        for argument in arguments
+    )
+    missing_tu = native["status"] not in {"analyzed", "partial"}
+    status = "unverified" if opaque or missing_tu else "matched"
+    limitations = (
+        [
+            "Precompiled, forced-include, module or overlay input closure is not qualified by the TU inclusion visitor."
+        ]
+        if opaque
+        else []
+    )
+    if missing_tu:
+        limitations.append(
+            "No analyzed translation unit establishes parsed-buffer coherence."
+        )
+    checked_external = []
+    for edge in edges:
+        identity = edge.get("content_identity")
+        if identity is None or identity["status"] != "available":
+            if status != "mismatched":
+                status = "unverified"
+            limitations.append(
+                "An actual TU include buffer identity is unavailable or legacy path-only."
+            )
+            continue
+        external = (external_buffers or {}).get(edge["target"])
+        if external is not None:
+            if identity["sha256"] != hashlib.sha256(external).hexdigest() or identity[
+                "size_bytes"
+            ] != len(external):
+                status = "mismatched"
+                limitations.append(
+                    "Retained external SDK bytes differ from actual TU buffers."
+                )
+            else:
+                checked_external.append(external)
+            continue
+        try:
+            path = _relative(edge["target"], workspace, base=repo)
+        except ContractError:
+            path = None
+        expected = sources.get(path)
+        fact = input_facts.get(path)
+        if expected is not None and fact is not None and path in input_links:
+            paths.add(path)
+        if expected is None or fact is None or path not in input_links:
+            if status != "mismatched":
+                status = "unverified"
+            limitations.append(
+                "An observed TU include buffer is outside the finite retained native input inventory."
+            )
+        elif any(
+            identity[key] != expected[key] or fact[key] != expected[key]
+            for key in ("sha256", "size_bytes")
+        ):
+            status = "mismatched"
+            limitations.append(
+                "An actual TU include buffer differs from its frozen retained native input."
+            )
+    if status != "mismatched":
+        pattern = re.compile(
+            rb"\b(?:embed|__has_include(?:_next)?|__has_embed|__DATE__|__TIME__|__TIMESTAMP__|_Pragma|__pragma)\b|##|%:%:|\?\?[=/]"
+        )
+
+        def unsupported(data: bytes) -> bool:
+            logical = (
+                data.replace(b"\\\r\n", b"").replace(b"\\\n", b"").replace(b"\\\r", b"")
+            )
+            return pattern.search(logical) is not None
+
+        macro_arguments = [
+            argument
+            for index, argument in enumerate(arguments)
+            if argument.startswith(("-D", "-U"))
+            or (index and arguments[index - 1] in {"-D", "-U"})
+        ]
+        if (
+            unsupported(" ".join(macro_arguments).encode("utf-8"))
+            or any(unsupported(read_content(path)) for path in sorted(paths))
+            or any(unsupported(content) for content in checked_external)
+        ):
+            status = "unverified"
+            limitations.append(
+                "Filesystem/time preprocessing queries or opaque macro construction require additional input-closure evidence."
+            )
+    return status, list(dict.fromkeys(limitations)), dependencies
 
 
 def normalize_native_analysis(
@@ -431,6 +580,37 @@ def normalize_native_analysis(
     requested_rules: list[str],
 ) -> NormalizedAnalysis:
     """Normalize only checked, fresh, typed native-job facts without running tools."""
+    with tempfile.TemporaryDirectory(prefix="cppulse-native-report-") as directory:
+        with ExitStack() as resources:
+            return _normalize_native_analysis(
+                snapshot,
+                receipt_id=receipt_id,
+                report_artifact_id=report_artifact_id,
+                registry_artifact_id=registry_artifact_id,
+                config_artifact_id=config_artifact_id,
+                compilation_database_artifact_id=compilation_database_artifact_id,
+                resource_manifest_artifact_id=resource_manifest_artifact_id,
+                requested_files=requested_files,
+                requested_rules=requested_rules,
+                resources=resources,
+                directory=Path(directory),
+            )
+
+
+def _normalize_native_analysis(
+    snapshot: RunSnapshot,
+    *,
+    receipt_id: str,
+    report_artifact_id: str,
+    registry_artifact_id: str,
+    config_artifact_id: str,
+    compilation_database_artifact_id: str | None,
+    resource_manifest_artifact_id: str | None,
+    requested_files: list[str],
+    requested_rules: list[str],
+    resources: ExitStack,
+    directory: Path,
+) -> NormalizedAnalysis:
     facts, plan, job, workspace, documents = _bound_facts(snapshot, receipt_id)
     receipt = facts["receipt"]
     sources = {row["path"]: row for row in snapshot.manifest["source"]["files"]}
@@ -499,8 +679,43 @@ def normalize_native_analysis(
         raise IntegrityError(
             "Native report is stale or differs from its observed output bytes"
         )
-    report = _json(snapshot.read_bytes(report_artifact_id), "native report")
-    validate("findings", report, version="prototype_v1")
+    from cppulse.contracts.json_projection import ProjectionLimits
+    from cppulse.contracts.json_stream import JsonStreamLimits
+    from cppulse.native_report_reader import open_native_report
+    from cppulse.streamed_native_metrics import validate_streamed_native_metrics
+
+    # Exact retained bytes, closed JSON schema and maintenance semantics must all
+    # pass before the original source/context/rule normalization below. Keeping
+    # the contexts open avoids ever materializing all native metric payloads.
+    stream = resources.enter_context(snapshot.open_binary(report_artifact_id))
+    reader = resources.enter_context(
+        open_native_report(
+            stream,
+            expected_sha256=report_descriptor["sha256"],
+            expected_size=report_descriptor["size_bytes"],
+            directory=directory,
+            source_guard=snapshot._check_manifest,
+            projection_limits=ProjectionLimits(
+                json_limits=JsonStreamLimits(
+                    max_bytes=min(plan["limits"]["max_artifact_bytes"], 1024**3),
+                    max_item_bytes=16 * 1024**2,
+                    max_array_items=10_000_000,
+                )
+            ),
+        )
+    )
+    report = reader.document
+    native_header = report["metadata"].get("analysis", {}).get("native_metrics")
+    validate_streamed_native_metrics(
+        reader.iter_analysis_files(),
+        reader.iter_metric_files(),
+        metrics_header=(
+            {key: value for key, value in native_header.items() if key != "files"}
+            if native_header is not None
+            else None
+        ),
+        directory=directory,
+    )
     analysis = report["metadata"].get("analysis")
     if not isinstance(analysis, dict) or "parser" not in analysis:
         raise CompatibilityError(
@@ -596,6 +811,12 @@ def normalize_native_analysis(
                 )
         return source_bytes[path]
 
+    from cppulse.native_metric_index import MetricRowIndex
+
+    native_files = MetricRowIndex(
+        analysis.get("native_metrics", {}).get("files", []),
+        lambda path: _relative(path, workspace, base=repo),
+    )
     coverage: dict[str, dict[str, Any]] = {}
     for row in analysis["files"]:
         path = _relative(row["path"], workspace, base=repo)
@@ -613,11 +834,7 @@ def normalize_native_analysis(
         for path, row in coverage.items()
         if row["status"] in {"analyzed", "partial"}
     ]
-    loc = sum(
-        content(path).count(b"\n")
-        + bool(content(path) and not content(path).endswith(b"\n"))
-        for path in ast_files
-    )
+    loc = sum(_physical_loc(content(path)) for path in ast_files)
     if (
         report["metadata"]["file_count"] != len(ast_files)
         or report["metadata"]["total_loc"] != loc
@@ -645,9 +862,7 @@ def normalize_native_analysis(
             raise ContractError(
                 "Native finding disagrees with source traversal/enabled registry rules"
             )
-        lines = content(path).count(b"\n") + bool(
-            content(path) and not content(path).endswith(b"\n")
-        )
+        lines = _physical_loc(content(path))
         if finding["line"] > lines or not finding["message"].strip():
             raise ContractError(
                 "Native finding location/message is inconsistent with retained source"
@@ -748,8 +963,9 @@ def normalize_native_analysis(
                 }
             )
             continue
-        arguments, cwd = observed.get("parse_arguments"), observed.get(
-            "working_directory"
+        arguments, cwd = (
+            observed.get("parse_arguments"),
+            observed.get("working_directory"),
         )
         if arguments is None or cwd is None:
             if status == "failed":
@@ -775,6 +991,16 @@ def normalize_native_analysis(
         if any("\x00" in argument for argument in arguments):
             raise ContractError("Observed parse arguments contain NUL")
         observed_cwd = _absolute(cwd, receipt["cwd"])
+        buffer_match, buffer_limits, buffer_dependencies = _include_binding(
+            native_files.get(path),
+            arguments=arguments,
+            workspace=workspace,
+            repo=repo,
+            sources=sources,
+            input_facts=input_facts,
+            input_links=input_links,
+            read_content=content,
+        )
         context = context_identity(
             {
                 "compiler": deepcopy(parser),
@@ -783,12 +1009,12 @@ def normalize_native_analysis(
                 "language_standard": None,
                 "target": None,
                 "provenance": "observed",
-                "dependencies": deepcopy(dependencies),
+                "dependencies": deepcopy(dependencies) + buffer_dependencies,
                 "limitations": _LIMITS,
             }
         )
         contexts[context["id"]] = context
-        match, limitations = "matched", []
+        match, limitations = buffer_match, buffer_limits
         source_fact = input_facts.get(path)
         if (
             source_fact is None
@@ -798,7 +1024,8 @@ def normalize_native_analysis(
                 for key in ("sha256", "size_bytes")
             )
         ):
-            match = "unverified"
+            if match != "mismatched":
+                match = "unverified"
             limitations.append(
                 "Requested source was not a bound unchanged native input."
             )
@@ -856,6 +1083,9 @@ def normalize_native_analysis(
             "error_count": int(observed["error_count"]),
             "context_source": observed["compile_context"],
             "context_match": match,
+            "buffer_coherence": (
+                "verified" if buffer_match == "matched" else buffer_match
+            ),
             "executed_rules": (
                 list(enabled)
                 if status == "analyzed" and observed["error_count"] == 0
@@ -936,7 +1166,211 @@ def normalize_native_analysis(
         },
         list(contexts.values()),
     )
+    raw_metrics = analysis.get("native_metrics")
+    if raw_metrics is not None:
+        metrics = _normalize_metrics(raw_metrics, inventory, workspace, repo, content)
+        result = NormalizedAnalysis(
+            result.inventory,
+            result.observations,
+            result.derived_parse_contexts,
+            metrics,
+        )
     _validate_result(snapshot, result, documents, registry, resource)
+    return result
+
+
+def _normalize_metrics(
+    raw: dict[str, Any],
+    inventory: dict[str, Any],
+    workspace: str,
+    repo: str,
+    content: Any,
+    *,
+    duplication_counts: dict[str, DuplicateCount] | None = None,
+) -> dict[str, Any]:
+    from cppulse.contracts.maintenance import (
+        FILE_UNITS,
+        FUNCTION_UNITS,
+        METRIC_VERSION,
+        DUPLICATION_VERSION,
+    )
+    from cppulse.indexed_duplication import indexed_duplicate_token_counts
+    from cppulse.native_metric_index import MetricRowIndex
+
+    rows = {row["file"]: row for row in inventory["items"]}
+    selected = MetricRowIndex(
+        raw["files"], lambda path: _relative(path, workspace, base=repo)
+    )
+    selected_files = [file for file, row in rows.items() if row["status"] != "excluded"]
+
+    def streams():
+        for file in selected_files:
+            native = selected.get(file)
+            yield (
+                file,
+                (
+                    native["token_stream"]
+                    if native is not None
+                    else {"availability": "unavailable", "complete": False}
+                ),
+            )
+            native = None
+
+    if duplication_counts is None:
+        # Rows are already checked and replayable. The index independently
+        # checks this declaration against all consumed original frames at EOF.
+        scope_complete = True
+        for file in selected_files:
+            native = selected.get(file)
+            if (
+                native is None
+                or not native["token_stream"]["complete"]
+                or native["token_stream"]["availability"] != "measured"
+            ):
+                scope_complete = False
+            native = None
+        with tempfile.TemporaryDirectory(
+            prefix="cppulse-metric-duplicates-"
+        ) as directory:
+            duplicates = indexed_duplicate_token_counts(
+                streams(), directory=Path(directory), scope_complete=scope_complete
+            )
+    else:
+        # A multi-process producer computes duplication over its entire declared
+        # scope once. Recomputing within one unit would invent clean zeroes for
+        # cross-unit duplicates or for an unstarted peer.
+        if not set(selected_files) <= duplication_counts.keys():
+            raise ContractError("Global duplication counts omit selected files")
+        for count in duplication_counts.values():
+            if not isinstance(count, DuplicateCount) or (
+                (count.tokens is None) != (count.lines is None)
+            ):
+                raise ContractError("Invalid global duplication count")
+            if any(
+                value is not None and (type(value) is not int or value < 0)  # noqa: E721 -- exact nonnegative counts
+                for value in (count.tokens, count.lines)
+            ):
+                raise ContractError("Invalid global duplication count")
+        duplicates = duplication_counts
+    items = []
+    for file, observed in sorted(rows.items()):
+        native = selected.get(file)
+        if native is None or observed["parse_context_id"] is None:
+            continue
+        digest = native.get("source_content_sha256")
+        if (
+            observed["status"] in {"analyzed", "partial"}
+            and digest != hashlib.sha256(content(file)).hexdigest()
+        ):
+            raise ContractError(
+                "Native metric buffer content digest differs from retained input"
+            )
+        if observed["status"] in {"analyzed", "partial"}:
+            physical = _physical_loc(content(file))
+            if native["physical_loc"] != physical:
+                raise ContractError(
+                    "Native physical LOC differs from retained buffer content"
+                )
+            if native["token_stream"]["complete"]:
+                code_lines: set[int] = set()
+                for token in native["token_stream"]["records"]:
+                    last = token["end_line"] - int(
+                        token["end_column"] == 1 and token["end_line"] > token["line"]
+                    )
+                    code_lines.update(range(token["line"], min(last, physical) + 1))
+                if native["code_loc"] != len(code_lines):
+                    raise ContractError(
+                        "Native code LOC differs from retained complete token extent union"
+                    )
+        complete = (
+            native["measurement_complete"]
+            and observed["status"] == "analyzed"
+            and not observed["error_count"]
+        )
+
+        def cell(
+            name: str,
+            value: Any,
+            units: str,
+            symbol: str | None = None,
+            location: dict[str, int] | None = None,
+            version: str = METRIC_VERSION,
+            available: bool = complete,
+            reasons: list[str] | None = None,
+        ) -> None:
+            row = {
+                "id": _id(
+                    "metric:"
+                    + inventory["id"]
+                    + ":"
+                    + digest_json(
+                        [file, observed["parse_context_id"], symbol, name, version]
+                    )
+                ),
+                "file": file,
+                "symbol": symbol,
+                "context_id": observed["parse_context_id"],
+                "metric": name,
+                "metric_version": version,
+                "value": value if available else None,
+                "units": units,
+                "availability": "available" if available else "unavailable",
+                "limitations": (
+                    []
+                    if available
+                    else (reasons or ["Native measurement is incomplete."])
+                ),
+            }
+            if location is not None:
+                row["location"] = location
+            items.append(row)
+
+        for name in ("physical_loc", "code_loc", "function_count"):
+            cell(
+                name,
+                native[name],
+                FILE_UNITS[name],
+                available=complete and native[name] is not None,
+            )
+        for function in native["functions"]:
+            location = {
+                key: function[key]
+                for key in ("line", "column", "end_line", "end_column")
+            }
+            if any(value is None for value in location.values()):
+                continue
+            for name, units in FUNCTION_UNITS.items():
+                cell(
+                    name,
+                    function[name],
+                    units,
+                    function["symbol"],
+                    location,
+                    available=complete and function["availability"] == "measured",
+                    reasons=function["limitations"],
+                )
+        count = duplicates.get(file)
+        if count is not None:
+            for name, value in (
+                ("duplicate_tokens", count.tokens),
+                ("duplicate_lines", count.lines),
+            ):
+                cell(
+                    name,
+                    value,
+                    FILE_UNITS[name],
+                    version=DUPLICATION_VERSION,
+                    available=complete and value is not None,
+                    reasons=list(count.limitations),
+                )
+    result = {
+        "version": "2.0.0",
+        "source_digest": inventory["source_digest"],
+        "analysis_inventory_id": inventory["id"],
+        "job_context_id": inventory["job_context_id"],
+        "items": items,
+    }
+    validate("analysis_metrics", result)
     return result
 
 
@@ -1024,10 +1458,13 @@ def persist_native_analysis(
                 stage.copy_artifact(
                     artifact_id, local, path, "application/json", contract=kind
                 )
-            for kind, document in [
+            outputs = [
                 ("analysis_inventory", result.inventory),
                 ("observations", result.observations),
-            ]:
+            ]
+            if result.metrics is not None:
+                outputs.append(("analysis_metrics", result.metrics))
+            for kind, document in outputs:
                 checked_metadata(document)
                 artifact_id = _id(kind + ":" + result.inventory["id"])
                 stage.write_json(

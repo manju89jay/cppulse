@@ -88,15 +88,31 @@ def doctor() -> dict[str, Any]:
 
 def diagnostic_bundle(output: Path) -> Path:
     """Write local summary metadata, excluding source, environment and raw paths."""
-    report = doctor()
-    native = report["native"]
+    inspection = doctor()
+    report = {
+        key: inspection[key]
+        for key in ("cppulse", "python", "platform", "machine")
+        if key in inspection
+    }
+    # Distribution versions may contain private local tags. Export capability
+    # status rather than copying optional metadata or future doctor fields.
+    report["optional"] = {
+        feature: {
+            key: inspection["optional"][feature][key]
+            for key in ("installed", "execution_verified")
+            if key in inspection["optional"][feature]
+        }
+        for feature in ("ml", "pdf", "web")
+        if feature in inspection["optional"]
+    }
+    native = inspection["native"]
     report["native"] = {
         key: native[key]
         for key in ("available", "startup_exit", "error_code")
         if key in native
     }
     report["redaction"] = (
-        "No source, environment, argv, paths, logs or configuration values included."
+        "No source, environment, argv, paths, logs, configuration values or optional package version strings included."
     )
     report["created_at"] = datetime.now(timezone.utc).isoformat()
     output = output.resolve()
@@ -115,6 +131,93 @@ def _analysis_options(command: argparse.ArgumentParser) -> None:
     command.add_argument("--config", type=Path)
     command.add_argument("--profile", choices=["default", "safety-critical"])
     command.add_argument("--compilation-database", type=Path)
+    command.add_argument(
+        "--execution",
+        choices=["bounded", "legacy"],
+        help="Select bounded per-file workers or the compatibility extractor",
+    )
+    command.add_argument("--jobs", type=int, help="Maximum active native workers")
+    command.add_argument(
+        "--unit-timeout",
+        type=float,
+        help="Wall-time budget per native work unit, in seconds",
+    )
+    command.add_argument(
+        "--cpu-seconds", type=int, help="CPU budget per native work unit"
+    )
+    command.add_argument(
+        "--memory-limit-mib",
+        type=int,
+        help="Address-space budget per native work unit, in MiB",
+    )
+    command.add_argument(
+        "--output-limit-mib",
+        type=int,
+        help="Output-file budget per native work unit, in MiB",
+    )
+    command.add_argument(
+        "--work-directory",
+        type=Path,
+        help="Retain checked native work state outside the analyzed repository",
+    )
+    command.add_argument(
+        "--resume",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Resume checked retained work; requires a work directory",
+    )
+
+    command.add_argument(
+        "--history",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable optional history mining or retain explicit unavailable history",
+    )
+    command.add_argument(
+        "--history-cache", type=Path, help="Explicit reusable bounded raw-history cache"
+    )
+    command.add_argument(
+        "--behavior-config",
+        type=Path,
+        help="Declared aliases, teams and behavior window JSON",
+    )
+    command.add_argument("--behavior-cutoff", help="Explicit aware UTC behavior cutoff")
+
+
+def _history_overrides(args: argparse.Namespace) -> dict[str, Any] | None:
+    """Preserve omitted flags and explicit history disabling."""
+    values = {
+        "enabled": args.history,
+        "cache_dir": (
+            str(args.history_cache) if args.history_cache is not None else None
+        ),
+        "behavior_config": (
+            str(args.behavior_config) if args.behavior_config is not None else None
+        ),
+        "behavior_cutoff": args.behavior_cutoff,
+    }
+    return {key: value for key, value in values.items() if value is not None} or None
+
+
+def _execution_overrides(args: argparse.Namespace) -> dict[str, Any] | None:
+    """Translate explicit flags only, preserving project-setting precedence."""
+    values = {
+        "mode": args.execution,
+        "jobs": args.jobs,
+        "wall_seconds": args.unit_timeout,
+        "cpu_seconds": args.cpu_seconds,
+        "address_space_bytes": (
+            None if args.memory_limit_mib is None else args.memory_limit_mib * 1024**2
+        ),
+        "output_bytes": (
+            None if args.output_limit_mib is None else args.output_limit_mib * 1024**2
+        ),
+        "work_directory": (
+            None if args.work_directory is None else str(args.work_directory)
+        ),
+        "resume": args.resume,
+    }
+    return {key: value for key, value in values.items() if value is not None} or None
 
 
 def _run_options(command: argparse.ArgumentParser, *, workspace: bool) -> None:
@@ -215,6 +318,118 @@ def _parser() -> argparse.ArgumentParser:
         "local-matrix-id",
     ):
         compare.add_argument("--" + field, required=True)
+    maintenance = subcommands.add_parser(
+        "maintenance",
+        help="Score retained measurements for explicitly required contexts",
+    )
+    _run_options(maintenance, workspace=True)
+    maintenance.add_argument("--required-context", action="append", required=True)
+    maintenance.add_argument("--optional-context", action="append", default=[])
+    maintenance.add_argument("--allow-inferred-parse", action="store_true")
+    maintenance.add_argument(
+        "--profile", choices=["default", "safety-critical"], default="default"
+    )
+    portfolio = subcommands.add_parser(
+        "portfolio", help="Read pinned projects or run one explicit local report tick"
+    )
+    portfolio_commands = portfolio.add_subparsers(
+        dest="portfolio_command", required=True
+    )
+    for name in ("report", "tick"):
+        command = portfolio_commands.add_parser(name)
+        command.add_argument("--config", type=Path, required=True)
+        command.add_argument(
+            "--at",
+            help="Explicit timezone-aware ISO replay clock; default is current UTC",
+        )
+        if name == "tick":
+            command.add_argument(
+                "--output-root",
+                type=Path,
+                required=True,
+                help="Existing authorized directory for local report artifacts",
+            )
+    layout = subcommands.add_parser(
+        "store-layout",
+        help="Explicit store migration or separate legacy snapshot export",
+    )
+    layout_actions = layout.add_subparsers(dest="layout_action", required=True)
+    upgrade = layout_actions.add_parser(
+        "upgrade", help="Explicitly migrate a v2 store to v3"
+    )
+    upgrade.add_argument("--store", type=Path, required=True)
+    export = layout_actions.add_parser(
+        "export-v2", help="Export a separate offline v2 snapshot"
+    )
+    export.add_argument("--store", type=Path, required=True)
+    export.add_argument("--destination", type=Path, required=True)
+    recovery = subcommands.add_parser(
+        "store-recovery",
+        help="Inspect a writer lock or explicitly recover an exact dead local owner",
+    )
+    recovery_actions = recovery.add_subparsers(dest="recovery_action", required=True)
+    recovery_inspect = recovery_actions.add_parser(
+        "inspect", help="Read lock observations without changing the store"
+    )
+    recovery_inspect.add_argument("--store", type=Path, required=True)
+    recovery_inspect.add_argument("--expected-lock-sha256")
+    recovery_inspect.add_argument("--expected-lock-token")
+    recovery_execute = recovery_actions.add_parser(
+        "recover",
+        help="Preserve staged bytes and quarantine only the exact selected dead-owner lock",
+    )
+    recovery_execute.add_argument("--store", type=Path, required=True)
+    recovery_execute.add_argument("--expected-lock-sha256", required=True)
+    recovery_execute.add_argument("--expected-lock-token", required=True)
+    issues = subcommands.add_parser(
+        "issues",
+        help="Read bounded public GitHub issue observations; financial inputs remain caller claims",
+    )
+    issues.add_argument("--request", type=Path, required=True)
+    issues.add_argument("--output", type=Path, required=True)
+    branches = subcommands.add_parser(
+        "branches",
+        help="Read pinned local branch facts; declared deliveries are not provider verification",
+    )
+    for name in ("repo", "config", "output"):
+        branches.add_argument("--" + name, type=Path, required=True)
+    abi = subcommands.add_parser(
+        "abi-compare",
+        help="Retain a bounded, pinned ELF/DWARF comparison report; exit0 is report completion, not compatibility approval",
+    )
+    abi.add_argument("--request", type=Path, required=True)
+    abi.add_argument("--output", type=Path, required=True)
+    service_proposal = subcommands.add_parser(
+        "verify-service-proposal",
+        help="Verify an explicitly trusted, pinned finite C++ service regression in disjoint copies",
+    )
+    for name in ("request", "output"):
+        service_proposal.add_argument("--" + name, type=Path, required=True)
+    service_proposal.add_argument(
+        "--execute-trusted-project", action="store_true", required=True
+    )
+    proposal = subcommands.add_parser(
+        "verify-proposal",
+        help="Verify a pinned proposal in a fresh copy of an explicitly trusted C++17 project",
+    )
+    for name in ("store", "workspace", "request", "output-root"):
+        proposal.add_argument("--" + name, type=Path, required=True)
+    proposal.add_argument(
+        "--execute-trusted-project",
+        action="store_true",
+        required=True,
+        help="Execute selected trusted CMake/CTest code in an isolated source copy",
+    )
+    fix = subcommands.add_parser(
+        "fix",
+        help="Write a source-pinned dry-run repair plan; never applies source changes",
+    )
+    fix.add_argument("--store", type=Path, required=True)
+    fix.add_argument("--workspace", type=Path, required=True)
+    fix.add_argument("--run-id", required=True)
+    fix.add_argument("--manifest-sha256", required=True)
+    fix.add_argument("--observation-id", action="append")
+    fix.add_argument("--output", type=Path, required=True)
     diagnostics = subcommands.add_parser(
         "diagnostics", help="Create an explicitly local redacted diagnostic ZIP"
     )
@@ -517,6 +732,172 @@ def main(argv: list[str] | None = None) -> int:
                 "scaffold": str(scaffold(args.kind, args.name, args.destination)),
                 "registered": False,
             }
+        elif args.command == "portfolio":
+            from cppulse.portfolio import build_portfolio, schedule_tick
+
+            selected = _read_request(args.config)
+            now = (
+                datetime.fromisoformat(args.at.replace("Z", "+00:00"))
+                if args.at is not None
+                else datetime.now(timezone.utc)
+            )
+            if args.portfolio_command == "report":
+                result = build_portfolio(selected, now=now)
+            else:
+                result = schedule_tick(
+                    selected,
+                    output_root=Path(os.path.abspath(args.output_root)),
+                    now=now,
+                )
+                exit_code = (
+                    2
+                    if any(
+                        result["active_job_counts"][status]
+                        for status in ("failed", "exhausted")
+                    )
+                    else 0
+                )
+        elif args.command == "store-layout":
+            from cppulse.store_heads import export_store_v2, upgrade_store_to_v3
+
+            if args.layout_action == "upgrade":
+                result = upgrade_store_to_v3(args.store)
+            else:
+                result = export_store_v2(args.store, args.destination)
+        elif args.command == "store-recovery":
+            from cppulse.store_recovery import (
+                inspect_recovery_receipt,
+                inspect_store_lock,
+                recover_store_lock,
+            )
+
+            if args.recovery_action == "inspect":
+                if bool(args.expected_lock_sha256) != bool(args.expected_lock_token):
+                    raise ContractError(
+                        "Recovery inspection requires both exact lock pins"
+                    )
+                if args.expected_lock_sha256 is not None:
+                    result = inspect_recovery_receipt(
+                        args.store,
+                        expected_lock_sha256=args.expected_lock_sha256,
+                        expected_lock_token=args.expected_lock_token,
+                    )
+                else:
+                    result = inspect_store_lock(args.store)
+            else:
+                result = recover_store_lock(
+                    args.store,
+                    expected_lock_sha256=args.expected_lock_sha256,
+                    expected_lock_token=args.expected_lock_token,
+                )
+        elif args.command == "issues":
+            from cppulse.issue_tracker_cli import main as issues_main
+
+            return issues_main(
+                ["--request", str(args.request), "--output", str(args.output)]
+            )
+        elif args.command == "branches":
+            from cppulse.branch_delivery_cli import main as branches_main
+
+            return branches_main(
+                [
+                    "--repo",
+                    str(args.repo),
+                    "--config",
+                    str(args.config),
+                    "--output",
+                    str(args.output),
+                ]
+            )
+        elif args.command == "abi-compare":
+            from cppulse.abi import main as abi_main
+
+            return abi_main(
+                ["--request", str(args.request), "--output", str(args.output)]
+            )
+        elif args.command == "verify-service-proposal":
+            from cppulse.service_repair import main as service_proposal_main
+
+            return service_proposal_main(
+                [
+                    "--request",
+                    str(args.request),
+                    "--output",
+                    str(args.output),
+                    "--execute-trusted-project",
+                ]
+            )
+        elif args.command == "verify-proposal":
+            from cppulse.semantic_repair import main as proposal_main
+
+            return proposal_main(
+                [
+                    "--store",
+                    str(args.store),
+                    "--workspace",
+                    str(args.workspace),
+                    "--request",
+                    str(args.request),
+                    "--output-root",
+                    str(args.output_root),
+                    "--execute-trusted-project",
+                ]
+            )
+        elif args.command == "fix":
+            from cppulse.repairs import main as repair_main
+
+            command = [
+                "--store",
+                str(args.store),
+                "--workspace",
+                str(args.workspace),
+                "--run-id",
+                args.run_id,
+                "--manifest-sha256",
+                args.manifest_sha256,
+                "--output",
+                str(args.output),
+            ]
+            for observation_id in args.observation_id or []:
+                command.extend(["--observation-id", observation_id])
+            return repair_main(command)
+        elif args.command == "maintenance":
+            from cppulse.maintenance import persist_maintenance_health
+
+            snapshot = persist_maintenance_health(
+                _selected_run(args),
+                workspace=args.workspace,
+                store=args.store,
+                required_context_ids=args.required_context,
+                optional_context_ids=args.optional_context,
+                allow_inferred_parse=args.allow_inferred_parse,
+                profile=args.profile,
+            )
+            from cppulse.workflows import read_documents
+
+            health = next(
+                row
+                for row in reversed(read_documents(snapshot)["maintenance_health"])
+                if row["scorer"]["id"] == "analyzed-kloc-context-v4"
+                and row["scorer"]["profile"] == args.profile
+                and row["scorer"]["allow_inferred_parse"] == args.allow_inferred_parse
+                and row["required_context_ids"] == sorted(args.required_context)
+                and row["optional_context_ids"] == sorted(args.optional_context)
+            )
+            aggregate = health["aggregate"]
+            result = {
+                "run_id": snapshot.run_id,
+                "manifest_sha256": snapshot.manifest_sha256,
+                "maintenance": aggregate,
+                "scorer": health["scorer"]["id"],
+                "scorer_details": health["scorer"],
+                "contexts": health["contexts"],
+                "required_context_ids": health["required_context_ids"],
+                "optional_context_ids": health["optional_context_ids"],
+                "formula_reference": "docs/contracts/maintenance-metrics.md",
+                "consumer_assurance": health["consumer_assurance"],
+            }
+            exit_code = 0 if aggregate["overall"] is not None else 3
         elif args.command == "serve":
             try:
                 import uvicorn
@@ -562,6 +943,8 @@ def main(argv: list[str] | None = None) -> int:
                 config=args.config,
                 profile=args.profile,
                 compilation_database=args.compilation_database,
+                execution=_execution_overrides(args),
+                history=_history_overrides(args),
             )
             if args.command == "config":
                 result = config.as_dict()

@@ -252,10 +252,7 @@ def test_changed_source_does_not_publish_a_new_declaration_attempt(
         kind="compiled",
         distribution_files={"lib/libdemo.a": "package"},
     )
-    pointers = {
-        name: (snapshot._root / name).read_bytes()
-        for name in ["latest.json", "latest_attempt.json"]
-    }
+    pointers = {name: (snapshot._root / name).read_bytes() for name in ["heads.json"]}
     (workspace / "demo.hpp").write_text("// changed after source capture\n")
     with pytest.raises(InputChanged):
         persist_consumer_documents(

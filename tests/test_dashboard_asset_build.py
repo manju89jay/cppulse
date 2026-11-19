@@ -94,3 +94,54 @@ def test_build_refuses_to_replace_unowned_directory(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="Refusing"):
         build_assets(tmp_path, destination)
     assert marker.read_text() == "preserve this file"
+
+
+def test_rebuild_retains_complete_notice_as_checked_source(
+    selected_bundle: tuple[Path, Path], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A controlled build transport must retain the entire attribution input."""
+    source, assets = selected_bundle
+    notice = source / "dashboard/src/third-party-notices.txt"
+    body = b"Synthetic package attribution\nComplete synthetic license body.\n"
+    notice.write_bytes(body)
+
+    def produce(command: list[str], **kwargs: object) -> None:
+        output = Path(command[-1])
+        (output / "assets").mkdir(parents=True)
+        (output / "index.html").write_text("<html>new controlled output</html>")
+        (output / "assets/app.js").write_text("// controlled build JS\n")
+        (output / "assets/app.css").write_text("/* controlled build CSS */\n")
+
+    monkeypatch.setattr("scripts.build_dashboard_assets.subprocess.run", produce)
+    manifest = build_assets(source, assets)
+    assert (assets / "assets/third-party-notices.txt").read_bytes() == body
+    assert any(
+        row["path"] == "src/third-party-notices.txt" for row in manifest["sources"]
+    )
+    assert any(
+        row["path"] == "assets/third-party-notices.txt" for row in manifest["files"]
+    )
+    assert verify_assets(source, assets) == manifest
+    notice.write_bytes(body + b"Changed attribution input.\n")
+    with pytest.raises(ValueError, match="stale"):
+        verify_assets(source, assets)
+
+
+def test_missing_notice_refuses_before_tools_or_output_replacement(
+    selected_bundle: tuple[Path, Path], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A rebuild cannot silently discard the previously retained license."""
+    source, assets = selected_bundle
+    before = {
+        str(path): path.read_bytes() for path in assets.rglob("*") if path.is_file()
+    }
+
+    def reject(*args: object, **kwargs: object) -> None:
+        raise AssertionError("Missing legal input must refuse before build tools")
+
+    monkeypatch.setattr("scripts.build_dashboard_assets.subprocess.run", reject)
+    with pytest.raises(ValueError, match="regular asset/source file"):
+        build_assets(source, assets)
+    assert {
+        str(path): path.read_bytes() for path in assets.rglob("*") if path.is_file()
+    } == before

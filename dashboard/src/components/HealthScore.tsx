@@ -99,9 +99,10 @@ export function HealthScore({
       <div className="grid grid-cols-2 gap-3 mt-5">
         <ScoreCard label="Memory Safety" score={healthScore.memory_safety} />
         <ScoreCard label="Modernization" score={healthScore.modernization} />
-        <ScoreCard label="Complexity" score={healthScore.complexity} />
+        <ScoreCard label="Complexity finding health" score={healthScore.complexity} />
         {healthScore.misra_compliance !== undefined && <ScoreCard label="MISRA subset" score={healthScore.misra_compliance} />}
       </div>
+      <p className="mt-3 text-sm text-gray-500">Category health uses finding density. Measured cyclomatic complexity is reported separately in hotspots.</p>
       {limitationNotes}
     </div>
   );

@@ -18,8 +18,8 @@ Authoritative inputs, preserved unchanged:
   later instructions.
 
 The traceability inventory contains **118 numbered requirements/journeys/
-acceptance items and all 60 milestone tasks**, plus eight separately identified
-design/environment obligations. Every item must remain assigned and visible.
+acceptance items and all 60 milestone tasks**, plus nine separately identified
+design/environment obligations, including explicit Docker/Compose qualification. Every item must remain assigned and visible.
 The original classification of advanced features as optional or expansion work
 is preserved; it does not remove them from this completion plan.
 
@@ -429,7 +429,7 @@ The companion [JSON traceability](production-completion-traceability.json) and
 [CSV traceability](production-completion-traceability.csv) preserve every
 original requirement/task text, source line, baseline status, gap, owner phase,
 evidence and acceptance gate. Source SHA-256 values bind the input specification.
-Eight additional design/environment obligations are tracked separately; they
+Nine additional design/environment obligations are tracked separately; they
 do not replace the numbered items.
 
 The next increment is P0/P1 closure plus P2 client contracts and a real installed

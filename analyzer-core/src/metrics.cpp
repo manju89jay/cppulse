@@ -12,6 +12,7 @@
 #include <sstream>
 #include <string_view>
 #include <tuple>
+#include <unordered_map>
 #include <vector>
 
 #include "rules/complexity/cyclomatic_complexity.h"
@@ -310,9 +311,38 @@ CXChildVisitResult function_child(CXCursor cursor, CXCursor, CXClientData data) 
 }
 
 struct IncludeState {
+    CXTranslationUnit unit;
     std::filesystem::path root;
     Json edges = Json::array();
+    std::unordered_map<CXFile, Json> identities{};
 };
+
+Json unavailable_include_identity() {
+    return {{"method", "libclang-tu-buffer-sha256-v1"},
+            {"status", "unavailable"},
+            {"sha256", nullptr},
+            {"size_bytes", nullptr}};
+}
+
+Json include_identity(IncludeState& state, CXFile file) {
+    const auto found = state.identities.find(file);
+    if (found != state.identities.end())
+        return found->second;
+    std::size_t size = 0;
+    const char* bytes = clang_getFileContents(state.unit, file, &size);
+    auto identity = unavailable_include_identity();
+    // The retained TU buffer is the observation. A later filesystem read could
+    // describe restored bytes that never produced this AST. Null is unknown,
+    // even when no length was returned; it is not evidence of an empty file.
+    if (bytes != nullptr) {
+        identity.update({{"status", "available"},
+                         {"sha256", sha256(std::string_view{bytes, size})},
+                         {"size_bytes", size}});
+    }
+    state.identities.emplace(file, identity);
+    return identity;
+}
+
 void inclusion(CXFile included, CXSourceLocation* stack, unsigned count, CXClientData data) {
     if (count == 0 || included == nullptr)
         return;
@@ -331,7 +361,34 @@ void inclusion(CXFile included, CXSourceLocation* stack, unsigned count, CXClien
     state.edges.push_back({{"source", project_path(from, state.root)},
                            {"target", target_id},
                            {"target_kind", target_kind},
-                           {"direct", count == 1}});
+                           {"direct", count == 1},
+                           {"content_identity", include_identity(state, included)}});
+}
+// Inclusion callbacks omit missing headers. Preprocessing cursors retain their
+// spelled identity without inventing a filesystem path or dependency fingerprint.
+struct UnresolvedIncludeState {
+    IncludeState* includes;
+    CXFile main_file;
+};
+CXChildVisitResult unresolved_inclusion(CXCursor cursor, CXCursor, CXClientData data) {
+    if (clang_getCursorKind(cursor) != CXCursor_InclusionDirective ||
+        clang_getIncludedFile(cursor) != nullptr)
+        return CXChildVisit_Continue;
+    auto& state = *static_cast<UnresolvedIncludeState*>(data);
+    CXFile source = nullptr;
+    clang_getExpansionLocation(clang_getCursorLocation(cursor), &source, nullptr, nullptr, nullptr);
+    if (source == nullptr)
+        return CXChildVisit_Continue;
+    const auto from = string_and_dispose(clang_getFileName(source));
+    const auto target = string_and_dispose(clang_getCursorSpelling(cursor));
+    if (!from.empty() && !target.empty())
+        state.includes->edges.push_back(
+            {{"source", project_path(from, state.includes->root)},
+             {"target", target},
+             {"target_kind", "unresolved"},
+             {"direct", clang_File_isEqual(source, state.main_file) != 0},
+             {"content_identity", unavailable_include_identity()}});
+    return CXChildVisit_Continue;
 }
 }  // namespace
 
@@ -351,9 +408,19 @@ Json measure_native_file(CXTranslationUnit unit, const std::filesystem::path& so
     }
     // Empty files can expose a null buffer. No fresh filesystem read replaces TU contents.
     const std::string_view content{bytes == nullptr ? "" : bytes, size};
-    const auto physical =
-        static_cast<std::uint64_t>(std::count(content.begin(), content.end(), '\n')) +
-        (!content.empty() && content.back() != '\n' ? 1u : 0u);
+    // Match Clang's source line table: CR and LF terminate one line, with
+    // CRLF paired as one terminator. LFCR remains two terminators.
+    std::uint64_t physical = 0;
+    for (std::size_t offset = 0; offset < content.size(); ++offset) {
+        const auto byte = content[offset];
+        if (byte != '\r' && byte != '\n')
+            continue;
+        ++physical;
+        if (offset + 1 < content.size() && byte == '\r' && content[offset + 1] == '\n')
+            ++offset;
+    }
+    if (!content.empty() && content.back() != '\r' && content.back() != '\n')
+        ++physical;
     result["physical_loc"] = physical;
     result["source_content_sha256"] = sha256(content);
     result["limitations"] = Json::array();
@@ -431,23 +498,22 @@ Json measure_native_file(CXTranslationUnit unit, const std::filesystem::path& so
     if (function_complete)
         result["function_count"] = functions.functions.size();
     result["functions"] = std::move(functions.functions);
-    IncludeState includes{repo_root};
+    IncludeState includes{unit, repo_root};
     clang_getInclusions(unit, inclusion, &includes);
+    UnresolvedIncludeState unresolved{&includes, file};
+    clang_visitChildren(clang_getTranslationUnitCursor(unit), unresolved_inclusion, &unresolved);
     result["includes"] = std::move(includes.edges);
     return result;
 }
 
-Json native_metrics_document(const AnalysisCoverage& coverage) {
-    auto files = Json::array();
-    for (const auto& file : coverage.files)
-        files.push_back(file.metrics.value_or(unavailable(file, coverage.max_token_records)));
+static Json native_metrics_header(const AnalysisCoverage& coverage) {
     return {{"version", "1.0.0"},
             {"metric_version", "cppulse-metrics-1"},
             {"max_token_records", coverage.max_token_records},
-            {"files", files},
             {"definitions",
              {{"physical_loc",
-               "Physical lines including blanks/comments; terminal newline adds no extra line."},
+               "Physical lines including blanks/comments; CR and LF terminate one line, CRLF is "
+               "paired, LFCR is two terminators; terminal newline adds no extra line."},
               {"code_loc",
                "Union of non-comment source-spelled token lines, including directives, inactive "
                "branches and multiline literals."},
@@ -465,14 +531,50 @@ Json native_metrics_document(const AnalysisCoverage& coverage) {
                "one declaration."},
               {"tokens",
                "cppulse-spelled-tokens-1: libclang source-spelled tokens excluding "
-               "comments/whitespace, preserving identifiers and literals."}}},
+               "comments/whitespace, preserving identifiers and literals."},
+              {"include_content_identity",
+               "libclang-tu-buffer-sha256-v1: SHA-256 and size of an observed retained TU include "
+               "buffer. Unavailable or legacy path-only observations do not prove dependency "
+               "bytes; complete dependency closure is not established."}}},
             {"limitations",
              {"Physical/code LOC describe source spelling; callable definitions describe the "
               "active parse context only. Inactive definitions and arbitrary template "
               "instantiations are not verified.",
               "No duplication metric is claimed by the lexical token inventory; duplication "
               "requires a separately executed algorithm.",
-              "Include paths do not establish dependency content identity or complete dependency "
-              "closure."}}};
+              "Include paths alone do not establish dependency identity. Available content "
+              "identities describe observed TU buffers, not complete dependency closure."}}};
+}
+Json native_metrics_document(const AnalysisCoverage& coverage) {
+    auto result = native_metrics_header(coverage);
+    result["files"] = Json::array();
+    for (const auto& file : coverage.files) {
+        if (file.metrics)
+            result["files"].push_back(*file.metrics);
+        else
+            result["files"].push_back(unavailable(file, coverage.max_token_records));
+    }
+    return result;
+}
+
+void write_native_metrics(std::ostream& stream, const AnalysisCoverage& coverage) {
+    const auto header = native_metrics_header(coverage);
+    stream << '{';
+    for (const auto& member : header.items())
+        stream << Json(member.key()) << ':' << member.value() << ',';
+    stream << "\"files\":[";
+    bool first = true;
+    for (const auto& file : coverage.files) {
+        if (!first)
+            stream << ',';
+        first = false;
+        if (file.metrics)
+            stream << *file.metrics;
+        else
+            stream << unavailable(file, coverage.max_token_records);
+        if (!stream)
+            return;
+    }
+    stream << "]}";
 }
 }  // namespace cppulse

@@ -384,3 +384,24 @@ def test_invalid_contract_returns_unavailable(data_dir: Path) -> None:
     (data_dir / "findings.json").write_text('{"findings": []}')
     client = _make_client(data_dir)
     assert client.get("/api/v1/findings").status_code == 503
+
+
+def test_hotspots_retains_method_and_unavailable_scope(data_dir: Path) -> None:
+    import json
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    scope = {"status": "unavailable", "unavailable_files": [{"file": "a.cpp"}]}
+    risk["metadata"]["hotspot_method"] = "measured-cc-physical-kloc-v1"
+    risk["metadata"]["hotspot_scope"] = scope
+    risk["hotspots"] = []
+    path.write_text(json.dumps(risk))
+    body = _make_client(data_dir).get("/api/v1/hotspots").json()
+    assert body["items"] == []
+    assert body["method"] == "measured-cc-physical-kloc-v1"
+    assert body["scope"] == scope
+
+
+def test_historical_hotspots_identifies_severity_proxy(data_dir: Path) -> None:
+    body = _make_client(data_dir).get("/api/v1/hotspots").json()
+    assert body["method"] == "legacy-severity-proxy"

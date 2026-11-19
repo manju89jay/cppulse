@@ -13,7 +13,7 @@ from pathlib import Path
 
 import git
 
-from .history import CPP_EXTENSIONS, scan_history
+from .history import CPP_EXTENSIONS, HistoryScan, scan_history
 
 logger = logging.getLogger(__name__)
 
@@ -59,15 +59,15 @@ class SiloDetector:
         self.limitations: list[str] = []
         self._window_start = self._now - timedelta(days=_12_MONTHS_DAYS)
 
-    def detect(self) -> list[SiloEntry]:
+    def detect(self, *, history: HistoryScan | None = None) -> list[SiloEntry]:
         """Identify knowledge silos across all C++ files.
 
         Returns:
             List of SiloEntry objects for files with a single recent contributor.
             Returns an empty list if the repository has no commits.
         """
-        scan = scan_history(self._repo)
-        self.limitations = scan.limitations
+        scan = history if history is not None else scan_history(self._repo)
+        self.limitations = list(scan.limitations)
         file_data: dict[str, dict] = {}
         for change in scan.changes:
             commit_dt = datetime.fromtimestamp(
@@ -79,16 +79,16 @@ class SiloDetector:
                 change.commit.author.name or change.commit.author.email or "unknown"
             )
             entry = file_data.setdefault(
-                change.file, {"authors": set(), "commit_dates": []}
+                change.file, {"author": author, "multiple": False, "latest": commit_dt}
             )
-            entry["authors"].add(author)
-            entry["commit_dates"].append(commit_dt)
+            entry["multiple"] |= entry["author"] != author
+            entry["latest"] = max(entry["latest"], commit_dt)
 
         silos: list[SiloEntry] = []
         for filepath, data in file_data.items():
-            if len(data["authors"]) == 1:
-                sole = next(iter(data["authors"]))
-                latest_dt = max(data["commit_dates"])
+            if not data["multiple"]:
+                sole = data["author"]
+                latest_dt = data["latest"]
                 last_date = latest_dt.strftime("%Y-%m-%d")
                 silos.append(
                     SiloEntry(

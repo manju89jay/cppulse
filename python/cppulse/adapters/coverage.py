@@ -175,6 +175,15 @@ def _lcov(text: str) -> tuple[CoverageFile, ...]:
                 active[key]
                 for key in ("lines", "branches", "functions", "hits", "summary")
             )
+            for found, covered, inventory in (
+                ("LF", "LH", lines),
+                ("BRF", "BRH", branches),
+                ("FNF", "FNH", functions or hits),
+            ):
+                if covered in summary and found not in summary and not inventory:
+                    raise ValueError(
+                        f"LCOV {covered} lacks a found count or exact unit inventory; denominator is unknown"
+                    )
             if lines or any(key in summary for key in ("LF", "LH")):
                 measurements.append(
                     _measurement(
@@ -521,6 +530,10 @@ def _cobertura(text: str) -> tuple[tuple[CoverageFile, ...], tuple[str, ...]]:
                 _measurement("line", COBERTURA_LINE_METHOD, line_units),
                 _measurement("branch", COBERTURA_BRANCH_METHOD, branch_units),
             ]
+            units_by_line = {
+                kind: {unit.line: unit for unit in units}
+                for kind, units in (("line", line_units), ("branch", branch_units))
+            }
             for kind in ("line", "branch"):
                 if kind + "-rate" in cls.attrib:
                     measurement = next(row for row in measurements if row.kind == kind)
@@ -536,7 +549,14 @@ def _cobertura(text: str) -> tuple[tuple[CoverageFile, ...], tuple[str, ...]]:
                     if len(method) != 1:
                         raise ValueError("Cobertura method lines are ambiguous")
                     _children(method[0], {"line"})
+                    method_numbers = set()
                     for line in method[0]:
+                        number = _counter(
+                            line.get("number", ""), "method line number", positive=True
+                        )
+                        if number in method_numbers:
+                            raise ValueError("Duplicate Cobertura method line")
+                        method_numbers.add(number)
                         primary = primary_lines.get(line.get("number"))
                         if primary is None or line.attrib != primary.attrib:
                             raise _Unsupported(
@@ -559,6 +579,18 @@ def _cobertura(text: str) -> tuple[tuple[CoverageFile, ...], tuple[str, ...]]:
                         ]:
                             raise ValueError(
                                 "Method conditions contradict class line facts"
+                            )
+                    for kind, units in units_by_line.items():
+                        if kind + "-rate" in method.attrib:
+                            selected = [
+                                units[number]
+                                for number in method_numbers
+                                if number in units
+                            ]
+                            _rate(
+                                method.get(kind + "-rate"),
+                                sum(unit.covered for unit in selected),
+                                sum(unit.total for unit in selected),
                             )
             files.append(CoverageFile(name, tuple(measurements)))
         for kind in ("line", "branch"):

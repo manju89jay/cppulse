@@ -3,6 +3,8 @@
  */
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <filesystem>
 #include <fstream>
 #include <nlohmann/json.hpp>
@@ -16,8 +18,7 @@ namespace {
 class CoverageFixture : public ::testing::Test {
    protected:
     void SetUp() override {
-        root_ = std::filesystem::temp_directory_path() / "cppulse_coverage_test";
-        std::filesystem::create_directories(root_);
+        root_ = cppulse::test::make_test_directory("cppulse_coverage");
     }
     void TearDown() override {
         std::error_code ec;

@@ -56,7 +56,9 @@ def test_normalization_reads_retained_bytes_without_live_project_or_commands(
 ) -> None:
     import subprocess
 
-    snapshot, selection = native_snapshot(tmp_path)
+    from test_measured_normalization import add_metrics
+
+    snapshot, selection = native_snapshot(tmp_path, mutate=add_metrics)
     (tmp_path / "main.cpp").unlink()
     (tmp_path / "native-config.json").unlink()
     (tmp_path / "compile_commands.json").unlink()

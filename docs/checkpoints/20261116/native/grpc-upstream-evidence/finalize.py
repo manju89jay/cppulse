@@ -1,0 +1,16 @@
+from pathlib import Path
+import hashlib,json,subprocess,xml.etree.ElementTree as ET
+r=Path('/workspace/cppulse');o=r/'work/grpc-upstream-tests-20261116';b=r/'work/corpus-configured/grpc';s=r/'work/six-corpus/grpc'
+h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+reports=[]
+for stage in ['end2end-test-with-port-server','end2end-test-clean-proxy','end2end-test-clean-proxy-arena2']:
+ x=o/(stage+'.xml');tree=ET.parse(x).getroot();record=json.loads((o/(stage+'.json')).read_text());reports.append({'stage':stage,'process_record':stage+'.json','exit_status':record['returncode'],'tests':int(tree.attrib.get('tests',0)),'failures':int(tree.attrib.get('failures',0)),'disabled':int(tree.attrib.get('disabled',0)),'errors':int(tree.attrib.get('errors',0)),'skipped':sum(c.find('skipped') is not None for c in tree.iter('testcase')),'xml_sha256':h(x),'log_sha256':h(o/(stage+'.log')),'failure_case_ids':[c.attrib['classname']+'.'+c.attrib['name'] for c in tree.iter('testcase') if c.find('failure') is not None]})
+d=json.loads((o/'verification-selected.json').read_text());d['rpc_binary_sha256']=h(b/'end2end_test');d['rpc_attempts']=reports;d['total_passing_leaf_cases_in_declared_configuration']=d['total_executed_leaf_cases']+reports[-1]['tests'];d['source_tracked_status_after']=subprocess.check_output(['git','-C',str(s),'status','--porcelain','--untracked-files=no'],text=True);d['configuration']='Original OpenSSL/GCC build; for final full RPC program only, inherited proxy variables are removed and MALLOC_ARENA_MAX=2. Original 3GiB per-process address-space,600-second soft CPU caps remain.';d['known_limits']=['Only four original upstream programs executed; remaining512-target inventory/configuration coverage remains open.','Default inherited-proxy configuration fails four invalid-DNS assertions; proxy-cleared default allocator configuration still has one intermittent RPC case failure. Both complete red runs retained.','Lower observed virtual footprint supports allocator-pressure explanation; no exclusive causal or universal reliability claim is made.','No native-metric accuracy, whole-corpus completion, alternate provider/platform, sanitizer/fuzzer or aggregate cgroup qualification follows from these tests.'];d['full_suite_acceptance']=False
+(o/'verification-current.json').write_text(json.dumps(d,indent=2)+'\n')
+p=o/'upstream-inventory.json';inventory=json.loads(p.read_text())
+for row in inventory['entries']:
+ if row['name']=='end2end_test':row['test_execution_this_checkpoint']='776_pass_in_declared_proxy_free_arena2_configuration';row['attempts']=[{'record':x['process_record'],'exit_status':x['exit_status'],'failures':x['failures']} for x in reports]
+p.write_text(json.dumps(inventory,indent=2)+'\n')
+files=[p for p in o.iterdir() if p.is_file() and p.name not in ['files.json','finalize-output.log'] and p.suffix in ['.json','.py','.log','.xml','.txt']]
+(o/'files.json').write_text(json.dumps({'files':[{'path':p.name,'bytes':p.stat().st_size,'sha256':h(p)} for p in sorted(files)],'fixture_git_objects_exported':False},indent=2)+'\n')
+print(json.dumps({'programs':4,'passed_leaf_cases':d['total_passing_leaf_cases_in_declared_configuration'],'rpc_attempts':reports,'source_tracked_status':d['source_tracked_status_after']},indent=2))

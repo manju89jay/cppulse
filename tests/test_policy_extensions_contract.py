@@ -3,13 +3,20 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from importlib import resources
+import json
 from typing import Any
 
 import pytest
 
 from cppulse.contracts import validate, validate_evaluation_policy
 from cppulse.errors import ContractError, UnsupportedVersion
-from test_contracts_v2 import evidence_document, policy_document, source_document
+from test_contracts_v2 import (
+    artifact_document,
+    evidence_document,
+    policy_document,
+    source_document,
+)
 
 
 def metric_policy() -> dict[str, Any]:
@@ -68,6 +75,7 @@ def declared_review() -> dict[str, Any]:
             "recorded_at": "2026-11-13T10:01:00Z",
             "recorded_by": "fixture-author",
             "reviewed_artifact_ids": ["findings"],
+            "reviewed_artifact_sha256": {"findings": artifact_document()["sha256"]},
             "identity_assurance": "self_declared",
             "limitations": ["Reviewer identity has not been authenticated."],
         },
@@ -80,10 +88,10 @@ def test_profile_12_accepts_explicit_new_predicate_contracts(factory: Any) -> No
     validate_evaluation_policy(factory(), profile_version="1.2.0")
 
 
-@pytest.mark.parametrize(
-    "field", ["metric_version", "units", "level", "aggregation"]
-)
-def test_metric_contract_does_not_assume_method_units_or_aggregation(field: str) -> None:
+@pytest.mark.parametrize("field", ["metric_version", "units", "level", "aggregation"])
+def test_metric_contract_does_not_assume_method_units_or_aggregation(
+    field: str,
+) -> None:
     policy = metric_policy()
     del policy["controls"][0]["parameters"][field]
 
@@ -126,6 +134,13 @@ def test_declared_review_contract_rejects_unmet_or_invented_identity_requirement
     assert raised.value.code == "INVALID_CONTRACT"
 
 
+def test_declared_review_quorum_cannot_exceed_selected_record_count() -> None:
+    policy = review_policy()
+    policy["controls"][0]["parameters"]["minimum_reviewers"] = 2
+    with pytest.raises(ContractError, match="evidence"):
+        validate_evaluation_policy(policy)
+
+
 def test_complete_declared_review_metadata_is_retained_as_data() -> None:
     document = declared_review()
     before = deepcopy(document)
@@ -134,7 +149,10 @@ def test_complete_declared_review_metadata_is_retained_as_data() -> None:
 
     assert document == before
     assert document["records"][0]["origin"] == "attestation"
-    assert document["records"][0]["review_details"]["identity_assurance"] == "self_declared"
+    assert (
+        document["records"][0]["review_details"]["identity_assurance"]
+        == "self_declared"
+    )
 
 
 @pytest.mark.parametrize(
@@ -144,7 +162,13 @@ def test_complete_declared_review_metadata_is_retained_as_data() -> None:
         ({"statement": ""}, "statement"),
         ({"reviewed_artifact_ids": ["not-retained"]}, "reviewed_artifact_ids"),
         ({"recorded_at": "2026-11-13T09:59:00Z"}, "recorded"),
-        ({"reviewed_at": "2026-12-14T10:00:00Z", "recorded_at": "2026-12-14T10:01:00Z"}, "expiry"),
+        (
+            {
+                "reviewed_at": "2026-12-14T10:00:00Z",
+                "recorded_at": "2026-12-14T10:01:00Z",
+            },
+            "expiry",
+        ),
         ({"identity_assurance": "authenticated"}, "identity_assurance"),
     ],
 )
@@ -165,6 +189,43 @@ def test_earlier_attestation_records_remain_readable_without_implicit_upgrade() 
     del document["records"][0]["review_details"]
 
     validate("evidence", document)
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"reviewed_artifact_sha256": {"not-reviewed": "a" * 64}},
+        {"reviewed_artifact_sha256": {"findings": "not-a-sha256"}},
+        {"reviewed_artifact_sha256": {}},
+    ],
+)
+def test_review_hashes_are_valid_identities_of_declared_artifacts(
+    change: dict[str, Any],
+) -> None:
+    document = declared_review()
+    document["records"][0]["review_details"].update(change)
+    with pytest.raises(ContractError):
+        validate("evidence", document)
+
+
+def test_review_metadata_without_hash_binding_remains_readable() -> None:
+    document = declared_review()
+    del document["records"][0]["review_details"]["reviewed_artifact_sha256"]
+    validate("evidence", document)
+
+
+@pytest.mark.parametrize(
+    "name", ["measured-library-example.json", "organization-reviewed-example.json"]
+)
+def test_packaged_measured_policy_examples_select_profile12_explicitly(
+    name: str,
+) -> None:
+    policy = json.loads(
+        resources.files("cppulse").joinpath("data", "policies", name).read_text()
+    )
+    validate_evaluation_policy(policy)
+    assert policy["evaluator_profile"] == "1.2.0"
+    assert policy["standards"] == []
 
 
 @pytest.mark.parametrize("profile", ["1.0.0", "1.1.0"])

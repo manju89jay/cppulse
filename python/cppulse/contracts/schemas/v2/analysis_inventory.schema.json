@@ -144,6 +144,14 @@
               "minLength": 1
             },
             "minItems": 0
+          },
+          "buffer_coherence": {
+            "enum": [
+              "verified",
+              "unverified",
+              "mismatched"
+            ],
+            "description": "Actual parsed-buffer agreement with frozen finite native inputs; optional absence is legacy unknown, separate from inferred argument selection."
           }
         },
         "required": [

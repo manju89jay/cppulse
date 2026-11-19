@@ -36,3 +36,28 @@ This is an additive change to unreleased development contracts. Consumers using
 an older strict v2 schema may reject the new optional fields and should upgrade
 together with the candidate; no published-package compatibility qualification is
 claimed by source tests alone.
+
+
+## Repository and training-label provenance
+
+Before joining nonempty Git metrics, declared repository roots must agree after
+lexical path-flavor/separator normalization. This comparison performs no current
+filesystem resolution and proves no producer authenticity. Missing identity
+keeps ranking unverified; empty history does not constrain independent static
+analysis. Public unranked rows retain their reasons and no numeric/LOW rank.
+
+The feature frame records `szz_observed_files` from raw Git field presence,
+separately from zero-filled convenience columns. Declared zero SZZ counts remain
+zero labels even when no positive exists. Missing counts use explicitly disclosed
+feature-derived heuristics; mixed cohorts retain their per-file sources. Only
+eligible files enter training. Bare calculation frames with an explicit non-null
+SZZ column declare those proxy observations; a frame that synthesized defaults
+must retain the absence marker.
+
+Risk metadata retains the original producer `szz` object when supplied, including
+cutoff, profile, label kind, scope and limitations. `training_label_provenance`
+names the exact eligible training files and their SZZ/feature-derived subsets.
+These are declared experimental proxy labels, not authenticated timestamps,
+confirmed defects or calibrated future probabilities. A cutoff on bug-fix labels
+does not filter every feature to that date. Empty eligible cohorts are explicitly
+unavailable; unavailable evaluation metrics remain null.

@@ -4,6 +4,8 @@
 #include <clang-c/Index.h>
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
@@ -20,11 +22,7 @@ namespace {
 class ParseTraceFixture : public ::testing::Test {
    protected:
     void SetUp() override {
-        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
-        root_ = std::filesystem::temp_directory_path() /
-                (std::string{"cppulse_parse_trace_"} + info->name());
-        std::filesystem::remove_all(root_);
-        std::filesystem::create_directories(root_);
+        root_ = cppulse::test::make_test_directory("cppulse_parse_trace");
     }
     void TearDown() override {
         std::error_code ec;

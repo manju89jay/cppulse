@@ -1,0 +1,458 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/branch-delivery/v1/report.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "method": {
+      "const": "local-pinned-branch-delivery-1"
+    },
+    "configuration_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "capture_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "window_start": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+    },
+    "cutoff": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+    },
+    "historical_ref_state": {
+      "const": "not_reconstructed"
+    },
+    "graph_status": {
+      "enum": [
+        "available",
+        "partial",
+        "unavailable"
+      ]
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "ref": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "expected_tip": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "observed_tip": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable"
+            ]
+          },
+          "pin_status": {
+            "enum": [
+              "matched",
+              "missing",
+              "mismatched",
+              "changed",
+              "unavailable"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "relation_to_target": {
+            "enum": [
+              "equal",
+              "ancestor_of_target",
+              "descendant_of_target",
+              "diverged",
+              "unrelated",
+              "unknown"
+            ]
+          },
+          "ahead": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "behind": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "merge_bases": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+                },
+                "maxItems": 100000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observed_commit_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "observed_in_window_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "complete_in_window_count": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sample_in_window_commit_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+            },
+            "maxItems": 100
+          },
+          "sample_limit": {
+            "const": 100
+          },
+          "history_complete": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "ref",
+          "expected_tip",
+          "observed_tip",
+          "availability",
+          "pin_status",
+          "reason",
+          "relation_to_target",
+          "ahead",
+          "behind",
+          "merge_bases",
+          "observed_commit_count",
+          "observed_in_window_count",
+          "complete_in_window_count",
+          "sample_in_window_commit_ids",
+          "sample_limit",
+          "history_complete"
+        ]
+      },
+      "maxItems": 16
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "commit_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+          },
+          "environment": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "status": {
+            "enum": [
+              "unknown",
+              "declared_delivery_observed",
+              "not_observed_in_selected_deliveries"
+            ]
+          },
+          "first_selected_delivery_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task_to_selected_delivery_seconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "declared_cycle_seconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "id",
+          "commit_ids",
+          "started_at",
+          "completed_at",
+          "recorded_at",
+          "environment",
+          "status",
+          "first_selected_delivery_id",
+          "task_to_selected_delivery_seconds",
+          "declared_cycle_seconds",
+          "reason"
+        ]
+      },
+      "maxItems": 256
+    },
+    "deliveries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "environment": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "commit_id": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:[Zz]|[+-]\\d{2}:\\d{2})$"
+          },
+          "status": {
+            "enum": [
+              "succeeded",
+              "failed",
+              "unknown"
+            ]
+          },
+          "selected": {
+            "type": "boolean"
+          },
+          "git_revision_observed": {
+            "type": "boolean"
+          },
+          "git_timestamp_consistent": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "limitation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "id",
+          "environment",
+          "commit_id",
+          "occurred_at",
+          "recorded_at",
+          "status",
+          "selected",
+          "git_revision_observed",
+          "git_timestamp_consistent",
+          "limitation"
+        ]
+      },
+      "maxItems": 256
+    },
+    "delivery_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "succeeded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "succeeded",
+        "failed",
+        "unknown"
+      ]
+    },
+    "delivery_origin": {
+      "const": "caller_declarations_not_execution_receipts"
+    },
+    "delivery_inventory_complete": {
+      "type": "boolean"
+    },
+    "policy_acceptance": {
+      "const": "not_assessed"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "delivery_counts_by_environment": {
+      "type": "object",
+      "maxProperties": 512,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unknown": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "succeeded",
+          "failed",
+          "unknown"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "method",
+    "configuration_digest",
+    "capture_digest",
+    "window_start",
+    "cutoff",
+    "historical_ref_state",
+    "graph_status",
+    "branches",
+    "tasks",
+    "deliveries",
+    "delivery_counts",
+    "delivery_origin",
+    "delivery_inventory_complete",
+    "policy_acceptance",
+    "limitations",
+    "delivery_counts_by_environment"
+  ]
+}

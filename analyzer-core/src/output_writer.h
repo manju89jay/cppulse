@@ -20,8 +20,10 @@ namespace cppulse {
 /**
  * @brief Write findings to a JSON file conforming to findings.schema.json.
  *
- * Creates the output directory if it does not exist.  Overwrites any
- * existing findings.json in that directory.
+ * Creates the output directory if it does not exist. Streams a private file
+ * and atomically replaces findings.json after successful flush and close.
+ * Failed writes preserve the previous report; interrupted private files never
+ * occupy the published name.
  *
  * @param findings      All findings from the analysis run.
  * @param repo_path     The root path that was analyzed (stored in metadata).

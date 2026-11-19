@@ -3,6 +3,8 @@
  */
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <filesystem>
 #include <fstream>
 #include <nlohmann/json.hpp>
@@ -17,10 +19,7 @@ namespace {
 class NativeScopeFixture : public ::testing::Test {
    protected:
     void SetUp() override {
-        const auto* info = ::testing::UnitTest::GetInstance()->current_test_info();
-        base_ =
-            std::filesystem::temp_directory_path() / (std::string{"cppulse_scope_"} + info->name());
-        std::filesystem::remove_all(base_);
+        base_ = cppulse::test::make_test_directory("cppulse_scope");
         root_ = base_ / "repo";
         std::filesystem::create_directories(root_);
     }

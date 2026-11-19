@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "max_file_bytes": {
+      "const": 8388608
+    },
+    "max_total_bytes": {
+      "const": 67108864
+    },
+    "captured_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 67108864
+    },
+    "units": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "resource_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "report_artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "report_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "root": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entries": {
+            "type": "array",
+            "maxItems": 100000,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "target": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "enum": [
+                    "available",
+                    "unavailable",
+                    "mismatched"
+                  ]
+                },
+                "artifact_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "sha256": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "size_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "target",
+                "status",
+                "artifact_id",
+                "sha256",
+                "size_bytes",
+                "reason"
+              ]
+            }
+          },
+          "report_json": {
+            "type": "string",
+            "maxLength": 67108864
+          }
+        },
+        "required": [
+          "unit_id",
+          "request_sha256",
+          "resource_manifest_sha256",
+          "report_artifact_id",
+          "report_sha256",
+          "root",
+          "entries",
+          "report_json"
+        ]
+      }
+    },
+    "id": {
+      "const": "sdk-used-inputs"
+    },
+    "resource_inventories": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "raw_json": {
+            "type": "string",
+            "maxLength": 67108864
+          }
+        },
+        "required": [
+          "sha256",
+          "raw_json"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "source_digest",
+    "max_file_bytes",
+    "max_total_bytes",
+    "captured_bytes",
+    "units",
+    "id",
+    "resource_inventories"
+  ],
+  "$id": "https://schemas.cppulse.local/v2/used_sdk_inputs.schema.json"
+}

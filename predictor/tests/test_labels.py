@@ -18,7 +18,12 @@ def _frame(**overrides: list) -> pd.DataFrame:
         "szz_bug_introductions": [0, 0, 0],
     }
     base.update(overrides)
-    return pd.DataFrame(base)
+    frame = pd.DataFrame(base)
+    if "szz_bug_introductions" not in overrides:
+        # Match FeatureEngineer's distinction between convenience defaults and
+        # raw SZZ observations. An explicitly supplied zero remains observed.
+        frame.attrs["szz_observed_files"] = []
+    return frame
 
 
 class TestDeriveLabelsFromSZZ:
@@ -43,7 +48,7 @@ class TestDeriveLabelsFallback:
     """Without SZZ data the legacy heuristic applies."""
 
     def test_fallback_uses_memory_and_fix_commits(self) -> None:
-        """All-zero SZZ column triggers the heuristic label rule."""
+        """Absent SZZ observations use heuristics despite zero-filled defaults."""
         df = _frame(memory_findings=[1, 0, 0], bug_fix_commits=[0, 3, 2])
         assert _derive_labels(df).tolist() == [1, 1, 0]
 

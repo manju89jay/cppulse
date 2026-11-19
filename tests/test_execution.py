@@ -460,7 +460,11 @@ def test_sigint_driver_returns_cancelled_receipts_and_cleans_processes(
     tmp_path: Path, selected: Any
 ) -> None:
     workspace, source, contexts = selected
-    code = "import os,time; from pathlib import Path; Path('running.pid').write_text(str(os.getpid())); time.sleep(30)"
+    code = (
+        "import os,time; from pathlib import Path; "
+        "Path('running.pid.tmp').write_text(str(os.getpid())); "
+        "Path('running.pid.tmp').replace('running.pid'); time.sleep(30)"
+    )
     document = recipe(command("interrupt", code, timeout=10))
     driver = (
         "import json; from pathlib import Path; from cppulse.execution import run_recipe,ProcessLimits; "

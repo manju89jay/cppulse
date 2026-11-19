@@ -46,15 +46,33 @@ untested platforms, macros and template instantiations remain separate work.
   identities, bounded command logs and supported test/coverage/sanitizer results.
 - **Local gates:** versioned policies, scoped finding baselines, suppressions and
   SARIF. Six supported predicates cover findings, analysis coverage, tests,
-  contexts, coverage and sanitizers.
+  contexts, coverage and sanitizers. Profile 1.2 adds measured numeric thresholds
+  and scoped reviews bound to exact artifact bytes.
 - **Retained views:** JSON/HTML/optional PDF, API and a bundled React dashboard
   read stored results. Run/hash pins support reproducible historical review.
 - **Opt-in integration:** an installed CLI, CMake helper and local hook template.
   Core operation requires no cppulse account or hosted service.
 
-Measured maintenance metrics, density/context scoring, richer Git intelligence,
-incremental analysis, large-project qualification, VS Code/MCP and the remaining
-production program are tracked work. See [scope and maturity](#scope-and-maturity).
+Measured file/function metrics and explicit density/context scoring now run on
+retained native evidence. `cppulse maintenance --store STORE --workspace SOURCE
+--required-context CONTEXT` publishes a derived run with full-scope health
+unavailable whenever required measurements or checks are missing. The historical
+scorer remains distinct; versions are not silently merged in trends.
+
+The [VS Code preview](docs/editor-vscode.md) has actual installed-host evidence;
+the [read-only MCP preview](docs/development/mcp.md) reads pinned stored results.
+`cppulse analyze --execution bounded --no-history` runs explicit finite native
+workers and retains original receipts, full selected scope and checked used SDK
+bytes. Qualified warm reuse, atomic final publication and large-project
+qualification remain open. The current scorer uses actual measured inputs and
+preserves null results for unknown scope or unsupported preprocessing queries.
+
+Separate finite expansion commands include local `branches`, public read-only
+GitHub `issues`, `abi-compare`, dry-run `fix`, ordinary `verify-proposal` and
+explicitly trusted `verify-service-proposal`. Their supported scopes and retained
+evidence are documented in the [Cloud checkpoint](docs/checkpoints/20261116/README.md).
+The full remaining production program is tracked in
+[scope and maturity](#scope-and-maturity).
 
 ## Get started
 
@@ -69,9 +87,11 @@ nlohmann/json, spdlog/fmt, CLI11 and GoogleTest. Python **3.11–3.12** is decla
 retained cloud checks exercised **3.12.14**.
 
 Typical Debian/Ubuntu package names are `build-essential`, `cmake`,
-`libclang-dev`, `nlohmann-json3-dev`, `libspdlog-dev`, `libfmt-dev`, `libcli11-dev`
+`libclang-19-dev`, `nlohmann-json3-dev`, `libspdlog-dev`, `libfmt-dev`, `libcli11-dev`
 and `libgtest-dev`. Packages and LLVM layouts vary by distribution.
-Set `LIBCLANG_ROOT` for a nonstandard LLVM prefix.
+Set `LIBCLANG_ROOT` for a nonstandard LLVM prefix. The analyzer requires the
+libclang binary-opcode API available in the tested LLVM 19 pair; configuration
+rejects headers/libraries that lack it.
 
 ### Build and run
 
@@ -97,7 +117,8 @@ cppulse report --input output/first-run --format json \
 Check that doctor reports `native.available: true`, then open the HTML path
 printed by analyze. Detecting an optional package is not execution verification.
 The demo contains a clean file and intentional synthetic rule triggers; the
-triggers are analyzed, not executed. Static input does not require `.git`.
+triggers are analyzed, not executed. Static input does not require `.git`, GitPython or a Git executable. Install
+`cppulse[git]` (and Git) for history; missing tooling stays explicitly unavailable.
 
 For your CMake project, generate and supply its actual compilation database:
 
@@ -252,12 +273,12 @@ environment and check scope.
 | Area | Current qualification |
 | --- | --- |
 | Linux workflows | Exercised on Linux x86-64, GCC 14.2, libclang 19, CMake 3.31.6 and Python 3.12.14 |
-| Real C++ inputs | Selected pinned fmt/utfcpp and a tiny consumer; partial parsing remains visible; full upstream suites were not run |
-| Installed package | An earlier dev2 candidate ran outside the checkout; it does not qualify subsequent source changes |
+| Real C++ inputs | All six original projects pinned with retained history; sampled and selected full native scans, plus fmt/utfcpp/consumer pipeline. Parsing/resource gaps remain visible; upstream suites and accuracy are unqualified |
+| Installed package | Cloud candidate exercised outside the checkout without Git/GitPython/Node/ML/PDF/web; exact candidate proofs remain separate from later source changes |
 | Evidence adapters | Selected Linux/GNU/CTest/report dialects with explicit capability/version limits |
-| Docker/Compose | Definitions and integration script exist; Docker was unavailable in the recorded cloud environment |
+| Docker/Compose | Actual synthetic pipeline/API/proxy/PDF pass. Real fmt repeat hit the finite Cloud disk budget; its attempt is incomplete |
 | Other environments | Windows/MSVC/MinGW, macOS, other Python/compiler combinations and broad C++20 coverage require separate qualification |
-| Production program | Metrics/trends, incremental scale, deeper Git, complete policies, VS Code/MCP and M8/M9 remain tracked work |
+| Production program | Measured metrics/trends, policy 1.2, VS Code/MCP and scale primitives have scoped checks; full incremental/corpus/platform/empirical/expansion acceptance remains tracked |
 
 The current audit identified detector, configuration, incomplete-ranking and CLI
 defects under correction. The [delivery ledger](docs/plans/production-delivery-ledger.json)
@@ -290,8 +311,10 @@ bash scripts/integration_test.sh
 ```
 
 `OUTPUT_PATH` overrides host `./output`. Analysis/PDF jobs are one-shot services;
-API/dashboard remain running. This path needs actual Docker verification before
-it can be described as passed.
+API/dashboard remain running. The Cloud synthetic path passed with an explicit
+session CA BuildKit secret and sequential builds; no TLS verification was
+disabled. Real-input repetition and failure/volume/scale matrices remain separate
+qualification work. See the [Cloud checkpoint](docs/checkpoints/20261116/README.md).
 
 ## Development and architecture
 

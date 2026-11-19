@@ -91,6 +91,9 @@
               "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
             }
           ]
+        },
+        "primary_content": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
         }
       },
       "required": [
@@ -172,6 +175,42 @@
         "max_log_bytes",
         "max_artifact_bytes"
       ]
+    },
+    "context_mode": {
+      "enum": [
+        "parse_arguments",
+        "compilation_database",
+        "fallback"
+      ]
+    },
+    "source_scope": {
+      "enum": [
+        "whole-inventory",
+        "primary-with-global-guard"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "LD_LIBRARY_PATH": {
+          "type": "string"
+        },
+        "DYLD_LIBRARY_PATH": {
+          "type": "string"
+        },
+        "PATH": {
+          "type": "string"
+        }
+      }
+    },
+    "artifact_prefix": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$"
+    },
+    "process_working_directory": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "required": [

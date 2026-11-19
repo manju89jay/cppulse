@@ -43,7 +43,7 @@ def test_missing_native_publishes_incomplete_attempt_and_report_refuses_old_data
         analyze(effective_config(repo, output))
     latest = RunStore(output).resolve_latest_attempt()
     assert latest.manifest["status"] == "partial"
-    assert not (output / "latest.json").exists()
+    assert RunStore.open_existing(output).resolve_heads()[1] is None
     with pytest.raises(RuntimeError, match="Latest attempt.*partial"):
         generate_report(output, "html")
 

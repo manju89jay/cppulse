@@ -9,6 +9,8 @@
 
 #include <gtest/gtest.h>
 
+#include "test_temp_directory.h"
+
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
@@ -38,9 +40,7 @@ constexpr int kExpectedGotoLine = 7;
 class CompilationDbFixture {
    public:
     explicit CompilationDbFixture(const std::string& dir_name) {
-        dir_ = std::filesystem::temp_directory_path() / dir_name;
-        std::filesystem::remove_all(dir_);
-        std::filesystem::create_directories(dir_);
+        dir_ = cppulse::test::make_test_directory(dir_name);
 
         source_path_ = dir_ / "sample.cpp";
         std::ofstream source_stream(source_path_);

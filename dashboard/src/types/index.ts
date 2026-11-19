@@ -93,6 +93,7 @@ export interface Hotspot {
 }
 
 export interface RiskScores {
+  hotspot_method?: string;
   health_score: HealthScore;
   file_risks: FileRisk[];
   unranked_files?: UnrankedFile[];
@@ -114,7 +115,7 @@ export interface RoadmapItem {
 // Summary type returned by report-engine API
 
 export interface Summary {
-  model_metadata?: {model_type: string; profile: string; experimental: boolean; limitations?: string[]; ranking_scope?: RankingScope};
+  model_metadata?: {hotspot_method?: string; hotspot_scope?: {status?: string}; model_type: string; profile: string; experimental: boolean; limitations?: string[]; ranking_scope?: RankingScope};
   repository: string;
   analysis_date: string;
   health_score: HealthScore;

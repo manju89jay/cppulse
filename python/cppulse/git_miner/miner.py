@@ -13,7 +13,7 @@ from pathlib import Path
 
 import git
 
-from .history import CPP_EXTENSIONS, is_bug_fix, scan_history
+from .history import CPP_EXTENSIONS, HistoryScan, is_bug_fix, scan_history
 
 logger = logging.getLogger(__name__)
 
@@ -71,26 +71,30 @@ class GitMiner:
         self._repo = git.Repo(str(self._repo_path))
         self._now = datetime.now(tz=timezone.utc)
         self.limitations: list[str] = []
+        self.history_scan: HistoryScan | None = None
 
     @property
     def repo(self) -> git.Repo:
         """Return the underlying git.Repo object."""
         return self._repo
 
-    def mine(self) -> list[FileMetrics]:
+    def mine(self, *, history: HistoryScan | None = None) -> list[FileMetrics]:
         """Mine all C++ files in the repository and return their metrics.
 
         Returns:
             List of FileMetrics, one entry per tracked C++ file.
             Returns an empty list if the repository has no commits.
         """
-        scan = scan_history(self._repo)
-        self.limitations = scan.limitations
+        scan = history if history is not None else scan_history(self._repo)
+        self.history_scan = scan
+        self.limitations = list(scan.limitations)
         if not scan.commits:
             return []
         file_data: dict[str, dict] = {
             path: {
-                "commit_dates": [],
+                "change_count": 0,
+                "oldest": None,
+                "newest": None,
                 "authors": set(),
                 "lines_added": 0,
                 "lines_removed": 0,
@@ -100,8 +104,19 @@ class GitMiner:
         }
         for change in scan.changes:
             entry = file_data[change.file]
-            entry["commit_dates"].append(
-                datetime.fromtimestamp(change.commit.committed_date, tz=timezone.utc)
+            observed = datetime.fromtimestamp(
+                change.commit.committed_date, tz=timezone.utc
+            )
+            entry["change_count"] += 1
+            entry["oldest"] = (
+                min(entry["oldest"], observed)
+                if entry["oldest"] is not None
+                else observed
+            )
+            entry["newest"] = (
+                max(entry["newest"], observed)
+                if entry["newest"] is not None
+                else observed
             )
             entry["authors"].add(
                 change.commit.author.name or change.commit.author.email or "unknown"
@@ -118,27 +133,26 @@ class GitMiner:
 
         Args:
             filepath: Relative path of the file within the repository.
-            data: Aggregated commit data dict with keys: commit_dates, authors,
+            data: Aggregated commit data dict with scalar count/date extrema, authors,
                   lines_added, lines_removed, bug_fix_count.
 
         Returns:
             Populated FileMetrics instance.
         """
-        commit_dates: list[datetime] = sorted(data["commit_dates"], reverse=True)
         authors: set[str] = data["authors"]
 
-        change_frequency = len(commit_dates)
+        change_frequency = data["change_count"]
         unique_contributors = len(authors)
         contributor_list = sorted(authors)
 
-        if not commit_dates:
+        if not change_frequency:
             return FileMetrics(
                 file=filepath,
                 lines_of_code=self._count_lines(self._repo_path / filepath),
             )
 
-        oldest = min(commit_dates)
-        newest = commit_dates[0]
+        oldest = data["oldest"]
+        newest = data["newest"]
 
         age_days = max(0, (self._now - oldest).days)
         last_modified_days = max(0, (self._now - newest).days)
@@ -173,16 +187,16 @@ class GitMiner:
             A string of the form ``<first_sha>..<last_sha>``, or the single SHA
             when the repository has exactly one commit, or ``"N/A"`` for empty repos.
         """
-        try:
-            commits = list(self._repo.iter_commits())
-        except (ValueError, git.GitCommandError):
+        scan = (
+            self.history_scan
+            if self.history_scan is not None
+            else scan_history(self._repo)
+        )
+        if not scan.commits:
             return "N/A"
-
-        if not commits:
-            return "N/A"
-        if len(commits) == 1:
-            return commits[0].hexsha[:8]
-        return f"{commits[-1].hexsha[:8]}..{commits[0].hexsha[:8]}"
+        if len(scan.commits) == 1:
+            return scan.commits[0].hexsha[:8]
+        return f"{scan.commits[-1].hexsha[:8]}..{scan.commits[0].hexsha[:8]}"
 
     def total_commits(self) -> int:
         """Return the total number of commits reachable from HEAD.
@@ -191,7 +205,10 @@ class GitMiner:
             Integer count of commits, or 0 for empty repositories.
         """
         try:
-            return sum(1 for _ in self._repo.iter_commits())
+            if self.history_scan is not None:
+                return len(self.history_scan.commits)
+            self.history_scan = scan_history(self._repo)
+            return len(self.history_scan.commits)
         except (ValueError, git.GitCommandError):
             return 0
 
