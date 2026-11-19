@@ -1,0 +1,110 @@
+{
+  "dataset": "leveldb-configured-native-20261116",
+  "historical": true,
+  "analyzed_at": "2026-11-16T15:25:20Z",
+  "upstream": {
+    "url": "https://github.com/google/leveldb",
+    "tag": "1.23",
+    "revision": "99b3c03b3284f5886f9ef9a4ef703d57373e61be"
+  },
+  "producer": {
+    "kind": "Retained native component; not the current installed candidate",
+    "native_sha256": "f880711894e11b5ac13149b1ffeea0754c4a77f7a493ac794446c334264e9c5d",
+    "report_format_version": "1.0.0",
+    "current_candidate_results": false
+  },
+  "environment": {
+    "platform": "Linux x86_64",
+    "recorded_compiler": "GNU 14.2.0",
+    "parser": {
+      "name": "libclang",
+      "version": "Debian clang version 19.1.7 (3+b1)"
+    },
+    "language_standard": "c++11",
+    "configuration": "39 unique compilation-database translation units; POSIX library/leveldbutil build, -fno-exceptions, -fno-rtti",
+    "compilation_database_sha256": "fc219c31d586557664a345bc807301b4b1d78d7a0579d1faa625b167a73d91a0"
+  },
+  "observed": {
+    "selected_translation_units": 39,
+    "analyzed_translation_units": 39,
+    "physical_loc": 10595,
+    "code_loc": 8255,
+    "functions": 673,
+    "finding_records": 486,
+    "by_category": {
+      "memory_safety": 204,
+      "complexity": 23,
+      "misra": 185,
+      "modernization": 74
+    },
+    "by_severity": {
+      "warning": 430,
+      "info": 46,
+      "error": 10
+    },
+    "function_example": {
+      "file": "db/builder.cc",
+      "name": "BuildTable",
+      "line": 17,
+      "cyclomatic_complexity": 13,
+      "nesting_depth": 3
+    }
+  },
+  "not_collected": [
+    "Git ownership metrics",
+    "risk ranking",
+    "policy assessment",
+    "runtime coverage",
+    "current versioned health score"
+  ],
+  "original_raw_report": {
+    "cloud_path": "/workspace/cppulse/work/corpus-configured-evidence/leveldb/native/findings.json",
+    "sha256": "aee5cca53b7adbd1c8cf7e844d31b9fb0079cadc1a67686abbfc2266d227edf4",
+    "bytes": 7472211,
+    "not_bundled_reason": "Avoid bulk native lexical token/dependency dump and upstream source payloads; complete observations and selected-file metrics are exported separately."
+  },
+  "public_artifacts": {
+    "native-manifest.json": {
+      "sha256": "06eba918d0be42d8d0d3518b32d6e73834cd27dc0a439e561492a73c6ec7d231",
+      "bytes": 3033
+    },
+    "compile_commands.json": {
+      "sha256": "fc219c31d586557664a345bc807301b4b1d78d7a0579d1faa625b167a73d91a0",
+      "bytes": 22924
+    },
+    "selection.json": {
+      "sha256": "7d3bb8bf4e8a34f6d29cd44e4f23310eba4660eaa76c65ed1e63d781e0cadf1c",
+      "bytes": 769
+    },
+    "configure-provenance.txt": {
+      "sha256": "e0adbde88d15115e8c3b7bfc777dc6dce6b385c586928e96ee3da3bab41f784d",
+      "bytes": 1959
+    },
+    "host-context.cmake": {
+      "sha256": "b3f65f1206700a8fc5815fccb2e59d2a7e5e5a58652bea096a94348664a81388",
+      "bytes": 362
+    },
+    "fresh-run-status.json": {
+      "sha256": "0b3738b5a8bbb6c05b107b10545f637cbeef8089ee3ecff014beb6ef3660f498",
+      "bytes": 1914
+    },
+    "observations.json": {
+      "sha256": "9a66e0bbaea6da7970da367d97ffa07bdd328eea15900a1e3b9a693195be5661",
+      "bytes": 190365
+    },
+    "source-metrics.json": {
+      "sha256": "c7e13e66a3daec85d0e826c5226256726833c930cbdfc6fb642e91f159f24390",
+      "bytes": 34839
+    }
+  },
+  "limits": [
+    "Historical native-only result from 2026-11-16, not a scan by the current candidate.",
+    "486 records are experimental rule observations, not ground-truth defects, measured precision or an upstream readiness verdict.",
+    "39 selected database translation units are not every repository file, consumer, template instantiation or target configuration.",
+    "MISRA-tagged patterns are not a conformance assessment.",
+    "Reported include/token completeness does not establish complete compiler/header/runtime closure.",
+    "No Git/ownership or policy readiness conclusions follow from this run.",
+    "Retained corpus worktree is now partially cold-archived; source hashes were rechecked against all39 immutable upstream Git blobs.",
+    "Fresh current-candidate one-file attempt was refused by the unchanged resource guard before analysis; no new native result was produced."
+  ]
+}

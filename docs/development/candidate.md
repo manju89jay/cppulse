@@ -17,8 +17,8 @@ python scripts/package_candidate.py \
   --output-dir review/candidates
 ```
 
-The builder reads the version from `pyproject.toml` (`0.2.0.dev1` currently).
-`--version 0.2.0.dev1` additionally checks the expected value. It builds a pure
+The builder reads the version from `pyproject.toml` (`0.2.0.dev2` currently).
+`--version 0.2.0.dev2` additionally checks the expected value. It builds a pure
 Python wheel with `python -m build --wheel --no-isolation`; the declared build
 backend and development tools must already be installed. It then resolves the
 core dependency closure from the supplied local wheelhouse using pip

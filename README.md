@@ -1,200 +1,191 @@
 # cppulse
 
-**Understand your C++ code. See which checks support your next release.**
+**C++ maintenance signals, backed by inspectable evidence.**
 
-cppulse brings C++ source findings, Git history and selected build/test evidence
-into one local workflow. It helps developers inspect maintenance problems,
-maintainers review declared library configurations, and integrators identify
-the checks their application still needs.
+Find the code that deserves review, understand who has worked on it, and see
+which checks support your next change. cppulse combines native C++ analysis,
+Git history and configuration-scoped verification evidence in a local workflow.
+It gives maintainers a review queue and library consumers a way to inspect what
+upstream evidence actually covers—and what they still need to check themselves.
 
-[Get started](#get-started) · [Evidence demo](#try-three-evidence-outcomes) ·
-[CLI guide](docs/development/public-cli.md) ·
-[Rules](docs/generated/rules.md) · [MIT license](LICENSE)
+[Quickstart](#quickstart) · [Real OSS results](#see-a-real-project) ·
+[Release workflow](#from-a-change-to-a-release-check) ·
+[CLI guide](docs/development/public-cli.md) · [MIT license](LICENSE)
 
-> **Development preview — 0.2.0.dev2.** The full production specification is
-> being implemented. The current tool has tested local workflows and known
-> limitations; it is not a production-qualified release. See the current
-> [delivery status](docs/plans/production-delivery-status.md) and
-> [requirement/evidence ledger](docs/plans/production-delivery-ledger.json).
+> **Development preview: 0.2.0.dev2.** Selected Linux component and installed-CLI
+> journeys have been tested. Full production acceptance remains incomplete;
+> [current status and limitations](#status-and-limits) are explicit.
 
-## Start with the decision you need to make
+## See a real project
 
-| Your question | Start here | What to inspect |
-| --- | --- | --- |
-| What deserves attention in this C++ project? | `cppulse analyze` | Rule findings, parsing gaps, available Git signals and experimental priorities |
-| Does this candidate satisfy our configured checks? | `cppulse collect`, then `cppulse check --policy` | Executed checks, selected inputs, failed controls and missing evidence |
-| Does upstream library evidence apply to our application? | `cppulse compare` | Configuration correspondence, artifact identity and required local checks |
-| Did this change introduce findings beyond an agreed baseline? | `cppulse baseline create`, then `cppulse check --findings` | New, unchanged and unknown occurrences within explicit scope |
-| Why did a check produce this result? | `cppulse explain` or an evidence report | One retained run, control reasons, original artifacts and limitations |
+This is a **historical Cloud analysis of LevelDB 1.23**, captured on
+**16 November 2026**, not a scan by today's candidate. A fresh bounded run was
+refused by the unchanged storage guard before analysis. The retained result was
+recounted from its actual records and checked against the pinned upstream source.
 
-Compilers, analyzers, test runners and runtime tools remain the producers of
-their diagnostics. cppulse connects their results to a declared scope so you
-can inspect the facts behind a decision.
+![Historical LevelDB results: 39 selected translation units, 10,595 physical lines and 486 experimental rule observations](docs/examples/leveldb/results-card.png)
 
-For compiled and header-only libraries, select consumer programs, compiler
-options and tests explicitly. A passing sample covers those selected uses;
-untested platforms, macros and template instantiations remain separate work.
+| Observed scope or result | Retained value |
+| --- | --- |
+| Upstream revision | [`99b3c03b3284f5886f9ef9a4ef703d57373e61be`](https://github.com/google/leveldb/tree/99b3c03b3284f5886f9ef9a4ef703d57373e61be) |
+| Selected compilation-database units | 39; all 39 reported analyzed |
+| Physical lines in those source files | 10,595 |
+| Actual rule observation records | 486 = 204 memory patterns + 185 MISRA-tagged patterns + 74 modernization + 23 complexity |
+| Git ownership, ranking and policy gate | Not collected in this native-only run |
 
-## What works today
+**What a maintainer learns:** these are concrete review prompts, not confirmed
+bug counts. For example, `BuildTable` had reported cyclomatic complexity 13 and
+nesting depth 3. The configured scope gives those measurements meaning; it does
+not establish the readiness of every LevelDB build or consumer.
 
-- **Native analysis:** a C++17/libclang engine with 22 experimental pattern
-  checks, rule configuration, compilation databases and visible parse outcomes.
-  Inferred header arguments remain distinct from observed consumer builds.
-- **History and prioritization:** current-file churn/contributor signals,
-  descriptive health and experimental heuristic/optional XGBoost ranking.
-- **Explicit evidence:** finite argv recipes retain selected source/output
-  identities, bounded command logs and supported test/coverage/sanitizer results.
-- **Local gates:** versioned policies, scoped finding baselines, suppressions and
-  SARIF. Six supported predicates cover findings, analysis coverage, tests,
-  contexts, coverage and sanitizers. Profile 1.2 adds measured numeric thresholds
-  and scoped reviews bound to exact artifact bytes.
-- **Retained views:** JSON/HTML/optional PDF, API and a bundled React dashboard
-  read stored results. Run/hash pins support reproducible historical review.
-- **Opt-in integration:** an installed CLI, CMake helper and local hook template.
-  Core operation requires no cppulse account or hosted service.
+The recorded environment was Linux x86_64, GCC 14.2.0 and libclang 19.1.7, using
+LevelDB's C++11 compilation database. The historical analyzer SHA-256 was
+`f880711894e11b5ac13149b1ffeea0754c4a77f7a493ac794446c334264e9c5d`.
 
-Measured file/function metrics and explicit density/context scoring now run on
-retained native evidence. `cppulse maintenance --store STORE --workspace SOURCE
---required-context CONTEXT` publishes a derived run with full-scope health
-unavailable whenever required measurements or checks are missing. The historical
-scorer remains distinct; versions are not silently merged in trends.
+<details>
+<summary>Actual recorded native command (historical environment)</summary>
 
-The [VS Code preview](docs/editor-vscode.md) has actual installed-host evidence;
-the [read-only MCP preview](docs/development/mcp.md) reads pinned stored results.
-`cppulse analyze --execution bounded --no-history` runs explicit finite native
-workers and retains original receipts, full selected scope and checked used SDK
-bytes. Qualified warm reuse, atomic final publication and large-project
-qualification remain open. The current scorer uses actual measured inputs and
-preserves null results for unknown scope or unsupported preprocessing queries.
+```bash
+/workspace/cppulse/analyzer-core/build-cloud-final/cppulse-analyzer \
+  --repo /workspace/cppulse/work/six-corpus/leveldb \
+  --output /workspace/cppulse/work/corpus-configured-evidence/leveldb/native \
+  --compilation-database /workspace/cppulse/work/corpus-configured/leveldb/compile_commands.json \
+  --resource-dir /workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19 \
+  --file-list /workspace/cppulse/work/corpus-configured-evidence/leveldb/selection.json \
+  --address-space-bytes 3221225472 --cpu-seconds 600 --file-size-bytes 268435456
+```
 
-Separate finite expansion commands include local `branches`, public read-only
-GitHub `issues`, `abi-compare`, dry-run `fix`, ordinary `verify-proposal` and
-explicitly trusted `verify-service-proposal`. Their supported scopes and retained
-evidence are documented in the [Cloud checkpoint](docs/checkpoints/20261116/README.md).
-The full remaining production program is tracked in
-[scope and maturity](#scope-and-maturity).
+These are recorded paths, not a fresh-run quickstart. Exact reproduction needs
+that historical binary and environment; use a fresh output location. Substituting
+the current analyzer produces a new measurement, not a reproduction of these counts.
 
-## Get started
+</details>
 
-Use a source checkout or a locally prepared candidate. These instructions do
-not assume a published PyPI package or production binary. The Python CLI and
-native analyzer are separate installation components.
+[Inspect the results and reproduction record](docs/examples/leveldb/README.md) ·
+[Machine-readable results](docs/examples/leveldb/results.json) ·
+[All 486 observations](docs/examples/leveldb/observations.json) ·
+[Selected-file metrics and source hashes](docs/examples/leveldb/source-metrics.json)
 
-### Build prerequisites
+## What you can do today
 
-Use Linux with a C++17 compiler, CMake, libclang development headers/library,
-nlohmann/json, spdlog/fmt, CLI11 and GoogleTest. Python **3.11–3.12** is declared;
-retained cloud checks exercised **3.12.14**.
+| Your job | What cppulse provides |
+| --- | --- |
+| **Maintain a C++ codebase** | Inspect measured complexity, physical LOC, function size/nesting and exact lexical duplication alongside configurable rule findings. Prioritize review with available Git activity and experimental ranking. |
+| **Understand ownership gaps** | Inspect selected-history churn and contributor concentration. Optional behavior configuration handles aliases, bots and pair attribution; historical co-change and team views carry their scope and limitations. Authorship is a knowledge proxy, not proof of expertise. |
+| **Prepare a library release** | Collect explicit build/test/analysis recipes, retain source and artifact identities, and evaluate configurable policies over that declared scope. Keep passing, failing and missing evidence visible. |
+| **Consume a library** | Compare retained upstream facts with your selected compiler options, source and consumer context. Identify local checks still needed for your macros, templates, headers and linked application. |
+| **Review or automate a decision** | Read stored JSON/HTML reports, export SARIF, or run policy/finding gates through the CLI. Run/hash pins keep historical review tied to one retained snapshot. |
 
-Typical Debian/Ubuntu package names are `build-essential`, `cmake`,
-`libclang-19-dev`, `nlohmann-json3-dev`, `libspdlog-dev`, `libfmt-dev`, `libcli11-dev`
-and `libgtest-dev`. Packages and LLVM layouts vary by distribution.
-Set `LIBCLANG_ROOT` for a nonstandard LLVM prefix. The analyzer requires the
-libclang binary-opcode API available in the tested LLVM 19 pair; configuration
-rejects headers/libraries that lack it.
+The native engine has **22 experimental, configurable pattern checks**. Findings,
+measured metrics and parsing outcomes remain separate. Supported test, coverage,
+compiler and sanitizer adapters preserve their original results and provenance;
+normalization is specific to documented producer versions and input forms.
 
-### Build and run
+CTest/JUnit counts distinguish failed and skipped tests. LCOV line, branch and
+function counters stay distinct; supported Cobertura supplies line/branch
+counts. Neither analysis parse coverage nor branch coverage implies decision or
+MC/DC coverage. See [coverage support](docs/development/coverage-normalization.md)
+and [verification contracts](docs/contracts/verification.md).
+
+### Keep four results separate
+
+| Result | What it answers |
+| --- | --- |
+| **Measured maintenance health** | How observed findings relate to measured physical LOC and selected analysis contexts. The versioned density/context scorer exposes its formula, denominator and completeness; the historical descriptive scorer remains separately labeled. |
+| **Experimental ranking** | Where review may be useful given available analysis and history. Heuristics and optional models are prioritization aids, without demonstrated predictive accuracy or calibrated defect probabilities. Missing inputs leave files explicitly unranked. |
+| **Evidence completeness** | How much applicable policy weight has known results for the selected scope. Missing, stale or unsupported evidence remains unknown. |
+| **Policy satisfaction and gate** | Which configured controls passed, failed or remain unknown, and whether the selected gate can pass. A health score is not substituted for test evidence or policy acceptance. |
+
+For example, a real stored assessment can report
+`"status": "insufficient_evidence", "exit_code": 3` while still retaining useful
+findings and measured facts. That is an actionable gap: collect the missing
+check rather than inherit an old green result.
+
+## Quickstart
+
+### Install from this development checkout
+
+No published PyPI release or production binary bundle is assumed. Use Python
+**3.11–3.12**, a C++17 compiler, CMake and a matching **LLVM 19+ libclang
+headers/library pair**. Native dependencies include nlohmann/json, spdlog/fmt
+and CLI11. Linux package names and LLVM prefixes vary by distribution.
 
 From the checkout root:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install -e '.[git]'
 
-cmake -S analyzer-core -B analyzer-core/build -DBUILD_TESTING=ON
-cmake --build analyzer-core/build -j4
-ctest --test-dir analyzer-core/build --output-on-failure
+cmake -S analyzer-core -B build/native -DBUILD_TESTING=OFF
+cmake --build build/native --target cppulse-analyzer --parallel 2
+export CPPULSE_ANALYZER="$PWD/build/native/cppulse-analyzer"
 
-export CPPULSE_ANALYZER="$PWD/analyzer-core/build/cppulse-analyzer"
 cppulse doctor
+```
 
-cppulse analyze --repo demo/fixture --output output/first-run --format html
-cppulse report --input output/first-run --format json \
+Select the matching Clang resource directory with `CPPULSE_CLANG_RESOURCE_DIR`
+if discovery needs help. It must contain the matching built-in headers, such as
+`include/stddef.h`. `doctor` reports capabilities; finding an optional package
+alone does not verify a producer execution. Native bundles and offline dependency
+installation are covered in the [candidate guide](docs/development/candidate.md).
+
+### Inspect the included synthetic fixture
+
+```bash
+cppulse analyze --repo demo/fixture --output output/first-run \
+  --execution bounded --jobs 1 --no-history --format json
+
+cppulse report --input output/first-run --evidence --format html \
+  --output output/first-run/report.html
+cppulse report --input output/first-run --evidence --format json \
   --output output/first-run/report.json
 ```
 
-Check that doctor reports `native.available: true`, then open the HTML path
-printed by analyze. Detecting an optional package is not execution verification.
-The demo contains a clean file and intentional synthetic rule triggers; the
-triggers are analyzed, not executed. Static input does not require `.git`, GitPython or a Git executable. Install
-`cppulse[git]` (and Git) for history; missing tooling stays explicitly unavailable.
+Open `output/first-run/report.html`. The fixture includes intentional rule
+triggers; analyzing it does not execute those triggers. It has no Git history,
+and this first-look run has no project compilation database. Inspect inferred
+parse context and unavailable results instead of expecting a complete health or
+ranking result. Exit 3 is meaningful partial/insufficient evidence, not a clean pass.
 
-For your CMake project, generate and supply its actual compilation database:
+### Use your real build configuration
+
+Generate a compilation database with your normal Makefiles/Ninja CMake build,
+then give cppulse that configuration:
 
 ```bash
 cmake -S /path/to/project -B /path/to/project/build \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
 cppulse analyze --repo /path/to/project \
   --compilation-database /path/to/project/build/compile_commands.json \
-  --output output/my-project --format html
+  --execution bounded --jobs 2 --history \
+  --output output/my-project --format json
 ```
 
-Use a generator that emits the database, such as Makefiles or Ninja. Missing
-commands can lead to inferred/fallback parsing. `analyze` runs source/history
-analysis without building or testing your project. Its compatibility snapshot
-uses conservative, unverified evidence binding. Use collection and policy checks
-for the explicit evidence workflow.
+Replace the placeholder project paths with your own. `analyze` does not build or
+test the project. Git history needs Git and the optional `git` Python extra;
+missing or bounded history is reported explicitly. Per-rule configuration,
+exclusions and declared behavior identities are documented in the
+[configuration reference](docs/generated/native-config.schema.json),
+[Git history contract](docs/contracts/git-history.md) and
+[behavior contract](docs/contracts/git-behavior.md).
 
-Create editable settings with `cppulse init --repo /path/to/project`, then use
-`cppulse config --repo /path/to/project --output output/my-project` to inspect
-effective settings. Exclusions and detector switches belong in `.cppulserc.json`
-or YAML; policy controls are separate. Explicit options override the selected
-config and defaults. If several config files are present, select one with
-`--config /path/to/.cppulserc.json`. The default profile excludes MISRA-labeled
-findings from scoring; it does not disable those detectors.
+## From a change to a release check
 
-If libclang cannot find built-in headers such as `stddef.h`, set
-`CPPULSE_CLANG_RESOURCE_DIR` to its matching resource directory containing
-`include/stddef.h`. A standalone analyzer reports less installation metadata
-than a prepared native bundle. The [candidate guide](docs/development/candidate.md)
-documents host dependencies, offline installation and upgrade/rollback.
+1. **Analyze the candidate in its actual configuration.** Review findings,
+   available metrics and history gaps; choose the change you want to inspect.
+2. **Collect relevant checks.** Declare the finite compiler, test, coverage and
+   sanitizer commands and their inputs/outputs in a reviewed collection request.
+   Existing tools remain the evidence producers.
+3. **Evaluate your policy.** Select required contexts and explicit thresholds.
+   Tests, measured thresholds, coverage kinds and scoped reviews have documented
+   predicates; unsupported inputs cannot become clean results.
+4. **Retain and review the decision.** Keep its run ID, manifest hash, policy,
+   reasons and original artifacts. Recollect changed source or outputs before
+   treating evidence as current.
 
-### Add the dashboard or PDF
-
-```bash
-python -m pip install -e '.[web,pdf]'
-cppulse serve --input output/first-run --host 127.0.0.1 --port 8000
-```
-
-Open <http://127.0.0.1:8000>. The package includes the built dashboard; Node is
-needed for dashboard development, not this runtime. In another terminal:
-
-```bash
-cppulse report --input output/first-run --format pdf \
-  --output output/first-run/report.pdf
-```
-
-PDF needs native Pango/font libraries, typically `libpango-1.0-0`,
-`libpangoft2-1.0-0`, `libcairo2` and `fonts-dejavu-core` on Debian/Ubuntu.
-HTML/JSON reporting works without PDF or web extras.
-
-## Try three evidence outcomes
-
-A release check must distinguish a failed check from one that was never
-demonstrated. The evidence demo builds/tests a clearly synthetic C++ fixture:
-
-| Scenario | Meaning | Expected check exit |
-| --- | --- | ---: |
-| Clean | Selected required checks have usable passing evidence | `0` |
-| Intentional findings | A configured control has a known failure | `1` |
-| Missing tests | Required evidence is absent | `3` |
-
-After source setup:
-
-```bash
-python scripts/demo_evidence.py \
-  --analyzer "$CPPULSE_ANALYZER" \
-  --fixture demo/policy-fixture --output output/evidence-demo \
-  --scenario all --formats json,html
-```
-
-Add `--resource-dir "$CPPULSE_CLANG_RESOURCE_DIR"` for a custom LLVM layout.
-Add `pdf` to `--formats` when PDF dependencies are installed. The summary
-retains actual commands, outcomes and run pins. These are functional examples,
-not accuracy or performance benchmarks.
-
-For your own project, review and adapt a collection request and policy:
+With your own reviewed request and policy files (placeholder paths below):
 
 ```bash
 cppulse collect --request /path/to/collection-request.json \
@@ -205,162 +196,57 @@ cppulse report --input /path/to/evidence-store --evidence --format html \
   --output /path/to/evidence-report.html
 ```
 
-These are placeholder paths for your reviewed files. Collection executes the
-declared commands. Checking and rendering do not silently rebuild or run tests.
-A completed collection can retain a failed test; completion is not a policy pass.
-Changed selected source/output needs new usable evidence. Imported reports
-remain identified as imported claims.
+`collect` executes only the declared recipe. A successful capture can retain a
+failed test; it does not mean the policy passed. `check` evaluates retained
+current material without silently rebuilding or rerunning tests. For historical
+review, pass **both** `--run-id` and `--manifest-sha256`; a pinned old result stays
+historical. [Request examples, gates and selectors](docs/development/public-cli.md).
 
-See the [CLI guide](docs/development/public-cli.md) for request structure,
-baseline checks, comparison, selectors and exit semantics. Historical review
-uses both `--run-id` and `--manifest-sha256`; an old pinned pass remains historical.
-
-| Exit | Meaning |
+| Check exit | Meaning |
 | --- | --- |
-| `0` | Requested operation completed; for a check, the selected gate passed |
-| `1` | A policy/finding gate has a known failure |
-| `2` | Invalid input, missing required capability or an operational failure |
-| `3` | Partial analysis or insufficient evidence for the requested decision |
-| `130` | Explicit cancellation |
+| `0` | Selected gate passed |
+| `1` | A configured gate has a known failure |
+| `2` | Invalid input or an operational/capability error |
+| `3` | Evidence is insufficient or the selected analysis is partial |
 
-## Add an explicit build check
+The same explicit recipe and gate can fit a local or CI workflow. The
+[CMake/local-hook guide](docs/development/local-check-integrations.md) explains
+opt-in checks; cppulse does not infer that an upstream sample covers every consumer.
 
-The packaged CMake helper calls the same `cppulse check` engine. Its target
-checks retained current material and supports selected build dependencies;
-collection is a separate explicit recipe. Locate the helper with:
+## Local first, optional where you need it
 
-```bash
-python -c 'from importlib.resources import files; print(files("cppulse").joinpath("data/Cppulse.cmake"))'
-```
+The core is **MIT-licensed**, account-free and usable on public, private and
+commercial projects. Core analysis can run offline after its dependencies and
+matching native/resource packs are installed. Optional downloads and remote
+provider commands still need network access. Third-party dependencies retain
+their own licenses.
 
-Follow the [CMake/local hook guide](docs/development/local-check-integrations.md)
-to set the store, workspace and policy. Checks are opt-in and outside ordinary
-builds unless enforcement is selected. The current helper uses CMake 3.21+
-options, with 3.31.6 exercised; the production minimum-version decision is open.
+- **Browser or PDF:** optional `web` and `pdf` extras add API/dashboard serving
+  and PDF rendering. The built dashboard is packaged; Node is for dashboard
+  development. [Viewing stored results](docs/development/snapshot-web.md).
+- **Editors and agents:** the [VS Code preview](docs/editor-vscode.md) and
+  [read-only MCP preview](docs/development/mcp.md) expose selected stored results.
+  Their finite preview scope is separate from full editor/platform qualification.
+- **Extend the workflow:** registry-driven native checks, documented adapters,
+  policy profiles and draft scaffolds support reviewed additions.
+  [Rules](docs/generated/rules.md) · [Developer workflow](docs/development/workflow.md).
 
-## Read the four results separately
+## Status and limits
 
-| Result | Meaning | Interpretation boundary |
-| --- | --- | --- |
-| Maintenance health | Versioned summary of observed findings | Current scoring uses weighted findings per attempted file; density/context scoring remains work in progress |
-| Experimental ranking | Heuristic or optional model prioritization | No demonstrated accuracy or calibrated future-defect probability |
-| Evidence completeness | Available evidence for applicable controls | Limited to declared scope, contexts and accepted producers |
-| Policy acceptance | Satisfaction of the selected policy and gates | A scoped decision, not universal production readiness |
+Current capability is a development checkpoint, with selected Linux/native and
+installed-CLI qualification. Ranking is experimental; scope and missing evidence
+matter as much as a number. The real-project example above is explicitly a
+historical native snapshot, not a current full-pipeline or upstream readiness verdict.
 
-Inspect parse gaps, disabled rules, inferred contexts and history limitations
-beside findings. A score cannot replace a required test, authenticate an
-upstream producer or establish every template instantiation. MISRA-labeled
-checks are a limited pattern subset; no MISRA/ISO 26262/IEC 62304 compliance,
-certification or safety classification is inferred.
+The full production plan remains incomplete. Source-bound delivery proof is
+currently stale and its refresh is storage-blocked; the strict delivery checker
+is not green. Broader platform/packaging, scale/resource, editor agreement and
+other retained acceptance work remain open. Prose and demo assets do not close
+those requirements. [Delivery status](docs/plans/production-delivery-status.md) ·
+[Full completion plan](docs/plans/cppulse-production-completion-plan.md).
 
-| Analysis artifact | Contents |
-| --- | --- |
-| `findings.json` | Findings, selected rule/configuration metadata and parse scope |
-| `git_metrics.json` | Available current-file history signals and limitations |
-| `risk_scores.json` | Stored health, experimental ranks, model metadata and hotspots |
-| `roadmap.json` | Suggested work with heuristic effort/impact estimates |
-
-Evidence workflows also retain immutable run manifests, producer receipts,
-original logs/reports, typed evidence and assessments. API/report consumers
-select one snapshot. See [contracts](docs/contracts/v2.md) and
-[snapshot presentation](docs/development/snapshot-presentation.md).
-
-## Scope and maturity
-
-Updated **2026-11-14**. Capability claims depend on exact source/artifact bytes,
-environment and check scope.
-
-| Area | Current qualification |
-| --- | --- |
-| Linux workflows | Exercised on Linux x86-64, GCC 14.2, libclang 19, CMake 3.31.6 and Python 3.12.14 |
-| Real C++ inputs | All six original projects pinned with retained history; sampled and selected full native scans, plus fmt/utfcpp/consumer pipeline. Parsing/resource gaps remain visible; upstream suites and accuracy are unqualified |
-| Installed package | Cloud candidate exercised outside the checkout without Git/GitPython/Node/ML/PDF/web; exact candidate proofs remain separate from later source changes |
-| Evidence adapters | Selected Linux/GNU/CTest/report dialects with explicit capability/version limits |
-| Docker/Compose | Actual synthetic pipeline/API/proxy/PDF pass. Real fmt repeat hit the finite Cloud disk budget; its attempt is incomplete |
-| Other environments | Windows/MSVC/MinGW, macOS, other Python/compiler combinations and broad C++20 coverage require separate qualification |
-| Production program | Measured metrics/trends, policy 1.2, VS Code/MCP and scale primitives have scoped checks; full incremental/corpus/platform/empirical/expansion acceptance remains tracked |
-
-The current audit identified detector, configuration, incomplete-ranking and CLI
-defects under correction. The [delivery ledger](docs/plans/production-delivery-ledger.json)
-records their status. The [full completion plan](docs/plans/cppulse-production-completion-plan.md)
-preserves all 118 numbered requirements and 60 original tasks. A smaller demo
-or early release does not replace that scope.
-
-Historical [example analyses](examples/) have inconsistent totals and cannot
-serve as current benchmarks. [Checkpoint checks](review/checkpoint-20261114/summary.json)
-and the [installed-candidate review](review/autonomous/S7-REVIEW.md) retain their
-own version boundaries. Aggregate test counts do not establish detector accuracy.
-
-## Local operation
-
-Core workflows need no cppulse account and add no runtime dependency to an
-analyzed C++ library. Offline use requires dependencies and policy material to
-be installed first. Collection commands execute project code with your local
-permissions; review recipes before execution. This is not a hostile-code sandbox.
-
-Hashes identify bytes without authenticating producers or proving complete
-dependency coverage. Matching upstream configuration does not replace local
-integration tests. Local diagnostic bundles omit source excerpts and unrestricted
-environment dumps by default; uploading one is a separate action.
-
-On a Docker-enabled host, the existing workflow uses host-output bind mounts:
-
-```bash
-REPO_PATH=/absolute/path/to/cpp-project docker compose up --build
-bash scripts/integration_test.sh
-```
-
-`OUTPUT_PATH` overrides host `./output`. Analysis/PDF jobs are one-shot services;
-API/dashboard remain running. The Cloud synthetic path passed with an explicit
-session CA BuildKit secret and sequential builds; no TLS verification was
-disabled. Real-input repetition and failure/volume/scale matrices remain separate
-qualification work. See the [Cloud checkpoint](docs/checkpoints/20261116/README.md).
-
-## Development and architecture
-
-The native engine exchanges schema-validated artifacts with namespaced Python
-analysis/evaluation packages. CLI, API, reports and dashboard consume retained
-results; the dashboard does not independently calculate policy gates.
-
-| Component | Responsibility |
-| --- | --- |
-| `analyzer-core/` | C++17/libclang parsing and native checks |
-| `python/cppulse/` | Contracts, orchestration, evidence, policy, analysis and presentation |
-| `git-miner/`, `predictor/`, `report-engine/` | Preserved component entry points and tests |
-| `cli/` | Preserved C++17 orchestration interface |
-| `dashboard/` | React/TypeScript UI and development build |
-| `docs/`, `demo/`, `scripts/` | Decisions, contracts, labeled fixtures and local checks |
-
-After installing component prerequisites, build the legacy CLI and dashboard
-when exercising those components, then run the shared checks:
-
-```bash
-cmake -S cli -B cli/build -DBUILD_TESTING=ON
-cmake --build cli/build -j4
-(cd dashboard && npm ci && npm test && npm run build)
-python scripts/check_local.py
-```
-
-The runner invokes native CTest, Python components with coverage, contracts and
-dashboard checks. Docker verification is explicit:
-`python scripts/check_local.py --section docker`. Extra verification tools are
-listed in `requirements-verification.txt`; no new external CI service is needed.
-See [CONTRIBUTING](CONTRIBUTING.md), [architecture](docs/architecture.md),
-[decisions](docs/DECISIONS.md) and [rule reference](docs/generated/rules.md).
-
-Development uses AI-assisted implementation and review. Automation and authorship
-remain transparent; claims require reproducible artifacts and actual checks.
-
-## Product direction and license
-
-Read the [product discovery](docs/research/cppulse-product-discovery.md),
-[tool landscape](docs/research/cpp-analysis-tool-landscape.md), and complete
-[requirements](docs/specs/production-platform/requirements.md),
-[design](docs/specs/production-platform/design.md) and
-[tasks](docs/specs/production-platform/tasks.md). Similar capabilities exist
-elsewhere; this combined workflow's adoption value still needs validation with
-maintainers and integrators.
-
-cppulse is [MIT licensed](LICENSE) for public, private and commercial use.
-Third-party dependencies retain their licenses. Managed hosting and external
-model/API services, if added, have separate operating costs.
+Try a configured run on your project, inspect the facts behind its result, and
+bring a reproducible fixture when a finding or evidence boundary surprises you.
+Contributions to rules, adapters and tests are welcome:
+[development guide](docs/development/workflow.md) ·
+[issues](https://github.com/manju89jay/cppulse/issues) · [license](LICENSE).
