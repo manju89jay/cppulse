@@ -196,6 +196,24 @@ def test_public_predictor_preserves_frozen_legacy_results_without_eager_native_l
                 for item in limitations
                 if not item.startswith("Full-scope health unavailable:")
             ]
+            # Explicit disclosures introduced by the accepted health/proxy-label
+            # repairs are additional to the old69 oracle. Check their full
+            # meaning, then retain strict parity for every other original field.
+            assert "training_label_provenance" not in before["metadata"]
+            assert after["metadata"].pop("training_label_provenance") == {
+                "kind": "declared_experimental_proxy_labels",
+                "training_files": ["a.cpp"], "szz_files": [],
+                "feature_derived_files": ["a.cpp"],
+            }
+            assert "health_calculation" not in before["metadata"]
+            assert after["metadata"].pop("health_calculation") == {
+                "method": "weighted-findings-per-attempted-file-v2", "version": "2",
+                "formula": "clamp(100 - sum(category_weight * finding_count) / denominator_files, 0, 100)",
+                "profile": "default",
+                "weights": {"memory_findings": 3.0, "complexity_findings": 1.5, "modernization_findings": 1.0},
+                "category_scales": {"memory_safety": 15.0, "modernization": 5.0, "complexity": 10.0},
+                "denominator_files": 1, "declared_files": 1, "availability": "partial",
+            }
         assert before == after
 
 

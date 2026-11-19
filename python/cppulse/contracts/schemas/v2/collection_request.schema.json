@@ -5,6 +5,8 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "ruleset": {"type": "string", "minLength": 1, "description": "Local pack path relative to workspace, explicitly included in source/files."},
+    "resolved_ruleset": {"type": "object", "description": "Collector-generated retained configuration identity. It never authenticates an imported diagnostic producer."},
     "version": {
       "const": "2.0.0"
     },

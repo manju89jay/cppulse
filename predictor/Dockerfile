@@ -5,4 +5,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY predictor/ .
 COPY python/cppulse/ /opt/cppulse/python/cppulse/
 ENV PYTHONPATH=/opt/cppulse/python
-CMD ["python3", "-m", "src.main"]
+RUN chmod +x /app/docker-entrypoint.sh
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["--input", "/output", "--output", "/output"]

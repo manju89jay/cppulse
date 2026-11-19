@@ -675,6 +675,7 @@ def run_analysis(
         {
             "source": source["digest"],
             "config": config.settings,
+            **({"ruleset_digest": config.ruleset["digest"]} if config.ruleset else {}),
             "database": db_digest,
             "native": native_sha,
             "execution": {
@@ -703,7 +704,8 @@ def run_analysis(
         {
             "unit_id": "unit-"
             + digest_json(
-                {"file": path, "database": db_digest, "configuration": config.settings}
+                {"file": path, "database": db_digest, "configuration": config.settings,
+                 **({"ruleset_digest": config.ruleset["digest"]} if config.ruleset else {})}
             )[:32],
             "primary_file": path,
             "context_mode": "compilation_database" if database else "fallback",

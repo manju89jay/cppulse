@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field as dataclass_field
 from importlib import resources
 import json
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -174,12 +175,15 @@ class EffectiveConfig:
     execution: dict[str, Any] = dataclass_field(default_factory=default_execution)
 
     history: dict[str, Any] = dataclass_field(default_factory=default_history)
+    ruleset: dict[str, Any] | None = None
 
     def as_dict(self) -> dict[str, Any]:
         """Return JSON-compatible effective configuration and provenance."""
         result = asdict(self)
         for field in ("repo", "output", "config_path", "compilation_database"):
             result[field] = str(result[field]) if result[field] is not None else None
+        if self.ruleset is None:
+            result.pop("ruleset")
         return result
 
 
@@ -198,15 +202,22 @@ def _validate_project_settings(value: Any, schema: dict[str, Any]) -> None:
     validator(schema).validate(value)
 
 
-def read_settings(path: Path) -> dict[str, Any]:
-    """Read safe JSON/YAML data and reject unsupported settings/types."""
-    text = path.read_text(encoding="utf-8")
+def _read_settings_document(path: Path) -> tuple[dict[str, Any], str]:
+    """Bind validated settings to the exact same raw bytes used for identity."""
+    raw = path.read_bytes()
+    text = raw.decode("utf-8")
     try:
         settings = (
             json.loads(text, object_pairs_hook=_unique_pairs)
             if path.suffix == ".json"
             else yaml.load(text, Loader=_UniqueKeyLoader)
         )
+        if path.suffix != ".json" and settings is None:
+            # Empty/comment-only YAML is a legacy default configuration. An
+            # explicit null scalar is still not a configuration object.
+            node = yaml.compose(text, Loader=_UniqueKeyLoader)
+            if node is None or (node.tag == "tag:yaml.org,2002:null" and node.value == ""):
+                settings = {}
         schema = json.loads(
             resources.files("cppulse")
             .joinpath("data/project_config.schema.json")
@@ -232,7 +243,12 @@ def read_settings(path: Path) -> dict[str, Any]:
                 ) from exc
     except (ValueError, TypeError, yaml.YAMLError, jsonschema.ValidationError) as exc:
         raise ContractError(f"Invalid project configuration {path}: {exc}") from exc
-    return settings
+    return settings, hashlib.sha256(raw).hexdigest()
+
+
+def read_settings(path: Path) -> dict[str, Any]:
+    """Read safe JSON/YAML data and reject unsupported settings/types."""
+    return _read_settings_document(path)[0]
 
 
 def effective_config(
@@ -244,6 +260,8 @@ def effective_config(
     compilation_database: Path | None = None,
     execution: dict[str, Any] | None = None,
     history: dict[str, Any] | None = None,
+    ruleset: Path | None = None,
+    rule_options: dict[str, Any] | None = None,
 ) -> EffectiveConfig:
     """Apply explicit options, repository settings, then documented defaults."""
     repo = repo.resolve(strict=True)
@@ -260,7 +278,42 @@ def effective_config(
                 "Select one explicitly with --config."
             )
         selected = candidates[0] if candidates else None
-    settings = read_settings(selected) if selected else {}
+    settings, project_config_sha256 = _read_settings_document(selected) if selected else ({}, None)
+    project_settings = dict(settings)
+    pack_reference = settings.pop("ruleset", None)
+    pack_path = (ruleset if ruleset is not None else
+                 selected.parent / pack_reference if pack_reference is not None and selected else None)
+    resolved_identity = None
+    if pack_path is not None:
+        from cppulse.rulesets import resolve_ruleset, merge_native, clang_tidy_arguments
+        from cppulse.identities import digest_json
+
+        resolved = resolve_ruleset(pack_path)
+        settings = merge_native(resolved.native, settings)
+        resolved_identity = dict(resolved.identity)
+        origins = dict(resolved_identity["origins"])
+        from cppulse.rulesets import _leaves
+
+        for key in _leaves({k: v for k, v in project_settings.items()
+                            if k not in {"ruleset", "execution", "history"}}, "native."):
+            origins[key] = str(selected)
+        resolved_identity["origins"] = origins
+        resolved_identity["selection_origin"] = "command" if ruleset is not None else "project"
+        resolved_identity["provider_arguments"] = {
+            name: clang_tidy_arguments(value)
+            for name, value in resolved.providers.items()
+        }
+    if rule_options:
+        from cppulse.rulesets import merge_native, validate_native
+
+        try:
+            validate_native({"rules": rule_options})
+        except (ValueError, TypeError, jsonschema.ValidationError) as exc:
+            raise ContractError(f"Invalid command rule options: {exc}") from exc
+        settings = merge_native(settings, {"rules": rule_options})
+        if resolved_identity is not None:
+            for key in _leaves(rule_options, "native.rules."):
+                resolved_identity["origins"][key] = "command"
     execution_options = _execution_settings(
         repo, settings.pop("execution", {}), execution
     )
@@ -281,6 +334,16 @@ def effective_config(
         **settings,
     }
     settings["profile"] = selected_profile
+    if resolved_identity is not None:
+        resolved_identity["origins"].setdefault("native.exclude_paths", "default")
+        resolved_identity["origins"].setdefault("native.max_file_bytes", "default")
+        resolved_identity["origins"]["native.profile"] = origin
+        resolved_identity["effective_native"] = settings
+        resolved_identity["profile_source"] = origin
+        if selected:
+            resolved_identity["project_config_sha256"] = project_config_sha256
+        resolved_identity.pop("digest", None)
+        resolved_identity["digest"] = digest_json(resolved_identity)
     database = (
         compilation_database.resolve(strict=True) if compilation_database else None
     )
@@ -293,6 +356,7 @@ def effective_config(
         origin,
         execution_options,
         history_options,
+        resolved_identity,
     )
 
 

@@ -4,6 +4,12 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "ruleset": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "description": "Local JSON ruleset pack path relative to this project configuration; CLI --ruleset replaces this selection."
+    },
     "profile": {
       "enum": [
         "default",

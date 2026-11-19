@@ -4,6 +4,7 @@
 <body>
 <header class="header"><h1>cppulse</h1><p>Recorded verification snapshot</p><p class="subtle">Experimental local prototype. Assessment values are copied from retained evidence; no policy is evaluated during rendering.</p></header>
 <h2>Snapshot and stored assessment</h2>
+{% if view.get('configuration') %}<details><summary>Selected retained configuration</summary><p>These are the original selected run bytes. Current defaults and live packs are not resolved during rendering.</p><p class="identity">Artifact {{ view.configuration.artifact_id }} · SHA-256 {{ view.configuration.sha256 }}</p><pre>{{ view.configuration.raw_json }}</pre></details>{% else %}<p class="subtle">Retained configuration: unavailable in this snapshot. No current default is substituted.</p>{% endif %}
 <p>Collection status: <span class="badge {{ view.run.status }}">{{ view.run.status }}</span>
 &nbsp; Policy gate: {% if view.assessment %}<span class="badge {{ view.assessment.display.gate }}">{{ view.assessment.display.gate }}</span>{% else %}<span class="badge unknown">Not assessed</span>{% endif %}</p>
 <table><tbody>

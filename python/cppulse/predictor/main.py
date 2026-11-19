@@ -477,13 +477,40 @@ def run(
     """
     from tempfile import TemporaryDirectory
     import os
+    import stat
+    from cppulse.errors import IntegrityError
     from .input_projection import open_predictor_inputs
 
     # Keep candidate outputs private until the original input's final guard
     # succeeds. Use the destination filesystem for the existing per-file replace
     # protocol; this does not promise an atomic two-file publication.
-    output_dir.parent.mkdir(parents=True, exist_ok=True)
-    with TemporaryDirectory(prefix=".cppulse-predictor-", dir=output_dir.parent) as scratch:
+    output_dir = Path(output_dir).absolute()
+    for boundary in (output_dir, *output_dir.parents):
+        if boundary.is_symlink():
+            raise IntegrityError("Predictor output boundary must not follow symlinks")
+    if output_dir.exists() and not output_dir.is_dir():
+        raise IntegrityError("Predictor output must be an ordinary directory")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    boundary_identity = (output_dir.stat().st_dev, output_dir.stat().st_ino)
+    names = ("risk_scores.json", "roadmap.json")
+
+    def output_guard() -> None:
+        """Validate both leaves before any publication; do not follow aliases."""
+        info = output_dir.lstat()
+        if not stat.S_ISDIR(info.st_mode) or (info.st_dev, info.st_ino) != boundary_identity:
+            raise IntegrityError("Predictor output directory changed during generation")
+        for name in names:
+            try:
+                leaf = (output_dir / name).lstat()
+            except FileNotFoundError:
+                continue
+            if not stat.S_ISREG(leaf.st_mode):
+                raise IntegrityError("Predictor output leaf must remain a regular file: " + name)
+
+    output_guard()
+    # A mountpoint can have a different device from its parent. Exclusive owned
+    # staging inside the validated destination keeps every replace on that device.
+    with TemporaryDirectory(prefix=".cppulse-predictor-", dir=output_dir) as scratch:
         stage = Path(scratch) / "output"
         with open_predictor_inputs(
             input_dir / "findings.json", directory=Path(scratch) / "projection"
@@ -498,8 +525,13 @@ def run(
                 inputs.measured_hotspot_metrics,
                 **qualification,
             )
-        output_dir.mkdir(parents=True, exist_ok=True)
-        for name in ["risk_scores.json", "roadmap.json"]:
+        # Original-input verification and generation/schema validation have
+        # completed, and their handles have closed, before either file is exposed.
+        output_guard()
+        for name in names:
+            if not stat.S_ISREG((stage / name).lstat().st_mode):
+                raise IntegrityError("Predictor staged output is not a regular file")
+        for name in names:
             os.replace(stage / name, output_dir / name)
 
 
@@ -626,6 +658,17 @@ def _run_projected(
     logger.info("Pipeline complete. Overall health score: %s/100", overall)
 
 
+def _predictor_settings(config_path: Path) -> dict[str, Any]:
+    """Read and validate one explicit component configuration exactly once."""
+    from cppulse.config import read_settings
+    from cppulse.errors import ContractError
+
+    settings = read_settings(config_path)
+    if "ruleset" in settings or "execution" in settings or "history" in settings:
+        raise ContractError("Predictor component needs resolved native settings; use cppulse config --native-output")
+    return settings
+
+
 def _load_profile_from_config(config_path: Path) -> str:
     """Extract the profile setting from a .cppulserc.yml/.json config file.
 
@@ -635,35 +678,7 @@ def _load_profile_from_config(config_path: Path) -> str:
     Returns:
         Profile string ("default" or "safety-critical").
     """
-    try:
-        content = config_path.read_text(encoding="utf-8")
-    except FileNotFoundError:
-        logger.warning("Config file not found: %s", config_path)
-        return "default"
-
-    if config_path.suffix == ".json":
-        data = json.loads(content)
-    elif _HAS_YAML and config_path.suffix in (".yml", ".yaml"):
-        data = yaml.safe_load(content) or {}
-    else:
-        # Fallback: try JSON first, then simple line scanning for YAML.
-        try:
-            data = json.loads(content)
-        except json.JSONDecodeError:
-            # Simple YAML fallback: scan for "profile:" line.
-            for line in content.splitlines():
-                stripped = line.strip()
-                if stripped.startswith("profile:"):
-                    value = stripped.split(":", 1)[1].strip().strip("'\"")
-                    if value in ("default", "safety-critical"):
-                        return value
-            return "default"
-
-    profile = data.get("profile", "default")
-    if profile not in ("default", "safety-critical"):
-        logger.warning("Unknown profile '%s' in config, using 'default'", profile)
-        return "default"
-    return profile
+    return _predictor_settings(config_path).get("profile", "default")
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -709,13 +724,35 @@ def main() -> None:
     """Entry point for the predictor CLI."""
     args = parse_args()
     profile = args.profile or "default"
-    # If --config is given and --profile was not explicitly set, read profile from config.
-    if args.config is not None and args.profile is None:
-        config_profile = _load_profile_from_config(args.config)
-        if config_profile != "default":
-            logger.info("Using profile '%s' from config file", config_profile)
-            profile = config_profile
+    retained = None
+    if args.config is not None:
+        from cppulse.errors import ContractError
+        from cppulse.identities import digest_json
+
+        # Validate even when an explicit profile is supplied, before prediction.
+        settings = _predictor_settings(args.config)
+        config_profile = settings.get("profile", "default")
+        profile = args.profile or config_profile
+        identity_path = args.config.with_name(args.config.name + ".identity.json")
+        retained = {"settings": deepcopy(settings), "profile_source": "config",
+                    "limitations": ["Retained component configuration; no Docker execution or complete environment claim."]}
+        if identity_path.is_file():
+            retained = json.loads(identity_path.read_bytes())
+            if retained.get("settings") != settings:
+                raise ContractError("Configuration identity sidecar does not match native settings")
+        retained["settings"]["profile"] = profile
+        if args.profile is not None:
+            retained["profile_source"] = "command"
+            if retained.get("ruleset") is not None:
+                identity = retained["ruleset"]
+                identity["effective_native"] = deepcopy(retained["settings"])
+                identity["profile_source"] = "command"
+                identity["origins"]["native.profile"] = "command"
+                identity.pop("digest", None)
+                identity["digest"] = digest_json(identity)
     run(input_dir=args.input, output_dir=args.output, profile=profile)
+    if retained is not None:
+        (args.output / "effective_config.json").write_text(json.dumps(retained, indent=2) + "\n")
 
 
 if __name__ == "__main__":

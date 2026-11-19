@@ -6,6 +6,18 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "configuration": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "raw_json": {"type": "string", "minLength": 1},
+        "document": {"type": "object"}
+      },
+      "required": ["artifact_id", "sha256", "size_bytes", "raw_json", "document"]
+    },
     "version": {
       "const": "2.0.0"
     },

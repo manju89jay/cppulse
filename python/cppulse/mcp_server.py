@@ -349,6 +349,7 @@ class Reader:
             return {
                 **pin,
                 "run": view["run"],
+                "configuration": view.get("configuration"),
                 "contexts": view["contexts"],
                 "stages": view["stages"],
                 "limitations": view["limitations"],

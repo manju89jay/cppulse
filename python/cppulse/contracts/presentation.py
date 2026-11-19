@@ -196,7 +196,7 @@ def semantic(document: dict[str, Any]) -> None:
         _fail("Presentation omits stored run limitations", "/limitations")
 
     def payload(
-        wrapper: dict[str, Any], kind: str, path: str, version: str = "2.0.0"
+        wrapper: dict[str, Any], kind: str | None, path: str, version: str = "2.0.0"
     ) -> dict[str, Any]:
         identifier = wrapper["artifact_id"]
         artifact = artifacts.get(identifier)
@@ -209,7 +209,7 @@ def semantic(document: dict[str, Any]) -> None:
             _equal(wrapper[field], artifact[field], path + "/" + field)
         _equal(
             artifact.get("contract"),
-            {"kind": kind, "version": version},
+            {"kind": kind, "version": version} if kind is not None else None,
             path + "/artifact_id",
         )
         raw, content = _raw(wrapper["raw_json"], path + "/raw_json")
@@ -217,7 +217,8 @@ def semantic(document: dict[str, Any]) -> None:
         _equal(
             hashlib.sha256(content).hexdigest(), artifact["sha256"], path + "/sha256"
         )
-        validate(kind, raw, version=version)
+        if kind is not None:
+            validate(kind, raw, version=version)
         if "source_digest" in raw:
             _equal(
                 raw["source_digest"],
@@ -321,6 +322,16 @@ def semantic(document: dict[str, Any]) -> None:
             external_relationships(external, native),
             "/external_relationships",
         )
+    configuration = document.get("configuration")
+    if configuration is not None:
+        descriptor = artifacts[configuration["artifact_id"]]
+        kind = descriptor.get("contract", {}).get("kind")
+        if kind not in {None, "collection_request"} or (kind is None and descriptor["id"] != "effective_config-json"):
+            _fail("Configuration must select its original retained artifact", "/configuration")
+        raw = payload(configuration, kind, "/configuration")
+        _equal(configuration["document"], raw, "/configuration/document")
+        if kind == "collection_request" and "resolved_ruleset" not in raw:
+            _fail("Selected request has no resolved ruleset", "/configuration")
     for kind, wrapper in document["legacy"].items():
         if wrapper is not None:
             raw = payload(wrapper, kind, "/legacy/" + kind, "prototype_v1")

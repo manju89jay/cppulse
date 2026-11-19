@@ -238,9 +238,10 @@ installed-CLI qualification. Ranking is experimental; scope and missing evidence
 matter as much as a number. The real-project example above is explicitly a
 historical native snapshot, not a current full-pipeline or upstream readiness verdict.
 
-The full production plan remains incomplete. Source-bound delivery proof is
-currently stale and its refresh is storage-blocked; the strict delivery checker
-is not green. Broader platform/packaging, scale/resource, editor agreement and
+The full production plan remains incomplete. Qualification is bound to the recorded
+source, artifact and input bytes; a changed source tree needs refreshed evidence.
+A development checkpoint does not establish full production acceptance. Broader
+platform/packaging, scale/resource, editor agreement and
 other retained acceptance work remain open. Prose and demo assets do not close
 those requirements. [Delivery status](docs/plans/production-delivery-status.md) ·
 [Full completion plan](docs/plans/cppulse-production-completion-plan.md).

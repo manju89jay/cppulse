@@ -14,6 +14,8 @@ services:
       - ${OUTPUT_PATH:-./output}:/output
     environment:
       - OUTPUT_DIR=/output
+      - CPPULSE_CONFIG=${CPPULSE_CONFIG:-}
+      - CPPULSE_PROFILE=${CPPULSE_PROFILE:-}
     command: ["--repo", "/repo", "--output", "/output"]
 
   # ── 2. git-miner (Python git history analysis) ──────────────────────────
@@ -37,15 +39,18 @@ services:
       context: .
       dockerfile: predictor/Dockerfile
     volumes:
+      - ${REPO_PATH:-.}:/repo:ro
       - ${OUTPUT_PATH:-./output}:/output
     environment:
       - OUTPUT_DIR=/output
+      - CPPULSE_CONFIG=${CPPULSE_CONFIG:-}
+      - CPPULSE_PROFILE=${CPPULSE_PROFILE:-}
     depends_on:
       analyzer-core:
         condition: service_completed_successfully
       git-miner:
         condition: service_completed_successfully
-    command: ["python3", "-m", "src.main", "--input", "/output", "--output", "/output"]
+    command: ["--input", "/output", "--output", "/output"]
 
   # ── 4. report-engine (FastAPI + PDF) ────────────────────────────────────
   report-engine:
