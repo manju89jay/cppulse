@@ -1,0 +1,12 @@
+{
+  "status": "verified",
+  "head": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "branch": "codex/job-application-demo-20261113",
+  "all_refs_unchanged": true,
+  "source_state_matches_candidate": true,
+  "source_restored": true,
+  "hidden_path_absent": true,
+  "candidate_worktree_digest": "e41d5d3788e5f640bd32845bf985df0f619eda8155ead264ffbb71a6fa8982a1",
+  "wheel_sha256": "55cf080eda016d9e3af784c59ccd9b18b07863cbcac077ea5564fb4966338026",
+  "review_harness_note": "Initial byte comparison used show-ref column order against a for-each-ref baseline and failed; corrected to the exact original format. No project ref differed."
+}

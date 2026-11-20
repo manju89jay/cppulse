@@ -15,7 +15,8 @@ namespace cppulse {
 namespace {
 
 /// @brief Known C++ source-file extensions (lowercase).
-const std::set<std::string> kCppExtensions{".cpp", ".cxx", ".cc", ".h", ".hpp", ".hxx"};
+const std::set<std::string> kCppExtensions{".cpp", ".cxx", ".cc",  ".h",   ".hh",
+                                           ".hpp", ".hxx", ".ipp", ".inl", ".tpp"};
 
 }  // namespace
 
@@ -33,11 +34,17 @@ std::vector<std::filesystem::path> discover_cpp_files(const std::filesystem::pat
 
     std::error_code ec;
     for (auto it = std::filesystem::recursive_directory_iterator(
-             root, std::filesystem::directory_options::follow_directory_symlink, ec);
+             root, std::filesystem::directory_options::skip_permission_denied, ec);
          it != std::filesystem::recursive_directory_iterator(); it.increment(ec)) {
         if (ec) {
             spdlog::warn("discover_cpp_files: iterator error at {}: {}", it->path().string(),
                          ec.message());
+            ec.clear();
+            continue;
+        }
+        // Avoid implicit traversal outside the selected scope and symlink cycles.
+        if (it->is_symlink(ec)) {
+            it.disable_recursion_pending();
             ec.clear();
             continue;
         }

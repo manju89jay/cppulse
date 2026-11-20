@@ -1,5 +1,7 @@
 # ADR-001: Use libclang for C++ Static Analysis
 
+> **Historical decision record — its universal capability claims are unverified.** The original rationale and metadata below are preserved. Choosing libclang does not establish that cppulse handles every C++ edge case, supports a new standard without implementation work, or detects every defect. Actual verification includes partial/unsupported parse contexts and finite selected inputs; Docker and other platforms require their own execution evidence. See the [current prototype scope](../../README.md), [native normalization limits](../development/analysis-normalization.md) and [current workflow guide](../development/public-cli.md). No detector-accuracy, certification or safety guarantee is implied by this ADR.
+
 **Date:** 2026-03-04
 **Status:** Accepted
 **Deciders:** Manjunath Jayaramaiah

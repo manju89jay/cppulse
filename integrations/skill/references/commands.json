@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0.dev2",
+  "maturity": "candidate-preflight",
+  "commands": [
+    ["--version"],
+    ["capabilities"],
+    ["doctor"],
+    ["config", "--repo", "PROJECT"],
+    ["init", "--repo", "PROJECT"],
+    ["analyze", "--repo", "PROJECT", "--output", "STORE", "--format", "html", "--compilation-database", "DATABASE"],
+    ["collect", "--request", "REQUEST", "--workspace", "PROJECT", "--store", "STORE"],
+    ["explain", "--store", "STORE", "--run-id", "RUN", "--manifest-sha256", "HASH"],
+    ["check", "--store", "STORE", "--workspace", "PROJECT", "--run-id", "RUN", "--manifest-sha256", "HASH", "--policy", "POLICY"],
+    ["assess", "--store", "STORE", "--workspace", "PROJECT", "--run-id", "RUN", "--manifest-sha256", "HASH", "--policy", "POLICY"],
+    ["report", "--input", "STORE", "--evidence", "--run-id", "RUN", "--manifest-sha256", "HASH", "--format", "html", "--output", "REPORT"]
+  ]
+}

@@ -1,0 +1,24 @@
+Installing extensions...
+Extension 'cppulse-0.2.0-preview.vsix' was successfully installed.
+[35:1114/130016.321172:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Failed to open socket: Operation not permitted
+[35:1114/130016.527442:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Failed to open socket: Operation not permitted
+[35:1114/130016.527476:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Failed to open socket: Operation not permitted
+[35:1114/130016.529129:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[35:1114/130016.529163:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[35:1114/130016.529153:ERROR:net/base/address_tracker_linux.cc:222] Could not create NETLINK socket: Operation not permitted (1)
+[35:1114/130016.529170:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[35:1114/130016.529177:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[35:1114/130016.529206:ERROR:dbus/object_proxy.cc:590] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[35:1114/130016.532546:ERROR:device/udev_linux/udev_watcher.cc:51] Failed to initialize a udev monitor.
+[35:1114/130016.604988:ERROR:content/browser/browser_main_loop.cc:278] Gtk: _gtk_css_lookup_resolve: assertion '(((__extension__ ({ GTypeInstance *__inst = (GTypeInstance*) ((provider)); GType __t = ((_gtk_style_provider_private_get_type ())); gboolean __r; if (!__inst) __r = (0); else if (__inst->g_class && __inst->g_class->g_type == __t) __r = (!(0)); else __r = g_type_check_instance_is_a (__inst, __t); __r; }))))' failed
+[35:1114/130016.605011:ERROR:content/browser/browser_main_loop.cc:278] GLib-GObject: g_object_set_data_full: assertion 'G_IS_OBJECT (object)' failed
+
+(process:35): Gtk-ERROR **: 13:00:16.605: Can't create a GtkStyleContext without a display connection
+Exit code:   SIGTRAP
+TestRunFailedError: Test run terminated with signal SIGTRAP
+    at ChildProcess.onProcessClosed (/workspace/scratch/b3d4e6fff494/cppulse/editors/vscode/node_modules/@vscode/test-electron/out/runTest.js:110:24)
+    at ChildProcess.emit (node:events:514:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:324:12) {
+  code: undefined,
+  signal: 'SIGTRAP'
+}

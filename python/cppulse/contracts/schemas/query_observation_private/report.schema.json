@@ -1,0 +1,615 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/query-observation/v0.1/report.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "closure": {
+      "const": "unqualified"
+    },
+    "cache_eligible": {
+      "const": false
+    },
+    "capture_status": {
+      "enum": [
+        "complete_observation",
+        "unsupported",
+        "incomplete",
+        "unavailable"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_seconds": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 120
+        },
+        "max_trace_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 8388608
+        },
+        "max_stdout_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "max_events": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "max_processes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "max_line_bytes": {
+          "type": "integer",
+          "minimum": 128,
+          "maximum": 65536
+        }
+      },
+      "required": [
+        "wall_seconds",
+        "max_trace_bytes",
+        "max_stdout_bytes",
+        "max_events",
+        "max_processes",
+        "max_line_bytes"
+      ]
+    },
+    "tool_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "native": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16777216
+            },
+            "seals": {
+              "const": 15
+            },
+            "method": {
+              "const": "linux-sealed-memfd-sha256-v1"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "seals",
+            "method"
+          ]
+        },
+        "tracer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16777216
+            },
+            "seals": {
+              "const": 15
+            },
+            "method": {
+              "const": "linux-sealed-memfd-sha256-v1"
+            },
+            "version_receipt": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "argv": {
+                  "type": "array",
+                  "maxItems": 96,
+                  "items": {
+                    "type": "string",
+                    "maxLength": 4096
+                  }
+                },
+                "cwd": {
+                  "type": "string",
+                  "maxLength": 4096
+                },
+                "environment": {
+                  "type": "object",
+                  "maxProperties": 32,
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 4096
+                  }
+                },
+                "pid": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "started_utc": {
+                  "type": "string",
+                  "maxLength": 4096
+                },
+                "finished_utc": {
+                  "type": "string",
+                  "maxLength": 4096
+                },
+                "status": {
+                  "enum": [
+                    "passed",
+                    "failed",
+                    "timed_out",
+                    "incomplete",
+                    "output_limit",
+                    "event_limit"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "maxLength": 4096
+                },
+                "exit_status": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "observed_bytes": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "stdout": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "trace": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "stdout",
+                    "trace"
+                  ]
+                },
+                "captured_bytes": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "stdout": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "trace": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "stdout",
+                    "trace"
+                  ]
+                },
+                "scope": {
+                  "const": "owned tracer process/group and drained pipes; not a security sandbox"
+                }
+              },
+              "required": [
+                "argv",
+                "cwd",
+                "environment",
+                "pid",
+                "started_utc",
+                "finished_utc",
+                "status",
+                "reason",
+                "exit_status",
+                "observed_bytes",
+                "captured_bytes",
+                "scope"
+              ]
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "seals",
+            "method",
+            "version_receipt"
+          ]
+        }
+      },
+      "required": [
+        "native",
+        "tracer"
+      ]
+    },
+    "tracer_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argv": {
+          "type": "array",
+          "maxItems": 96,
+          "items": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "cwd": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "environment": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "pid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "started_utc": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "finished_utc": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "timed_out",
+            "incomplete",
+            "output_limit",
+            "event_limit"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "exit_status": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "observed_bytes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "stdout": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trace": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "stdout",
+            "trace"
+          ]
+        },
+        "captured_bytes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "stdout": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trace": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "stdout",
+            "trace"
+          ]
+        },
+        "scope": {
+          "const": "owned tracer process/group and drained pipes; not a security sandbox"
+        }
+      },
+      "required": [
+        "argv",
+        "cwd",
+        "environment",
+        "pid",
+        "started_utc",
+        "finished_utc",
+        "status",
+        "reason",
+        "exit_status",
+        "observed_bytes",
+        "captured_bytes",
+        "scope"
+      ]
+    },
+    "native_execution_observations": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "pid": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "actual_execve_arguments": {
+            "type": "array",
+            "maxItems": 64,
+            "items": {
+              "type": "string",
+              "maxLength": 65536
+            }
+          },
+          "declared_argv": {
+            "type": "array",
+            "maxItems": 96,
+            "items": {
+              "type": "string",
+              "maxLength": 4096
+            }
+          },
+          "observed_exit_status": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "binding": {
+            "const": "selected immutable executable bytes; runtime libraries unverified"
+          }
+        },
+        "required": [
+          "pid",
+          "actual_execve_arguments",
+          "declared_argv",
+          "observed_exit_status",
+          "binding"
+        ]
+      }
+    },
+    "native_parser": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 4096
+            },
+            "version": {
+              "type": "string",
+              "maxLength": 4096
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ]
+        }
+      ]
+    },
+    "parsed": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "complete_observation",
+            "unsupported",
+            "incomplete"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          }
+        },
+        "events": {
+          "type": "array",
+          "maxItems": 100000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sequence": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "pid": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "operation": {
+                "type": "string",
+                "maxLength": 64
+              },
+              "arguments": {
+                "type": "array",
+                "maxItems": 64,
+                "items": {
+                  "type": "string",
+                  "maxLength": 65536
+                }
+              },
+              "result": {
+                "type": "string",
+                "maxLength": 65536
+              },
+              "path": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 4096
+              },
+              "errno": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 64
+              },
+              "resolution": {
+                "enum": [
+                  "absolute",
+                  "observed-dirfd",
+                  "descriptor",
+                  "not-a-path-query",
+                  "unsupported"
+                ]
+              }
+            },
+            "required": [
+              "sequence",
+              "pid",
+              "operation",
+              "arguments",
+              "result",
+              "path",
+              "errno",
+              "resolution"
+            ]
+          }
+        },
+        "processes": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "exits": {
+          "type": "object",
+          "maxProperties": 128,
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "pending_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        }
+      },
+      "required": [
+        "status",
+        "reasons",
+        "events",
+        "processes",
+        "exits",
+        "pending_count"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "maxLength": 512
+      }
+    }
+  },
+  "required": [
+    "version",
+    "request_sha256",
+    "source_digest",
+    "closure",
+    "cache_eligible",
+    "capture_status",
+    "limits",
+    "tool_bindings",
+    "tracer_receipt",
+    "native_execution_observations",
+    "native_parser",
+    "parsed",
+    "artifacts",
+    "limitations"
+  ]
+}

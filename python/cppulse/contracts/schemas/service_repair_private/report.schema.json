@@ -1,0 +1,366 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tools": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "compiler": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^/proc/[1-9][0-9]*/fd/[0-9]+$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 134217728
+            },
+            "seals": {
+              "const": 15
+            },
+            "method": {
+              "const": "linux-sealed-memfd-sha256-v1"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "seals",
+            "method"
+          ]
+        },
+        "docker": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^/proc/[1-9][0-9]*/fd/[0-9]+$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 134217728
+            },
+            "seals": {
+              "const": 15
+            },
+            "method": {
+              "const": "linux-sealed-memfd-sha256-v1"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "seals",
+            "method"
+          ]
+        },
+        "supervisor_python": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^/proc/[1-9][0-9]*/fd/[0-9]+$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 134217728
+            },
+            "seals": {
+              "const": 15
+            },
+            "method": {
+              "const": "linux-sealed-memfd-sha256-v1"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "size_bytes",
+            "seals",
+            "method"
+          ]
+        }
+      },
+      "required": [
+        "compiler",
+        "docker",
+        "supervisor_python"
+      ]
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "profile": {
+      "const": "cpp17-elf-relink-loopback-v1"
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "execution_root": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "status": {
+      "enum": [
+        "verified_finite_regression",
+        "incomplete"
+      ]
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "^cppulse_service_[a-f0-9]{32}$"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "minItems": 1,
+            "maxItems": 256
+          },
+          "outcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "status": {
+                "enum": [
+                  "passed",
+                  "failed",
+                  "error",
+                  "timed_out",
+                  "cancelled"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "returncode": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "stdout_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "stderr_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "captured_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "limitations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 8192
+                },
+                "minItems": 0,
+                "maxItems": 32
+              }
+            },
+            "required": [
+              "status",
+              "reason",
+              "returncode",
+              "stdout_bytes",
+              "stderr_bytes",
+              "captured_bytes",
+              "limitations"
+            ]
+          },
+          "stdout": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 268435456
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "size_bytes"
+            ]
+          },
+          "stderr": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 268435456
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "size_bytes"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "argv",
+          "outcome",
+          "stdout",
+          "stderr"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 10
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 268435456
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 8192
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 8192
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trusted_host_execution": {
+          "const": true
+        },
+        "service_state_isolation_verified": {
+          "const": false
+        },
+        "semantic_equivalence_established": {
+          "const": false
+        },
+        "cpu_enforced": {
+          "const": false
+        },
+        "memory_enforced": {
+          "const": false
+        },
+        "cgroup_enforced": {
+          "const": false
+        },
+        "whole_toolchain_closure_verified": {
+          "const": false
+        }
+      },
+      "required": [
+        "trusted_host_execution",
+        "service_state_isolation_verified",
+        "semantic_equivalence_established",
+        "cpu_enforced",
+        "memory_enforced",
+        "cgroup_enforced",
+        "whole_toolchain_closure_verified"
+      ]
+    }
+  },
+  "required": [
+    "tools",
+    "version",
+    "profile",
+    "request_sha256",
+    "execution_root",
+    "status",
+    "namespace",
+    "steps",
+    "artifacts",
+    "failures",
+    "qualification"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/service_repair_private/report.schema.json"
+}

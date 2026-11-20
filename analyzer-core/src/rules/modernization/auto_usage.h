@@ -16,6 +16,8 @@ namespace cppulse {
 /**
  * @brief Flags variable declarations whose type contains "iterator" and
  *        could be simplified with `auto`.
+ * Already deduced declarations, including qualified/reference and macro forms
+ * of auto or decltype(auto), are not suggested again.
  *
  * For example:
  *   std::vector<int>::iterator it = v.begin();

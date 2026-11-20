@@ -25,15 +25,16 @@ function getScoreLabel(score: number): string {
 
 interface ScoreCardProps {
   label: string;
-  score: number;
+  score: number | null | undefined;
 }
 
 function ScoreCard({ label, score }: ScoreCardProps): React.ReactElement {
-  const rounded = Math.round(score);
+  const available = typeof score === "number";
+  const rounded = available ? Math.round(score) : "N/A";
   return (
-    <div className={`border rounded-lg p-4 ${getScoreBg(score)}`}>
+    <div className={`border rounded-lg p-4 ${available ? getScoreBg(score) : "bg-gray-50 border-gray-200"}`}>
       <p className="text-sm text-gray-600 font-medium">{label}</p>
-      <p className={`text-2xl font-bold mt-1 ${getScoreColor(score)}`}>
+      <p className={`text-2xl font-bold mt-1 ${available ? getScoreColor(score) : "text-gray-500"}`}>
         {rounded}
       </p>
     </div>
@@ -43,6 +44,29 @@ function ScoreCard({ label, score }: ScoreCardProps): React.ReactElement {
 export function HealthScore({
   healthScore,
 }: HealthScoreProps): React.ReactElement {
+  const limitations = healthScore.limitations ?? [];
+  const limitationNotes = limitations.length > 0 && (
+    <div className="mt-4 text-sm text-amber-800" role="note">
+      <p className="font-semibold">Analysis limitations</p>
+      <ul className="list-disc pl-5 mt-1">
+        {limitations.map((message, index) => <li key={index}>{message}</li>)}
+      </ul>
+    </div>
+  );
+  if (healthScore.overall === null || healthScore.status === "partial") {
+    const explanation = healthScore.status === "partial"
+      ? "No score: analysis is incomplete. Findings from analyzed files remain available."
+      : healthScore.status === "no_data"
+        ? "No score: no input files were assessed."
+        : "No score available for this analysis.";
+    return (
+      <div className="bg-white rounded-xl shadow p-6">
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">Health Score</h2>
+        <p>{explanation}</p>
+        {limitationNotes}
+      </div>
+    );
+  }
   const overall = Math.round(healthScore.overall);
   return (
     <div className="bg-white rounded-xl shadow p-6">
@@ -75,12 +99,11 @@ export function HealthScore({
       <div className="grid grid-cols-2 gap-3 mt-5">
         <ScoreCard label="Memory Safety" score={healthScore.memory_safety} />
         <ScoreCard label="Modernization" score={healthScore.modernization} />
-        <ScoreCard label="Complexity" score={healthScore.complexity} />
-        <ScoreCard
-          label="MISRA Compliance"
-          score={healthScore.misra_compliance}
-        />
+        <ScoreCard label="Complexity finding health" score={healthScore.complexity} />
+        {healthScore.misra_compliance !== undefined && <ScoreCard label="MISRA subset" score={healthScore.misra_compliance} />}
       </div>
+      <p className="mt-3 text-sm text-gray-500">Category health uses finding density. Measured cyclomatic complexity is reported separately in hotspots.</p>
+      {limitationNotes}
     </div>
   );
 }

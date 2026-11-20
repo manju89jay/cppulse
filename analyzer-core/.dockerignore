@@ -1,6 +1,1 @@
-.git
-build
-*.o
-*.a
-CMakeCache.txt
-CMakeFiles
+build/

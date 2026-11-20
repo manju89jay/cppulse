@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/analysis_source_observations.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "before": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "file",
+              "directory",
+              "unavailable"
+            ]
+          },
+          "device": {
+            "type": "integer"
+          },
+          "inode": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "integer"
+          },
+          "mtime_ns": {
+            "type": "integer"
+          },
+          "ctime_ns": {
+            "type": "integer"
+          },
+          "size_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "kind"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "file",
+                    "directory"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "device",
+                "inode",
+                "mode",
+                "mtime_ns",
+                "ctime_ns",
+                "size_bytes"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "after": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "file",
+              "directory",
+              "unavailable"
+            ]
+          },
+          "device": {
+            "type": "integer"
+          },
+          "inode": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "integer"
+          },
+          "mtime_ns": {
+            "type": "integer"
+          },
+          "ctime_ns": {
+            "type": "integer"
+          },
+          "size_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "kind"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "file",
+                    "directory"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "device",
+                "inode",
+                "mode",
+                "mtime_ns",
+                "ctime_ns",
+                "size_bytes"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "source_digest",
+    "before",
+    "after",
+    "limitations"
+  ]
+}

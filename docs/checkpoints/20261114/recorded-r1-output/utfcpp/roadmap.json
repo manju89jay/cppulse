@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "priority": 1,
+      "file": "source/utf8/core.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 5.0,
+      "impact_score": 2.0,
+      "finding_ids": [
+        "CPP-MOD-005",
+        "CPP-MOD-008",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 2,
+      "file": "source/utf8/checked.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 8.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-005",
+        "CPP-MOD-009"
+      ]
+    },
+    {
+      "priority": 3,
+      "file": "source/utf8/cpp17.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 1.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-005"
+      ]
+    },
+    {
+      "priority": 4,
+      "file": "source/utf8/unchecked.h",
+      "action": "Modernize C++ code: apply C++11/14/17 idioms and remove deprecated constructs",
+      "category": "modernization",
+      "estimated_hours": 8.0,
+      "impact_score": 1.0,
+      "finding_ids": [
+        "CPP-MOD-005",
+        "CPP-MOD-009"
+      ]
+    }
+  ]
+}

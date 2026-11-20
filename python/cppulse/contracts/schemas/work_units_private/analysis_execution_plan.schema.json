@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/analysis_execution_plan.schema.json",
+  "title": "Private bounded analysis execution plan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "source_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "https://schemas.cppulse.local/v2/source.schema.json"
+    },
+    "configuration_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "bounded"
+        },
+        "jobs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "wall_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "cpu_seconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "address_space_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "output_bytes": {
+          "type": "integer",
+          "minimum": 1024
+        },
+        "work_directory": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resume": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mode",
+        "jobs",
+        "wall_seconds",
+        "cpu_seconds",
+        "address_space_bytes",
+        "output_bytes",
+        "work_directory",
+        "resume"
+      ]
+    },
+    "compilation_database_sha256": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      ]
+    },
+    "native_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "primary_file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context_mode": {
+            "enum": [
+              "compilation_database",
+              "fallback"
+            ]
+          }
+        },
+        "required": [
+          "unit_id",
+          "primary_file",
+          "context_mode"
+        ]
+      }
+    },
+    "discovery_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resource_inputs_sha256": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "source_root",
+    "work_root",
+    "source",
+    "configuration_sha256",
+    "execution",
+    "compilation_database_sha256",
+    "native_sha256",
+    "units",
+    "discovery_gaps",
+    "limitations"
+  ]
+}

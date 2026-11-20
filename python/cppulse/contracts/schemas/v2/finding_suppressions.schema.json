@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/finding_suppressions.schema.json",
+  "title": "cppulse explicit finding-regression suppression requests v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "gate": {
+            "const": "finding_regression"
+          },
+          "baseline_sha256": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "fingerprint_version": {
+            "const": "native-line-anchor-1"
+          },
+          "fingerprint": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "parse_context_digest": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "rule_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "rule_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "max_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "gate",
+          "baseline_sha256",
+          "fingerprint_version",
+          "fingerprint",
+          "file",
+          "context_id",
+          "parse_context_digest",
+          "rule_id",
+          "rule_version",
+          "max_count",
+          "reason",
+          "owner",
+          "approved_at",
+          "expires_at"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": false
+    }
+  },
+  "required": [
+    "version",
+    "records"
+  ],
+  "definitions": {
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        "gate": {
+          "const": "finding_regression"
+        },
+        "baseline_sha256": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "fingerprint_version": {
+          "const": "native-line-anchor-1"
+        },
+        "fingerprint": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_id": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        "parse_context_digest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "rule_id": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        "rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "max_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "gate",
+        "baseline_sha256",
+        "fingerprint_version",
+        "fingerprint",
+        "file",
+        "context_id",
+        "parse_context_digest",
+        "rule_id",
+        "rule_version",
+        "max_count",
+        "reason",
+        "owner",
+        "approved_at",
+        "expires_at"
+      ]
+    }
+  }
+}

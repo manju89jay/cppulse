@@ -1,6 +1,7 @@
 #pragma once
 
 #include <filesystem>
+#include <optional>
 #include <string>
 
 namespace cppulse {
@@ -25,10 +26,20 @@ class Orchestrator {
     /**
      * @brief Construct an Orchestrator for the given repository and output directory.
      *
-     * @param repo_path   Absolute or relative path to the C++ repository root.
-     * @param output_dir  Directory where pipeline outputs (JSON, PDF) are written.
+     * @param repo_path     Absolute or relative path to the C++ repository root.
+     * @param output_dir    Directory where pipeline outputs (JSON, PDF) are written.
+     * @param project_root  Root of the cppulse installation where component
+     *                      directories (git-miner/, predictor/, etc.) live.
+     *                      Defaults to the current working directory.
+     * @param config_path   Optional path to a .cppulserc.yml/.json config file.
+     * @param profile       Optional analysis profile override ("default" or "safety-critical").
+     * @param compilation_database Optional compile_commands.json file or containing directory.
      */
-    explicit Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir);
+    explicit Orchestrator(std::filesystem::path repo_path, std::filesystem::path output_dir,
+                          std::filesystem::path project_root = std::filesystem::current_path(),
+                          std::optional<std::filesystem::path> config_path = std::nullopt,
+                          std::string profile = "",
+                          std::optional<std::filesystem::path> compilation_database = std::nullopt);
 
     /**
      * @brief Run the cppulse-analyzer static analysis stage.
@@ -64,7 +75,7 @@ class Orchestrator {
      *
      * @return PipelineResult indicating success or failure with exit code.
      */
-    [[nodiscard]] PipelineResult run_report_generator();
+    [[nodiscard]] PipelineResult run_report_generator(const std::string& format = "pdf");
 
     /**
      * @brief Run the complete analysis pipeline in sequence.
@@ -91,6 +102,10 @@ class Orchestrator {
    private:
     std::filesystem::path repo_path_;
     std::filesystem::path output_dir_;
+    std::filesystem::path project_root_;
+    std::optional<std::filesystem::path> config_path_;
+    std::string profile_;
+    std::optional<std::filesystem::path> compilation_database_;
 };
 
 }  // namespace cppulse

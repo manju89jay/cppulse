@@ -1,0 +1,80 @@
+{
+  "recorded_at": "2026-11-14T10:31:11.444196+00:00",
+  "input_label": "Synthetic ordinary large-header/configuration regression fixture, not an upstream library",
+  "input_bytes": 600026,
+  "analyzer_sha256": "dd8b7cb7ab9ae521d7471826794fc6df6d418bd30c08c595218dc87d1b94792d",
+  "red_ctest": "10 failed / 23 before native changes; plus plain-path-red.log new-regression red evidence",
+  "final_native_ctest": "114 passed / 114; verified-ctest.log (includes current concurrent detector fixes)",
+  "native_build_log": "verified-build.log, no compiler warnings",
+  "independent_review": "review/production-20261114/r1-native/native-config-independent-review.json",
+  "cases": [
+    {
+      "case": "default",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-production-config/cppulse-analyzer",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/input",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/default.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/default"
+      ],
+      "returncode": 0,
+      "status": "analyzed",
+      "reason": null,
+      "schema_validation": "passed"
+    },
+    {
+      "case": "bounded",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-production-config/cppulse-analyzer",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/input",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/bounded.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/bounded"
+      ],
+      "returncode": 0,
+      "status": "skipped",
+      "reason": "600026 bytes exceed max_file_bytes=128",
+      "schema_validation": "passed"
+    },
+    {
+      "case": "exact_limit",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-production-config/cppulse-analyzer",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/input",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/exact_limit.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/exact_limit"
+      ],
+      "returncode": 0,
+      "status": "analyzed",
+      "reason": null,
+      "schema_validation": "passed"
+    },
+    {
+      "case": "over_limit",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/analyzer-core/build-production-config/cppulse-analyzer",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/input",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/over_limit.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-native-config/native-process-proof/over_limit"
+      ],
+      "returncode": 0,
+      "status": "skipped",
+      "reason": "600026 bytes exceed max_file_bytes=600025",
+      "schema_validation": "passed"
+    }
+  ],
+  "limitations": [
+    "max_file_bytes bounds input file size, not parser peak memory",
+    "This native process proof does not qualify installed packages, Docker, Windows/macOS or complete library consumer configurations"
+  ]
+}

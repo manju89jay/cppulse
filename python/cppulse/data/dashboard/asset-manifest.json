@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "sources": [
+    {
+      "path": "index.html",
+      "sha256": "7162a022ad7f45278f701c16e03ab16362d6232c1c1811e36af7fc02862cf1fc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "47651a3e0525be876a3c2929bcb31f3aa56042bd914c7ffdd430dc794b69a3fb"
+    },
+    {
+      "path": "package.json",
+      "sha256": "fa4cebf6583de25607960a7c285d966f5c0f275c4da65b392decd9907cc952c1"
+    },
+    {
+      "path": "postcss.config.cjs",
+      "sha256": "fe0d5cf3cb8c1922f71cca2da3796f3e63366623ad6164336655766efe330e6a"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "3960098c34b0143a19ad3e19ce1f29b5a6956e9bf98fbef02dc3d0dde9598232"
+    },
+    {
+      "path": "src/__tests__/App.test.tsx",
+      "sha256": "1c7e7d1fd6cad5ccae89b9e87b84dd580aa0fbb237c1b55fb6375bf875a5ba0c"
+    },
+    {
+      "path": "src/api/__tests__/client.test.ts",
+      "sha256": "7d496bdccbc9c80d0ffd4b711147fdb5b4c12dbd687630e84affc0e712ea2672"
+    },
+    {
+      "path": "src/api/__tests__/displayJson.test.ts",
+      "sha256": "159eb346562768477f163b5d94893ee07b33fcbe3385ca327a1971e806a8f3ea"
+    },
+    {
+      "path": "src/api/client.ts",
+      "sha256": "4f60c206d66925bb93311dc13ed87797217769840bbd87b91384ddc888edf075"
+    },
+    {
+      "path": "src/api/displayJson.ts",
+      "sha256": "2b3f7c91bf071f274c01938882b4b8e5df111b930b085bf2659ad1287281e041"
+    },
+    {
+      "path": "src/components/CategoryBreakdown.tsx",
+      "sha256": "926fbe61ca516207d4624256452514426c132ef8b2cc7ef2f498b0404ea7ec25"
+    },
+    {
+      "path": "src/components/FindingsList.tsx",
+      "sha256": "7a7b0ae2c6f1011a866d44d4d371780e98497d8292c518022e1db9e0b2efb4b3"
+    },
+    {
+      "path": "src/components/HealthScore.tsx",
+      "sha256": "ea3adc0b1d240e14cf8cf1b3ff8a8cecc7b2e8f1028f0d96fd487c89f6a1b53c"
+    },
+    {
+      "path": "src/components/HotspotTable.tsx",
+      "sha256": "1d625056c98c52c003a8dde00bd0036f878c832f29ef7c068459f5eaa0fbfbaa"
+    },
+    {
+      "path": "src/components/Layout.tsx",
+      "sha256": "afe2a2e5660365843a898d586f6c6359c59dbccabc9a680f2411b2d11ce76360"
+    },
+    {
+      "path": "src/components/MeasuredFacts.tsx",
+      "sha256": "d45d030c46b56a074a3a0bfe5e1855b8f0e728d1a340de92cbe1c77713db897c"
+    },
+    {
+      "path": "src/components/RiskPrediction.tsx",
+      "sha256": "abd7f770aaeb179a27ba05e9c67372420f2ed06992cdf095a2d41d65bb7b8cc1"
+    },
+    {
+      "path": "src/components/Roadmap.tsx",
+      "sha256": "0ceb3dc847aabc8253af61762a121cac89cddcab2f6583e6d3db33ed02fd58fb"
+    },
+    {
+      "path": "src/components/SiloAlerts.tsx",
+      "sha256": "0ef8ead25609d7e6803394ed110ef8b4f70cbfc0d9e30d5cfb4c04aaaa3d0098"
+    },
+    {
+      "path": "src/components/__tests__/FindingsList.test.tsx",
+      "sha256": "0c74c6542307be5ff4743b11573e5fcb3d624340ce505ac4ccf6a7c78aac1aa2"
+    },
+    {
+      "path": "src/components/__tests__/HealthScore.test.tsx",
+      "sha256": "179d3a9f7d0a470cd03337c538949aa2a924efc0a6690f5340567dab066f0a75"
+    },
+    {
+      "path": "src/components/__tests__/HotspotTable.test.tsx",
+      "sha256": "e0ea4b242135ba0b589972ef23ccd752e3f9b9f3e6100c1599c339b9de9f6578"
+    },
+    {
+      "path": "src/components/__tests__/MeasuredFacts.test.tsx",
+      "sha256": "aefb742f8d3d371eda557391ef3926c7b16af39f53c8528c494097b12a575d51"
+    },
+    {
+      "path": "src/components/__tests__/RiskPrediction.test.tsx",
+      "sha256": "1ffb30a094eb5646dd89ccb5672c714ff1a8648a809a71de2b1b54a7fc70f139"
+    },
+    {
+      "path": "src/components/__tests__/SiloAlerts.test.tsx",
+      "sha256": "b88ee2badc32f60d9aeae0781434d14cfc1b85f882ae5132ce12e6f79748c587"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "f05fb957f53a16fee9caf3249a00bcea3e69b51390220131b4a4d40b9edf26b4"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "cc1a7ad0d019ddb1d32d0ecb588ba0ac26ce41d8625dd6c366348b25f83a28ec"
+    },
+    {
+      "path": "src/test/setup.ts",
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409"
+    },
+    {
+      "path": "src/third-party-notices.txt",
+      "sha256": "faa1389db1ea6375524696b238af72476d809cd5935a2e6c75a8c80820a53208"
+    },
+    {
+      "path": "src/types/index.ts",
+      "sha256": "cf3b2d244d5b945735351fa634f5b6ac1beaa3dbf9223f88107aecb0d8276994"
+    },
+    {
+      "path": "tailwind.config.cjs",
+      "sha256": "22adb31756ed2bbf0adebddce4613fc19c85fef20f11ed54d55e2d25c676e95d"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "e09b1d7398a757eae35c19efcd50710803fe8df7e8d6414d2b6f595166ebf906"
+    },
+    {
+      "path": "tsconfig.node.json",
+      "sha256": "bb9fd8592a9e364641441219f10d84daae9ba2ca5cc85db798efad6913bb8257"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "67c6c48ce1b3f0ef78c1189534b01571805916ad077e27b6b22742992490a342"
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/index-DywbVYHp.css",
+      "sha256": "e695ab5866a0c6335135fa3ff0cfad16199ab0df56ae28f8b280800baf30bb2a",
+      "size_bytes": 16347
+    },
+    {
+      "path": "assets/index-Oj0uaDaJ.js",
+      "sha256": "3aa8b0b66afb5ec5cd3c2a9b326c08b8f62604cea18403a42e8acbe9d297b4b9",
+      "size_bytes": 559438
+    },
+    {
+      "path": "assets/third-party-notices.txt",
+      "sha256": "faa1389db1ea6375524696b238af72476d809cd5935a2e6c75a8c80820a53208",
+      "size_bytes": 68353
+    },
+    {
+      "path": "index.html",
+      "sha256": "2e7b2324165b8faa6cefa80d49a97820c11f1ad3aad1743a2ce3f78b9e71b17e",
+      "size_bytes": 402
+    }
+  ],
+  "limitations": [
+    "Local production bundle; build tooling is not needed to serve these retained assets. This manifest is not producer authentication."
+  ]
+}

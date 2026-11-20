@@ -1,6 +1,9 @@
 # ── Build outputs ──────────────────────────────────────────────────────────
 analyzer-core/build/
+analyzer-core/build-*/
 cli/build/
+cli/build-*/
+/build/
 *.o
 *.a
 *.so
@@ -54,6 +57,9 @@ predictor/models/
 .DS_Store
 Thumbs.db
 
+# ── Showcase repo cache ──────────────────────────────────────────────────────
+.showcase-repos/
+
 # ── Claude Code ──────────────────────────────────────────────────────────────
 CLAUDE.local.md
 .claude/worktrees/
@@ -61,3 +67,8 @@ CLAUDE.local.md
 
 # ── Test fixtures (generated) ────────────────────────────────────────────────
 tests/tmp/
+
+# Local verification workspaces and large review artifacts
+# Selected review summaries are tracked explicitly.
+/review/
+/error.log

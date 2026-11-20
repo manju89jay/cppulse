@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local data-only cppulse ruleset pack, format 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format_version", "name", "version"],
+  "properties": {
+    "format_version": {"const": "1.0.0"},
+    "name": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"},
+    "version": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"},
+    "preset": {"enum": ["all-native", "no-native"]},
+    "inherits": {"type": "array", "maxItems": 16, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 4096}},
+    "native": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "select": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "rules": {"type": "object", "additionalProperties": {"type": "object"}},
+        "exclude_paths": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "max_file_bytes": {"type": "integer", "minimum": 1, "maximum": 9223372036854775807}
+      }
+    },
+    "providers": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "clang-tidy": {
+          "type": "object", "additionalProperties": false,
+          "required": ["version", "checks", "scope_files"],
+          "properties": {
+            "version": {"const": "19.1.7"},
+            "scope_files": {"type": "array", "minItems": 1, "uniqueItems": true, "maxItems": 10000, "items": {"type": "string", "minLength": 1, "maxLength": 4096}},
+            "checks": {
+              "type": "object", "additionalProperties": false,
+              "properties": {
+                "bugprone-use-after-move": {"$ref": "#/definitions/plainCheck"},
+                "bugprone-dangling-handle": {
+                  "type": "object", "additionalProperties": false,
+                  "required": ["enabled", "options"],
+                  "properties": {"enabled": {"type": "boolean"}, "options": {
+                    "type": "object", "additionalProperties": false, "required": ["HandleClasses"],
+                    "properties": {"HandleClasses": {"$ref": "#/definitions/patterns"}}
+                  }}
+                },
+                "bugprone-unused-return-value": {
+                  "type": "object", "additionalProperties": false,
+                  "required": ["enabled", "options"],
+                  "properties": {"enabled": {"type": "boolean"}, "options": {
+                    "type": "object", "additionalProperties": false,
+                    "required": ["CheckedFunctions", "CheckedReturnTypes", "AllowCastToVoid"],
+                    "properties": {
+                      "CheckedFunctions": {"$ref": "#/definitions/patterns"},
+                      "CheckedReturnTypes": {"$ref": "#/definitions/patterns"},
+                      "AllowCastToVoid": {"type": "boolean"}
+                    }
+                  }}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "plainCheck": {"type": "object", "additionalProperties": false, "required": ["enabled"], "properties": {"enabled": {"type": "boolean"}}},
+    "patterns": {"type": "array", "uniqueItems": true, "maxItems": 64, "items": {"type": "string", "minLength": 1, "maxLength": 512, "pattern": "^[^;\\u0000\\n\\r]+$"}}
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/analysis_execution_bindings.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "request_artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "result_artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "receipt_artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "inputs": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "unit_id",
+          "request_artifact_id",
+          "result_artifact_id",
+          "receipt_artifact_id",
+          "inputs",
+          "outputs"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "source_digest",
+    "units",
+    "limitations"
+  ]
+}

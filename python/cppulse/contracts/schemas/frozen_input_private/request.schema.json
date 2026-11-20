@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/frozen-input/v0.1/request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "cache_eligible": {
+      "const": false
+    },
+    "closure": {
+      "const": "unqualified"
+    },
+    "original_request_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "native": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "runtime_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "platform": {
+      "const": "linux-x86_64"
+    },
+    "path_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source_root": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "container_root": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "source_root",
+          "container_root"
+        ]
+      },
+      "maxItems": 32
+    },
+    "invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "argv": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "cwd": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "environment": {
+          "type": "object",
+          "maxProperties": 32,
+          "propertyNames": {
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        }
+      },
+      "required": [
+        "argv",
+        "cwd",
+        "environment"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "max_stream_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 16777216
+        },
+        "max_entries": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "max_payload_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 536870912
+        }
+      },
+      "required": [
+        "wall_seconds",
+        "max_stream_bytes",
+        "max_entries",
+        "max_payload_bytes"
+      ]
+    },
+    "client": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "cache_eligible",
+    "closure",
+    "original_request_sha256",
+    "native",
+    "runtime_manifest_sha256",
+    "platform",
+    "path_map",
+    "invocation",
+    "limits",
+    "client"
+  ]
+}

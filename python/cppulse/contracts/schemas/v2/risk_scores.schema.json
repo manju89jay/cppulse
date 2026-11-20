@@ -1,0 +1,500 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/risk_scores.schema.json",
+  "title": "cppulse risk_scores v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "method": {
+          "enum": [
+            "heuristic",
+            "xgboost",
+            "legacy_claim_unverified"
+          ]
+        },
+        "score_kind": {
+          "enum": [
+            "heuristic_rank",
+            "model_rank"
+          ]
+        },
+        "experimental": {
+          "const": true
+        },
+        "feature_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "training_samples": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evaluation_status": {
+          "enum": [
+            "not_evaluated",
+            "cross_validated"
+          ]
+        },
+        "f1_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "active_features": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_feature_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "legacy_reported_feature_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ranking_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "version",
+            "declared_files",
+            "ranked_files",
+            "unranked_files"
+          ],
+          "properties": {
+            "version": {
+              "const": "file-eligibility-1"
+            },
+            "declared_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ranked_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unranked_files": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      },
+      "required": [
+        "generated_at",
+        "method",
+        "score_kind",
+        "experimental",
+        "feature_count",
+        "training_samples",
+        "label_source",
+        "evaluation_status",
+        "f1_score",
+        "limitations",
+        "active_features"
+      ]
+    },
+    "health_score": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "overall": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "by_category": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "availability": {
+          "enum": [
+            "scored",
+            "no_data",
+            "partial",
+            "unverified"
+          ]
+        },
+        "scorer_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "overall",
+        "by_category",
+        "availability",
+        "scorer_version",
+        "denominator",
+        "limitations"
+      ]
+    },
+    "file_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "risk_level": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "top_factors": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/factor"
+            },
+            "minItems": 0
+          },
+          "explanation_kind": {
+            "enum": [
+              "shap",
+              "global_gain",
+              "heuristic_weights",
+              "legacy_unverified"
+            ]
+          }
+        },
+        "required": [
+          "file",
+          "score",
+          "risk_level",
+          "top_factors",
+          "explanation_kind"
+        ]
+      },
+      "minItems": 0
+    },
+    "hotspots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "finding_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "file",
+          "score",
+          "method",
+          "finding_count"
+        ]
+      },
+      "minItems": 0
+    },
+    "legacy_observed_health": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unranked_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "availability",
+          "reason_codes",
+          "reasons"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "availability": {
+            "enum": [
+              "partial",
+              "unverified",
+              "unavailable"
+            ]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      },
+      "description": "Declared files without a usable experimental rank. Numeric scores and low-risk labels are deliberately absent."
+    },
+    "maintenance_health_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "component_hotspots": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "method": {
+          "const": "sum-measured-file-hotspots-v1"
+        },
+        "file_method": {
+          "const": "measured-cc-physical-kloc-v1"
+        },
+        "behavior_configuration_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "behavior_input_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "history_status": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "measured_files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "score": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "file",
+                    "score"
+                  ]
+                }
+              },
+              "unavailable_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "availability": {
+                "enum": [
+                  "available",
+                  "partial",
+                  "unavailable"
+                ]
+              },
+              "score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "observed_score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              }
+            },
+            "required": [
+              "id",
+              "files",
+              "measured_files",
+              "unavailable_files",
+              "availability",
+              "score",
+              "observed_score"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "excluded_files": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Explicit architectural members excluded from attempted ranking scope; never measured priorities."
+        }
+      },
+      "required": [
+        "version",
+        "method",
+        "file_method",
+        "behavior_configuration_digest",
+        "behavior_input_digest",
+        "history_status",
+        "components",
+        "limitations"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "metadata",
+    "health_score",
+    "file_risks",
+    "hotspots"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "unranked_files"
+        ]
+      },
+      "then": {
+        "properties": {
+          "metadata": {
+            "required": [
+              "ranking_scope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

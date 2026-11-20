@@ -9,8 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
-    libclang-dev \
-    llvm-dev \
+    libclang-19-dev \
     nlohmann-json3-dev \
     libspdlog-dev \
     libcli11-dev \
@@ -33,9 +32,14 @@ RUN cmake -B build && cmake --build build \
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libclang1 \
+    libclang1-19 \
+    libclang-common-19-dev \
+    g++ \
+    libspdlog-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /src/build/cppulse-analyzer /usr/local/bin/cppulse-analyzer
+COPY docker-entrypoint.sh /usr/local/bin/cppulse-analyzer-entrypoint
+RUN chmod +x /usr/local/bin/cppulse-analyzer-entrypoint
 
-ENTRYPOINT ["/usr/local/bin/cppulse-analyzer"]
+ENTRYPOINT ["/usr/local/bin/cppulse-analyzer-entrypoint"]

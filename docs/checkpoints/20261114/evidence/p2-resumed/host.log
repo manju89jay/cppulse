@@ -1,0 +1,13 @@
+Installing extensions...
+Extension 'cppulse-0.2.0-preview.vsix' was successfully installed.
+[36:1114/125946.483572:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Failed to open socket: Operation not permitted
+[36:1114/125946.723110:ERROR:ui/ozone/platform/x11/ozone_platform_x11.cc:250] Missing X server or $DISPLAY
+[36:1114/125946.723144:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.
+Exit code:   SIGSEGV
+TestRunFailedError: Test run terminated with signal SIGSEGV
+    at ChildProcess.onProcessClosed (/workspace/scratch/b3d4e6fff494/cppulse/editors/vscode/node_modules/@vscode/test-electron/out/runTest.js:110:24)
+    at ChildProcess.emit (node:events:514:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:324:12) {
+  code: undefined,
+  signal: 'SIGSEGV'
+}

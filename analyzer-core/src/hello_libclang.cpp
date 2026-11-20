@@ -34,7 +34,8 @@ CXChildVisitResult visitor(CXCursor cursor, CXCursor /*parent*/, CXClientData cl
 
 }  // namespace
 
-std::optional<std::vector<std::string>> extract_function_names(std::string_view file_path) {
+std::optional<std::vector<std::string>> extract_function_names(
+    std::string_view file_path, std::string_view resource_directory) {
     std::string path_str(file_path);
 
     CXIndex index = clang_createIndex(/*excludeDeclarationsFromPCH=*/0,
@@ -44,12 +45,11 @@ std::optional<std::vector<std::string>> extract_function_names(std::string_view 
         return std::nullopt;
     }
 
-    CXTranslationUnit tu = clang_parseTranslationUnit(index, path_str.c_str(),
-                                                      nullptr,  // command_line_args
-                                                      0,        // num_command_line_args
-                                                      nullptr,  // unsaved_files
-                                                      0,        // num_unsaved_files
-                                                      CXTranslationUnit_None);
+    const std::string resource_argument = "-resource-dir=" + std::string{resource_directory};
+    const char* resource_args[] = {resource_argument.c_str()};
+    CXTranslationUnit tu = clang_parseTranslationUnit(
+        index, path_str.c_str(), resource_directory.empty() ? nullptr : resource_args,
+        resource_directory.empty() ? 0 : 1, nullptr, 0, CXTranslationUnit_None);
 
     if (tu == nullptr) {
         spdlog::warn("extract_function_names: failed to parse '{}'", path_str);

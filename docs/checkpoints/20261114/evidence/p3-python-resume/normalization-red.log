@@ -1,0 +1,56 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+__ test_native_measured_cells_have_distinct_stable_file_function_context_ids ___
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-429/test_native_measured_cells_hav0')
+
+    def test_native_measured_cells_have_distinct_stable_file_function_context_ids(tmp_path: Path) -> None:
+        snapshot, selection = native_snapshot(tmp_path, mutate=add_metrics)
+        result = normalize_native_analysis(snapshot, **selection)
+>       validate('analysis_metrics', result.metrics)
+E       AttributeError: 'NormalizedAnalysis' object has no attribute 'metrics'
+
+tests/test_measured_normalization.py:29: AttributeError
+__________________ test_missing_legacy_metrics_remain_missing __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-429/test_missing_legacy_metrics_re0')
+
+    def test_missing_legacy_metrics_remain_missing(tmp_path: Path) -> None:
+        snapshot, selection = native_snapshot(tmp_path)
+>       assert normalize_native_analysis(snapshot, **selection).metrics is None
+E       AttributeError: 'NormalizedAnalysis' object has no attribute 'metrics'
+
+tests/test_measured_normalization.py:44: AttributeError
+________ test_actual_buffer_digest_must_agree_with_frozen_native_input _________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-429/test_actual_buffer_digest_must0')
+
+    def test_actual_buffer_digest_must_agree_with_frozen_native_input(tmp_path: Path) -> None:
+        def mutate(report: dict[str, Any], root: Path) -> None:
+            add_metrics(report, root)
+            report['metadata']['analysis']['native_metrics']['files'][0]['source_content_sha256'] = 'f' * 64
+        snapshot, selection = native_snapshot(tmp_path, mutate=mutate)
+>       with pytest.raises(ContractError, match='buffer|content|digest'):
+E       Failed: DID NOT RAISE <class 'cppulse.errors.ContractError'>
+
+tests/test_measured_normalization.py:52: Failed
+________ test_publication_retains_metrics_as_a_typed_immutable_artifact ________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-429/test_publication_retains_metri0')
+
+    def test_publication_retains_metrics_as_a_typed_immutable_artifact(tmp_path: Path) -> None:
+        snapshot, selection = native_snapshot(tmp_path, mutate=add_metrics)
+        derived = persist_native_analysis(snapshot, workspace=tmp_path, store=tmp_path / 'store', **selection)
+        derived.verify()
+        descriptors = [row for row in derived.manifest['artifacts'] if row.get('contract', {}).get('kind') == 'analysis_metrics']
+>       assert len(descriptors) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_measured_normalization.py:61: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_measured_normalization.py::test_native_measured_cells_have_distinct_stable_file_function_context_ids
+FAILED tests/test_measured_normalization.py::test_missing_legacy_metrics_remain_missing
+FAILED tests/test_measured_normalization.py::test_actual_buffer_digest_must_agree_with_frozen_native_input
+FAILED tests/test_measured_normalization.py::test_publication_retains_metrics_as_a_typed_immutable_artifact
+4 failed in 0.59s

@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/risk-evaluation/v1/input.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "training_cutoff",
+    "evaluation_cutoff",
+    "feature_names",
+    "ranking_feature",
+    "holdout_projects",
+    "observations",
+    "label_definition",
+    "prediction_horizon_days"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "training_cutoff": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64
+    },
+    "evaluation_cutoff": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 64
+    },
+    "feature_names": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+      }
+    },
+    "ranking_feature": {
+      "type": "string"
+    },
+    "holdout_projects": {
+      "type": "array",
+      "maxItems": 1000,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "observations": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "project",
+          "prediction_at",
+          "features_available_at",
+          "label_available_at",
+          "label",
+          "features"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "project": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "prediction_at": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 64
+          },
+          "features_available_at": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 64
+          },
+          "label_available_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "label": {
+            "enum": [
+              0,
+              1,
+              null
+            ]
+          },
+          "features": {
+            "type": "object",
+            "minProperties": 1,
+            "maxProperties": 64,
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "label_definition": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "prediction_horizon_days": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3650
+    }
+  }
+}

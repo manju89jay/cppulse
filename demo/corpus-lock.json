@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "projects": [
+    {"id":"fmt","repository":"https://github.com/fmtlib/fmt.git","tag":"10.2.1","revision":"e69e5f977d458f2650bb346dadf2ad30c5320281","role":"compiled-library"},
+    {"id":"utfcpp","repository":"https://github.com/nemtrif/utfcpp.git","tag":"v4.0.5","revision":"6be08bbea14ffa0a5c594257fb6285a054395cd7","role":"header-only-library"}
+  ]
+}

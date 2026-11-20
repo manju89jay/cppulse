@@ -1,0 +1,9 @@
+{
+  "baseline": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "branch": "codex/job-application-demo-20261113",
+  "main_inspected": "82120d26b51f99b64068f9d66f6e000fcaee97c2",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "docker": "Unavailable: executable and local socket absent",
+  "fixture_revision": "b7f51511e5eb20f58eccf9415f19e8eb87ca9632"
+}

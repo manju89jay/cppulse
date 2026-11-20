@@ -11,11 +11,11 @@ analyze. analyzer-core must itself embody the standards it enforces.
 ## Memory Safety
 - Zero raw pointer ownership — all ownership via smart pointers
 - No manual memory management anywhere in the analysis pipeline
-- Buffer access via `std::span` or range-checked containers
+- Use range-checked containers or explicit validated bounds under C++17. `std::span` requires C++20 and is not required by the implementation standard.
 
 ## Concurrency Safety
 - No global mutable state — all shared state explicitly synchronized
-- Thread-safe result aggregation in FileAnalyzer (std::mutex on findings vector)
+- Synchronize concurrently accessed results. Prefer isolated worker results and owner-only aggregation; a mutex is not required for state accessed by a single owner.
 - No data races — validate with ThreadSanitizer (`-fsanitize=thread`) before merge
 
 ## Error Paths
@@ -26,10 +26,10 @@ analyze. analyzer-core must itself embody the standards it enforces.
 ## Robustness
 - Never crash on malformed input — analyzer-core must handle any C++ file gracefully
 - Template-heavy files, macro-only files, empty files: all must return cleanly
-- Large files (>500KB): skip with a warning rather than OOM
+- Use a configurable file-byte budget rather than a fixed 500 KiB exclusion. Record skipped files and reasons as incomplete scope. Input-byte limits do not establish process memory bounds; worker memory limits require separate implementation and verification.
 
 ## No Dynamic Exceptions Across Boundaries
-- All public API functions are `noexcept` or return `std::expected`
+- Catch failures at executable boundaries and use C++17 result types. Apply `noexcept` only where the implementation can satisfy it, rather than converting recoverable errors into termination.
 - No exceptions propagate out of libclang callback functions
 
 ## MISRA-Adjacent Naming

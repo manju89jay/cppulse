@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/workflow_common.schema.json",
+  "definitions": {
+    "run_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "manifest_sha256": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "partial",
+            "cancelled"
+          ]
+        },
+        "source_digest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      },
+      "required": [
+        "run_id",
+        "manifest_sha256",
+        "status",
+        "source_digest"
+      ]
+    },
+    "role_selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "step_id": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        "role": {
+          "enum": [
+            "input",
+            "output",
+            "stdout",
+            "stderr"
+          ]
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "step_id",
+        "role",
+        "path"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "enum": [
+                  "input",
+                  "output"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "path": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "path"
+      ]
+    }
+  }
+}

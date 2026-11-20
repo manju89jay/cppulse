@@ -3,7 +3,9 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 \
     libffi-dev libcairo2 && rm -rf /var/lib/apt/lists/*
-COPY requirements.txt .
+COPY report-engine/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+COPY report-engine/ .
+COPY python/cppulse/ /opt/cppulse/python/cppulse/
+ENV PYTHONPATH=/opt/cppulse/python
 CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]

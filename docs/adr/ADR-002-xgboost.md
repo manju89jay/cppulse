@@ -1,5 +1,7 @@
 # ADR-002: Use XGBoost for Bug Prediction
 
+> **Historical research rationale — not a cppulse accuracy or performance result.** The original body below is preserved, including its uncited 85–89% F1, training-time, model-superiority and explainability assertions. No retained cppulse benchmark validates those claims, calibrated bug probabilities or predictive value over simple baselines. Current ML eligibility uses file samples, label classes and backend feasibility rather than a 50-commit rule; unavailable/small/single-class/failing cases use an explicit heuristic fallback. Evaluation may remain not evaluated, and fallback feature importance is a global proxy rather than a causal explanation. See [current positioning and ranking limits](../../README.md) and [the model implementation](../../python/cppulse/predictor/model.py). Ranking remains experimental and separate from [evidence-policy gates](../development/policy-engine.md).
+
 **Date:** 2026-03-04
 **Status:** Accepted
 **Deciders:** Manjunath Jayaramaiah

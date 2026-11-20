@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "cache_eligible": {
+      "const": false
+    },
+    "closure": {
+      "const": "unqualified"
+    },
+    "native_executed": {
+      "const": false
+    },
+    "runtime_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "input_capture_sha256": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "uniqueItems": true
+    },
+    "semantic_namespace_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "archive": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "https://schemas.cppulse.local/drafts/frozen-input/v0.1/archive.schema.json",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "0.1.0"
+        },
+        "cache_eligible": {
+          "const": false
+        },
+        "closure": {
+          "const": "unqualified"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "kind": {
+                "enum": [
+                  "regular",
+                  "directory"
+                ]
+              },
+              "mode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 511
+              },
+              "mtime_ns": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9223372036854775807
+              },
+              "content": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "size_bytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      }
+                    },
+                    "required": [
+                      "sha256",
+                      "size_bytes"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "kind",
+              "mode",
+              "mtime_ns",
+              "content"
+            ]
+          },
+          "maxItems": 4096
+        },
+        "raw_layer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "compressed_layer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "compression": {
+          "const": "gzip"
+        },
+        "ownership": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "uid": {
+              "const": 1000
+            },
+            "gid": {
+              "const": 1000
+            }
+          },
+          "required": [
+            "uid",
+            "gid"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "cache_eligible",
+        "closure",
+        "entries",
+        "raw_layer",
+        "compressed_layer",
+        "compression",
+        "ownership"
+      ]
+    },
+    "qualification": {
+      "const": "Retained declared bytes only; no ELF readiness, image/native execution or cache qualification."
+    }
+  },
+  "required": [
+    "version",
+    "cache_eligible",
+    "closure",
+    "native_executed",
+    "runtime_manifest_sha256",
+    "input_capture_sha256",
+    "semantic_namespace_sha256",
+    "archive",
+    "qualification"
+  ]
+}

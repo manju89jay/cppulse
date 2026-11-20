@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse compatible project analysis settings",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ruleset": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "description": "Local JSON ruleset pack path relative to this project configuration; CLI --ruleset replaces this selection."
+    },
+    "profile": {
+      "enum": [
+        "default",
+        "safety-critical"
+      ]
+    },
+    "exclude_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "rules": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(CPP-MEM|CPP-MOD|CPP-CX|MISRA)-[0-9]{3}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "error_threshold": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    },
+    "max_file_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807,
+      "default": 16777216,
+      "description": "Maximum bytes per native analyzed file; exceeding the limit retains an explicit skipped/incomplete outcome. This is not a process memory limit."
+    },
+    "execution": {
+      "$ref": "#/definitions/execution"
+    },
+    "history": {
+      "$ref": "#/definitions/history"
+    }
+  },
+  "definitions": {
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "legacy",
+            "bounded"
+          ]
+        },
+        "jobs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "wall_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 86400
+        },
+        "cpu_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "address_space_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "output_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "work_directory": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "^[^\\u0000]*$"
+        },
+        "resume": {
+          "type": "boolean"
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "cache_dir": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "^[^\\u0000]*$"
+        },
+        "max_commits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "max_record_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 67108864
+        },
+        "max_cache_bytes": {
+          "type": "integer",
+          "minimum": 1048576,
+          "maximum": 8589934592
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3600
+        },
+        "szz_max_fix_commits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "behavior_config": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "^[^\\u0000]*$"
+        },
+        "behavior_cutoff": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+Package: chromium-headless-shell
+Version: 156.0.8078.79-1~deb13u1
+
+Package: cmake-data
+Version: 3.31.6-2
+
+Package: cmake
+Version: 3.31.6-2
+
+Package: fontconfig-config
+Version: 2.15.0-2.3
+
+Package: fonts-dejavu-core
+Version: 2.37-8
+
+Package: googletest
+Version: 1.16.0-1
+
+Package: libarchive13t64
+Version: 3.7.4-4+deb13u1
+
+Package: libcairo2
+Version: 1.18.4-1+b1
+
+Package: libclang-19-dev
+Version: 1:19.1.7-3+b1
+
+Package: libcli11-dev
+Version: 2.4.1+ds-2
+
+Package: libdatrie1
+Version: 0.2.13-3+b1
+
+Package: libfmt-dev
+Version: 10.1.1+ds1-4
+
+Package: libfmt10
+Version: 10.1.1+ds1-4
+
+Package: libfontconfig1
+Version: 2.15.0-2.3
+
+Package: libfribidi0
+Version: 1.0.16-1
+
+Package: libgdk-pixbuf-2.0-0
+Version: 2.42.12+dfsg-4+deb13u1
+
+Package: libgraphite2-3
+Version: 1.3.14-2+deb13u1
+
+Package: libgtest-dev
+Version: 1.16.0-1
+
+Package: libharfbuzz-subset0
+Version: 10.2.0-1+deb13u1
+
+Package: libharfbuzz0b
+Version: 10.2.0-1+deb13u1
+
+Package: libjsoncpp26
+Version: 1.9.6-3
+
+Package: libpango-1.0-0
+Version: 1.56.3-1
+
+Package: libpangocairo-1.0-0
+Version: 1.56.3-1
+
+Package: libpangoft2-1.0-0
+Version: 1.56.3-1
+
+Package: librhash1
+Version: 1.4.5-1
+
+Package: libspdlog-dev
+Version: 1:1.15.2+ds-2
+
+Package: libspdlog1.15
+Version: 1:1.15.2+ds-2
+
+Package: libthai0
+Version: 0.1.29-2+b1
+
+Package: libuv1t64
+Version: 1.50.0-2
+
+Package: nlohmann-json3-dev
+Version: 3.11.3-2.1

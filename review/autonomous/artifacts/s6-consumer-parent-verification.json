@@ -1,0 +1,227 @@
+{
+  "verified_at": "2026-11-14T01:00:32.364183+00:00",
+  "source_summary_sha256": "427339364a2531ada7523fc9d2d595c536d6509bf23e98dbc4c704df5fbf3c21",
+  "upstream_manifest_sha256": "f071e95a53c7b1b866b0b4192881739c5d6df2e9c21e598d2fd6d51fcef03619",
+  "cases": [
+    {
+      "scenario": "clean",
+      "run_id": "c70045e3071d45bdb60361741cda574f",
+      "manifest_sha256": "41b1457427c18b59d7ab7e3e0d0675598458ed24ffe6dc0d09e90e2ef7bc8fb1",
+      "compiler_build_status": "passed",
+      "rows": [
+        {
+          "subject": "fmt-10.2.1",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "self-contained-header",
+          "compatibility": "compatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "synthetic-throwing-header",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        }
+      ]
+    },
+    {
+      "scenario": "missing-local-test",
+      "run_id": "092d22360bfe4805aa51523668455265",
+      "manifest_sha256": "8e0ef68943b329d995579c428c4cf795193b924773eb3cc7f0514f6398fa4e49",
+      "compiler_build_status": "passed",
+      "rows": [
+        {
+          "subject": "fmt-10.2.1",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "consumer-workload-not-selected",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+          ]
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "consumer-workload-not-selected",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+          ]
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "self-contained-header",
+          "compatibility": "compatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "synthetic-throwing-header",
+          "case": "main",
+          "compatibility": "compatible",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "consumer-workload-not-selected",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "incompatible-cxx20",
+      "run_id": "acffae6b1ac34475a6f53d66d34b722a",
+      "manifest_sha256": "a276b17192d32a8257c5102f5316008be8ad73494c48ab41b45a739b9585e9dc",
+      "compiler_build_status": "passed",
+      "rows": [
+        {
+          "subject": "fmt-10.2.1",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "self-contained-header",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "synthetic-throwing-header",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        }
+      ]
+    },
+    {
+      "scenario": "no-exceptions",
+      "run_id": "bea9219581b44761bd9c7de7e6f378e6",
+      "manifest_sha256": "540b7753c5e3cd4c35a631d4947f11deeee247448768de4715fedc3bc1918f78",
+      "compiler_build_status": "failed",
+      "rows": [
+        {
+          "subject": "fmt-10.2.1",
+          "case": "main",
+          "compatibility": "unknown",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "main-tests",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+            "package-use:fmt-10.2.1-main-use"
+          ]
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "main",
+          "compatibility": "unknown",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "main-tests",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+            "package-use:utfcpp-4.0.5-main-use"
+          ]
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "self-contained-header",
+          "compatibility": "unknown",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "header-tests",
+            "include/utf8cpp/utf8.h",
+            "package-use:utfcpp-4.0.5-self-containment-use"
+          ]
+        },
+        {
+          "subject": "synthetic-throwing-header",
+          "case": "main",
+          "compatibility": "unknown",
+          "local_tests": "unknown",
+          "missing_checks": [
+            "main-tests",
+            "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+            "package-use:synthetic-throwing-header-main-use"
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "changed-package",
+      "run_id": "46522fa94a9d4b3aaba56da826bec397",
+      "manifest_sha256": "6f1837e97f1742af65623e6aaa18aa06aa1f75dfbfdcffb01c6c0b7b5c515f63",
+      "compiler_build_status": "passed",
+      "rows": [
+        {
+          "subject": "fmt-10.2.1",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "utfcpp-4.0.5",
+          "case": "self-contained-header",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        },
+        {
+          "subject": "synthetic-throwing-header",
+          "case": "main",
+          "compatibility": "incompatible",
+          "local_tests": "passed",
+          "missing_checks": []
+        }
+      ]
+    }
+  ],
+  "operation": "read-only frozen pin/typed comparison verification; no fresh commands",
+  "transfer": {
+    "root_ids": [
+      "changed-package",
+      "clean",
+      "incompatible-cxx20",
+      "missing-local-test",
+      "no-exceptions",
+      "upstream"
+    ],
+    "files": 738,
+    "origin": "import",
+    "authentication": "unverified",
+    "checked": true
+  }
+}

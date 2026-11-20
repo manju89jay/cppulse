@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "provider",
+    "repository",
+    "window",
+    "limits",
+    "cost_inputs"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "provider": {
+      "const": "github-rest-2022-11-28"
+    },
+    "repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,99}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pages",
+        "page_bytes",
+        "wall_seconds"
+      ],
+      "properties": {
+        "pages": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "page_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 8388608
+        },
+        "wall_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 120
+        }
+      }
+    },
+    "cost_inputs": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "issue",
+          "kind",
+          "basis",
+          "currency",
+          "amount",
+          "recorded_at",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "issue": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "kind": {
+            "enum": [
+              "cost",
+              "benefit"
+            ]
+          },
+          "basis": {
+            "enum": [
+              "estimated",
+              "observed"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000000000000
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "evidence_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "basis": {
+                  "const": "observed"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "evidence_sha256"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

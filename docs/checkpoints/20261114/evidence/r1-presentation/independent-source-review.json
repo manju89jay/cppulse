@@ -1,0 +1,26 @@
+{
+  "reviewed_at": "2026-11-14T10:37:22.316632+00:00",
+  "reviewer": "collaborating implementation agent /root/risk_availability_contract",
+  "review_kind": "Independent source review, not an independent runtime rerun.",
+  "scope": "R1 availability API/report/dashboard consumers",
+  "source_sha256": {
+    "python/cppulse/report_engine/api.py": "f04f44a790f9766df61834e776ae28ca32d2477be14a3406cbf79d10a1d3da08",
+    "python/cppulse/report_engine/pdf_generator.py": "252a28662a5c83cdb5ba2309af386f400c09582d4d8d221b17d1803945dcf9aa",
+    "python/cppulse/report_engine/templates/report.html": "d4b63efd539c640f511f540ce4439a0978c81ae3ede0a0383a8dbbb5e2f8ee2c",
+    "python/cppulse/report_engine/templates/snapshot.html": "71184178d124f847a06aa2a5ba1cc975fa3ff95af734b7a95347cccc46ccd386",
+    "dashboard/src/types/index.ts": "230eb25533ed622f8c63f7cc6e9aada31c5c0ef8fdb50dcf74073b5e00492b60",
+    "dashboard/src/api/client.ts": "e9a5746b86a561dfaa3dfa4df1e1fac43b0ae4a01f8c445ff98f01a48492fa56",
+    "dashboard/src/App.tsx": "93cf68009471762f50a35a39ae4a3b1ba29fd85ae651597361ab7341dd5c8c38",
+    "dashboard/src/components/RiskPrediction.tsx": "abd7f770aaeb179a27ba05e9c67372420f2ed06992cdf095a2d41d65bb7b8cc1",
+    "dashboard/src/components/SiloAlerts.tsx": "0ef8ead25609d7e6803394ed110ef8b4f70cbfc0d9e30d5cfb4c04aaaa3d0098"
+  },
+  "blocking_issues": [],
+  "conclusions": [
+    "Numeric ranked arrays remain separate from unavailable files.",
+    "Unavailable reasons/counts survive API and flat/snapshot mapping.",
+    "First50 report/UI truncation is explicitly disclosed.",
+    "Unknown/partial history blocks clean-silo conclusions and preserves observed alerts.",
+    "Historical prediction headings retain experimental disclaimers; terminology improvements remain separate."
+  ],
+  "runtime_evidence": "See component logs and forthcoming current-source real API/browser/PDF gate; this source review does not claim those checks were rerun by the reviewer."
+}

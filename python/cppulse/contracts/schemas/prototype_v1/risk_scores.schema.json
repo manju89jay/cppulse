@@ -1,0 +1,459 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse Risk Scores",
+  "type": "object",
+  "required": [
+    "version",
+    "metadata",
+    "health_score",
+    "file_risks",
+    "hotspots"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "generated_at",
+        "model_type",
+        "feature_count"
+      ],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "model_type": {
+          "type": "string",
+          "enum": [
+            "xgboost",
+            "heuristic"
+          ]
+        },
+        "feature_count": {
+          "type": "integer"
+        },
+        "training_samples": {
+          "type": "integer"
+        },
+        "f1_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "profile": {
+          "enum": [
+            "default",
+            "safety-critical"
+          ]
+        },
+        "score_model": {
+          "type": "string"
+        },
+        "experimental": {
+          "type": "boolean"
+        },
+        "hotspot_formula": {
+          "type": "string"
+        },
+        "evaluation_status": {
+          "enum": [
+            "not_evaluated",
+            "cross_validated"
+          ]
+        },
+        "label_source": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ranking_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "version",
+            "declared_files",
+            "ranked_files",
+            "unranked_files"
+          ],
+          "properties": {
+            "version": {
+              "const": "file-eligibility-1"
+            },
+            "declared_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ranked_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unranked_files": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "health_score": {
+      "type": "object",
+      "required": [
+        "overall",
+        "by_category"
+      ],
+      "properties": {
+        "overall": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "memory_safety": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "modernization": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "complexity": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "misra_compliance": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Only present when using --profile safety-critical"
+            }
+          },
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "status": {
+          "enum": [
+            "scored",
+            "no_data",
+            "partial"
+          ]
+        }
+      }
+    },
+    "file_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "bug_probability",
+          "risk_level",
+          "top_factors"
+        ],
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "bug_probability": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "risk_level": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "top_factors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "feature": {
+                  "type": "string"
+                },
+                "importance": {
+                  "type": "number"
+                },
+                "value": {
+                  "type": "number"
+                }
+              }
+            },
+            "maxItems": 5
+          }
+        }
+      }
+    },
+    "hotspots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "hotspot_score"
+        ],
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "hotspot_score": {
+            "type": "number",
+            "description": "change_frequency * complexity * debt_density"
+          },
+          "change_frequency": {
+            "type": "integer"
+          },
+          "complexity_score": {
+            "type": "number",
+            "description": "Legacy field name: maximum finding severity / 3; not measured cyclomatic complexity"
+          },
+          "finding_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "maxItems": 20,
+      "description": "Top 20 files by hotspot score"
+    },
+    "unranked_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "availability",
+          "reason_codes",
+          "reasons"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "availability": {
+            "enum": [
+              "partial",
+              "unverified",
+              "unavailable"
+            ]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      },
+      "description": "Declared files without a usable experimental rank. Numeric scores and low-risk labels are deliberately absent."
+    },
+    "component_hotspots": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "method": {
+          "const": "sum-measured-file-hotspots-v1"
+        },
+        "file_method": {
+          "const": "measured-cc-physical-kloc-v1"
+        },
+        "behavior_configuration_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "behavior_input_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "history_status": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "measured_files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "score": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "file",
+                    "score"
+                  ]
+                }
+              },
+              "unavailable_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "availability": {
+                "enum": [
+                  "available",
+                  "partial",
+                  "unavailable"
+                ]
+              },
+              "score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "observed_score": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              }
+            },
+            "required": [
+              "id",
+              "files",
+              "measured_files",
+              "unavailable_files",
+              "availability",
+              "score",
+              "observed_score"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "excluded_files": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Explicit architectural members excluded from attempted ranking scope; never measured priorities."
+        }
+      },
+      "required": [
+        "version",
+        "method",
+        "file_method",
+        "behavior_configuration_digest",
+        "behavior_input_digest",
+        "history_status",
+        "components",
+        "limitations"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "unranked_files"
+        ]
+      },
+      "then": {
+        "properties": {
+          "metadata": {
+            "required": [
+              "ranking_scope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

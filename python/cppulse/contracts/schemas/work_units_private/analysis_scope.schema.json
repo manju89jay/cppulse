@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/analysis_scope.schema.json",
+  "title": "Finite declared bounded-analysis scope; not a fabricated aggregate receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "summary_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "bindings_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "input_verification": {
+      "enum": [
+        "verified",
+        "changed",
+        "unavailable"
+      ]
+    },
+    "inventory_complete": {
+      "type": "boolean"
+    },
+    "discovery_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "primary_file": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*\\\\)(?!.*//)(?!.*/$)[^\\u0000-\\u001f\\u007f]+$"
+          },
+          "outcome": {
+            "enum": [
+              "complete",
+              "partial",
+              "process_error",
+              "timed_out",
+              "cancelled",
+              "input_changed",
+              "unsupported",
+              "not_attempted",
+              "crashed",
+              "invalid_output"
+            ]
+          },
+          "parse_status": {
+            "enum": [
+              "analyzed",
+              "partial",
+              "failed",
+              "skipped",
+              "excluded",
+              "missing",
+              null
+            ]
+          },
+          "execution": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "request_artifact_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "request_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "result_artifact_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "result_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "receipt_artifact_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "receipt_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "invocation_context_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "declared_context_id": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "request_artifact_id",
+                  "request_sha256",
+                  "result_artifact_id",
+                  "result_sha256",
+                  "receipt_artifact_id",
+                  "receipt_id",
+                  "invocation_context_id",
+                  "declared_context_id"
+                ]
+              }
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "unit_id",
+          "primary_file",
+          "outcome",
+          "parse_status",
+          "execution",
+          "reason"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "source_digest",
+    "plan_sha256",
+    "summary_sha256",
+    "bindings_sha256",
+    "input_verification",
+    "inventory_complete",
+    "discovery_gaps",
+    "units",
+    "limitations"
+  ]
+}

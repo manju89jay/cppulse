@@ -61,11 +61,12 @@ class TestDefaultProfile:
         result = scorer.compute(_make_df(memory_findings=1))
         assert result.overall < 100.0
 
-    def test_empty_dataframe_returns_perfect(self) -> None:
+    def test_empty_dataframe_has_no_score(self) -> None:
         scorer = HealthScorer(profile="default")
         df = pd.DataFrame(columns=["file", "memory_findings"])
         result = scorer.compute(df)
-        assert result.overall == pytest.approx(100.0)
+        assert result.overall is None
+        assert all(value is None for value in result.by_category.values())
 
 
 class TestSafetyCriticalProfile:

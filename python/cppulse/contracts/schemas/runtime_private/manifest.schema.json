@@ -1,0 +1,234 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "state": {
+      "const": "declared_runtime_inputs"
+    },
+    "cache_eligible": {
+      "const": false
+    },
+    "closure": {
+      "const": "unqualified"
+    },
+    "execution_ready": {
+      "const": false
+    },
+    "lazy_runtime_closure_verified": {
+      "const": false
+    },
+    "relocation_search_verified": {
+      "const": false
+    },
+    "native_container_path": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "loader_candidate_path": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "files": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "container_path": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 4096
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 4096
+          },
+          "role": {
+            "enum": [
+              "native",
+              "loader_candidate",
+              "shared_library",
+              "supervisor"
+            ]
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 536870912
+              }
+            },
+            "required": [
+              "sha256",
+              "size_bytes"
+            ]
+          },
+          "mode": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 511
+          },
+          "mtime_ns": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854775807
+          }
+        },
+        "required": [
+          "container_path",
+          "source_path",
+          "role",
+          "content",
+          "mode",
+          "mtime_ns"
+        ]
+      }
+    },
+    "selection_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "imported_ldd_observation"
+        },
+        "manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 536870912
+            }
+          },
+          "required": [
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "stdout": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 536870912
+            }
+          },
+          "required": [
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "stderr": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 536870912
+            }
+          },
+          "required": [
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "producer_receipt": {
+          "type": "null"
+        },
+        "environment": {
+          "type": "null"
+        },
+        "cwd": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "kind",
+        "manifest",
+        "stdout",
+        "stderr",
+        "producer_receipt",
+        "environment",
+        "cwd"
+      ]
+    },
+    "non_file_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_entries": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "max_payload_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 536870912
+        }
+      },
+      "required": [
+        "max_entries",
+        "max_payload_bytes"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "state",
+    "cache_eligible",
+    "closure",
+    "execution_ready",
+    "lazy_runtime_closure_verified",
+    "relocation_search_verified",
+    "native_container_path",
+    "loader_candidate_path",
+    "files",
+    "selection_observation",
+    "non_file_inputs",
+    "limits"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/frozen-runtime/v0.1/runtime.schema.json",
+  "description": "Declared per-file runtime input selection only; imported observation does not establish ELF loader binding, current retained bytes, runnable image or cache closure."
+}

@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/consumer_matrix.schema.json",
+  "title": "cppulse consumer_matrix v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "subject_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "context_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "configuration": {
+            "$ref": "#/definitions/configuration"
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "instantiations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "self_containment_headers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "usage_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "required",
+          "context_id",
+          "configuration",
+          "tests",
+          "instantiations",
+          "self_containment_headers",
+          "usage_ids"
+        ]
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "subject_id",
+    "cases",
+    "limitations"
+  ],
+  "definitions": {
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "compiler": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "anyOf": [
+                    {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "version",
+                "sha256"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "os": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "abi": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "language_standard": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "macros": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "exceptions": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "rtti": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "linking": {
+          "enum": [
+            "static",
+            "shared",
+            "header-only",
+            null
+          ]
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/dependency"
+          },
+          "minItems": 0
+        },
+        "sanitizers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "asan",
+              "ubsan",
+              "tsan"
+            ]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "compiler",
+        "os",
+        "target",
+        "abi",
+        "language_standard",
+        "macros",
+        "exceptions",
+        "rtti",
+        "linking",
+        "dependencies",
+        "sanitizers"
+      ]
+    }
+  }
+}

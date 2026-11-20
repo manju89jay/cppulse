@@ -1,0 +1,316 @@
+{
+  "version": "1.0.0",
+  "started_at": "2026-11-14T06:13:40.990789+00:00",
+  "sections": [
+    "dashboard",
+    "format",
+    "generated",
+    "native",
+    "python",
+    "root"
+  ],
+  "format_scope": "Python implementation, legacy shims and changed scripts/tests; check-only",
+  "docker": "not_requested",
+  "checks": [
+    {
+      "name": "black-check",
+      "section": "format",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "black",
+        "--check",
+        "python",
+        "git-miner/src",
+        "predictor/src",
+        "report-engine/src"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/black-check.log",
+      "started_at": "2026-11-14T06:13:40.994104+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:13:41.254012+00:00",
+      "elapsed_seconds": 0.26
+    },
+    {
+      "name": "ruff-check",
+      "section": "format",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "python",
+        "git-miner/src",
+        "predictor/src",
+        "report-engine/src"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/ruff-check.log",
+      "started_at": "2026-11-14T06:13:41.254397+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:13:41.304298+00:00",
+      "elapsed_seconds": 0.05
+    },
+    {
+      "name": "generated-check",
+      "section": "generated",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "scripts/check_generated.py"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/generated-check.log",
+      "started_at": "2026-11-14T06:13:41.304603+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:13:41.511233+00:00",
+      "elapsed_seconds": 0.207
+    },
+    {
+      "name": "root-tests",
+      "section": "root",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-v",
+        "tests/"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/root-tests.log",
+      "started_at": "2026-11-14T06:13:41.511630+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:15.017573+00:00",
+      "elapsed_seconds": 153.506
+    },
+    {
+      "name": "analyzer-configure",
+      "section": "native",
+      "argv": [
+        "cmake",
+        "-S",
+        "analyzer-core",
+        "-B",
+        "analyzer-core/build",
+        "-DBUILD_TESTING=ON"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/analyzer-configure.log",
+      "started_at": "2026-11-14T06:16:15.018010+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:15.080754+00:00",
+      "elapsed_seconds": 0.063
+    },
+    {
+      "name": "analyzer-build",
+      "section": "native",
+      "argv": [
+        "cmake",
+        "--build",
+        "analyzer-core/build",
+        "-j",
+        "4"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/analyzer-build.log",
+      "started_at": "2026-11-14T06:16:15.081207+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:15.198137+00:00",
+      "elapsed_seconds": 0.117
+    },
+    {
+      "name": "analyzer-tests",
+      "section": "native",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "analyzer-core/build",
+        "--output-on-failure",
+        "--no-tests=error"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/analyzer-tests.log",
+      "started_at": "2026-11-14T06:16:15.198522+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:22.753577+00:00",
+      "elapsed_seconds": 7.555
+    },
+    {
+      "name": "git-miner-tests",
+      "section": "python",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-v",
+        "--cov=src",
+        "--cov=cppulse.git_miner",
+        "--cov-report=term",
+        "--cov-report=json:/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/git-miner-coverage.json",
+        "tests/"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/git-miner",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/git-miner-tests.log",
+      "started_at": "2026-11-14T06:16:22.754305+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "canonical_coverage": {
+        "namespace": "cppulse.git_miner",
+        "percent": 91.28,
+        "minimum": 80.0
+      },
+      "finished_at": "2026-11-14T06:16:25.389144+00:00",
+      "elapsed_seconds": 2.635
+    },
+    {
+      "name": "predictor-tests",
+      "section": "python",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-v",
+        "--cov=src",
+        "--cov=cppulse.predictor",
+        "--cov-report=term",
+        "--cov-report=json:/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/predictor-coverage.json",
+        "tests/"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/predictor",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/predictor-tests.log",
+      "started_at": "2026-11-14T06:16:25.389469+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "canonical_coverage": {
+        "namespace": "cppulse.predictor",
+        "percent": 90.12,
+        "minimum": 75.0
+      },
+      "finished_at": "2026-11-14T06:16:31.240120+00:00",
+      "elapsed_seconds": 5.851
+    },
+    {
+      "name": "report-engine-tests",
+      "section": "python",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-v",
+        "--cov=src",
+        "--cov=cppulse.report_engine",
+        "--cov-report=term",
+        "--cov-report=json:/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/report-engine-coverage.json",
+        "tests/"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/report-engine",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/report-engine-tests.log",
+      "started_at": "2026-11-14T06:16:31.240436+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "canonical_coverage": {
+        "namespace": "cppulse.report_engine",
+        "percent": 93.76,
+        "minimum": 75.0
+      },
+      "finished_at": "2026-11-14T06:16:42.681229+00:00",
+      "elapsed_seconds": 11.441
+    },
+    {
+      "name": "dashboard-tests",
+      "section": "dashboard",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/dashboard",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/dashboard-tests.log",
+      "started_at": "2026-11-14T06:16:42.681772+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:45.796643+00:00",
+      "elapsed_seconds": 3.115
+    },
+    {
+      "name": "dashboard-build",
+      "section": "dashboard",
+      "argv": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/dashboard",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/dashboard-build.log",
+      "started_at": "2026-11-14T06:16:45.797252+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:50.834738+00:00",
+      "elapsed_seconds": 5.038
+    },
+    {
+      "name": "cli-configure",
+      "section": "native",
+      "argv": [
+        "cmake",
+        "-S",
+        "cli",
+        "-B",
+        "cli/build",
+        "-DBUILD_TESTING=ON"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/cli-configure.log",
+      "started_at": "2026-11-14T06:16:50.835884+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:50.875698+00:00",
+      "elapsed_seconds": 0.04
+    },
+    {
+      "name": "cli-build",
+      "section": "native",
+      "argv": [
+        "cmake",
+        "--build",
+        "cli/build",
+        "-j",
+        "4"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/cli-build.log",
+      "started_at": "2026-11-14T06:16:50.876174+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:50.984476+00:00",
+      "elapsed_seconds": 0.108
+    },
+    {
+      "name": "cli-tests",
+      "section": "native",
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "cli/build",
+        "--output-on-failure",
+        "--no-tests=error"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse",
+      "log": "/workspace/scratch/b3d4e6fff494/cppulse/review/local-checkpoint-checks/cli-tests.log",
+      "started_at": "2026-11-14T06:16:50.984968+00:00",
+      "status": "passed",
+      "returncode": 0,
+      "finished_at": "2026-11-14T06:16:51.058084+00:00",
+      "elapsed_seconds": 0.073
+    }
+  ],
+  "finished_at": "2026-11-14T06:16:51.058516+00:00",
+  "exit_status": 0,
+  "status": "passed"
+}

@@ -27,11 +27,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 1.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -57,11 +52,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 4.0
         },
         {
           "feature": "churn_rate",
@@ -91,11 +81,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 21.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -121,11 +106,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 1.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 137.0
         },
         {
           "feature": "churn_rate",
@@ -155,11 +135,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -185,11 +160,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 3.0
         },
         {
           "feature": "churn_rate",
@@ -219,11 +189,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 24.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -249,11 +214,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 13.0
         },
         {
           "feature": "churn_rate",
@@ -283,11 +243,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 30.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -313,11 +268,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 1.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
         },
         {
           "feature": "churn_rate",
@@ -347,11 +297,6 @@
           "value": 2.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -377,11 +322,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 2.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 5.0
         },
         {
           "feature": "churn_rate",
@@ -411,11 +351,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 6.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -441,11 +376,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 4.0
         },
         {
           "feature": "churn_rate",
@@ -475,11 +405,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 10.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -505,11 +430,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 2.0
         },
         {
           "feature": "churn_rate",
@@ -539,11 +459,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 14.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -569,11 +484,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 11.0
         },
         {
           "feature": "churn_rate",
@@ -603,11 +513,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 7.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -633,11 +538,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 10.0
         },
         {
           "feature": "churn_rate",
@@ -667,11 +567,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 25.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -697,11 +592,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 1.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 19.0
         },
         {
           "feature": "churn_rate",
@@ -731,11 +621,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -763,11 +648,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 5.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -792,11 +672,6 @@
         {
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
-          "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
           "value": 0.0
         },
         {
@@ -827,11 +702,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -857,11 +727,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 1.0
         },
         {
           "feature": "churn_rate",
@@ -891,11 +756,6 @@
           "value": 1.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 0.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -921,11 +781,6 @@
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
           "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 1.0
         },
         {
           "feature": "churn_rate",
@@ -955,11 +810,6 @@
           "value": 0.0
         },
         {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
-          "value": 1.0
-        },
-        {
           "feature": "churn_rate",
           "importance": 0.17391304347826086,
           "value": 0.0
@@ -984,11 +834,6 @@
         {
           "feature": "memory_findings",
           "importance": 0.2608695652173913,
-          "value": 0.0
-        },
-        {
-          "feature": "misra_findings",
-          "importance": 0.21739130434782608,
           "value": 0.0
         },
         {

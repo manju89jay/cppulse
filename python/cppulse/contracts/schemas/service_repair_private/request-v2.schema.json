@@ -1,0 +1,513 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.2.0"
+    },
+    "profile": {
+      "const": "cpp17-elf-relink-loopback-v2"
+    },
+    "compiler": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "compiler_search_prefix": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "compiler_library_prefix": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "compiler_system_include_directories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "minItems": 0,
+      "maxItems": 16
+    },
+    "docker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "supervisor_python": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "before_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "after_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ]
+    },
+    "headers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "file": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 134217728
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "size_bytes"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "file"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4096
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "file": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 134217728
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "size_bytes"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "file"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 64
+    },
+    "libraries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "file": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 134217728
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "size_bytes"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "file"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "defines": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_]*(=[A-Za-z0-9_]+)?$"
+      },
+      "minItems": 0,
+      "maxItems": 32
+    },
+    "soname": {
+      "type": "string",
+      "pattern": "^lib[A-Za-z0-9_]+\\.so\\.[0-9]+$"
+    },
+    "required_cases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{1,128}$"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "service": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "container_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "image_id": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "host": {
+          "const": "127.0.0.1"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "container_port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "task_label": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,128}$"
+        },
+        "fixture_label": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,128}$"
+        }
+      },
+      "required": [
+        "container_id",
+        "image_id",
+        "host",
+        "port",
+        "container_port",
+        "task_label",
+        "fixture_label"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "step_wall_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "log_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 1048576
+        },
+        "input_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        }
+      },
+      "required": [
+        "step_wall_seconds",
+        "log_bytes",
+        "input_bytes"
+      ]
+    },
+    "process_resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "build": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cpu_seconds": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3600
+                  }
+                }
+              ]
+            },
+            "address_space_bytes": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 33554432,
+              "maximum": 17179869184
+            }
+          },
+          "required": [
+            "cpu_seconds",
+            "address_space_bytes"
+          ]
+        },
+        "test": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cpu_seconds": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3600
+                  }
+                }
+              ]
+            },
+            "address_space_bytes": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 33554432,
+              "maximum": 17179869184
+            }
+          },
+          "required": [
+            "cpu_seconds",
+            "address_space_bytes"
+          ]
+        }
+      },
+      "required": [
+        "build",
+        "test"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "profile",
+    "compiler",
+    "compiler_search_prefix",
+    "compiler_library_prefix",
+    "compiler_system_include_directories",
+    "docker",
+    "supervisor_python",
+    "before_source",
+    "after_source",
+    "probe",
+    "headers",
+    "objects",
+    "libraries",
+    "defines",
+    "soname",
+    "required_cases",
+    "service",
+    "limits",
+    "process_resources"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/service_repair_private/request.schema.json"
+}

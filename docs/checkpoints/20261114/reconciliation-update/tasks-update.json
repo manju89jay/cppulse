@@ -1,0 +1,3212 @@
+{
+  "title": "Frozen cppulse task reconciliation update",
+  "updated_at_utc": "2026-11-14T16:17:49.998302+00:00",
+  "mode": "read-only audit; only this external JSON written; no implementation changes/tests/Git writes",
+  "repository": "/workspace/scratch/b3d4e6fff494/cppulse",
+  "observed_head": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1",
+  "original_matrix": {
+    "path": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/tasks-matrix.json",
+    "sha256": "8344125c06e7eae6585fa577cee58fa0d425ea1fda6b72bd8acd9d56e54ea1e2",
+    "task_count": 60
+  },
+  "status_vocabulary": [
+    "verified",
+    "implemented but unverified",
+    "partial",
+    "missing",
+    "conflicting"
+  ],
+  "summary": {
+    "task_count": 60,
+    "status_counts": {
+      "verified": 1,
+      "partial": 37,
+      "implemented but unverified": 2,
+      "missing": 19,
+      "conflicting": 1
+    },
+    "full_scope_closed_tasks": [
+      "M0-01"
+    ],
+    "new_full_scope_closed_tasks": [],
+    "milestones_declared_complete": [],
+    "final_combined_source_qualified": false,
+    "interpretation": "One retained inventory task is closed in its documentary scope. Previously green narrower runtime subsets stay historical. No new full task or milestone closure established. WIP branch push preserves work; it does not qualify or publish a release."
+  },
+  "changes_from_original": [
+    {
+      "id": "M0-07",
+      "from": "verified",
+      "to": "partial"
+    },
+    {
+      "id": "M1-02",
+      "from": "partial",
+      "to": "implemented but unverified"
+    },
+    {
+      "id": "M1-03",
+      "from": "verified",
+      "to": "partial"
+    },
+    {
+      "id": "M5-02",
+      "from": "verified",
+      "to": "implemented but unverified"
+    },
+    {
+      "id": "M5-04",
+      "from": "verified",
+      "to": "partial"
+    },
+    {
+      "id": "M7-01",
+      "from": "missing",
+      "to": "partial"
+    },
+    {
+      "id": "M7-02",
+      "from": "missing",
+      "to": "partial"
+    }
+  ],
+  "principal_progress": [
+    "Corrected partial/operational CLI exits and configuration ambiguity/duplicate keys; actual earlier-source subprocess proof retained.",
+    "Fixed native auto/complexity/template regressions and configurable large-source limit; added actual raw native metrics.",
+    "Added real development facade and shared CI-source delegation, with73focused tests.",
+    "Defined measured/duplication/policy/work-unit contracts and started policy/native guard runtime; unfinished/red consumer runtime is explicit.",
+    "Built VS Code project/VSIX and16passing source-level pure tests; real host qualification did not pass.",
+    "Fresh frozen79665c4nativeconfigure/build139/139CTest and selected root453tests passed; full collection explicitly records2322tests and4missing-module errors."
+  ],
+  "known_blockers": [
+    "Current combined native configure/build and139CTest pass; selected root453pass. Full root collection stops on4 missing-module errors; full product/installed/platform verification remains incomplete.",
+    "Native CR-onlyLOC defect remains; current combined guard/native source now builds and139CTest pass. Raw native output/schema producer acceptance still did not execute.",
+    "Metrics/scorer/duplication/trends consumer modules absent; work_units runtime absent.",
+    "Policy focused runtime35pass/1fail; full affected checks and actual typed native integration absent.",
+    "Actual extension host stalls under restricted AF_UNIX/NETLINK environment; latest editor source not packaged and finite config UI/docs unfinished.",
+    "Docker/Compose, promised Windows/macOS lanes, six-original-project reviewed corpus,1K/10K/100K tier budgets, real human standards reviews and clean-agent released skill execution remain open."
+  ],
+  "actual_check_availability": [
+    {
+      "name": "native20_and139",
+      "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+      "available": true,
+      "meaning_and_limits": "20 native tests and139CTest passed on an earlier source; latest scale guard edits occurred afterward, raw producer/schema acceptance did not run."
+    },
+    {
+      "name": "metric_contract69",
+      "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+      "available": true,
+      "meaning_and_limits": "69 contracts passed; not normalization/scorer/duplication/trend runtime."
+    },
+    {
+      "name": "metric_normalization_red",
+      "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+      "available": true,
+      "meaning_and_limits": "4 failed: missing typed metric publication/source-buffer binding."
+    },
+    {
+      "name": "metric_consumer_red",
+      "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+      "available": true,
+      "meaning_and_limits": "Collection error: cppulse.maintenance absent."
+    },
+    {
+      "name": "scale_contract23",
+      "path": "review/production-20261114/r3-work-unit-contracts/final-tests.log",
+      "available": true,
+      "meaning_and_limits": "23 draft structural contract tests passed; no runtime registration/scheduler/cache/index proof."
+    },
+    {
+      "name": "scale_runtime_red",
+      "path": "review/production-20261114/p5-resume/runtime-red.log",
+      "available": true,
+      "meaning_and_limits": "Collection error: cppulse.work_units absent."
+    },
+    {
+      "name": "policy532",
+      "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+      "available": true,
+      "meaning_and_limits": "532 prerequisite old/contract gate passed before new runtime changes."
+    },
+    {
+      "name": "policy35_1",
+      "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+      "available": true,
+      "meaning_and_limits": "35 passed,1 failed; invalid approval control fixture identified but not corrected/rerun before stop."
+    },
+    {
+      "name": "editor16",
+      "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+      "available": true,
+      "meaning_and_limits": "16 pure protocol/process/files tests passed at latest editor source; compile passed. Actual host unverified and VSIX predates latest source."
+    },
+    {
+      "name": "editor_host",
+      "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+      "available": true,
+      "meaning_and_limits": "Actual installed VSIX; TCP Xvfb passes display initialization, then host stalls.45s timeout124/SIGINT; no host success report."
+    },
+    {
+      "name": "developer73",
+      "path": "review/production-20261114/r2-development/facade-final.log",
+      "available": true,
+      "meaning_and_limits": "73 focused developer/benchmark/CI-source tests passed; no full current-source/actual CI/Docker/candidate proof."
+    },
+    {
+      "name": "fresh_combined_native139",
+      "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+      "available": true,
+      "meaning_and_limits": "79665c4fresh configure/build and139/139CTest passed; knownCR-onlyLOC/raw native schema and runtime scope gaps remain."
+    },
+    {
+      "name": "fresh_selected_root453",
+      "path": "review/cloud-handoff-verification-20261114/python/output.log",
+      "available": true,
+      "meaning_and_limits": "79665c4selected policy/gate/rank/client/config/pipeline/guard suites:453passed; excludes unfinished new runtime suites."
+    },
+    {
+      "name": "fresh_full_root_collection",
+      "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+      "available": true,
+      "meaning_and_limits": "2322tests collected and4missing-module collection errors; full root runtime suite did not execute."
+    }
+  ],
+  "test_availability_limits": [
+    "No checks were launched by this read-only audit. Fresh root-owned handoff checks at79665c4 were read from their actual retained logs.",
+    "Fresh current-tree139nativeCTest and selected453root tests are passing scoped evidence, not whole-product acceptance. Historical2499/114/139 and focused532/69/73/16 totals are kept separate and are not summed.",
+    "A passing contract test is not an implemented producer or runtime; red collection errors were intentionally preserved.",
+    "Earlier installed dev2/source-hidden artifacts and p2-resumed wheel/native paths predate later source; do not relabel their hashes as final artifacts.",
+    "No Marketplace/registry release, MCP client session, actual clean-agent skill validation or absent platform execution is inferred."
+  ],
+  "ready_next_commands": {
+    "authorization": "Commands below are handoff recommendations only; implementation remains stopped until continuation is requested.",
+    "environment": [
+      "cd /workspace/scratch/b3d4e6fff494/cppulse",
+      "source review/environment.sh",
+      "export PYTHONPATH=python"
+    ],
+    "contract_gate": [
+      "pytest -q tests/test_maintenance_metrics_contract.py tests/test_duplication_contract.py tests/test_work_unit_draft_contracts.py"
+    ],
+    "native_after_known_fixes": [
+      "cmake --build analyzer-core/build-p3-native-resume -j2",
+      "ctest --test-dir analyzer-core/build-p3-native-resume --output-on-failure",
+      "Inspect actual emitted native report and validate it against current schemas/semantic contracts before consumer work."
+    ],
+    "expected_red_until_implemented": [
+      "pytest -q tests/test_measured_normalization.py tests/test_measured_duplication.py tests/test_measured_maintenance.py tests/test_maintenance_trends.py",
+      "pytest -q tests/test_work_unit_runtime.py"
+    ],
+    "policy_after_fixture_review": [
+      "python -m pytest -q tests/test_policy_extensions_runtime.py",
+      "Run complete policy/contracts component checks and actual typed-native integration after fixing the known approval fixture."
+    ],
+    "editor_after_configuration_docs_updates": [
+      "npm --prefix editors/vscode run compile",
+      "npm --prefix editors/vscode run test:unit",
+      "npm --prefix editors/vscode run package",
+      "Set CPPULSE_VSCODE_EXECUTABLE,CPPULSE_HOST_CLI,CPPULSE_HOST_WORKSPACE,CPPULSE_HOST_STORE,CPPULSE_HOST_REPORT,CPPULSE_HOST_ARTIFACTS and run npm --prefix editors/vscode run test:host on a working real host."
+    ],
+    "full_qualification": [
+      "python tools/dev.py verify --scope full --candidate EXACT_CANDIDATE --native-prefix EXACT_NATIVE_PREFIX --benchmark-suite ACTUAL_SUITE --output-dir review/continuation-full",
+      "Review tools/dev.py parser/declared prerequisites first; no success is promised while Docker/candidate/benchmark prerequisites are unavailable."
+    ]
+  },
+  "source_and_handoff_sha256": {
+    ".github/workflows/ci.yml": "fba4c7171a9131604aca27475d5de4b21040e118d32a14143f8d7f405d65dacf",
+    ".gitlab-ci.yml": "7b9a7bec9e161a2aa8abdae31bda40a968a2be64caf45eb02d64bd956de0b49d",
+    "README.md": "ea357662eb77372d02c737f42fa5b35a147f26b1a0f8b293c3cc647cd9d3c2bb",
+    "analyzer-core/CMakeLists.txt": "cf234e0a417a0f779e95cc3c0108c9799dae5ed4783e58632cf7b65950c6df28",
+    "analyzer-core/src/analyzer.cpp": "cba465aba3744572a7ba8b178a57a2b389caeda0ff7e8dc5c06b9b91bb7e1213",
+    "analyzer-core/src/config.cpp": "9bddb4cdb8712440134a95c57b49740a1d0055b2f773a5c70508c81c46649035",
+    "analyzer-core/src/main.cpp": "93dc78ed2b9b2bc8add71168185ee1218131d8b46b5cc7e1c938a8d8be15d111",
+    "analyzer-core/src/metrics.cpp": "7e6ca11eda098e86a3a29f41291c3afbb705c89e0eb5449afd3f91f3483f10c4",
+    "analyzer-core/src/metrics.h": "2f2b9c11c4ddbbf6dac414f70a01bfcfc8b45f76df3a86e49cc5c70b255d3fd2",
+    "analyzer-core/src/output_writer.cpp": "b82df573fdf2c6fef5189a4e2c4e66715837dbb055cc773f775ae8e9d22a1b5d",
+    "analyzer-core/tests/test_native_metrics.cpp": "b0b9bc4c5d7e582ca2b5ff67fff194e2e9b69ec3361c03e20fa08f7d451b6c31",
+    "analyzer-core/tests/test_rule_regressions.cpp": "8cef30617e04ad8023d6fb402797597d4a4f2bbe455ae5bb321dc5d21953adf2",
+    "cli/CMakeLists.txt": "7e64ecaa7faab9764816c8fba8f4895b3a0e8fa859e211a049b6c2c2f1f49b4f",
+    "dashboard/src/App.tsx": "93cf68009471762f50a35a39ae4a3b1ba29fd85ae651597361ab7341dd5c8c38",
+    "dashboard/src/api/client.ts": "e9a5746b86a561dfaa3dfa4df1e1fac43b0ae4a01f8c445ff98f01a48492fa56",
+    "dashboard/src/components/RiskPrediction.tsx": "abd7f770aaeb179a27ba05e9c67372420f2ed06992cdf095a2d41d65bb7b8cc1",
+    "docs/DECISIONS.md": "dfeb2e53a334931d671c4517f00472f6e325c1498e22945cc48bcd333ce3992b",
+    "docs/checkpoints/20261114/agents/editor_host_resume.json": "267f92d3e2a0554ddfd87f1ea5c02fab33f9c526b490cf204103ff6feaeea79f",
+    "docs/checkpoints/20261114/agents/editor_host_resume.md": "2b5c4132a9b441cfc6bd1afe090eefbeab065a7d77350f1eab0bdff2a475558f",
+    "docs/checkpoints/20261114/agents/native_metrics_resume.md": "dcb3834bfa881cb7969fab315a2cdef1bbef4f3710af12b9a107ca1929a40111",
+    "docs/checkpoints/20261114/agents/policy_runtime_resume.json": "0f7ba7620a99da65813dad2b6d9a716d6bb944c32e499c1626a158aaaf327f59",
+    "docs/checkpoints/20261114/agents/policy_runtime_resume.md": "34ec9f57d8b95859ec04e12a262b24800632f3a6c47e5fd3c9f0f07674124ffe",
+    "docs/checkpoints/20261114/agents/python_metrics_resume.json": "431e8237e09bc69d2f6c22e55e92db1a901a315a5172d7057bca6ea78c481651",
+    "docs/checkpoints/20261114/agents/python_metrics_resume.md": "35ba217b89a6b33a5f121cbec5f56c1805eeb199878b885d49daf10d88de3cd4",
+    "docs/checkpoints/20261114/agents/scale_runtime_resume.json": "9816b491cc91fa0e0ad7e37856de3e5966e21ec0de20bd515f2d9ac16058366d",
+    "docs/checkpoints/20261114/agents/scale_runtime_resume.md": "f600107d8310a4103fedd9cf0b3665a8af10f8c5adf15289c3c6f8e7a8a2063f",
+    "docs/contracts/maintenance-metrics.md": "abac88bbd1d53bb53d9e9e81e8576c6c2661c09cbe06034ee26914625e2b1bb1",
+    "docs/contracts/work-units.md": "d7eb4e992f436ee6dbea97c2af495e38c4822833a878ba9f0684d07586af1d45",
+    "docs/development/workflow.md": "488f8694fd1a8d4dfb6e3e419c48ac5b3b4ee1330e17e22e2934d6077e81eb76",
+    "docs/editor-vscode.md": "c8c62645cf45f427f2fdad192b69b4354c25678948d1227dbb61ded3cdee9058",
+    "docs/plans/cppulse-production-completion-plan.md": "0ec9625633ed2c8fdcdf6e7e7a883d23399d0b241a202aeea248ed6b7c3d7de6",
+    "editors/vscode/artifacts/cppulse-0.2.0-preview.vsix": "7fe2986147195f01739f64d69ad2c92a7ffc4cc219c581cbc10741ffcab4d8e0",
+    "editors/vscode/contracts/client-protocol-v1.md": "d2ef9eed9a409465b3962998edefe9d63337b8c0352835c68b8622f387f2fc13",
+    "editors/vscode/src/extension.ts": "65a7a0bc16b4f38574d9440388df30c60267f627858057b31572d5572296c61c",
+    "editors/vscode/src/process.ts": "6960031509f38dc68e2435900f6e57a92faca7c2f5c6c1949b3b85b61721259e",
+    "editors/vscode/src/protocol.ts": "d0609361ffd362634c2c4f13cd23b27843723d6486192001f3f2a903522f7f27",
+    "editors/vscode/test/host/index.cjs": "4f0c0be7c6a3068c24222bb194866803c38b931b0da2512945e2b97900db881c",
+    "pyproject.toml": "ffd5f4aab32fd3f832d220b459464e0a636e3237e243e7df16f55e7fb9d90a8f",
+    "python/cppulse/__init__.py": "f0c86fb816a2c4a7f2003aed5fd64756289a3a63f27468b9b60305c5c004c3fb",
+    "python/cppulse/analysis.py": "887280544acd6778a2331085eec9c88a3894de8508c4d7d2e281c48500235e0b",
+    "python/cppulse/cli.py": "a4b0f4b49a76a835f7f1df6de6b0ec7bc766f88e2e519e848f43c7f47889469e",
+    "python/cppulse/client_contract.py": "20c3db2a21ef204cd64188bc3a16e96f8f28b6d1385db0069205755c33977b7c",
+    "python/cppulse/collection.py": "294d5b7ecb43f0024d93ee36ff918664c8609a5f83848412accad0cd02b715f1",
+    "python/cppulse/config.py": "0ddaa67420e4420790c032df61cb0e38c039744580c3a43297e3f38a72ed5040",
+    "python/cppulse/consumer.py": "85b824f5e542241ce114dab9eb8f3222981b4dc7ffa29057499b882c4887ebe3",
+    "python/cppulse/contracts/finding_workflows.py": "ed3b8875db46c17c8d3ef72024eee4fb855da1579c663946fa47263122048425",
+    "python/cppulse/contracts/maintenance.py": "51473eb20e1e5fca7e214a72144071f3a9cf19098b2e6781c0341d3721c5d365",
+    "python/cppulse/contracts/policy_extensions.py": "245444018ba1e241225c2a53e6395ad88d53124d713b54349a4039fcafadb90c",
+    "python/cppulse/contracts/schemas/install_v1/client_capabilities.schema.json": "83bea53c355fc0d899d34e6978b533e4a00a15f72d65efaec43b1ac979e2131d",
+    "python/cppulse/contracts/schemas/v2/analysis_metrics.schema.json": "3084c6797da0da54b05094cf9420793598ec5119f9a16b39dbf1118e265a5b65",
+    "python/cppulse/contracts/schemas/v2/maintenance_health.schema.json": "d47b8d85a61d70f7eeaf34351e931f213fca350e9556e78640ff230e170f63e3",
+    "python/cppulse/contracts/schemas/v2/policy.schema.json": "ebe5fe7445e92bcfffba735cb66c82b640acd13b5f548f4a66db9f11c6808869",
+    "python/cppulse/contracts/schemas/work_units_private/work_request.schema.json": "89d1248919b3d38f4d05db3c87ea07046b9b33de0b7e65689081e4e2880c6728",
+    "python/cppulse/contracts/verification.py": "c6793d3896a9270301f2e4d29623b6e900735e3967fc4e4a75ea10361daa6ae3",
+    "python/cppulse/coverage.py": "ab054e6b0d44c4c5fdddcb0e5971f78853302dd7663c6c08ec29b35a9d72dd02",
+    "python/cppulse/data/Cppulse.cmake": "79b30681f8f3f315407b2059e1a6d62f527adba260e8a671c90ddeea684a2750",
+    "python/cppulse/data/policies/organization-example.json": "4ce08c5e66efabf363a14db8b6070416c208760f3cf5921014ec248d876ea2ef",
+    "python/cppulse/data/policies/starter.json": "61711cd6792bfa1e118f737ff7671064f272223e899e78a928438117cca5120e",
+    "python/cppulse/data/policies/verification-example.json": "185c5d36ff68aa4d6631d9ed052acaab530768dc7aecfaaf4dae03b26b3aa2af",
+    "python/cppulse/data/templates/pre-commit.example.yaml": "7f343d4bec4d31a064196ce5229c189414fb246ea5a1ca1f7790d7f3f41019fd",
+    "python/cppulse/execution.py": "a1825456ca58fbfa6652a6d28243cbb0866ef0fa7bc2456c42433c95ab604aed",
+    "python/cppulse/findings.py": "6700b410875d2e0a8f6c474d8e8c9d254a341a9dfe4f3b6b6bcd6e880e0e3c74",
+    "python/cppulse/git_miner/history.py": "e59c46dc68e5c87cefa5df913d80063d891dc11fc7c36b08c63ea1dceb68483a",
+    "python/cppulse/git_miner/szz_labeler.py": "4c574f02c2db735bc7a6f714f27f436ef1b2622781a19c70af4b6a227edff95e",
+    "python/cppulse/native.py": "580d662990407067b96fd3d697d6c5fd7e6af694d7130f2c38487a49e9206ab9",
+    "python/cppulse/pipeline.py": "1959673f8a7afda0b3b27a5133790603838b3a6e6f18350d7eb160097821d61a",
+    "python/cppulse/policy.py": "0073ed90b81ac376a65c972c4e9d62367918c79616bd2f6b08beee8a7e0eaf37",
+    "python/cppulse/policy_extensions.py": "a420873d01bc3e37f0a1c3554519493db7569dbd191e21b8299749be16350cde",
+    "python/cppulse/predictor/feature_engineer.py": "12b52161eefc226dd5295ab20ac0367671b311571f4453d10764646acc7f42be",
+    "python/cppulse/predictor/health_scorer.py": "4cae7bc53ee7c62dc0062a8e03c69e86c5cbb879017bc6652321fb6561cd9b19",
+    "python/cppulse/predictor/model.py": "7c0c1f0c7c5860df17ed7267ded222114fd3db4ed352e4678a8d18231232fe4c",
+    "python/cppulse/presentation.py": "4b2074f7995dc81f6eac9f7dbcd36c21c8bae234ee27f71f718d679b7253eb1a",
+    "python/cppulse/report_engine/api.py": "f04f44a790f9766df61834e776ae28ca32d2477be14a3406cbf79d10a1d3da08",
+    "python/cppulse/report_engine/templates/report.html": "d4b63efd539c640f511f540ce4439a0978c81ae3ede0a0383a8dbbb5e2f8ee2c",
+    "python/cppulse/run_store.py": "84c42e0c2547fd35022851cf61abfb01b0811ab24dc92742bea2e04a275d3ef4",
+    "python/cppulse/sanitizers.py": "09e1962e109a04afc3c02347cfc6af222e337b8df5bf997269176e3d7eeca572",
+    "python/cppulse/sarif.py": "54ac44fe671ee3f1850dbefcf7a57f28e944dc45e2d4c8109028f957883fdb26",
+    "python/cppulse/tooling.py": "10f15acc11fb9d0ced31147337c6f88b84457b1994088ef1616b588c5e30e5d0",
+    "scripts/check_generated.py": "f8dea3d23a43842385be26d8cb1311f4bec609d9d3b5cc752686cae14e976ba5",
+    "scripts/check_local.py": "7fb29e3165e899a0872da2fa41304cbd13d58792a8a0b7a50e7516513e9521bf",
+    "scripts/integration_test.sh": "913cec1f6cb2ccab2a091eaa83113476333cf676599004f22c0e6e2129638136",
+    "scripts/package_candidate.py": "03bbfcda45d1f62cbd522ae0b31801734aa0b130bb0ca0295b5d198bd0abbee9",
+    "scripts/package_native.py": "2c4bdd5b3ca687394ef4a669157947a649e37486fcea98576f1d42494f522709",
+    "scripts/run_real_corpus.py": "c8748b96399c418b2f0244005da43775dfd04a53bb47b35bdc4595f71cc5e70c",
+    "scripts/verify_pipeline.py": "e9ec5932031a0f8cf1978abc84c6a6ae5f12091dba746bd454875890de7697ac",
+    "scripts/verify_snapshot_web.py": "a5c45aa1dd498ac7dc5314cd229456fa1d0e9dc12d29e0a384a0886257474bbc",
+    "scripts/verify_web_demo.py": "eec223799e577aba4819ed6f3fc55a67dd7d07dfb237ac058d4f43ac7f80c83f",
+    "tests/test_cli_exit_contract.py": "71b9b2c641a34b7aed444dba37b671fd97524f58f9bff0581ab8c24ace44bb93",
+    "tests/test_cmake_check_helper.py": "86dea2b82cd8b92e3fafefa994de0485cdd310137a565b078bd7eef315758cc5",
+    "tests/test_effective_config.py": "13094d75d1716373d9dbb82d60a89b0264cc8e860a045e0748a19a4ff9579440",
+    "tests/test_maintenance_trends.py": "90413d21df573b5af97ae40cc7d0f3dcf8c3ee0719e431f7607a43fc36da77d5",
+    "tests/test_policy_extensions_runtime.py": "c865e69accbc05ebc244e801de8bcb3a665881fb13308fe369294f1e503be1da",
+    "tests/test_work_unit_runtime.py": "2127cbb195ac6b505c45abfe53335bd10d9a57501de8abd76dd8f193927762fb",
+    "tools/benchmark.py": "bedbcf82c9ce5efa7082044536ddb097d2a5350ea10dd2ff9776b27982d886c9",
+    "tools/contracts/development-result.schema.json": "a803cd6ba7bde5a753adea6ac70fab06477c8d548642ec43bfad44bc401ad6fd",
+    "tools/dev.py": "fc749a4efc30af62dc2aec169bd964d137494e6a6f3dadddc827757d4793a8e2",
+    "review/cloud-handoff-verification-20261114/native/check.json": "3259aa0c50a0044d7bb2f0b4de5abe0216ef7c187cc0ee073c6e26350186ad3f",
+    "review/cloud-handoff-verification-20261114/native/configure.log": "a4e7e6bb95f8e80dcb8c4586b6c804dc25d04c195d6af757cd7ecfded349b052",
+    "review/cloud-handoff-verification-20261114/native/build.log": "4cb444560e627f135c2fe6e98432bc8978fff6f3303702c53c1b7d7b1a3e19e7",
+    "review/cloud-handoff-verification-20261114/native/ctest.log": "17e266132578a4744aa615259dd68388c6821d933471b2c03913bbd18a4730a0",
+    "review/cloud-handoff-verification-20261114/python/check.json": "51514d65a399fa70c8b08ff3e1ff5ef1dd948ebb916789351e28d58bcabb5939",
+    "review/cloud-handoff-verification-20261114/python/output.log": "47dde7723271ff637c3350b5acb5a16b38ef6a6434af73fd6f47b160d971a1ff",
+    "review/cloud-handoff-verification-20261114/collection/check.json": "47aeafa38b4c69427748982df3c15f2ad882354800fa90d28e33f69c24798d00",
+    "review/cloud-handoff-verification-20261114/collection/output.log": "f04844516a99d12ae150fe2e2dff9f352549fa6bbe350d6a69c008ccec097937"
+  },
+  "tasks": [
+    {
+      "id": "M0-01",
+      "requirement": "Inventory current worktree, origin/main 82120d2, health-score-v2 history, and preliminary drafts. Preserve unrelated files and existing working code. | Recorded baseline and merge/reuse plan; no duplicate implementation of existing fixes",
+      "specification_reference": "docs/specs/production-platform/tasks.md:76",
+      "original_status": "verified",
+      "status": "verified",
+      "full_task_scope_closed": true,
+      "closure_basis": "Recorded inventory/provenance scope only; not a runtime or milestone closure.",
+      "source_code": [
+        "docs/plans/cppulse-production-completion-plan.md",
+        "docs/DECISIONS.md"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/environment.json",
+          "available": true
+        },
+        {
+          "path": "review/HANDOFF.md",
+          "available": true
+        },
+        {
+          "path": "docs/plans/cppulse-production-completion-plan.md",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Recorded provenance/reuse inventory remains available; no runtime completion is inferred.",
+      "remaining_work": "Maintain exact frozen/source/artifact provenance through the handoff; inventory scope itself is satisfied.",
+      "historical_audit": {
+        "implemented_code": "review/environment.json:1; review/HANDOFF.md:8–20; docs/DECISIONS.md:139–140; preserved native engine and legacy wrappers",
+        "verification_evidence": "Recorded baseline b89dce9 and inspected cached main 82120d26. The handoff records selective reuse of the shallow-Git helper/tests, without merging. Current source and snapshot manifests retain provenance.",
+        "remaining_work": "Keep uploaded and current provenance separate; avoid blind merges or overwriting newer files."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-02",
+      "requirement": "Define canonical identities, manifest/status envelopes, configuration/version compatibility, scorer availability, and model metadata schemas. Reconcile draft contracts. | Draft-07 and semantic validation; legacy fixture compatibility",
+      "specification_reference": "docs/specs/production-platform/tasks.md:77",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/contracts/maintenance.py",
+        "python/cppulse/contracts/policy_extensions.py",
+        "python/cppulse/contracts/schemas/v2/analysis_metrics.schema.json",
+        "python/cppulse/config.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "New measured/duplication and policy1.2 semantics plus private work-unit draft contracts exist.",
+      "remaining_work": "Accept producer/schema integration, work-unit runtime semantics, fingerprint migration and remaining compatibility before closure.",
+      "historical_audit": {
+        "implemented_code": "contracts/schemas/{legacy,prototype_v1,v2}; contracts/validation.py; config.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+        "remaining_work": "Finalize the missing metric, reviewed-evidence, fingerprint and scorer contracts. Make native and public configuration errors consistent."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-03",
+      "requirement": "Add regressions for absolute/relative paths, separators, basename collisions, empty/partial scope, missing context, profile propagation, and incorrect model labels. | Reproductions demonstrate the pre-fix behavior",
+      "specification_reference": "docs/specs/production-platform/tasks.md:78",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "tests/test_cli_exit_contract.py",
+        "tests/test_effective_config.py",
+        "analyzer-core/tests/test_rule_regressions.cpp",
+        "analyzer-core/tests/test_native_metrics.cpp",
+        "tests/test_work_unit_runtime.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-cli/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/actual-verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/green-final.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Meaningful red/green reproductions added for config/partial exits, native detector defects, metrics and editor pins/bounds.",
+      "remaining_work": "Complete supported compiler/context/flag/platform regression matrix; latest metrics/scale/runtime integration remains red or unrun.",
+      "historical_audit": {
+        "implemented_code": "tests/test_identities_v2.py; tests/test_contracts_v2.py; tests/test_pipeline_failures.py; producer/component regression tests",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Fresh probes also exposed uncovered complexity, template traversal, auto detection, partial-exit and configuration-ambiguity cases.",
+        "remaining_work": "Add small failing regressions for delivered defects and all supported context/flag cases. Preserve existing test expectations."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-04",
+      "requirement": "Correct producers, configuration propagation, per-file parse outcomes, rule execution facts, generated/vendor scope, and no-Git handling. Reuse newer branch fixes. | Producer output validates; valid partial facts survive failed units",
+      "specification_reference": "docs/specs/production-platform/tasks.md:79",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "analyzer-core/src/analyzer.cpp",
+        "analyzer-core/src/config.cpp",
+        "analyzer-core/src/metrics.cpp",
+        "python/cppulse/analysis.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Configurable16MiB default replaces500KiB skip; template/detector fixes, actual raw native metrics, selected-file and guard work exist.",
+      "remaining_work": "Fresh current combined native source builds and139CTest pass. CR-onlyLOC defect, missing unresolved include edges, full context/generated/vendor/external dependency scope and isolated scheduler remain.",
+      "historical_audit": {
+        "implemented_code": "analyzer-core/src/{analyzer,compilation_database,file_discovery}.cpp; analysis.py; config.py; git_miner/history.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "Fix the 500-KiB skip, configuration ambiguity and template traversal. Isolate work units and complete generated/vendor/context-flag scope and external-dependency identities."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-05",
+      "requirement": "Correct feature joins, score prerequisites, actual complexity availability, heuristic metadata, label provenance, and false clean-state handling. | Consistent equations; no fabricated complexity/probabilities/perfect missing-data score",
+      "specification_reference": "docs/specs/production-platform/tasks.md:80",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/predictor/feature_engineer.py",
+        "python/cppulse/predictor/model.py",
+        "python/cppulse/predictor/health_scorer.py",
+        "analyzer-core/src/metrics.cpp"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Per-file unranked availability and truthful experimental ranking fixed in retained focused proof; measured raw native producer added.",
+      "remaining_work": "Measured normalizer/scorer/hotspots and duplication absent; preserve incomplete scope and implement design density/worst-required-context method with migration.",
+      "historical_audit": {
+        "implemented_code": "predictor/{feature_engineer,health_scorer,model,roadmap_generator}.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "Correct 0%/LOW labels on partially analyzed files and unsupported probability wording. Add measured metrics/hotspots and the specified density/context scorer with migration."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-06",
+      "requirement": "Update reports and CLI output to expose partial/unknown state; fix existing advertised command/format behavior and baseline matching. | CLI and rendered results agree; no silently ignored format/profile options",
+      "specification_reference": "docs/specs/production-platform/tasks.md:81",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/cli.py",
+        "python/cppulse/pipeline.py",
+        "python/cppulse/report_engine/api.py",
+        "python/cppulse/report_engine/templates/report.html",
+        "dashboard/src/components/RiskPrediction.tsx"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-cli/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/actual-verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/green-final.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Partial/no-data exits3, operational2 and config ambiguity corrections have focused/actual subprocess proof; unavailable-ranking/history displays improved.",
+      "remaining_work": "Human-default CLI and complete effective context remain; run current exact-artifact/rendered/interface qualification after integrating unfinished work.",
+      "historical_audit": {
+        "implemented_code": "cli.py; pipeline.py; presentation.py; report_engine/templates; findings.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. A fresh partial-analysis probe returned exit 0 despite the documented exit 3.",
+        "remaining_work": "Fix exit status, configuration ambiguity, misleading ranking labels and unsupported absence-of-knowledge-risk wording. Verify all presentation contracts."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M0-07",
+      "requirement": "Verify all existing components and regenerate a small pinned example before refreshing larger examples. | Tests, schema results, semantic score verification, and documented remaining limitations",
+      "specification_reference": "docs/specs/production-platform/tasks.md:82",
+      "original_status": "verified",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "scripts/check_local.py",
+        "scripts/verify_pipeline.py",
+        "scripts/run_real_corpus.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Historical broad green is separate. Fresh79665c4combined native configure/build and139CTest pass; selected root453pass. Full root collection still has4missing-module errors.",
+      "remaining_work": "Implement/resolve intentionally unfinished metric/scorer/duplication/trends/work-unit consumers, rerun complete root/component suites and qualify current installed artifacts; scoped green does not close all existing components.",
+      "historical_audit": {
+        "implemented_code": "scripts/prepare_demo_fixture.sh; scripts/verify_pipeline.py; scripts/run_real_corpus.py; component checks",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "The small synthetic fixture and existing native local components were verified. This does not complete Docker, accuracy, six-corpus or production milestones."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-01",
+      "requirement": "Define verification-result and package-version manifests; freeze the initially supported dependency/platform matrix. | One documented source of versions and compatibility expectations",
+      "specification_reference": "docs/specs/production-platform/tasks.md:91",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "pyproject.toml",
+        "tools/contracts/development-result.schema.json",
+        "scripts/package_candidate.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Development/result schemas and exact source/log identities improved.",
+      "remaining_work": "Freeze and actually exercise complete GCC/Clang/libclang/Python/CMake/platform matrix and artifact compatibility.",
+      "historical_audit": {
+        "implemented_code": "pyproject.toml; requirements-verification.txt; candidate version manifests",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Freeze the declared and actually tested GCC/Clang/libclang/Python/CMake/platform matrix. Do not infer Windows or macOS support."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-02",
+      "requirement": "Add the cross-platform local development runner around existing CTest/pytest/dashboard tools. | Full run invokes every required suite and returns machine-readable failures",
+      "specification_reference": "docs/specs/production-platform/tasks.md:92",
+      "original_status": "partial",
+      "status": "implemented but unverified",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "tools/dev.py",
+        "scripts/check_local.py",
+        "tools/benchmark.py",
+        ".github/workflows/ci.yml",
+        ".gitlab-ci.yml"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Portable facade for doctor/verify/generators/benchmark/package/release-dry-run exists;73 focused tests and CI-source delegation checks passed.",
+      "remaining_work": "Actual full current-source runner invocation with final installed candidate, required performance/integration stages and other promised hosts remains unverified; declared stages alone do not close task.",
+      "historical_audit": {
+        "implemented_code": "scripts/check_local.py:71,243,322",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+        "remaining_work": "Add native formatting/lint, installed-package, performance and integration stages to one portable local entry point. Docker remains unavailable in this environment."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-03",
+      "requirement": "Consolidate common Python contracts/configuration with compatibility entry points. Separate development and optional runtime dependencies. | Existing component commands and isolated installs both pass",
+      "specification_reference": "docs/specs/production-platform/tasks.md:93",
+      "original_status": "verified",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "pyproject.toml",
+        "python/cppulse/__init__.py",
+        "python/cppulse/config.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Namespaced package/wrappers and absent optional PDF/web/ML operation retain historical proof.",
+      "remaining_work": "Current combined-source clean installation and promised Python versions unqualified; GitPython/numpy/pandas remain core dependencies, so optional Git/risk separation is incomplete.",
+      "historical_audit": {
+        "implemented_code": "python/cppulse namespace; legacy src compatibility shims; pyproject.toml optional dependency groups",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Retain compatible wrappers. Verify Python 3.11 and separate the runtime Git/risk dependency footprint in the next support matrix."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-04",
+      "requirement": "Extend CMake with install targets, package core artifacts, and build the Python distribution and optional components. | Analyze from an empty working directory using only installed artifacts",
+      "specification_reference": "docs/specs/production-platform/tasks.md:94",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "analyzer-core/CMakeLists.txt",
+        "cli/CMakeLists.txt",
+        "scripts/package_native.py",
+        "scripts/package_candidate.py",
+        "python/cppulse/native.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Native/Python packaging exists; p2-resumed fresh core wheel installation passed at its earlier copied source.",
+      "remaining_work": "Rebuild final native+wheel exact frozen source outside checkout; complete CPack/support matrix/dependency closure. Older installed native is not final-source proof.",
+      "historical_audit": {
+        "implemented_code": "CMake install targets; scripts/package_native.py; scripts/package_candidate.py; native.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Rebuild the exact current candidate and complete CPack/platform artifacts and tested install dependency closure. The current native artifact is a custom Linux archive."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-05",
+      "requirement": "Complete integration fixtures: actual outputs, volume extraction, PDF generation, API queries, and browser-level dashboard checks. | Integration fails when any promised output or consumer is broken",
+      "specification_reference": "docs/specs/production-platform/tasks.md:95",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "scripts/integration_test.sh",
+        "scripts/verify_pipeline.py",
+        "scripts/verify_web_demo.py",
+        "scripts/verify_snapshot_web.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing non-container web/PDF/dashboard fixtures and refreshed presentation focused checks remain available.",
+      "remaining_work": "Actual Compose one-shot, failure/repeat/shutdown and named-volume extraction with current candidate remains unrun; no Docker success inferred.",
+      "historical_audit": {
+        "implemented_code": "scripts/integration_test.sh; scripts/verify_pipeline.py; scripts/verify_web_demo.py; scripts/verify_snapshot_web.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Execute Compose one-shot services and named-volume output extraction. Native browser/PDF proof does not establish that Compose works."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-06",
+      "requirement": "Generate candidate versions, changelog, checksums, notices, dependency inventory, support matrix, and verification manifest. | A retained candidate can be reproduced and installed; dry-run publication changes no external state",
+      "specification_reference": "docs/specs/production-platform/tasks.md:96",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "scripts/package_candidate.py",
+        "tools/dev.py",
+        "tools/contracts/development-result.schema.json"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Exact candidate/source/log-bound dry-run guards implemented and focused-tested.",
+      "remaining_work": "Produce/reinstall final locked candidate with changelog, notices, inventory/SBOM/support matrix and actual full verification before release dry-run acceptance.",
+      "historical_audit": {
+        "implemented_code": "scripts/package_candidate.py:368; candidate checksums, notices, inventory and manifests",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Build the exact HEAD candidate with locked dependencies, support matrix, changelog and dependency inventory/SBOM. Reproduce installation and verify a release dry run."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M1-07",
+      "requirement": "Add rule/adapter generators and generated-documentation checks; make existing CI call shared local commands. | A generated extension passes registry/contract checks only after meaningful fixture implementation",
+      "specification_reference": "docs/specs/production-platform/tasks.md:97",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/tooling.py",
+        "scripts/check_generated.py",
+        ".github/workflows/ci.yml",
+        ".gitlab-ci.yml"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing CI now calls shared developer facade; generated docs/config checks and incomplete scaffolds remain.",
+      "remaining_work": "Native registration/integration generation and meaningful generated rule/adapter implementation/fixtures still incomplete; CI files changing does not prove CI execution.",
+      "historical_audit": {
+        "implemented_code": "tooling.py; scripts/check_generated.py; tests/test_local_tooling.py; local action wrapper",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. Existing CI files were inspected: they do not delegate to check_local.",
+        "remaining_work": "Generate native registration/integration metadata and make existing CI invoke shared local commands. No new external service is needed."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-01",
+      "requirement": "Define work-unit/dependency/cache identities, checkpoints, and committed snapshot semantics. | Contract fixtures cover crashes, incomplete graphs, and stale/latest races",
+      "specification_reference": "docs/specs/production-platform/tasks.md:105",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/run_store.py",
+        "docs/contracts/work-units.md",
+        "python/cppulse/contracts/schemas/work_units_private/work_request.schema.json"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "23 structural draft contract tests passed; private draft copies and retained immutable publication exist.",
+      "remaining_work": "Register checked semantic runtime identities, dependency completeness/checkpoints/reuse profile; work_units runtime absent.",
+      "historical_audit": {
+        "implemented_code": "run_store.py; contracts/schemas/v2/run_manifest.schema.json; identities.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+        "remaining_work": "Define dependency graph, cache and per-translation-unit checkpoint identities. Immutable publication alone is not a resumable scheduler."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-02",
+      "requirement": "Introduce bounded analyzer workers, per-unit time/resource limits, cancellation, and explicit large-file policy. | Limits respected; a crashing parser does not erase other results",
+      "specification_reference": "docs/specs/production-platform/tasks.md:106",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "analyzer-core/src/main.cpp",
+        "analyzer-core/src/analyzer.cpp",
+        "python/cppulse/execution.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Finite file selection, native LinuxCPU/address-space/file-size guards and run_bounded_process wrapper exist.",
+      "remaining_work": "Latest combined native guard source now builds and139CTest pass. Scheduler/work-unit isolation, actual configured resource/fault behavior and final installed/platform acceptance remain incomplete. Token retention does not bound libclang token allocation.",
+      "historical_audit": {
+        "implemented_code": "execution.py:398,697,753; analyzer-core/src/analyzer.cpp:27,355",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements. /workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-large-header-probe/verification.json: a 562,577-byte header was skipped, a small header was analyzed, and the native exit was 0.",
+        "remaining_work": "Implement isolated native workers, memory/CPU limits and configurable large-file handling. Recipe concurrency is not the proposed AST worker pool."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-03",
+      "requirement": "Implement dependency-aware facts caching and separate assessment caching. | Clean versus cached results agree for source/header/flag/tool/policy edits",
+      "specification_reference": "docs/specs/production-platform/tasks.md:107",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Private cache schema/design only; no cache runtime.",
+      "remaining_work": "Implement checked extraction/assessment caches, conservative dependency invalidation, immutable original lineage and clean/reused semantic equality.",
+      "historical_audit": {
+        "implemented_code": "No dependency-aware facts or assessment caches were found. findings.py:37 requires full collection.",
+        "verification_evidence": "No clean-versus-cached semantic comparison matrix exists.",
+        "remaining_work": "Implement compatible cache keys, invalidation and conservative handling of unknown dependencies before enabling reuse."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-04",
+      "requirement": "Stream reusable Git records, handle history rewrite/shallow cases, and checkpoint incremental mining. | Complete and resumed history metrics agree on controlled histories",
+      "specification_reference": "docs/specs/production-platform/tasks.md:108",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/git_miner/history.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No new streamed/resumable history runtime established.",
+      "remaining_work": "Stream/persist history and test append/rewrite/shallow checkpoints against clean results.",
+      "historical_audit": {
+        "implemented_code": "git_miner/history.py:100; shared HistoryScan consumed by derived metrics",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+        "remaining_work": "Replace materialized commit/change lists with streamed or persisted history. Support append, rewrite and shallow-history resume; compare clean and resumed metrics."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-05",
+      "requirement": "Publish immutable runs atomically and add indexed history/catalog queries and bounded result aggregation. | Readers never mix runs; interruption recovery and catalog migration pass",
+      "specification_reference": "docs/specs/production-platform/tasks.md:109",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/run_store.py",
+        "docs/contracts/work-units.md"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Immutable run publication remains; index/checkpoint drafts do not implement runtime.",
+      "remaining_work": "Indexed catalog/migration/recovery, accepted checkpoints and bounded aggregation remain absent.",
+      "historical_audit": {
+        "implemented_code": "run_store.py:408,432,576; snapshot API and presentation",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/reconciliation-audit-20261114/scale-focused-pytest.log: 157 tests passed in 16.81 seconds for execution, RunStore, tooling, namespace migration and compatibility. These are functional checks, not scale measurements.",
+        "remaining_work": "Add indexed history/catalog storage, migration/recovery and bounded aggregation. Preserve coherent reads and explicit incomplete attempts."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-06",
+      "requirement": "Add stable pagination to the API and efficient dashboard access for large findings sets. | Bounded page size and one-run cursor consistency",
+      "specification_reference": "docs/specs/production-platform/tasks.md:110",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/report_engine/api.py",
+        "dashboard/src/api/client.ts",
+        "docs/contracts/work-units.md"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Legacy paging exists; immutable cursor structural drafts added.",
+      "remaining_work": "Implement indexed bounded run/query-bound pages and efficient dashboard access; whole-view slicing is not scale acceptance.",
+      "historical_audit": {
+        "implemented_code": "report_engine/api.py: legacy finding page/per_page slicing and shared snapshot view",
+        "verification_evidence": "The legacy page size is capped at 200, but there is no indexed cursor/history query or measured large-view resource budget.",
+        "remaining_work": "Add indexed bounded queries, pagination pinned to one run, and efficient dashboard pages. Avoid downloading and slicing the complete JSON data set."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M2-07",
+      "requirement": "Benchmark 1K/10K/100K-file tiers and representative histories on a named host. Set measured release budgets. | Published cold/warm/edit timing, memory, completeness, and comparison results",
+      "specification_reference": "docs/specs/production-platform/tasks.md:111",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "tools/benchmark.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [
+        "tools/benchmarks/reference.json"
+      ],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/scale_runtime_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r3-work-unit-contracts/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p5-resume/runtime-red.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Generic benchmark runner measured selected developer commands, not required workloads.",
+      "remaining_work": "Execute named-host1K/10K/100K files/history tiers, clean/cache equality and repeated resource measurements; freeze real budgets.",
+      "historical_audit": {
+        "implemented_code": "No 1K/10K/100K-file benchmark tiers or budget runner were found.",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "Create baseline/equality checks and repeated resource measurements on a named host. Freeze budgets from actual measurements."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-01",
+      "requirement": "Define CLI/config/exit contracts and baseline fingerprints. | Compatible invocation fixtures and actionable invalid-input cases",
+      "specification_reference": "docs/specs/production-platform/tasks.md:119",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/cli.py",
+        "python/cppulse/config.py",
+        "python/cppulse/findings.py",
+        "python/cppulse/client_contract.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-cli/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/actual-verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/green-final.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Ambiguity, duplicate configuration keys, partial exits and paired response pins improved.",
+      "remaining_work": "Human defaults/full effective context plus symbol/token fingerprint version/migration and full supported matrix remain.",
+      "historical_audit": {
+        "implemented_code": "cli.py; config.py; contracts/finding_workflows.py; findings.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+        "remaining_work": "Resolve ambiguous configuration, text defaults and partial exits. Add stable symbol/token fingerprint migration and a complete inspectable effective context."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-02",
+      "requirement": "Specify and implement core health/finding-regression gate predicates before exposing check. General evidence-policy packs remain M5 work. | No dependency on the later assurance engine; unsupported policy/evidence options are rejected clearly",
+      "specification_reference": "docs/specs/production-platform/tasks.md:120",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/policy.py",
+        "python/cppulse/findings.py",
+        "python/cppulse/contracts/finding_workflows.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing core/policy gate engine retained; new metric/review extension does not finish independent core-health gate scope.",
+      "remaining_work": "Finish documented independent health/finding gate contract and reject unsupported capability versions; final combined checks required.",
+      "historical_audit": {
+        "implemented_code": "findings.py: separate finding gate; public check workflows; policy.py: scoped predicates",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Complete the independent core-health gate contract and documented predicate behavior. Reject unsupported later policy controls before execution."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-03",
+      "requirement": "Implement init, doctor, effective configuration, explain, check, baseline, and local bug-report commands. Preserve analyze/report/watch. | Clean-machine and outside-checkout journeys; JSON/log separation",
+      "specification_reference": "docs/specs/production-platform/tasks.md:121",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/cli.py",
+        "python/cppulse/config.py",
+        "python/cppulse/client_contract.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-cli/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/actual-verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/green-final.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing public commands plus capability handshake and corrected exits/config errors exist.",
+      "remaining_work": "Concise human-default output and complete inspectable effective configuration remain; clean-machine current-artifact command journey unverified.",
+      "historical_audit": {
+        "implemented_code": "cli.py:33,89,128,476; config.py:61; pipeline.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. Fresh probes reproduced partial-exit and configuration-selection defects.",
+        "remaining_work": "Fix delivered defects. Provide concise human output by default, separate machine output, and a complete inspectable effective configuration."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-04",
+      "requirement": "Install the CMake helper and implement explicit check targets, target/dependency selection, and optional normal-build checks. | A sample application and library use the installed package without custom output parsing",
+      "specification_reference": "docs/specs/production-platform/tasks.md:122",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/data/Cppulse.cmake",
+        "tests/test_cmake_check_helper.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-cli/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/actual-verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-cli/green-final.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Shared installed CMake check helper and earlier focused cases remain.",
+      "remaining_work": "Resolve/preserve3.16 consumer minimum versus helper3.21; test Ninja/actual context capture/libraries/platforms on current installed bytes.",
+      "historical_audit": {
+        "implemented_code": "data/Cppulse.cmake; tests/test_cmake_check_helper.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release. Actual CMake 3.31.6 dependency/enforcement tests ran; the proposed 3.16 consumer minimum was not qualified.",
+        "remaining_work": "Resolve the 3.21 helper versus 3.16 compatibility decision. Exercise Ninja, other platforms and actual context capture. DEPENDS only establishes build ordering."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-05",
+      "requirement": "Add changed-scope checks and SARIF exports; repair the existing PR comparison/action as a consumer of the same engine. | Rename, repeated finding, basename collision, branch, and partial-analysis tests",
+      "specification_reference": "docs/specs/production-platform/tasks.md:123",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/findings.py",
+        "python/cppulse/sarif.py",
+        ".github/actions/cppulse"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Public paired SARIF/editor agreement contract added; no actual host agreement pass.",
+      "remaining_work": "Dependency-aware changed-scope execution, robust symbol/token fingerprints and actual Docker/host wrapper qualification remain.",
+      "historical_audit": {
+        "implemented_code": "findings.py: multiplicity and conservative rename comparison; sarif.py; .github/actions/cppulse",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Complete dependency-aware changed-scope execution and more stable fingerprints. The Docker host wrapper remains unexecuted."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-06",
+      "requirement": "Publish concise quickstarts, troubleshooting, upgrade/rollback instructions, and a supported-environment table. | Every example is exercised by package integration tests",
+      "specification_reference": "docs/specs/production-platform/tasks.md:124",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "README.md",
+        "docs/development/workflow.md",
+        "docs/editor-vscode.md"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Developer workflow and preview installation docs added.",
+      "remaining_work": "Reconcile stale editor Xvfb statement and missing config UI docs; exercise all final documented examples and installation/interpretation review.",
+      "historical_audit": {
+        "implemented_code": "README.md; docs/development/public-cli.md; docs/development/local-check-integrations.md; candidate upgrade/rollback instructions",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Reconcile commands with current defects and full scope. Exercise every documented example using the current candidate and support matrix, and validate first setup with users."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M3-07",
+      "requirement": "Prepare Release A and a free skill/listing containing released commands only; test the skill in a clean agent session. | Verified install artifacts; validated text ZIP; listing describes actual scope; submission status recorded separately",
+      "specification_reference": "docs/specs/production-platform/tasks.md:125",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No released free skill/clean-agent validation or ReleaseA established.",
+      "remaining_work": "Qualify exact ReleaseA artifacts and portable skill/listing using documented released commands; submission/publication remains separate.",
+      "historical_audit": {
+        "implemented_code": "A prototype candidate exists; no qualified Release A or clean-agent skill proof was found.",
+        "verification_evidence": "No published release or clean-agent skill execution is established. Publication is not authorized during this review.",
+        "remaining_work": "Finish release qualification and clean-agent text-skill tests. Treat publication as a separate authorized action."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M4-01",
+      "requirement": "Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit",
+      "specification_reference": "docs/specs/production-platform/tasks.md:134",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "docs/contracts/maintenance-metrics.md",
+        "python/cppulse/contracts/maintenance.py",
+        "python/cppulse/contracts/schemas/v2/analysis_metrics.schema.json",
+        "python/cppulse/contracts/schemas/v2/maintenance_health.schema.json"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Versioned actual metrics,30-token exact duplication, density/context scorer and trend compatibility contracts exist;69 contract tests passed.",
+      "remaining_work": "Complete accepted producer/schema integration and snapshot/compare contract-runtime coherence;69 is contract proof, not measured workflow completion.",
+      "historical_audit": {
+        "implemented_code": "analysis_metrics.schema.json; analysis.py: count/LOC inventory",
+        "verification_evidence": "Contracts are present, but no complete function, duplication or trend facts are produced.",
+        "remaining_work": "Define measured units, versions, contexts, prerequisites and trend compatibility before implementing producers."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M4-02",
+      "requirement": "Emit actual complexity/nesting/length/parameter metrics, then validated duplication and cohesion metrics. | Positive/negative and macro/template fixtures; counts match hand-reviewed cases",
+      "specification_reference": "docs/specs/production-platform/tasks.md:135",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "analyzer-core/src/metrics.h",
+        "analyzer-core/src/metrics.cpp",
+        "analyzer-core/src/output_writer.cpp",
+        "analyzer-core/tests/test_native_metrics.cpp"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/native/ctest.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Actual TU-bufferSHA,LOC/functionCC/nesting/length/parameters,tokens,resolved include edges exist.20earlier native metrics cases remain; fresh79665c4combined native configure/build and139/139CTest now pass.",
+      "remaining_work": "CR-onlyLOC bug, unresolved include edges, raw native output/schema acceptance, normalization, duplication/cohesion and wider macro/template/context validation remain; fresh139nativeCTest is not fullP3acceptance.",
+      "historical_audit": {
+        "implemented_code": "Existing complexity threshold rules; no complete function-metrics/duplication pipeline",
+        "verification_evidence": "Fresh probes showed ordinary && double counting and unvisited template functions. Finding emission is not a measured-metrics stream.",
+        "remaining_work": "Fix detectors, then emit reviewed complexity, nesting, length and parameter metrics. Add validated duplication/cohesion with macro/template fixtures."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M4-03",
+      "requirement": "Calibrate and explain a maintenance profile; compute measured hotspots and precise roadmap evidence links. | Same facts give same scores; no claim of empirical probability or financial ROI without supporting validation",
+      "specification_reference": "docs/specs/production-platform/tasks.md:136",
+      "original_status": "conflicting",
+      "status": "conflicting",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/predictor/health_scorer.py",
+        "python/cppulse/contracts/maintenance.py",
+        "docs/contracts/maintenance-metrics.md"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Design-aligned density/caps/worst-required-context method now specified; old attempted-file runtime remains.",
+      "remaining_work": "cppulse.maintenance consumer absent. Implement explicit migration/new scorer, measured hotspots and fact-linked roadmap; do not relabel old method as design-compliant.",
+      "historical_audit": {
+        "implemented_code": "predictor/health_scorer.py: weighted-findings-per-attempted-file-v2; model.py; roadmap_generator.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "The design requires analyzed-KLOC density/caps and the worst fully evaluated required context. Record an explicit migration/decision for the different current method; add measured hotspots, evidence links and clearly labeled effort estimates."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M4-04",
+      "requirement": "Add history, trends, function drill-down, critical-code markers, and basic debt goals. | Version/context changes break or annotate trends rather than silently continuing them",
+      "specification_reference": "docs/specs/production-platform/tasks.md:137",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "tests/test_maintenance_trends.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/collection/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Red trend tests only; test existence is not implementation.",
+      "remaining_work": "Implement compatible persisted measurements/history/function drill-down/critical code/goals; maintenance module absent.",
+      "historical_audit": {
+        "implemented_code": "No maintenance-history, trend, function drill-down, critical-marker or debt-goal engine was found.",
+        "verification_evidence": "Retained run snapshots are not comparable versioned maintenance trends.",
+        "remaining_work": "Implement measurement-history compatibility and views/goals with explicit gaps and method changes."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M4-05",
+      "requirement": "Expand and review the pinned corpus and resource measurements. | Accuracy sample, false positives, unsupported syntax, and baseline results published",
+      "specification_reference": "docs/specs/production-platform/tasks.md:138",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "scripts/run_real_corpus.py",
+        "examples"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Some retained real/synthetic fixture proof and defect corrections exist.",
+      "remaining_work": "Freshly analyze all six ORIGINAL fmt/grpc/json/leveldb/poco/protobuf with real pinned history; hand-review accuracy and resources; utfcpp does not replace one.",
+      "historical_audit": {
+        "implemented_code": "demo/corpus-lock.json; scripts/run_real_corpus.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow.",
+        "remaining_work": "Run the six original projects with reviewed defect/clean accuracy annotations and resource measurements. Historical examples are not benchmarks."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-01",
+      "requirement": "Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators",
+      "specification_reference": "docs/specs/production-platform/tasks.md:146",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/contracts/policy_extensions.py",
+        "python/cppulse/contracts/verification.py",
+        "python/cppulse/contracts/schemas/v2/policy.schema.json"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/python_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/normalization-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/consumer-red.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-python-resume/trends-red.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Explicit profile1.2 numeric/review contracts and narrow validators added;532 prerequisite tests passed before runtime extension.",
+      "remaining_work": "Finalize actual runtime/producer provenance integration, full semantic/tamper validation and pack resolution/versioning; one focused runtime test still fails.",
+      "historical_audit": {
+        "implemented_code": "contracts/schemas/v2/{context,consumer_matrix,evidence,policy,assessment}.schema.json; contracts/validation.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run.",
+        "remaining_work": "Finalize metric-threshold and review-attestation evaluator contracts, typed extension maturity, and policy-pack resolution/versioning."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-02",
+      "requirement": "Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently",
+      "specification_reference": "docs/specs/production-platform/tasks.md:147",
+      "original_status": "verified",
+      "status": "implemented but unverified",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/coverage.py",
+        "python/cppulse/consumer.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [
+        "python/cppulse/verification.py"
+      ],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Earlier supported CTest/JUnit/LCOV/Cobertura execution-scope adapters and negative cases retain scoped proof.",
+      "remaining_work": "Requalify supported adapter/context cases against final changed contracts/current artifact; broader formats/context/streaming remain explicit limits.",
+      "historical_audit": {
+        "implemented_code": "collection.py; adapters/test_results.py; adapters/coverage.py; consumer.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Named CTest/JUnit/LCOV/Cobertura fixtures and count boundaries were exercised; empty or skipped tests do not automatically pass.",
+        "remaining_work": "Maintain declared producer format/version limits. A broader context matrix and streaming are separate work."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-03",
+      "requirement": "Add ASan/UBSan/TSan collection/import adapters for explicitly supported tool/platform versions. | Instrumented failing/clean samples, uninstrumented runs, empty logs, wrong contexts, and stale artifacts are distinguished",
+      "specification_reference": "docs/specs/production-platform/tasks.md:148",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/sanitizers.py",
+        "python/cppulse/contracts/verification.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing selected sanitizer adapters and typed provenance remain.",
+      "remaining_work": "Complete actual declared ASan/UBSan/TSan platform/version/consumer/instrumented-dependency matrix on final candidate.",
+      "historical_audit": {
+        "implemented_code": "sanitizers.py; adapters/gcc_sanitizer.py; scripts/demo_sanitizers.py",
+        "verification_evidence": "Retained S6 evidence: 12 GNU cases, comprising 3 passed, 4 failed and 5 unsupported. Recovering UBSan failures were retained despite process success; support is limited to named Linux dialects.",
+        "remaining_work": "Expand the declared ASan/UBSan/TSan producer/platform matrix. Keep instrumented dependency-closure limits and unsupported runtime behavior explicit."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-04",
+      "requirement": "Implement the pure policy evaluator, four control outcomes, three scores, gate precedence, and bounded deviations. | Hand-calculated examples and invariants pass; averages cannot override blocking failures/unknowns",
+      "specification_reference": "docs/specs/production-platform/tasks.md:149",
+      "original_status": "verified",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/policy.py",
+        "python/cppulse/policy_extensions.py",
+        "tests/test_policy_extensions_runtime.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Old four-outcome score/gate/deviation code preserved; new numeric/review predicates implemented in pure runtime. Fresh79665c4selected old-policy/gate/rank/client/config/pipeline/guard suite453pass confirms that explicit scope, while new extension runtime remains35pass/1fail.",
+      "remaining_work": "Focused runtime35pass/1fail, not green; fix invalid approval fixture then full affected checks, real producer/no-pooling/tamper/rendered-gap acceptance. Synthetic lineage is not actual producer proof.",
+      "historical_audit": {
+        "implemented_code": "policy.py; tests/test_policy_gate_properties.py; contracts/verification.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. Hand-calculated scores, gate precedence, bounded deviations and property cases were exercised.",
+        "remaining_work": "Only six evaluators are supported. Add missing types while preserving the verified passed/failed/unknown/not-applicable equations; full feature qualification remains necessary."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-05",
+      "requirement": "Add compiled-library and header-only examples with selected consumer/instantiation matrices. | Missing consumer variants are visible and required variants block acceptance",
+      "specification_reference": "docs/specs/production-platform/tasks.md:150",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "examples",
+        "python/cppulse/consumer.py",
+        "python/cppulse/collection.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-native-config/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/native_metrics_resume.md",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p3-native-resume/ctest-green.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Compiled/header-only selected examples exist; configurable large-source limit corrected earlier.",
+      "remaining_work": "Expand real compiler/consumer/instantiation/self-containment matrix; latest native/policy/metrics integration unverified and nonexhaustive limits remain.",
+      "historical_audit": {
+        "implemented_code": "scripts/demo_consumer.py; consumer.py; distribution_subject and consumer_usage contracts",
+        "verification_evidence": "Retained actual fmt/utfcpp package cases include changed-package, C++20, no-exception and missing-local-test counterexamples.",
+        "remaining_work": "Expand the real context matrix, selected instantiations and header self-containment. Correct large-header skipping and retain explicit non-exhaustive scope."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-06",
+      "requirement": "Render assessment/evidence/gaps in JSON/HTML/PDF/API/dashboard and add collect/assess workflows to installed CLI/CMake. | Interface agreement and complete package scenarios pass",
+      "specification_reference": "docs/specs/production-platform/tasks.md:151",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/presentation.py",
+        "python/cppulse/report_engine/api.py",
+        "dashboard/src/App.tsx",
+        "python/cppulse/cli.py",
+        "python/cppulse/data/Cppulse.cmake"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Existing shared assessment views and improved unavailable risk/history rendering; CLI collect/assess present.",
+      "remaining_work": "Actual new metric/review gaps across JSON/HTML/PDF/API/dashboard/current installed CLI/CMake unrun; Docker/editor host agreement remains open.",
+      "historical_audit": {
+        "implemented_code": "cli.py: collect/assess; presentation.py; API; React dashboard; CMake helper",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Verify the exact current candidate after correcting delivered defects. Add richer findings/search/history; Docker and editor coverage are absent."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-07",
+      "requirement": "Ship general and custom-library policies, then reviewed automotive/medical starter mappings with explicit coverage statements. | Edition pinning, unsupported obligations, and mapping maturity are visible; no certification claim",
+      "specification_reference": "docs/specs/production-platform/tasks.md:152",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/data/policies/starter.json",
+        "python/cppulse/data/policies/organization-example.json",
+        "python/cppulse/data/policies/verification-example.json"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "General/custom examples preserved; no new reviewed domain pack.",
+      "remaining_work": "Automotive/medical edition-specific mappings require authorized editions and qualified human review; unassessed obligations visible, no invented clauses/reviewer/certification.",
+      "historical_audit": {
+        "implemented_code": "data/policies/{starter,organization-example,verification-example}.json",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. General/custom examples exist and were exercised; automotive and medical packs are absent.",
+        "remaining_work": "Add reviewed, explicitly incomplete ISO 26262/IEC 62304 edition-specific packs, with coverage/unassessed obligations and without reproducing licensed text or claiming certification."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M5-08",
+      "requirement": "Prepare Release B and update the skill to expose only released evidence/policy workflows. | AC-08..12 and AC-16 pass; policy and software versions are recorded together",
+      "specification_reference": "docs/specs/production-platform/tasks.md:153",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/policy_runtime_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p4-policy-resume/runtime-green-first.log",
+          "available": true
+        },
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No ReleaseB or released expanded skill established.",
+      "remaining_work": "Complete AC08–12 andAC16, exact candidate plus policy versions and actual clean-agent journey; publication separate.",
+      "historical_audit": {
+        "implemented_code": "No Release B or released expanded skill was found.",
+        "verification_evidence": "The prototype candidate is not Release B. AC-12, AC-15 and AC-16 remain incomplete.",
+        "remaining_work": "Complete applicable acceptance checks and exact-artifact qualification. Separate publication from preparation."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M6-01",
+      "requirement": "Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames",
+      "specification_reference": "docs/specs/production-platform/tasks.md:162",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/git_miner/history.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Current-file rename/shallow/merge limitations retained.",
+      "remaining_work": "Contributor aliases/bots/pairs/teams, coupling and component/symbol history contracts incomplete.",
+      "historical_audit": {
+        "implemented_code": "git_miner/history.py: current-file linear rename handling and merge limitations",
+        "verification_evidence": "Component tests cover synthetic rename, deleted/recreated and shallow-history cases.",
+        "remaining_work": "Add contributor aliases, bot/pair attribution, architectural component, symbol-history and coupling contracts."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M6-02",
+      "requirement": "Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history",
+      "specification_reference": "docs/specs/production-platform/tasks.md:163",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Only existing counts/churn/silo heuristics; no weighted ownership/familiarity/coupling/fragmentation producer.",
+      "remaining_work": "Implement shared-history metric contracts and hand-reviewed denominators/double-count cases.",
+      "historical_audit": {
+        "implemented_code": "Existing contributor counts, churn and silo heuristics only",
+        "verification_evidence": "No weighted ownership, familiarity, coupling or fragmentation producer was found.",
+        "remaining_work": "Implement these metrics from a shared history stream with hand-reviewed synthetic cases for double counting and denominators."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M6-03",
+      "requirement": "Evaluate offboarding scenarios, architectural hotspots, and function-level historical priorities. | Outcomes match known synthetic histories and disclose knowledge-proxy limitations",
+      "specification_reference": "docs/specs/production-platform/tasks.md:164",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No offboarding/component/symbol-history evaluator.",
+      "remaining_work": "Implement scenarios/architectural hotspots/function priorities and disclose knowledge-proxy limits.",
+      "historical_audit": {
+        "implemented_code": "No offboarding, architectural-component or function-history assessment engine was found.",
+        "verification_evidence": "Existing hotspots using a severity proxy are not the required advanced metrics.",
+        "remaining_work": "Define and implement component/symbol history and scenarios with explicit knowledge-proxy limitations."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M6-04",
+      "requirement": "Add maps, trends, explanations, and comparison support to reports/API/dashboard. | Underlying metrics agree with CLI; large-view queries stay within benchmark budgets",
+      "specification_reference": "docs/specs/production-platform/tasks.md:165",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No advanced knowledge/coupling maps/trends or bounded-view proof.",
+      "remaining_work": "Render persisted advanced metrics with CLI agreement and indexed-query resource checks.",
+      "historical_audit": {
+        "implemented_code": "Existing current-run views only",
+        "verification_evidence": "No advanced knowledge/coupling maps, trends or large-view qualification was found.",
+        "remaining_work": "Render persisted metrics with CLI agreement and indexed-query resource checks."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M6-05",
+      "requirement": "Evaluate optional risk models with temporal cutoffs and calibration. | Publish evaluation methodology; unvalidated ranking remains labeled experimental",
+      "specification_reference": "docs/specs/production-platform/tasks.md:166",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/predictor/model.py",
+        "python/cppulse/git_miner/szz_labeler.py"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/production-20261114/r1-risk/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r1-presentation/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Truthful unavailable/experimental rank presentation improved; no evaluation research added.",
+      "remaining_work": "Temporal/project holdouts, cutoff provenance/leakage controls, baselines/calibration and published methodology remain.",
+      "historical_audit": {
+        "implemented_code": "predictor/model.py: heuristic fallback and random cross-validation metadata; git_miner/szz_labeler.py",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/branch-reality-check-20261114/verification.json: actual current-HEAD fmt, utfcpp and 14-LOC consumer pipelines. Both library scans were partial, ranking was heuristic, and histories were shallow. All fresh cases used heuristic ranking without evaluation; no temporal holdout or calibration is established.",
+        "remaining_work": "Prevent future-information leakage and add temporal training/test cutoffs and calibration. Until validated, retain experimental ranking without probability claims."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M7-01",
+      "requirement": "Specify read-first MCP/IDE contracts and execution capability boundaries. | Client fixtures cannot obtain inconsistent scoring or hidden analysis assumptions",
+      "specification_reference": "docs/specs/production-platform/tasks.md:174",
+      "original_status": "missing",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/client_contract.py",
+        "python/cppulse/contracts/schemas/install_v1/client_capabilities.schema.json",
+        "editors/vscode/contracts/client-protocol-v1.md",
+        "editors/vscode/src/protocol.ts"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/check.json",
+          "available": true
+        },
+        {
+          "path": "review/cloud-handoff-verification-20261114/python/output.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Versioned capabilities,paired run/hash,SARIF/source identity,trusted execution/stale/generation boundaries and16pure editor tests exist.",
+      "remaining_work": "MCP read/execute transport/handler contract and actual cross-client scenarios remain; pure fixtures do not close shared integration scope.",
+      "historical_audit": {
+        "implemented_code": "IDE work packages in docs/plans only; no implemented MCP/IDE contracts",
+        "verification_evidence": "A plan is not client-fixture verification.",
+        "remaining_work": "Define versioned read-first capabilities, explicit execution consent, cancellation, stale-state handling and result contracts."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M7-02",
+      "requirement": "Implement run/health/findings/hotspot/policy-gap MCP tools and initial VS Code diagnostics. | Compare results with CLI and installed API fixtures",
+      "specification_reference": "docs/specs/production-platform/tasks.md:175",
+      "original_status": "missing",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "editors/vscode/src/extension.ts",
+        "editors/vscode/src/process.ts",
+        "editors/vscode/test/host/index.cjs",
+        "editors/vscode/artifacts/cppulse-0.2.0-preview.vsix"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Actual extension/VSIX with diagnostics/run-scope-evidence tree/explicit commands exists; VSIX installation succeeded.",
+      "remaining_work": "Real host never passed; latest source exceeds VSIX, finite config schema/docs incomplete. MCP server absent; actual CLI/API/editor/MCP run agreement and platform/scale matrices open.",
+      "historical_audit": {
+        "implemented_code": "No actual MCP server or VS Code extension/VSIX was found.",
+        "verification_evidence": "No extension-host, MCP tool-call or CLI-consistency execution is established.",
+        "remaining_work": "Implement initial VSIX diagnostics, navigation and explicit commands plus read-first MCP tools. Verify actual installed-client agreement."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M7-03",
+      "requirement": "Package reusable local build/pre-commit integration and existing Git-host workflow templates. | Consumer examples execute shared commands rather than duplicate logic",
+      "specification_reference": "docs/specs/production-platform/tasks.md:176",
+      "original_status": "partial",
+      "status": "partial",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [
+        "python/cppulse/data/Cppulse.cmake",
+        "python/cppulse/data/templates/pre-commit.example.yaml",
+        ".github/actions/cppulse"
+      ],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/verification.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/r2-development/facade-final.log",
+          "available": true
+        }
+      ],
+      "progress_since_original": "Reusable integrations remain, shared local developer/CI facade improved.",
+      "remaining_work": "Execute current installed application/library/header-only/pre-commit and Docker/host wrappers with0/1/3/outcome semantics; no provider writes inferred.",
+      "historical_audit": {
+        "implemented_code": "data/Cppulse.cmake; templates/pre-commit.example.yaml; .github/actions/cppulse local wrapper",
+        "verification_evidence": "/workspace/scratch/b3d4e6fff494/cppulse/review/checkpoint-20261114/summary.json: 2,499 local tests and dashboard production build at the retained implementation tree; Docker was not run. /workspace/scratch/b3d4e6fff494/cppulse/review/autonomous/installed-s7/summary.json: retained source-hidden Linux dev2 candidate proof. The candidate predates final HEAD; it does not qualify a rebuilt current release.",
+        "remaining_work": "Qualify Docker/host workflow wrappers and templates against the current installed artifact. Keep provider and permission-sensitive operations explicit."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M7-04",
+      "requirement": "Validate and submit the expanded free skill and release integration artifacts. | Marketplace review/publication recorded separately from ZIP preparation; text delivery does not claim native installation",
+      "specification_reference": "docs/specs/production-platform/tasks.md:177",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "docs/checkpoints/20261114/agents/editor_host_resume.json",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/editor-unit-green.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-host-resume/host-tcp-verbose.log",
+          "available": true
+        },
+        {
+          "path": "review/production-20261114/p2-resumed/install.log",
+          "available": true
+        },
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No expanded free skill clean-session validation or submitted/published integration artifacts.",
+      "remaining_work": "Implement/version skill using supported released commands, actual clean agent transcript and release packet; keep preparation/submission/publication distinct.",
+      "historical_audit": {
+        "implemented_code": "No expanded skill submission or release-integration publication was found.",
+        "verification_evidence": "No clean-agent or marketplace review evidence is established. This review authorizes no such writes.",
+        "remaining_work": "Validate the portable text skill against actual released commands. Submit or publish only through a separately authorized step."
+      },
+      "expansion_scope": false,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M8-01",
+      "requirement": "Team ownership/alignment and fragmentation views | Identity changes and team history do not produce unexplained metrics",
+      "specification_reference": "docs/specs/production-platform/tasks.md:187",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.",
+      "remaining_work": "Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit.",
+      "historical_audit": {
+        "implemented_code": "No implementation of team ownership, alignment and fragmentation was found in the current packages.",
+        "verification_evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+        "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M8-02",
+      "requirement": "Multi-repository portfolio, goals, scheduled reports | Explicit project access/scope; reproducible per-project and aggregate results",
+      "specification_reference": "docs/specs/production-platform/tasks.md:188",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.",
+      "remaining_work": "Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit.",
+      "historical_audit": {
+        "implemented_code": "No implementation of multi-repository portfolios, goals and schedules was found in the current packages.",
+        "verification_evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+        "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M8-03",
+      "requirement": "Branch and delivery analytics | Define branch/merge semantics, task linkage, time windows, and missing-data behavior",
+      "specification_reference": "docs/specs/production-platform/tasks.md:189",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.",
+      "remaining_work": "Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit.",
+      "historical_audit": {
+        "implemented_code": "No implementation of branch, merge and delivery analytics was found in the current packages.",
+        "verification_evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+        "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M8-04",
+      "requirement": "Issue-tracker adapters and cost/ROI views | Provider-specific contract tests; estimated and observed costs clearly separated",
+      "specification_reference": "docs/specs/production-platform/tasks.md:190",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.",
+      "remaining_work": "Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit.",
+      "historical_audit": {
+        "implemented_code": "No implementation of issue-tracker and cost/ROI adapters was found in the current packages.",
+        "verification_evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+        "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M8-05",
+      "requirement": "Additional report/notification integrations | Explicit configuration and delivery outcome; reuse persisted results",
+      "specification_reference": "docs/specs/production-platform/tasks.md:191",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.",
+      "remaining_work": "Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit.",
+      "historical_audit": {
+        "implemented_code": "No implementation of additional report and notification delivery was found in the current packages.",
+        "verification_evidence": "Proposed backlog only; no provider contract, runtime execution or human workflow validation was found.",
+        "remaining_work": "Retain the complete scope. Specify provider/data/access/history semantics, then implement contracts → producers → consumers → presentation → orchestration → integration, with the stated acceptance checks."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M9-01",
+      "requirement": "Narrow deterministic fixes and dry-run patches | Precise source edits, idempotence, compilation/tests where relevant",
+      "specification_reference": "docs/specs/production-platform/tasks.md:200",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.",
+      "remaining_work": "Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization.",
+      "historical_audit": {
+        "implemented_code": "No implementation of deterministic fixes and dry-run patches was found. Generic adapter drafts do not establish that capability.",
+        "verification_evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+        "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M9-02",
+      "requirement": "Agentic semantic refactoring and PR repair | Separate language-specific behavior-validation design and reviewable changes",
+      "specification_reference": "docs/specs/production-platform/tasks.md:201",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.",
+      "remaining_work": "Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization.",
+      "historical_audit": {
+        "implemented_code": "No implementation of behavior-validated agentic semantic repair and PR repair was found. Generic adapter drafts do not establish that capability.",
+        "verification_evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+        "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M9-03",
+      "requirement": "API/ABI compatibility, fuzzing, dependency evidence adapters | Explicit supported formats/platforms and scope; no unsupported safety claims",
+      "specification_reference": "docs/specs/production-platform/tasks.md:202",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.",
+      "remaining_work": "Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization.",
+      "historical_audit": {
+        "implemented_code": "No implementation of API/ABI, fuzzing and dependency evidence adapters was found. Generic adapter drafts do not establish that capability.",
+        "verification_evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+        "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M9-04",
+      "requirement": "Additional analyzed languages | Language-specific metrics, fixtures, calibration, and documentation",
+      "specification_reference": "docs/specs/production-platform/tasks.md:203",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.",
+      "remaining_work": "Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization.",
+      "historical_audit": {
+        "implemented_code": "No implementation of additional analyzed languages was found. Generic adapter drafts do not establish that capability.",
+        "verification_evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+        "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    },
+    {
+      "id": "M9-05",
+      "requirement": "SSO/RBAC and optional managed hosting | Access/data ownership/deployment sub-specification and operating-cost model",
+      "specification_reference": "docs/specs/production-platform/tasks.md:204",
+      "original_status": "missing",
+      "status": "missing",
+      "full_task_scope_closed": false,
+      "closure_basis": "Full task acceptance remains open; progress or focused subtask proof is not full task closure.",
+      "source_code": [],
+      "referenced_expected_or_unavailable_paths": [],
+      "evidence": [
+        {
+          "path": "review/checkpoint-20261114/summary.json",
+          "available": true
+        },
+        {
+          "path": "review/autonomous/installed-s7/summary.json",
+          "available": true
+        }
+      ],
+      "progress_since_original": "No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.",
+      "remaining_work": "Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization.",
+      "historical_audit": {
+        "implemented_code": "No implementation of SSO/RBAC and managed hosting was found. Generic adapter drafts do not establish that capability.",
+        "verification_evidence": "No corresponding language/provider/platform qualification, behavior validation or runtime artifact was found.",
+        "remaining_work": "Retain the complete scope and specify provider/language/behavior/access/cost contracts. Implement and verify before advertising. Hosting and publication writes require separate authorization."
+      },
+      "expansion_scope": true,
+      "final_combined_source_qualified": false
+    }
+  ],
+  "fresh_checkpoint_verification": {
+    "revision": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1",
+    "native": {
+      "status": "passed",
+      "configure_build_ctest": "Fresh current combined source configure/build plus139/139CTest;11.85s CTest",
+      "record": "review/cloud-handoff-verification-20261114/native/check.json"
+    },
+    "python_selected": {
+      "status": "passed",
+      "result": "453passed in20.13s",
+      "record": "review/cloud-handoff-verification-20261114/python/check.json",
+      "scope": [
+        "policy",
+        "policy_gate_properties",
+        "rank_availability_contract",
+        "client_capabilities",
+        "effective_config",
+        "pipeline_validation",
+        "delivery_guard"
+      ]
+    },
+    "full_root_collection": {
+      "status": "failed",
+      "result": "2322collected;4ModuleNotFoundError collection errors",
+      "record": "review/cloud-handoff-verification-20261114/collection/check.json",
+      "missing_suites": [
+        "test_maintenance_trends.py",
+        "test_measured_duplication.py",
+        "test_measured_maintenance.py",
+        "test_work_unit_runtime.py"
+      ]
+    },
+    "limits": "Fresh native gate supersedes previous unbuilt-latest-source concern. It does not resolve knownCRLOC/raw-schema/normalizer/scorer/scheduler/resource/platform/editor/installed-artifact gaps; task statuses unchanged."
+  },
+  "implementation_checkpoint": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1"
+}

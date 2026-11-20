@@ -1,0 +1,2072 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "protocol": {
+      "const": "private-retrospective-risk-evaluation"
+    },
+    "status": {
+      "enum": [
+        "evaluated",
+        "not_evaluable"
+      ]
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "training_cutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evaluation_cutoff": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "label_definition": {
+      "type": "string"
+    },
+    "prediction_horizon_days": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "feature_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ranking_feature": {
+      "type": "string"
+    },
+    "holdout_projects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "training": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sample_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "positive_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sample_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "sample_count",
+        "positive_count",
+        "sample_ids",
+        "projects"
+      ]
+    },
+    "partitions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chronological": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "evaluated",
+                "unavailable"
+              ]
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sample_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sample_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "models": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "zero": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "training_base_rate": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "feature_ranking": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "logistic": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "status",
+            "reason",
+            "sample_count",
+            "sample_ids",
+            "models"
+          ]
+        },
+        "project_holdout": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "evaluated",
+                "unavailable"
+              ]
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sample_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sample_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "models": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "zero": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "training_base_rate": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "feature_ranking": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                },
+                "logistic": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "evaluated"
+                        },
+                        "reason": {
+                          "type": "null"
+                        },
+                        "score_kind": {
+                          "enum": [
+                            "probability",
+                            "ranking"
+                          ]
+                        },
+                        "sample_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "positive_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "prevalence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "recall": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "f1": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "roc_auc": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "average_precision": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ranking_reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "top_k": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "precision_at_k": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "brier_score": {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reliability": {
+                          "anyOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "array",
+                              "minItems": 10,
+                              "maxItems": 10,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "lower": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "upper": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                  },
+                                  "mean_probability": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "observed_rate": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "lower",
+                                  "upper",
+                                  "count",
+                                  "mean_probability",
+                                  "observed_rate"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "probability_interpretation": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason",
+                        "score_kind",
+                        "sample_count",
+                        "positive_count",
+                        "prevalence",
+                        "precision",
+                        "recall",
+                        "f1",
+                        "roc_auc",
+                        "average_precision",
+                        "ranking_reason",
+                        "top_k",
+                        "precision_at_k",
+                        "brier_score",
+                        "reliability",
+                        "probability_interpretation"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "status": {
+                          "const": "unavailable"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "reason"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "status",
+            "reason",
+            "sample_count",
+            "sample_ids",
+            "models"
+          ]
+        }
+      },
+      "required": [
+        "chronological",
+        "project_holdout"
+      ]
+    },
+    "excluded": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "const": "train-only-standardized-logistic-v1"
+        },
+        "backend_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "python_version": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "solver": {
+              "const": "liblinear"
+            },
+            "random_state": {
+              "const": 0
+            },
+            "max_iter": {
+              "const": 1000
+            },
+            "C": {
+              "const": 1.0
+            }
+          },
+          "required": [
+            "solver",
+            "random_state",
+            "max_iter",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "backend_version",
+        "python_version",
+        "parameters"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "protocol",
+    "status",
+    "input_sha256",
+    "training_cutoff",
+    "evaluation_cutoff",
+    "label_definition",
+    "prediction_horizon_days",
+    "feature_names",
+    "ranking_feature",
+    "holdout_projects",
+    "training",
+    "partitions",
+    "excluded",
+    "model",
+    "limitations"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/risk-evaluation/v1/report.schema.json"
+}

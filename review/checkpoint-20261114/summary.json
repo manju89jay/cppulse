@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-11-14T06:17:28.934872+00:00",
+  "branch": "codex/cppulse-local-core-20261114",
+  "base": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "verified_implementation_revision": "16b2335d324c966da06a0be95a0064f65ccc6878",
+  "status": "all shared checks passed",
+  "checks": 15,
+  "tests": {
+    "root-tests": 2040,
+    "git-miner-tests": 90,
+    "predictor-tests": 98,
+    "report-engine-tests": 116,
+    "analyzer-tests": 84,
+    "cli-tests": 20,
+    "dashboard-tests": 51
+  },
+  "total_tests": 2499,
+  "dashboard_production_build": "passed",
+  "check_results_sha256": "e9e49272277ce89dc089b42534752485c572af4b26b33bcc2c15bc01b48e3a59",
+  "formatting": "clang-format19.1.7 checked17 changed native source/test files; ten required formatting updates; native rebuild and104 CTest cases passed before checkpoint.",
+  "candidate_boundary": "The original dev2 candidate/source-hidden proof remains an unchanged historical artifact built before these local commits; no rebuilt or published candidate is claimed.",
+  "history_boundary": "These focused commits organize already performed work using current timestamps and the user-requested existing Git identity. No co-author trailer.",
+  "pushed": false,
+  "docker_compose": "not run: Docker executable/socket unavailable",
+  "scope": "Verified native local S0-S7 prototype; complete production specification and VS Code extension remain unfinished."
+}

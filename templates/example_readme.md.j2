@@ -1,0 +1,52 @@
+# cppulse Report: {{ display_name }}
+
+> Analyzed {{ analyzed_date }} · {{ loc_display }} LOC · {{ file_count | format_number }} files · [Back to Leaderboard](../../README.md#analyzed-codebases)
+
+{{ description }}
+{{ score_summary }}
+
+---
+
+## Health Score
+
+<p>
+  <img src="../../assets/{{ project_id }}/health-gauge.svg" alt="Health Score: {{ health_score }}/100" width="280" />
+  <img src="../../assets/{{ project_id }}/category-bars.svg" alt="Category Breakdown" width="440" />
+</p>
+
+## Category Breakdown
+
+| Category | Score | Findings | Key Issues |
+|----------|------:|--------:|------------|
+{% for cat in categories -%}
+| {{ cat.display_name }} | **{{ cat.score }}** | {{ cat.findings | format_number }} | {{ cat.key_issues }} |
+{% endfor %}
+
+**Total: {{ total_findings | format_number }} findings across {{ rules_hit }} of 15 rules**
+
+## Top 10 Riskiest Files
+
+| File | Bug Probability | Risk Level | Top Factors |
+|------|----------------:|:----------:|-------------|
+{% for f in top_files -%}
+| `{{ f.file }}` | {{ f.bug_probability }}% | {{ f.risk_level }} | {{ f.top_factors }} |
+{% endfor %}
+
+{{ risk_summary }}
+
+## Refactoring Roadmap (Top 10 by Impact)
+
+| # | File | Action | Category | Est. Hours | Impact |
+|--:|------|--------|----------|----:|------:|
+{% for item in roadmap_items -%}
+| {{ item.priority }} | `{{ item.file }}` | {{ item.action }} | {{ item.category }} | {{ item.hours }}h | {{ item.impact }} |
+{% endfor %}
+
+**Total: {{ roadmap_count }} roadmap items · ~{{ roadmap_hours }} estimated hours**
+
+## Downloads
+
+- [PDF Executive Report{% if pdf_pages %} ({{ pdf_pages }} pages){% endif %}](report.pdf)
+- [Raw Findings (JSON)](findings.json)
+- [Risk Scores (JSON)](risk_scores.json)
+- [Refactoring Roadmap (JSON)](roadmap.json)

@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/check_result.schema.json",
+  "title": "cppulse check_result v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "mode": {
+      "enum": [
+        "policy",
+        "findings"
+      ]
+    },
+    "store": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "insufficient_evidence",
+        "invalid",
+        "cancelled"
+      ]
+    },
+    "exit_code": {
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        130
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "facts_base_run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "assessment_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "comparison_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policy_sha256": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "baseline_sha256": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/error"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "mode",
+    "store",
+    "status",
+    "exit_code",
+    "reason",
+    "run",
+    "facts_base_run",
+    "assessment_artifact_id",
+    "comparison_artifact_id",
+    "policy_sha256",
+    "baseline_sha256",
+    "error"
+  ]
+}

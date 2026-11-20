@@ -1,0 +1,77 @@
+{
+  "status": "frozen_at_user_stop_for_branch_codex_cloud_handoff",
+  "processes": "All P4 commands completed; no P4 background process remains.",
+  "git_writes": "None. No commit/push/ref/GitHub write/deployment/publication/messages performed.",
+  "changed_files_this_resume": [
+    "python/cppulse/policy_extensions.py",
+    "python/cppulse/policy.py",
+    "python/cppulse/contracts/policy_extensions.py",
+    "python/cppulse/contracts/validation.py",
+    "python/cppulse/contracts/verification.py",
+    "python/cppulse/contracts/schemas/v2/policy.schema.json",
+    "tests/test_policy_extensions_runtime.py"
+  ],
+  "inherited_contract_files": [
+    "python/cppulse/contracts/policy_extensions.py",
+    "python/cppulse/contracts/schemas/v2/policy.schema.json",
+    "python/cppulse/contracts/schemas/v2/evidence.schema.json",
+    "tests/test_policy_extensions_contract.py"
+  ],
+  "checks": [
+    {
+      "state": "green",
+      "command": "source review/environment.sh; python -m pytest -q tests/test_policy_extensions_contract.py tests/test_policy_contracts.py tests/test_verification_policy_contract.py tests/test_assurance_contracts.py tests/test_policy_gate_properties.py tests/test_policy.py",
+      "result": "532 passed in 19.34s",
+      "log": "review/production-20261114/p4-policy-resume/contracts-gate.log"
+    },
+    {
+      "state": "red_before_implementation",
+      "command": "source review/environment.sh; python -m pytest -q tests/test_policy_extensions_runtime.py",
+      "result": "36 failed in 0.99s; unsupported new evaluator before runtime implementation; max/min also absent from earlier enum",
+      "log": "review/production-20261114/p4-policy-resume/runtime-red.log"
+    },
+    {
+      "state": "first_green_attempt_incomplete",
+      "command": "source review/environment.sh; python -m pytest -q tests/test_policy_extensions_runtime.py",
+      "result": "35 passed, 1 failed in 0.74s. Failure: test_declared_rejection_fails_even_when_other_reviews_or_contexts_are_missing uses approval(bundle) helper with control_id tests; new policy fixture uses unit-tests. No correction made after STOP.",
+      "log": "review/production-20261114/p4-policy-resume/runtime-green-first.log"
+    }
+  ],
+  "implementation_state": [
+    "New pure python/cppulse/policy_extensions.py implements per-file/declared-job numeric thresholds and current declared review quorum/rejection predicates.",
+    "Narrow policy.py dispatch hooks expose new predicates only through explicit profile1.2 validation; preserve old profile checks and old score/gate/deviation routines. Numeric metric IDs retained as fact_ids; new profile limitations describe self-declared IDs and no authentication.",
+    "contracts/policy_extensions.py now validates stored profile1.2 outcome/status/incompleteness/evidence/references/fact_ids by reproducing new predicate semantics plus source/prerequisite gating.",
+    "validation.py supports assessment evaluator1.2 and invokes new assessment validation. verification.py guard extended from only1.1 to1.1/1.2 so new profile keeps typed sanitizer/coverage validation.",
+    "No full-suite, formatting/lint, independent review, real metric producer integration or API/rendered gap proof performed after these changes.",
+    "General/custom library example packs and explicitly INCOMPLETE automotive/medical starters have not been added.",
+    "No authorized standards edition/mapping review evidence available; domain pack acceptance stays blocked. Do not claim mapped clauses, human review, certification or whole P4 completion."
+  ],
+  "decisions": [
+    "Aggregation remains REQUIRED. Added explicit max/min to existing schema enum while retaining maximum/minimum compatibility aliases; each/sum/mean remain explicit. No default or cross-file/job pooling.",
+    "Symbol metrics require complete function_count inventory for positive result; each/max-upper/min-lower/known-nonnegative-sum upper violations can survive incomplete other measurements. Partial means cannot be treated as complete.",
+    "Malformed linked available-metric claims remain ContractError under maintenance contracts. Missing/unbound legacy metrics remain unknown. Coordinated with python_metrics_resume; no relaxation of verified frozen source/native lineage.",
+    "Review quorum counts distinct configured declared IDs per file/job, never authenticated people; wrong-source/future/expired/legacy review metadata unknown, valid scoped declared rejection fails despite other gaps."
+  ],
+  "next_steps": [
+    "Fix test-only approval call to approval(bundle, control_id=policy[\"controls\"][0][\"id\"], context_ids=policy[\"contexts\"]), then rerun focused suite and preserve green log. This is the known first failure; keep testing for actual runtime defects.",
+    "Add explicit complete multi-file and multi-job numeric no-pooling tests, conflict/empty-symbol tests, source/prerequisite/deviation/score hand calculations, and stored review assessment tamper tests.",
+    "Run black/ruff on only owned files, preserve shared validation/verification edits by atomic patch.",
+    "Rerun all policy/contracts tests after changes; then full pytest/component checks and meaningful independent acceptance review.",
+    "Coordinate actual typed producer integration with python_metrics_resume/native_metrics_resume after producer gate is green. Current tests use explicitly synthetic closed lineage and are not real producer execution proof.",
+    "Add general and custom library policies plus clearly INCOMPLETE automotive/medical metadata/examples; standards editions/mapping review acceptance remains external blocker until authorized text and qualified reviewer evidence exists.",
+    "Produce JSON/API/rendered policy-gap proof via affected consumer owner after evaluator/producer gates; no CLI/README/DECISIONS ownership taken by this agent."
+  ],
+  "environment": "cd /workspace/scratch/b3d4e6fff494/cppulse; source review/environment.sh. This activates .venv and managed LLVM19/libclang/toolchain paths.",
+  "sha256": {
+    "python/cppulse/policy_extensions.py": "a420873d01bc3e37f0a1c3554519493db7569dbd191e21b8299749be16350cde",
+    "python/cppulse/policy.py": "0073ed90b81ac376a65c972c4e9d62367918c79616bd2f6b08beee8a7e0eaf37",
+    "python/cppulse/contracts/policy_extensions.py": "245444018ba1e241225c2a53e6395ad88d53124d713b54349a4039fcafadb90c",
+    "python/cppulse/contracts/validation.py": "880544dd9ed20d1959757650e14e91226aeb035f316a27cb36424899c98de58a",
+    "python/cppulse/contracts/verification.py": "c6793d3896a9270301f2e4d29623b6e900735e3967fc4e4a75ea10361daa6ae3",
+    "python/cppulse/contracts/schemas/v2/policy.schema.json": "ebe5fe7445e92bcfffba735cb66c82b640acd13b5f548f4a66db9f11c6808869",
+    "tests/test_policy_extensions_runtime.py": "c865e69accbc05ebc244e801de8bcb3a665881fb13308fe369294f1e503be1da",
+    "review/production-20261114/p4-policy-resume/contracts-gate.log": "8c8a93c26cb2ac95f2dd9204b39820e699e382d54af7541e8846b14094cacc14",
+    "review/production-20261114/p4-policy-resume/runtime-red.log": "a9a43b19baa16dc710fe716b33388b7b80376193fbd17e986c09ce2b4bc7fbc3",
+    "review/production-20261114/p4-policy-resume/runtime-green-first.log": "bca2c7e73ad3d3e92f9b3c3f424bc3b418bfc2abfc297615b3321b300a4d72ee"
+  }
+}

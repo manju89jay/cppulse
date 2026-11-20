@@ -1,0 +1,301 @@
+{
+  "recorded_at": "2026-11-14T16:01:26.372149+00:00",
+  "recorded_at_berlin": "2026-11-14T17:01:26.372304+01:00",
+  "state": "all implementation workers frozen; no active implementation will continue in this session",
+  "branch": "codex/cppulse-local-core-20261114",
+  "parent": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "qualification": "WIP source checkpoint with known failing tests and unverified latest native edits; not a successful release gate.",
+  "selected_evidence": [
+    {
+      "source": "review/production-20261114/r1-native/verification.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native/verification.json",
+      "sha256": "267084cb129e3c5f158b5d65f2b38c71f49e68cc78db69e6a931728e49f8473a",
+      "bytes": 5107
+    },
+    {
+      "source": "review/production-20261114/r1-native/final-regressions.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native/final-regressions.log",
+      "sha256": "8238ac141cc36e8809db5f7d234a297c6e09ef6b8e3a66cfd2e7cb8f9f477ede",
+      "bytes": 2899
+    },
+    {
+      "source": "review/production-20261114/r1-native/red-ctest.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native/red-ctest.log",
+      "sha256": "fcd97c897c13e00fdf7c32242300a708d2911cc9cb1f9a44169b9fc885034e2d",
+      "bytes": 10090
+    },
+    {
+      "source": "review/production-20261114/r1-native/native-config-independent-review.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native/native-config-independent-review.json",
+      "sha256": "a0b3af68775041536d9f6b2b84bb3ab5985c710d74cfffafb3c8a42fd65280fe",
+      "bytes": 1074
+    },
+    {
+      "source": "review/production-20261114/r1-native-config/summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native-config/summary.json",
+      "sha256": "686a5532fcdab1c5f37e81d7569b7c8a8bb5c7d6bec65958d4dba6e632e614e7",
+      "bytes": 3844
+    },
+    {
+      "source": "review/production-20261114/r1-native-config/canonical-build.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native-config/canonical-build.log",
+      "sha256": "118c36d6d8c1e7a734c099fbd6f10c81f1f3d20cb9029e97401ec2d7c094686e",
+      "bytes": 450
+    },
+    {
+      "source": "review/production-20261114/r1-native-config/canonical-ctest.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native-config/canonical-ctest.log",
+      "sha256": "8a59726d9d759f9e61c41235f0aeee8c21d6b1d2c85278cd1cdd055f0d5a556e",
+      "bytes": 22574
+    },
+    {
+      "source": "review/production-20261114/r1-native-config/verified-ctest.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-native-config/verified-ctest.log",
+      "sha256": "701680e2288a675e29552a71a2be17926aa9a3555f53322cecfe2ad35e73a103",
+      "bytes": 22610
+    },
+    {
+      "source": "review/production-20261114/r1-cli/summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-cli/summary.json",
+      "sha256": "97a885af4eaba6514ad66bf4d822e2e3529e8dd1f21843228fd66c02359a3de0",
+      "bytes": 2493
+    },
+    {
+      "source": "review/production-20261114/r1-cli/actual-verification.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-cli/actual-verification.json",
+      "sha256": "86e02df0422adfa80b41e6f9f6742a290467a1672ccf093bb8f0036ddaa6a608",
+      "bytes": 11627
+    },
+    {
+      "source": "review/production-20261114/r1-cli/green-final.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-cli/green-final.log",
+      "sha256": "8df5d9648a4c9450bc1ad6046412652bb426073066b20307c580eaf2c5a2aa46",
+      "bytes": 11135
+    },
+    {
+      "source": "review/production-20261114/r1-risk/summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-risk/summary.json",
+      "sha256": "409c6732347cc1448680398210892e64e459912b3abec74182b8e9d50f585677",
+      "bytes": 5120
+    },
+    {
+      "source": "review/production-20261114/r1-risk/contracts-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-risk/contracts-green.log",
+      "sha256": "091a482af4f5c80ccc9cb0aab7888dcbde10ab6aae74dbdffb905228df096ed6",
+      "bytes": 14043
+    },
+    {
+      "source": "review/production-20261114/r1-risk/predictor-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-risk/predictor-green.log",
+      "sha256": "b283e9b59bf48583130e598e758171ec871c87ed8bf88e8dfc4a803096050f44",
+      "bytes": 15338
+    },
+    {
+      "source": "review/production-20261114/r1-risk/integration-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r1-risk/integration-green.log",
+      "sha256": "4966274bfd2ee37816d960d16d7be347a9b774195123d0f9356c98f85fbd0b22",
+      "bytes": 33647
+    },
+    {
+      "source": "review/production-20261114/r1-presentation/summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-presentation/summary.json",
+      "sha256": "d58e64aaca148d1f01363b50a258774deb02a421f39793ad0d79d38d3ad16f10",
+      "bytes": 3756
+    },
+    {
+      "source": "review/production-20261114/r1-presentation/independent-source-review.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-presentation/independent-source-review.json",
+      "sha256": "717716703ceb40923540a3e3e95520f92447593668a86d5827d93309c89603a0",
+      "bytes": 1965
+    },
+    {
+      "source": "review/production-20261114/r1-presentation/actual-utfcpp-retry/verification.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-presentation/actual-utfcpp-retry/verification.json",
+      "sha256": "fa5b110e9cc29e6ad2de5a38c1c4a7fcc7fada1c9b9858e124e165d559572979",
+      "bytes": 1253
+    },
+    {
+      "source": "review/production-20261114/r1-real-corpus-retry/manifest.json",
+      "saved": "docs/checkpoints/20261114/evidence/r1-real-corpus-retry/manifest.json",
+      "sha256": "537322f08bb891d2de30eaa53bf611d4d619851f86f9a4c347c987e02d6034f3",
+      "bytes": 2275
+    },
+    {
+      "source": "review/production-20261114/r2-development/verification.json",
+      "saved": "docs/checkpoints/20261114/evidence/r2-development/verification.json",
+      "sha256": "b543e76b250975db0ae90daa76f004a68739e3ca50e491e0b7b65b562ab042f5",
+      "bytes": 3009
+    },
+    {
+      "source": "review/production-20261114/p3-contracts/red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-contracts/red.log",
+      "sha256": "b53c4a17e1996c960b38aac876edb85b51412c3a2040c9e268d5ed5e6f79694e",
+      "bytes": 20014
+    },
+    {
+      "source": "review/production-20261114/p3-contracts/first-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-contracts/first-green.log",
+      "sha256": "7bae1461b08451aac5b10f2b75bcc4b484f06e15e43b8fb498721c457d20ea40",
+      "bytes": 5871
+    },
+    {
+      "source": "review/production-20261114/p3-contracts/raw-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-contracts/raw-green.log",
+      "sha256": "336af0ff0367d47e64d01030f15252361b0b6a7e05c14aeb619e67d1778edce5",
+      "bytes": 7772
+    },
+    {
+      "source": "review/production-20261114/p3-contracts/closed-health-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-contracts/closed-health-green.log",
+      "sha256": "f084300c87066eb85b7db92245580683635165fb01c49299f7ec2a8028200753",
+      "bytes": 9277
+    },
+    {
+      "source": "review/production-20261114/p3-native-resume/native-metrics-tests-red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-native-resume/native-metrics-tests-red.log",
+      "sha256": "48f9a691db0aaa3a72e58a8ae09adf5bab940e71bf0b4caef64f0fed5c7acf22",
+      "bytes": 17642
+    },
+    {
+      "source": "review/production-20261114/p3-native-resume/native-metrics-tests-initial2.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-native-resume/native-metrics-tests-initial2.log",
+      "sha256": "8a91effccb4a69d212dae086c49a5e35580005da02092ff0cc1cdbf4800b77ee",
+      "bytes": 18366
+    },
+    {
+      "source": "review/production-20261114/p3-native-resume/ctest-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-native-resume/ctest-green.log",
+      "sha256": "9a7704aea16effec852d58c3e92ba889a9f37d44fd659341ee591a3883e0e945",
+      "bytes": 28113
+    },
+    {
+      "source": "review/production-20261114/p3-python-resume/contracts-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-python-resume/contracts-green.log",
+      "sha256": "7215de1a7a3a8eaf6abdfe9580f45fd75def2646cc89b58060c3a698f3c481a9",
+      "bytes": 99
+    },
+    {
+      "source": "review/production-20261114/p3-python-resume/consumer-red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-python-resume/consumer-red.log",
+      "sha256": "e095485a37742c05162ed0a6805032af5b83c28d6865709e85bec1114f473c84",
+      "bytes": 941
+    },
+    {
+      "source": "review/production-20261114/p3-python-resume/normalization-red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-python-resume/normalization-red.log",
+      "sha256": "d961a8c6d486f1b555f26c4a75c25fc433f5996ccd4970b5d2256ba4fa5c0d6b",
+      "bytes": 3305
+    },
+    {
+      "source": "review/production-20261114/p3-python-resume/duplication-contract-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p3-python-resume/duplication-contract-green.log",
+      "sha256": "ad24b262a19284fa218d9f7d05693fe22af284428f4f8ef97810879d55f1c6bf",
+      "bytes": 99
+    },
+    {
+      "source": "review/production-20261114/p4-policy/contracts-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/p4-policy/contracts-green.log",
+      "sha256": "f54f17f6501523798a578b232722285b7e932e535c419ba99d0b2acfba1744de",
+      "bytes": 27760
+    },
+    {
+      "source": "review/production-20261114/p4-policy-resume/contracts-gate.log",
+      "saved": "docs/checkpoints/20261114/evidence/p4-policy-resume/contracts-gate.log",
+      "sha256": "8c8a93c26cb2ac95f2dd9204b39820e699e382d54af7541e8846b14094cacc14",
+      "bytes": 661
+    },
+    {
+      "source": "review/production-20261114/p4-policy-resume/runtime-red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p4-policy-resume/runtime-red.log",
+      "sha256": "a9a43b19baa16dc710fe716b33388b7b80376193fbd17e986c09ce2b4bc7fbc3",
+      "bytes": 125771
+    },
+    {
+      "source": "review/production-20261114/r3-work-unit-contracts/summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/r3-work-unit-contracts/summary.json",
+      "sha256": "448ac524290fa2bfbbc3be539067ba651ba36b5936550a3be2d43c1fa84980b5",
+      "bytes": 1690
+    },
+    {
+      "source": "review/production-20261114/r3-work-unit-contracts/check-results.json",
+      "saved": "docs/checkpoints/20261114/evidence/r3-work-unit-contracts/check-results.json",
+      "sha256": "4964c7f2fe44dbbe00ca035a955629bb4290ac022801f910bd0295b6227e8fa7",
+      "bytes": 780
+    },
+    {
+      "source": "review/production-20261114/r3-work-unit-contracts/final-tests.log",
+      "saved": "docs/checkpoints/20261114/evidence/r3-work-unit-contracts/final-tests.log",
+      "sha256": "59fcafcb1fb46806f427df376a4cf7d6f8f61c8af65a672f8ccc4765bb90baad",
+      "bytes": 2916
+    },
+    {
+      "source": "review/production-20261114/r0/client-contract-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r0/client-contract-green.log",
+      "sha256": "a265a90f8c3d3cf3e77fcaf0c74aedfdffcdbde0696509605129717b6738ad49",
+      "bytes": 7014
+    },
+    {
+      "source": "review/production-20261114/r0/client-pin-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r0/client-pin-green.log",
+      "sha256": "9931e4db6bc3a1517dbefcc1da7997f52957a0b1650906e596758b4051bb9a0b",
+      "bytes": 5634
+    },
+    {
+      "source": "review/production-20261114/r0/full-scope-check.json",
+      "saved": "docs/checkpoints/20261114/evidence/r0/full-scope-check.json",
+      "sha256": "20d00cbc7efd9355f7a3735bc6dd058a28dc831647987ac795e837db77e3c12d",
+      "bytes": 93
+    },
+    {
+      "source": "review/production-20261114/r0/pipeline-consumer-green.log",
+      "saved": "docs/checkpoints/20261114/evidence/r0/pipeline-consumer-green.log",
+      "sha256": "adefcdabd856f836474f526abdbdae49465b4eee9e6b98c5d542f3a1b91852ea",
+      "bytes": 5724
+    },
+    {
+      "source": "review/production-20261114/readme/verification-summary.json",
+      "saved": "docs/checkpoints/20261114/evidence/readme/verification-summary.json",
+      "sha256": "460f5078035ef9843a1650dfb8317f1bfc0be69e36eaaa1993ab7cc894a69512",
+      "bytes": 2337
+    },
+    {
+      "source": "review/production-20261114/p2-resumed/host.log",
+      "saved": "docs/checkpoints/20261114/evidence/p2-resumed/host.log",
+      "sha256": "b97419183aadfd5bc5f477b7f44ac62c4d954bc8e0cd71d631512d275e78f758",
+      "bytes": 808
+    },
+    {
+      "source": "review/production-20261114/p2-resumed/host-headless.log",
+      "saved": "docs/checkpoints/20261114/evidence/p2-resumed/host-headless.log",
+      "sha256": "b0756103119eddda2f257ac44bc47ff707e595fc231073b64a6fc12b1dd079b3",
+      "bytes": 2672
+    },
+    {
+      "source": "review/production-20261114/p2-resumed/host-red.log",
+      "saved": "docs/checkpoints/20261114/evidence/p2-resumed/host-red.log",
+      "sha256": "29fb80fcb490f886eaadd535e6298b4ed62783e1133bf05eab87299136de07da",
+      "bytes": 939
+    },
+    {
+      "source": "review/production-20261114/p2-resumed/wheel-build.log",
+      "saved": "docs/checkpoints/20261114/evidence/p2-resumed/wheel-build.log",
+      "sha256": "be68901c57de7b3b6a5a5f2da490c3d493cee02e9df00096dc6816264881b482",
+      "bytes": 41712
+    }
+  ],
+  "not_found_selected_optional_records": [
+    "review/production-20261114/r2-development/summary.json",
+    "review/production-20261114/p4-policy-resume/runtime-green.log",
+    "review/production-20261114/p2-host-resume/host.log",
+    "review/production-20261114/p2-host-resume/summary.json"
+  ],
+  "excluded": [
+    "build/cache directories",
+    "virtualenvs/node_modules",
+    "downloaded VS Code/compiler/system packages",
+    "temporary fixture Git objects/commits",
+    "large prior run stores",
+    "stale VSIX binaries"
+  ],
+  "cloud_task_start": "Not started: local Codex Cloud CLI returns HTTP401 authentication failure. Resume through signed-in Codex Cloud UI."
+}

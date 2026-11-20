@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/finding_check_request.schema.json",
+  "title": "cppulse pinned finding regression check request v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "baseline": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "const": "local_run"
+            },
+            "store": {
+              "type": "string",
+              "minLength": 1
+            },
+            "run_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "manifest_sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            }
+          },
+          "required": [
+            "source",
+            "store",
+            "run_id",
+            "manifest_sha256",
+            "artifact_id"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "const": "transfer"
+            },
+            "bundle": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "manifest_sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            }
+          },
+          "required": [
+            "source",
+            "bundle",
+            "root_id",
+            "manifest_sha256",
+            "artifact_id"
+          ]
+        }
+      ]
+    },
+    "scope_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "context_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "rule_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "max_new": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rename_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "suppressions": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "const": "file"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "source",
+            "path"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "const": "local_run"
+            },
+            "store": {
+              "type": "string",
+              "minLength": 1
+            },
+            "run_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "manifest_sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            }
+          },
+          "required": [
+            "source",
+            "store",
+            "run_id",
+            "manifest_sha256",
+            "artifact_id"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "const": "transfer"
+            },
+            "bundle": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "manifest_sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            },
+            "artifact_id": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            }
+          },
+          "required": [
+            "source",
+            "bundle",
+            "root_id",
+            "manifest_sha256",
+            "artifact_id"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "baseline",
+    "scope_files",
+    "context_ids",
+    "rule_ids",
+    "max_new"
+  ]
+}

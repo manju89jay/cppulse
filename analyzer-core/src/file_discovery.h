@@ -14,8 +14,9 @@ namespace cppulse {
 /**
  * @brief Recursively discover all C++ source files under a root directory.
  *
- * Accepted extensions: .cpp, .cxx, .cc, .h, .hpp, .hxx
- * Symbolic links are followed.  Non-existent or non-directory roots return an
+ * Accepted extensions: .cpp, .cxx, .cc, .h, .hh, .hpp, .hxx, .ipp, .inl, .tpp
+ * Symbolic-link entries are skipped to avoid external scope and cycles.
+ * Non-existent or non-directory roots return an
  * empty vector.
  *
  * @param root  Directory to search.

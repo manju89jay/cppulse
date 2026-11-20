@@ -1,0 +1,11 @@
+{
+  "branch": "codex/cppulse-local-core-20261114",
+  "commit": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1",
+  "parent": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "tree": "c54b8a275b49fcd202240107beb9af7b32bc6abb",
+  "expected_frozen_tree_matched": true,
+  "author_committer_identity_verified": true,
+  "coauthor_trailer": false,
+  "local_branch_aligned_without_worktree_change": true,
+  "qualification": "WIP checkpoint with documented unfinished implementation and failing tests; not release acceptance."
+}

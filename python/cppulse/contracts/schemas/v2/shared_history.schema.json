@@ -1,0 +1,780 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/shared_history.schema.json",
+  "title": "Source-bound shared contributor, file, component and declared-symbol history",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "context_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "repository_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "head": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cutoff": {
+      "type": "integer"
+    },
+    "origin": {
+      "enum": [
+        "git_scan",
+        "consumer_authored"
+      ]
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "enum": [
+            "cppulse-history-scan",
+            "consumer-authored"
+          ]
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "authenticated": {
+          "const": false
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "authenticated"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "window_start": {
+          "type": "integer"
+        },
+        "include_merges": {
+          "type": "boolean"
+        },
+        "pair_attribution": {
+          "enum": [
+            "author_only",
+            "coauthor_trailers"
+          ]
+        },
+        "max_files_per_commit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "minimum_support": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "max_pair_records": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "max_commits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "exclude_commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "window_start",
+        "include_merges",
+        "pair_attribution",
+        "max_files_per_commit",
+        "minimum_support",
+        "max_pair_records",
+        "max_commits",
+        "exclude_commit_ids"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "basis": {
+          "const": "first_parent_current_file_projection"
+        },
+        "boundary_commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "observed_commits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "accepted_commits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_commits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "future": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "outside_window": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "explicit_exclusion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unknown_delta": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "merge": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bulk": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "generated_only": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "no_selected_files": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bot_only": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "future",
+            "outside_window",
+            "explicit_exclusion",
+            "unknown_delta",
+            "merge",
+            "bulk",
+            "generated_only",
+            "no_selected_files",
+            "bot_only"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "availability",
+        "basis",
+        "boundary_commit_ids",
+        "observed_commits",
+        "accepted_commits",
+        "excluded_commits",
+        "limitations"
+      ]
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/contributor"
+      },
+      "maxItems": 100000
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/file"
+      },
+      "maxItems": 100000
+    },
+    "commits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/commit"
+      },
+      "maxItems": 100000
+    },
+    "renames": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/rename"
+      },
+      "maxItems": 100000
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/component"
+      },
+      "maxItems": 100000
+    },
+    "symbol_history": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "consumer_authored",
+            "unavailable"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "availability",
+        "origin",
+        "limitations"
+      ]
+    },
+    "symbols": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/symbol"
+      },
+      "maxItems": 100000
+    },
+    "coupling": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "const": "historical_cochange"
+        },
+        "count_unit": {
+          "const": "distinct_accepted_commit"
+        },
+        "pairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pair"
+          },
+          "maxItems": 100000
+        },
+        "truncated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "method",
+        "count_unit",
+        "pairs",
+        "truncated"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 16384
+      },
+      "maxItems": 100000,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "context_id",
+    "repository_id",
+    "head",
+    "cutoff",
+    "origin",
+    "producer",
+    "policy",
+    "scope",
+    "contributors",
+    "files",
+    "commits",
+    "renames",
+    "components",
+    "symbol_history",
+    "symbols",
+    "coupling",
+    "limitations"
+  ],
+  "definitions": {
+    "contributor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "bot": {
+          "type": "boolean"
+        },
+        "former": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "aliases",
+        "bot",
+        "former"
+      ]
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "current_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "anchor_commit_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "anchor_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "identity_scope": {
+          "enum": [
+            "complete_first_parent_lineage",
+            "observed_lineage_only"
+          ]
+        },
+        "excluded": {
+          "type": "boolean"
+        },
+        "commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "current_path",
+        "anchor_commit_id",
+        "anchor_path",
+        "identity_scope",
+        "excluded",
+        "commit_ids"
+      ]
+    },
+    "rename": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "commit_id": {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        "from_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "to_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "file_id",
+        "commit_id",
+        "from_path",
+        "to_path"
+      ]
+    },
+    "commit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        "committed_at": {
+          "type": "integer"
+        },
+        "parent_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "declared_contributor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "maxItems": 64,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "participant_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "file_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "delta_availability": {
+          "enum": [
+            "available",
+            "unavailable"
+          ]
+        },
+        "total_files": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_merge": {
+          "type": "boolean"
+        },
+        "excluded_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "future",
+                "outside_window",
+                "explicit_exclusion",
+                "unknown_delta",
+                "merge",
+                "bulk",
+                "generated_only",
+                "no_selected_files",
+                "bot_only"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "committed_at",
+        "parent_ids",
+        "declared_contributor_ids",
+        "participant_ids",
+        "file_ids",
+        "delta_availability",
+        "total_files",
+        "is_merge",
+        "excluded_reason"
+      ]
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "file_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "basis": {
+          "const": "current_configuration_projection"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "file_ids",
+        "commit_ids",
+        "availability",
+        "basis"
+      ]
+    },
+    "symbol": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "file_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "anchor_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "current_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "previous_keys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "lineage": {
+          "enum": [
+            "declared",
+            "ambiguous",
+            "unavailable"
+          ]
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "origin": {
+          "const": "consumer_authored"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "file_id",
+        "anchor_key",
+        "current_key",
+        "previous_keys",
+        "lineage",
+        "availability",
+        "commit_ids",
+        "origin",
+        "limitations"
+      ]
+    },
+    "pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "file",
+            "component",
+            "symbol"
+          ]
+        },
+        "left_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "right_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "commit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+          },
+          "maxItems": 100000,
+          "uniqueItems": true
+        },
+        "support": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "left_touches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "right_touches": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "entity_kind",
+        "left_id",
+        "right_id",
+        "commit_ids",
+        "support",
+        "left_touches",
+        "right_touches"
+      ]
+    }
+  }
+}

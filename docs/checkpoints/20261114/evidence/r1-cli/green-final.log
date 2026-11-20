@@ -1,0 +1,108 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.0.0, pluggy-1.7.0 -- /workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python
+rootdir: /workspace/scratch/b3d4e6fff494/cppulse
+configfile: pytest.ini
+plugins: cov-4.1.0, platformdirs-4.14.5, anyio-4.16.0
+collecting ... collected 70 items
+
+tests/test_effective_config.py::test_profile_precedence_and_invocation_relative_paths PASSED [  1%]
+tests/test_effective_config.py::test_init_refuses_overwrite PASSED       [  2%]
+tests/test_effective_config.py::test_config_never_executes_yaml_tags PASSED [  4%]
+tests/test_effective_config.py::test_unknown_setting_is_actionable PASSED [  5%]
+tests/test_effective_config.py::test_unregistered_rule_is_not_silently_ignored PASSED [  7%]
+tests/test_effective_config.py::test_threshold_must_fit_native_integer PASSED [  8%]
+tests/test_effective_config.py::test_multiple_discovered_configs_require_explicit_selection[names0] PASSED [ 10%]
+tests/test_effective_config.py::test_multiple_discovered_configs_require_explicit_selection[names1] PASSED [ 11%]
+tests/test_effective_config.py::test_multiple_discovered_configs_require_explicit_selection[names2] PASSED [ 12%]
+tests/test_effective_config.py::test_explicit_config_disambiguates_without_loading_other_candidates PASSED [ 14%]
+tests/test_effective_config.py::test_effective_config_reports_the_native_file_budget_default PASSED [ 15%]
+tests/test_effective_config.py::test_explicit_file_budget_overrides_the_shared_default PASSED [ 17%]
+tests/test_effective_config.py::test_duplicate_configuration_keys_cannot_override_requirements[.cppulserc.json-{"profile":"safety-critical","profile":"default"}] PASSED [ 18%]
+tests/test_effective_config.py::test_duplicate_configuration_keys_cannot_override_requirements[.cppulserc.json-{"rules":{"CPP-MEM-001":{"enabled":true,"enabled":false}}}] PASSED [ 20%]
+tests/test_effective_config.py::test_duplicate_configuration_keys_cannot_override_requirements[.cppulserc.yml-profile: safety-critical\nprofile: default\n] PASSED [ 21%]
+tests/test_effective_config.py::test_duplicate_configuration_keys_cannot_override_requirements[.cppulserc.yml-rules:\n  CPP-MEM-001:\n    enabled: true\n    enabled: false\n] PASSED [ 22%]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed] PASSED [ 24%]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[partial-1-partial-partial] PASSED [ 25%]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[skipped-0-partial-partial] PASSED [ 27%]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[None-0-no_data-partial] PASSED [ 28%]
+tests/test_cli_exit_contract.py::test_analysis_and_finite_watch_use_analysis_scope_status[completed-0-analyze] PASSED [ 30%]
+tests/test_cli_exit_contract.py::test_analysis_and_finite_watch_use_analysis_scope_status[completed-0-watch] PASSED [ 31%]
+tests/test_cli_exit_contract.py::test_analysis_and_finite_watch_use_analysis_scope_status[partial-3-analyze] PASSED [ 32%]
+tests/test_cli_exit_contract.py::test_analysis_and_finite_watch_use_analysis_scope_status[partial-3-watch] PASSED [ 34%]
+tests/test_cli_exit_contract.py::test_analysis_operational_failure_is_not_a_known_failed_gate[failure0] PASSED [ 35%]
+tests/test_cli_exit_contract.py::test_analysis_operational_failure_is_not_a_known_failed_gate[failure1] PASSED [ 37%]
+tests/test_cli_exit_contract.py::test_analysis_operational_failure_is_not_a_known_failed_gate[failure2] PASSED [ 38%]
+tests/test_cli_exit_contract.py::test_analysis_operational_failure_is_not_a_known_failed_gate[failure3] PASSED [ 40%]
+tests/test_cli_exit_contract.py::test_collection_operational_failure_is_not_missing_verification_evidence PASSED [ 41%]
+tests/test_cli_exit_contract.py::test_analysis_keyboard_interrupt_preserves_cancellation_exit PASSED [ 42%]
+tests/test_cli_exit_contract.py::test_doctor_missing_required_native_component_is_operational_failure PASSED [ 44%]
+tests/test_installed_cli.py::test_init_config_machine_output_does_not_run_project PASSED [ 45%]
+tests/test_installed_cli.py::test_missing_native_publishes_incomplete_attempt_and_report_refuses_old_data PASSED [ 47%]
+tests/test_installed_cli.py::test_diagnostics_default_excludes_paths_environment_and_raw_errors PASSED [ 48%]
+tests/test_installed_cli.py::test_explicit_bad_config_returns_invalid_input_exit PASSED [ 50%]
+tests/test_installed_cli.py::test_producer_schema_error_is_concise_invalid_contract PASSED [ 51%]
+tests/test_pipeline_failures.py::test_component_system_exit_records_partial_attempt PASSED [ 52%]
+tests/test_pipeline_failures.py::test_failed_analyzer_retains_log_and_configuration PASSED [ 54%]
+tests/test_pipeline_failures.py::test_failure_publication_does_not_mask_original_error PASSED [ 55%]
+tests/test_pipeline_failures.py::test_historical_snapshot_report_reads_checked_bytes_and_writes_derived_output PASSED [ 57%]
+tests/test_pipeline_failures.py::test_report_cannot_overwrite_immutable_snapshot_artifacts PASSED [ 58%]
+tests/test_pipeline_failures.py::test_compatibility_export_does_not_clobber_another_writers_temporary_file PASSED [ 60%]
+tests/test_public_cli.py::test_collect_assess_repeat_check_and_historical_explain PASSED [ 61%]
+tests/test_public_cli.py::test_invalid_request_and_duplicate_json_keys_never_execute_or_create_store PASSED [ 62%]
+tests/test_public_cli.py::test_check_modes_are_exclusive_and_pins_are_a_pair PASSED [ 64%]
+tests/test_public_cli.py::test_explain_missing_store_is_read_only PASSED [ 65%]
+tests/test_public_cli.py::test_baseline_finding_check_and_readonly_sarif PASSED [ 67%]
+tests/test_public_cli.py::test_package_module_dispatcher_is_installed_entry_alias PASSED [ 68%]
+tests/test_public_cli.py::test_collect_sigint_publishes_cancelled_observed_attempt PASSED [ 70%]
+tests/test_assessment_workflows.py::test_assessment_retains_facts_and_one_active_typed_decision PASSED [ 71%]
+tests/test_assessment_workflows.py::test_repeated_assess_and_check_use_base_and_archive_old_exact_decisions PASSED [ 72%]
+tests/test_assessment_workflows.py::test_stale_source_or_rebuilt_binary_cannot_reuse_old_test_facts[source.cpp-STALE_SOURCE] PASSED [ 74%]
+tests/test_assessment_workflows.py::test_stale_source_or_rebuilt_binary_cannot_reuse_old_test_facts[build/app-STALE_OUTPUT] PASSED [ 75%]
+tests/test_assessment_workflows.py::test_output_change_at_publication_prevents_new_assessment PASSED [ 77%]
+tests/test_assessment_workflows.py::test_expiry_is_recomputed_on_repeated_check_without_rerunning_commands PASSED [ 78%]
+tests/test_cmake_check_helper.py::test_default_build_does_not_enforce_or_collect PASSED [ 80%]
+tests/test_cmake_check_helper.py::test_explicit_check_has_selected_dependency_and_preserves_path_arguments PASSED [ 81%]
+tests/test_cmake_check_helper.py::test_normal_build_enforcement_requires_explicit_option PASSED [ 82%]
+tests/test_cmake_check_helper.py::test_compile_database_discovery_names_actual_generated_context PASSED [ 84%]
+tests/test_cmake_check_helper.py::test_check_failure_is_not_hidden[1] PASSED [ 85%]
+tests/test_cmake_check_helper.py::test_check_failure_is_not_hidden[2] PASSED [ 87%]
+tests/test_cmake_check_helper.py::test_check_failure_is_not_hidden[3] PASSED [ 88%]
+tests/test_cmake_check_helper.py::test_check_failure_is_not_hidden[130] PASSED [ 90%]
+tests/test_cmake_check_helper.py::test_finding_mode_uses_the_same_explicit_check_contract PASSED [ 91%]
+tests/test_cmake_check_helper.py::test_invalid_or_ambiguous_build_configuration_fails_before_commands[ -] PASSED [ 92%]
+tests/test_cmake_check_helper.py::test_invalid_or_ambiguous_build_configuration_fails_before_commands[POLICY "a.json" FINDINGS "b.json"-] PASSED [ 94%]
+tests/test_cmake_check_helper.py::test_invalid_or_ambiguous_build_configuration_fails_before_commands[POLICY "a.json"-RUN_ID pinned-run] PASSED [ 95%]
+tests/test_cmake_check_helper.py::test_invalid_or_ambiguous_build_configuration_fails_before_commands[POLICY "a.json"-MANIFEST_SHA256 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 97%]
+tests/test_cmake_check_helper.py::test_invalid_or_ambiguous_build_configuration_fails_before_commands[POLICY "a.json"-UNKNOWN_OPTION] PASSED [ 98%]
+tests/test_cmake_check_helper.py::test_explicit_pin_pair_is_passed_without_resolving_latest PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+  
+  Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+  (to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+  but was not found to be installed on your system.
+  If this would cause problems for you,
+  please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+  'parseString' deprecated - use 'parse_string'
+
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+  'resetCache' deprecated - use 'reset_cache'
+
+tests/test_cli_exit_contract.py::test_pipeline_status_describes_analysis_instead_of_successful_archival[analyzed-0-scored-completed]
+  'enablePackrat' deprecated - use 'enable_packrat'
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 70 passed, 14 warnings in 15.46s =======================

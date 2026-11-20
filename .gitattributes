@@ -1,0 +1,3 @@
+# Preserve verbatim clang-tidy -dump-config producer EOF bytes in these two raw fixtures.
+tests/fixtures/clang_tidy19_qualification/captured/defaults-bugprone-dangling-handle.stdout whitespace=-blank-at-eof
+tests/fixtures/clang_tidy19_qualification/captured/defaults-bugprone-unused-return-value.stdout whitespace=-blank-at-eof

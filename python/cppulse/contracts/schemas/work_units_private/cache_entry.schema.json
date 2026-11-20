@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/cache_entry.schema.json",
+  "title": "Draft cppulse cache_entry protocol 1.0; not a supported runtime contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "fact_key": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "unit_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "state": {
+      "const": "complete"
+    },
+    "primary_file": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*/$)[^\\u0000-\\u001f\\u007f]+$",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]"
+      }
+    },
+    "primary_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "context_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "native_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "registry_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "extraction_configuration_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "dependency_manifest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+    },
+    "dependencies_complete": {
+      "const": true
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        "manifest_sha256": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        "source_digest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      },
+      "required": [
+        "run_id",
+        "manifest_sha256",
+        "source_digest"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "version",
+    "fact_key",
+    "unit_id",
+    "state",
+    "primary_file",
+    "primary_sha256",
+    "context_digest",
+    "native_sha256",
+    "registry_sha256",
+    "extraction_configuration_sha256",
+    "dependency_manifest",
+    "dependencies_complete",
+    "origin",
+    "artifacts",
+    "created_at",
+    "limitations"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "requirements_exactly_covered": 118,
+  "tasks_exactly_covered": 60,
+  "missing_numbered_ids": [],
+  "extra_numbered_ids": [],
+  "duplicate_numbered_ids": [],
+  "supplemental_obligations_covered": 9,
+  "all_assigned_to_existing_phases": true,
+  "all_original_source_cells_retained": true,
+  "all_input_specification_sha256_unchanged": true,
+  "all_evidence_paths_exist": true,
+  "all_M8_M9_tasks_retained": true,
+  "counts_are_traceability_not_completion": true,
+  "traceability_sha256": "1bfa63ffce166c5d28d5dcc024788e8eb77e409380ec4afce5eadf47e16cd811",
+  "csv_sha256": "be898b0d23a0ac154ccb2e175d8144867160dfa3f45688026cef9560b83da119",
+  "phase_count": 15,
+  "baseline_requirement_states": {
+    "implemented_and_locally_verified": 60,
+    "partial": 47,
+    "not_started": 11
+  },
+  "baseline_task_states": {
+    "implemented_and_locally_verified": 14,
+    "partial": 23,
+    "not_started": 23
+  },
+  "cloud_reconciliation": "2026-11-16: Ninth explicit Docker/Compose obligation retained from execution ledger; planning coverage is not implementation acceptance.",
+  "current_execution_checkpoint": {
+    "utc": "2026-11-17T08:20:42.615502+00:00",
+    "path": "docs/checkpoints/20261117/live-provider-ctest-and-memory.md",
+    "canonical_items": 187,
+    "canonical_states_unchanged": true,
+    "qualification": "Finiteinstalled/livegates plusactualfailedmemorybaselines; projectionproducerandfullnormalizationremainunfinished; notfullproductionacceptance."
+  },
+  "approved_three_item_checkpoint": {
+    "utc": "2026-11-17T09:55:51.078112+00:00",
+    "ids": [
+      "FR-EVD-09",
+      "FR-GIT-03",
+      "FR-UX-12"
+    ],
+    "accepted_original_criteria": true,
+    "definition_sha256": "e57e89fb7db188f1f4805b95c0bc6f2896c7ab9eef15d851723cc422a0bd2381",
+    "states": {
+      "open": 118,
+      "active": 64,
+      "verified": 3,
+      "blocked": 2
+    },
+    "evidence_audit": "docs/checkpoints/20261117/three-item-closure-audit.json",
+    "require_complete_exit_status": 3,
+    "full_program_complete": false,
+    "other_184_states_unchanged": true
+  },
+  "latest_installed_import_checkpoint": {
+    "utc": "2026-11-17T11:44:50.856937+00:00",
+    "new_verified_ids": [
+      "FR-EVD-01",
+      "FR-ANA-09"
+    ],
+    "refreshed_verified_ids": [
+      "FR-UX-12",
+      "FR-EVD-09",
+      "FR-GIT-03"
+    ],
+    "states": {
+      "open": 116,
+      "active": 64,
+      "verified": 5,
+      "blocked": 2
+    },
+    "definition_sha256": "e57e89fb7db188f1f4805b95c0bc6f2896c7ab9eef15d851723cc422a0bd2381",
+    "strict_verifier_exit_status": 3,
+    "full_program_complete": false,
+    "audit": "docs/checkpoints/20261117/installed-import-closures-audit.json"
+  }
+}

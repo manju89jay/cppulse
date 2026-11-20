@@ -1,0 +1,670 @@
+﻿Requirement,Implemented code,Verification evidence,Status,Remaining work
+"M0-01 — Inventory current worktree, origin/main 82120d2, health-score-v2 history, and preliminary drafts. Preserve unrelated files and existing working code. | Recorded baseline and merge/reuse plan; no duplicate implementation of existing fixes","docs/plans/cppulse-production-completion-plan.md
+docs/DECISIONS.md
+
+Recorded provenance/reuse inventory remains available; no runtime completion is inferred.","{""path"": ""review/environment.json"", ""available"": true}
+{""path"": ""review/HANDOFF.md"", ""available"": true}
+{""path"": ""docs/plans/cppulse-production-completion-plan.md"", ""available"": true}
+
+Recorded inventory/provenance scope only; not a runtime or milestone closure.",verified,Maintain exact frozen/source/artifact provenance through the handoff; inventory scope itself is satisfied.
+"M0-02 — Define canonical identities, manifest/status envelopes, configuration/version compatibility, scorer availability, and model metadata schemas. Reconcile draft contracts. | Draft-07 and semantic validation; legacy fixture compatibility","python/cppulse/contracts/maintenance.py
+python/cppulse/contracts/policy_extensions.py
+python/cppulse/contracts/schemas/v2/analysis_metrics.schema.json
+python/cppulse/config.py
+
+New measured/duplication and policy1.2 semantics plus private work-unit draft contracts exist.","{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Accept producer/schema integration, work-unit runtime semantics, fingerprint migration and remaining compatibility before closure."
+"M0-03 — Add regressions for absolute/relative paths, separators, basename collisions, empty/partial scope, missing context, profile propagation, and incorrect model labels. | Reproductions demonstrate the pre-fix behavior","tests/test_cli_exit_contract.py
+tests/test_effective_config.py
+analyzer-core/tests/test_rule_regressions.cpp
+analyzer-core/tests/test_native_metrics.cpp
+tests/test_work_unit_runtime.py
+
+Meaningful red/green reproductions added for config/partial exits, native detector defects, metrics and editor pins/bounds.","{""path"": ""review/production-20261114/r1-cli/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/actual-verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/green-final.log"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Complete supported compiler/context/flag/platform regression matrix; latest metrics/scale/runtime integration remains red or unrun.
+"M0-04 — Correct producers, configuration propagation, per-file parse outcomes, rule execution facts, generated/vendor scope, and no-Git handling. Reuse newer branch fixes. | Producer output validates; valid partial facts survive failed units","analyzer-core/src/analyzer.cpp
+analyzer-core/src/config.cpp
+analyzer-core/src/metrics.cpp
+python/cppulse/analysis.py
+
+Configurable16MiB default replaces500KiB skip; template/detector fixes, actual raw native metrics, selected-file and guard work exist.","{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Fresh current combined native source builds and139CTest pass. CR-onlyLOC defect, missing unresolved include edges, full context/generated/vendor/external dependency scope and isolated scheduler remain."
+"M0-05 — Correct feature joins, score prerequisites, actual complexity availability, heuristic metadata, label provenance, and false clean-state handling. | Consistent equations; no fabricated complexity/probabilities/perfect missing-data score","python/cppulse/predictor/feature_engineer.py
+python/cppulse/predictor/model.py
+python/cppulse/predictor/health_scorer.py
+analyzer-core/src/metrics.cpp
+
+Per-file unranked availability and truthful experimental ranking fixed in retained focused proof; measured raw native producer added.","{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Measured normalizer/scorer/hotspots and duplication absent; preserve incomplete scope and implement design density/worst-required-context method with migration.
+M0-06 — Update reports and CLI output to expose partial/unknown state; fix existing advertised command/format behavior and baseline matching. | CLI and rendered results agree; no silently ignored format/profile options,"python/cppulse/cli.py
+python/cppulse/pipeline.py
+python/cppulse/report_engine/api.py
+python/cppulse/report_engine/templates/report.html
+dashboard/src/components/RiskPrediction.tsx
+
+Partial/no-data exits3, operational2 and config ambiguity corrections have focused/actual subprocess proof; unavailable-ranking/history displays improved.","{""path"": ""review/production-20261114/r1-cli/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/actual-verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/green-final.log"", ""available"": true}
+{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Human-default CLI and complete effective context remain; run current exact-artifact/rendered/interface qualification after integrating unfinished work.
+"M0-07 — Verify all existing components and regenerate a small pinned example before refreshing larger examples. | Tests, schema results, semantic score verification, and documented remaining limitations","scripts/check_local.py
+scripts/verify_pipeline.py
+scripts/run_real_corpus.py
+
+Historical broad green is separate. Fresh79665c4combined native configure/build and139CTest pass; selected root453pass. Full root collection still has4missing-module errors.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Implement/resolve intentionally unfinished metric/scorer/duplication/trends/work-unit consumers, rerun complete root/component suites and qualify current installed artifacts; scoped green does not close all existing components."
+M1-01 — Define verification-result and package-version manifests; freeze the initially supported dependency/platform matrix. | One documented source of versions and compatibility expectations,"pyproject.toml
+tools/contracts/development-result.schema.json
+scripts/package_candidate.py
+
+Development/result schemas and exact source/log identities improved.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Freeze and actually exercise complete GCC/Clang/libclang/Python/CMake/platform matrix and artifact compatibility.
+M1-02 — Add the cross-platform local development runner around existing CTest/pytest/dashboard tools. | Full run invokes every required suite and returns machine-readable failures,"tools/dev.py
+scripts/check_local.py
+tools/benchmark.py
+.github/workflows/ci.yml
+.gitlab-ci.yml
+
+Portable facade for doctor/verify/generators/benchmark/package/release-dry-run exists;73 focused tests and CI-source delegation checks passed.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",implemented but unverified,"Actual full current-source runner invocation with final installed candidate, required performance/integration stages and other promised hosts remains unverified; declared stages alone do not close task."
+M1-03 — Consolidate common Python contracts/configuration with compatibility entry points. Separate development and optional runtime dependencies. | Existing component commands and isolated installs both pass,"pyproject.toml
+python/cppulse/__init__.py
+python/cppulse/config.py
+
+Namespaced package/wrappers and absent optional PDF/web/ML operation retain historical proof.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Current combined-source clean installation and promised Python versions unqualified; GitPython/numpy/pandas remain core dependencies, so optional Git/risk separation is incomplete."
+"M1-04 — Extend CMake with install targets, package core artifacts, and build the Python distribution and optional components. | Analyze from an empty working directory using only installed artifacts","analyzer-core/CMakeLists.txt
+cli/CMakeLists.txt
+scripts/package_native.py
+scripts/package_candidate.py
+python/cppulse/native.py
+
+Native/Python packaging exists; p2-resumed fresh core wheel installation passed at its earlier copied source.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Rebuild final native+wheel exact frozen source outside checkout; complete CPack/support matrix/dependency closure. Older installed native is not final-source proof.
+"M1-05 — Complete integration fixtures: actual outputs, volume extraction, PDF generation, API queries, and browser-level dashboard checks. | Integration fails when any promised output or consumer is broken","scripts/integration_test.sh
+scripts/verify_pipeline.py
+scripts/verify_web_demo.py
+scripts/verify_snapshot_web.py
+
+Existing non-container web/PDF/dashboard fixtures and refreshed presentation focused checks remain available.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Actual Compose one-shot, failure/repeat/shutdown and named-volume extraction with current candidate remains unrun; no Docker success inferred."
+"M1-06 — Generate candidate versions, changelog, checksums, notices, dependency inventory, support matrix, and verification manifest. | A retained candidate can be reproduced and installed; dry-run publication changes no external state","scripts/package_candidate.py
+tools/dev.py
+tools/contracts/development-result.schema.json
+
+Exact candidate/source/log-bound dry-run guards implemented and focused-tested.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Produce/reinstall final locked candidate with changelog, notices, inventory/SBOM/support matrix and actual full verification before release dry-run acceptance."
+M1-07 — Add rule/adapter generators and generated-documentation checks; make existing CI call shared local commands. | A generated extension passes registry/contract checks only after meaningful fixture implementation,"python/cppulse/tooling.py
+scripts/check_generated.py
+.github/workflows/ci.yml
+.gitlab-ci.yml
+
+Existing CI now calls shared developer facade; generated docs/config checks and incomplete scaffolds remain.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Native registration/integration generation and meaningful generated rule/adapter implementation/fixtures still incomplete; CI files changing does not prove CI execution.
+"M2-01 — Define work-unit/dependency/cache identities, checkpoints, and committed snapshot semantics. | Contract fixtures cover crashes, incomplete graphs, and stale/latest races","python/cppulse/run_store.py
+docs/contracts/work-units.md
+python/cppulse/contracts/schemas/work_units_private/work_request.schema.json
+
+23 structural draft contract tests passed; private draft copies and retained immutable publication exist.","{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Register checked semantic runtime identities, dependency completeness/checkpoints/reuse profile; work_units runtime absent."
+"M2-02 — Introduce bounded analyzer workers, per-unit time/resource limits, cancellation, and explicit large-file policy. | Limits respected; a crashing parser does not erase other results","analyzer-core/src/main.cpp
+analyzer-core/src/analyzer.cpp
+python/cppulse/execution.py
+
+Finite file selection, native LinuxCPU/address-space/file-size guards and run_bounded_process wrapper exist.","{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Latest combined native guard source now builds and139CTest pass. Scheduler/work-unit isolation, actual configured resource/fault behavior and final installed/platform acceptance remain incomplete. Token retention does not bound libclang token allocation."
+M2-03 — Implement dependency-aware facts caching and separate assessment caching. | Clean versus cached results agree for source/header/flag/tool/policy edits,"
+
+Private cache schema/design only; no cache runtime.","{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Implement checked extraction/assessment caches, conservative dependency invalidation, immutable original lineage and clean/reused semantic equality."
+"M2-04 — Stream reusable Git records, handle history rewrite/shallow cases, and checkpoint incremental mining. | Complete and resumed history metrics agree on controlled histories","python/cppulse/git_miner/history.py
+
+No new streamed/resumable history runtime established.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Stream/persist history and test append/rewrite/shallow checkpoints against clean results.
+M2-05 — Publish immutable runs atomically and add indexed history/catalog queries and bounded result aggregation. | Readers never mix runs; interruption recovery and catalog migration pass,"python/cppulse/run_store.py
+docs/contracts/work-units.md
+
+Immutable run publication remains; index/checkpoint drafts do not implement runtime.","{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Indexed catalog/migration/recovery, accepted checkpoints and bounded aggregation remain absent."
+M2-06 — Add stable pagination to the API and efficient dashboard access for large findings sets. | Bounded page size and one-run cursor consistency,"python/cppulse/report_engine/api.py
+dashboard/src/api/client.ts
+docs/contracts/work-units.md
+
+Legacy paging exists; immutable cursor structural drafts added.","{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Implement indexed bounded run/query-bound pages and efficient dashboard access; whole-view slicing is not scale acceptance.
+"M2-07 — Benchmark 1K/10K/100K-file tiers and representative histories on a named host. Set measured release budgets. | Published cold/warm/edit timing, memory, completeness, and comparison results","tools/benchmark.py
+
+Generic benchmark runner measured selected developer commands, not required workloads.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/scale_runtime_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/r3-work-unit-contracts/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/p5-resume/runtime-red.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Execute named-host1K/10K/100K files/history tiers, clean/cache equality and repeated resource measurements; freeze real budgets."
+M3-01 — Define CLI/config/exit contracts and baseline fingerprints. | Compatible invocation fixtures and actionable invalid-input cases,"python/cppulse/cli.py
+python/cppulse/config.py
+python/cppulse/findings.py
+python/cppulse/client_contract.py
+
+Ambiguity, duplicate configuration keys, partial exits and paired response pins improved.","{""path"": ""review/production-20261114/r1-cli/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/actual-verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/green-final.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Human defaults/full effective context plus symbol/token fingerprint version/migration and full supported matrix remain.
+M3-02 — Specify and implement core health/finding-regression gate predicates before exposing check. General evidence-policy packs remain M5 work. | No dependency on the later assurance engine; unsupported policy/evidence options are rejected clearly,"python/cppulse/policy.py
+python/cppulse/findings.py
+python/cppulse/contracts/finding_workflows.py
+
+Existing core/policy gate engine retained; new metric/review extension does not finish independent core-health gate scope.","{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Finish documented independent health/finding gate contract and reject unsupported capability versions; final combined checks required.
+"M3-03 — Implement init, doctor, effective configuration, explain, check, baseline, and local bug-report commands. Preserve analyze/report/watch. | Clean-machine and outside-checkout journeys; JSON/log separation","python/cppulse/cli.py
+python/cppulse/config.py
+python/cppulse/client_contract.py
+
+Existing public commands plus capability handshake and corrected exits/config errors exist.","{""path"": ""review/production-20261114/r1-cli/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/actual-verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/green-final.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Concise human-default output and complete inspectable effective configuration remain; clean-machine current-artifact command journey unverified.
+"M3-04 — Install the CMake helper and implement explicit check targets, target/dependency selection, and optional normal-build checks. | A sample application and library use the installed package without custom output parsing","python/cppulse/data/Cppulse.cmake
+tests/test_cmake_check_helper.py
+
+Shared installed CMake check helper and earlier focused cases remain.","{""path"": ""review/production-20261114/r1-cli/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/actual-verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-cli/green-final.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Resolve/preserve3.16 consumer minimum versus helper3.21; test Ninja/actual context capture/libraries/platforms on current installed bytes.
+"M3-05 — Add changed-scope checks and SARIF exports; repair the existing PR comparison/action as a consumer of the same engine. | Rename, repeated finding, basename collision, branch, and partial-analysis tests","python/cppulse/findings.py
+python/cppulse/sarif.py
+.github/actions/cppulse
+
+Public paired SARIF/editor agreement contract added; no actual host agreement pass.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Dependency-aware changed-scope execution, robust symbol/token fingerprints and actual Docker/host wrapper qualification remain."
+"M3-06 — Publish concise quickstarts, troubleshooting, upgrade/rollback instructions, and a supported-environment table. | Every example is exercised by package integration tests","README.md
+docs/development/workflow.md
+docs/editor-vscode.md
+
+Developer workflow and preview installation docs added.","{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Reconcile stale editor Xvfb statement and missing config UI docs; exercise all final documented examples and installation/interpretation review.
+M3-07 — Prepare Release A and a free skill/listing containing released commands only; test the skill in a clean agent session. | Verified install artifacts; validated text ZIP; listing describes actual scope; submission status recorded separately,"
+
+No released free skill/clean-agent validation or ReleaseA established.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,Qualify exact ReleaseA artifacts and portable skill/listing using documented released commands; submission/publication remains separate.
+"M4-01 — Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit","docs/contracts/maintenance-metrics.md
+python/cppulse/contracts/maintenance.py
+python/cppulse/contracts/schemas/v2/analysis_metrics.schema.json
+python/cppulse/contracts/schemas/v2/maintenance_health.schema.json
+
+Versioned actual metrics,30-token exact duplication, density/context scorer and trend compatibility contracts exist;69 contract tests passed.","{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Complete accepted producer/schema integration and snapshot/compare contract-runtime coherence;69 is contract proof, not measured workflow completion."
+"M4-02 — Emit actual complexity/nesting/length/parameter metrics, then validated duplication and cohesion metrics. | Positive/negative and macro/template fixtures; counts match hand-reviewed cases","analyzer-core/src/metrics.h
+analyzer-core/src/metrics.cpp
+analyzer-core/src/output_writer.cpp
+analyzer-core/tests/test_native_metrics.cpp
+
+Actual TU-bufferSHA,LOC/functionCC/nesting/length/parameters,tokens,resolved include edges exist.20earlier native metrics cases remain; fresh79665c4combined native configure/build and139/139CTest now pass.","{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/native/ctest.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"CR-onlyLOC bug, unresolved include edges, raw native output/schema acceptance, normalization, duplication/cohesion and wider macro/template/context validation remain; fresh139nativeCTest is not fullP3acceptance."
+M4-03 — Calibrate and explain a maintenance profile; compute measured hotspots and precise roadmap evidence links. | Same facts give same scores; no claim of empirical probability or financial ROI without supporting validation,"python/cppulse/predictor/health_scorer.py
+python/cppulse/contracts/maintenance.py
+docs/contracts/maintenance-metrics.md
+
+Design-aligned density/caps/worst-required-context method now specified; old attempted-file runtime remains.","{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",conflicting,"cppulse.maintenance consumer absent. Implement explicit migration/new scorer, measured hotspots and fact-linked roadmap; do not relabel old method as design-compliant."
+"M4-04 — Add history, trends, function drill-down, critical-code markers, and basic debt goals. | Version/context changes break or annotate trends rather than silently continuing them","tests/test_maintenance_trends.py
+
+Red trend tests only; test existence is not implementation.","{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/collection/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,Implement compatible persisted measurements/history/function drill-down/critical code/goals; maintenance module absent.
+"M4-05 — Expand and review the pinned corpus and resource measurements. | Accuracy sample, false positives, unsupported syntax, and baseline results published","scripts/run_real_corpus.py
+examples
+
+Some retained real/synthetic fixture proof and defect corrections exist.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Freshly analyze all six ORIGINAL fmt/grpc/json/leveldb/poco/protobuf with real pinned history; hand-review accuracy and resources; utfcpp does not replace one.
+"M5-01 — Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators","python/cppulse/contracts/policy_extensions.py
+python/cppulse/contracts/verification.py
+python/cppulse/contracts/schemas/v2/policy.schema.json
+
+Explicit profile1.2 numeric/review contracts and narrow validators added;532 prerequisite tests passed before runtime extension.","{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/python_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/duplication-contract-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/normalization-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/consumer-red.log"", ""available"": true}
+{""path"": ""review/production-20261114/p3-python-resume/trends-red.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Finalize actual runtime/producer provenance integration, full semantic/tamper validation and pack resolution/versioning; one focused runtime test still fails."
+"M5-02 — Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently","python/cppulse/coverage.py
+python/cppulse/consumer.py
+
+Earlier supported CTest/JUnit/LCOV/Cobertura execution-scope adapters and negative cases retain scoped proof.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",implemented but unverified,Requalify supported adapter/context cases against final changed contracts/current artifact; broader formats/context/streaming remain explicit limits.
+"M5-03 — Add ASan/UBSan/TSan collection/import adapters for explicitly supported tool/platform versions. | Instrumented failing/clean samples, uninstrumented runs, empty logs, wrong contexts, and stale artifacts are distinguished","python/cppulse/sanitizers.py
+python/cppulse/contracts/verification.py
+
+Existing selected sanitizer adapters and typed provenance remain.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Complete actual declared ASan/UBSan/TSan platform/version/consumer/instrumented-dependency matrix on final candidate.
+"M5-04 — Implement the pure policy evaluator, four control outcomes, three scores, gate precedence, and bounded deviations. | Hand-calculated examples and invariants pass; averages cannot override blocking failures/unknowns","python/cppulse/policy.py
+python/cppulse/policy_extensions.py
+tests/test_policy_extensions_runtime.py
+
+Old four-outcome score/gate/deviation code preserved; new numeric/review predicates implemented in pure runtime. Fresh79665c4selected old-policy/gate/rank/client/config/pipeline/guard suite453pass confirms that explicit scope, while new extension runtime remains35pass/1fail.","{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Focused runtime35pass/1fail, not green; fix invalid approval fixture then full affected checks, real producer/no-pooling/tamper/rendered-gap acceptance. Synthetic lineage is not actual producer proof."
+M5-05 — Add compiled-library and header-only examples with selected consumer/instantiation matrices. | Missing consumer variants are visible and required variants block acceptance,"examples
+python/cppulse/consumer.py
+python/cppulse/collection.py
+
+Compiled/header-only selected examples exist; configurable large-source limit corrected earlier.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-native-config/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/native_metrics_resume.md"", ""available"": true}
+{""path"": ""review/production-20261114/p3-native-resume/ctest-green.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Expand real compiler/consumer/instantiation/self-containment matrix; latest native/policy/metrics integration unverified and nonexhaustive limits remain.
+M5-06 — Render assessment/evidence/gaps in JSON/HTML/PDF/API/dashboard and add collect/assess workflows to installed CLI/CMake. | Interface agreement and complete package scenarios pass,"python/cppulse/presentation.py
+python/cppulse/report_engine/api.py
+dashboard/src/App.tsx
+python/cppulse/cli.py
+python/cppulse/data/Cppulse.cmake
+
+Existing shared assessment views and improved unavailable risk/history rendering; CLI collect/assess present.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Actual new metric/review gaps across JSON/HTML/PDF/API/dashboard/current installed CLI/CMake unrun; Docker/editor host agreement remains open.
+"M5-07 — Ship general and custom-library policies, then reviewed automotive/medical starter mappings with explicit coverage statements. | Edition pinning, unsupported obligations, and mapping maturity are visible; no certification claim","python/cppulse/data/policies/starter.json
+python/cppulse/data/policies/organization-example.json
+python/cppulse/data/policies/verification-example.json
+
+General/custom examples preserved; no new reviewed domain pack.","{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Automotive/medical edition-specific mappings require authorized editions and qualified human review; unassessed obligations visible, no invented clauses/reviewer/certification."
+M5-08 — Prepare Release B and update the skill to expose only released evidence/policy workflows. | AC-08..12 and AC-16 pass; policy and software versions are recorded together,"
+
+No ReleaseB or released expanded skill established.","{""path"": ""docs/checkpoints/20261114/agents/policy_runtime_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/contracts-gate.log"", ""available"": true}
+{""path"": ""review/production-20261114/p4-policy-resume/runtime-green-first.log"", ""available"": true}
+{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Complete AC08–12 andAC16, exact candidate plus policy versions and actual clean-agent journey; publication separate."
+"M6-01 — Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames","python/cppulse/git_miner/history.py
+
+Current-file rename/shallow/merge limitations retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Contributor aliases/bots/pairs/teams, coupling and component/symbol history contracts incomplete."
+"M6-02 — Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history","
+
+Only existing counts/churn/silo heuristics; no weighted ownership/familiarity/coupling/fragmentation producer.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,Implement shared-history metric contracts and hand-reviewed denominators/double-count cases.
+"M6-03 — Evaluate offboarding scenarios, architectural hotspots, and function-level historical priorities. | Outcomes match known synthetic histories and disclose knowledge-proxy limitations","
+
+No offboarding/component/symbol-history evaluator.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,Implement scenarios/architectural hotspots/function priorities and disclose knowledge-proxy limits.
+"M6-04 — Add maps, trends, explanations, and comparison support to reports/API/dashboard. | Underlying metrics agree with CLI; large-view queries stay within benchmark budgets","
+
+No advanced knowledge/coupling maps/trends or bounded-view proof.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,Render persisted advanced metrics with CLI agreement and indexed-query resource checks.
+M6-05 — Evaluate optional risk models with temporal cutoffs and calibration. | Publish evaluation methodology; unvalidated ranking remains labeled experimental,"python/cppulse/predictor/model.py
+python/cppulse/git_miner/szz_labeler.py
+
+Truthful unavailable/experimental rank presentation improved; no evaluation research added.","{""path"": ""review/production-20261114/r1-risk/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r1-presentation/summary.json"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Temporal/project holdouts, cutoff provenance/leakage controls, baselines/calibration and published methodology remain."
+M7-01 — Specify read-first MCP/IDE contracts and execution capability boundaries. | Client fixtures cannot obtain inconsistent scoring or hidden analysis assumptions,"python/cppulse/client_contract.py
+python/cppulse/contracts/schemas/install_v1/client_capabilities.schema.json
+editors/vscode/contracts/client-protocol-v1.md
+editors/vscode/src/protocol.ts
+
+Versioned capabilities,paired run/hash,SARIF/source identity,trusted execution/stale/generation boundaries and16pure editor tests exist.","{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/check.json"", ""available"": true}
+{""path"": ""review/cloud-handoff-verification-20261114/python/output.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,MCP read/execute transport/handler contract and actual cross-client scenarios remain; pure fixtures do not close shared integration scope.
+M7-02 — Implement run/health/findings/hotspot/policy-gap MCP tools and initial VS Code diagnostics. | Compare results with CLI and installed API fixtures,"editors/vscode/src/extension.ts
+editors/vscode/src/process.ts
+editors/vscode/test/host/index.cjs
+editors/vscode/artifacts/cppulse-0.2.0-preview.vsix
+
+Actual extension/VSIX with diagnostics/run-scope-evidence tree/explicit commands exists; VSIX installation succeeded.","{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,"Real host never passed; latest source exceeds VSIX, finite config schema/docs incomplete. MCP server absent; actual CLI/API/editor/MCP run agreement and platform/scale matrices open."
+M7-03 — Package reusable local build/pre-commit integration and existing Git-host workflow templates. | Consumer examples execute shared commands rather than duplicate logic,"python/cppulse/data/Cppulse.cmake
+python/cppulse/data/templates/pre-commit.example.yaml
+.github/actions/cppulse
+
+Reusable integrations remain, shared local developer/CI facade improved.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/verification.json"", ""available"": true}
+{""path"": ""review/production-20261114/r2-development/facade-final.log"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",partial,Execute current installed application/library/header-only/pre-commit and Docker/host wrappers with0/1/3/outcome semantics; no provider writes inferred.
+M7-04 — Validate and submit the expanded free skill and release integration artifacts. | Marketplace review/publication recorded separately from ZIP preparation; text delivery does not claim native installation,"
+
+No expanded free skill clean-session validation or submitted/published integration artifacts.","{""path"": ""docs/checkpoints/20261114/agents/editor_host_resume.json"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/editor-unit-green.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-host-resume/host-tcp-verbose.log"", ""available"": true}
+{""path"": ""review/production-20261114/p2-resumed/install.log"", ""available"": true}
+{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Implement/version skill using supported released commands, actual clean agent transcript and release packet; keep preparation/submission/publication distinct."
+M8-01 — Team ownership/alignment and fragmentation views | Identity changes and team history do not produce unexplained metrics,"
+
+No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit."
+"M8-02 — Multi-repository portfolio, goals, scheduled reports | Explicit project access/scope; reproducible per-project and aggregate results","
+
+No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit."
+"M8-03 — Branch and delivery analytics | Define branch/merge semantics, task linkage, time windows, and missing-data behavior","
+
+No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit."
+M8-04 — Issue-tracker adapters and cost/ROI views | Provider-specific contract tests; estimated and observed costs clearly separated,"
+
+No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit."
+M8-05 — Additional report/notification integrations | Explicit configuration and delivery outcome; reuse persisted results,"
+
+No corresponding provider/runtime implementation or real workflow validation found; original expansion scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify provider/data/access/history semantics, then contracts→producers→consumers→presentation→orchestration→integration and actual declared acceptance. Optional expansion remains visible; no message/delivery is authorized by this audit."
+"M9-01 — Narrow deterministic fixes and dry-run patches | Precise source edits, idempotence, compilation/tests where relevant","
+
+No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization."
+M9-02 — Agentic semantic refactoring and PR repair | Separate language-specific behavior-validation design and reviewable changes,"
+
+No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization."
+"M9-03 — API/ABI compatibility, fuzzing, dependency evidence adapters | Explicit supported formats/platforms and scope; no unsupported safety claims","
+
+No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization."
+"M9-04 — Additional analyzed languages | Language-specific metrics, fixtures, calibration, and documentation","
+
+No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization."
+M9-05 — SSO/RBAC and optional managed hosting | Access/data ownership/deployment sub-specification and operating-cost model,"
+
+No corresponding behavior-validated language/provider/platform runtime was found; original optional advanced scope retained.","{""path"": ""review/checkpoint-20261114/summary.json"", ""available"": true}
+{""path"": ""review/autonomous/installed-s7/summary.json"", ""available"": true}
+
+Full task acceptance remains open; progress or focused subtask proof is not full task closure.",missing,"Specify supported language/tool/provider/behavior/access/cost contracts, implement and actually qualify. Generic adapters/drafts do not satisfy this task. Hosting/publication/PR writes need their separate authorization."

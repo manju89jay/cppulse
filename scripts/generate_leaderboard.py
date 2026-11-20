@@ -59,22 +59,27 @@ def collect_projects(examples_dir: Path) -> list[dict]:
         total_loc = 0
         if findings_path.exists():
             findings_data = json.loads(findings_path.read_text())
-            total_findings = findings_data.get("summary", {}).get("total_findings", 0)
-            rules_hit = len(set(f["rule_id"] for f in findings_data.get("findings", [])))
+            by_category = findings_data.get("summary", {}).get("by_category", {})
+            total_findings = sum(by_category.values()) if by_category else 0
+            rules_hit = len(
+                set(f["rule_id"] for f in findings_data.get("findings", []))
+            )
             total_loc = findings_data.get("metadata", {}).get("total_loc", 0)
 
         # Check for PDF
         has_pdf = (project_dir / "report.pdf").exists()
 
-        projects.append({
-            "name": project_dir.name,
-            "dir": project_dir,
-            "health": health,
-            "findings": total_findings,
-            "rules_hit": rules_hit,
-            "loc": total_loc,
-            "has_pdf": has_pdf,
-        })
+        projects.append(
+            {
+                "name": project_dir.name,
+                "dir": project_dir,
+                "health": health,
+                "findings": total_findings,
+                "rules_hit": rules_hit,
+                "loc": total_loc,
+                "has_pdf": has_pdf,
+            }
+        )
 
     # Sort by LOC descending (largest first)
     projects.sort(key=lambda p: p["loc"], reverse=True)
@@ -111,21 +116,23 @@ def generate_table(projects: list[dict]) -> str:
         bar = _unicode_bar(p["health"])
         health = f"`{p['health']:.1f}` {bar}"
         findings = f"{p['findings']:,}" if p["findings"] > 0 else "—"
-        rules = f"{p['rules_hit']}/22" if p["rules_hit"] > 0 else "—"
+        rules = f"{p['rules_hit']}/15" if p["rules_hit"] > 0 else "—"
 
         report_parts = [f"[Details](examples/{p['name']}/)"]
         if p["has_pdf"]:
             report_parts.append(f"[PDF](examples/{p['name']}/report.pdf)")
         report = " · ".join(report_parts)
 
-        lines.append(f"| {i} | {name} | {loc} | {health} | {findings} | {rules} | {report} |")
+        lines.append(
+            f"| {i} | {name} | {loc} | {health} | {findings} | {rules} | {report} |"
+        )
 
     return "\n".join(lines)
 
 
 def update_readme(readme_path: Path, table: str) -> None:
     """Replace content between leaderboard markers in README."""
-    content = readme_path.read_text()
+    content = readme_path.read_text(encoding="utf-8")
 
     start_marker = "<!-- LEADERBOARD:START -->"
     end_marker = "<!-- LEADERBOARD:END -->"
@@ -145,14 +152,21 @@ def update_readme(readme_path: Path, table: str) -> None:
         + content[end_idx:]
     )
 
-    readme_path.write_text(new_content)
+    readme_path.write_text(new_content, encoding="utf-8")
     print(f"Updated leaderboard in {readme_path}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate cppulse leaderboard table.")
-    parser.add_argument("--readme", type=Path, default=Path("README.md"), help="Path to README.md")
-    parser.add_argument("--examples", type=Path, default=Path("examples"), help="Path to examples directory")
+    parser.add_argument(
+        "--readme", type=Path, default=Path("README.md"), help="Path to README.md"
+    )
+    parser.add_argument(
+        "--examples",
+        type=Path,
+        default=Path("examples"),
+        help="Path to examples directory",
+    )
     args = parser.parse_args()
 
     projects = collect_projects(args.examples)

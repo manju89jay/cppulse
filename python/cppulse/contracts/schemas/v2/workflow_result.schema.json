@@ -1,0 +1,267 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/workflow_result.schema.json",
+  "title": "cppulse workflow_result v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "operation": {
+      "enum": [
+        "collect",
+        "assess",
+        "compare",
+        "baseline"
+      ]
+    },
+    "store": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "partial",
+        "failed",
+        "insufficient_evidence",
+        "invalid",
+        "cancelled"
+      ]
+    },
+    "exit_code": {
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        130
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "final_run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "facts_base_run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "upstream_run": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "assessment_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "comparison_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "baseline_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policy_gate": {
+      "enum": [
+        null,
+        "passed",
+        "failed",
+        "insufficient_evidence"
+      ]
+    },
+    "normalizers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "kind": {
+            "enum": [
+              "native_analysis",
+              "coverage",
+              "sanitizer",
+              "gcc_import",
+              "external_import",
+              "test_import"
+            ]
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "unavailable",
+              "not_attempted"
+            ]
+          },
+          "outcome": {
+            "enum": [
+              null,
+              "passed",
+              "failed",
+              "error",
+              "unsupported",
+              "missing"
+            ]
+          },
+          "usability": {
+            "enum": [
+              null,
+              "usable",
+              "stale",
+              "mismatched",
+              "unsupported",
+              "malformed",
+              "missing"
+            ]
+          },
+          "fact_artifacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "analysis_inventory",
+                    "observations",
+                    "coverage_facts",
+                    "sanitizer_facts",
+                    "external_analysis_facts",
+                    "analysis_metrics",
+                    "evidence"
+                  ]
+                },
+                "artifact_id": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "id": {
+                  "anyOf": [
+                    {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "kind",
+                "artifact_id",
+                "id"
+              ]
+            },
+            "minItems": 0
+          },
+          "run": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/run_ref"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "status",
+          "outcome",
+          "usability",
+          "fact_artifacts",
+          "run",
+          "reason"
+        ]
+      },
+      "minItems": 0
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/error"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "operation",
+    "store",
+    "status",
+    "exit_code",
+    "reason",
+    "raw_run",
+    "final_run",
+    "facts_base_run",
+    "upstream_run",
+    "assessment_artifact_id",
+    "comparison_artifact_id",
+    "baseline_artifact_id",
+    "policy_gate",
+    "normalizers",
+    "error"
+  ]
+}

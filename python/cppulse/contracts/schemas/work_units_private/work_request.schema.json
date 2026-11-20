@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/drafts/work-units/v1/work_request.schema.json",
+  "title": "Draft cppulse work_request protocol 1.0; not a supported runtime contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "unit_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "primary_file": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*/$)[^\\u0000-\\u001f\\u007f]+$",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f]"
+      }
+    },
+    "primary_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "context": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/context"
+    },
+    "source_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native": {
+      "allOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+        },
+        {
+          "properties": {
+            "name": {
+              "const": "cppulse-analyzer"
+            },
+            "sha256": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+            }
+          },
+          "required": [
+            "sha256"
+          ]
+        }
+      ]
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_manifest": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        },
+        "selection": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        },
+        "configuration": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        },
+        "rule_registry": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        },
+        "compilation_database": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+            }
+          ]
+        },
+        "resource_manifest": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+            }
+          ]
+        },
+        "primary_content": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        }
+      },
+      "required": [
+        "source_manifest",
+        "selection",
+        "configuration",
+        "rule_registry",
+        "compilation_database",
+        "resource_manifest"
+      ]
+    },
+    "dependency_manifest": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/artifact"
+        }
+      ]
+    },
+    "fact_key": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wall_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "address_space_bytes": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9223372036854775807
+            }
+          ]
+        },
+        "cpu_seconds": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9223372036854775807
+            }
+          ]
+        },
+        "max_log_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "max_artifact_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        }
+      },
+      "required": [
+        "wall_seconds",
+        "address_space_bytes",
+        "cpu_seconds",
+        "max_log_bytes",
+        "max_artifact_bytes"
+      ]
+    },
+    "context_mode": {
+      "enum": [
+        "parse_arguments",
+        "compilation_database",
+        "fallback"
+      ]
+    },
+    "source_scope": {
+      "enum": [
+        "whole-inventory",
+        "primary-with-global-guard"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "LD_LIBRARY_PATH": {
+          "type": "string"
+        },
+        "DYLD_LIBRARY_PATH": {
+          "type": "string"
+        },
+        "PATH": {
+          "type": "string"
+        }
+      }
+    },
+    "artifact_prefix": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$"
+    },
+    "process_working_directory": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "version",
+    "unit_id",
+    "source_digest",
+    "primary_file",
+    "primary_sha256",
+    "context",
+    "source_root",
+    "work_root",
+    "native",
+    "inputs",
+    "dependency_manifest",
+    "fact_key",
+    "limits"
+  ]
+}

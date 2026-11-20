@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/external_analysis_facts.schema.json",
+  "title": "cppulse namespaced external diagnostic facts v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "context_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "origin": {
+      "const": "import"
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "enum": [
+            "gcc-json",
+            "clang-tidy-text",
+            "cppcheck-xml"
+          ]
+        },
+        "version": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ]
+    },
+    "producer_namespace": {
+      "enum": [
+        "gcc",
+        "clang-tidy",
+        "cppcheck"
+      ]
+    },
+    "report_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "producer_version_receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "proof_receipt_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "uniqueItems": true
+    },
+    "scope_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "scope_completeness": {
+      "const": "unverified"
+    },
+    "usability": {
+      "enum": [
+        "usable",
+        "stale",
+        "mismatched",
+        "unsupported",
+        "malformed",
+        "missing"
+      ]
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "original_rule_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "namespaced_rule_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "rule_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "column": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fingerprint": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "original_rule_id",
+          "namespaced_rule_id",
+          "rule_version",
+          "file",
+          "line",
+          "column",
+          "severity",
+          "message",
+          "fingerprint"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "context_id",
+    "origin",
+    "producer",
+    "adapter",
+    "producer_namespace",
+    "report_artifact_id",
+    "receipt_id",
+    "producer_version_receipt_id",
+    "proof_receipt_ids",
+    "scope_files",
+    "scope_completeness",
+    "usability",
+    "observations",
+    "limitations"
+  ]
+}

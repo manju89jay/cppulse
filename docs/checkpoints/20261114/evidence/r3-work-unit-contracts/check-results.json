@@ -1,0 +1,37 @@
+[
+  {
+    "name": "format",
+    "argv": [
+      "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+      "-m",
+      "black",
+      "tests/test_work_unit_draft_contracts.py"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "lint",
+    "argv": [
+      "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "tests/test_work_unit_draft_contracts.py"
+    ],
+    "returncode": 0
+  },
+  {
+    "name": "tests",
+    "argv": [
+      "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-v",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_work_unit_draft_contracts.py",
+      "--basetemp=/workspace/scratch/b3d4e6fff494/r3-draft-contract-final"
+    ],
+    "returncode": 0
+  }
+]

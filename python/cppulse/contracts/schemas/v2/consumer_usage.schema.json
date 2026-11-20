@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/consumer_usage.schema.json",
+  "title": "cppulse observed distributed package consumption v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "subject_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "context_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "status": {
+      "enum": [
+        "verified",
+        "unverified"
+      ]
+    },
+    "required_artifact_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "distribution_artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "proof_kind": {
+            "enum": [
+              "depfile",
+              "gnu-linker-map"
+            ]
+          },
+          "proof_artifact_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "distribution_artifact_id",
+          "proof_kind",
+          "proof_artifact_id",
+          "members"
+        ]
+      },
+      "minItems": 0
+    },
+    "proof_receipt_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "observed_configuration": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/consumer_matrix.schema.json#/definitions/configuration"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "configuration_probe_receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "target_probe_receipt_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "compiler_version": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "linker_version": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "self_containment_headers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source_digest",
+    "subject_id",
+    "context_id",
+    "receipt_id",
+    "producer",
+    "status",
+    "required_artifact_ids",
+    "records",
+    "proof_receipt_ids",
+    "observed_configuration",
+    "configuration_probe_receipt_id",
+    "target_probe_receipt_id",
+    "compiler_version",
+    "linker_version",
+    "self_containment_headers",
+    "limitations"
+  ]
+}

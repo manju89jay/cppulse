@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-14T01:02:13.463992+00:00",
+  "status": "accepted for exercised native scope",
+  "checks": 15,
+  "tests": {
+    "root-tests": 1618,
+    "analyzer-tests": 84,
+    "git-miner-tests": 90,
+    "predictor-tests": 98,
+    "report-engine-tests": 95,
+    "dashboard-tests": 37,
+    "cli-tests": 20
+  },
+  "total_tests": 2042,
+  "dashboard_production_build": "passed",
+  "check_results": "review/autonomous/logs/s6-accepted-shared/check-results.json",
+  "prior_full_run": "review/autonomous/logs/s6-final-shared/check-results.json (passed before last policy edge-case correction; not final acceptance)",
+  "head": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "branch": "codex/job-application-demo-20261113",
+  "refs_unchanged": true,
+  "docker_compose": "unavailable; not executed",
+  "source_sha256": {
+    "python/cppulse/policy.py": "ebf8d37efbe9bf7a2701c63a215ef63e04338c1380ceeef05788c336722639ab",
+    "python/cppulse/consumer.py": "85b824f5e542241ce114dab9eb8f3222981b4dc7ffa29057499b882c4887ebe3",
+    "python/cppulse/coverage.py": "ab054e6b0d44c4c5fdddcb0e5971f78853302dd7663c6c08ec29b35a9d72dd02",
+    "python/cppulse/sanitizers.py": "09e1962e109a04afc3c02347cfc6af222e337b8df5bf997269176e3d7eeca572",
+    "python/cppulse/external.py": "399def8c5f10bb6854c3d82b8c4b182b9ca487130c37790f6b38a7d7c2a64794",
+    "python/cppulse/transfer.py": "8a99408c0686ae80818ce733f338baa2a20142f1f87546b22f541ba38ae0b6a5"
+  }
+}

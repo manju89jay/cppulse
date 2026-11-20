@@ -1,0 +1,254 @@
+{
+  "version": "2.0.0",
+  "run_manifest_json": "{\n  \"artifacts\": [\n    {\n      \"contract\": {\n        \"kind\": \"source\",\n        \"version\": \"2.0.0\"\n      },\n      \"id\": \"findings\",\n      \"media_type\": \"application/json\",\n      \"path\": \"facts/findings.json\",\n      \"sha256\": \"1adbc5011d0106b1d0f0e1654fad403671a86b98261f33bfc5a30cca2f8cae95\",\n      \"size_bytes\": 348\n    },\n    {\n      \"contract\": {\n        \"kind\": \"execution_receipt\",\n        \"version\": \"2.0.0\"\n      },\n      \"id\": \"receipt\",\n      \"media_type\": \"application/json\",\n      \"path\": \"facts/receipt.json\",\n      \"sha256\": \"7ee5362f83023f72dc215745fec728ec1be0404d3b9c6f15c327fd3d2a93c9d4\",\n      \"size_bytes\": 614\n    },\n    {\n      \"contract\": {\n        \"kind\": \"evidence\",\n        \"version\": \"2.0.0\"\n      },\n      \"id\": \"evidence\",\n      \"media_type\": \"application/json\",\n      \"path\": \"facts/evidence.json\",\n      \"sha256\": \"58da8b1e8b0bfe79ce5b5b9923885c1b8a045b3ae99d69392bed121a10c9aa2c\",\n      \"size_bytes\": 620\n    },\n    {\n      \"contract\": {\n        \"kind\": \"policy\",\n        \"version\": \"2.0.0\"\n      },\n      \"id\": \"policy\",\n      \"media_type\": \"application/json\",\n      \"path\": \"facts/policy.json\",\n      \"sha256\": \"0f4f743931f52e3c65ea377081fd9929307672689edaf79b63fe7de8c646923a\",\n      \"size_bytes\": 570\n    },\n    {\n      \"contract\": {\n        \"kind\": \"assessment\",\n        \"version\": \"2.0.0\"\n      },\n      \"id\": \"selected-assessment\",\n      \"media_type\": \"application/json\",\n      \"path\": \"assessment/selected.json\",\n      \"sha256\": \"e5954830254cd0da56b9cf960ade82d90b13f4d1ae7f763426bd9cae0d48e6dd\",\n      \"size_bytes\": 939\n    }\n  ],\n  \"config_digest\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n  \"contexts\": [\n    {\n      \"argv\": [\n        \"g++\",\n        \"-std=c++17\",\n        \"-c\",\n        \"src/main.cpp\"\n      ],\n      \"compiler\": {\n        \"name\": \"gcc\",\n        \"version\": \"14\"\n      },\n      \"dependencies\": [],\n      \"digest\": \"e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420\",\n      \"id\": \"gcc17\",\n      \"language_standard\": \"c++17\",\n      \"limitations\": [],\n      \"provenance\": \"observed\",\n      \"target\": \"x86_64-linux-gnu\",\n      \"version\": \"2.0.0\",\n      \"working_directory\": \"/repo\"\n    }\n  ],\n  \"finished_at\": \"2026-11-13T10:00:00Z\",\n  \"input_verification\": \"unverified\",\n  \"limitations\": [\n    \"Synthetic presentation transport fixture; no execution, accuracy or authenticity claim.\",\n    \"Source freshness was not checked at publication; the recorded source identity is an imported caller claim.\"\n  ],\n  \"run_id\": \"run-1\",\n  \"source\": {\n    \"digest\": \"5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363\",\n    \"files\": [\n      {\n        \"path\": \"src/main.cpp\",\n        \"sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n        \"size_bytes\": 10\n      }\n    ],\n    \"inventory_complete\": true,\n    \"kind\": \"application\",\n    \"limitations\": [],\n    \"version\": \"2.0.0\"\n  },\n  \"stages\": [\n    {\n      \"depends_on\": [],\n      \"id\": \"analysis\",\n      \"reason\": \"\",\n      \"status\": \"passed\"\n    }\n  ],\n  \"started_at\": \"2026-11-13T10:00:00Z\",\n  \"status\": \"completed\",\n  \"version\": \"2.0.0\",\n  \"versions\": {\n    \"cppulse\": \"0.2.0.dev0\"\n  }\n}\n",
+  "run": {
+    "id": "run-1",
+    "manifest_sha256": "5345c725b27ba505000167018e106f35d33942f7750fb02f94063a77f2da13bb",
+    "status": "completed",
+    "input_verification": "unverified",
+    "source_digest": "5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363",
+    "inventory_complete": true,
+    "started_at": "2026-11-13T10:00:00Z",
+    "finished_at": "2026-11-13T10:00:00Z",
+    "config_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "limitations": [
+      "Synthetic presentation transport fixture; no execution, accuracy or authenticity claim.",
+      "Source freshness was not checked at publication; the recorded source identity is an imported caller claim."
+    ]
+  },
+  "source": {
+    "digest": "5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363",
+    "files": [
+      {
+        "path": "src/main.cpp",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 10
+      }
+    ],
+    "inventory_complete": true,
+    "kind": "application",
+    "limitations": [],
+    "version": "2.0.0"
+  },
+  "stages": [
+    {
+      "depends_on": [],
+      "id": "analysis",
+      "reason": "",
+      "status": "passed"
+    }
+  ],
+  "contexts": [
+    {
+      "argv": [
+        "g++",
+        "-std=c++17",
+        "-c",
+        "src/main.cpp"
+      ],
+      "compiler": {
+        "name": "gcc",
+        "version": "14"
+      },
+      "dependencies": [],
+      "digest": "e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420",
+      "id": "gcc17",
+      "language_standard": "c++17",
+      "limitations": [],
+      "provenance": "observed",
+      "target": "x86_64-linux-gnu",
+      "version": "2.0.0",
+      "working_directory": "/repo"
+    }
+  ],
+  "assessment": {
+    "artifact_id": "selected-assessment",
+    "sha256": "e5954830254cd0da56b9cf960ade82d90b13f4d1ae7f763426bd9cae0d48e6dd",
+    "size_bytes": 939,
+    "raw_json": "{\n  \"controls\": [\n    {\n      \"evidence_ids\": [\n        \"unit-tests\"\n      ],\n      \"id\": \"unit-tests\",\n      \"reason\": \"Synthetic transport outcome; no tool execution.\",\n      \"references\": [],\n      \"required\": true,\n      \"status\": \"passed\",\n      \"title\": \"Tests pass\",\n      \"weight\": 9007199254740993.0\n    }\n  ],\n  \"deviations\": [],\n  \"gate\": \"passed\",\n  \"generated_at\": \"2026-11-13T10:00:00Z\",\n  \"limitations\": [],\n  \"policy\": {\n    \"id\": \"local\",\n    \"policy_version\": \"1.0.0\",\n    \"sha256\": \"8fd869c540e96c298d9ed3dba0a246484ae15c05ebe8466548e5e7647cbee470\"\n  },\n  \"run_id\": \"run-1\",\n  \"scores\": {\n    \"evidence_completeness\": 100,\n    \"maximum_possible_readiness\": 100,\n    \"observed_satisfaction\": 100,\n    \"readiness\": 100\n  },\n  \"source_digest\": \"5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363\",\n  \"version\": \"2.0.0\",\n  \"weights\": {\n    \"failed\": 0,\n    \"passed\": 9007199254740993.0,\n    \"unknown\": 0\n  }\n}\n",
+    "display": {
+      "controls": [
+        {
+          "evidence_ids": [
+            "unit-tests"
+          ],
+          "id": "unit-tests",
+          "reason": "Synthetic transport outcome; no tool execution.",
+          "references": [],
+          "required": true,
+          "status": "passed",
+          "title": "Tests pass",
+          "weight": "9007199254740993.0"
+        }
+      ],
+      "deviations": [],
+      "gate": "passed",
+      "generated_at": "2026-11-13T10:00:00Z",
+      "limitations": [],
+      "policy": {
+        "id": "local",
+        "policy_version": "1.0.0",
+        "sha256": "8fd869c540e96c298d9ed3dba0a246484ae15c05ebe8466548e5e7647cbee470"
+      },
+      "run_id": "run-1",
+      "scores": {
+        "evidence_completeness": "100",
+        "maximum_possible_readiness": "100",
+        "observed_satisfaction": "100",
+        "readiness": "100"
+      },
+      "source_digest": "5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363",
+      "version": "2.0.0",
+      "weights": {
+        "failed": "0",
+        "passed": "9007199254740993.0",
+        "unknown": "0"
+      }
+    }
+  },
+  "facts": [
+    {
+      "kind": "source",
+      "artifact_id": "findings",
+      "sha256": "1adbc5011d0106b1d0f0e1654fad403671a86b98261f33bfc5a30cca2f8cae95",
+      "size_bytes": 348,
+      "raw_json": "{\n  \"digest\": \"5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363\",\n  \"files\": [\n    {\n      \"path\": \"src/main.cpp\",\n      \"sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n      \"size_bytes\": 10\n    }\n  ],\n  \"inventory_complete\": true,\n  \"kind\": \"application\",\n  \"limitations\": [],\n  \"version\": \"2.0.0\"\n}\n",
+      "id": null,
+      "context_ids": [],
+      "origin": null,
+      "producer": null,
+      "status": null,
+      "usability": null,
+      "limitations": []
+    },
+    {
+      "kind": "execution_receipt",
+      "artifact_id": "receipt",
+      "sha256": "7ee5362f83023f72dc215745fec728ec1be0404d3b9c6f15c327fd3d2a93c9d4",
+      "size_bytes": 614,
+      "raw_json": "{\n  \"argv\": [\n    \"ctest\"\n  ],\n  \"artifact_ids\": [\n    \"findings\"\n  ],\n  \"context_id\": \"gcc17\",\n  \"cwd\": \"/repo/build\",\n  \"depends_on\": [],\n  \"exit_code\": 0,\n  \"finished_at\": \"2026-11-13T10:00:00Z\",\n  \"id\": \"tests\",\n  \"log_artifact_ids\": [],\n  \"producer\": {\n    \"name\": \"ctest\",\n    \"version\": \"3.31\"\n  },\n  \"reason\": \"\",\n  \"signal\": null,\n  \"source_digest\": \"5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363\",\n  \"started_at\": \"2026-11-13T10:00:00Z\",\n  \"status\": \"passed\",\n  \"tests\": {\n    \"errors\": 0,\n    \"failed\": 0,\n    \"passed\": 1,\n    \"skipped\": 0,\n    \"total\": 1\n  },\n  \"version\": \"2.0.0\"\n}\n",
+      "id": "tests",
+      "context_ids": [
+        "gcc17"
+      ],
+      "origin": null,
+      "producer": {
+        "name": "ctest",
+        "version": "3.31"
+      },
+      "status": "passed",
+      "usability": null,
+      "limitations": []
+    },
+    {
+      "kind": "evidence",
+      "artifact_id": "evidence",
+      "sha256": "58da8b1e8b0bfe79ce5b5b9923885c1b8a045b3ae99d69392bed121a10c9aa2c",
+      "size_bytes": 620,
+      "raw_json": "{\n  \"records\": [\n    {\n      \"artifact_ids\": [\n        \"findings\"\n      ],\n      \"context_id\": \"gcc17\",\n      \"id\": \"unit-tests\",\n      \"kind\": \"tests\",\n      \"limitations\": [],\n      \"origin\": \"execution\",\n      \"producer\": {\n        \"name\": \"ctest\",\n        \"version\": \"3.31\"\n      },\n      \"receipt_id\": \"tests\",\n      \"scope\": {\n        \"files\": [\n          \"src/main.cpp\"\n        ],\n        \"tests\": [\n          \"sample\"\n        ]\n      },\n      \"status\": \"passed\",\n      \"usability\": \"usable\"\n    }\n  ],\n  \"source_digest\": \"5dc60ac0797851902b44205cb5cad078c991c1eb370486e17d7e7321548a9363\",\n  \"version\": \"2.0.0\"\n}\n",
+      "id": null,
+      "context_ids": [
+        "gcc17"
+      ],
+      "origin": null,
+      "producer": null,
+      "status": null,
+      "usability": null,
+      "limitations": []
+    },
+    {
+      "kind": "policy",
+      "artifact_id": "policy",
+      "sha256": "0f4f743931f52e3c65ea377081fd9929307672689edaf79b63fe7de8c646923a",
+      "size_bytes": 570,
+      "raw_json": "{\n  \"contexts\": [\n    \"gcc17\"\n  ],\n  \"controls\": [\n    {\n      \"depends_on\": [],\n      \"id\": \"unit-tests\",\n      \"kind\": \"test_outcomes\",\n      \"parameters\": {\n        \"evidence_ids\": [\n          \"unit-tests\"\n        ]\n      },\n      \"required\": true,\n      \"title\": \"Tests pass\",\n      \"weight\": 9007199254740992.0\n    }\n  ],\n  \"gates\": {\n    \"minimum_completeness\": 100,\n    \"minimum_readiness\": 100\n  },\n  \"id\": \"local\",\n  \"policy_version\": \"1.0.0\",\n  \"scope\": {\n    \"exclude\": [],\n    \"include\": [\n      \"src/**\"\n    ]\n  },\n  \"standards\": [],\n  \"version\": \"2.0.0\"\n}\n",
+      "id": "local",
+      "context_ids": [
+        "gcc17"
+      ],
+      "origin": null,
+      "producer": null,
+      "status": null,
+      "usability": null,
+      "limitations": []
+    }
+  ],
+  "artifacts": [
+    {
+      "contract": {
+        "kind": "source",
+        "version": "2.0.0"
+      },
+      "id": "findings",
+      "media_type": "application/json",
+      "path": "facts/findings.json",
+      "sha256": "1adbc5011d0106b1d0f0e1654fad403671a86b98261f33bfc5a30cca2f8cae95",
+      "size_bytes": 348
+    },
+    {
+      "contract": {
+        "kind": "execution_receipt",
+        "version": "2.0.0"
+      },
+      "id": "receipt",
+      "media_type": "application/json",
+      "path": "facts/receipt.json",
+      "sha256": "7ee5362f83023f72dc215745fec728ec1be0404d3b9c6f15c327fd3d2a93c9d4",
+      "size_bytes": 614
+    },
+    {
+      "contract": {
+        "kind": "evidence",
+        "version": "2.0.0"
+      },
+      "id": "evidence",
+      "media_type": "application/json",
+      "path": "facts/evidence.json",
+      "sha256": "58da8b1e8b0bfe79ce5b5b9923885c1b8a045b3ae99d69392bed121a10c9aa2c",
+      "size_bytes": 620
+    },
+    {
+      "contract": {
+        "kind": "policy",
+        "version": "2.0.0"
+      },
+      "id": "policy",
+      "media_type": "application/json",
+      "path": "facts/policy.json",
+      "sha256": "0f4f743931f52e3c65ea377081fd9929307672689edaf79b63fe7de8c646923a",
+      "size_bytes": 570
+    },
+    {
+      "contract": {
+        "kind": "assessment",
+        "version": "2.0.0"
+      },
+      "id": "selected-assessment",
+      "media_type": "application/json",
+      "path": "assessment/selected.json",
+      "sha256": "e5954830254cd0da56b9cf960ade82d90b13f4d1ae7f763426bd9cae0d48e6dd",
+      "size_bytes": 939
+    }
+  ],
+  "legacy": {
+    "findings": null,
+    "git_metrics": null,
+    "risk_scores": null,
+    "roadmap": null
+  },
+  "gaps": [
+    {
+      "kind": "run",
+      "id": "run-1",
+      "message": "Finite selected inputs were not verified at publication.",
+      "artifact_ids": []
+    }
+  ],
+  "limitations": [
+    "Synthetic presentation transport fixture; no execution, accuracy or authenticity claim.",
+    "Source freshness was not checked at publication; the recorded source identity is an imported caller claim.",
+    "Experimental local prototype. Stored assessments describe their recorded scope and time.",
+    "Collection status records execution completion. The stored assessment supplies the policy gate.",
+    "Legacy health and ranking are experimental descriptive outputs with no demonstrated prediction accuracy or safety assurance."
+  ]
+}

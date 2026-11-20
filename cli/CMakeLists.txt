@@ -21,6 +21,8 @@ target_link_libraries(cppulse-cli-lib PUBLIC spdlog::spdlog CLI11::CLI11)
 # CLI executable
 add_executable(cppulse src/main.cpp)
 target_link_libraries(cppulse PRIVATE cppulse-cli-lib)
+get_filename_component(CPPULSE_SOURCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
+target_compile_definitions(cppulse PRIVATE CPPULSE_SOURCE_ROOT="${CPPULSE_SOURCE_ROOT}")
 set_target_properties(cppulse PROPERTIES OUTPUT_NAME "cppulse")
 
 # Tests
@@ -29,5 +31,8 @@ if(TEST_SOURCES)
     add_executable(cppulse-cli-tests ${TEST_SOURCES})
     target_include_directories(cppulse-cli-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
     target_link_libraries(cppulse-cli-tests PRIVATE cppulse-cli-lib GTest::gtest GTest::gtest_main)
+    target_compile_definitions(cppulse-cli-tests PRIVATE
+        CPPULSE_CLI_EXECUTABLE="$<TARGET_FILE:cppulse>")
+    add_dependencies(cppulse-cli-tests cppulse)
     gtest_discover_tests(cppulse-cli-tests)
 endif()

@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/install/v1/native_install.schema.json",
+  "title": "cppulse native installation metadata v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "tool_version",
+    "target",
+    "analyzer",
+    "resource_dir",
+    "library_dirs",
+    "host_requirements",
+    "limitations"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "machine"
+      ],
+      "properties": {
+        "platform": {
+          "enum": [
+            "linux",
+            "win32",
+            "darwin"
+          ]
+        },
+        "machine": {
+          "type": "string",
+          "minLength": 1
+        },
+        "libc": {
+          "type": "string",
+          "minLength": 1
+        },
+        "libc_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "analyzer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical POSIX path to the native analyzer, relative to the installation prefix."
+    },
+    "analyzer_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "resource_dir": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical prefix-relative libclang resource directory; no absolute build/session paths."
+    },
+    "library_dirs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "host_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "constraint",
+          "purpose"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "constraint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

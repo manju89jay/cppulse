@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "id": "selected-runtime-verification-example",
+  "policy_version": "1.0.0",
+  "evaluator_profile": "1.1.0",
+  "standards": [],
+  "scope": {
+    "include": ["src/**/*.cpp"],
+    "exclude": ["src/vendor/**"]
+  },
+  "contexts": ["gcc-coverage-job", "gcc-asan-job", "gcc-ubsan-job", "gcc-tsan-job"],
+  "gates": {
+    "minimum_readiness": 100,
+    "minimum_completeness": 100
+  },
+  "controls": [
+    {
+      "id": "selected-application-tests",
+      "title": "Selected local application workload passes",
+      "kind": "test_outcomes",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "evidence_ids": ["coverage-tests"],
+        "contexts": ["gcc-coverage-job"]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-line-coverage",
+      "title": "Each selected file meets the chosen line coverage threshold",
+      "kind": "minimum_coverage",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "minimum": 80,
+        "fact_ids": ["local-coverage-fact"],
+        "measurement_kind": "line",
+        "method": "lcov-da-v1",
+        "contexts": ["gcc-coverage-job"]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-address-sanitizer",
+      "title": "Selected instrumented AddressSanitizer workload has no qualified diagnostic",
+      "kind": "sanitizer_outcome",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "fact_ids": ["local-asan-fact"],
+        "sanitizer": "asan",
+        "contexts": ["gcc-asan-job"]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-undefined-sanitizer",
+      "title": "Selected instrumented UndefinedBehaviorSanitizer workload has no qualified diagnostic",
+      "kind": "sanitizer_outcome",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "fact_ids": ["local-ubsan-fact"],
+        "sanitizer": "ubsan",
+        "contexts": ["gcc-ubsan-job"]
+      },
+      "depends_on": []
+    },
+    {
+      "id": "selected-thread-sanitizer",
+      "title": "Selected instrumented ThreadSanitizer workload has no qualified diagnostic",
+      "kind": "sanitizer_outcome",
+      "weight": 1,
+      "required": true,
+      "parameters": {
+        "fact_ids": ["local-tsan-fact"],
+        "sanitizer": "tsan",
+        "contexts": ["gcc-tsan-job"]
+      },
+      "depends_on": []
+    }
+  ]
+}

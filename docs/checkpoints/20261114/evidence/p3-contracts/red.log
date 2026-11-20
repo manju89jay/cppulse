@@ -1,0 +1,313 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.0.0, pluggy-1.7.0 -- /workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python
+rootdir: /workspace/scratch/b3d4e6fff494/cppulse
+configfile: pytest.ini
+plugins: cov-4.1.0, platformdirs-4.14.5, anyio-4.16.0
+collecting ... collected 40 items
+
+tests/test_maintenance_metrics_contract.py::test_hand_calculated_density_context_is_a_valid_contract FAILED [  2%]
+tests/test_maintenance_metrics_contract.py::test_zero_violations_with_observed_nonzero_scope_can_score_100 FAILED [  5%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[zero_loc] PASSED [  7%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[wrong_density] PASSED [ 10%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[wrong_penalty] PASSED [ 12%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[wrong_category] PASSED [ 15%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[wrong_overall] PASSED [ 17%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[wrong_counts] PASSED [ 20%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[fake_context] PASSED [ 22%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[negative_weight] PASSED [ 25%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[duplicate_category] PASSED [ 27%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[inferred_without_optin] PASSED [ 30%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[fallback] PASSED [ 32%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[unknown_context_count] PASSED [ 35%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[fake_assurance] PASSED [ 37%]
+tests/test_maintenance_metrics_contract.py::test_complete_health_rejects_missing_or_inconsistent_prerequisites[method_changed_without_digest] PASSED [ 40%]
+tests/test_maintenance_metrics_contract.py::test_missing_required_context_is_visible_and_never_overridden_by_optional_score FAILED [ 42%]
+tests/test_maintenance_metrics_contract.py::test_partial_context_retains_raw_counts_without_full_health FAILED [ 45%]
+tests/test_maintenance_metrics_contract.py::test_explicit_inferred_maintenance_optin_does_not_grant_consumer_assurance FAILED [ 47%]
+tests/test_maintenance_metrics_contract.py::test_worst_context_selection_is_deterministic_and_category_values_are_not_mixed FAILED [ 50%]
+tests/test_maintenance_metrics_contract.py::test_metric_profile_binds_job_separately_from_actual_parse_context FAILED [ 52%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[negative] PASSED [ 55%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[fractional] PASSED [ 57%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[wrong_units] PASSED [ 60%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[code_above_physical] PASSED [ 62%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[duplicate_cell] PASSED [ 65%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[missing_job] PASSED [ 67%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[missing_inventory] PASSED [ 70%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[unavailable_zero] PASSED [ 72%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[unavailable_no_reason] PASSED [ 75%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[function_without_symbol] PASSED [ 77%]
+tests/test_maintenance_metrics_contract.py::test_named_metrics_are_measurements_with_explicit_missingness[reversed_location] PASSED [ 80%]
+tests/test_maintenance_metrics_contract.py::test_old_generic_metric_contract_remains_supported PASSED [ 82%]
+tests/test_maintenance_metrics_contract.py::test_measured_metrics_reuse_the_existing_closed_native_lineage FAILED [ 85%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[wrong_job] PASSED [ 87%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[wrong_parse] PASSED [ 90%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[wrong_inventory] PASSED [ 92%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[partial_parse_positive] PASSED [ 95%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[wrong_source] PASSED [ 97%]
+tests/test_maintenance_metrics_contract.py::test_metric_facts_cannot_outgrow_the_observed_native_subject[impossible_loc] PASSED [100%]
+
+=================================== FAILURES ===================================
+___________ test_hand_calculated_density_context_is_a_valid_contract ___________
+
+    def test_hand_calculated_density_context_is_a_valid_contract() -> None:
+        result = health_document()
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+________ test_zero_violations_with_observed_nonzero_scope_can_score_100 ________
+
+    def test_zero_violations_with_observed_nonzero_scope_can_score_100() -> None:
+        result = health_document()
+        context = result["contexts"][0]
+        context["finding_counts"] = {name: 0 for name in context["finding_counts"]}
+        for calculation in context["category_calculations"]:
+            calculation.update(count=0, density=0.0, penalty=0.0, score=100.0)
+        context.update(weighted_penalty=0.0, overall=100.0)
+        result["aggregate"].update(overall=100.0,
+                                   by_category={name: 100.0 for name in context["finding_counts"]})
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+_ test_missing_required_context_is_visible_and_never_overridden_by_optional_score _
+
+    def test_missing_required_context_is_visible_and_never_overridden_by_optional_score() -> None:
+        result = health_document()
+        result["required_context_ids"].append("windows-msvc")
+        result["optional_context_ids"] = ["optional-linux"]
+        result["contexts"].append(health_context("optional-linux"))
+        incomplete_aggregate(result, ["windows-msvc"])
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:192: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+_________ test_partial_context_retains_raw_counts_without_full_health __________
+
+    def test_partial_context_retains_raw_counts_without_full_health() -> None:
+        result = health_document()
+        unavailable(result["contexts"][0])
+        incomplete_aggregate(result, ["native"])
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:202: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+__ test_explicit_inferred_maintenance_optin_does_not_grant_consumer_assurance __
+
+    def test_explicit_inferred_maintenance_optin_does_not_grant_consumer_assurance() -> None:
+        result = health_document()
+        config = result["scorer"]
+        config["allow_inferred_parse"] = True
+        config["configuration_digest"] = digest_json({k: v for k, v in config.items() if k != "configuration_digest"})
+        context = result["contexts"][0]
+        context["parse_context_counts"].update(database=0, inferred=1)
+        context["limitations"] = ["Inferred parse arguments support maintenance only; consumer evidence remains unverified."]
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+_ test_worst_context_selection_is_deterministic_and_category_values_are_not_mixed _
+
+    def test_worst_context_selection_is_deterministic_and_category_values_are_not_mixed() -> None:
+        result = health_document()
+        result["required_context_ids"] = ["zulu", "alpha"]
+        result["contexts"] = [health_context("zulu"), health_context("alpha")]
+        result["aggregate"]["worst_context_id"] = "alpha"
+>       validate("maintenance_health", result)
+
+tests/test_maintenance_metrics_contract.py:225: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1699: in validate
+    schema = load_schema(kind, selected)
+python/cppulse/contracts/validation.py:119: in load_schema
+    return deepcopy(_read_schema(kind, selected))
+python/cppulse/contracts/validation.py:97: in _read_schema
+    group, name = _schema_path(kind, version)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+kind = 'maintenance_health', version = '2.0.0'
+
+    def _schema_path(kind: str, version: str) -> tuple[str, str]:
+        kind = _ALIASES.get(kind, kind)
+        if kind == "native_install" and version == "1.0.0":
+            return "install_v1", kind
+        if version == _VERSION and kind in _KINDS:
+            return "v2", kind
+        if version == "1.0.0" and kind == "risk_scores":
+            return "legacy", kind
+        if version == "prototype_v1" and kind in _PROTOTYPE_KINDS:
+            return "prototype_v1", kind
+>       raise UnsupportedVersion(f"Unsupported local contract {kind!r} version {version!r}")
+E       cppulse.errors.UnsupportedVersion: Unsupported local contract 'maintenance_health' version '2.0.0'
+
+python/cppulse/contracts/validation.py:92: UnsupportedVersion
+______ test_metric_profile_binds_job_separately_from_actual_parse_context ______
+
+    def test_metric_profile_binds_job_separately_from_actual_parse_context() -> None:
+>       validate("analysis_metrics", metric_document())
+
+tests/test_maintenance_metrics_contract.py:232: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1707: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "Additional properties are not allowed ('analysis_inventory_id', 'job_context_id' were unexpected)"
+path = '', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: Additional properties are not allowed ('analysis_inventory_id', 'job_context_id' were unexpected)
+
+python/cppulse/contracts/validation.py:73: ContractError
+________ test_measured_metrics_reuse_the_existing_closed_native_lineage ________
+
+    def test_measured_metrics_reuse_the_existing_closed_native_lineage() -> None:
+>       validate_bundle(bound_metric_bundle())
+
+tests/test_maintenance_metrics_contract.py:288: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/contracts/validation.py:1729: in validate_bundle
+    validate(kind, document)
+python/cppulse/contracts/validation.py:1707: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "Additional properties are not allowed ('analysis_inventory_id', 'job_context_id' were unexpected)"
+path = '', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: Additional properties are not allowed ('analysis_inventory_id', 'job_context_id' were unexpected)
+
+python/cppulse/contracts/validation.py:73: ContractError
+=========================== short test summary info ============================
+FAILED tests/test_maintenance_metrics_contract.py::test_hand_calculated_density_context_is_a_valid_contract
+FAILED tests/test_maintenance_metrics_contract.py::test_zero_violations_with_observed_nonzero_scope_can_score_100
+FAILED tests/test_maintenance_metrics_contract.py::test_missing_required_context_is_visible_and_never_overridden_by_optional_score
+FAILED tests/test_maintenance_metrics_contract.py::test_partial_context_retains_raw_counts_without_full_health
+FAILED tests/test_maintenance_metrics_contract.py::test_explicit_inferred_maintenance_optin_does_not_grant_consumer_assurance
+FAILED tests/test_maintenance_metrics_contract.py::test_worst_context_selection_is_deterministic_and_category_values_are_not_mixed
+FAILED tests/test_maintenance_metrics_contract.py::test_metric_profile_binds_job_separately_from_actual_parse_context
+FAILED tests/test_maintenance_metrics_contract.py::test_measured_metrics_reuse_the_existing_closed_native_lineage
+========================= 8 failed, 32 passed in 0.67s =========================

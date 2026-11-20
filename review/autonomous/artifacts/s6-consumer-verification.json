@@ -1,0 +1,781 @@
+{
+  "revision": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "command": "source review/environment.sh; PYTHONPATH=python python scripts/demo_consumer.py",
+  "exit_code": 0,
+  "batch": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/batches/6438ed2b3d694179a15b7e922a84fb1b",
+  "package_reused": false,
+  "pinned_projects": [
+    {
+      "id": "fmt",
+      "repository": "https://github.com/fmtlib/fmt.git",
+      "tag": "10.2.1",
+      "revision": "e69e5f977d458f2650bb346dadf2ad30c5320281",
+      "role": "compiled-library",
+      "excluded_gitlinks": []
+    },
+    {
+      "id": "utfcpp",
+      "repository": "https://github.com/nemtrif/utfcpp.git",
+      "tag": "v4.0.5",
+      "revision": "6be08bbea14ffa0a5c594257fb6285a054395cd7",
+      "role": "header-only-library",
+      "excluded_gitlinks": [
+        "extern/ftest"
+      ]
+    }
+  ],
+  "package_run": {
+    "run_id": "1f81833e1da94e08a8836b791ef5d41c",
+    "manifest_sha256": "f071e95a53c7b1b866b0b4192881739c5d6df2e9c21e598d2fd6d51fcef03619",
+    "source_digest": "dd76478b45b41bd0146f407b66d62643722914907413efbc6a74a67e0e5c8bfa",
+    "run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/1f81833e1da94e08a8836b791ef5d41c"
+  },
+  "maintainer": {
+    "run_id": "562922eec6794b06ac1e6012ffe8ec15",
+    "manifest_sha256": "be2749cbe93d038a7c5b1c0c51ce164a0c3da931167f453c9dd92977e42e4f84",
+    "source_digest": "8a5012db89d2fd7323f634ea7d589907a6f21d18ef4518b10b9c06aace47e156"
+  },
+  "consumer_selected_subjects": [
+    {
+      "id": "fmt-10.2.1",
+      "source_relation": "distribution_only",
+      "source_files": []
+    },
+    {
+      "id": "utfcpp-4.0.5",
+      "source_relation": "distribution_only",
+      "source_files": []
+    },
+    {
+      "id": "synthetic-throwing-header",
+      "source_relation": "distribution_only",
+      "source_files": []
+    }
+  ],
+  "clean_actual_usage_proofs": {
+    "fmt-10.2.1-main-use": {
+      "version": "2.0.0",
+      "id": "fmt-10.2.1-main-use",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "subject_id": "fmt-10.2.1",
+      "context_id": "gcc-package-job",
+      "receipt_id": "consumer-build",
+      "producer": {
+        "name": "cppulse.consumer-use",
+        "version": "1.0.0"
+      },
+      "status": "verified",
+      "required_artifact_ids": [
+        "a-2f92235b7c61bc7ea56558b3f5acf454e30910011df420157d5de3674edd8d2d",
+        "a-3f9b0adf56897e8d3ac41094d64d3ac4ec9074bad69d52139a9501da420ead15"
+      ],
+      "records": [
+        {
+          "distribution_artifact_id": "a-3f9b0adf56897e8d3ac41094d64d3ac4ec9074bad69d52139a9501da420ead15",
+          "proof_kind": "depfile",
+          "proof_artifact_id": "a-6ff31d3a33707d64a1e69986b6ff3c8a187bbab5ec2d2ac4e86c7075a6f332bf",
+          "members": [
+            "package/include/fmt/format.h"
+          ]
+        },
+        {
+          "distribution_artifact_id": "a-2f92235b7c61bc7ea56558b3f5acf454e30910011df420157d5de3674edd8d2d",
+          "proof_kind": "gnu-linker-map",
+          "proof_artifact_id": "a-7f78405e2bd292ccc12ed98e1e03fd04dc47131f170ddc2a0770d801e0765120",
+          "members": [
+            "format.cc.o"
+          ]
+        }
+      ],
+      "proof_receipt_ids": [
+        "consumer-build",
+        "configuration-probe",
+        "target-probe"
+      ],
+      "observed_configuration": {
+        "compiler": {
+          "name": "GNU",
+          "version": "14.2.0",
+          "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+        },
+        "os": "linux",
+        "target": "x86_64-linux-gnu",
+        "abi": "observed-macros-v1:__GXX_ABI_VERSION=1019;__GLIBCXX__=20250315;_GLIBCXX_USE_CXX11_ABI=1",
+        "language_standard": "c++17",
+        "macros": {},
+        "exceptions": true,
+        "rtti": true,
+        "linking": "static",
+        "dependencies": [
+          {
+            "id": "input-a4c0aea08377b10ca4753ae18a1e1c7f3c27233c0136f630114663580ce8ae8d",
+            "sha256": "af292234f1d468d39481f4bf340d220c4f779082aec5c8f4306489137ae10ac2",
+            "availability": "available"
+          },
+          {
+            "id": "input-55fe56a68a8f7cd4e3280aa6a75547fc375f152fcc888427ae817a3e2bac8fdf",
+            "sha256": "143d591df63db5b20786eb8ca756012e0b7e2c6dab7f002488e2c701e897a91f",
+            "availability": "available"
+          },
+          {
+            "id": "input-1a9da2dafe99baa8d83d1d7f82972866c365d363cb3bba03ab53bd7f5346edc5",
+            "sha256": "63bd5a34d139bfca1727bfbaf941afbb5751c871adaaa91b77dce58a70723073",
+            "availability": "available"
+          },
+          {
+            "id": "input-f0178c07240d7b21e52862fcdc830c8006694116159220364bb64b8d53f7318b",
+            "sha256": "e92f4cff6d49c4a5935b1302bba283fde734ab951e6f8c4ca4008e9c9e6cf5e9",
+            "availability": "available"
+          },
+          {
+            "id": "input-9d846d1f7adb3fca8667293ad1d7959bd5a106902a6004d8a38d64d92ef243af",
+            "sha256": "f8a41f7a1c834c0306d3ea6df51cfe6cfa0c52266284f50a66b58a07e83a6470",
+            "availability": "available"
+          },
+          {
+            "id": "input-17aaa38f34409947f02e6a42a49c17f5707e3d1be73d2c2e64fed9f4f3d5464e",
+            "sha256": "2ab87aa8efbb0312fb148e1f5a9b69041de86e3e65999e2fe86ee9599dcb5e22",
+            "availability": "available"
+          },
+          {
+            "id": "input-6bb075e0a713d1ea4e2038dc068f943298e9616bce3e96309cb6575bf6b7145c",
+            "sha256": "91e4e2afcb41720ab02e23273ee88d202a4781640ae5efbc5d92df67b2dc8ae0",
+            "availability": "available"
+          },
+          {
+            "id": "input-d0c0762133b5ef3f104989eed8b0e23c2bd9ddd6c5ca07b92159ac6a676c629c",
+            "sha256": "8ccd918206bae582ebb47710019a9ae39a2648e257c15d418b41d18925cffea3",
+            "availability": "available"
+          },
+          {
+            "id": "input-bcb1b0d73f6cba98df08f8bbfbc0ed7bc0fa7f322da8dd449dfe394bc248edc5",
+            "sha256": "93aa168b57c6ea827bd76f3096228a161d2855fe111122fb2bca55a710d7e869",
+            "availability": "available"
+          },
+          {
+            "id": "input-38eb14da2b262e16f2332e84bf3ccd173e25e2db9301a1c9d077f0c0cd817e8f",
+            "sha256": "7abb9f2cf8e9fc10d177337be4ac6c4207e0d399f693735b3f1b1f07d4906ce4",
+            "availability": "available"
+          }
+        ],
+        "sanitizers": []
+      },
+      "configuration_probe_receipt_id": "configuration-probe",
+      "target_probe_receipt_id": "target-probe",
+      "compiler_version": "14.2.0",
+      "linker_version": "2.44",
+      "self_containment_headers": [],
+      "limitations": [
+        "Use and configuration describe the selected compiler inputs/outputs only; host runtime/header closure and producer authenticity are not established.",
+        "ABI identifies observed compiler/library macros, not a general binary-compatibility result.",
+        "Template instantiation names remain declared selected test scope, not exhaustive template coverage."
+      ]
+    },
+    "utfcpp-4.0.5-main-use": {
+      "version": "2.0.0",
+      "id": "utfcpp-4.0.5-main-use",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "subject_id": "utfcpp-4.0.5",
+      "context_id": "gcc-package-job",
+      "receipt_id": "consumer-build",
+      "producer": {
+        "name": "cppulse.consumer-use",
+        "version": "1.0.0"
+      },
+      "status": "verified",
+      "required_artifact_ids": [
+        "a-018743ac805953c5dcdd0cde883b27526c84b08c925429eaf42958d6ee57506e"
+      ],
+      "records": [
+        {
+          "distribution_artifact_id": "a-018743ac805953c5dcdd0cde883b27526c84b08c925429eaf42958d6ee57506e",
+          "proof_kind": "depfile",
+          "proof_artifact_id": "a-6ff31d3a33707d64a1e69986b6ff3c8a187bbab5ec2d2ac4e86c7075a6f332bf",
+          "members": [
+            "package/include/utf8cpp/utf8.h"
+          ]
+        }
+      ],
+      "proof_receipt_ids": [
+        "consumer-build",
+        "configuration-probe",
+        "target-probe"
+      ],
+      "observed_configuration": {
+        "compiler": {
+          "name": "GNU",
+          "version": "14.2.0",
+          "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+        },
+        "os": "linux",
+        "target": "x86_64-linux-gnu",
+        "abi": "observed-macros-v1:__GXX_ABI_VERSION=1019;__GLIBCXX__=20250315;_GLIBCXX_USE_CXX11_ABI=1",
+        "language_standard": "c++17",
+        "macros": {},
+        "exceptions": true,
+        "rtti": true,
+        "linking": "static",
+        "dependencies": [
+          {
+            "id": "input-a4c0aea08377b10ca4753ae18a1e1c7f3c27233c0136f630114663580ce8ae8d",
+            "sha256": "af292234f1d468d39481f4bf340d220c4f779082aec5c8f4306489137ae10ac2",
+            "availability": "available"
+          },
+          {
+            "id": "input-55fe56a68a8f7cd4e3280aa6a75547fc375f152fcc888427ae817a3e2bac8fdf",
+            "sha256": "143d591df63db5b20786eb8ca756012e0b7e2c6dab7f002488e2c701e897a91f",
+            "availability": "available"
+          },
+          {
+            "id": "input-1a9da2dafe99baa8d83d1d7f82972866c365d363cb3bba03ab53bd7f5346edc5",
+            "sha256": "63bd5a34d139bfca1727bfbaf941afbb5751c871adaaa91b77dce58a70723073",
+            "availability": "available"
+          },
+          {
+            "id": "input-f0178c07240d7b21e52862fcdc830c8006694116159220364bb64b8d53f7318b",
+            "sha256": "e92f4cff6d49c4a5935b1302bba283fde734ab951e6f8c4ca4008e9c9e6cf5e9",
+            "availability": "available"
+          },
+          {
+            "id": "input-9d846d1f7adb3fca8667293ad1d7959bd5a106902a6004d8a38d64d92ef243af",
+            "sha256": "f8a41f7a1c834c0306d3ea6df51cfe6cfa0c52266284f50a66b58a07e83a6470",
+            "availability": "available"
+          },
+          {
+            "id": "input-17aaa38f34409947f02e6a42a49c17f5707e3d1be73d2c2e64fed9f4f3d5464e",
+            "sha256": "2ab87aa8efbb0312fb148e1f5a9b69041de86e3e65999e2fe86ee9599dcb5e22",
+            "availability": "available"
+          },
+          {
+            "id": "input-6bb075e0a713d1ea4e2038dc068f943298e9616bce3e96309cb6575bf6b7145c",
+            "sha256": "91e4e2afcb41720ab02e23273ee88d202a4781640ae5efbc5d92df67b2dc8ae0",
+            "availability": "available"
+          },
+          {
+            "id": "input-d0c0762133b5ef3f104989eed8b0e23c2bd9ddd6c5ca07b92159ac6a676c629c",
+            "sha256": "8ccd918206bae582ebb47710019a9ae39a2648e257c15d418b41d18925cffea3",
+            "availability": "available"
+          },
+          {
+            "id": "input-bcb1b0d73f6cba98df08f8bbfbc0ed7bc0fa7f322da8dd449dfe394bc248edc5",
+            "sha256": "93aa168b57c6ea827bd76f3096228a161d2855fe111122fb2bca55a710d7e869",
+            "availability": "available"
+          },
+          {
+            "id": "input-38eb14da2b262e16f2332e84bf3ccd173e25e2db9301a1c9d077f0c0cd817e8f",
+            "sha256": "7abb9f2cf8e9fc10d177337be4ac6c4207e0d399f693735b3f1b1f07d4906ce4",
+            "availability": "available"
+          }
+        ],
+        "sanitizers": []
+      },
+      "configuration_probe_receipt_id": "configuration-probe",
+      "target_probe_receipt_id": "target-probe",
+      "compiler_version": "14.2.0",
+      "linker_version": "2.44",
+      "self_containment_headers": [],
+      "limitations": [
+        "Use and configuration describe the selected compiler inputs/outputs only; host runtime/header closure and producer authenticity are not established.",
+        "ABI identifies observed compiler/library macros, not a general binary-compatibility result.",
+        "Template instantiation names remain declared selected test scope, not exhaustive template coverage."
+      ]
+    },
+    "utfcpp-4.0.5-self-containment-use": {
+      "version": "2.0.0",
+      "id": "utfcpp-4.0.5-self-containment-use",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "subject_id": "utfcpp-4.0.5",
+      "context_id": "gcc-package-job",
+      "receipt_id": "header-build",
+      "producer": {
+        "name": "cppulse.consumer-use",
+        "version": "1.0.0"
+      },
+      "status": "verified",
+      "required_artifact_ids": [
+        "a-018743ac805953c5dcdd0cde883b27526c84b08c925429eaf42958d6ee57506e"
+      ],
+      "records": [
+        {
+          "distribution_artifact_id": "a-018743ac805953c5dcdd0cde883b27526c84b08c925429eaf42958d6ee57506e",
+          "proof_kind": "depfile",
+          "proof_artifact_id": "a-6993293fa3e9b27c47f28b3830d1a45d4232f83e99874091a8ef05ec9abcec64",
+          "members": [
+            "package/include/utf8cpp/utf8.h"
+          ]
+        }
+      ],
+      "proof_receipt_ids": [
+        "header-build",
+        "configuration-probe",
+        "target-probe"
+      ],
+      "observed_configuration": {
+        "compiler": {
+          "name": "GNU",
+          "version": "14.2.0",
+          "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+        },
+        "os": "linux",
+        "target": "x86_64-linux-gnu",
+        "abi": "observed-macros-v1:__GXX_ABI_VERSION=1019;__GLIBCXX__=20250315;_GLIBCXX_USE_CXX11_ABI=1",
+        "language_standard": "c++17",
+        "macros": {},
+        "exceptions": true,
+        "rtti": true,
+        "linking": "header-only",
+        "dependencies": [
+          {
+            "id": "input-f0178c07240d7b21e52862fcdc830c8006694116159220364bb64b8d53f7318b",
+            "sha256": "e92f4cff6d49c4a5935b1302bba283fde734ab951e6f8c4ca4008e9c9e6cf5e9",
+            "availability": "available"
+          },
+          {
+            "id": "input-9d846d1f7adb3fca8667293ad1d7959bd5a106902a6004d8a38d64d92ef243af",
+            "sha256": "f8a41f7a1c834c0306d3ea6df51cfe6cfa0c52266284f50a66b58a07e83a6470",
+            "availability": "available"
+          },
+          {
+            "id": "input-17aaa38f34409947f02e6a42a49c17f5707e3d1be73d2c2e64fed9f4f3d5464e",
+            "sha256": "2ab87aa8efbb0312fb148e1f5a9b69041de86e3e65999e2fe86ee9599dcb5e22",
+            "availability": "available"
+          },
+          {
+            "id": "input-6bb075e0a713d1ea4e2038dc068f943298e9616bce3e96309cb6575bf6b7145c",
+            "sha256": "91e4e2afcb41720ab02e23273ee88d202a4781640ae5efbc5d92df67b2dc8ae0",
+            "availability": "available"
+          },
+          {
+            "id": "input-d0c0762133b5ef3f104989eed8b0e23c2bd9ddd6c5ca07b92159ac6a676c629c",
+            "sha256": "8ccd918206bae582ebb47710019a9ae39a2648e257c15d418b41d18925cffea3",
+            "availability": "available"
+          },
+          {
+            "id": "input-bcb1b0d73f6cba98df08f8bbfbc0ed7bc0fa7f322da8dd449dfe394bc248edc5",
+            "sha256": "93aa168b57c6ea827bd76f3096228a161d2855fe111122fb2bca55a710d7e869",
+            "availability": "available"
+          }
+        ],
+        "sanitizers": []
+      },
+      "configuration_probe_receipt_id": "configuration-probe",
+      "target_probe_receipt_id": "target-probe",
+      "compiler_version": "14.2.0",
+      "linker_version": "2.44",
+      "self_containment_headers": [
+        "include/utf8cpp/utf8.h"
+      ],
+      "limitations": [
+        "Use and configuration describe the selected compiler inputs/outputs only; host runtime/header closure and producer authenticity are not established.",
+        "ABI identifies observed compiler/library macros, not a general binary-compatibility result.",
+        "Template instantiation names remain declared selected test scope, not exhaustive template coverage."
+      ]
+    },
+    "synthetic-throwing-header-main-use": {
+      "version": "2.0.0",
+      "id": "synthetic-throwing-header-main-use",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "subject_id": "synthetic-throwing-header",
+      "context_id": "gcc-package-job",
+      "receipt_id": "consumer-build",
+      "producer": {
+        "name": "cppulse.consumer-use",
+        "version": "1.0.0"
+      },
+      "status": "verified",
+      "required_artifact_ids": [
+        "a-7d0cb40a204f81e959a8b7c9c4cde6bcd6c7f78a1b2ef5e0fabfe343d37dc428"
+      ],
+      "records": [
+        {
+          "distribution_artifact_id": "a-7d0cb40a204f81e959a8b7c9c4cde6bcd6c7f78a1b2ef5e0fabfe343d37dc428",
+          "proof_kind": "depfile",
+          "proof_artifact_id": "a-6ff31d3a33707d64a1e69986b6ff3c8a187bbab5ec2d2ac4e86c7075a6f332bf",
+          "members": [
+            "package/include/cppulse_seed/checked.hpp"
+          ]
+        }
+      ],
+      "proof_receipt_ids": [
+        "consumer-build",
+        "configuration-probe",
+        "target-probe"
+      ],
+      "observed_configuration": {
+        "compiler": {
+          "name": "GNU",
+          "version": "14.2.0",
+          "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+        },
+        "os": "linux",
+        "target": "x86_64-linux-gnu",
+        "abi": "observed-macros-v1:__GXX_ABI_VERSION=1019;__GLIBCXX__=20250315;_GLIBCXX_USE_CXX11_ABI=1",
+        "language_standard": "c++17",
+        "macros": {},
+        "exceptions": true,
+        "rtti": true,
+        "linking": "static",
+        "dependencies": [
+          {
+            "id": "input-a4c0aea08377b10ca4753ae18a1e1c7f3c27233c0136f630114663580ce8ae8d",
+            "sha256": "af292234f1d468d39481f4bf340d220c4f779082aec5c8f4306489137ae10ac2",
+            "availability": "available"
+          },
+          {
+            "id": "input-55fe56a68a8f7cd4e3280aa6a75547fc375f152fcc888427ae817a3e2bac8fdf",
+            "sha256": "143d591df63db5b20786eb8ca756012e0b7e2c6dab7f002488e2c701e897a91f",
+            "availability": "available"
+          },
+          {
+            "id": "input-1a9da2dafe99baa8d83d1d7f82972866c365d363cb3bba03ab53bd7f5346edc5",
+            "sha256": "63bd5a34d139bfca1727bfbaf941afbb5751c871adaaa91b77dce58a70723073",
+            "availability": "available"
+          },
+          {
+            "id": "input-f0178c07240d7b21e52862fcdc830c8006694116159220364bb64b8d53f7318b",
+            "sha256": "e92f4cff6d49c4a5935b1302bba283fde734ab951e6f8c4ca4008e9c9e6cf5e9",
+            "availability": "available"
+          },
+          {
+            "id": "input-9d846d1f7adb3fca8667293ad1d7959bd5a106902a6004d8a38d64d92ef243af",
+            "sha256": "f8a41f7a1c834c0306d3ea6df51cfe6cfa0c52266284f50a66b58a07e83a6470",
+            "availability": "available"
+          },
+          {
+            "id": "input-17aaa38f34409947f02e6a42a49c17f5707e3d1be73d2c2e64fed9f4f3d5464e",
+            "sha256": "2ab87aa8efbb0312fb148e1f5a9b69041de86e3e65999e2fe86ee9599dcb5e22",
+            "availability": "available"
+          },
+          {
+            "id": "input-6bb075e0a713d1ea4e2038dc068f943298e9616bce3e96309cb6575bf6b7145c",
+            "sha256": "91e4e2afcb41720ab02e23273ee88d202a4781640ae5efbc5d92df67b2dc8ae0",
+            "availability": "available"
+          },
+          {
+            "id": "input-d0c0762133b5ef3f104989eed8b0e23c2bd9ddd6c5ca07b92159ac6a676c629c",
+            "sha256": "8ccd918206bae582ebb47710019a9ae39a2648e257c15d418b41d18925cffea3",
+            "availability": "available"
+          },
+          {
+            "id": "input-bcb1b0d73f6cba98df08f8bbfbc0ed7bc0fa7f322da8dd449dfe394bc248edc5",
+            "sha256": "93aa168b57c6ea827bd76f3096228a161d2855fe111122fb2bca55a710d7e869",
+            "availability": "available"
+          },
+          {
+            "id": "input-38eb14da2b262e16f2332e84bf3ccd173e25e2db9301a1c9d077f0c0cd817e8f",
+            "sha256": "7abb9f2cf8e9fc10d177337be4ac6c4207e0d399f693735b3f1b1f07d4906ce4",
+            "availability": "available"
+          }
+        ],
+        "sanitizers": []
+      },
+      "configuration_probe_receipt_id": "configuration-probe",
+      "target_probe_receipt_id": "target-probe",
+      "compiler_version": "14.2.0",
+      "linker_version": "2.44",
+      "self_containment_headers": [],
+      "limitations": [
+        "Use and configuration describe the selected compiler inputs/outputs only; host runtime/header closure and producer authenticity are not established.",
+        "ABI identifies observed compiler/library macros, not a general binary-compatibility result.",
+        "Template instantiation names remain declared selected test scope, not exhaustive template coverage."
+      ]
+    }
+  },
+  "cases": [
+    {
+      "scenario": "clean",
+      "compiler_build_status": "passed",
+      "run_id": "c70045e3071d45bdb60361741cda574f",
+      "manifest_sha256": "41b1457427c18b59d7ab7e3e0d0675598458ed24ffe6dc0d09e90e2ef7bc8fb1",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "comparison_run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/c70045e3071d45bdb60361741cda574f",
+      "results": {
+        "fmt-10.2.1": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "passed",
+            "mismatches": [],
+            "missing_local_checks": []
+          }
+        ],
+        "utfcpp-4.0.5": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "passed",
+            "mismatches": [],
+            "missing_local_checks": []
+          },
+          {
+            "case_id": "self-contained-header",
+            "status": "compatible",
+            "local_test_status": "passed",
+            "mismatches": [],
+            "missing_local_checks": []
+          }
+        ],
+        "synthetic-throwing-header": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "passed",
+            "mismatches": [],
+            "missing_local_checks": []
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "missing-local-test",
+      "compiler_build_status": "passed",
+      "run_id": "092d22360bfe4805aa51523668455265",
+      "manifest_sha256": "8e0ef68943b329d995579c428c4cf795193b924773eb3cc7f0514f6398fa4e49",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "comparison_run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/092d22360bfe4805aa51523668455265",
+      "results": {
+        "fmt-10.2.1": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "unknown",
+            "mismatches": [],
+            "missing_local_checks": [
+              "consumer-workload-not-selected",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+            ]
+          }
+        ],
+        "utfcpp-4.0.5": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "unknown",
+            "mismatches": [],
+            "missing_local_checks": [
+              "consumer-workload-not-selected",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+            ]
+          },
+          {
+            "case_id": "self-contained-header",
+            "status": "compatible",
+            "local_test_status": "passed",
+            "mismatches": [],
+            "missing_local_checks": []
+          }
+        ],
+        "synthetic-throwing-header": [
+          {
+            "case_id": "main",
+            "status": "compatible",
+            "local_test_status": "unknown",
+            "mismatches": [],
+            "missing_local_checks": [
+              "consumer-workload-not-selected",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "incompatible-cxx20",
+      "compiler_build_status": "passed",
+      "run_id": "acffae6b1ac34475a6f53d66d34b722a",
+      "manifest_sha256": "a276b17192d32a8257c5102f5316008be8ad73494c48ab41b45a739b9585e9dc",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "comparison_run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/acffae6b1ac34475a6f53d66d34b722a",
+      "results": {
+        "fmt-10.2.1": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies",
+              "language_standard"
+            ],
+            "missing_local_checks": []
+          }
+        ],
+        "utfcpp-4.0.5": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies",
+              "language_standard"
+            ],
+            "missing_local_checks": []
+          },
+          {
+            "case_id": "self-contained-header",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies",
+              "language_standard"
+            ],
+            "missing_local_checks": []
+          }
+        ],
+        "synthetic-throwing-header": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies",
+              "language_standard"
+            ],
+            "missing_local_checks": []
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "no-exceptions",
+      "compiler_build_status": "failed",
+      "run_id": "bea9219581b44761bd9c7de7e6f378e6",
+      "manifest_sha256": "540b7753c5e3cd4c35a631d4947f11deeee247448768de4715fedc3bc1918f78",
+      "source_digest": "4050f4d5e218c711a5d7e6180dfede619d47dec2089dc39b126642c446ca6d57",
+      "comparison_run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/bea9219581b44761bd9c7de7e6f378e6",
+      "results": {
+        "fmt-10.2.1": [
+          {
+            "case_id": "main",
+            "status": "unknown",
+            "local_test_status": "unknown",
+            "mismatches": [
+              "exceptions"
+            ],
+            "missing_local_checks": [
+              "main-tests",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+              "package-use:fmt-10.2.1-main-use"
+            ]
+          }
+        ],
+        "utfcpp-4.0.5": [
+          {
+            "case_id": "main",
+            "status": "unknown",
+            "local_test_status": "unknown",
+            "mismatches": [
+              "exceptions"
+            ],
+            "missing_local_checks": [
+              "main-tests",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+              "package-use:utfcpp-4.0.5-main-use"
+            ]
+          },
+          {
+            "case_id": "self-contained-header",
+            "status": "unknown",
+            "local_test_status": "unknown",
+            "mismatches": [],
+            "missing_local_checks": [
+              "header-tests",
+              "include/utf8cpp/utf8.h",
+              "package-use:utfcpp-4.0.5-self-containment-use"
+            ]
+          }
+        ],
+        "synthetic-throwing-header": [
+          {
+            "case_id": "main",
+            "status": "unknown",
+            "local_test_status": "unknown",
+            "mismatches": [
+              "exceptions"
+            ],
+            "missing_local_checks": [
+              "main-tests",
+              "selected-instantiation:selected fmt formatting and UTF string-iterator consumer",
+              "package-use:synthetic-throwing-header-main-use"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "changed-package",
+      "compiler_build_status": "passed",
+      "run_id": "46522fa94a9d4b3aaba56da826bec397",
+      "manifest_sha256": "6f1837e97f1742af65623e6aaa18aa06aa1f75dfbfdcffb01c6c0b7b5c515f63",
+      "source_digest": "a92f14aa50dab878b9d485b4f30c7bb66bb0df0e048b1845ee38996a76df69ee",
+      "comparison_run_path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/store/runs/46522fa94a9d4b3aaba56da826bec397",
+      "results": {
+        "fmt-10.2.1": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies"
+            ],
+            "missing_local_checks": []
+          }
+        ],
+        "utfcpp-4.0.5": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "distribution",
+              "dependencies"
+            ],
+            "missing_local_checks": []
+          },
+          {
+            "case_id": "self-contained-header",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "distribution",
+              "dependencies"
+            ],
+            "missing_local_checks": []
+          }
+        ],
+        "synthetic-throwing-header": [
+          {
+            "case_id": "main",
+            "status": "incompatible",
+            "local_test_status": "passed",
+            "mismatches": [
+              "dependencies"
+            ],
+            "missing_local_checks": []
+          }
+        ]
+      }
+    }
+  ],
+  "transfer": {
+    "path": "/workspace/scratch/b3d4e6fff494/cppulse/output/consumer-demo/batches/6438ed2b3d694179a15b7e922a84fb1b/review-transfer",
+    "roots": 6,
+    "files": 738,
+    "bytes": 14777357,
+    "descriptor_sha256": "144201b8513da0cf981d44b5c9007550bb066ac7f497932260c09440bef86031",
+    "authentication": "unverified",
+    "origin": "import"
+  },
+  "focused_tests": {
+    "command": "python -m pytest -v --cov=cppulse.consumer --cov-report=term-missing tests/test_consumer.py tests/test_consumer_usage.py tests/test_consumer_comparison.py tests/test_consumer_contracts.py tests/test_consumer_usage_contract.py tests/test_consumer_comparison_contract.py",
+    "result": "86 passed in 9.82s; consumer coverage82%",
+    "log": "review/autonomous/logs/s6-consumer-final-focused.log"
+  },
+  "independent_review": "Original unrelated-subject and distribution-mismatch probes closed; 27 independent focused tests passed; logs s6-consumer-independent-fixed-probes.log and s6-consumer-independent-tests.log",
+  "limitations": [
+    "Actual selected Linux/GCC14.2/ld2.44/CTest3.31.6 cases only; not upstream full test suites or other platforms.",
+    "Compatible means scoped configuration correspondence for selected distributed bytes, never an application-test/release/certification pass.",
+    "Imported upstream raw fields stay unauthenticated claims with source freshness not rechecked; each local run retains its own source identity.",
+    "Template names describe authored selected test scope, not exhaustive semantic instantiation coverage.",
+    "Synthetic throwing-header/no-exceptions and changed-package cases are intentionally seeded and not attributed upstream defects."
+  ]
+}

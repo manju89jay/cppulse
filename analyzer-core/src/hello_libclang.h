@@ -21,10 +21,11 @@ namespace cppulse {
  * Returns an empty vector if the file parses successfully but contains no functions.
  *
  * @param file_path Path to the C++ source file to parse.
+ * @param resource_directory Optional directory of builtin libclang resources.
  * @return Vector of function names, or nullopt on error.
  */
 [[nodiscard]] std::optional<std::vector<std::string>> extract_function_names(
-    std::string_view file_path);
+    std::string_view file_path, std::string_view resource_directory = {});
 
 }  // namespace cppulse
 

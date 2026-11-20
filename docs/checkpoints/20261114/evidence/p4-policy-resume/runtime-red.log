@@ -1,0 +1,2271 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                     [100%]
+=================================== FAILURES ===================================
+_______ test_numeric_each_reports_real_metric_links_and_preserves_inputs _______
+
+    def test_numeric_each_reports_real_metric_links_and_preserves_inputs() -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        before = deepcopy((bundle, policy))
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[each-lte-7-passed] _
+
+aggregation = 'each', operator = 'lte', threshold = 7, status = 'passed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[each-lt-7-failed] _
+
+aggregation = 'each', operator = 'lt', threshold = 7, status = 'failed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[max-eq-7-passed] _
+
+aggregation = 'max', operator = 'eq', threshold = 7, status = 'passed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/policy.py:813: in evaluate_policy
+    validate_evaluation_policy(policy)
+python/cppulse/contracts/validation.py:676: in validate_evaluation_policy
+    validate("policy", policy)
+python/cppulse/contracts/validation.py:1739: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "'max' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']"
+path = '/controls/0/parameters/aggregation', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: 'max' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']
+
+python/cppulse/contracts/validation.py:74: ContractError
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[min-gte-2-passed] _
+
+aggregation = 'min', operator = 'gte', threshold = 2, status = 'passed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/policy.py:813: in evaluate_policy
+    validate_evaluation_policy(policy)
+python/cppulse/contracts/validation.py:676: in validate_evaluation_policy
+    validate("policy", policy)
+python/cppulse/contracts/validation.py:1739: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "'min' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']"
+path = '/controls/0/parameters/aggregation', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: 'min' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']
+
+python/cppulse/contracts/validation.py:74: ContractError
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[sum-eq-9-passed] _
+
+aggregation = 'sum', operator = 'eq', threshold = 9, status = 'passed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[mean-eq-4.5-passed] _
+
+aggregation = 'mean', operator = 'eq', threshold = 4.5, status = 'passed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[mean-gt-4.5-failed] _
+
+aggregation = 'mean', operator = 'gt', threshold = 4.5, status = 'failed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[min-gt-2-failed] _
+
+aggregation = 'min', operator = 'gt', threshold = 2, status = 'failed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/policy.py:813: in evaluate_policy
+    validate_evaluation_policy(policy)
+python/cppulse/contracts/validation.py:676: in validate_evaluation_policy
+    validate("policy", policy)
+python/cppulse/contracts/validation.py:1739: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "'min' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']"
+path = '/controls/0/parameters/aggregation', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: 'min' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']
+
+python/cppulse/contracts/validation.py:74: ContractError
+_ test_explicit_numeric_operators_and_hand_calculated_aggregation[max-lt-7-failed] _
+
+aggregation = 'max', operator = 'lt', threshold = 7, status = 'failed'
+
+    @pytest.mark.parametrize(
+        "aggregation,operator,threshold,status",
+        [
+            ("each", "lte", 7, "passed"),
+            ("each", "lt", 7, "failed"),
+            ("max", "eq", 7, "passed"),
+            ("min", "gte", 2, "passed"),
+            ("sum", "eq", 9, "passed"),
+            ("mean", "eq", 4.5, "passed"),
+            ("mean", "gt", 4.5, "failed"),
+            ("min", "gt", 2, "failed"),
+            ("max", "lt", 7, "failed"),
+        ],
+    )
+    def test_explicit_numeric_operators_and_hand_calculated_aggregation(
+        aggregation: str, operator: str, threshold: float, status: str
+    ) -> None:
+>       result = evaluate_policy(
+            metric_selected(aggregation=aggregation, operator=operator, threshold=threshold),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+python/cppulse/policy.py:813: in evaluate_policy
+    validate_evaluation_policy(policy)
+python/cppulse/contracts/validation.py:676: in validate_evaluation_policy
+    validate("policy", policy)
+python/cppulse/contracts/validation.py:1739: in validate
+    _fail(error.message, _pointer(error.absolute_path))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = "'max' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']"
+path = '/controls/0/parameters/aggregation', code = 'INVALID_CONTRACT'
+
+    def _fail(message: str, path: str = "", code: str = "INVALID_CONTRACT") -> None:
+>       raise ContractError(message, path=path, code=code)
+E       cppulse.errors.ContractError: 'max' is not one of ['each', 'maximum', 'minimum', 'sum', 'mean']
+
+python/cppulse/contracts/validation.py:74: ContractError
+______ test_metric_missingness_or_incompatible_cells_cannot_pass[missing] ______
+
+change = 'missing'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_metric_missingness_or_incompatible_cells_cannot_pass[unavailable] ____
+
+change = 'unavailable'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_units] ____
+
+change = 'wrong_units'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+___ test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_method] ____
+
+change = 'wrong_method'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...hod', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_level] ____
+
+change = 'wrong_level'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_metric_missingness_or_incompatible_cells_cannot_pass[missing_job] ____
+
+change = 'missing_job'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native', 'not-observed'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+__ test_metric_missingness_or_incompatible_cells_cannot_pass[legacy_unbound] ___
+
+change = 'legacy_unbound'
+
+    @pytest.mark.parametrize("change", ["missing", "unavailable", "wrong_units", "wrong_method", "wrong_level", "missing_job", "legacy_unbound"])
+    def test_metric_missingness_or_incompatible_cells_cannot_pass(change: str) -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+        if change == "missing":
+            del bundle["analysis_metrics"]["items"][-1]
+        elif change == "unavailable":
+            bundle["analysis_metrics"]["items"][-1].update(value=None, availability="unavailable", limitations=["Measurement unavailable."])
+        elif change in {"wrong_units", "wrong_method", "wrong_level"}:
+            policy["controls"][0]["parameters"].update(
+                {"wrong_units": {"units": "levels"}, "wrong_method": {"metric_version": "another-method"}, "wrong_level": {"level": "file"}}[change]
+            )
+        elif change == "missing_job":
+            policy["contexts"].append("not-observed")
+        else:
+            bundle["analysis_metrics"].pop("analysis_inventory_id")
+            bundle["analysis_metrics"].pop("job_context_id")
+            for row in bundle["analysis_metrics"]["items"]:
+                row["metric_version"] = "legacy-unbound"
+            policy["controls"][0]["parameters"]["metric_version"] = "legacy-unbound"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...und', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+________ test_numeric_known_violation_survives_a_missing_symbol_and_job ________
+
+    def test_numeric_known_violation_survives_a_missing_symbol_and_job() -> None:
+        bundle, policy = metrics_bundle((20, 2)), metric_selected()
+        del bundle["analysis_metrics"]["items"][-1]
+        policy["contexts"].append("missing-job")
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native', 'missing-job'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold'...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_______ test_incomplete_mean_does_not_treat_available_subset_as_complete _______
+
+    def test_incomplete_mean_does_not_treat_available_subset_as_complete() -> None:
+        bundle = metrics_bundle((20, 2))
+        del bundle["analysis_metrics"]["items"][-1]
+>       result = evaluate_policy(metric_selected(aggregation="mean"), bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+___ test_metric_file_level_is_not_silently_promoted_to_a_symbol_measurement ____
+
+    def test_metric_file_level_is_not_silently_promoted_to_a_symbol_measurement() -> None:
+>       result = evaluate_policy(
+            metric_selected(metric="physical_loc", units="lines", level="file", threshold=1),
+            metrics_bundle(),
+            generated_at=NOW,
+        )
+
+tests/test_policy_extensions_runtime.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+______ test_complete_declared_review_passes_with_explicit_identity_limits ______
+
+    def test_complete_declared_review_passes_with_explicit_identity_limits() -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+________ test_declared_review_provenance_and_scope_are_required[legacy] ________
+
+change = 'legacy'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_____ test_declared_review_provenance_and_scope_are_required[wrong_source] _____
+
+change = 'wrong_source'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_declared_review_provenance_and_scope_are_required[future_review] _____
+
+change = 'future_review'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+___ test_declared_review_provenance_and_scope_are_required[future_recording] ___
+
+change = 'future_recording'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_______ test_declared_review_provenance_and_scope_are_required[expired] ________
+
+change = 'expired'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-11-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+___ test_declared_review_provenance_and_scope_are_required[missing_artifact] ___
+
+change = 'missing_artifact'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...ng'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+______ test_declared_review_provenance_and_scope_are_required[missing_id] ______
+
+change = 'missing_id'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_____ test_declared_review_provenance_and_scope_are_required[unauthorized] _____
+
+change = 'unauthorized'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_____ test_declared_review_provenance_and_scope_are_required[wrong_scope] ______
+
+change = 'wrong_scope'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+____ test_declared_review_provenance_and_scope_are_required[wrong_context] _____
+
+change = 'wrong_context'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17', 'missing-job'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence'...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_______ test_declared_review_provenance_and_scope_are_required[unusable] _______
+
+change = 'unusable'
+
+    @pytest.mark.parametrize("change", ["legacy", "wrong_source", "future_review", "future_recording", "expired", "missing_artifact", "missing_id", "unauthorized", "wrong_scope", "wrong_context", "unusable"])
+    def test_declared_review_provenance_and_scope_are_required(change: str) -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        record = bundle["evidence"]["records"][0]
+        if change == "legacy":
+            record.pop("review_details")
+        elif change == "wrong_source":
+            record["review_details"]["source_digest"] = "b" * 64
+        elif change == "future_review":
+            record["review_details"].update(reviewed_at="2026-11-13T13:00:00Z", recorded_at="2026-11-13T13:01:00Z")
+        elif change == "future_recording":
+            record["review_details"]["recorded_at"] = "2026-11-13T13:00:00Z"
+        elif change == "expired":
+            record["expires_at"] = NOW
+        elif change == "missing_artifact":
+            policy["controls"][0]["parameters"]["required_artifact_ids"].append("missing")
+        elif change == "missing_id":
+            policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        elif change == "unauthorized":
+            record["reviewer"] = "not-configured"
+        elif change == "wrong_scope":
+            record["scope"]["files"] = []
+        elif change == "wrong_context":
+            policy["contexts"].append("missing-job")
+        else:
+            record["usability"] = "stale"
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+__ test_repeated_records_from_one_declared_id_do_not_meet_two_reviewer_quorum __
+
+    def test_repeated_records_from_one_declared_id_do_not_meet_two_reviewer_quorum() -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        second = deepcopy(bundle["evidence"]["records"][0])
+        second["id"] = "another-review"
+        bundle["evidence"]["records"].append(second)
+        policy["controls"][0]["parameters"].update(evidence_ids=["review", "another-review"], minimum_reviewers=2)
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'reviewed_evidence', 'parameters':...gs'], ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+_ test_declared_rejection_fails_even_when_other_reviews_or_contexts_are_missing _
+
+    def test_declared_rejection_fails_even_when_other_reviews_or_contexts_are_missing() -> None:
+        bundle, policy = reviews_bundle(), review_policy()
+        bundle["evidence"]["records"][0]["status"] = "failed"
+        policy["controls"][0]["parameters"]["evidence_ids"].append("missing")
+        policy["contexts"].append("missing-job")
+        policy["controls"][0]["allow_deviation"] = True
+>       result = evaluate_policy(policy, bundle, generated_at=NOW, deviations=[approval(bundle)])
+
+tests/test_policy_extensions_runtime.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['gcc17', 'missing-job'], 'controls': [{'allow_deviation': True, 'depends_on': [], 'id': 'unit-tests', 'k..._evidence', ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'evidence': {'records': [{'artifact_ids': ['findings'], 'context_id': 'gcc17', 'expires_at': '2026-12-13T12:00:00Z', ...'e48da7d493af90586830d5caaa343e0fc322fb4631c02c2100542b7aaee4e420', ...}], 'finished_at': '2026-11-13T10:00:00Z', ...}}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'reviewed_evidence' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+________ test_profile_12_is_pure_and_does_not_inspect_project_material _________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcb7e160e60>
+
+    def test_profile_12_is_pure_and_does_not_inspect_project_material(
+        monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        import os
+        import socket
+        import subprocess
+    
+        bundle, policy = metrics_bundle(), metric_selected()
+>       evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:228: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+___ test_stored_profile12_assessment_cannot_invent_a_positive_metric_result ____
+
+    def test_stored_profile12_assessment_cannot_invent_a_positive_metric_result() -> None:
+        bundle, policy = metrics_bundle(), metric_selected()
+>       result = evaluate_policy(policy, bundle, generated_at=NOW)
+
+tests/test_policy_extensions_runtime.py:243: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+policy = {'contexts': ['native'], 'controls': [{'depends_on': [], 'id': 'unit-tests', 'kind': 'metric_threshold', 'parameters':...s-1', ...}, ...}], 'evaluator_profile': '1.2.0', 'gates': {'minimum_completeness': 100, 'minimum_readiness': 100}, ...}
+documents = {'analysis_inventory': {'compilation_database_artifact_id': 'database', 'config_artifact_id': 'config', 'enabled_rules...eeeeeeeeeeeeeeeeeeee', 'size_bytes': 100, 'stat': {'ctime_ns': 1, 'device': 1, 'inode': 10, 'mtime_ns': 1}}, ...}, ...}
+
+    def evaluate_policy(
+        policy: dict[str, Any],
+        documents: Mapping[str, dict[str, Any] | list[dict[str, Any]]],
+        *,
+        generated_at: str,
+        deviations: Sequence[Mapping[str, Any]] = (),
+    ) -> dict[str, Any]:
+        """Assess supplied current-source facts without collecting or upgrading them.
+    
+        Args:
+            policy: Explicit versioned policy; its full canonical digest is retained.
+            documents: Closed v2 bundle with one run_manifest and supplied facts.
+                Missing policy-expected evidence is unknown; dangling actual facts
+                and incompatible identities are contract errors.
+            generated_at: Explicit RFC3339 UTC assessment time; no implicit clock.
+            deviations: Approval claims; active flags are always recomputed.
+    
+        Returns:
+            A validated assessment preserving raw outcomes, weights and scores.
+    
+        Raises:
+            ContractError: Invalid facts, configuration, approvals or UTC time.
+            UnsupportedVersion: A predicate or requested gate has no implementation.
+        """
+        policy = deepcopy(policy)
+        validate_evaluation_policy(policy)
+        evaluator_version = policy.get("evaluator_profile", EVALUATOR_VERSION)
+        for control in policy["controls"]:
+            if control["kind"] not in _SUPPORTED:
+>               raise UnsupportedVersion(
+                    f"Predicate {control['kind']!r} has no gated implementation in evaluator profile {evaluator_version}"
+                )
+E               cppulse.errors.UnsupportedVersion: Predicate 'metric_threshold' has no gated implementation in evaluator profile 1.2.0
+
+python/cppulse/policy.py:817: UnsupportedVersion
+=========================== short test summary info ============================
+FAILED tests/test_policy_extensions_runtime.py::test_numeric_each_reports_real_metric_links_and_preserves_inputs
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[each-lte-7-passed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[each-lt-7-failed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[max-eq-7-passed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[min-gte-2-passed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[sum-eq-9-passed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[mean-eq-4.5-passed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[mean-gt-4.5-failed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[min-gt-2-failed]
+FAILED tests/test_policy_extensions_runtime.py::test_explicit_numeric_operators_and_hand_calculated_aggregation[max-lt-7-failed]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[missing]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[unavailable]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_units]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_method]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[wrong_level]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[missing_job]
+FAILED tests/test_policy_extensions_runtime.py::test_metric_missingness_or_incompatible_cells_cannot_pass[legacy_unbound]
+FAILED tests/test_policy_extensions_runtime.py::test_numeric_known_violation_survives_a_missing_symbol_and_job
+FAILED tests/test_policy_extensions_runtime.py::test_incomplete_mean_does_not_treat_available_subset_as_complete
+FAILED tests/test_policy_extensions_runtime.py::test_metric_file_level_is_not_silently_promoted_to_a_symbol_measurement
+FAILED tests/test_policy_extensions_runtime.py::test_complete_declared_review_passes_with_explicit_identity_limits
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[legacy]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[wrong_source]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[future_review]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[future_recording]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[expired]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[missing_artifact]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[missing_id]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[unauthorized]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[wrong_scope]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[wrong_context]
+FAILED tests/test_policy_extensions_runtime.py::test_declared_review_provenance_and_scope_are_required[unusable]
+FAILED tests/test_policy_extensions_runtime.py::test_repeated_records_from_one_declared_id_do_not_meet_two_reviewer_quorum
+FAILED tests/test_policy_extensions_runtime.py::test_declared_rejection_fails_even_when_other_reviews_or_contexts_are_missing
+FAILED tests/test_policy_extensions_runtime.py::test_profile_12_is_pure_and_does_not_inspect_project_material
+FAILED tests/test_policy_extensions_runtime.py::test_stored_profile12_assessment_cannot_invent_a_positive_metric_result
+36 failed in 0.99s

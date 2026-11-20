@@ -1,0 +1,329 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cppulse reviewed native analysis configuration",
+  "description": "Generated from the packaged experimental rule registry. Profiles affect scoring; rule.enabled selects detectors.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "profile": {
+      "enum": [
+        "default",
+        "safety-critical"
+      ],
+      "default": "default"
+    },
+    "exclude_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "CPP-CX-001": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Cyclomatic complexity",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            },
+            "warning_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 15,
+              "maximum": 2147483647
+            },
+            "error_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "maximum": 2147483647
+            }
+          }
+        },
+        "CPP-CX-002": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Function length",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            },
+            "warning_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 80,
+              "maximum": 2147483647
+            },
+            "error_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 150,
+              "maximum": 2147483647
+            }
+          }
+        },
+        "CPP-CX-003": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Parameter count",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            },
+            "warning_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 5,
+              "maximum": 2147483647
+            },
+            "error_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 8,
+              "maximum": 2147483647
+            }
+          }
+        },
+        "CPP-MEM-001": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Raw pointer ownership",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MEM-002": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Manual memory management",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MEM-003": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "C-style array parameters",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-001": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "C-style casts",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-002": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Deprecated C headers",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-003": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Missing override",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-004": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Raw string literal opportunities",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-005": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Iterator auto opportunities",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-006": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Range-for opportunities",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-007": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Null pointer literals",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-008": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Unscoped enums",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "CPP-MOD-009": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Typedef aliases",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-001": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Goto statements",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-002": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Implicit narrowing conversions",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-003": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Union declarations",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-004": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "C dynamic allocation calls",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-005": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Direct recursion",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-006": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Multiple return statements",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "MISRA-007": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Uninitialized local variables",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

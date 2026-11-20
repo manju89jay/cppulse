@@ -1,0 +1,15 @@
+# Private diagnostics and local-core licensing — closed batch112
+
+Whole FR-UX-11 and PR-01 accepted; original definitions unchanged. Ledger:28 verified,99 open,58 active,2 blocked. Strict112 ACTUAL3, input/source stable, all28 current evidence valid and full187 program incomplete.
+
+`cppulse diagnostics --output diagnostics.zip` creates a local new ZIP; no upload or bugreport alias. Valid optional-package metadata can contain private version tags: actualinstalled105 leak retained with2pass/1fail. Explicit safe-field export omits those strings. Source repair preserves minimaldoctorfixture; originalcompatfailure1 andaffected4pass retained. Currentinstalled3privacytests pass with kernelnetworkdenied and exact fakeproducer/credential/source/metadata controls. Rawdoctor remains detailedoperatoroutput.
+
+The first-party core remainsMIT/noaccount/subscription and does not relicense analyzedprojects. Candidate112includes57fulllicense texts for44locked dashboardproduction packages, ownMIT exact inwheel, externalruntime/native licenses retained. License text CRLF→LF conversion is explicit, alloriginalsourceSHA retained. Wronginspector assumptions about foldedMETADATA and lineendings remainfailed; originalacceptance not weakened.
+
+One standardPEP517offline wheel/pip install;238payloads fullbeforeafter agreement; no native/editor rebuild (alltheirsourcebytesunchanged). Freshcurrent SDK5cases/5integrity controls preserves71assertnodes, plus actual pinnedJSON/HTMLmodelparity/unknown/badpin/readonlystore checks. Full870member capture: work/privacy112/qualification.tar.gz SHA0db64e1c13b74feb08dbea95a7b13bd6c01a379c516cf17f29efed0586123d52.
+
+Wheel: work/privacy112/wheels/cppulse-0.2.0.dev2-py3-none-any.whl SHA57196b495eb32f75798b061852a6a00e0da5fe7175a1e8313864fe1eb4775aed. Freeze ca25a550936eb7874cbb7b459107b2b2c6f32b1c5e4d7d4a919ebe7d7ca753a9. Reused native1a34a3ad2a344728af729ec6d54c0277e01bac9503435e7462982d06f45d17c1 (actualhashauthoritative incandidate.json).
+
+Jointwhole28review work/memory-review82/privacy112-current/review.json SHAca44e05bbb1fe696c6618d974ab4158ec7c14054bb36060887f04ca493c95796. Fullcurrent26proof: work/privacy112/current26-source-proof.json SHA767c45304b3a5e9000912558f0f53758d30d2733a773edc57ec94e6def40345b/27950pins/6239989bytes. All27713historicalbindings/rawproofs/maps retained; solechangedCLI historicalbinding usesexactoldpreimage. Originalartifactresults neverretagged. Two newrowsproof work/privacy112/canonical-proof.json; before/after work/privacy112/ledger-audit.json.
+
+` .venv/bin/python scripts/verify_delivery.py --require-complete --output work/privacy112/require-complete.json`:actual3. Finalfullprogram stillrequires0. No new platform/CMake/nativekit/editor/P14/licenseSBOM completion claim. All118requirements/60tasks/nineobligations/P0–P14 and originalfailures retained.45recoveryrecords retainexactguardedrestore; one review corrected2oldCMakeFiles replaylookups and preservedold43snapshot.4GiBreserve/productlimits/genericbuildadmission unchanged. No commit/push/refupdate/merge/deploy/publication/thirdparty message.

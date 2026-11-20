@@ -326,3 +326,114 @@ def test_generate_pdf_starts_with_pdf_magic(data_dir: Path) -> None:
     gen = PDFGenerator(data_dir)
     pdf_bytes = gen.generate_pdf()
     assert pdf_bytes[:4] == b"%PDF"
+
+
+def test_json_dispatch_does_not_call_pdf(
+    data_dir: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """JSON report selection must not invoke the PDF backend."""
+    import json
+    from src.pdf_generator import PDFGenerator, main
+
+    def reject_pdf(self: PDFGenerator) -> bytes:
+        raise AssertionError("PDF backend called for JSON")
+
+    monkeypatch.setattr(PDFGenerator, "generate_pdf", reject_pdf)
+    target = tmp_path / "report.json"
+    assert (
+        main(["--data", str(data_dir), "--output", str(target), "--format", "json"])
+        == 0
+    )
+    assert set(json.loads(target.read_text())) == {
+        "findings",
+        "git_metrics",
+        "risk_scores",
+        "roadmap",
+    }
+
+
+def test_pdf_rejects_present_invalid_contract(tmp_path: Path) -> None:
+    """A malformed present file is not a successful empty report."""
+    from src.pdf_generator import PDFGenerator
+
+    (tmp_path / "risk_scores.json").write_text('{"health_score": 100}')
+    with pytest.raises(RuntimeError, match="Invalid risk_scores.json"):
+        PDFGenerator(tmp_path).render_html()
+
+
+def test_partial_health_retains_findings_and_limits(data_dir: Path) -> None:
+    """Partial analysis is not described as an empty project or healthy score."""
+    import json
+    from src.pdf_generator import PDFGenerator
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    risk["health_score"] = {
+        "overall": None,
+        "status": "partial",
+        "by_category": {
+            "memory_safety": None,
+            "modernization": None,
+            "complexity": None,
+        },
+    }
+    risk["metadata"]["limitations"] = ["src/partial.cpp could not be fully analyzed."]
+    path.write_text(json.dumps(risk))
+    html = PDFGenerator(data_dir).render_html()
+    assert "analysis is incomplete" in html
+    assert "src/partial.cpp could not be fully analyzed." in html
+    assert "no input files were assessed" not in html
+    assert "Total Findings" in html
+    assert "CPP-MEM-001" in html
+
+
+def test_empty_health_is_explicitly_no_data(data_dir: Path) -> None:
+    """No-data status and partial-analysis status remain distinct in reports."""
+    import json
+    from src.pdf_generator import PDFGenerator
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    risk["health_score"] = {"overall": None, "status": "no_data", "by_category": {}}
+    path.write_text(json.dumps(risk))
+    html = PDFGenerator(data_dir).render_html()
+    assert "no input files were assessed" in html
+    assert "analysis is incomplete" not in html
+
+
+@pytest.mark.skipif(
+    not _weasyprint_available(),
+    reason="WeasyPrint is not installed in this environment",
+)
+def test_generate_pdf_with_partial_health(data_dir: Path) -> None:
+    """A partial result remains a readable report with no fabricated score."""
+    import json
+    from src.pdf_generator import PDFGenerator
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    risk["health_score"] = {
+        "overall": None,
+        "status": "partial",
+        "by_category": {"memory_safety": None},
+    }
+    risk["metadata"]["limitations"] = ["A translation unit could not be parsed."]
+    path.write_text(json.dumps(risk))
+    pdf = PDFGenerator(data_dir).generate_pdf()
+    assert pdf.startswith(b"%PDF")
+    assert len(pdf) > 1000
+
+
+def test_measured_hotspot_html_explains_actual_denominator(data_dir: Path) -> None:
+    import json
+
+    path = data_dir / "risk_scores.json"
+    risk = json.loads(path.read_text())
+    risk["metadata"]["hotspot_method"] = "measured-cc-physical-kloc-v1"
+    path.write_text(json.dumps(risk))
+    from cppulse.report_engine.pdf_generator import PDFGenerator
+
+    html = PDFGenerator(data_dir).render_html()
+    assert "maximum measured cyclomatic complexity" in html
+    assert "physical KLOC" in html
+    assert "Historical hotspot score" not in html

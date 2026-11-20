@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/install_v1/client_capabilities.schema.json",
+  "title": "cppulse read-only client capability negotiation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "tool_version",
+    "snapshot_view_versions",
+    "sarif_versions",
+    "sarif_column_kinds",
+    "commands",
+    "execution_on_open"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "snapshot_view_versions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "const": "2.0.0"
+      }
+    },
+    "sarif_versions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "const": "2.1.0"
+      }
+    },
+    "sarif_column_kinds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "const": "unicodeCodePoints"
+      }
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "execution_on_open": {
+      "const": false
+    },
+    "store_formats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "read",
+        "default_write",
+        "legacy_write",
+        "migration",
+        "legacy_binary_access",
+        "export"
+      ],
+      "properties": {
+        "read": {
+          "const": [
+            "2.0.0",
+            "3.0.0"
+          ]
+        },
+        "default_write": {
+          "const": "3.0.0"
+        },
+        "legacy_write": {
+          "const": "explicit_2.0.0_non_atomic"
+        },
+        "migration": {
+          "const": "explicit_v2_to_v3"
+        },
+        "legacy_binary_access": {
+          "const": "refused_for_v3"
+        },
+        "export": {
+          "const": "separate_v2_snapshot"
+        }
+      }
+    }
+  },
+  "description": "Advertises implemented public protocol interfaces, not successful native startup, installed optional dependencies, evidence completeness, platform qualification or authorization to execute a project. Commands remain explicit."
+}

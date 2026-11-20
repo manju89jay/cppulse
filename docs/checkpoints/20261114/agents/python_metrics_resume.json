@@ -1,0 +1,105 @@
+{
+  "owner": "python_metrics_resume",
+  "status": "frozen-for-user-requested-cloud-handoff",
+  "processes": "No owned background process remains. All commands completed before freeze.",
+  "git_writes": "None: no commit, push, ref changes, GitHub writes, publication or deployment.",
+  "changed_files": [
+    "docs/contracts/maintenance-metrics.md",
+    "docs/schemas/findings.schema.json",
+    "python/cppulse/contracts/schemas/prototype_v1/findings.schema.json",
+    "python/cppulse/contracts/maintenance.py",
+    "tests/test_measured_maintenance.py",
+    "tests/test_measured_normalization.py",
+    "tests/test_measured_duplication.py",
+    "tests/test_maintenance_trends.py",
+    "tests/test_duplication_contract.py"
+  ],
+  "checks": [
+    {
+      "command": "source review/environment.sh && pytest -q tests/test_maintenance_metrics_contract.py",
+      "result": "64 passed",
+      "log": "review/production-20261114/p3-python-resume/contracts-green.log"
+    },
+    {
+      "command": "source review/environment.sh && pytest -q tests/test_maintenance_metrics_contract.py tests/test_duplication_contract.py",
+      "result": "69 passed (64 preserved + 5 new)",
+      "log": "review/production-20261114/p3-python-resume/duplication-contract-green.log"
+    },
+    {
+      "command": "pytest -q tests/test_duplication_contract.py (before change)",
+      "result": "4 failed, 1 passed; negative/fractional/wrong-unit/function duplication bypass reproduced",
+      "log": "review/production-20261114/p3-python-resume/duplication-contract-red.log"
+    },
+    {
+      "command": "pytest -q tests/test_measured_maintenance.py",
+      "result": "Collection error: cppulse.maintenance module absent, expected red",
+      "log": "review/production-20261114/p3-python-resume/consumer-red.log"
+    },
+    {
+      "command": "pytest -q tests/test_measured_normalization.py",
+      "result": "4 failed: no metrics output, no actual-buffer digest binding, no typed publication",
+      "log": "review/production-20261114/p3-python-resume/normalization-red.log"
+    },
+    {
+      "command": "pytest -q tests/test_measured_duplication.py",
+      "result": "Collection error: cppulse.measurements absent, expected red",
+      "log": "review/production-20261114/p3-python-resume/duplication-red.log"
+    },
+    {
+      "command": "pytest -q tests/test_maintenance_trends.py",
+      "result": "Collection error: cppulse.maintenance absent, expected red",
+      "log": "review/production-20261114/p3-python-resume/trends-red.log"
+    }
+  ],
+  "implementation_absent": [
+    "Measured normalizer and typed metrics publication",
+    "Actual buffer digest comparison to frozen selected manifest",
+    "Exact retained-token duplication algorithm",
+    "analyzed-kloc-context-v3 scorer",
+    "Measured hotspots and evidence-linked estimated roadmap",
+    "Stable compatible snapshot/trend consumers",
+    "Dedicated maintenance_health publication and risk projection"
+  ],
+  "agreed_native_shape": {
+    "agent": "/root/native_metrics_resume",
+    "gate": "Native agent reported 20 real execution tests green; full CTest and actual raw-schema gate NOT yet signaled to this agent before freeze.",
+    "planned_observed_report": "review/production-20261114/p3-native-resume/observed-output/findings.json",
+    "planned_fixture": "review/production-20261114/p3-native-resume/observed-repo",
+    "payload": "metadata.analysis.native_metrics version1.0.0 metric_version cppulse-metrics-1; exact schema fields already present",
+    "per_file": "physical_loc,code_loc,function_count,functions,includes,retained token_stream; optional source_content_sha256 SHA256 of actual libclang TU buffer string64lowerhex|null",
+    "partial": "Partial native AST retains credible raw LOC/function observations; measurement_complete false; function_count null. Normalized complete availability cannot be granted from partial parse.",
+    "counts": "max_token_records default100000 configurable <=INT64MAX; token stream truncation explicit; separate job_context_id and actual perfile parse context_id."
+  },
+  "duplication_method": {
+    "version": "cppulse-exact-duplicates-30-v1",
+    "contract": "Exact (kind,spelling) contiguous thirty-token windows from retained cppulse-spelled-tokens-1 streams; match another selected file or nonoverlapping position in same file; count union implicated tokens and physical lines including multiline tokens. No identifier/literal normalization. Scope one native job/inventory.",
+    "unknown": "Any applicable selected missing/incomplete/truncated stream makes whole comparison scope unavailable, never fabricated zero.",
+    "contract_change": "maintenance.validate_metrics recognizes separate duplication method and enforces integer/units/file scope; native cppulse-metrics-1 still forbids available duplicate counts. Contract green69 does not prove algorithm implemented."
+  },
+  "proposed_apis": [
+    "NormalizedAnalysis optional metrics field (None for legacy raw with no native_metrics); persist_native_analysis publishes typed metrics.",
+    "cppulse.maintenance.compute_maintenance_health(source_digest,inventories,metrics,observations,registry,required_context_ids,optional_context_ids,profile,allow_inferred_parse=False)",
+    "Snapshot wrapper must verify full closed lineage before pure scorer; pure scorer validates contracts/source/rule versions and emits missing prerequisites as null.",
+    "cppulse.measurements.duplicate_token_counts(streams)",
+    "compare_maintenance_snapshots, measured_hotspots, measured_roadmap names already used by red tests."
+  ],
+  "health_constraints": "physical LOC denominator, default15 nonMISRA/safety22 required checks exact registryversions; constants memory3/5 complexity1.5/10 modernization1/50 MISRA2.5/10; no empty fakeLOC1 or missing health100; required declared jobs distinct from parse contexts; worst complete required context, any missing required =>full null; inferred false default explicit true maintenance only; fallback unverified; no assurance promotion; historical attempted-file scorer preserved and migration explicit.",
+  "coordination": "Policy agent /root/policy_runtime_resume owns profile1.2 runtime policy branches/shared validation.py. Agreed no relaxation of available metric verified lineage; unbound legacy unavailable/unknown, malformed linked claims ContractError. Root owns CLI/config/pipeline integration. Do not overwrite shared validation.py or README/DECISIONS.",
+  "next_commands": [
+    "cd /workspace/scratch/b3d4e6fff494/cppulse",
+    "source review/environment.sh",
+    "First read native handoff and inspect actual raw report; verify producer complete gate before ANY normalizer/scorer consumer implementation.",
+    "pytest -q tests/test_maintenance_metrics_contract.py tests/test_duplication_contract.py",
+    "After implementation: pytest -q tests/test_measured_normalization.py tests/test_measured_duplication.py tests/test_measured_maintenance.py tests/test_maintenance_trends.py",
+    "cd predictor && pytest -v --cov=src tests/",
+    "Run canonical affected/root contract suites, real frozen native/private-copy workflows, then retain plain English proof and exact logs in review/production-20261114/p3-python-resume/."
+  ],
+  "unrun": [
+    "No consumer implementation exists, so no green consumer/integration claim.",
+    "Full predictor component pytest -v --cov=src not run by this agent during resume.",
+    "No formatter/linter run on new tests/contracts yet; reformat before final checks.",
+    "No new real-data/private-copy normalized scorer workflow run.",
+    "No native actual report inspected or full producer gate accepted by this agent before freeze."
+  ],
+  "last_test_edits": "After red logs, adjusted synthetic observation fixture inventory finding_count and trend tests to recompute changed method digest and select physical_loc by name. Not rerun after those edits; consumer modules still absent."
+}

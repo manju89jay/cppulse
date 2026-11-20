@@ -1,0 +1,446 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/finding_comparison.schema.json",
+  "title": "cppulse scoped finding regression comparison v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "producer": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+    },
+    "source_digest": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "current_manifest_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "current_manifest_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "baseline_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "baseline_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "baseline_manifest_artifact_id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "baseline_manifest_sha256": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+    },
+    "fingerprint_version": {
+      "const": "native-line-anchor-1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "rule_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "sha256": {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        }
+      },
+      "required": [
+        "files",
+        "context_ids",
+        "rule_ids",
+        "sha256"
+      ]
+    },
+    "rename_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "max_new": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gate": {
+      "enum": [
+        "passed",
+        "failed",
+        "insufficient_evidence"
+      ]
+    },
+    "comparable": {
+      "type": "boolean"
+    },
+    "incomplete": {
+      "type": "boolean"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baseline": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "new": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unchanged": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown_current": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown_baseline": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "suppressed_new": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsuppressed_new": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "current",
+        "baseline",
+        "new",
+        "unchanged",
+        "resolved",
+        "unknown_current",
+        "unknown_baseline",
+        "suppressed_new",
+        "unsuppressed_new"
+      ]
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "rule_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "fingerprint": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "baseline_fingerprint": {
+            "anyOf": [
+              {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "current_observation_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "baseline_observation_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "new_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unchanged_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resolved_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unknown_current_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unknown_baseline_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "suppressed_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "file",
+          "context_id",
+          "rule_id",
+          "fingerprint",
+          "baseline_fingerprint",
+          "current_observation_ids",
+          "baseline_observation_ids",
+          "new_count",
+          "unchanged_count",
+          "resolved_count",
+          "unknown_current_count",
+          "unknown_baseline_count",
+          "suppressed_count",
+          "reason"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": false
+    },
+    "suppressions_artifact_id": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "suppressions_sha256": {
+      "anyOf": [
+        {
+          "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "suppressions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "gate": {
+            "const": "finding_regression"
+          },
+          "baseline_sha256": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "fingerprint_version": {
+            "const": "native-line-anchor-1"
+          },
+          "fingerprint": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "parse_context_digest": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/sha256"
+          },
+          "rule_id": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+          },
+          "rule_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "max_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "applied_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "inactive_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "gate",
+          "baseline_sha256",
+          "fingerprint_version",
+          "fingerprint",
+          "file",
+          "context_id",
+          "parse_context_digest",
+          "rule_id",
+          "rule_version",
+          "max_count",
+          "reason",
+          "owner",
+          "approved_at",
+          "expires_at",
+          "active",
+          "applied_count",
+          "inactive_reason"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": false
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": false
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "producer",
+    "source_digest",
+    "current_manifest_sha256",
+    "current_manifest_artifact_id",
+    "baseline_artifact_id",
+    "baseline_sha256",
+    "baseline_manifest_artifact_id",
+    "baseline_manifest_sha256",
+    "fingerprint_version",
+    "generated_at",
+    "scope",
+    "rename_map",
+    "max_new",
+    "gate",
+    "comparable",
+    "incomplete",
+    "counts",
+    "groups",
+    "suppressions_artifact_id",
+    "suppressions_sha256",
+    "suppressions",
+    "issues",
+    "limitations"
+  ]
+}

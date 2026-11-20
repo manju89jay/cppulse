@@ -1,0 +1,34 @@
+{
+  "updated_at": "2026-11-14T16:22:09.170004+00:00",
+  "updated_at_berlin": "2026-11-14T17:22:09.170004+01:00",
+  "branch": "codex/cppulse-local-core-20261114",
+  "implementation_checkpoint": "79665c4808a7bbd05e69c70ad0bd10379aa8fef1",
+  "numbered_requirements": 118,
+  "additional_design_obligations": 9,
+  "tasks": 60,
+  "requirement_status_counts": {
+    "verified": 12,
+    "partial": 80,
+    "implemented but unverified": 16,
+    "conflicting": 5,
+    "missing": 14
+  },
+  "task_status_counts": {
+    "verified": 1,
+    "partial": 37,
+    "implemented but unverified": 2,
+    "missing": 19,
+    "conflicting": 1
+  },
+  "whole_tasks_closed": [
+    "M0-01"
+  ],
+  "new_whole_tasks_closed": [],
+  "milestones_complete": [],
+  "fresh_checks": {
+    "native": "configure/build/139 CTests passed",
+    "selected_python": "453 passed; source stable",
+    "full_root_collection": "2,322 collected; four collection errors from three missing runtime modules"
+  },
+  "qualification": "Full task statuses are acceptance of whole task scope, not percentage complete. Bounded R1 repairs are verified separately. The complete production specification and final package/platform qualification remain unfinished."
+}

@@ -1,0 +1,144 @@
+{
+  "recorded_at": "2026-11-14T02:35:45.975868+00:00",
+  "status": "accepted for the declared native local S0-S7 prototype journeys; not published",
+  "tool_version": "0.2.0.dev2",
+  "head": "b89dce9d22b37ef44843a68eb3373c525b4b8e94",
+  "branch": "codex/job-application-demo-20261113",
+  "all_refs_unchanged": true,
+  "source_state_matches_candidate": true,
+  "worktree_digest": "e41d5d3788e5f640bd32845bf985df0f619eda8155ead264ffbb71a6fa8982a1",
+  "candidate": "/workspace/scratch/b3d4e6fff494/cppulse/output/candidates/s7-preview/cppulse-0.2.0.dev2-linux-x86_64-candidate",
+  "external_proof": "/workspace/scratch/b3d4e6fff494/s7-installed-final",
+  "wheel_sha256": "55cf080eda016d9e3af784c59ccd9b18b07863cbcac077ea5564fb4966338026",
+  "native_archive_sha256": "16517d0c46d47f60f2c2ab80109093871f7172120df4c06621adf9f43bf6921b",
+  "native_analyzer_sha256": "8d4c1d3ed7432c8be33ddc63e2b6165bae326044a75824bc231f82eb0bf4c900",
+  "driver_command_count": 11,
+  "driver_exits": {
+    "0": 11
+  },
+  "core_distributions": 19,
+  "web_distributions": 50,
+  "source_hidden": {
+    "started_at": "2026-11-14T02:26:04.350975+00:00",
+    "source": "/workspace/scratch/b3d4e6fff494/cppulse",
+    "temporary_path": "/workspace/scratch/b3d4e6fff494/cppulse-source-hidden-s7",
+    "wheel_sha256": "55cf080eda016d9e3af784c59ccd9b18b07863cbcac077ea5564fb4966338026",
+    "source_restored": true,
+    "status": "passed",
+    "hidden_at": "2026-11-14T02:26:04.352208+00:00",
+    "finished_at": "2026-11-14T02:33:54.346699+00:00",
+    "temporary_path_absent": true
+  },
+  "source_hidden_boundary": "Core offline installation and all runtime exercises occurred while the original checkout path was unavailable; optional web/PDF dependency and project-wheel installation occurred before hiding, with runtime origins checked again while hidden.",
+  "public_gates": {
+    "failed": 1,
+    "insufficient_evidence": 1,
+    "passed": 1
+  },
+  "finding_commands": 24,
+  "finding_command_exits": {
+    "0": 17,
+    "3": 5,
+    "1": 2
+  },
+  "snapshots_verified": 74,
+  "distinct_retained_native_reports_verified": 14,
+  "fresh_web_cases": 4,
+  "historical_web_cases": 9,
+  "fresh_pdf_pages": 32,
+  "fresh_pdf_visual_review": {
+    "recorded_at": "2026-11-14T02:33:38.148961+00:00",
+    "all_pages_reviewed_in_contacts": true,
+    "contacts": [
+      "contact-1.png",
+      "contact-2.png",
+      "contact-3.png"
+    ],
+    "full_size_checks": [
+      "clean/page-01.png",
+      "findings/page-10.png"
+    ],
+    "result": "Readable text/tables, distinct passed/failed/insufficient labels, no clipping or overlap observed; metadata remains dense by design."
+  },
+  "checks": [
+    {
+      "name": "web-wheel-install",
+      "returncode": 0,
+      "source_path_absent": false,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/web-wheel-install.log"
+    },
+    {
+      "name": "web-pip-check",
+      "returncode": 0,
+      "source_path_absent": false,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/web-pip-check.log"
+    },
+    {
+      "name": "core-installed",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/core-installed.log"
+    },
+    {
+      "name": "core-origin",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/core-origin.log"
+    },
+    {
+      "name": "public-core-evidence",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/public-core-evidence.log"
+    },
+    {
+      "name": "public-core-findings",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/public-core-findings.log"
+    },
+    {
+      "name": "web-origin",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/web-origin.log"
+    },
+    {
+      "name": "public-web-evidence",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/public-web-evidence.log"
+    },
+    {
+      "name": "fresh-web-locators",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/fresh-web-locators.log"
+    },
+    {
+      "name": "fresh-installed-browser",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/fresh-installed-browser.log"
+    },
+    {
+      "name": "historical-installed-browser",
+      "returncode": 0,
+      "source_path_absent": true,
+      "log": "/workspace/scratch/b3d4e6fff494/s7-installed-final/logs/historical-installed-browser.log"
+    }
+  ],
+  "supplemental_proofs": {
+    "cli_serve": "/workspace/scratch/b3d4e6fff494/s7-installed-final/cli-serve-smoke/verification.json",
+    "snapshot_artifacts": "/workspace/scratch/b3d4e6fff494/s7-installed-final/fresh-artifact-verification.json",
+    "pdf_layout": "/workspace/scratch/b3d4e6fff494/s7-installed-final/pdf-qa/verification.json"
+  },
+  "limits": [
+    "Docker/Compose and hosted GitHub Action not executed: Docker executable/socket unavailable.",
+    "Linux x86_64/glibc2.41 and finite named GNU/libclang dialects only; host compiler headers and runtime/PDF/browser libraries remain installed requirements.",
+    "Historical nine-case browser proof renders retained stores, not new C++ consumer collections.",
+    "Installed native producer proof does not rerun every S6 coverage/sanitizer/compiler/consumer matrix.",
+    "No accuracy, production, safety, certification or human usefulness claim; ranking experimental.",
+    "S8-S11 and E1-E5 remain future separately scoped work."
+  ]
+}

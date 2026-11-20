@@ -1,0 +1,6 @@
+/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp:39:29: warning: 'item' used after it was moved [bugprone-use-after-move]
+   39 |   if (selected == 2) return item.read();  // KNOWN LIMIT: flow-, not path-sensitive
+      |                             ^
+/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp:38:30: note: move occurred here
+   38 |   if (selected == 1) consume(std::move(item));
+      |                              ^

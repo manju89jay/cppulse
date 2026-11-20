@@ -1,0 +1,672 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/collection_request.schema.json",
+  "title": "cppulse collection_request v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ruleset": {"type": "string", "minLength": 1, "description": "Local pack path relative to workspace, explicitly included in source/files."},
+    "resolved_ruleset": {"type": "object", "description": "Collector-generated retained configuration identity. It never authenticates an imported diagnostic producer."},
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "application",
+            "library",
+            "header-only"
+          ]
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "inventory_complete": {
+          "type": "boolean"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "kind",
+        "files",
+        "inventory_complete",
+        "limitations"
+      ]
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.cppulse.local/v2/context.schema.json"
+      },
+      "minItems": 1
+    },
+    "plan": {
+      "$ref": "https://schemas.cppulse.local/v2/collection_plan.schema.json"
+    },
+    "normalizers": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "native_analysis"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "report": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "output"
+                      }
+                    }
+                  }
+                ]
+              },
+              "registry": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "input"
+                      }
+                    }
+                  }
+                ]
+              },
+              "config": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "input"
+                      }
+                    }
+                  }
+                ]
+              },
+              "compilation_database": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                      },
+                      {
+                        "properties": {
+                          "role": {
+                            "const": "input"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "resource_manifest": {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                      },
+                      {
+                        "properties": {
+                          "role": {
+                            "const": "input"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "requested_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "requested_rules": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "step_id",
+              "report",
+              "registry",
+              "config",
+              "compilation_database",
+              "resource_manifest",
+              "requested_files",
+              "requested_rules"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "coverage"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "adapter": {
+                "enum": [
+                  "lcov",
+                  "cobertura"
+                ]
+              },
+              "report": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "output"
+                      }
+                    }
+                  }
+                ]
+              },
+              "producer_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "gcov_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "compiler_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "configuration": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "input"
+                      }
+                    }
+                  }
+                ]
+              },
+              "gcov": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                  },
+                  {
+                    "properties": {
+                      "role": {
+                        "const": "input"
+                      }
+                    }
+                  }
+                ]
+              },
+              "proof_step_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "test_binding_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "instrumentation": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "object": {
+                      "allOf": [
+                        {
+                          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "output"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "mapping": {
+                      "allOf": [
+                        {
+                          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "output"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "source_files": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "object",
+                    "mapping",
+                    "source_files"
+                  ]
+                },
+                "minItems": 1
+              },
+              "profiles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "profile": {
+                      "allOf": [
+                        {
+                          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "output"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "binary": {
+                      "allOf": [
+                        {
+                          "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "output"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "test_step_id": {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                    }
+                  },
+                  "required": [
+                    "profile",
+                    "binary",
+                    "test_step_id"
+                  ]
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "step_id",
+              "adapter",
+              "report",
+              "producer_version_step_id",
+              "gcov_version_step_id",
+              "compiler_version_step_id",
+              "configuration",
+              "gcov",
+              "proof_step_ids",
+              "test_binding_ids",
+              "instrumentation",
+              "profiles"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "sanitizer"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "sanitizer": {
+                "enum": [
+                  "asan",
+                  "ubsan",
+                  "tsan"
+                ]
+              },
+              "requested_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "compiler_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "nm_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "readelf_version_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "objects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "compile_step_id": {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                    },
+                    "nm_step_id": {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                    },
+                    "elf_step_id": {
+                      "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                    }
+                  },
+                  "required": [
+                    "compile_step_id",
+                    "nm_step_id",
+                    "elf_step_id"
+                  ]
+                },
+                "minItems": 1
+              },
+              "link_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "runtime_inspection_step_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "test_binding_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "sanitizer",
+              "requested_files",
+              "compiler_version_step_id",
+              "nm_version_step_id",
+              "readelf_version_step_id",
+              "objects",
+              "link_step_id",
+              "runtime_inspection_step_id",
+              "test_binding_id"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "gcc_import"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "report": {
+                "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+              },
+              "context_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "source_root": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "producer": {
+                "allOf": [
+                  {
+                    "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+                  },
+                  {
+                    "properties": {
+                      "name": {
+                        "const": "GNU-G++"
+                      },
+                      "version": {
+                        "const": "14.2.0"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "report",
+              "context_id",
+              "source_root",
+              "scope_files",
+              "producer"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "external_import"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "report": {
+                "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+              },
+              "context_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "source_root": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "producer": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+              },
+              "adapter": {
+                "enum": [
+                  "gcc-json",
+                  "clang-tidy-text",
+                  "cppcheck-xml"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "report",
+              "context_id",
+              "source_root",
+              "scope_files",
+              "producer",
+              "adapter"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "kind": {
+                "const": "test_import"
+              },
+              "normalizer_version": {
+                "const": "1.0.0"
+              },
+              "report": {
+                "$ref": "https://schemas.cppulse.local/v2/workflow_common.schema.json#/definitions/role_selector"
+              },
+              "context_id": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+              },
+              "scope_files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "producer": {
+                "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+              },
+              "adapter": {
+                "enum": [
+                  "ctest-junit",
+                  "generic-junit"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "normalizer_version",
+              "report",
+              "context_id",
+              "scope_files",
+              "producer",
+              "adapter"
+            ]
+          }
+        ]
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "source",
+    "contexts",
+    "plan",
+    "normalizers"
+  ]
+}

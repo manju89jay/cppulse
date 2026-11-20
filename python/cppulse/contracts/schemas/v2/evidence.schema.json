@@ -1,0 +1,363 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/evidence.schema.json",
+  "title": "cppulse evidence v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "source_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "context_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "producer": {
+            "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/producer"
+          },
+          "origin": {
+            "enum": [
+              "execution",
+              "import",
+              "attestation"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "build",
+              "tests",
+              "coverage",
+              "sanitizer",
+              "analysis",
+              "review"
+            ]
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "error",
+              "timed_out",
+              "cancelled",
+              "skipped",
+              "not_attempted"
+            ]
+          },
+          "usability": {
+            "enum": [
+              "usable",
+              "stale",
+              "mismatched",
+              "unsupported",
+              "malformed",
+              "missing"
+            ]
+          },
+          "artifact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "receipt_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scope": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "tests": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "files"
+            ]
+          },
+          "measurement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "line",
+                  "branch",
+                  "function",
+                  "decision",
+                  "mcdc"
+                ]
+              },
+              "covered": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "total": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "kind",
+              "covered",
+              "total"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "review_details": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "version",
+              "source_digest",
+              "statement",
+              "rationale",
+              "reviewed_at",
+              "recorded_at",
+              "recorded_by",
+              "reviewed_artifact_ids",
+              "identity_assurance",
+              "limitations"
+            ],
+            "properties": {
+              "version": {
+                "const": "1.0.0"
+              },
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "recorded_by": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_artifact_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "reviewed_artifact_sha256": {
+                "type": "object",
+                "minProperties": 1,
+                "propertyNames": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "identity_assurance": {
+                "const": "self_declared"
+              },
+              "limitations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "import_adapter": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "enum": [
+                  "ctest-junit",
+                  "generic-junit"
+                ]
+              },
+              "version": {
+                "const": "1.0.0"
+              }
+            },
+            "required": [
+              "name",
+              "version"
+            ]
+          },
+          "test_counts": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "total": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "passed": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "failed": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "skipped": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "errors": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "total",
+                  "passed",
+                  "failed",
+                  "skipped",
+                  "errors"
+                ]
+              }
+            ]
+          },
+          "test_cases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "identity": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "classname": {
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "passed",
+                    "failed",
+                    "skipped",
+                    "error"
+                  ]
+                },
+                "duration_seconds": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "identity",
+                "name",
+                "classname",
+                "status",
+                "duration_seconds"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "context_id",
+          "producer",
+          "origin",
+          "kind",
+          "status",
+          "usability",
+          "artifact_ids",
+          "receipt_id",
+          "scope",
+          "limitations"
+        ]
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "version",
+    "source_digest",
+    "records"
+  ]
+}

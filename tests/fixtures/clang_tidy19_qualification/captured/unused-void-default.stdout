@@ -1,0 +1,3 @@
+/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp:16:9: warning: the value returned by this function should not be disregarded; neglecting it may lead to errors [bugprone-unused-return-value]
+   16 |   (void)qualified::status();  // Positive unless AllowCastToVoid is explicitly true.
+      |         ^~~~~~~~~~~~~~~~~~~

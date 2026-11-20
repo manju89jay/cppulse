@@ -1,0 +1,46 @@
+{
+  "readme": "README.md",
+  "sha256": "ea357662eb77372d02c737f42fa5b35a147f26b1a0f8b293c3cc647cd9d3c2bb",
+  "lines": 343,
+  "ownership": "README.md only; command logs and copied frozen tool under ignored review/output paths",
+  "verified_command_records": 13,
+  "successful_checks": [
+    "public help/doctor/config and command options",
+    "synthetic source analyze to HTML and aggregate JSON",
+    "nonempty PDF generation",
+    "public serve HTTP root/health/snapshot view"
+  ],
+  "local_links": {
+    "readme_sha256": "ea357662eb77372d02c737f42fa5b35a147f26b1a0f8b293c3cc647cd9d3c2bb",
+    "readme_lines": 343,
+    "links_checked": 28,
+    "missing_local_targets": [],
+    "fences_balanced": true,
+    "baseline_revision": "15492dbfcbc6b20d938e42e760486da4181035f6",
+    "qualification": "Active uncommitted implementation; command proofs are scoped to their actual execution, not a frozen current candidate."
+  },
+  "evidence_demo_attempts": [
+    {
+      "output": "output/production-readme-evidence-20261114",
+      "outcome": "failed because source-only validation used relative PYTHONPATH in copied command workspace; not an installed package defect"
+    },
+    {
+      "output": "output/production-readme-evidence-20261114-retry",
+      "outcome": "clean case completed; findings capture rejected changed analyzer hash during concurrent rebuild; no passing full run claimed"
+    },
+    {
+      "output": "output/production-readme-evidence-frozen-20261114",
+      "outcome": "completed; clean passed/0, intentional findings failed/1, missing tests insufficient_evidence/3; exact frozen native bytes recorded separately",
+      "exec_session_id": 34986,
+      "summary": "/workspace/scratch/b3d4e6fff494/cppulse/output/production-readme-evidence-frozen-20261114/latest-demo.json"
+    }
+  ],
+  "not_claimed": [
+    "fresh operating-system dependency install",
+    "fresh pip editable install",
+    "complete execution of every placeholder/example project command",
+    "full README end-to-end acceptance at a frozen final current source revision",
+    "production qualification or new release"
+  ],
+  "proposed_documentation_decision": "Use a decision-oriented product README and one current requirement/evidence ledger; preserve dated original results as historical links, never infer production readiness from test totals."
+}

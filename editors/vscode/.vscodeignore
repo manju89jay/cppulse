@@ -1,0 +1,11 @@
+node_modules/**
+test/**
+src/**
+contracts/**
+.test-work/**
+.vscode-test/**
+artifacts/**
+package-lock.json
+tsconfig.json
+.gitignore
+.vscodeignore

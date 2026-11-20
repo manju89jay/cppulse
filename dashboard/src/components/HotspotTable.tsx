@@ -3,6 +3,7 @@ import type { Hotspot } from "../types";
 
 interface HotspotTableProps {
   hotspots: Hotspot[];
+  method?: string;
 }
 
 type SortKey = keyof Hotspot;
@@ -15,6 +16,7 @@ function shortPath(path: string): string {
 
 export function HotspotTable({
   hotspots,
+  method,
 }: HotspotTableProps): React.ReactElement {
   const [sortKey, setSortKey] = useState<SortKey>("hotspot_score");
   const [sortAsc, setSortAsc] = useState(false);
@@ -55,6 +57,9 @@ export function HotspotTable({
       <h2 className="text-lg font-semibold text-gray-800 mb-4">
         Top Hotspot Files
       </h2>
+      <p className="text-sm text-gray-500 mb-3">{method === "measured-cc-physical-kloc-v1"
+        ? "Change frequency × maximum measured cyclomatic complexity × findings / physical KLOC. Complete native metrics and history required."
+        : "Historical severity proxy; complexity was not measured."}</p>
       {sorted.length === 0 ? (
         <p className="text-gray-400 text-sm">No hotspot data available.</p>
       ) : (
@@ -84,7 +89,7 @@ export function HotspotTable({
                   className={thClass}
                   onClick={() => handleSort("complexity_score")}
                 >
-                  Complexity{sortIndicator("complexity_score")}
+                  {method === "measured-cc-physical-kloc-v1" ? "Maximum CC" : "Severity proxy"}{sortIndicator("complexity_score")}
                 </th>
                 <th
                   className={thClass}

@@ -1,0 +1,487 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cppulse.local/schemas/development/result-1.0.0.json",
+  "title": "Local developer operation result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "operation",
+    "scope",
+    "status",
+    "exit_status",
+    "started_at",
+    "finished_at",
+    "source",
+    "checks",
+    "limitations"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "operation": {
+      "enum": [
+        "verify",
+        "package",
+        "release-dry-run"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "changed",
+        "full",
+        "candidate"
+      ]
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "interrupted",
+        "planned"
+      ]
+    },
+    "exit_status": {
+      "enum": [
+        0,
+        1,
+        2,
+        130,
+        null
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object"
+    },
+    "candidate": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "blocked",
+              "interrupted",
+              "planned"
+            ]
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "returncode": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "planned"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exit_status": {
+            "type": "null"
+          },
+          "checks": {
+            "items": {
+              "properties": {
+                "status": {
+                  "const": "planned"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "passed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exit_status": {
+            "const": 0
+          },
+          "checks": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "status": {
+                  "const": "passed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "scope": {
+            "const": "full"
+          },
+          "status": {
+            "const": "passed"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "candidate"
+        ],
+        "properties": {
+          "candidate": {
+            "type": "object"
+          },
+          "checks": {
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "native-format"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "black-check"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "ruff-check"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "delivery-ledger"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "generated-check"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "root-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "analyzer-configure"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "analyzer-build"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "analyzer-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "git-miner-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "predictor-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "report-engine-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "dashboard-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "dashboard-build"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "cli-configure"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "cli-build"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "cli-tests"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "candidate-integrity"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "installed-smoke"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "reference-benchmarks"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "native-integration"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "name": {
+                      "const": "native-integration-dependencies"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "x-required-full-checks": [
+    "native-format",
+    "black-check",
+    "ruff-check",
+    "delivery-ledger",
+    "generated-check",
+    "root-tests",
+    "analyzer-configure",
+    "analyzer-build",
+    "analyzer-tests",
+    "git-miner-tests",
+    "predictor-tests",
+    "report-engine-tests",
+    "dashboard-tests",
+    "dashboard-build",
+    "cli-configure",
+    "cli-build",
+    "cli-tests",
+    "candidate-integrity",
+    "installed-smoke",
+    "reference-benchmarks",
+    "native-integration",
+    "native-integration-dependencies"
+  ]
+}

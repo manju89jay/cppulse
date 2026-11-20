@@ -18,6 +18,17 @@ void AutoUsageRule::check_impl(CXCursor cursor, const std::string& file_path) {
     }
 
     CXType var_type = clang_getCursorType(cursor);
+    // libclang retains the written Auto type even after spelling its deduced
+    // iterator name. References/pointers wrap that type; do not recommend a
+    // declaration that the developer already wrote, including macro expansions.
+    CXType written_type = var_type;
+    while (written_type.kind == CXType_Pointer || written_type.kind == CXType_LValueReference ||
+           written_type.kind == CXType_RValueReference) {
+        written_type = clang_getPointeeType(written_type);
+    }
+    if (written_type.kind == CXType_Auto) {
+        return;
+    }
     CXString type_spelling = clang_getTypeSpelling(var_type);
     const char* type_str = clang_getCString(type_spelling);
     std::string type_name = (type_str != nullptr) ? type_str : "";

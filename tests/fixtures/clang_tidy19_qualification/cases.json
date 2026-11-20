@@ -1,0 +1,189 @@
+{
+  "version": "1.0.0",
+  "producer": {
+    "name": "clang-tidy",
+    "version": "19.1.7"
+  },
+  "cases": [
+    {
+      "id": "move-positive",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_POSITIVE",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": null
+    },
+    {
+      "id": "move-reinitialized",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_REINITIALIZED",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null
+    },
+    {
+      "id": "move-exclusive-branch",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_EXCLUSIVE_BRANCH",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null
+    },
+    {
+      "id": "move-correlated-condition",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_CORRELATED_CONDITIONS",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": "Known flow-sensitive but not path-sensitive false positive: the two distinct values cannot both hold."
+    },
+    {
+      "id": "move-member-global",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_MEMBER_GLOBAL",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": "Member and global moves are outside this check's qualified detection scope."
+    },
+    {
+      "id": "dangling-temporary-owner",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_TEMPORARY_OWNER",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": null
+    },
+    {
+      "id": "dangling-persistent-owner",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_PERSISTENT_OWNER",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null
+    },
+    {
+      "id": "dangling-custom-default",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_CUSTOM_HANDLE",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": "The default HandleClasses selection does not establish arbitrary custom-handle or span support."
+    },
+    {
+      "id": "unused-ignored-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-void-default",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": ""
+      },
+      "limitation": "AllowCastToVoid=false is the tool default; explicit void casts remain positive."
+    },
+    {
+      "id": "unused-void-false",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-void-true",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": true
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-used-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_USED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-ignored-type",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_TYPE",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "^::qualified::Error$",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-used-type",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_USED_TYPE",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "^::qualified::Error$",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    },
+    {
+      "id": "unused-unselected-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null
+    }
+  ],
+  "limits": [
+    "These controlled compiler contexts do not measure general detection precision or completeness.",
+    "Zero diagnostic bytes never become a completed clean import; imports retain origin=import and unverified scope.",
+    "Only default std::basic_string_view handles are qualified; no arbitrary custom handle/span coverage."
+  ]
+}

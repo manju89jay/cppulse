@@ -1,0 +1,16 @@
+{
+  "checks": 15,
+  "all_passed": true,
+  "test_counts": {
+    "root-tests": 1180,
+    "analyzer-tests": 84,
+    "git-miner-tests": 90,
+    "predictor-tests": 98,
+    "report-engine-tests": 95,
+    "dashboard-tests": 37,
+    "cli-tests": 20
+  },
+  "total_tests": 1604,
+  "dashboard_production_build": "passed",
+  "source_scope": "Full S5 core/application source; later isolated verifier launcher adjustment separately linted. Installed verification is a separate check."
+}

@@ -1,0 +1,1180 @@
+{
+  "utc": "2026-11-19T14:56:06.318222+00:00",
+  "tool": "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+  "tool_sha256": "9ebd2c4f2a123c058f4744e9a02a8000ab9ba22f9b835958dfda7c4d7de2527c",
+  "producer": {
+    "name": "clang-tidy",
+    "version": "19.1.7"
+  },
+  "fixture_manifest_sha256": "4e713c14667c8302a8e7be4b7fbdf2e16e34ea5d6bdc81f73f9d87550afc210b",
+  "commands": [
+    {
+      "id": "version",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "--version"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.23439358500763774,
+      "stdout_sha256": "e38d411d6f36de95106a0a49265c254fa05e9fe12dba10071d6d2aacc5fa26f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "defaults-bugprone-dangling-handle",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "--dump-config",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\"}"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.032143515010830015,
+      "stdout_sha256": "583288ba0ddb5fe79977c1a00d7f6e6baace653080309fcb37a3af73c96e8ebd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "defaults-bugprone-unused-return-value",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "--dump-config",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\"}"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.08373783796560019,
+      "stdout_sha256": "8df10b7da38366dd98f947127ac3272ab638dbc7578aae3ea6c7aa38994c3e40",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "defaults-bugprone-use-after-move",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "--dump-config",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\"}"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.03478735499083996,
+      "stdout_sha256": "e244c2f8c7478ab5db4e7512cb22595146396b5dbf22ffe219a623427d6f53d1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "move-positive",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_POSITIVE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.16846356500172988,
+      "stdout_sha256": "a09ffe590e5ab3abd8fcfe27cd3ee4f9dbf650a75766748caedb56cb2ce4d30a",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "move-reinitialized",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_REINITIALIZED",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.12739555700682104,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "move-exclusive-branch",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_EXCLUSIVE_BRANCH",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.09116601099958643,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "move-correlated-condition",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_CORRELATED_CONDITIONS",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.08579260495025665,
+      "stdout_sha256": "1a4a054d46d1d166286207a3035a40a6a4c793217dd6e13a48ad9e5720a4a034",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "move-member-global",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_MEMBER_GLOBAL",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.08750443899771199,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "dangling-temporary-owner",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_TEMPORARY_OWNER",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.3256416559452191,
+      "stdout_sha256": "003b6a3c4156f96b7e244c4329221fab47a4e582f62425d489012f422b7aa706",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "dangling-persistent-owner",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_PERSISTENT_OWNER",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.4082934519974515,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "dangling-custom-default",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_CUSTOM_HANDLE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.30065266200108454,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "unused-ignored-function",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.03659740398870781,
+      "stdout_sha256": "071b8514e27f5c78f9e2d063736eeb29a7f2665f01714efeb3e2849e11876215",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "unused-void-default",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\"}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.04916632000822574,
+      "stdout_sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "unused-void-false",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.038337530044373125,
+      "stdout_sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "unused-void-true",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": true}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.034928756998851895,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "unused-used-function",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_USED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.04459998197853565,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "unused-ignored-type",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"^::qualified::Error$\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_TYPE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.03965912200510502,
+      "stdout_sha256": "5cc5a60378450d8a82d491265899f9a3cfa0f22eec1d5d754fc5237610981527",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6"
+    },
+    {
+      "id": "unused-used-type",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"^::qualified::Error$\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_USED_TYPE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.03265306999674067,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "unused-unselected-function",
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.03485375497257337,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cases": [
+    {
+      "id": "move-positive",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_POSITIVE",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+      "stdout_sha256": "a09ffe590e5ab3abd8fcfe27cd3ee4f9dbf650a75766748caedb56cb2ce4d30a",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-use-after-move",
+          "file": "use_after_move.cpp",
+          "line": 16,
+          "column": 10,
+          "message": "'item' used after it was moved",
+          "fingerprint": "3f6062202d620459e21b0a5e423d39e545f183b33eb886006a2c7ad5ef23a045"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "Secondary notes remain only in original raw text; no new finding or confirmation is inferred."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_POSITIVE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "move-reinitialized",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_REINITIALIZED",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_REINITIALIZED",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "move-exclusive-branch",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_EXCLUSIVE_BRANCH",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_EXCLUSIVE_BRANCH",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "move-correlated-condition",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_CORRELATED_CONDITIONS",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": "Known flow-sensitive but not path-sensitive false positive: the two distinct values cannot both hold.",
+      "exit_code": 0,
+      "source_sha256": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+      "stdout_sha256": "1a4a054d46d1d166286207a3035a40a6a4c793217dd6e13a48ad9e5720a4a034",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-use-after-move",
+          "file": "use_after_move.cpp",
+          "line": 39,
+          "column": 29,
+          "message": "'item' used after it was moved",
+          "fingerprint": "7e560ade6422b499a8703a57b3c7a2a0d00a29b3556cc751200b8c343f50c6d3"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "Secondary notes remain only in original raw text; no new finding or confirmation is inferred."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_CORRELATED_CONDITIONS",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "move-member-global",
+      "source": "use_after_move.cpp",
+      "macro": "CASE_MEMBER_GLOBAL",
+      "check": "bugprone-use-after-move",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": "Member and global moves are outside this check's qualified detection scope.",
+      "exit_code": 0,
+      "source_sha256": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-use-after-move",
+        "--config={\"Checks\": \"-*,bugprone-use-after-move\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_MEMBER_GLOBAL",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "dangling-temporary-owner",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_TEMPORARY_OWNER",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 1,
+      "options": {},
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "9c6900baab352854b4e9236270f16a0eab8203334d5eef3fedabbb9dc26c52b7",
+      "stdout_sha256": "003b6a3c4156f96b7e244c4329221fab47a4e582f62425d489012f422b7aa706",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-dangling-handle",
+          "file": "dangling_handle.cpp",
+          "line": 7,
+          "column": 27,
+          "message": "std::basic_string_view outlives its value",
+          "fingerprint": "5850f5d217d3ca5575ab8b5c4b16ecaf3952b3b5ca46592be727279e6d26d524"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_TEMPORARY_OWNER",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "dangling-persistent-owner",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_PERSISTENT_OWNER",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "9c6900baab352854b4e9236270f16a0eab8203334d5eef3fedabbb9dc26c52b7",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_PERSISTENT_OWNER",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "dangling-custom-default",
+      "source": "dangling_handle.cpp",
+      "macro": "CASE_CUSTOM_HANDLE",
+      "check": "bugprone-dangling-handle",
+      "expected_occurrences": 0,
+      "options": {},
+      "limitation": "The default HandleClasses selection does not establish arbitrary custom-handle or span support.",
+      "exit_code": 0,
+      "source_sha256": "9c6900baab352854b4e9236270f16a0eab8203334d5eef3fedabbb9dc26c52b7",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/dangling_handle.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-dangling-handle",
+        "--config={\"Checks\": \"-*,bugprone-dangling-handle\", \"CheckOptions\": {}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_CUSTOM_HANDLE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-ignored-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "071b8514e27f5c78f9e2d063736eeb29a7f2665f01714efeb3e2849e11876215",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-unused-return-value",
+          "file": "unused_return_value.cpp",
+          "line": 12,
+          "column": 3,
+          "message": "the value returned by this function should not be disregarded; neglecting it may lead to errors",
+          "fingerprint": "13802026689dae0e63e853cbd3a2625245abe12a2f951baadb520025e3ba9062"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-void-default",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": ""
+      },
+      "limitation": "AllowCastToVoid=false is the tool default; explicit void casts remain positive.",
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-unused-return-value",
+          "file": "unused_return_value.cpp",
+          "line": 16,
+          "column": 9,
+          "message": "the value returned by this function should not be disregarded; neglecting it may lead to errors",
+          "fingerprint": "acc750b6415f9731a81c5e002547ab741704418c8ce5eb6aa587805631d92769"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\"}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-void-false",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-unused-return-value",
+          "file": "unused_return_value.cpp",
+          "line": 16,
+          "column": 9,
+          "message": "the value returned by this function should not be disregarded; neglecting it may lead to errors",
+          "fingerprint": "acc750b6415f9731a81c5e002547ab741704418c8ce5eb6aa587805631d92769"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-void-true",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_VOID_CAST",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": true
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": true}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_VOID_CAST",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-used-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_USED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "^::qualified::status$",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"^::qualified::status$\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_USED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-ignored-type",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_TYPE",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 1,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "^::qualified::Error$",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "5cc5a60378450d8a82d491265899f9a3cfa0f22eec1d5d754fc5237610981527",
+      "stderr_sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "usability": "usable",
+      "observations": [
+        {
+          "original_rule_id": "bugprone-unused-return-value",
+          "file": "unused_return_value.cpp",
+          "line": 22,
+          "column": 3,
+          "message": "the value returned by this function should not be disregarded; neglecting it may lead to errors",
+          "fingerprint": "4ff0410fc3246e9eafae17f83a0bd6bc3a88d6dcdd3a6851eeb6bbd25da941ea"
+        }
+      ],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed."
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"^::qualified::Error$\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_TYPE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-used-type",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_USED_TYPE",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "^::qualified::Error$",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"^::qualified::Error$\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_USED_TYPE",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    },
+    {
+      "id": "unused-unselected-function",
+      "source": "unused_return_value.cpp",
+      "macro": "CASE_IGNORED_FUNCTION",
+      "check": "bugprone-unused-return-value",
+      "expected_occurrences": 0,
+      "options": {
+        "bugprone-unused-return-value.CheckedFunctions": "",
+        "bugprone-unused-return-value.CheckedReturnTypes": "",
+        "bugprone-unused-return-value.AllowCastToVoid": false
+      },
+      "limitation": null,
+      "exit_code": 0,
+      "source_sha256": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usability": "missing",
+      "observations": [],
+      "limitations": [
+        "Imported diagnostic claims do not prove producer authenticity, completed analysis or a clean scan, including empty diagnostics.",
+        "Repeated and overlapping imported occurrences are not independent confirmation and are not merged with native findings.",
+        "Coordinates retain reported one-based tool positions; no source-content/display-column conversion is performed.",
+        "No diagnostic bytes were supplied; missing is not zero findings"
+      ],
+      "argv": [
+        "/workspace/cppulse/work/closure-evd-ana/provider-tools/root/usr/bin/clang-tidy-19",
+        "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/unused_return_value.cpp",
+        "--quiet",
+        "--checks=-*,bugprone-unused-return-value",
+        "--config={\"Checks\": \"-*,bugprone-unused-return-value\", \"CheckOptions\": {\"bugprone-unused-return-value.CheckedFunctions\": \"\", \"bugprone-unused-return-value.CheckedReturnTypes\": \"\", \"bugprone-unused-return-value.AllowCastToVoid\": false}}",
+        "--",
+        "-std=c++17",
+        "-DCASE_IGNORED_FUNCTION",
+        "-Wno-dangling-gsl",
+        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19"
+      ]
+    }
+  ],
+  "checks_passed": true,
+  "wall_seconds": 2.3417090350412764,
+  "child_maxrss_kib": 80352,
+  "limitation": "Controlled actual producer contexts only. Imported facts remain import/unverified; empty stdout alone is not a completed clean import or general detector-accuracy evidence.",
+  "captured_source_root": "/workspace/cppulse/tests/fixtures/clang_tidy19_qualification",
+  "captured_artifacts": [
+    {
+      "path": "captured/move-positive.stdout",
+      "sha256": "a09ffe590e5ab3abd8fcfe27cd3ee4f9dbf650a75766748caedb56cb2ce4d30a",
+      "bytes": 406
+    },
+    {
+      "path": "captured/move-positive.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/move-reinitialized.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/move-reinitialized.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/move-exclusive-branch.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/move-exclusive-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/move-correlated-condition.stdout",
+      "sha256": "1a4a054d46d1d166286207a3035a40a6a4c793217dd6e13a48ad9e5720a4a034",
+      "bytes": 489
+    },
+    {
+      "path": "captured/move-correlated-condition.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/move-member-global.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/move-member-global.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/dangling-temporary-owner.stdout",
+      "sha256": "003b6a3c4156f96b7e244c4329221fab47a4e582f62425d489012f422b7aa706",
+      "bytes": 298
+    },
+    {
+      "path": "captured/dangling-temporary-owner.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/dangling-persistent-owner.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/dangling-persistent-owner.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/dangling-custom-default.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/dangling-custom-default.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-ignored-function.stdout",
+      "sha256": "071b8514e27f5c78f9e2d063736eeb29a7f2665f01714efeb3e2849e11876215",
+      "bytes": 329
+    },
+    {
+      "path": "captured/unused-ignored-function.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/unused-void-default.stdout",
+      "sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "bytes": 356
+    },
+    {
+      "path": "captured/unused-void-default.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/unused-void-false.stdout",
+      "sha256": "946f1603919fdad1b23c5d8ff3a6ab2838da45ceef09a9e32127a1dbc0942f03",
+      "bytes": 356
+    },
+    {
+      "path": "captured/unused-void-false.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/unused-void-true.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-void-true.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-used-function.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-used-function.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-ignored-type.stdout",
+      "sha256": "5cc5a60378450d8a82d491265899f9a3cfa0f22eec1d5d754fc5237610981527",
+      "bytes": 361
+    },
+    {
+      "path": "captured/unused-ignored-type.stderr",
+      "sha256": "32256fda7b563c215db2d9ab71b7d3f9a6c8885f79faddb2f236d929545f6de6",
+      "bytes": 21
+    },
+    {
+      "path": "captured/unused-used-type.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-used-type.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-unselected-function.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/unused-unselected-function.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/version.stdout",
+      "sha256": "e38d411d6f36de95106a0a49265c254fa05e9fe12dba10071d6d2aacc5fa26f0",
+      "bytes": 46
+    },
+    {
+      "path": "captured/version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "captured/defaults-bugprone-dangling-handle.stdout",
+      "sha256": "583288ba0ddb5fe79977c1a00d7f6e6baace653080309fcb37a3af73c96e8ebd",
+      "bytes": 3342
+    },
+    {
+      "path": "captured/defaults-bugprone-unused-return-value.stdout",
+      "sha256": "8df10b7da38366dd98f947127ac3272ab638dbc7578aae3ea6c7aa38994c3e40",
+      "bytes": 4842
+    }
+  ],
+  "source_files": {
+    "use_after_move.cpp": "521b8c04b58087816ae8000849791e2facf1704c7a74c241381fa48682569efe",
+    "dangling_handle.cpp": "9c6900baab352854b4e9236270f16a0eab8203334d5eef3fedabbb9dc26c52b7",
+    "unused_return_value.cpp": "dbad3d15c370181cf571c23feee0f7227b70966a4abc831b0234cbc33366ab68"
+  },
+  "retained_original": "work/coverage-t123/t2/actual1/receipt.json",
+  "retained_original_sha256": "f3f6074b11a4bf9eb703aae6f347c4d5c56a9def11a79d3877b5809a7c00df7d",
+  "publication_note": "Small genuine producer regression samples. Raw bytes are unmodified. SHA256 identifies bytes and does not authenticate producer claims. Temporary-owner/string-view and custom/member/global controls bound the qualified contexts."
+}

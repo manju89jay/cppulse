@@ -1,0 +1,260 @@
+{
+  "checked_at": "2026-11-14T10:23:50.814026+00:00",
+  "source_head": "15492dbfcbc6b20d938e42e760486da4181035f6",
+  "native_binary_sha256": "7d45bbf6fd8b0742eafbb97daebb013016a9f2fa28dd9ccc3cc17e84e4d29bf8",
+  "fixture_scope": "Tiny authored C++ inputs and explicitly labeled process-failure stub; no project build scripts or test Git commits executed.",
+  "cases": [
+    {
+      "name": "clean",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "analyze",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean repo's inputs",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 0,
+      "expected": 0,
+      "stdout": "clean.stdout.json",
+      "stderr": "clean.stderr.log",
+      "result": {
+        "run_id": "a14ddc5cb090459485f8c184053daa8a",
+        "store": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean output",
+        "input_verification": "unverified",
+        "operation": "archive-import",
+        "artifact_count": 8,
+        "analysis_status": "completed",
+        "run_path": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean output/runs/a14ddc5cb090459485f8c184053daa8a",
+        "legacy_data": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean output/runs/a14ddc5cb090459485f8c184053daa8a/legacy",
+        "report": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/clean output/runs/a14ddc5cb090459485f8c184053daa8a/report.json",
+        "limitations": [
+          "Import completed, not source analysis: source bytes were inspected after the original run and cannot establish its historical source binding.",
+          "No compiler contexts are reconstructed from legacy labels.",
+          "Normalized legacy health/evaluation remain unverified; importing artifacts is not a policy pass.",
+          "Source freshness was not checked at publication; the recorded source identity is an imported caller claim."
+        ]
+      },
+      "health": {
+        "overall": 100.0,
+        "status": "scored",
+        "by_category": {
+          "memory_safety": 100.0,
+          "modernization": 100.0,
+          "complexity": 100.0
+        }
+      }
+    },
+    {
+      "name": "partial",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "analyze",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial repo's inputs",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 3,
+      "expected": 3,
+      "stdout": "partial.stdout.json",
+      "stderr": "partial.stderr.log",
+      "result": {
+        "run_id": "225998d81e2b4f44abf755145f258d61",
+        "store": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output",
+        "input_verification": "unverified",
+        "operation": "archive-import",
+        "artifact_count": 8,
+        "analysis_status": "partial",
+        "run_path": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output/runs/225998d81e2b4f44abf755145f258d61",
+        "legacy_data": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output/runs/225998d81e2b4f44abf755145f258d61/legacy",
+        "report": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output/runs/225998d81e2b4f44abf755145f258d61/report.json",
+        "limitations": [
+          "Import completed, not source analysis: source bytes were inspected after the original run and cannot establish its historical source binding.",
+          "No compiler contexts are reconstructed from legacy labels.",
+          "Normalized legacy health/evaluation remain unverified; importing artifacts is not a policy pass.",
+          "Source freshness was not checked at publication; the recorded source identity is an imported caller claim."
+        ]
+      },
+      "health": {
+        "overall": null,
+        "status": "partial",
+        "by_category": {
+          "memory_safety": null,
+          "modernization": null,
+          "complexity": null
+        }
+      }
+    },
+    {
+      "name": "render-partial",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "report",
+        "--input",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 0,
+      "expected": 0,
+      "stdout": "render-partial.stdout.json",
+      "stderr": "render-partial.stderr.log",
+      "result": {
+        "report": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/partial output/report.json",
+        "format": "json",
+        "run_id": "225998d81e2b4f44abf755145f258d61",
+        "bytes": 4771
+      }
+    },
+    {
+      "name": "empty",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "analyze",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty repo's inputs",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 3,
+      "expected": 3,
+      "stdout": "empty.stdout.json",
+      "stderr": "empty.stderr.log",
+      "result": {
+        "run_id": "e00f85587aa74e06924482d99dd79782",
+        "store": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty output",
+        "input_verification": "unverified",
+        "operation": "archive-import",
+        "artifact_count": 8,
+        "analysis_status": "partial",
+        "run_path": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty output/runs/e00f85587aa74e06924482d99dd79782",
+        "legacy_data": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty output/runs/e00f85587aa74e06924482d99dd79782/legacy",
+        "report": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/empty output/runs/e00f85587aa74e06924482d99dd79782/report.json",
+        "limitations": [
+          "Import completed, not source analysis: source bytes were inspected after the original run and cannot establish its historical source binding.",
+          "No compiler contexts are reconstructed from legacy labels.",
+          "Normalized legacy health/evaluation remain unverified; importing artifacts is not a policy pass.",
+          "Source freshness was not checked at publication; the recorded source identity is an imported caller claim."
+        ]
+      },
+      "health": {
+        "overall": null,
+        "status": "no_data",
+        "by_category": {
+          "memory_safety": null,
+          "modernization": null,
+          "complexity": null
+        }
+      }
+    },
+    {
+      "name": "ambiguous-config",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "config",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 2,
+      "expected": 2,
+      "stdout": "ambiguous-config.stdout.json",
+      "stderr": "ambiguous-config.stderr.log"
+    },
+    {
+      "name": "explicit-config",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "config",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo/.cppulserc.json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 0,
+      "expected": 0,
+      "stdout": "explicit-config.stdout.json",
+      "stderr": "explicit-config.stderr.log",
+      "result": {
+        "repo": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo",
+        "output": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/output",
+        "config_path": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo/.cppulserc.json",
+        "compilation_database": null,
+        "settings": {
+          "profile": "safety-critical",
+          "exclude_paths": [],
+          "rules": {}
+        },
+        "profile_source": "config"
+      }
+    },
+    {
+      "name": "missing-native",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "analyze",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo/.cppulserc.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/missing-native-output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 2,
+      "expected": 2,
+      "stdout": "missing-native.stdout.json",
+      "stderr": "missing-native.stderr.log"
+    },
+    {
+      "name": "native-failure",
+      "argv": [
+        "/workspace/scratch/b3d4e6fff494/cppulse/.venv/bin/python",
+        "-m",
+        "cppulse",
+        "analyze",
+        "--repo",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo",
+        "--config",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/ambiguous repo/.cppulserc.json",
+        "--output",
+        "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work/failed-native-output",
+        "--format",
+        "json"
+      ],
+      "cwd": "/workspace/scratch/b3d4e6fff494/cppulse/review/production-20261114/r1-cli/actual-work",
+      "returncode": 2,
+      "expected": 2,
+      "stdout": "native-failure.stdout.json",
+      "stderr": "native-failure.stderr.log"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.cppulse.local/v2/policy.schema.json",
+  "title": "cppulse policy v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "standards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "edition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "coverage_note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "edition"
+        ]
+      },
+      "minItems": 0
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "include",
+        "exclude"
+      ]
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum_readiness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "minimum_completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "minimum_readiness",
+        "minimum_completeness"
+      ]
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "finding_limit",
+              "minimum_analysis_coverage",
+              "test_outcomes",
+              "required_contexts",
+              "metric_threshold",
+              "minimum_coverage",
+              "reviewed_evidence",
+              "sanitizer_outcome"
+            ]
+          },
+          "weight": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rule_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "max_findings": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minimum": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "metric": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operator": {
+                "enum": [
+                  "lt",
+                  "lte",
+                  "eq",
+                  "gte",
+                  "gt"
+                ]
+              },
+              "threshold": {
+                "type": "number"
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "contexts": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "fact_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "measurement_kind": {
+                "enum": [
+                  "line",
+                  "branch",
+                  "function"
+                ]
+              },
+              "method": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sanitizer": {
+                "enum": [
+                  "asan",
+                  "ubsan",
+                  "tsan"
+                ]
+              },
+              "metric_version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "units": {
+                "type": "string",
+                "minLength": 1
+              },
+              "level": {
+                "enum": [
+                  "file",
+                  "symbol"
+                ]
+              },
+              "aggregation": {
+                "enum": [
+                  "each",
+                  "max",
+                  "min",
+                  "maximum",
+                  "minimum",
+                  "sum",
+                  "mean"
+                ]
+              },
+              "reviewer_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "minimum_reviewers": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "required_artifact_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://schemas.cppulse.local/v2/common.schema.json#/definitions/id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "identity_requirement": {
+                "const": "declared"
+              }
+            }
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "applicable_to": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "application",
+                "library",
+                "header-only"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "allow_deviation": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "kind",
+          "weight",
+          "required",
+          "parameters",
+          "depends_on"
+        ]
+      },
+      "minItems": 1
+    },
+    "evaluator_profile": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "policy_version",
+    "standards",
+    "scope",
+    "contexts",
+    "gates",
+    "controls"
+  ]
+}

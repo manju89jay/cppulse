@@ -1,0 +1,6 @@
+/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp:16:10: warning: 'item' used after it was moved [bugprone-use-after-move]
+   16 |   return item.read();  // EXPECT: bugprone-use-after-move
+      |          ^
+/workspace/cppulse/tests/fixtures/clang_tidy19_qualification/use_after_move.cpp:15:11: note: move occurred here
+   15 |   consume(std::move(item));
+      |           ^

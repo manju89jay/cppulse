@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools==75.8.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cppulse"
+version = "0.2.0.dev2"
+description = "Local experimental C++ analysis and scoped verification evidence"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = {file = "LICENSE"}
+dependencies = [
+  "jsonschema==4.21.1",
+  "numpy==1.26.4",
+  "pandas==2.2.0",
+  "Jinja2==3.1.3",
+  "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+git = ["GitPython==3.1.41"]
+ml = ["xgboost==2.0.3", "scikit-learn==1.4.0", "joblib==1.3.2", "shap==0.44.1"]
+pdf = ["weasyprint==61.2", "pydyf==0.10.0", "matplotlib==3.8.3"]
+web = ["fastapi==0.109.2", "uvicorn==0.27.1"]
+dev = ["GitPython==3.1.41", "pytest==8.0.0", "pytest-cov==4.1.0", "httpx==0.26.0", "black==24.1.1", "ruff==0.2.1", "build==1.2.2.post1"]
+
+[project.scripts]
+cppulse = "cppulse.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.setuptools.package-data]
+cppulse = ["data/*.json", "data/policies/*.json", "data/*.cmake", "data/templates/*", "data/dashboard/**/*"]
+"cppulse.contracts" = ["schemas/**/*.json", "README.md"]
+"cppulse.report_engine" = ["templates/*.html", "templates/*.css"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
