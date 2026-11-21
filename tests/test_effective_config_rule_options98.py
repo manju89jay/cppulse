@@ -3,6 +3,7 @@
 These are real JSON project inputs against the public settings API and the
 packaged authoritative per-rule schemas. No detector or native job executes.
 """
+
 from __future__ import annotations
 
 import json
@@ -38,8 +39,11 @@ def test_rule_without_threshold_capability_refuses_threshold(
     project: Path, rule_id: str, option: str
 ) -> None:
     """A generic known option must not bypass its selected rule's capability."""
-    schema = next(row["configuration_schema"] for row in load_rule_registry()["rules"]
-                  if row["id"] == rule_id)
+    schema = next(
+        row["configuration_schema"]
+        for row in load_rule_registry()["rules"]
+        if row["id"] == rule_id
+    )
     supplied = {option: 9}
     # The published per-rule contract already rejects this setting. The bug is
     # that the public project reader admitted it for later silent omission.
@@ -80,30 +84,40 @@ def test_enabled_requires_boolean_without_coercion(project: Path, value: Any) ->
 
 
 @pytest.mark.parametrize("suffix", [".json", ".yml"])
-@pytest.mark.parametrize("option", ["warning_threshold", "error_threshold",
-                                    "max_file_bytes", "max_token_records"])
+@pytest.mark.parametrize(
+    "option",
+    ["warning_threshold", "error_threshold", "max_file_bytes", "max_token_records"],
+)
 def test_native_integer_options_reject_integral_float_spelling(
     project: Path, suffix: str, option: str
 ) -> None:
     """The Python producer must not admit a token rejected by native loading."""
     import yaml
 
-    document = ({"rules": {"CPP-CX-001": {option: 9.0}}}
-                if option.endswith("threshold") else {option: 9.0})
+    document = (
+        {"rules": {"CPP-CX-001": {option: 9.0}}}
+        if option.endswith("threshold")
+        else {option: 9.0}
+    )
     path = project / (".cppulserc" + suffix)
-    path.write_text(json.dumps(document) if suffix == ".json"
-                    else yaml.safe_dump(document), encoding="utf-8")
+    path.write_text(
+        json.dumps(document) if suffix == ".json" else yaml.safe_dump(document),
+        encoding="utf-8",
+    )
     with pytest.raises(ContractError):
         read_settings(path)
 
 
-@pytest.mark.parametrize("document", [
-    {"unrecognized": True},
-    {"rules": {"CPP-CX-999": {"enabled": False}}},
-    {"rules": {"CPP-CX-001": {"unrecognized": 9}}},
-    {"rules": {"CPP-MEM-001": {"unrecognized": 9}}},
-    {"rules": {"CPP-MEM-001": None}},
-])
+@pytest.mark.parametrize(
+    "document",
+    [
+        {"unrecognized": True},
+        {"rules": {"CPP-CX-999": {"enabled": False}}},
+        {"rules": {"CPP-CX-001": {"unrecognized": 9}}},
+        {"rules": {"CPP-MEM-001": {"unrecognized": 9}}},
+        {"rules": {"CPP-MEM-001": None}},
+    ],
+)
 def test_unknown_root_rule_and_rule_option_are_not_ignored(
     project: Path, document: dict[str, Any]
 ) -> None:
@@ -111,17 +125,33 @@ def test_unknown_root_rule_and_rule_option_are_not_ignored(
         read_settings(settings_file(project, document))
 
 
-def test_missing_rule_settings_keep_defaults_and_profile_provenance(project: Path) -> None:
+def test_missing_rule_settings_keep_defaults_and_profile_provenance(
+    project: Path,
+) -> None:
     before = load_rule_registry()
     defaults = effective_config(project, project.parent / "default-output")
     assert defaults.profile_source == "default"
-    assert defaults.settings["profile"] == "default" and defaults.settings["rules"] == {}
-    path = settings_file(project, {"profile": "safety-critical",
-                                   "rules": {"CPP-MEM-001": {"enabled": False}}})
+    assert (
+        defaults.settings["profile"] == "default" and defaults.settings["rules"] == {}
+    )
+    path = settings_file(
+        project,
+        {"profile": "safety-critical", "rules": {"CPP-MEM-001": {"enabled": False}}},
+    )
     assert read_settings(path)["rules"]["CPP-MEM-001"] == {"enabled": False}
     selected = effective_config(project, project.parent / "project-output")
-    assert selected.profile_source == "config" and selected.settings["profile"] == "safety-critical"
-    override = effective_config(project, project.parent / "explicit-output", profile="default")
-    assert override.profile_source == "command" and override.settings["profile"] == "default"
+    assert (
+        selected.profile_source == "config"
+        and selected.settings["profile"] == "safety-critical"
+    )
+    override = effective_config(
+        project, project.parent / "explicit-output", profile="default"
+    )
+    assert (
+        override.profile_source == "command"
+        and override.settings["profile"] == "default"
+    )
     assert override.settings["rules"]["CPP-MEM-001"]["enabled"] is False
-    assert load_rule_registry() == before, "Project validation must not mutate registry defaults"
+    assert (
+        load_rule_registry() == before
+    ), "Project validation must not mutate registry defaults"

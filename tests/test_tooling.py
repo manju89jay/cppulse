@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 import re
 import runpy
@@ -12,6 +13,8 @@ import jsonschema
 import pytest
 
 from cppulse.contracts import validate
+from cppulse.contracts.finding_workflows import anchor_fingerprint
+from cppulse.rulesets import resolve_ruleset
 from cppulse.tooling import (
     check_generated,
     generated_files,
@@ -42,8 +45,7 @@ def test_registry_matches_native_registrations_and_categories(
     engine = (ROOT / "analyzer-core/src/analyzer.cpp").read_text()
     bindings = load_rule_registry(include_native_bindings=True)["rules"]
     registered = {
-        rule["configuration_schema"]["x-cppulse-native"]["class"]
-        for rule in bindings
+        rule["configuration_schema"]["x-cppulse-native"]["class"] for rule in bindings
     }
     assert registered == {item[1] for item in native.values()}
     assert len(registered) == 22
@@ -103,6 +105,63 @@ def test_registry_is_a_fresh_packaged_contract(registry: dict[str, Any]) -> None
     validate("rule_registry", registry)
     registry["rules"][0]["maturity"] = "stable"
     assert load_rule_registry()["rules"][0]["maturity"] == "experimental"
+
+
+def test_precision_versions_keep_format_and_configuration_but_change_identity(
+    registry: dict[str, Any], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    affected = {"CPP-MOD-001", "CPP-MOD-002", "CPP-MOD-006"}
+    versions = {rule["id"]: rule["version"] for rule in registry["rules"]}
+    assert registry["version"] == "2.0.0"
+    assert len(versions) == 22
+    assert {versions[identifier] for identifier in affected} == {"prototype-2"}
+    reference = generated_files()["docs/generated/rules.md"]
+    for identifier in affected:
+        assert f"| {identifier} | prototype-2 |" in reference
+
+    pack = tmp_path / "precision.json"
+    pack.write_text(
+        '{"format_version":"1.0.0","name":"precision","version":"1.0.0"}',
+        encoding="utf-8",
+    )
+    current = resolve_ruleset(pack)
+    historical = deepcopy(registry)
+    for rule in historical["rules"]:
+        if rule["id"] in affected:
+            rule["version"] = "prototype-1"
+    monkeypatch.setattr("cppulse.rulesets.load_rule_registry", lambda: historical)
+    previous = resolve_ruleset(pack)
+    assert current.native == previous.native
+    assert current.providers == previous.providers
+    assert current.identity["registry_format_version"] == "2.0.0"
+    assert current.identity["registry_sha256"] != previous.identity["registry_sha256"]
+    assert current.identity["digest"] != previous.identity["digest"]
+    changed = {
+        identifier
+        for identifier, version in current.identity["native_rule_versions"].items()
+        if version != previous.identity["native_rule_versions"][identifier]
+    }
+    assert changed == affected
+
+
+@pytest.mark.parametrize("rule_id", ["CPP-MOD-001", "CPP-MOD-002", "CPP-MOD-006"])
+def test_precision_version_is_part_of_retained_finding_identity(rule_id: str) -> None:
+    observation = {
+        "file": "main.cpp",
+        "producer": {"name": "cppulse.native", "version": "0.2.0.dev2"},
+        "rule_id": rule_id,
+        "rule_version": "prototype-1",
+        "severity": "warning",
+        "message": "Finite version-identity control",
+        "anchor_sha256": "a" * 64,
+        "column": 1,
+    }
+    previous = anchor_fingerprint(observation)
+    assert previous is not None
+    observation["rule_version"] = "prototype-2"
+    current = anchor_fingerprint(observation)
+    assert current is not None and current != previous
+    assert current == anchor_fingerprint(observation)
 
 
 def test_generated_config_validates_and_refuses_unknown_settings() -> None:

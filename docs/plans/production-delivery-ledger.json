@@ -102,15 +102,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/pr-01/PR-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "The local core shall remain MIT-licensed and usable on public, private, and commercial projects without a cppulse account or subscription. Third-party dependencies retain their own licenses.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole PR-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "verified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-01",
@@ -258,15 +257,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/pr-06/PR-06.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "The first supported language is C++. Additional languages, managed hosting, enterprise identity, and automatic semantic refactoring are expansion work.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole PR-06 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "verified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-06",
@@ -712,15 +710,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Never substitute severity or finding count for an advertised complexity measurement. Missing measurements remain unavailable.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-ANA-04 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-04",
@@ -797,15 +794,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Produce a deterministic health calculation with a published formula and version. Report observed scope and analysis completeness beside it.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-ANA-06 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-06",
@@ -848,15 +844,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "An empty, failed, or materially incomplete required analysis shall not receive an unqualified health 100. Full-scope health is unavailable until its prerequisites are met.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-ANA-07 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-07",
@@ -929,15 +924,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-09/FR-ANA-09.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Support normalized findings from external analyzers through adapters. Keep imported diagnostic identifiers and distinguish overlapping findings from independent confirmation.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-ANA-09 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-09",
@@ -1190,15 +1184,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Preserve existing metrics while handling absent history, shallow boundaries, deleted files, renames, merges, and configured time windows explicitly.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-01",
@@ -1397,15 +1390,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Stream and reuse history processing; avoid repeated complete history materialization for each metric. Record truncation or bounds as limitations.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-02 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-02",
@@ -1605,15 +1597,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-03/FR-GIT-03.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Support contributor aliases, bot exclusion, former contributors, and configured pair-programming attribution. Authorship is a knowledge proxy, not proof of expertise.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-03 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-03",
@@ -1899,15 +1890,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-05/FR-GIT-05.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Add weighted ownership, knowledge maps, offboarding simulation, and fragmentation at author/team levels.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-05 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-05",
@@ -2095,15 +2085,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-06/FR-GIT-06.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Aggregate hotspots and coupling by user-defined architectural component. Label historical co-change separately from static include/call dependencies.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-06 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-06",
@@ -2290,15 +2279,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Preserve SZZ as an imperfect label source. Record label provenance and analysis cutoff; do not use future information to validate future-defect prediction.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-GIT-08 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-08",
@@ -2449,15 +2437,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Import CTest/JUnit results and coverage reports, initially LCOV and Cobertura. Preserve test counts, failed/skipped cases, covered/total counts, measurement type, and context.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-01",
@@ -2712,15 +2699,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-02/FR-EVD-02.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Import ASan, UBSan, and TSan evidence using versioned adapters and explicitly selected collection recipes. Record supported platform, invocation, instrumentation evidence, executed test scope, and outcomes.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-02 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-02",
@@ -2886,15 +2872,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-03/FR-EVD-03.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "An empty report, zero tests, entirely skipped tests, process success alone, or unsupported parsing shall not imply successful verification.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-03 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-03",
@@ -3148,15 +3133,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-04/FR-EVD-04.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Bind evidence to the declared source/context and producer version. Verify artifact integrity and detect missing, modified, stale, or mismatched evidence. Hashes do not authenticate the producer.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-04 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-04",
@@ -3393,15 +3377,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-05/FR-EVD-05.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Distinguish execution-derived facts, imported producer claims, and human attestations. Report reviewers, rationale, expiry, and scope where supplied.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-05 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-05",
@@ -3621,15 +3604,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Allow a declared matrix of library consumers: compiler, OS/target, standard, macros, dependency configuration, linking mode, and required tests.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-06 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-06",
@@ -3846,15 +3828,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Header-only checks shall include declared consumer instantiations and header self-containment where requested. Passing a sample shall not imply all template types or macros were exercised.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-07 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-07",
@@ -4071,15 +4052,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-08/FR-EVD-08.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Scope runtime evidence to the consumer binary and actual instrumentation. A prebuilt uninstrumented library requires an explicit limitation.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-08 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-08",
@@ -4294,15 +4274,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Keep line, branch, function, decision, and MC/DC coverage distinct. Do not infer MC/DC from branch coverage.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-EVD-09 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-09",
@@ -4807,15 +4786,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ux-03/FR-UX-03.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "The CLI shall run from an arbitrary working directory. Discover installed components without checkout-relative cd commands or shell-interpreted user arguments.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-UX-03 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-03",
@@ -5070,15 +5048,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ux-09/FR-UX-09.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Support deterministic HTML/JSON reporting without optional PDF or web dependencies. Installation of PDF/dashboard/ML shall be optional.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-UX-09 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-09",
@@ -5255,15 +5232,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "A local bug-report bundle shall exclude source excerpts, credentials, tokens, and unrestricted environment dumps by default. Upload is a separate explicit action.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-UX-11 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-11",
@@ -5331,15 +5307,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/fr-ux-12/FR-UX-12.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Offline runtime operation shall be supported after dependencies and packs have been installed. No account is required for core analysis.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole FR-UX-12 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-UX-12",
@@ -5832,15 +5807,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-02/NFR-MNT-02.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Introduce one namespaced Python distribution with shared contracts/configuration helpers while retaining existing component entry points during migration.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole NFR-MNT-02 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-02",
@@ -5984,15 +5958,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Use one registry for rule metadata; generate registration helpers, reference documentation, example configuration, and integration metadata from it.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole NFR-MNT-03 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-03",
@@ -6079,15 +6052,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Provide generators for new rules, evidence adapters, and policy packs. Generated scaffolds remain incomplete until meaningful fixtures and implementations pass.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole NFR-MNT-04 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-04",
@@ -6230,15 +6202,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Store decisions and maintenance instructions with the code. Keep TASK_SPEC.md as the historical MVP and this specification as a proposed successor scope until accepted.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole NFR-MNT-08 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-08",
@@ -6319,15 +6290,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-09/NFR-MNT-09.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Adapters shall declare supported producer versions and limitations. Unknown formats shall not be interpreted as clean results.",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole NFR-MNT-09 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-09",
@@ -7233,15 +7203,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m1-07/M1-07.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Add rule/adapter generators and generated-documentation checks; make existing CI call shared local commands. | A generated extension passes registry/contract checks only after meaningful fixture implementation",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M1-07 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-07",
@@ -7617,15 +7586,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m4-01/M4-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M4-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-01",
@@ -7749,15 +7717,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m5-01/M5-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M5-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-01",
@@ -7792,15 +7759,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m5-02/M5-02.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M5-02 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-02",
@@ -7840,15 +7806,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m5-03/M5-03.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Add ASan/UBSan/TSan collection/import adapters for explicitly supported tool/platform versions. | Instrumented failing/clean samples, uninstrumented runs, empty logs, wrong contexts, and stale artifacts are distinguished",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M5-03 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-03",
@@ -7883,15 +7848,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m5-04/M5-04.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Implement the pure policy evaluator, four control outcomes, three scores, gate precedence, and bounded deviations. | Hand-calculated examples and invariants pass; averages cannot override blocking failures/unknowns",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M5-04 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M5-04",
@@ -8006,15 +7970,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m6-01/M6-01.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M6-01 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-01",
@@ -8055,15 +8018,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "work/coverage-t123/current38-source-proof.json"
+        "docs/checkpoints/current/qualification/m6-02/M6-02.master-ci.proof.json"
       ],
       "review": {
         "accepted": true,
-        "reviewer": "/root/coverage_review",
-        "scope": "Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history",
-        "path": "work/coverage-t123/review-batch/review.json",
-        "sha256": "3cd76bc46a3362cae637b8647949e63c5efc629ee7b1796d41b46256de3c701b",
-        "qualification": "Accepted complete original38 proof preservation and current approvedT1-T3 source427/installed264+172, actual mounted-output Docker smoke, explicit passing-run test-input bridges and exact source/artifact maps. No new canonical closure; broader PR-04/M0-05 and full187/P0-P14 remain incomplete."
+        "reviewer": "Independent whole-criterion dependency and public-disclosure reviewer (governance_review)",
+        "scope": "Whole M6-02 preserved through reviewed predecessor evidence and exact current master CI dependency readback. Independent review 6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187.",
+        "independent_public_proof_review_sha256": "6e9c29830125e033356ecb2575042d0594beee437f5630810b120246aba0d187",
+        "approved_public_source_tree": "dec0ab7011819a199f31f65518a3dbdf94210aef"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-02",

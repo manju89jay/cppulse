@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(cppulse_selected_header LANGUAGES NONE)
+enable_testing()
+add_test(NAME selected-int-macro7 COMMAND "${CMAKE_BINARY_DIR}/selected-consumer")
+add_test(NAME standalone-header COMMAND "${CMAKE_BINARY_DIR}/standalone-header")

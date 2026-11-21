@@ -175,10 +175,13 @@ def test_corruption_in_downstream_json_preserves_original_native_receipts(
 def test_corrupted_result_cannot_change_original_receipt_or_promote_public_success(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native: NativeInstallation
 ) -> None:
+    from dataclasses import replace
     import hashlib
     import cppulse.pipeline as pipeline
+    from cppulse.errors import InputChanged
     from cppulse.identities import canonical_json_bytes
     from cppulse.run_store import RunStore
+    from cppulse.workflows import read_documents
 
     source = tmp_path / "source"
     source.mkdir()
@@ -213,12 +216,30 @@ def test_corrupted_result_cannot_change_original_receipt_or_promote_public_succe
         return value
 
     monkeypatch.setattr(pipeline, "discover_native", lambda: native)
+    clean_config = replace(
+        config,
+        execution={**config.execution, "work_directory": str(tmp_path / "clean-work")},
+    )
+    clean = pipeline.analyze(clean_config, report_format="json", timeout=60)
+    assert clean["analysis_status"] == "completed"
+    assert clean["input_verification"] == "verified"
     monkeypatch.setattr(pipeline, "generate_report", corrupt_after_actual_report)
-    public = pipeline.analyze(config, report_format="json", timeout=60)
-    assert public["analysis_status"] == "partial"
-    snapshot = RunStore.open_existing(config.output).open_run(public["run_id"])
+    with pytest.raises(InputChanged, match="Frozen work-unit metadata changed"):
+        pipeline.analyze(config, report_format="json", timeout=60)
+    store = RunStore.open_existing(config.output)
+    assert store.resolve_latest().run_id == clean["run_id"]
+    snapshot = store.resolve_latest_attempt()
+    assert snapshot.run_id != clean["run_id"]
     assert snapshot.manifest["status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
     snapshot.verify()
+    assert not any(
+        row["id"] == "normalized-risk" for row in snapshot.manifest["artifacts"]
+    )
+    assert all(
+        health["aggregate"]["overall"] is None
+        for health in read_documents(snapshot).get("maintenance_health", [])
+    )
     binding = json.loads(snapshot.read_bytes("analysis-bindings"))["units"][0]
     original = snapshot.read_bytes(binding["result_artifact_id"])
     assert original == retained["original"]
@@ -346,6 +367,7 @@ def test_late_external_header_change_cannot_keep_current_verified_context(
 ) -> None:
     import hashlib
     import cppulse.pipeline as pipeline
+    from cppulse.errors import InputChanged
     from cppulse.run_store import RunStore
 
     dependency = tmp_path / "external.hpp"
@@ -388,11 +410,13 @@ def test_late_external_header_change_cannot_keep_current_verified_context(
 
     monkeypatch.setattr(pipeline, "discover_native", lambda: native)
     monkeypatch.setattr(pipeline, "generate_report", change_after_actual_report)
-    public = pipeline.analyze(config, report_format="json", timeout=60)
-    assert public["analysis_status"] == "partial"
-    assert public["input_verification"] == "unverified"
-    snapshot = RunStore.open_existing(config.output).open_run(public["run_id"])
+    with pytest.raises(InputChanged, match="Native include buffer binding changed"):
+        pipeline.analyze(config, report_format="json", timeout=60)
+    _, completed, snapshot = RunStore.open_existing(config.output).resolve_heads()
+    assert completed is None and snapshot is not None
     assert snapshot.manifest["status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
+    snapshot.verify()
     binding = json.loads(snapshot.read_bytes("analysis-bindings"))["units"][0]
     assert snapshot.read_json(binding["receipt_artifact_id"])["status"] == "passed"
     assert dependency.read_bytes() != initial

@@ -3,8 +3,6 @@
  */
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -13,6 +11,7 @@
 #include "analysis_coverage.h"
 #include "metrics.h"
 #include "output_writer.h"
+#include "test_temp_directory.h"
 
 #if defined(__linux__)
 #include <sys/resource.h>

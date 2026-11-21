@@ -1,5 +1,7 @@
 # cppulse
 
+[![CI on master](https://github.com/manju89jay/cppulse/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/manju89jay/cppulse/actions/workflows/ci.yml?query=branch%3Amaster)
+
 **C++ maintenance signals, backed by inspectable evidence.**
 
 Find the code that deserves review, understand who has worked on it, and see
@@ -16,12 +18,18 @@ upstream evidence actually covers—and what they still need to check themselves
 > journeys have been tested. Full production acceptance remains incomplete;
 > [current status and limitations](#status-and-limits) are explicit.
 
+Fresh Linux verification exercised declared `.c++` units, the three repaired
+modernization checks, and the installed [C++/CTest trial](examples/first-trial/README.md).
+The trial passed with three executed tests and rejected missing or stale evidence.
+The [batch record](docs/development/reviewer-fixes.md) describes the finite OSS
+replays and the delivery evidence still required for publication.
+
 ## See a real project
 
-This is a **historical Cloud analysis of LevelDB 1.23**, captured on
-**16 November 2026**, not a scan by today's candidate. A fresh bounded run was
-refused by the unchanged storage guard before analysis. The retained result was
-recounted from its actual records and checked against the pinned upstream source.
+This **historical Cloud analysis of LevelDB 1.23** was captured on
+**16 November 2026**. The figures below come from its retained records, which
+were recounted and checked against the pinned upstream source. The fresh
+reviewer-fix verification did not regenerate this showcase.
 
 ![Historical LevelDB results: 39 selected translation units, 10,595 physical lines and 486 experimental rule observations](docs/examples/leveldb/results-card.png)
 
@@ -105,6 +113,13 @@ check rather than inherit an old green result.
 
 ### Install from this development checkout
 
+Start at the root of a checkout containing this README and `examples/first-trial`.
+The reviewer-fix integration was tested from a local checkout and its publication
+is pending. `master` is the default branch. Base new pull requests on `master`.
+The pushed baseline `e5b6db6` contains the earlier preview; the first trial is
+available in this integration.
+[Source history and exact verification scope](docs/development/reviewer-fixes.md).
+
 No published PyPI release or production binary bundle is assumed. Use Python
 **3.11–3.12**, a C++17 compiler, CMake and a matching **LLVM 19+ libclang
 headers/library pair**. Native dependencies include nlohmann/json, spdlog/fmt
@@ -129,6 +144,15 @@ if discovery needs help. It must contain the matching built-in headers, such as
 `include/stddef.h`. `doctor` reports capabilities; finding an optional package
 alone does not verify a producer execution. Native bundles and offline dependency
 installation are covered in the [candidate guide](docs/development/candidate.md).
+
+### Try a finite build/test policy
+
+Use the [C++ first trial](examples/first-trial/README.md) to compile a small
+program, collect three real CTest results, evaluate a policy and render an HTML
+report. In the installed Linux run, the policy passed when all three tests ran.
+It returned exit 3 when test execution was omitted or the source changed.
+The execution-backed adapter requires **CTest 3.31.6** for this trial. The
+preparation script creates the request and policy, and CTest supplies the results.
 
 ### Inspect the included synthetic fixture
 
@@ -233,21 +257,20 @@ their own licenses.
 
 ## Status and limits
 
-Current capability is a development checkpoint, with selected Linux/native and
-installed-CLI qualification. Ranking is experimental; scope and missing evidence
-matter as much as a number. The real-project example above is explicitly a
-historical native snapshot, not a current full-pipeline or upstream readiness verdict.
+This development preview has scoped Linux x86_64 build and installed-CLI
+results. Ranking remains experimental. The LevelDB figures are a historical
+native snapshot. The separate receiving-host OSS replays retain their actual
+selected units and incomplete evidence.
 
-The full production plan remains incomplete. Qualification is bound to the recorded
-source, artifact and input bytes; a changed source tree needs refreshed evidence.
-A development checkpoint does not establish full production acceptance. Broader
-platform/packaging, scale/resource, editor agreement and
-other retained acceptance work remain open. Prose and demo assets do not close
-those requirements. [Delivery status](docs/plans/production-delivery-status.md) ·
+The full production plan remains incomplete. All 187 requirements, tasks and
+obligations across P0–P14 remain in scope. The strict delivery check still
+requires current evidence for the previously accepted criteria. Broader platform,
+scale, editor and human-usefulness checks remain open. [Delivery status](docs/plans/production-delivery-status.md) ·
 [Full completion plan](docs/plans/cppulse-production-completion-plan.md).
 
 Try a configured run on your project, inspect the facts behind its result, and
 bring a reproducible fixture when a finding or evidence boundary surprises you.
 Contributions to rules, adapters and tests are welcome:
 [development guide](docs/development/workflow.md) ·
+[pull requests targeting master](https://github.com/manju89jay/cppulse/pulls?q=is%3Apr+base%3Amaster) ·
 [issues](https://github.com/manju89jay/cppulse/issues) · [license](LICENSE).

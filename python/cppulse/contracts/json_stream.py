@@ -5,6 +5,7 @@ the complete JSON structure, end-of-file and original SHA/size must all pass.
 An index consumer must use a transaction and publish only after full iteration.
 Parsing alone does not validate a report schema or authenticate its producer.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -51,5 +52,8 @@ class JsonStreamLimits:
         }
         for name, bound in bounds.items():
             value = getattr(self, name)
-            if type(value) is not int or not 1 <= value <= bound:  # noqa: E721 -- exact count, no bool/subclass coercion
+            if (
+                type(value) is not int  # noqa: E721 -- exact count
+                or not 1 <= value <= bound
+            ):
                 raise ContractError(f"Unsupported JSON stream budget: {name}")

@@ -30,9 +30,7 @@ if TYPE_CHECKING:
     from .history import HistoryScan
 
 METHOD = "cppulse-git-behavior-1"
-UNKNOWN_PARENT_DELTA_LIMITATION = (
-    "Parent history is unavailable; this shallow boundary snapshot does not establish changed files."
-)
+UNKNOWN_PARENT_DELTA_LIMITATION = "Parent history is unavailable; this shallow boundary snapshot does not establish changed files."
 _PAIR = re.compile(
     r"^Co-authored-by:\s*[^\r\n<>]+<([^<>\r\n]+)>\s*$", re.MULTILINE | re.IGNORECASE
 )
@@ -170,9 +168,7 @@ def has_known_change_delta(record: CommitRecord) -> bool:
     return UNKNOWN_PARENT_DELTA_LIMITATION not in record.limitations
 
 
-def _shallow_boundaries(
-    commits: Sequence[Any], *, repository: Any = None
-) -> set[str]:
+def _shallow_boundaries(commits: Sequence[Any], *, repository: Any = None) -> set[str]:
     """Read only local declared Git boundaries; never ask an ODB to lazy-fetch.
 
     Checked cache commits intentionally carry no repository handle. Their owning
@@ -196,7 +192,9 @@ def _shallow_boundaries(
         except FileNotFoundError:
             continue
         except (OSError, UnicodeError) as error:
-            raise ContractError("Local shallow-history metadata is unavailable") from error
+            raise ContractError(
+                "Local shallow-history metadata is unavailable"
+            ) from error
     return boundaries
 
 

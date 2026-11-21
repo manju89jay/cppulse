@@ -1,4 +1,5 @@
 """Finite co-change eligibility and mathematical evidence constraints."""
+
 from __future__ import annotations
 
 from dataclasses import replace

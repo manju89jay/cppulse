@@ -194,6 +194,11 @@ if(BUILD_TESTING)
     # 5s default on Windows (libclang DLL load + AV scan), so allow more headroom.
     gtest_discover_tests(cppulse-analyzer-tests DISCOVERY_TIMEOUT 30)
 
+    add_test(NAME ConfigurationCli.profile_override
+        COMMAND ${CMAKE_COMMAND}
+            -DANALYZER_BIN=$<TARGET_FILE:cppulse-analyzer>
+            -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/check_profile_cli.cmake)
+
     add_test(NAME LibclangCapability.RejectsMissingBinaryOpcode
         COMMAND ${CMAKE_COMMAND}
             -DANALYZER_SOURCE=${CMAKE_CURRENT_SOURCE_DIR}

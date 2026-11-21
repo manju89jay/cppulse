@@ -1,0 +1,20 @@
+{
+  "criterion": "M5-04",
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "structured_projection_log_sha256": "d6dced8fdee3fae714cd9dd70a4efcd0c6ec386b50b01101c032c60fc8451391",
+  "complete_original_execution_and_guard_custody_review_sha256": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4",
+  "historical_wheel_and_receiving_scope_kept_separate": true,
+  "private_runtime_leaf_inventory_sha256": "8480b00542473173fed20dff6c9df3d879620dcd4d96b6da86fc584c3d36a460",
+  "semantic_and_disclosure_review_scope": "The current proof and selected evidence projection require independent review before a pointer update.",
+  "actual_pure_wrapper_sha256": "6b4e0f1ed8f27b6b1678b073a696645fef4adcd2d11be6f08cdc6c9c27846633",
+  "actual_bound_live_phase_result_sha256": "c4719d764a5218e3721269f550d657bcc9842ef3164030846762ecb999bfa467",
+  "actual_execution_capture_receiving_store_sha256": "307236e341f923ffd3dcd18307d8518e38feb920194523c21565c94313a6b80b",
+  "actual_raw_current_coverage_producer_receipt_sha256": "ce5541e639957d360f6decbd677521f89971fdc8221a3dad7aa595146b0fbfce",
+  "genuine_producer_roles": {
+    "coverage.info": "c959422686107b80b3cd9904d015afca7b9ea165454b3d989b5cc60f5f794be4",
+    "coverage.xml": "ad7bea987ccaed7f6ce018b130f6b74eb85812980db8b52528672732d2b49cba"
+  },
+  "actual_live_phase_launch_source_sha256": "47924b72407200c565549aa501d1dcee761a5eb9aa7fa90762704bab7d913d83",
+  "tested_tool_and_fixture_scope": "Genuine local C++17 source, exact GCC/gcov/CTest and gcovr scope, verified compiled output and reports. Original raw artifacts and entire exact pre/post bindings remain in private custody.",
+  "conservative_dependency_scope": "The exact tracked Python namespace is bound conservatively, except generated dashboard assets unused by the evaluator. Selected tests, imported helper and genuine coverage recipe are bound separately."
+}

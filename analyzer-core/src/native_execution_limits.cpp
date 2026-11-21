@@ -13,6 +13,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "file_discovery.h"
+
 #if defined(__linux__)
 #include <sys/resource.h>
 #include <unistd.h>
@@ -22,8 +24,6 @@ namespace cppulse {
 namespace {
 constexpr std::uintmax_t kSelectionBytes = 8 * 1024 * 1024;
 constexpr std::size_t kSelectionFiles = 100000;
-const std::set<std::string> kExtensions{".cpp", ".cc",  ".cxx", ".h",   ".hh",
-                                        ".hpp", ".hxx", ".ipp", ".inl", ".tpp"};
 
 #if defined(__linux__)
 void set_limit(int resource, std::uint64_t value) {
@@ -139,10 +139,7 @@ std::vector<std::filesystem::path> validate_selected_files(
         }
         if (!std::filesystem::is_regular_file(std::filesystem::symlink_status(current)))
             throw std::runtime_error("Selected input is not an existing regular file: " + text);
-        auto extension = current.extension().string();
-        std::transform(extension.begin(), extension.end(), extension.begin(),
-                       [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
-        if (kExtensions.count(extension) == 0)
+        if (!has_supported_cpp_extension(current))
             throw std::runtime_error("Selected input has an unsupported C++ extension: " + text);
         result.push_back(current);
     }

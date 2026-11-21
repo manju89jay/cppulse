@@ -1,0 +1,44 @@
+{
+  "actual_projection_log_sha256": "a509bcb0826245b30f5f0f759a6ac752d2c5bd60bc2f88793ef1a26a58746918",
+  "complete_private_receipts_by_role": {
+    "exact_executed_pytest_and_selected_readback_code": "62e77430760be2dcfa2f975d140fd07efa8dac732800e2c09fdba3f526f7cfd6",
+    "exact_original_test_and_fixture_registration": "ce10ac328698ae4db940cc107a0662e858533d8b222e80d552ce97b7323ff605",
+    "observed_raw_runtime_inventory": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "original_full_registration": "783eca4ae18c0a6f948d1398dfc414983a22b17ed2d21d1f503c436975767f77",
+    "original_raw_history_producer_receipt": "27ac8d196a5942dfc3a68f377dfe607c152223b525d68ba25abf8e804a77bc0d"
+  },
+  "earlier_reached_roadmap_as_retained_historical_output": {
+    "exact_preserved_roadmap_artifact_sha256": "c373ab3426528684071f9ac4ed140e2b6c21bd2e67829930218ba8cd98c128fd",
+    "exact_preserved_snapshot_manifest_sha256": "a1d78a923d16d256c960f5af5b50649bacf7164d849717037586aa15dddc2bee",
+    "relationship_to_selected_predicates": "Published downstream output. It does not supply input to the selected earlier Git and weighted histories."
+  },
+  "id": "M6-02",
+  "immutable_independent_whole_review_sha256": "d0ef1e27087b00da18230bfa469b1a022bc52398a1f3fd0341f874a2e12fd65f",
+  "one_e_to_d65_actual_archive_comparison": {
+    "actual_changed_archive_members": {
+      "cppulse-0.2.0.dev2.dist-info/RECORD": {
+        "current_uncompressed_sha256": "dde3816b5454a2de9a9dbd0959111811c1ccc438caf9b611357352c6e3cf462b",
+        "original_uncompressed_sha256": "1a35ca58d6f30b78a0e11dfdc959cac846b898e0c6078cfcc01a75532f9cf06e"
+      },
+      "cppulse/git_miner/main.py": {
+        "current_uncompressed_sha256": "f2bc9aaee4fdf2ceedcf981890a7393d8b65c91e4287ca53075abe5ca7695827",
+        "original_uncompressed_sha256": "985dfc989de04ff333752a53498968aa60568d3ec14df6af8f83ebb80fedc129"
+      },
+      "cppulse/pipeline.py": {
+        "current_uncompressed_sha256": "5dc3df4a77a2460a1fce8a72a69142fff80ba5471f7ddb04da3efb464c84649b",
+        "original_uncompressed_sha256": "ef4c0d3871a4ad325465e54210b1cbdb57467bf0925b8410c7e77d7240e746e0"
+      },
+      "cppulse/predictor/roadmap_generator.py": {
+        "current_uncompressed_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f",
+        "original_uncompressed_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+      }
+    },
+    "archive_member_count_in_each": 248,
+    "current_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+    "original_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654"
+  },
+  "portability": "The reviewed public checkout can recheck its relative source bindings. Exact Linux runtime, installed candidate and private synthetic Git objects/refs and raw outputs are required to replay the preserved execution.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Conservative current Python namespace and tracked Git/test cells are pinned alongside the exact selected test sources. The original full authored repos, execution guards and material input identities remain independently sealed and unmodified.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

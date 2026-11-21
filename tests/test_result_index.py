@@ -1,4 +1,5 @@
 """Actual derived SQLite queries over tiny authored retained reports."""
+
 import json
 import sqlite3
 
@@ -310,8 +311,9 @@ def test_parent_cold_lease_covers_distinct_requests_but_not_warm_readers(tmp_pat
     index = build_result_index(store, tmp_path / "cache", request)
     other = json.loads(json.dumps(request))
     other["limits"]["max_rows"] -= 1
-    with _directory(tmp_path / "cache") as parent, publication_guard(
-        parent, timeout_seconds=0, required=True
+    with (
+        _directory(tmp_path / "cache") as parent,
+        publication_guard(parent, timeout_seconds=0, required=True),
     ):
         assert build_result_index(store, tmp_path / "cache", request).reused
         assert index.page()["total"] == 2
@@ -783,16 +785,20 @@ def test_cache_descriptor_budget_rejected_before_any_payload_hash(
         entries = [
             stage.copy_artifact(
                 "index",
-                oversized
-                if artifact_id == "index"
-                else index.snapshot.path / "index.sqlite",
+                (
+                    oversized
+                    if artifact_id == "index"
+                    else index.snapshot.path / "index.sqlite"
+                ),
                 "index.sqlite",
             ),
             stage.copy_artifact(
                 "receipt",
-                oversized
-                if artifact_id == "receipt"
-                else index.snapshot.path / "receipt.json",
+                (
+                    oversized
+                    if artifact_id == "receipt"
+                    else index.snapshot.path / "receipt.json"
+                ),
                 "receipt.json",
             ),
         ]

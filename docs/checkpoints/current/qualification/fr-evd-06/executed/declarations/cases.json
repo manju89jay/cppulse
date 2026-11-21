@@ -1,0 +1,90 @@
+[
+  {
+    "id": "linux-gcc-static",
+    "required": true,
+    "context_id": "requested-linux-gcc-static",
+    "configuration": {
+      "compiler": {"name": "gcc", "version": "14.2.0", "sha256": null},
+      "os": "linux",
+      "target": "x86_64-linux-gnu",
+      "abi": null,
+      "language_standard": "c++17",
+      "macros": {"CPPULSE_DECLARED_FEATURE": "1"},
+      "exceptions": true,
+      "rtti": true,
+      "linking": "static",
+      "dependencies": [{"id": "expected-static-dependency", "sha256": null, "availability": "unavailable"}],
+      "sanitizers": []
+    },
+    "tests": ["required-static-library-smoke", "required-static-application-check"],
+    "instantiations": ["selected<int>"],
+    "self_containment_headers": [],
+    "usage_ids": []
+  },
+  {
+    "id": "windows-clang-shared",
+    "required": true,
+    "context_id": "requested-windows-clang-shared",
+    "configuration": {
+      "compiler": {"name": "clang-cl", "version": "19.1.7", "sha256": null},
+      "os": "windows",
+      "target": "x86_64-pc-windows-msvc",
+      "abi": null,
+      "language_standard": "c++20",
+      "macros": {"CPPULSE_DECLARED_DLL": "1", "CPPULSE_UNKNOWN_VALUE": null},
+      "exceptions": true,
+      "rtti": null,
+      "linking": "shared",
+      "dependencies": [{"id": "expected-import-library", "sha256": null, "availability": "unavailable"}],
+      "sanitizers": []
+    },
+    "tests": ["required-dll-load", "required-dll-consumer-check"],
+    "instantiations": [],
+    "self_containment_headers": [],
+    "usage_ids": []
+  },
+  {
+    "id": "linux-clang-headers",
+    "required": true,
+    "context_id": "requested-linux-clang-headers",
+    "configuration": {
+      "compiler": {"name": "clang", "version": "19.1.7", "sha256": null},
+      "os": "linux",
+      "target": "aarch64-linux-gnu",
+      "abi": null,
+      "language_standard": "c++23",
+      "macros": {"CPPULSE_DECLARED_HEADER_ONLY": "1"},
+      "exceptions": false,
+      "rtti": false,
+      "linking": "header-only",
+      "dependencies": [],
+      "sanitizers": []
+    },
+    "tests": ["required-header-int-use", "required-standalone-include"],
+    "instantiations": ["selected<int>", "selected<long>"],
+    "self_containment_headers": ["include/demo.hpp"],
+    "usage_ids": []
+  },
+  {
+    "id": "pending-toolchain",
+    "required": false,
+    "context_id": "requested-pending-toolchain",
+    "configuration": {
+      "compiler": null,
+      "os": null,
+      "target": null,
+      "abi": null,
+      "language_standard": null,
+      "macros": {"CPPULSE_AWAITING_CONFIGURATION": null},
+      "exceptions": null,
+      "rtti": null,
+      "linking": null,
+      "dependencies": [{"id": "pending-optional-dependency", "sha256": null, "availability": "unavailable"}],
+      "sanitizers": []
+    },
+    "tests": ["required-when-context-is-selected"],
+    "instantiations": [],
+    "self_containment_headers": [],
+    "usage_ids": []
+  }
+]

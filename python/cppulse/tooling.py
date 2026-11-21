@@ -31,7 +31,7 @@ def load_rule_registry(*, include_native_bindings: bool = False) -> dict[str, An
     content = resources.files("cppulse").joinpath("data", "rule_registry.json")
     document = json.loads(content.read_text(encoding="utf-8"))
     validate("rule_registry", document)
-    if type(include_native_bindings) is not bool:
+    if not isinstance(include_native_bindings, bool):
         raise ValueError("include_native_bindings must be a boolean")
     if include_native_bindings:
         return document
@@ -211,7 +211,9 @@ def generated_files() -> dict[str, str]:
     registry = load_rule_registry()
     from cppulse.native_rule_generator import native_rule_headers
 
-    native_headers = native_rule_headers(load_rule_registry(include_native_bindings=True))
+    native_headers = native_rule_headers(
+        load_rule_registry(include_native_bindings=True)
+    )
     schemas = {rule["id"]: rule["configuration_schema"] for rule in registry["rules"]}
     defaults = {
         rule_id: {key: spec["default"] for key, spec in schema["properties"].items()}
@@ -246,20 +248,20 @@ def generated_files() -> dict[str, str]:
         "depends on the selected successfully parsed C++ context and libclang AST. "
         "A registered check does not establish complete source coverage, correctness, "
         "MISRA compliance or certification. Zero findings can coexist with partial "
-        "or unavailable analysis. `prototype-1` is an implementation label, not a "
-        "validated stable release.\n",
+        "or unavailable analysis. `prototype-*` versions are implementation labels, not "
+        "validated stable releases.\n",
         "The `default` scoring profile excludes MISRA findings from scores and "
         "ranking; it does not disable MISRA detectors. `safety-critical` includes "
         "those experimental signals in scoring. Use an explicit per-rule "
         "`enabled: false` to disable a detector.\n",
-        "| ID | Name | Category | Maturity | Default configuration |",
-        "| --- | --- | --- | --- | --- |",
+        "| ID | Version | Name | Category | Maturity | Default configuration |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     for rule in registry["rules"]:
         rid = rule["id"]
         default = json.dumps(defaults[rid], sort_keys=True)
         lines.append(
-            f"| {rid} | {schemas[rid]['title']} | {rule['category']} | "
+            f"| {rid} | {rule['version']} | {schemas[rid]['title']} | {rule['category']} | "
             f"{rule['maturity']} | `{default}` |"
         )
     lines += ["", "## Detection scope", ""]

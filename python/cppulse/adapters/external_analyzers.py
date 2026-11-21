@@ -3,6 +3,7 @@
 No source/tool/network I/O occurs. Locations and tool versions are imported
 claims; secondary notes/callstacks remain in original bytes, not confirmation.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -115,8 +116,10 @@ def _prepare(data, source_root, scope_files, producer, name, version, adapter):
         raise ContractError("Producer requires nonempty name/version strings")
     for value in claim.values():
         _unicode(value, "Producer claim")
-    if data is not None and type(data) is not bytes:  # noqa: E721 -- exact raw byte identity
-        raise ContractError("Report must be exact bytes or missing")  # noqa: E721 -- immutable raw input
+    if data is not None and type(data) is not bytes:  # noqa: E721 -- exact raw bytes
+        raise ContractError(
+            "Report must be exact bytes or missing"
+        )  # noqa: E721 -- immutable raw input
     sha = None if data is None else hashlib.sha256(data).hexdigest()
     size = None if data is None else len(data)
 
@@ -315,16 +318,20 @@ def parse_clang_tidy_text(
             "usable",
             records,
             notes=(
-                "Secondary notes remain only in original raw text; no new finding or confirmation is inferred.",
-            )
-            if notes
-            else (),
+                (
+                    "Secondary notes remain only in original raw text; no new finding or confirmation is inferred.",
+                )
+                if notes
+                else ()
+            ),
         )
     except (UnicodeError, ValueError, _GccUnsupported) as error:
         return report(
-            "unsupported"
-            if isinstance(error, (_Unsupported, _GccUnsupported))
-            else "malformed",
+            (
+                "unsupported"
+                if isinstance(error, (_Unsupported, _GccUnsupported))
+                else "malformed"
+            ),
             reason=str(error),
         )
 
@@ -504,8 +511,10 @@ def parse_cppcheck_xml(
         return report("usable", records, notes=tuple(notes))
     except (UnicodeError, ValueError, ET.ParseError, _GccUnsupported) as error:
         return report(
-            "unsupported"
-            if isinstance(error, (_Unsupported, _GccUnsupported))
-            else "malformed",
+            (
+                "unsupported"
+                if isinstance(error, (_Unsupported, _GccUnsupported))
+                else "malformed"
+            ),
             reason=str(error),
         )

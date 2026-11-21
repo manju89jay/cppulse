@@ -1,4 +1,5 @@
 """Bounded JSON producer controls; every yielded row remains provisional."""
+
 from __future__ import annotations
 
 from dataclasses import replace

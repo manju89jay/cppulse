@@ -1,0 +1,72 @@
+{
+  "criterion": "Store decisions and maintenance instructions with the code. Keep TASK_SPEC.md as the historical MVP and this specification as a proposed successor scope until accepted.",
+  "id": "NFR-MNT-08",
+  "independent_whole_review_sha256": "9c6c5dd6beaae9b1d70d91977ee54fb3f43f2a93cc95422bf0feca07988aec70",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "exact_d65_governance": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/governance-refresh/launch.sh",
+        "/workspace/work/roadmap-order-qualification/governance-refresh/results"
+      ],
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "record_sha256": "66adb4c4843f74d2e04598ffcf46e00edd9753fe188a6984ecadfe9337aabca6",
+      "stable_guard_pins": 34
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_bare_d65_strict_exit": 2,
+    "actual_plan_exit": 0,
+    "bare_strict_missing_proof": "work/coverage-t123/current38-source-proof.json",
+    "canonical_scope_projection_sha256": "c9f2523b41045534b5ef38bf380daf9394ba51508fc7d64b5ab3ace548395b0a",
+    "exact_index_titles": 92,
+    "nominated_proposed_second_parent": "82120d26b51f99b64068f9d66f6e000fcaee97c2",
+    "ordered_decisions": 100,
+    "plan_traceability_paths_existence_only": {
+      "canonical_kind_list_sha256": "24648123399448f85dd0af2d09f49093b65d256d1ecc6761dbc472fef19092c5",
+      "directories": 3,
+      "files": 90
+    },
+    "planning_scope": {
+      "milestone_tasks": 60,
+      "requirements": 118,
+      "supplemental": 9
+    },
+    "receiving_local_tracking_ref_value": "95966ee97db711b4a65c6f08d60a24abe93a6c71",
+    "receiving_reference_relationship": "The actual local tracking ref equals the nominated merge object’s own second parent. The isolated checkout’s matching named ref was absent. The scoped receiving object view exposed the exact nominated object.",
+    "resolved_links": 8,
+    "state_counts": {
+      "active": 51,
+      "blocked": 2,
+      "open": 96,
+      "verified": 38
+    },
+    "total_unchanged_rows": 187,
+    "unchanged_phases": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8",
+      "P9",
+      "P10",
+      "P11",
+      "P12",
+      "P13",
+      "P14"
+    ]
+  },
+  "preserved_epoch_and_result_limits": [
+    "Plan scope covers traceability and governance. Bare d65 strict exit 2 is a separate actual invalid-proof result.",
+    "The older exact 4cf governance proof remains distinct. Local object observations leave authoritative baseline and M0-01 history open."
+  ],
+  "primary_observed_role": "exact_d65_governance",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Tracked decision and maintenance authority, historical task scope and actual current production plan."
+}

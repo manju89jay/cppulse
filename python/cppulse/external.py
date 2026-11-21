@@ -343,9 +343,9 @@ def external_relationships(
                 "context_id": context,
                 "file": file,
                 "line": line,
-                "classification": "repeated_diagnostic"
-                if repeated
-                else "potential_location_overlap",
+                "classification": (
+                    "repeated_diagnostic" if repeated else "potential_location_overlap"
+                ),
                 "occurrences": [
                     {k: v for k, v in row.items() if k != "signature"} for row in rows
                 ],

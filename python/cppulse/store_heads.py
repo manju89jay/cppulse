@@ -3,6 +3,7 @@
 This local protocol is cooperative persistence, not protection from the store
 owner. V3 intentionally refuses unsupported old readers/writers at legacy slots.
 """
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -367,12 +368,19 @@ def export_store_v2(store: str | Path, destination: str | Path) -> dict[str, Any
         "destination": str(output),
         "source_generation": generation,
         "scope": "explicit_offline_v2_snapshot",
-        "latest": None
-        if completed is None
-        else {"run_id": completed.run_id, "manifest_sha256": completed.manifest_sha256},
-        "latest_attempt": None
-        if attempt is None
-        else {"run_id": attempt.run_id, "manifest_sha256": attempt.manifest_sha256},
+        "latest": (
+            None
+            if completed is None
+            else {
+                "run_id": completed.run_id,
+                "manifest_sha256": completed.manifest_sha256,
+            }
+        ),
+        "latest_attempt": (
+            None
+            if attempt is None
+            else {"run_id": attempt.run_id, "manifest_sha256": attempt.manifest_sha256}
+        ),
     }
     _write_new(output / "v3-export.json", _bytes(report))
     return report

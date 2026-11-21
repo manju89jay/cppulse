@@ -147,7 +147,10 @@ def validate_metrics(document: dict[str, Any]) -> None:
         if value.get("code_loc", 0) > value.get("physical_loc", float("inf")):
             _fail("Code LOC exceeds measured physical LOC", "/analysis_metrics/items")
         if value.get("duplicate_lines", 0) > value.get("physical_loc", float("inf")):
-            _fail("Duplicate lines exceed measured physical LOC", "/analysis_metrics/items")
+            _fail(
+                "Duplicate lines exceed measured physical LOC",
+                "/analysis_metrics/items",
+            )
 
 
 def validate_native_metrics(findings: dict[str, Any]) -> None:

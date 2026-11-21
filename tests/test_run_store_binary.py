@@ -1,4 +1,5 @@
 """Checked streaming access never bypasses snapshot or artifact byte pins."""
+
 from dataclasses import replace
 import os
 import tracemalloc

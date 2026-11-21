@@ -16,7 +16,7 @@ from time import monotonic
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-SECTIONS = (
+DEFAULT_SECTIONS = (
     "format",
     "generated",
     "root",
@@ -24,9 +24,15 @@ SECTIONS = (
     "python",
     "dashboard",
     "integration",
-    "docker",
 )
-DEFAULT_SECTIONS = SECTIONS[:-1]
+SECTIONS = (*DEFAULT_SECTIONS, "docker", "root-public")
+HISTORICAL_ROOT_TESTS = (
+    "tests/test_elf_runtime.py::test_selected_actual_native_metadata_without_execution",
+    "tests/test_generated_rule_registration.py::test_generator_metadata_preserves_existing_public_v2_contract",
+    "tests/test_native_normalizer_streaming.py::test_exact_output_parity_with_preserved_prechange_normalizer",
+    "tests/test_predictor_input_projection.py::test_public_predictor_preserves_frozen_legacy_results_without_eager_native_load",
+    "tests/test_store_heads_v3_review.py::test_real_installed_old_wheel_fails_closed_and_reads_explicit_export",
+)
 
 
 @dataclass(frozen=True)
@@ -48,33 +54,56 @@ def _now() -> str:
 
 
 def _changed_python_sources(root: Path) -> list[str]:
-    """Limit script/test formatting to changed files; never reformat history."""
-    try:
-        result = subprocess.run(
-            [
-                "git",
-                "ls-files",
-                "--modified",
-                "--others",
-                "--exclude-standard",
-                "-z",
-                "--",
-                "scripts",
-                "tests",
-                "tools",
-            ],
-            cwd=root,
-            capture_output=True,
-            check=False,
+    """Select local edits and the explicit CI change range for Python checks."""
+    scopes = ("scripts", "tests", "tools")
+    base = os.environ.get("CPPULSE_FORMAT_BASE")
+    head = os.environ.get("CPPULSE_FORMAT_HEAD")
+    all_tracked = os.environ.get("CPPULSE_FORMAT_ALL_TRACKED", "")
+    if all_tracked not in {"", "false", "true"}:
+        raise ValueError("CPPULSE_FORMAT_ALL_TRACKED must be true or false")
+    if bool(base) != bool(head):
+        raise ValueError(
+            "CPPULSE_FORMAT_BASE and CPPULSE_FORMAT_HEAD must be supplied together"
         )
-    except FileNotFoundError:
+    if base and all_tracked == "true":
+        raise ValueError("Choose either a PR format range or all tracked Python files")
+
+    def git(*args: str) -> bytes:
+        return subprocess.check_output(["git", *args], cwd=root)
+
+    try:
+        local = git(
+            "ls-files",
+            "--modified",
+            "--others",
+            "--exclude-standard",
+            "-z",
+            "--",
+            *scopes,
+        )
+        staged = git("diff", "--cached", "--name-only", "-z", "--", *scopes)
+    except (OSError, subprocess.CalledProcessError):
+        if base or all_tracked == "true":
+            raise
         return []
-    if result.returncode:
-        return []
+
+    committed = b""
+    if all_tracked == "true":
+        committed = git("ls-files", "--cached", "-z", "--", *scopes)
+    elif base and head:
+        base_sha, head_sha = (
+            git("rev-parse", "--verify", "--end-of-options", f"{ref}^{{commit}}")
+            .decode("ascii")
+            .strip()
+            for ref in (base, head)
+        )
+        committed = git(
+            "diff", "--name-only", "-z", f"{base_sha}...{head_sha}", "--", *scopes
+        )
     return sorted(
         {
             name
-            for name in result.stdout.decode().split("\0")
+            for name in (local + staged + committed).decode().split("\0")
             if name.endswith(".py") and (root / name).is_file()
         }
     )
@@ -173,6 +202,22 @@ def build_checks(
     if "root" in sections:
         checks.append(
             Check("root-tests", "root", (python, "-m", "pytest", "-v", "tests/"), root)
+        )
+    if "root-public" in sections:
+        checks.append(
+            Check(
+                "root-tests-public",
+                "root-public",
+                (
+                    python,
+                    "-m",
+                    "pytest",
+                    "-v",
+                    "tests/",
+                    *(f"--deselect={test}" for test in HISTORICAL_ROOT_TESTS),
+                ),
+                root,
+            )
         )
 
     def native(component: str, label: str) -> None:
@@ -453,7 +498,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--jobs must be positive")
     sections = set(args.section or DEFAULT_SECTIONS)
     if "all" in sections:
-        sections = set(SECTIONS)
+        sections = {*DEFAULT_SECTIONS, "docker"}
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     environment = os.environ.copy()

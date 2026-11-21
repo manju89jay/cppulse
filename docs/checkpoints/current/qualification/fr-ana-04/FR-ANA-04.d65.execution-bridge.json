@@ -1,0 +1,25 @@
+{
+  "actual_projection_log_sha256": "65e7b4b49dc230e7937ce71ddfd3e27ff1bfebe615a855d22437e0995ea9bc6d",
+  "already_reviewed_exact_1e_to_d65_archive_comparison": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d",
+    "scope": "Earlier measured wheel 4d2e to current wheel 42a6. This shared actual byte comparison adds no new execution for this criterion."
+  },
+  "complete_private_receipts_by_role": {
+    "actual_earlier_installed_junit": "abfee6e6ba046320b0410c0d72b952c874919e9c919b4019d01580a8dd496680",
+    "actual_earlier_native_complexity_case_map": "8fbbdccaa71348a39cee9ef6d8d848787601ee65a71d47818793b9a7ea74219b",
+    "exact_dashboard_and_report_label_readback": "57171155e2dbaf0c281769994ec363650354f5918c36d1577ebc0046aadfa622",
+    "exact_pdf0_process": "369560dcc1dbdb395ccc5f8d19c45a7cb73d1c90e6474faec18ae1ca74218b29",
+    "exact_pdf0_text_process": "c06f2cef32d2807764aecdbeb81bc9fe6ccc0df8157643c88953053ccd93393b",
+    "exact_pdf1_process": "f9c64ce8d778cbc233b9d61f80decb107fee5f2962bc80a7b34ae6803a2394f2",
+    "exact_pdf1_text_process": "47588cba2c4a09a66fbfdb623b54ea18e73c456eb71f23374451aea7ed7b8409",
+    "exact_pre_run_full_registration": "355cbf00a52937e35b2688ec688d6852b7dc5091fb1780b809ff6d631e65abe8"
+  },
+  "id": "FR-ANA-04",
+  "immutable_independent_whole_review_sha256": "7b4ffde039472316b851009f78ee59bf0285f41977a7433541ec64dd4b7cd025",
+  "portability": "The public checker reads current relative source hashes. Exact earlier full inputs, compiled binaries, package/tool identities, PDF/report/API and publication stores are attested in custody. Current d65 results are claimed only for separately stated observed roles.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Conservative exact d65 source namespace, native source/supervisor and original tracked test dependency paths. Original source, artifact, full preregistration, and distinct verified raw execution are retained. Each affected legacy or roadmap path is classified by its relationship to the stated predicates.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

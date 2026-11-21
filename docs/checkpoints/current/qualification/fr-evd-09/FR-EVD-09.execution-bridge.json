@@ -1,0 +1,112 @@
+{
+  "candidate_manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+  "criterion": "FR-EVD-09",
+  "dependency_readback_for_each_source_change": {
+    "docs/DECISIONS.md": "Governance narration outside the selected commands\u2019 input boundary.",
+    "docs/plans/production-scope-authority.md": "Governance inventory outside the selected commands\u2019 input boundary.",
+    "tests/test_pipeline_failures.py": "Supplemental test outside the chosen history selectors and the finite coverage observer."
+  },
+  "external_attestation": "Exact installed candidate, wheel, tool distributions, runtime image and complete before and after records remain in custody. Raw notes, profiles, linked ELF, JUnit, test and compiler logs, coverage inputs and output, and the read-only source and result stores are retained under the original pins. The public tracked coverage demo supplies exact authored fixture source text; the copied observers preserve original receiver paths.",
+  "historical_custody": {
+    "checkpoint": "docs/checkpoints/20261117/three-item-closure.md",
+    "historical_producer_run_id": "28956956d0544409bfd344fe5877e239",
+    "original_basis": {
+      "complete_condition_basis_raw_proof": "work/metrics117/current36-source-proof.json",
+      "historical_only": true,
+      "path": "work/memory-review82/metrics117-current/review.json",
+      "sha256": "bf514aa463bd7551e02035cb756c85867351aa24e80fb7890cd3370b7e22438b"
+    },
+    "original_review_source_pin": {
+      "work/runtime-review7/closure-fr3/review.json": "2a99d9b84cee1c3ae16b0fafbdf20b09622c30b0b4fef80d057e5dc2028546db"
+    }
+  },
+  "original_report_payloads_remain_in_custody": true,
+  "projection_log_sha256": "754a6e6c411421a60ec7500a2e8ef64aa1ca8fc8e908e4304f6d037d2f574282",
+  "public_product_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "raw_producer_role_digests": {
+    "build/app": {
+      "sha256": "92f516fa52266b78b979f9d39f2cc4d89481175d1d2ebe3da662e31c3633e84e",
+      "size_bytes": 28720
+    },
+    "build/main.gcda": {
+      "sha256": "3411ebc096f1e46381b4aca67306ceddbf4c8680162db2b4027a1865b696da81",
+      "size_bytes": 152
+    },
+    "build/main.gcno": {
+      "sha256": "888bdefd675ebf2255ac2dbbb360db141a17e2346873e5ed21dff18c781fef56",
+      "size_bytes": 894
+    },
+    "coverage.info": {
+      "sha256": "c959422686107b80b3cd9904d015afca7b9ea165454b3d989b5cc60f5f794be4",
+      "size_bytes": 600
+    },
+    "coverage.xml": {
+      "sha256": "ad7bea987ccaed7f6ce018b130f6b74eb85812980db8b52528672732d2b49cba",
+      "size_bytes": 2001
+    },
+    "test-build/Testing/Temporary/LastTest.log": {
+      "sha256": "a45eb5104cba9b4b0ddbd967deb982486cdf567d7d9421b544f5b9e8bf341887",
+      "size_bytes": 762
+    },
+    "test-build/junit.xml": {
+      "sha256": "ac34e938da224b5996c650347fca063b21e2f4830f297adc46012e2f1ab9e9a9",
+      "size_bytes": 344
+    }
+  },
+  "selected_raw_receipt_hashes": {
+    "continuation_sealed_inputs_before_after_sha256": "4febae95e77cc581af2573828603bfcd86aa7b091ebb03ed4d3b404816430e7d",
+    "import_retry_sealed_inputs_before_after_sha256": "37807d842ee5ccede0b7a331b14ad0d1cc2f8401869bbd4412d8fbf20cf6afe4",
+    "original_producer_material_sha256": "ce5541e639957d360f6decbd677521f89971fdc8221a3dad7aa595146b0fbfce"
+  },
+  "stable_original_executions": {
+    "continuation": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch12/run-continuation.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 11396,
+      "guard_record_sha256": "4760c21b76eb49e212050bb67887ad7cb7cbcb03b9a8829c800e5fee01677670",
+      "preregistration_sha256": "9d6eb0b7bbaaceca2cb5984f39111e2dd986c52cb50db6e7a7fc08677bfbf6e5",
+      "raw_log_sha256": "0b2451a022971f68d71e78e3c42467146aec51b46297391ac0756527b658064d",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "LCOV, Cobertura and invalid phases passed. Both import observers supplied an invalid time argument"
+    },
+    "producer": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch12/run.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 10721,
+      "guard_record_sha256": "911bb942f3d113414356357ab0d63f4a84f5cf80ccd65479e9cac5253ea457fe",
+      "preregistration_sha256": "f031b895fb76265ddcb44da0f821d41d66483bf8a9d938e857c756fac2c08b0e",
+      "raw_log_sha256": "73eac07b07e55e24a6e18aedc931d7bccb31282824275c338a4f5c6fae9a9ab5",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "Actual producer and LCOV completed before an observer rejected the valid structured decision refusal"
+    },
+    "supplemental_import_batch": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch13/run.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 13448,
+      "guard_record_sha256": "d701a8ba0b5fff3d8d1d2ebf8537913d8df67ffaff71cfc0fb57e226cf86a284",
+      "preregistration_sha256": "35f2b025c571304d2b206efc2a6987c2230e35051e5c998cc8ba976b584cee19",
+      "raw_log_sha256": "0a2dd6e7aefd7b4b7f1898212cc65a42c756bdcc0fd4b05626d5cf65f28d34c9",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "Import retry passed. A separate FR-GIT-06 fixture observer exited 1"
+    }
+  },
+  "tracked_source_scope": "Entire checked-in cppulse Python package, selected tracked fixture or regression source, and exact published observer text. The current mutable delivery ledger, review pointer and proof are outside the hash set.",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "whole_review_sha256": "6340c2de0a5a1d8db1fb4712e1ba3e379be99b103944c6fe5c7d83c483cf513a"
+}

@@ -1,4 +1,5 @@
 """Actual isolated Linux CMake component installation, without a full core build."""
+
 from __future__ import annotations
 
 import hashlib

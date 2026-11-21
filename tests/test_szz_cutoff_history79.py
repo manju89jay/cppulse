@@ -39,8 +39,11 @@ def commit(repo: git.Repo, file: str, value: int | str, message: str, date: str)
     # parser does not accept the colon in an ISO UTC offset.
     instant = datetime.fromisoformat(date)
     item = repo.index.commit(
-        message, author=actor, committer=actor,
-        author_date=instant, commit_date=instant,
+        message,
+        author=actor,
+        committer=actor,
+        author_date=instant,
+        commit_date=instant,
     )
     return item.hexsha
 
@@ -83,9 +86,9 @@ def test_explicit_cutoff_excludes_later_fix_labels(cutoff_history: git.Repo) -> 
 
 def test_post_cutoff_fix_does_not_consume_fix_cap(cutoff_history: git.Repo) -> None:
     labeler = SZZLabeler(Path(cutoff_history.working_tree_dir), max_fix_commits=1)
-    assert labeler.label(
-        cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
-    ) == {"old.cpp": 1}
+    assert labeler.label(cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)) == {
+        "old.cpp": 1
+    }
 
 
 def test_cutoff_is_inclusive_and_repeatable(cutoff_history: git.Repo) -> None:
@@ -103,14 +106,17 @@ def test_cutoff_is_inclusive_and_repeatable(cutoff_history: git.Repo) -> None:
 
 def test_before_first_fix_remains_no_label(cutoff_history: git.Repo) -> None:
     labeler = SZZLabeler(Path(cutoff_history.working_tree_dir))
-    assert labeler.label(
-        cutoff=datetime(2020, 1, 1, tzinfo=timezone.utc)
-    ) == {}
+    assert labeler.label(cutoff=datetime(2020, 1, 1, tzinfo=timezone.utc)) == {}
 
 
-@pytest.mark.parametrize("cutoff", [
-    datetime(2020, 1, 2), "2020-01-02T00:00:00Z", True,
-])
+@pytest.mark.parametrize(
+    "cutoff",
+    [
+        datetime(2020, 1, 2),
+        "2020-01-02T00:00:00Z",
+        True,
+    ],
+)
 def test_invalid_cutoff_refuses_before_history_scan(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, cutoff: object
 ) -> None:
@@ -127,7 +133,9 @@ def test_invalid_cutoff_refuses_before_history_scan(
         labeler.label(cutoff=cutoff)
 
 
-def test_default_cutoff_records_invocation_and_rejects_future_fix(tmp_path: Path) -> None:
+def test_default_cutoff_records_invocation_and_rejects_future_fix(
+    tmp_path: Path,
+) -> None:
     repo = repository(tmp_path / "repo")
     commit(repo, "old.cpp", 0, "Initial", "2020-01-01T00:00:00+00:00")
     commit(repo, "old.cpp", 1, "fix observed defect", "2020-01-02T00:00:00+00:00")
@@ -143,10 +151,13 @@ def test_default_cutoff_records_invocation_and_rejects_future_fix(tmp_path: Path
     assert any("Git timestamps" in item for item in labeler.provenance["limitations"])
 
 
-@pytest.mark.parametrize("origin_date, expected", [
-    ("2020-01-10T00:00:00+00:00", {}),
-    ("2020-01-05T00:00:00+00:00", {"a.cpp": 1}),
-])
+@pytest.mark.parametrize(
+    "origin_date, expected",
+    [
+        ("2020-01-10T00:00:00+00:00", {}),
+        ("2020-01-05T00:00:00+00:00", {"a.cpp": 1}),
+    ],
+)
 def test_non_monotonic_dates_apply_cutoff_to_origins_inclusively(
     tmp_path: Path, origin_date: str, expected: dict[str, int]
 ) -> None:
@@ -155,9 +166,7 @@ def test_non_monotonic_dates_apply_cutoff_to_origins_inclusively(
     commit(repo, "a.cpp", 0, "Initial implementation", origin_date)
     commit(repo, "a.cpp", 1, "fix defect", "2020-01-02T00:00:00+00:00")
     labeler = SZZLabeler(Path(repo.working_tree_dir))
-    assert labeler.label(
-        cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
-    ) == expected
+    assert labeler.label(cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)) == expected
     assert labeler.provenance["filtered_post_cutoff_origin_commits"] == (
         1 if not expected else 0
     )
@@ -173,13 +182,18 @@ def test_source_text_cannot_spoof_a_porcelain_origin(
     decoy = commit(repo, "decoy.cpp", 0, "Unrelated", "2020-01-01T00:00:00+00:00")
     body = f"int value = 0;\n{embedded_prefix}{decoy} 1 1\n"
     origin = commit(repo, "a.cpp", body, "Initial a", "2020-01-02T00:00:00+00:00")
-    fix = commit(repo, "a.cpp", body.replace("value = 0", "value = 1"),
-                 "fix defect", "2020-01-03T00:00:00+00:00")
+    fix = commit(
+        repo,
+        "a.cpp",
+        body.replace("value = 0", "value = 1"),
+        "fix defect",
+        "2020-01-03T00:00:00+00:00",
+    )
     labeler = SZZLabeler(Path(repo.working_tree_dir))
     assert labeler._blame_file(repo.commit(fix).parents[0], "a.cpp") == {origin}
-    assert labeler.label(
-        cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
-    ) == {"a.cpp": 1}
+    assert labeler.label(cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)) == {
+        "a.cpp": 1
+    }
 
 
 def test_unavailable_origin_metadata_remains_an_operational_gap(
@@ -188,11 +202,11 @@ def test_unavailable_origin_metadata_remains_an_operational_gap(
     """Failed origin lookup cannot become a validated or clean label."""
     labeler = SZZLabeler(Path(cutoff_history.working_tree_dir))
     monkeypatch.setattr(labeler, "_blame_file", lambda *args: {"f" * 40})
-    assert labeler.label(
-        cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
-    ) == {}
+    assert labeler.label(cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)) == {}
     assert labeler.provenance["unavailable_origin_commits"] == 1
-    assert any("SZZ origin metadata unavailable" in item for item in labeler.limitations)
+    assert any(
+        "SZZ origin metadata unavailable" in item for item in labeler.limitations
+    )
 
 
 def test_origin_metadata_lookup_is_reused_across_files(
@@ -205,7 +219,9 @@ def test_origin_metadata_lookup_is_reused_across_files(
         (Path(repo.working_tree_dir) / name).write_text("int value = 0;\n")
     repo.index.add(["a.cpp", "b.cpp"])
     origin = repo.index.commit(
-        "Initial files", author=actor, committer=actor,
+        "Initial files",
+        author=actor,
+        committer=actor,
         author_date=datetime(2020, 1, 1, tzinfo=timezone.utc),
         commit_date=datetime(2020, 1, 1, tzinfo=timezone.utc),
     ).hexsha
@@ -213,7 +229,9 @@ def test_origin_metadata_lookup_is_reused_across_files(
         (Path(repo.working_tree_dir) / name).write_text("int value = 1;\n")
     repo.index.add(["a.cpp", "b.cpp"])
     repo.index.commit(
-        "fix both defects", author=actor, committer=actor,
+        "fix both defects",
+        author=actor,
+        committer=actor,
         author_date=datetime(2020, 1, 2, tzinfo=timezone.utc),
         commit_date=datetime(2020, 1, 2, tzinfo=timezone.utc),
     )
@@ -241,7 +259,9 @@ def test_ambient_git_overrides_cannot_redirect_origin_metadata(
     unrelated = repository(tmp_path / "unrelated")
     commit(unrelated, "else.cpp", 7, "Elsewhere", "2020-01-01T00:00:00+00:00")
     monkeypatch.setenv("GIT_DIR", unrelated.git_dir)
-    monkeypatch.setenv("GIT_OBJECT_DIRECTORY", str(Path(unrelated.common_dir) / "objects"))
+    monkeypatch.setenv(
+        "GIT_OBJECT_DIRECTORY", str(Path(unrelated.common_dir) / "objects")
+    )
     labeler = SZZLabeler(Path(cutoff_history.working_tree_dir))
     assert labeler.label(
         history=scan, cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
@@ -256,7 +276,10 @@ def test_oversized_origin_is_refused_before_commit_metadata_decode(
     """A small accepted fix cannot bypass its history producer's origin cap."""
     repo = repository(tmp_path / "repo")
     origin = commit(
-        repo, "a.cpp", 0, "Short summary\n\n" + "x" * 4096,
+        repo,
+        "a.cpp",
+        0,
+        "Short summary\n\n" + "x" * 4096,
         "2020-01-01T00:00:00+00:00",
     )
     commit(repo, "a.cpp", 1, "fix observed defect", "2020-01-02T00:00:00+00:00")
@@ -267,13 +290,16 @@ def test_oversized_origin_is_refused_before_commit_metadata_decode(
 
     def no_oversized_decode(revision: str) -> git.Commit:
         if revision == origin:
-            pytest.fail("Oversized origin metadata was decoded before enforcing its raw-object cap")
+            pytest.fail(
+                "Oversized origin metadata was decoded before enforcing its raw-object cap"
+            )
         return original_lookup(revision)
 
     monkeypatch.setattr(labeler._repo, "commit", no_oversized_decode)
-    assert labeler.label(
-        history=scan, cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc)
-    ) == {}
+    assert (
+        labeler.label(history=scan, cutoff=datetime(2020, 1, 5, tzinfo=timezone.utc))
+        == {}
+    )
     assert labeler.provenance["origin_max_record_bytes"] == 1024
     assert labeler.provenance["unavailable_origin_commits"] == 1
     assert any(

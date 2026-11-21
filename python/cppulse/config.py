@@ -196,7 +196,8 @@ def _validate_project_settings(value: Any, schema: dict[str, Any]) -> None:
     """
     base = jsonschema.validators.validator_for(schema)
     strict_integer = base.TYPE_CHECKER.redefine(
-        "integer", lambda checker, item: isinstance(item, int) and not isinstance(item, bool)
+        "integer",
+        lambda checker, item: isinstance(item, int) and not isinstance(item, bool),
     )
     validator = jsonschema.validators.extend(base, type_checker=strict_integer)
     validator(schema).validate(value)
@@ -216,7 +217,9 @@ def _read_settings_document(path: Path) -> tuple[dict[str, Any], str]:
             # Empty/comment-only YAML is a legacy default configuration. An
             # explicit null scalar is still not a configuration object.
             node = yaml.compose(text, Loader=_UniqueKeyLoader)
-            if node is None or (node.tag == "tag:yaml.org,2002:null" and node.value == ""):
+            if node is None or (
+                node.tag == "tag:yaml.org,2002:null" and node.value == ""
+            ):
                 settings = {}
         schema = json.loads(
             resources.files("cppulse")
@@ -278,11 +281,20 @@ def effective_config(
                 "Select one explicitly with --config."
             )
         selected = candidates[0] if candidates else None
-    settings, project_config_sha256 = _read_settings_document(selected) if selected else ({}, None)
+    settings, project_config_sha256 = (
+        _read_settings_document(selected) if selected else ({}, None)
+    )
     project_settings = dict(settings)
     pack_reference = settings.pop("ruleset", None)
-    pack_path = (ruleset if ruleset is not None else
-                 selected.parent / pack_reference if pack_reference is not None and selected else None)
+    pack_path = (
+        ruleset
+        if ruleset is not None
+        else (
+            selected.parent / pack_reference
+            if pack_reference is not None and selected
+            else None
+        )
+    )
     resolved_identity = None
     if pack_path is not None:
         from cppulse.rulesets import resolve_ruleset, merge_native, clang_tidy_arguments
@@ -294,11 +306,19 @@ def effective_config(
         origins = dict(resolved_identity["origins"])
         from cppulse.rulesets import _leaves
 
-        for key in _leaves({k: v for k, v in project_settings.items()
-                            if k not in {"ruleset", "execution", "history"}}, "native."):
+        for key in _leaves(
+            {
+                k: v
+                for k, v in project_settings.items()
+                if k not in {"ruleset", "execution", "history"}
+            },
+            "native.",
+        ):
             origins[key] = str(selected)
         resolved_identity["origins"] = origins
-        resolved_identity["selection_origin"] = "command" if ruleset is not None else "project"
+        resolved_identity["selection_origin"] = (
+            "command" if ruleset is not None else "project"
+        )
         resolved_identity["provider_arguments"] = {
             name: clang_tidy_arguments(value)
             for name, value in resolved.providers.items()

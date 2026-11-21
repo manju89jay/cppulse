@@ -1,0 +1,382 @@
+{
+  "actual_original_wrapper_exit": 1,
+  "actual_scope_purposes": {
+    "follow_up": "Read-only verification of sealed original outputs",
+    "original": "Producer, policy and reports"
+  },
+  "actual_scoped_command": [
+    "/workspace/cppulse/.venv/bin/python",
+    "-B",
+    "/workspace/work/current38-batch15/offline-pack-readback/readback.py",
+    "/workspace/work/current38-batch15/results/offline-pack-readback"
+  ],
+  "actual_scoped_exit": 0,
+  "actual_sealed_observer_wrapper_exit": 0,
+  "criterion": "FR-UX-12",
+  "criterion_text": "Offline runtime operation shall be supported after dependencies and packs have been installed. No account is required for core analysis.",
+  "earlier_failure_log": {
+    "sha256": "e3eb67d5ff1b7797fe1916f9ffde6687867c41414b4d3856e0528a4100c65f68",
+    "size_bytes": 1705
+  },
+  "executed_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "executed_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "invalid_policy_controls": [
+    {
+      "actual_exit": 2,
+      "case": "missing",
+      "code": "INVALID_CONTRACT",
+      "receipt": {
+        "sha256": "a5c7ad9498527d2a80743d6556350b951aeb482eab51f6ad036141fd8d29cfcd",
+        "size_bytes": 676
+      },
+      "verb": "assess"
+    },
+    {
+      "actual_exit": 2,
+      "case": "missing",
+      "code": "INVALID_CONTRACT",
+      "receipt": {
+        "sha256": "736c7dea71bbf0e8893febdc419d14d34dd756bad1ba12261fd3f4e01fe2fb31",
+        "size_bytes": 675
+      },
+      "verb": "check"
+    },
+    {
+      "actual_exit": 2,
+      "case": "unsupported",
+      "code": "UNSUPPORTED_VERSION",
+      "receipt": {
+        "sha256": "5cd767d63acf5331528c281b183981339f23f027afe4476cf4e24e83fb5502b9",
+        "size_bytes": 680
+      },
+      "verb": "assess"
+    },
+    {
+      "actual_exit": 2,
+      "case": "unsupported",
+      "code": "UNSUPPORTED_VERSION",
+      "receipt": {
+        "sha256": "f41d26650cf3921c27a007b841784cfb12d3eec662538d967f5cc47e7fc88541",
+        "size_bytes": 679
+      },
+      "verb": "check"
+    }
+  ],
+  "limits": [
+    "The original B15 wrapper remains exit 1 due to the untyped artifact reader and final home assertions. Both actual native commands and all three policy phases retain their separate successful predicates. The exact end-home leaf contents were not recorded.",
+    "The follow-up reread exact retained sources, snapshots, typed/private request-result contracts and original public command/report bytes. It did not run any native producer, compiler, report command or assessment.",
+    "The positive policy used already-installed local materials and genuine prior B12 LCOV facts. It does not imply an account, external network access, a new compiler run in B15, or broader host/platform coverage.",
+    "Acceptance is a current private evidence decision. No canonical ledger, source or publication state changed."
+  ],
+  "native_observations": {
+    "native": {
+      "actual_analyze_exit": 0,
+      "actual_manifest": {
+        "sha256": "e287fc47931453fd249937799095b6101f7e29e1c1dc3d73a93abbe18ce4cc64",
+        "size_bytes": 34855
+      },
+      "actual_stderr_identity": {
+        "sha256": "77262105c753e9b3044278b7ca8f3a0f9551514b5bd2c250ba3cb86200ac5fbd",
+        "size_bytes": 640
+      },
+      "before_correction_observer_exit": 1,
+      "command_receipt": {
+        "sha256": "cb9884a6402bbf9a39002c4c352b0785eb0ad533c6f5bada49760746732bbc12",
+        "size_bytes": 846
+      },
+      "health": 100,
+      "input_verification": "verified",
+      "original_legacy_roadmaps": [
+        {
+          "contract": {
+            "kind": "roadmap",
+            "version": "prototype_v1"
+          },
+          "retained_item_count": 0,
+          "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+          "size_bytes": 39
+        }
+      ],
+      "retained_pipeline_consumers_stage": "passed",
+      "status": "completed",
+      "units": [
+        {
+          "receipt": {
+            "sha256": "052a38d2aa3aeb159d4bc3c6939b2adcf865ff73554b3b44a4e125a7364e88a7",
+            "size_bytes": 2583
+          },
+          "request": {
+            "sha256": "b2e893e91682592e6ad2a5accee4e198f76729f82d8142ee0847992bf5298a9e",
+            "size_bytes": 4113
+          },
+          "result": {
+            "sha256": "0def8edf55a40591ac57e86de9f38203882eba92f8d3a551984f8fbe75dcf809",
+            "size_bytes": 4015
+          },
+          "source": "alpha.cpp"
+        },
+        {
+          "receipt": {
+            "sha256": "8e14efefd741ef4d913e4a3b50ae8e871d7de14358fc789096817ebab96fcb4b",
+            "size_bytes": 2583
+          },
+          "request": {
+            "sha256": "3d1031ff3a212d2610ea9733e6aa3d755c4a89020effb2ddcd1e83e2d588d6f0",
+            "size_bytes": 4111
+          },
+          "result": {
+            "sha256": "330cd464da4049e692ca5fba5461f60e36b74dd7bfa5aaba1e49197a7d7d6782",
+            "size_bytes": 4015
+          },
+          "source": "beta.cpp"
+        }
+      ],
+      "verified_pack": {
+        "sha256": "dc875f8cfd201522e9ce0168dc8e5696e09824381f3e9dd8db99a339081257c8",
+        "size_bytes": 82
+      }
+    },
+    "unsupported-sdk": {
+      "actual_analyze_exit": 3,
+      "actual_manifest": {
+        "sha256": "e234278ddd7acc2349fa14a4e6ec1b060e11aac526e00f05e6535251cd21e1f3",
+        "size_bytes": 29050
+      },
+      "actual_stderr_identity": {
+        "sha256": "77262105c753e9b3044278b7ca8f3a0f9551514b5bd2c250ba3cb86200ac5fbd",
+        "size_bytes": 640
+      },
+      "before_correction_observer_exit": 1,
+      "command_receipt": {
+        "sha256": "ca7011c728151b4018d7ee585253e33f9ba0c919b4c8a0fbd6465e51cd25f5af",
+        "size_bytes": 891
+      },
+      "health": null,
+      "input_verification": "unverified",
+      "original_legacy_roadmaps": [
+        {
+          "contract": {
+            "kind": "roadmap",
+            "version": "prototype_v1"
+          },
+          "retained_item_count": 1,
+          "sha256": "0a767e9ace53c25d738986ae7bdf68d5c1331f36678cec2023dec2950b900924",
+          "size_bytes": 350
+        }
+      ],
+      "retained_pipeline_consumers_stage": "passed",
+      "status": "partial",
+      "units": [
+        {
+          "receipt": {
+            "sha256": "7e8d74d4e4323deaf7aa1bfa714d2fb28c0021888684d1d492dfe6250bd36252",
+            "size_bytes": 2646
+          },
+          "request": {
+            "sha256": "247625998157cad70423b424068df816ab45e7756f5faede1ebde8108212de40",
+            "size_bytes": 4170
+          },
+          "result": {
+            "sha256": "1df17aefe9f7ae19d99a1fd56c474ee1c7ec09280e335b91589285f141945223",
+            "size_bytes": 4078
+          },
+          "source": "unsupported.cpp"
+        }
+      ],
+      "verified_pack": {
+        "sha256": "dc875f8cfd201522e9ce0168dc8e5696e09824381f3e9dd8db99a339081257c8",
+        "size_bytes": 82
+      }
+    }
+  },
+  "original_initial_home_receipt": {
+    "sha256": "4553dea9ae95802a103fb7c7e413937b6d766e00bc3b3a39e41e171ab0723962",
+    "size_bytes": 1557
+  },
+  "policy_observations": {
+    "coverage": {
+      "actual_commands": {
+        "assess": {
+          "actual_exit": 0,
+          "receipt": {
+            "sha256": "d3b15f8053253923d0dee3c25f0a29e1f8e6697083a6aa7ba53117401e197340",
+            "size_bytes": 679
+          },
+          "result_manifest": {
+            "sha256": "6fef298c23f81037cddce39ac4406102887c504a0040bdf2ee6c734c542e2b05",
+            "size_bytes": 34914
+          }
+        },
+        "check": {
+          "actual_exit": 0,
+          "receipt": {
+            "sha256": "c834783ecd79df092511627e71a321a9a9a80ac87c734371c616dcff19178345",
+            "size_bytes": 678
+          },
+          "result_manifest": {
+            "sha256": "4ddb45a734d6ad4f24cb963bb3bdc02cc3fc0aaa91cbe2b5e01edc20941f8fcb",
+            "size_bytes": 34914
+          }
+        }
+      },
+      "explain": null,
+      "gate": "passed",
+      "genuine_earlier_coverage_donor": {
+        "sha256": "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+        "size_bytes": 32263
+      },
+      "line_coverage": [
+        5,
+        8
+      ],
+      "original_phase_exit": 0,
+      "preinstalled_pack": {
+        "sha256": "60c8fd83683588b8caa4c0d564160771319a51436d2fdc1b45f42303bf5637fe",
+        "size_bytes": 823
+      },
+      "reports": {
+        "html": {
+          "actual_exit": 0,
+          "original_command": {
+            "sha256": "ec0d033ff963a4ecde01b188efc52c24a9f73d63911dbb900c08e9503468629e",
+            "size_bytes": 627
+          },
+          "original_immutable_selection": {
+            "manifest_sha256": "6fef298c23f81037cddce39ac4406102887c504a0040bdf2ee6c734c542e2b05",
+            "run_id_utf8_sha256": "b9009c569cbc7012a06e51da3ca5c1022f4294cbf67e9193e4430f8e28235681"
+          },
+          "output": {
+            "sha256": "c8561e6821081da99dfab4ae788edc12d49083c464af61555006b25a5e73e8cf",
+            "size_bytes": 33034
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "original_command": {
+            "sha256": "cecd5c64c263eef61fcc0c4ce39c363a2383d49acd84f8cfdfa77a81b6fa44d9",
+            "size_bytes": 627
+          },
+          "original_immutable_selection": {
+            "manifest_sha256": "6fef298c23f81037cddce39ac4406102887c504a0040bdf2ee6c734c542e2b05",
+            "run_id_utf8_sha256": "b9009c569cbc7012a06e51da3ca5c1022f4294cbf67e9193e4430f8e28235681"
+          },
+          "output": {
+            "sha256": "fac303a1c47684466c0ef171348f8017ce0714a8f8b3fdd45387b711a3a2bf1d",
+            "size_bytes": 168591
+          }
+        }
+      }
+    },
+    "insufficient": {
+      "actual_commands": {
+        "assess": {
+          "actual_exit": 3,
+          "receipt": {
+            "sha256": "855a2e1a6fff40372b861b7ef8bdbbd1aeb9c6bb5e042bdb94a6a3f5caf9123e",
+            "size_bytes": 692
+          },
+          "result_manifest": {
+            "sha256": "310e33fc15ad80d1505076456181db4de43eca5fd8f9e86379c335c615f7548b",
+            "size_bytes": 34929
+          }
+        },
+        "check": {
+          "actual_exit": 3,
+          "receipt": {
+            "sha256": "dc5d5576cc79e24b015db416c658a95fb3a46bfcad13f149d215093a259f9a5e",
+            "size_bytes": 691
+          },
+          "result_manifest": {
+            "sha256": "2dec42884aa67987af02d2939ea7df0ecfb0e1342ff9b436e4510b7370b1adc7",
+            "size_bytes": 34929
+          }
+        }
+      },
+      "explain": {
+        "sha256": "692f5c6059452c4d74bb436ea8b72e8cb383eaa534f1141df9c6baac0380ad6c",
+        "size_bytes": 478
+      },
+      "gate": "insufficient_evidence",
+      "genuine_earlier_coverage_donor": {
+        "sha256": "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+        "size_bytes": 32263
+      },
+      "line_coverage": [
+        5,
+        8
+      ],
+      "original_phase_exit": 0,
+      "preinstalled_pack": {
+        "sha256": "873137c6d85436d2e9cfbd94a799071a5afa9029f72d8ba841e9d313a1ae8b82",
+        "size_bytes": 721
+      },
+      "reports": {
+        "html": {
+          "actual_exit": 0,
+          "original_command": {
+            "sha256": "6c1f8a4fa1bc8e7d2600203cb8180c40ed04e1c976d92349c3960d7ae64033c0",
+            "size_bytes": 639
+          },
+          "original_immutable_selection": {
+            "manifest_sha256": "310e33fc15ad80d1505076456181db4de43eca5fd8f9e86379c335c615f7548b",
+            "run_id_utf8_sha256": "75e3f8b8cf4baf9aa11015a2599898e0a32dc17f950a9ef4216181d2ca9cb8a7"
+          },
+          "output": {
+            "sha256": "ac2c2d8885b70f83146ec6d723e5e8f2c9b923317640f39aefbd448a99b35112",
+            "size_bytes": 31672
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "original_command": {
+            "sha256": "9e256973964ff8ce11156a59b35f683c677147ffa5f331f541a00f66afdaf9ea",
+            "size_bytes": 639
+          },
+          "original_immutable_selection": {
+            "manifest_sha256": "310e33fc15ad80d1505076456181db4de43eca5fd8f9e86379c335c615f7548b",
+            "run_id_utf8_sha256": "75e3f8b8cf4baf9aa11015a2599898e0a32dc17f950a9ef4216181d2ca9cb8a7"
+          },
+          "output": {
+            "sha256": "d1a373f262ac3c18029c3982c8f382b2ea9e014f77dad79a2cdaa77c52043ddb",
+            "size_bytes": 165169
+          }
+        }
+      }
+    }
+  },
+  "separate_kernel_denial_receipts": {
+    "original_measured_producers": {
+      "receipt": {
+        "sha256": "6bea523030ceeb2aef88914cbd6dfb47a5cf610b09adedc07580d7d980160116",
+        "size_bytes": 538
+      },
+      "scoped_command": [
+        "/usr/bin/bash",
+        "/workspace/work/current38-batch15/offline-pack/phases.sh",
+        "/workspace/work/current38-batch15/results/offline-pack"
+      ],
+      "socket_errno": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      }
+    },
+    "sealed_readback": {
+      "receipt": {
+        "sha256": "2b01d3e36eb6248e8e1a17bbfef5c17adcabcfa29121f6e44448bbc8bb1b7aed",
+        "size_bytes": 590
+      },
+      "scoped_command": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch15/offline-pack-readback/readback.py",
+        "/workspace/work/current38-batch15/results/offline-pack-readback"
+      ],
+      "socket_errno": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      }
+    }
+  }
+}

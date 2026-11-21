@@ -1,4 +1,43 @@
-# Current T1–T3 checkpoint — 2026-11-19T17:28:37.515243+00:00
+# Current GitHub branch and CI policy — 21 November 2026
+
+GitHub's default branch is `master`. Base every new pull request on `master`.
+The existing workflow selects pushes to `master`, pull requests targeting
+`master`, and manual dispatch. It uses the shared local developer facade and
+reports the jobs that actually run. Recorded local results cover the selected
+checks only. The current workflow has yet to run on GitHub.
+
+The hosted `root-public` section records the exact historical comparison tests
+kept in the complete local `root` section. The nine live health tests use the
+current build's registered analyzer and matching Clang headers on a fresh
+runner. Other live producer tests retain their actual fixture requirements.
+See the [developer workflow](development/workflow.md) for input ownership and
+provisioning. The existing local full gate still requires the complete suite.
+
+The sealed reviewer-fix checkpoint is tree `1b895c00097224ae6fe7e17888a2256e80fa8fec`.
+Its ordered proposed parents are master `d1e598028aec76f6455a7ed45602945274b72f8d`
+and historical main `82120d26b51f99b64068f9d66f6e000fcaee97c2`. The saved local
+generated facade exited 0 and unchanged strict verification exited 3. All 187
+criteria and P0–P14 are retained. This branch policy leaves existing pull
+requests and the original checkpoint history intact. Publication of the CI
+update requires its own qualification and owner review.
+
+# Historical reviewer-fix verification on fresh Cloud — 20 November 2026
+
+The three-task batch covers the finite C++/CTest first trial, declared `.c++`
+units and modernization detector precision. The fresh Linux x86_64 workspace
+admitted the native build under the existing reserve. Controlled native tests,
+selected Python and component tests, dashboard tests, and the installed console
+trial ran successfully after the recorded repairs. The receiving-host OSS
+replays preserve partial status. See the [batch record](development/reviewer-fixes.md)
+for scope and limitations.
+
+The proposed parents were master `d1e5980` and main `82120d26`. At intake, `main`
+was the default. All 187 definitions and states and P0–P14 were unchanged
+(38 historically verified, 96 open, 51 active, 2 blocked). The strict command
+returned exit 2 because the prior-38 proof file is missing from the receiving
+workspace. Publication remains conditional on valid current evidence.
+
+# Historical T1–T3 checkpoint — 2026-11-19T17:28:37.515243+00:00
 
 Approved batch runtime/source/installed qualification and independent review accepted. Current wheel `6b33d180f23cf94547b03628f61096d778491ac5f15f2adcd1ed3e1ee105631d`; source427, installed prior264 plus172 batch cases and two arithmetic controls passed. Actual Docker prepare/native/predictor all exit0 against the unchanged output bind-mount boundary. Complete current38 proof published; unchanged strict verifier ACTUAL **3**, valid-but-incomplete, no stale proof error. All187 definitions/states and P0–P14 unchanged:38 verified/96 open/51 active/2 blocked. PR-04/M0-05 remain unfinished.
 

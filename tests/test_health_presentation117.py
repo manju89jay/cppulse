@@ -304,15 +304,19 @@ def test_repeated_stored_calculation_checks_freshness_without_duplicate_fact(
     checks = []
 
     class Snapshot:
-        manifest = {"source": {"digest": data["source_digest"]},
-                    "input_verification": "verified"}
+        manifest = {
+            "source": {"digest": data["source_digest"]},
+            "input_verification": "verified",
+        }
 
         def verify(self):
             checks.append("verified")
 
         def read_json(self, identifier, *, contract):
             assert contract == "rule_registry"
-            assert identifier in {row["registry_artifact_id"] for row in data["inventories"]}
+            assert identifier in {
+                row["registry_artifact_id"] for row in data["inventories"]
+            }
             return data["registry"]
 
     parent = Snapshot()
@@ -325,10 +329,20 @@ def test_repeated_stored_calculation_checks_freshness_without_duplicate_fact(
             raise InputChanged("Controlled changed source")
 
     monkeypatch.setattr(workflows, "ensure_current_materials", freshness)
-    monkeypatch.setattr(workflows, "_derive", lambda *a, **k: pytest.fail("Duplicate calculation published"))
-    call = lambda: maintenance.persist_maintenance_health(
-        parent, workspace=tmp_path, store=tmp_path / "unused-store",
-        required_context_ids=data["required_context_ids"])
+    monkeypatch.setattr(
+        workflows,
+        "_derive",
+        lambda *a, **k: pytest.fail("Duplicate calculation published"),
+    )
+
+    def call():
+        return maintenance.persist_maintenance_health(
+            parent,
+            workspace=tmp_path,
+            store=tmp_path / "unused-store",
+            required_context_ids=data["required_context_ids"],
+        )
+
     if fresh:
         assert call() is parent
     else:
@@ -349,10 +363,21 @@ def test_cli_replay_selects_requested_calculation_from_retained_contexts(
     later = stored_health("partial")
     parent = SimpleNamespace(run_id="existing117", manifest_sha256="c" * 64)
     monkeypatch.setattr(cli, "_selected_run", lambda args: parent)
-    monkeypatch.setattr(maintenance, "persist_maintenance_health", lambda *a, **k: parent)
-    monkeypatch.setattr(workflows, "read_documents", lambda snapshot: {"maintenance_health": [health, later]})
-    arguments = ["maintenance", "--store", str(tmp_path / "store"),
-                 "--workspace", str(tmp_path)]
+    monkeypatch.setattr(
+        maintenance, "persist_maintenance_health", lambda *a, **k: parent
+    )
+    monkeypatch.setattr(
+        workflows,
+        "read_documents",
+        lambda snapshot: {"maintenance_health": [health, later]},
+    )
+    arguments = [
+        "maintenance",
+        "--store",
+        str(tmp_path / "store"),
+        "--workspace",
+        str(tmp_path),
+    ]
     for context in health["required_context_ids"]:
         arguments += ["--required-context", context]
     assert cli.main(arguments) == 0

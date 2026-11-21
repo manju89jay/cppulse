@@ -1,4 +1,5 @@
 """A derived byte check must not confer original source verification."""
+
 import pytest
 
 from cppulse.errors import ContractError, InputChanged

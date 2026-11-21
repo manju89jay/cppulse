@@ -1,0 +1,603 @@
+{
+  "actual_cases": {
+    "declared-team-alice": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "f3dcd151334bd6221c3b5a10f4a189d202fe7053917acdaa67bfd7cb6ef56726",
+        "size_bytes": 648
+      },
+      "actual_installed_miner_exit": 0,
+      "behavior": {
+        "sha256": "ea6d716a3665cd17a7f9a164b60db57f496ac8ed7e71d279b803511828c23ef5",
+        "size_bytes": 7974
+      },
+      "configured_history_scope_note_retained": true,
+      "fixture_ownership": {
+        "a.cpp": {
+          "author_fragmentation": 0.6399999999999999,
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": false,
+              "share": 0.2,
+              "weighted_changes": 0.5
+            },
+            {
+              "fixture_author": "Carol",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 2,
+          "remaining_share": 0.6,
+          "removed_share": 0.4,
+          "team_assignment_kinds": [
+            "team:core",
+            "team:ops"
+          ],
+          "team_fragmentation": 0.48,
+          "team_shares": [
+            0.6,
+            0.4
+          ],
+          "weighted_mass": 2.5
+        },
+        "bot.cpp": {
+          "author_fragmentation": null,
+          "authorship": [],
+          "available": "unavailable",
+          "remaining_authors_count": 0,
+          "remaining_share": null,
+          "removed_share": null,
+          "team_assignment_kinds": [],
+          "team_fragmentation": null,
+          "team_shares": [],
+          "weighted_mass": 0.0
+        },
+        "unknown.cpp": {
+          "author_fragmentation": 0.0,
+          "authorship": [
+            {
+              "fixture_author": "Dana",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.0,
+          "team_shares": [
+            1.0
+          ],
+          "weighted_mass": 1.0
+        }
+      },
+      "git_metrics": {
+        "sha256": "68cc3a1dd8ac805ae143b5860f8671d9a57a5bbbbf035629ddbba0a200a84780",
+        "size_bytes": 3938
+      },
+      "installed_public_call_receipt": {
+        "sha256": "33ffffc52e6d32d8a7138c772488838482687ef76d170423e72171a2435691c9",
+        "size_bytes": 3423
+      },
+      "requested_behavior": {
+        "sha256": "5fe1fe73a848ac3fc317e264787b3b766583c9b546cd2e178dd31ae168738013",
+        "size_bytes": 767
+      },
+      "verified_component_and_file_ownership_agreement": true
+    },
+    "declared-team-all": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "5525b7e5b9ed7eec9600ba14f47f98b8f9087450b0940a27ba41b098ff6d6e7a",
+        "size_bytes": 642
+      },
+      "actual_installed_miner_exit": 0,
+      "behavior": {
+        "sha256": "e8237ae4c2610427bed65603092a3fc04c56b736fc2edf7bf161d5a12671004c",
+        "size_bytes": 8256
+      },
+      "configured_history_scope_note_retained": true,
+      "fixture_ownership": {
+        "a.cpp": {
+          "author_fragmentation": 0.6399999999999999,
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": false,
+              "share": 0.2,
+              "weighted_changes": 0.5
+            },
+            {
+              "fixture_author": "Carol",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 0,
+          "remaining_share": 0.0,
+          "removed_share": 1.0,
+          "team_assignment_kinds": [
+            "team:core",
+            "team:ops"
+          ],
+          "team_fragmentation": 0.48,
+          "team_shares": [
+            0.6,
+            0.4
+          ],
+          "weighted_mass": 2.5
+        },
+        "bot.cpp": {
+          "author_fragmentation": null,
+          "authorship": [],
+          "available": "unavailable",
+          "remaining_authors_count": 0,
+          "remaining_share": null,
+          "removed_share": null,
+          "team_assignment_kinds": [],
+          "team_fragmentation": null,
+          "team_shares": [],
+          "weighted_mass": 0.0
+        },
+        "unknown.cpp": {
+          "author_fragmentation": 0.0,
+          "authorship": [
+            {
+              "fixture_author": "Dana",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.0,
+          "team_shares": [
+            1.0
+          ],
+          "weighted_mass": 1.0
+        }
+      },
+      "git_metrics": {
+        "sha256": "31e3801035f0cf7270737b10eab85a1b8b169c8dcd6d4378a90e2e3a0b215277",
+        "size_bytes": 3938
+      },
+      "installed_public_call_receipt": {
+        "sha256": "33ffffc52e6d32d8a7138c772488838482687ef76d170423e72171a2435691c9",
+        "size_bytes": 3423
+      },
+      "requested_behavior": {
+        "sha256": "12c0369ed224c38efa78492b55a3bc806c36be6e9ebbddb86c5f6684658bcda8",
+        "size_bytes": 815
+      },
+      "verified_component_and_file_ownership_agreement": true
+    },
+    "declared-team-baseline": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "e8b5f2ce56569dab7ceb3ec2ca3036a9b06632d2676cf24b1bec20fd68765979",
+        "size_bytes": 657
+      },
+      "actual_installed_miner_exit": 0,
+      "behavior": {
+        "sha256": "cced50ab191ee1006990bacb126995ad0b00974f260881c2d82b496bbab4cf10",
+        "size_bytes": 7761
+      },
+      "configured_history_scope_note_retained": true,
+      "fixture_ownership": {
+        "a.cpp": {
+          "author_fragmentation": 0.6399999999999999,
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": false,
+              "share": 0.2,
+              "weighted_changes": 0.5
+            },
+            {
+              "fixture_author": "Carol",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 3,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "team:core",
+            "team:ops"
+          ],
+          "team_fragmentation": 0.48,
+          "team_shares": [
+            0.6,
+            0.4
+          ],
+          "weighted_mass": 2.5
+        },
+        "bot.cpp": {
+          "author_fragmentation": null,
+          "authorship": [],
+          "available": "unavailable",
+          "remaining_authors_count": 0,
+          "remaining_share": null,
+          "removed_share": null,
+          "team_assignment_kinds": [],
+          "team_fragmentation": null,
+          "team_shares": [],
+          "weighted_mass": 0.0
+        },
+        "unknown.cpp": {
+          "author_fragmentation": 0.0,
+          "authorship": [
+            {
+              "fixture_author": "Dana",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.0,
+          "team_shares": [
+            1.0
+          ],
+          "weighted_mass": 1.0
+        }
+      },
+      "git_metrics": {
+        "sha256": "4e87908637505f368bf7d18b688f222b02e21c8c582877f711eef976ea7df683",
+        "size_bytes": 3938
+      },
+      "installed_public_call_receipt": {
+        "sha256": "33ffffc52e6d32d8a7138c772488838482687ef76d170423e72171a2435691c9",
+        "size_bytes": 3423
+      },
+      "requested_behavior": {
+        "sha256": "2b783853955d7fe1873bd4419eadaf373ab8a24f751a550de9f92e5ba5c546e7",
+        "size_bytes": 740
+      },
+      "verified_component_and_file_ownership_agreement": true
+    },
+    "declared-team-core-cohort": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "c1f076a78f87051e08b1d24917e84c5d2039ba795db55e016ef2e738e77dcb88",
+        "size_bytes": 666
+      },
+      "actual_installed_miner_exit": 0,
+      "behavior": {
+        "sha256": "142af5d036b53dbbcde761e08ca606c18e63208618bdc1a71ea84ee8c4cc56f6",
+        "size_bytes": 8179
+      },
+      "configured_history_scope_note_retained": true,
+      "fixture_ownership": {
+        "a.cpp": {
+          "author_fragmentation": 0.6399999999999999,
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": false,
+              "share": 0.2,
+              "weighted_changes": 0.5
+            },
+            {
+              "fixture_author": "Carol",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 0.3999999999999999,
+          "removed_share": 0.6000000000000001,
+          "team_assignment_kinds": [
+            "team:core",
+            "team:ops"
+          ],
+          "team_fragmentation": 0.48,
+          "team_shares": [
+            0.6,
+            0.4
+          ],
+          "weighted_mass": 2.5
+        },
+        "bot.cpp": {
+          "author_fragmentation": null,
+          "authorship": [],
+          "available": "unavailable",
+          "remaining_authors_count": 0,
+          "remaining_share": null,
+          "removed_share": null,
+          "team_assignment_kinds": [],
+          "team_fragmentation": null,
+          "team_shares": [],
+          "weighted_mass": 0.0
+        },
+        "unknown.cpp": {
+          "author_fragmentation": 0.0,
+          "authorship": [
+            {
+              "fixture_author": "Dana",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.0,
+          "team_shares": [
+            1.0
+          ],
+          "weighted_mass": 1.0
+        }
+      },
+      "git_metrics": {
+        "sha256": "aa499bfc6d2882f0942d1b6b88ff14ae3aa46bbe67c963217a621e984e08d50b",
+        "size_bytes": 3938
+      },
+      "installed_public_call_receipt": {
+        "sha256": "33ffffc52e6d32d8a7138c772488838482687ef76d170423e72171a2435691c9",
+        "size_bytes": 3423
+      },
+      "requested_behavior": {
+        "sha256": "f2ae5fda0b748007fef6d8caafc350dae71d835299e0f411697186e3fed43bd8",
+        "size_bytes": 790
+      },
+      "verified_component_and_file_ownership_agreement": true
+    },
+    "unassigned-team-control": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "afe6222e2b000594aa681df5f85cb698318669640113638cf46e5620583cc702",
+        "size_bytes": 660
+      },
+      "actual_installed_miner_exit": 0,
+      "behavior": {
+        "sha256": "05d7525f40b3ec883f67339be0bb784392603b139f6a7c0c9096dcc69c20e0de",
+        "size_bytes": 8183
+      },
+      "configured_history_scope_note_retained": true,
+      "fixture_ownership": {
+        "a.cpp": {
+          "author_fragmentation": 0.6399999999999999,
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": false,
+              "share": 0.2,
+              "weighted_changes": 0.5
+            },
+            {
+              "fixture_author": "Carol",
+              "former_contributor": false,
+              "share": 0.4,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 0.3999999999999999,
+          "removed_share": 0.6000000000000001,
+          "team_assignment_kinds": [
+            "team:core",
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.48,
+          "team_shares": [
+            0.6,
+            0.4
+          ],
+          "weighted_mass": 2.5
+        },
+        "bot.cpp": {
+          "author_fragmentation": null,
+          "authorship": [],
+          "available": "unavailable",
+          "remaining_authors_count": 0,
+          "remaining_share": null,
+          "removed_share": null,
+          "team_assignment_kinds": [],
+          "team_fragmentation": null,
+          "team_shares": [],
+          "weighted_mass": 0.0
+        },
+        "unknown.cpp": {
+          "author_fragmentation": 0.0,
+          "authorship": [
+            {
+              "fixture_author": "Dana",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 1.0
+            }
+          ],
+          "available": "available",
+          "remaining_authors_count": 1,
+          "remaining_share": 1.0,
+          "removed_share": 0.0,
+          "team_assignment_kinds": [
+            "unassigned_individual"
+          ],
+          "team_fragmentation": 0.0,
+          "team_shares": [
+            1.0
+          ],
+          "weighted_mass": 1.0
+        }
+      },
+      "git_metrics": {
+        "sha256": "57eff21ae05a686f4ca548343dac0449341b9981cd33baf20cbe9e21704c2952",
+        "size_bytes": 3938
+      },
+      "installed_public_call_receipt": {
+        "sha256": "33ffffc52e6d32d8a7138c772488838482687ef76d170423e72171a2435691c9",
+        "size_bytes": 3423
+      },
+      "requested_behavior": {
+        "sha256": "63dadf70c269832d26a33ea8d2db3171b4ad70c9a36518392893d56d24bd6ea3",
+        "size_bytes": 758
+      },
+      "verified_component_and_file_ownership_agreement": true
+    }
+  },
+  "actual_finite_case_count": 5,
+  "configured_history_scope_note": "Legacy file metrics use the retained history scope. The configured behavior lookback and cutoff apply only to behavioral metrics; history collection bounds and other limitations still apply.",
+  "criterion": "FR-GIT-05",
+  "criterion_text": "Add weighted ownership, knowledge maps, offboarding simulation, and fragmentation at author/team levels.",
+  "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+  "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+  "finite_qualification": "Five actual installed public Git-miner API subprocesses passed on a fresh authored equivalent five-commit local history. The weighted author and team values retain masses 1, 1/2 and 1, shares 2/5, 1/5 and 2/5, and author/team fragmentation 16/25 and 12/25. File and configured component ownership agree. Core cohort removal keeps Carol at retained share 2/5, removal of all declared authors preserves the unrelated unassigned identity, and bot-only ownership remains unavailable.",
+  "initial_empty_account_home_preflight": {
+    "sha256": "f9c990979ea96329fecf238a12b885878d10e1e891b8ce85c53946cd8bec262b",
+    "size_bytes": 817
+  },
+  "kernel_socket_denial": {
+    "receipt": {
+      "sha256": "cd9bf29fec3fb50def024d01880f0d0d5a378c290f9fe18b95e7a871895d0696",
+      "size_bytes": 581
+    },
+    "scoped_command": [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/current38-batch05/git/recheck.py",
+      "git-05",
+      "/workspace/work/current38-batch05/results/git-05"
+    ],
+    "socket_errno": {
+      "AF_INET": 101,
+      "AF_INET6": 101,
+      "AF_UNIX": 101
+    }
+  },
+  "limits": [
+    "Declared team membership and whose configured cohort is removed are authored inputs. Historical familiarity is a proxy. The fresh fixture does not assert restoration of historical object identities."
+  ],
+  "new_finite_fixture_commit_count": 5,
+  "original_batch_wrapper_exit": 0,
+  "original_observations": [
+    "Baseline, individual removal, team cohort removal, all-declared removal and unassigned-team control ran as distinct installed processes. The complete preserved raw Git object and worktree inventories were independently checked."
+  ],
+  "phase_status": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size_bytes": 2
+  },
+  "scoped_actual_command": [
+    "/workspace/verification-python-venv/bin/python",
+    "-B",
+    "/workspace/work/current38-batch05/git/recheck.py",
+    "git-05",
+    "/workspace/work/current38-batch05/results/git-05"
+  ],
+  "scoped_exit": 0,
+  "unchanged_private_fixture_roles": {
+    "actual_sources_refs_objects_reflogs_and_worktree_unchanged": true,
+    "before_and_after_raw_fixture_commitment": {
+      "sha256": "8f6e0ad6130fe0a0e8035552d2cee507c9552fa3b0c489c6ab72c4ebd196af64",
+      "size_bytes": 3286
+    },
+    "equivalent_authored_declaration": {
+      "sha256": "257635276b92106ceefde916ff2a50356b49fd312c405ecb4c1078a6d22dfe1e",
+      "size_bytes": 3290
+    },
+    "expected_object_graph_commitment": {
+      "sha256": "ba39081d2a46b9aa064e15ba75f3f99da13df8f1b055776bb1b209d4223c1c65",
+      "size_bytes": 10974
+    }
+  }
+}

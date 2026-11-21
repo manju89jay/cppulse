@@ -14,6 +14,12 @@ void CStyleCastRule::check_impl(CXCursor cursor, const std::string& file_path) {
         return;
     }
 
+    // Discarding a value does not convert its representation. The enclosing AST
+    // visitor still inspects children, including unsafe casts inside a discard.
+    if (clang_getCanonicalType(clang_getCursorType(cursor)).kind == CXType_Void) {
+        return;
+    }
+
     CXSourceLocation loc = clang_getCursorLocation(cursor);
     unsigned int line = 0;
     unsigned int column = 0;

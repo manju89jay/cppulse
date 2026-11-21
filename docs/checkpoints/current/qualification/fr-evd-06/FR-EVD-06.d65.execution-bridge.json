@@ -1,0 +1,23 @@
+{
+  "actual_projection_log_sha256": "52c7107a355dc811685e1460129f2b96db3845636153146bed8cc8b4fb7edc73",
+  "already_reviewed_exact_1e_to_d65_archive_comparison": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d",
+    "scope": "Earlier measured wheel 4d2e to current wheel 42a6. This shared actual byte comparison adds no new execution for this criterion."
+  },
+  "complete_private_receipts_by_role": {
+    "actual_consumer_producer_and_reader_summary": "dbdbd1775f6b2b26d486f4762001420ce898efe3ed39f150ae245e6569629ee1",
+    "actual_declared_contracts_junit": "a9afb6783bd4a135b0ed952c5e6e7b614158193a777a3676c96e3f36fe9699ab",
+    "actual_normalized_declared_matrix": "dc55341a9bc928dbf1c9e87adbc633642d4e9efe158815ad48fc8f777224503d",
+    "actual_rejected_report_scope_record": "03d9939a1d14a63b2413a7254900ded8f26f30b3224c5cc568828c65ed821c75",
+    "exact_consumers_registration": "cd41558c8da068f852df775b1f0bf9c143f54853a84de97e05b30ca292ac8b66",
+    "exact_outer_registration": "e20c9836cbfd450d748b3edc36e9dcc029c0a5e5c254fb0c01a01e8d3bdd5680"
+  },
+  "id": "FR-EVD-06",
+  "immutable_independent_whole_review_sha256": "42b2429a7fa7a91be14114b949121804616a2d79cf3f5cb81fc3f57712b426b9",
+  "portability": "An ordinary checkout can recheck relative source hashes. Exact compiled tools, private raw material, snapshots, runtime inputs and original observer records remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact d65 tracked package, contract, test and applicable native inputs. The independent review binds the full earlier registration, raw source/material inputs, runtime, artifacts, commands and their original observed epoch.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

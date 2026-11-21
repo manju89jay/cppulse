@@ -121,6 +121,48 @@ def _failed_attempt(
         stage.publish(manifest)
 
 
+def _legacy_analysis_completed(
+    config: EffectiveConfig, snapshot: "RunSnapshot", report_name: str
+) -> bool:
+    """Check descriptive analysis independently of full-scope health evidence."""
+    from cppulse.contracts.maintenance import BASE_CATEGORIES
+    from cppulse.tooling import load_rule_registry
+
+    metadata = snapshot.read_json("findings")["metadata"]
+    # The archive importer requires an inventory and checks its in-root paths.
+    coverage = metadata["analysis"]
+    scope = [row for row in coverage["files"] if row["status"] != "excluded"]
+    manifest = snapshot.manifest
+    allowed_contexts = (
+        {"database"}
+        if config.compilation_database
+        else {"database", "fallback", "inferred"}
+    )
+    categories = set(BASE_CATEGORIES)
+    if config.settings["profile"] == "safety-critical":
+        categories.add("misra")
+    required_rules = {
+        rule["id"]
+        for rule in load_rule_registry()["rules"]
+        if rule["category"] in categories
+    }
+    return (
+        0 < len(scope) == metadata["file_count"] == len(manifest["source"]["files"])
+        and bool(coverage.get("parser"))
+        and required_rules.issubset(coverage["enabled_rules"])
+        and all(
+            row["status"] == "analyzed"
+            and row["error_count"] == 0
+            and row["compile_context"] in allowed_contexts
+            and row.get("parse_arguments")
+            and row.get("working_directory")
+            and Path(row["working_directory"]).is_absolute()
+            for row in scope
+        )
+        and any(entry["path"] == report_name for entry in manifest["artifacts"])
+    )
+
+
 def analyze(
     config: EffectiveConfig, *, report_format: str = "html", timeout: float = 300
 ) -> dict[str, Any]:
@@ -200,23 +242,22 @@ def analyze(
                 predict(work, work, profile=config.settings["profile"])
             except SystemExit as error:
                 raise RuntimeError(f"Predictor exited {error.code}") from error
-            generate_report(work, report_format, work / f"report.{report_format}")
+            report_name = f"report.{report_format}"
+            generate_report(work, report_format, work / report_name)
             summary = import_pipeline(work, config.repo, config.output)
-            snapshot = RunStore(config.output).open_run(summary["run_id"])
-            health = snapshot.read_json("risk_scores")["health_score"]
-            # A completed archive import only means artifacts were retained.
-            # Keep the producer's analysis availability separate so the public
-            # CLI cannot report a partial or source-free run as success.
+            snapshot = RunStore(config.output).open_run(
+                summary["run_id"], manifest_sha256=summary["manifest_sha256"]
+            )
             summary["analysis_status"] = (
                 "completed"
-                if health.get("status") == "scored" and health["overall"] is not None
+                if _legacy_analysis_completed(config, snapshot, report_name)
                 else "partial"
             )
             # Flat files preserve original scripts. Snapshot readers, not these
             # separately replaced compatibility exports, provide coherent reads.
             for name in (
                 *[f"{name}.json" for name in DOCUMENTS],
-                f"report.{report_format}",
+                report_name,
                 "git_behavior.json",
                 "git_history.json",
             ):
@@ -240,7 +281,11 @@ def analyze(
                     "worker_limits_applied": False,
                     "run_path": str(snapshot.path),
                     "legacy_data": str(snapshot.path / "legacy"),
-                    "report": str(snapshot.path / f"report.{report_format}"),
+                    "report": (
+                        str(snapshot.path / report_name)
+                        if (snapshot.path / report_name).is_file()
+                        else None
+                    ),
                     "limitations": snapshot.manifest["limitations"],
                 }
             )
@@ -429,32 +474,33 @@ def _publish_bounded(
         inputs_by_content: dict[tuple[str, str], str] = {}
         bindings: list[dict[str, Any]] = []
         integrity_events: list[str] = []
+        frozen_metadata: dict[Path, str] = {}
         result_pins = {row["unit_id"]: row for row in execution.summary["results"]}
         frozen_directory = generated / "frozen-execution"
         frozen_directory.mkdir(exist_ok=True)
+
+        def metadata_digest(path: Path) -> str | None:
+            try:
+                return hash_artifact(
+                    path, "observed", "observed.bin", "application/octet-stream"
+                )["sha256"]
+            except (ContractError, IntegrityError, InputChanged, OSError):
+                return None
 
         def retain_frozen(
             identifier: str,
             original_path: Path,
             destination: str,
-            document: dict[str, Any],
+            document: Any,
             expected_sha256: str,
         ) -> None:
             if digest_json(document) != expected_sha256:
                 raise IntegrityError(
                     "In-memory execution material differs from its frozen digest"
                 )
-            try:
-                observed = hash_artifact(
-                    original_path,
-                    "observed",
-                    "observed.bin",
-                    "application/octet-stream",
-                )
-                changed_material = observed["sha256"] != expected_sha256
-            except (ContractError, IntegrityError, OSError):
-                changed_material = True
-            if changed_material:
+            observed = metadata_digest(original_path)
+            frozen_metadata[original_path] = expected_sha256
+            if observed != expected_sha256:
                 integrity_events.append(
                     "Post-execution material changed: "
                     + identifier
@@ -615,6 +661,16 @@ def _publish_bounded(
             execution.plan,
             execution.summary["plan_sha256"],
         )
+        if execution.compilation_database is not None:
+            # Retain declarations even when every entry is unassessed and no
+            # worker exists to carry a per-unit database input artifact.
+            retain_frozen(
+                "analysis-compilation-database",
+                execution.work_root / "compile_commands.json",
+                "execution/compile_commands.json",
+                execution.compilation_database,
+                execution.plan["compilation_database_sha256"],
+            )
         retain_frozen(
             "source-observations",
             execution.work_root / "source-observations.json",
@@ -649,7 +705,10 @@ def _publish_bounded(
 
         def source_check() -> None:
             errors = verify_inputs(config.repo, execution.source)
-            paths, gaps = discover_sources(config.repo)
+            database, database_digest = _database(
+                config, config.execution["output_bytes"]
+            )
+            paths, gaps = discover_sources(config.repo, database)
             observations = execution.source_observations
             _check("analysis_source_observations", observations)
             if (
@@ -669,10 +728,7 @@ def _publish_bounded(
                 raise InputChanged(
                     "Source inventory changed before bounded publication"
                 )
-            if (
-                _database(config, config.execution["output_bytes"])[1]
-                != plan["compilation_database_sha256"]
-            ):
+            if database_digest != plan["compilation_database_sha256"]:
                 raise InputChanged(
                     "Compilation database changed before bounded publication"
                 )
@@ -717,7 +773,10 @@ def _publish_bounded(
         from cppulse.sdk_inputs import retain_used_sdk_inputs
 
         retain_used_sdk_inputs(stage, execution)
-        verified = execution.summary["input_verification"] == "verified"
+        verified = (
+            execution.summary["input_verification"] == "verified"
+            and not integrity_events
+        )
         if verified:
             try:
                 source_check()
@@ -748,9 +807,7 @@ def _publish_bounded(
                     "status": (
                         "passed"
                         if execution.summary["status"] == "completed" and verified
-                        else "cancelled"
-                        if status == "cancelled"
-                        else "error"
+                        else "cancelled" if status == "cancelled" else "error"
                     ),
                     "depends_on": [],
                     "reason": "Original independent native execution receipts retained; compatibility aggregation is not a native invocation.",
@@ -760,9 +817,7 @@ def _publish_bounded(
                     "status": (
                         "passed"
                         if complete
-                        else "cancelled"
-                        if interrupted
-                        else "error"
+                        else "cancelled" if interrupted else "error"
                     ),
                     "depends_on": ["bounded-native-analysis"],
                     "reason": (
@@ -853,9 +908,7 @@ def _publish_bounded(
                     source_digest=execution.source["digest"],
                 )
             except SystemExit as error:
-                raise RuntimeError(
-                    f"Pipeline consumer exited {error.code}"
-                ) from error
+                raise RuntimeError(f"Pipeline consumer exited {error.code}") from error
             generate_report(
                 generated, report_format, generated / f"report.{report_format}"
             )
@@ -915,11 +968,23 @@ def _publish_bounded(
                 "Failed consumer outputs are retained as diagnostic bytes; they do not supply current qualified health or recommendations."
             )
         final_manifest["artifacts"] = stage.artifacts
+
+        def metadata_check() -> None:
+            if not complete or integrity_events:
+                return
+            for path, expected in frozen_metadata.items():
+                if metadata_digest(path) != expected:
+                    raise InputChanged(
+                        "Frozen work-unit metadata changed before bounded publication"
+                    )
+
         # Never demote already-written qualified facts after a final race.
         # A failure retains the owned stage and leaves every reader pointer
         # untouched; outer failure handling can construct a fresh partial run.
         snapshot = stage.publish(
-            final_manifest, source_check=source_check if verified else None
+            final_manifest,
+            source_check=source_check if verified else None,
+            material_check=metadata_check,
         )
     try:
         from cppulse.analysis_execution import index_published_execution

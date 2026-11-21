@@ -41,9 +41,9 @@ def arguments(data: dict[str, Any], store: Path) -> dict[str, Any]:
 def bundle_bytes(directory: Path) -> dict[str, str]:
     """Detect any imported file addition, removal or content mutation."""
     return {
-        path.relative_to(directory).as_posix(): hashlib.sha256(
-            path.read_bytes()
-        ).hexdigest()
+        path.relative_to(directory)
+        .as_posix(): hashlib.sha256(path.read_bytes())
+        .hexdigest()
         for path in directory.rglob("*")
         if path.is_file()
     }

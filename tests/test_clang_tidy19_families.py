@@ -137,6 +137,13 @@ def _live_request(workspace: Path, case: dict[str, Any], tool: Path) -> dict[str
     assert (
         compiler.is_file()
     ), "The declared GCC14 context is required; no silent replacement"
+    resource = Path(
+        os.environ.get(
+            "CPPULSE_CLANG_RESOURCE_DIR",
+            "/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19",
+        )
+    ).resolve(strict=True)
+    assert (resource / "include/stddef.h").is_file()
     argv = [
         str(tool),
         "source.cpp",
@@ -150,7 +157,7 @@ def _live_request(workspace: Path, case: dict[str, Any], tool: Path) -> dict[str
         "-std=c++17",
         "-D" + case["macro"],
         "-Wno-dangling-gsl",
-        "-resource-dir=/workspace/cppulse/work/native-deps/usr/lib/llvm-19/lib/clang/19",
+        "-resource-dir=" + str(resource),
     ]
     build_argv = [
         str(compiler),

@@ -225,7 +225,7 @@
     },
     {
       "id": "CPP-MOD-001",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "modernization",
       "required_capabilities": [
@@ -252,11 +252,11 @@
           "order": 3
         }
       },
-      "documentation": "Detect C-style cast expressions. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Detect non-void C-style cast expressions, including nested non-void conversions inside intentional discards. Canonical void-result casts and void aliases are exempt; named C++ casts are unchanged. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
     },
     {
       "id": "CPP-MOD-002",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "modernization",
       "required_capabilities": [
@@ -283,7 +283,7 @@
           "order": 4
         }
       },
-      "documentation": "Detect inclusion of deprecated C headers. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Suggest C++ replacements only for direct literal unqualified angle operands such as <stdio.h> resolved to compiler-classified system headers. Qualified, quoted, macro-expanded and non-system project shadow includes are excluded; transitive includes are not replacements for their including directive. Compiler-marked system roots are trusted rather than independently standard-library attested. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
     },
     {
       "id": "CPP-MOD-003",
@@ -380,7 +380,7 @@
     },
     {
       "id": "CPP-MOD-006",
-      "version": "prototype-1",
+      "version": "prototype-2",
       "maturity": "experimental",
       "category": "modernization",
       "required_capabilities": [
@@ -407,7 +407,7 @@
           "order": 8
         }
       },
-      "documentation": "Suggest range-based for loops for index-based loops. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
+      "documentation": "Suggest range-for only for a conservative fixed-array accumulation: a zero-initialized int/unsigned index, a matching literal constant-array bound, unit increment and one built-in scalar += of array[index]. Pointer ranges, extra index uses, mutation, calls, aliases, volatile values and other loop shapes remain unassessed. This is a review suggestion, not an automatic rewrite or general equivalence proof. Availability depends on a successfully parsed selected context; findings are experimental signals, not compliance evidence."
     },
     {
       "id": "CPP-MOD-007",

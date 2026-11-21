@@ -1037,9 +1037,39 @@ def persist_work_unit_analysis(
             "Derived bounded analysis must check its original source root"
         )
 
+    database = None
+    if plan["compilation_database_sha256"] is not None:
+        if any(
+            entry["id"] == "analysis-compilation-database"
+            for entry in manifest["artifacts"]
+        ):
+            database = _retained_json(
+                snapshot.read_bytes("analysis-compilation-database"),
+                "compilation database",
+            )
+        else:
+            # Older runs retain the same original database with each worker.
+            for unit in normalized.units:
+                if "compilation_database" in unit.inputs:
+                    database = _retained_json(
+                        unit.inputs["compilation_database"], "compilation database"
+                    )
+                    break
+        if database is not None and (
+            not isinstance(database, list)
+            or digest_json(database) != plan["compilation_database_sha256"]
+        ):
+            raise IntegrityError(
+                "Retained discovery database differs from original plan"
+            )
+
     def source_check() -> None:
         errors = verify_inputs(workspace, manifest["source"])
-        files, gaps = discover_sources(workspace)
+        if plan["compilation_database_sha256"] is not None and database is None:
+            errors.append(
+                "Original compilation declarations are unavailable for rediscovery"
+            )
+        files, gaps = discover_sources(workspace, database)
         if (
             files != sorted(row["path"] for row in manifest["source"]["files"])
             or gaps != plan["discovery_gaps"]

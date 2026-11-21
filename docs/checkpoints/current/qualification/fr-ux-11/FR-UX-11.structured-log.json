@@ -1,0 +1,197 @@
+{
+  "actual_phases": {
+    "privacy-installed": {
+      "actual_denial": {
+        "actual_blocked_families_errno": {
+          "AF_INET": 101,
+          "AF_INET6": 101,
+          "AF_UNIX": 101
+        },
+        "actual_exec": [
+          "/workspace/verification-python-venv/bin/python",
+          "-B",
+          "/workspace/work/current38-next/criteria/run_original.py",
+          "privacy-installed",
+          "/workspace/work/current38-next/results/privacy-installed",
+          "/workspace/work/attribution-epoch/checkout"
+        ],
+        "local_environment": "Empty account home, Docker network-none and inherited kernel socket denial",
+        "receipt": {
+          "sha256": "fb5468b71e207d56d5954f3a2683df2cbe5c5d779b939501fd05516f455888e5",
+          "size_bytes": 657
+        }
+      },
+      "actual_exit": 0,
+      "actual_prefix_mode": "installed",
+      "argv": [
+        "bash",
+        "/workspace/work/current38-next/criteria/launch_original.sh",
+        "privacy-installed"
+      ],
+      "exit_receipt": {
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "size_bytes": 2
+      },
+      "module_and_test_readback": {
+        "sha256": "8b1c2d3d3983f1fa9ba224d09621b45aa3377c9535c18feaa998b16480af8198",
+        "size_bytes": 1904
+      },
+      "outcome": {
+        "actual_cases": 3,
+        "case_names": [
+          "test_function_redacts_real_failed_probe_and_private_user_inputs",
+          "test_public_cli_excludes_token_from_actual_optional_metadata_producer",
+          "test_public_cli_redacts_real_discovery_error_path_and_keeps_safe_code"
+        ],
+        "errors": 0,
+        "failures": 0,
+        "junit": {
+          "sha256": "9f0b1b4e271d4a392c3c19395ed3007f65af169b1dbbf3b8b3bbf370bc2daf03",
+          "size_bytes": 720
+        },
+        "skips": 0
+      },
+      "pre_test_home_empty": true
+    },
+    "privacy-source": {
+      "actual_denial": {
+        "actual_blocked_families_errno": {
+          "AF_INET": 101,
+          "AF_INET6": 101,
+          "AF_UNIX": 101
+        },
+        "actual_exec": [
+          "/workspace/verification-python-venv/bin/python",
+          "-B",
+          "/workspace/work/current38-next/criteria/run_original.py",
+          "privacy-source",
+          "/workspace/work/current38-next/results/privacy-source",
+          "/workspace/work/attribution-epoch/checkout"
+        ],
+        "local_environment": "Empty account home, Docker network-none and inherited kernel socket denial",
+        "receipt": {
+          "sha256": "2b57ec97c67cdfa999c1f8d4c413b3b49f97a91921bc0a702fca4680e28ae22e",
+          "size_bytes": 651
+        }
+      },
+      "actual_exit": 0,
+      "actual_prefix_mode": "source",
+      "argv": [
+        "bash",
+        "/workspace/work/current38-next/criteria/launch_original.sh",
+        "privacy-source"
+      ],
+      "exit_receipt": {
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "size_bytes": 2
+      },
+      "module_and_test_readback": {
+        "sha256": "c5deac37f673596219bedaed3e1830abb15ed6842d32af084ad2b51657a59f66",
+        "size_bytes": 3273
+      },
+      "outcome": {
+        "actual_cases": 4,
+        "case_names": [
+          "test_function_redacts_real_failed_probe_and_private_user_inputs",
+          "test_public_cli_excludes_token_from_actual_optional_metadata_producer",
+          "test_public_cli_redacts_real_discovery_error_path_and_keeps_safe_code",
+          "test_diagnostics_default_excludes_paths_environment_and_raw_errors"
+        ],
+        "errors": 0,
+        "failures": 0,
+        "junit": {
+          "sha256": "459ba3e8c447993f97cc7405d77e4c9a5a7fdbab62cab00a1924197b7098f9a8",
+          "size_bytes": 856
+        },
+        "skips": 0
+      },
+      "pre_test_home_empty": true
+    }
+  },
+  "criterion": "FR-UX-11",
+  "criterion_text": "A local bug-report bundle shall exclude source excerpts, credentials, tokens, and unrestricted environment dumps by default. Upload is a separate explicit action.",
+  "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+  "historical_execution": {
+    "actual_exit": 0,
+    "argv": [
+      "bash",
+      "/workspace/work/current38-next/criteria/run_batch.sh"
+    ],
+    "finished_utc": "2026-11-20T22:40:24.529609+00:00",
+    "guarded_file_count": 2705,
+    "job_log": {
+      "sha256": "32a2eb7ecf5e4a9cdf016a33c70323a63463ad2fa1e81ac9892af85607aac224",
+      "size_bytes": 1005
+    },
+    "job_record": {
+      "sha256": "96b1c877d4a756fd6d98f85c3186e161431c698d52b8b939effec42ec8b3d2e1",
+      "size_bytes": 922123
+    },
+    "registration": {
+      "sha256": "6d02b1e1207627eabc5e5ae3cef28d8eaa65a8fad908c84eef9615bc205850a6",
+      "size_bytes": 460903
+    },
+    "runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries": 260105,
+    "source_and_runtime_stable": true,
+    "started_utc": "2026-11-20T22:39:18.337063+00:00"
+  },
+  "kind": "Public structured projection of independently accepted prior execution",
+  "receiving_candidate_was_executed_by_this_lane": false,
+  "retains_prior_execution_identity": true,
+  "scope_limits": [
+    "The extra source compatibility case intentionally supplies a controlled doctor snapshot. Producer metadata and inputs are authored fixtures. An uploader or external sharing service was outside this qualification."
+  ],
+  "separate_upload_control": {
+    "actual_exit": 2,
+    "archive_created": false,
+    "argv": [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "-m",
+      "cppulse",
+      "diagnostics",
+      "--upload",
+      "--output",
+      "/workspace/work/current38-next/results/privacy-installed/unexpected-upload.zip"
+    ],
+    "diagnostic": "unrecognized arguments: --upload",
+    "original_receipt": {
+      "sha256": "98f6a27b9fac78efe3c7315a7d833b7fe1694c340f79bfb8d6136961e941f65e",
+      "size_bytes": 706
+    },
+    "stdout_empty": true
+  },
+  "successful_local_archives": {
+    "discovery-default.zip": {
+      "archive": {
+        "sha256": "bad1a9ea4fb2316023dcee1102b6913b3704f035052d00221f6e0c6d7c238370",
+        "size_bytes": 447
+      },
+      "members": [
+        "diagnostics.json"
+      ]
+    },
+    "function-default.zip": {
+      "archive": {
+        "sha256": "14323cad7ae91ebffddea87fa9d796aa5c24289291e26d82529c07cb5963bbdf",
+        "size_bytes": 422
+      },
+      "members": [
+        "diagnostics.json"
+      ]
+    },
+    "optional-metadata-default.zip": {
+      "archive": {
+        "sha256": "281911ffe9c481818cb8d87ddfd3af1d5cf4a80c7234b701720b14ddc54eb076",
+        "size_bytes": 421
+      },
+      "members": [
+        "diagnostics.json"
+      ]
+    }
+  }
+}

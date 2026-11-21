@@ -9,6 +9,7 @@
 #include <clang-c/CXCompilationDatabase.h>
 
 #include <filesystem>
+#include <map>
 #include <optional>
 #include <string>
 #include <vector>
@@ -47,9 +48,11 @@ class FileAnalyzer {
         std::optional<std::vector<std::filesystem::path>> selected_files = std::nullopt);
 
     /**
-     * @brief Discover all C++ files and apply every rule to each file.
+     * @brief Reconcile discovered/declared inputs and analyze supported source files.
      *
      * After this call, findings() and file_count() are populated.
+     * Unsupported, missing and unsafe database declarations remain unassessed
+     * coverage rows. Configured and heuristic generated-file exclusions are explicit.
      * Calling run() a second time resets and re-runs the analysis.
      */
     void run();
@@ -131,6 +134,7 @@ class FileAnalyzer {
     std::optional<ProjectConfig> config_;
     std::optional<std::filesystem::path> compilation_database_;
     std::vector<std::filesystem::path> recorded_files_;
+    std::map<std::filesystem::path, std::string> recorded_file_issues_;
     std::optional<std::filesystem::path> resource_directory_;
     std::optional<std::vector<std::filesystem::path>> selected_files_;
     AnalysisCoverage coverage_;

@@ -1,4 +1,5 @@
 """Owned Docker observations; never a native host-PID or closure certificate."""
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -379,11 +380,11 @@ def _output(raw: bytes, request: dict, expected_status: dict) -> tuple[dict, ...
             metadata.append(
                 {
                     "path": name,
-                    "kind": "hardlink"
-                    if member.islnk()
-                    else "regular"
-                    if member.isfile()
-                    else "directory",
+                    "kind": (
+                        "hardlink"
+                        if member.islnk()
+                        else "regular" if member.isfile() else "directory"
+                    ),
                     "size_bytes": member.size,
                     "target": member.linkname if member.islnk() else None,
                     "resolved_target": target,
@@ -571,11 +572,11 @@ def _observe_owned(
         except (Exception, KeyboardInterrupt) as error:
             message = (type(error).__name__ + ": " + str(error)).encode()[:1024]
             result = DockerCommandResult(
-                "cancelled"
-                if isinstance(error, KeyboardInterrupt)
-                else "timed_out"
-                if isinstance(error, TimeoutError)
-                else "error",
+                (
+                    "cancelled"
+                    if isinstance(error, KeyboardInterrupt)
+                    else "timed_out" if isinstance(error, TimeoutError) else "error"
+                ),
                 None,
                 b"",
                 message,
@@ -846,9 +847,7 @@ def _observe_owned(
         outcome = (
             "exec_failed"
             if native["native_exec_errno"] is not None
-            else "observed"
-            if native["native_exit_code"] == 0
-            else "native_failed"
+            else "observed" if native["native_exit_code"] == 0 else "native_failed"
         )
     except (
         ContractError,

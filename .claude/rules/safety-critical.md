@@ -15,7 +15,7 @@ analyze. analyzer-core must itself embody the standards it enforces.
 
 ## Concurrency Safety
 - No global mutable state — all shared state explicitly synchronized
-- Synchronize concurrently accessed results. Prefer isolated worker results and owner-only aggregation; a mutex is not required for state accessed by a single owner.
+- A FileAnalyzer instance visits translation units sequentially. Synchronize concurrently accessed results if that changes. Prefer isolated worker results and owner-only aggregation; a mutex is not required for state accessed by a single owner.
 - No data races — validate with ThreadSanitizer (`-fsanitize=thread`) before merge
 
 ## Error Paths

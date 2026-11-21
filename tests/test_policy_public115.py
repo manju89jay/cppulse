@@ -12,7 +12,6 @@ import os
 from pathlib import Path
 import subprocess
 
-import cppulse
 import pytest
 from cppulse.contracts import validate, validate_bundle, validate_evaluation_policy
 from cppulse.errors import ContractError, UnsupportedVersion

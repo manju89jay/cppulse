@@ -266,7 +266,7 @@ def test_postflight_dependency_disappearance_retains_changed_receipts(
     original = engine.discover_sources
     calls = 0
 
-    def disappearing_after_worker(root: Path):
+    def disappearing_after_worker(root: Path, database=None):
         nonlocal calls
         calls += 1
         if calls == 2:
@@ -274,7 +274,7 @@ def test_postflight_dependency_disappearance_retains_changed_receipts(
                 isolated_native.unlink()
             else:
                 shutil.rmtree(resource_root)
-        return original(root)
+        return original(root, database)
 
     monkeypatch.setattr(engine, "discover_sources", disappearing_after_worker)
     result = run_analysis(cfg, selected, tmp_path / "work", timeout=60)

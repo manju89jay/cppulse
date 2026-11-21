@@ -4,8 +4,6 @@
 #include <clang-c/Index.h>
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
@@ -15,6 +13,7 @@
 
 #include "analyzer.h"
 #include "output_writer.h"
+#include "test_temp_directory.h"
 
 namespace {
 

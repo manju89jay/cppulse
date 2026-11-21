@@ -74,8 +74,7 @@ def test_all_job_stages_are_valid(ci_config: dict, jobs: dict[str, dict]) -> Non
     valid_stages = set(ci_config["stages"])
     for name, job in jobs.items():
         assert job["stage"] in valid_stages, (
-            f"Job '{name}' uses stage '{job['stage']}' "
-            f"not in {valid_stages}"
+            f"Job '{name}' uses stage '{job['stage']}' " f"not in {valid_stages}"
         )
 
 
@@ -96,9 +95,9 @@ def test_script_items_are_strings(jobs: dict[str, dict]) -> None:
             block = job.get(field)
             if block is None:
                 continue
-            assert isinstance(block, list), (
-                f"{name}.{field} must be a list, got {type(block).__name__}"
-            )
+            assert isinstance(
+                block, list
+            ), f"{name}.{field} must be a list, got {type(block).__name__}"
             for i, item in enumerate(block):
                 assert isinstance(item, str), (
                     f"{name}.{field}[{i}] must be a string, "

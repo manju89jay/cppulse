@@ -1,0 +1,105 @@
+{
+  "criterion": "FR-UX-12",
+  "exact_prior_independent_review": {
+    "sha256": "50fe6d4dba4c9ba647f3fc587c023f0546f48f17c400012e28b40a2ec0f1005d",
+    "size_bytes": 21059
+  },
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Static dependency bridge for the independently accepted prior typed scope",
+  "observed_projection_log_sha256": "a93daf57d2cc1afcf810ff8170c9ed1eb525ecd0827f23765a8a98f29d57ba3e",
+  "original_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "prior_guard_roles": {
+    "original_measured_producers": {
+      "actual_exit": 1,
+      "before_after_direct_input_map_sha256": "77b41602dc3aed4343fb14a0175ef762950faeec09bb528929c24f48c089bd80",
+      "original_record": {
+        "sha256": "0c74aadc4798cf056b1096e02b9409ebacab0c86ffead04838a446764ec88413",
+        "size_bytes": 5000484
+      },
+      "outer_command_sha256": "c5a15f93866791a3689047f99c93501cc73b058d6310cf4f86c9cdd0b1523fb9",
+      "raw_log": {
+        "sha256": "e3eb67d5ff1b7797fe1916f9ffde6687867c41414b4d3856e0528a4100c65f68",
+        "size_bytes": 1705
+      },
+      "registered_inputs": {
+        "sha256": "c01c39acc48d82e31ee9707625643b11a51415d39b240f6ec0381c0b01cd628a",
+        "size_bytes": 2500178
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 13355,
+      "stable_runtime_entries": 260105
+    },
+    "sealed_readback": {
+      "actual_exit": 0,
+      "before_after_direct_input_map_sha256": "9b33814770a83ab92c07cf43bd3da1c28b87dd38d3f38b0c6bfb98a97e4550ad",
+      "original_record": {
+        "sha256": "ad28924b23063311b7bf4439476d7b30b939b04667e45dbc1c4901ac6741590c",
+        "size_bytes": 1117450
+      },
+      "outer_command_sha256": "7ef53628e47d19ac61fc7ef9cb412d5ca6e8eb452653614bee6de9187893c7c2",
+      "raw_log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "registered_inputs": {
+        "sha256": "f0c58a734b1b6bf51e5e1c48f6f9ab633ae507815405170f02a7610e709b76b7",
+        "size_bytes": 558961
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 2088,
+      "stable_runtime_entries": 260105
+    }
+  },
+  "prior_input_roles_retained_in_custody": {
+    "initial_account_home_receipt": {
+      "sha256": "4553dea9ae95802a103fb7c7e413937b6d766e00bc3b3a39e41e171ab0723962",
+      "size_bytes": 1557
+    },
+    "original_and_readback_role_reports": {
+      "sha256": "353839dc4f2610ad27e02f452e3a892b4e80fcbb33d25422bd07f19222019163",
+      "size_bytes": 26097
+    },
+    "original_criterion_material": [
+      {
+        "sha256": "3a2d518268919f49097c1cbf7c83fe6d521f3adad5062591893836d0ec349954",
+        "size_bytes": 6582022
+      },
+      {
+        "sha256": "b9385398914095ce8f045bd3cf90915d310b9e1a9c0e0aa2114242728fe6c8c9",
+        "size_bytes": 9233
+      }
+    ],
+    "registered_finite_source_and_pack_set": [
+      {
+        "sha256": "c01c39acc48d82e31ee9707625643b11a51415d39b240f6ec0381c0b01cd628a",
+        "size_bytes": 2500178
+      },
+      {
+        "sha256": "f0c58a734b1b6bf51e5e1c48f6f9ab633ae507815405170f02a7610e709b76b7",
+        "size_bytes": 558961
+      }
+    ]
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_execution_claimed": false,
+  "replay_material": "The original toolchain, exact package, registered observers, source, finite fixtures, custody bodies, outputs and runtime environment are available separately through owner custody.",
+  "selected_source_scope": "All 242 receiving package paths, original offline closeout, native rule-set contract, requirement and package source. The actual old native executable, authored finite TUs and local pack bodies stay in the immutable registered custody together with the actual B15 report outputs.",
+  "semantic_impact_of_delta": "Both native analyze commands reached downstream prediction and produced recorded legacy roadmaps. The changed tie sort can change future newly produced roadmap ordering and compatibility report bytes. Two native translation-unit receipts, verified input state and the unsupported SDK distinction concern work-unit execution and typed normalization established upstream. The partial SDK run remains unverified despite a passed consumer stage and its retained one-item compatibility roadmap. Offline eligibility, initial empty account home, retained policy-pack selection and typed assess/check/report refusals are separate from prediction. The typed policy report manifests have no roadmap artifact. Readback reverified the original sealed material without generating a new native or policy artifact. A new d65 native command or report content is outside this receipt.",
+  "shared_exact_boundary_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

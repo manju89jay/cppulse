@@ -1,0 +1,79 @@
+{
+  "criterion": "FR-EVD-08",
+  "exact_shared_source_and_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Exact binding of prior signed source and artifact roles to the approved receiving scope",
+  "observed_projection_log_sha256": "019fba18761e7c4e00b0e5c7b718b247098d6c84ea90820c92d77b472884e200",
+  "old_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "original_independent_review": {
+    "sha256": "91fac9d01bd78d3adb506d464ed5c0489616f37e06fc696e08bb6cc4e401e7b4",
+    "size_bytes": 170127
+  },
+  "original_wrapper_guard": {
+    "actual_exit": 0,
+    "actual_job_record": {
+      "sha256": "086947b0b71f20c17ad2c8246ae5ecaff95b83672a6594a2f8ce87705bec029f",
+      "size_bytes": 3425916
+    },
+    "original_full_before_after_map_sha256": "f5ac06cb193cadedf5b8f1ae6d6384520d7bb25ad82db51a699a3b97d676d2de",
+    "outer_command_sha256": "8d432915abfb7b9e8e9b139eab381a60ee4479622fe9a6723eb4881134ed6326",
+    "raw_job_log": {
+      "sha256": "b8410404f65b1946e8e0f155ed4b9f351ae7bf3fbb5da13e86adb2e8ec1d22a8",
+      "size_bytes": 169
+    },
+    "registered_inputs": {
+      "sha256": "7fe17846dc99bb4007c0f92024d44d143595a3b16ca9d25268b7c7030eb94bdc",
+      "size_bytes": 1714398
+    },
+    "resource_stop": null,
+    "runtime_before_and_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries_verified": 260105,
+    "stable_guard_count": 10074
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_comparison_only": true,
+  "replay_prerequisite": "The prior exact wheel, registered runtime manifest, guarded source and named raw inputs and commands remain in owner custody. Restore those registered inputs to repeat the finite measured scope.",
+  "retains_prior_execution_identity": true,
+  "reviewed_roles_in_private_custody": {
+    "authored_observer": {
+      "sha256": "d7c06e81cef5ed17a7a5010f90a47cf5352a13277322bbaf340b31c21a560509",
+      "size_bytes": 18872
+    },
+    "exact_case_declarations": {
+      "sha256": "72d72ddec65d59bd54f6d0c383ec1b52c9975ac729f574bcfab1df3bb79d82c9",
+      "size_bytes": 1513
+    },
+    "observer_checkout_fixture_roles": [
+      "demo/sanitizer-fixture/CMakeLists.txt",
+      "demo/sanitizer-fixture/CTestCustom.cmake",
+      "demo/sanitizer-fixture/CTestCustom.ctest",
+      "demo/sanitizer-fixture/main.cpp",
+      "demo/sanitizer-fixture/prebuilt.cpp",
+      "docs/checkpoints/20261117/runtime-instrumentation.md",
+      "scripts/demo_sanitizers.py",
+      "tests/test_evidence_collection116.py"
+    ],
+    "producer_capture": "Original ELF, object relocation, archive, CTest and store bodies are retained in owner custody.",
+    "registered_source_runtime_and_tool_inputs": {
+      "sha256": "7fe17846dc99bb4007c0f92024d44d143595a3b16ca9d25268b7c7030eb94bdc",
+      "size_bytes": 1714398
+    },
+    "whole_observation": {
+      "sha256": "bf0429442216c551b31546e1dc71192799f84b791a706a138e8a9d1a42714366",
+      "size_bytes": 3793
+    }
+  },
+  "scope_input_selection": "All 242 receiving package namespace paths, exact original tracked sanitizers driver and five finite fixture files, original directly invoked assertion module, requirements/checkpoint and package configuration.",
+  "semantic_path_influence": "The tracked sanitizer driver calls the measured build/test tools and typed collection. The original assertion normalizes observed installed evidence, invokes the policy helper and issues six typed installed report commands. Their exact selected assessment manifests carry no roadmap artifact. The only package byte delta changes roadmap tie ordering. Neither changed governance document nor the new roadmap-order test participates."
+}

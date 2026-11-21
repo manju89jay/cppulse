@@ -4,8 +4,6 @@
  */
 
 #include "analyzer.h"
-#include "generated_rule_registration.h"
-#include "native_execution_limits.h"
 
 #include <clang-c/CXCompilationDatabase.h>
 #include <clang-c/Index.h>
@@ -19,7 +17,9 @@
 
 #include "config.h"
 #include "file_discovery.h"
+#include "generated_rule_registration.h"
 #include "metrics.h"
+#include "native_execution_limits.h"
 #include "rule_engine.h"
 
 namespace cppulse {
@@ -32,6 +32,45 @@ std::string to_string_and_dispose(CXString cx_str) {
     std::string result = (c_str != nullptr) ? c_str : "";
     clang_disposeString(cx_str);
     return result;
+}
+
+/// @brief Explain declared inputs that cannot safely become parser work.
+std::optional<std::string> unassessed_source_reason(const std::filesystem::path& root,
+                                                    const std::filesystem::path& path) {
+    const auto boundary = std::filesystem::absolute(root).lexically_normal();
+    const auto spelling = std::filesystem::absolute(path);
+    const auto relative = spelling.lexically_normal().lexically_relative(boundary);
+    if (relative.empty() || relative.is_absolute() || *relative.begin() == "..") {
+        return "declared compilation unit is outside the selected repository root";
+    }
+    const auto identity = relative.generic_string();
+    if (identity.find('\\') != std::string::npos || identity.find(':') != std::string::npos ||
+        std::any_of(identity.begin(), identity.end(),
+                    [](unsigned char ch) { return ch < 32 || ch == 127; })) {
+        return "declared compilation unit has an unsafe source identity";
+    }
+    // Inspect the original spelling before collapsing '..': link/../source
+    // must not turn a symlink-bearing declaration into an apparently safe file.
+    auto current = spelling.root_path();
+    std::error_code error;
+    for (const auto& component : spelling.relative_path()) {
+        current /= component;
+        const auto info = std::filesystem::symlink_status(current, error);
+        if (error || !std::filesystem::exists(info)) {
+            return "declared compilation source is missing or unreadable";
+        }
+        if (std::filesystem::is_symlink(info)) {
+            return "declared compilation source contains a symlink";
+        }
+    }
+    if (!std::filesystem::is_regular_file(std::filesystem::symlink_status(current, error)) ||
+        error) {
+        return "declared compilation source is not a regular file";
+    }
+    if (!has_supported_cpp_extension(path)) {
+        return "declared compilation unit has an unsupported C++ source extension";
+    }
+    return std::nullopt;
 }
 
 /// @brief Check if a rule is enabled per the project config.
@@ -122,6 +161,7 @@ FileAnalyzer::FileAnalyzer(std::filesystem::path repo_root, std::optional<Projec
 void FileAnalyzer::load_compilation_database() {
     compile_db_ = nullptr;
     recorded_files_.clear();
+    recorded_file_issues_.clear();
 
     const std::vector<std::filesystem::path> candidates =
         compilation_database_.has_value()
@@ -153,7 +193,11 @@ void FileAnalyzer::load_compilation_database() {
                 if (file.is_relative()) {
                     file = directory / file;
                 }
-                recorded_files_.push_back(std::filesystem::absolute(file).lexically_normal());
+                const auto identity = std::filesystem::absolute(file).lexically_normal();
+                recorded_files_.push_back(identity);
+                if (const auto reason = unassessed_source_reason(repo_root_, file)) {
+                    recorded_file_issues_.emplace(identity, *reason);
+                }
             }
             clang_CompileCommands_dispose(recorded);
             return;
@@ -260,8 +304,16 @@ void FileAnalyzer::run() {
 
     load_compilation_database();
 
-    const std::vector<std::filesystem::path> files = selected_files_
-        ? validate_selected_files(repo_root_, *selected_files_) : discover_cpp_files(repo_root_);
+    std::vector<std::filesystem::path> files =
+        selected_files_ ? validate_selected_files(repo_root_, *selected_files_)
+                        : discover_cpp_files(repo_root_);
+    if (!selected_files_) {
+        // Database declarations remain visible even when they cannot be parsed.
+        // A strict --file-list still selects only its explicitly validated unit.
+        files.insert(files.end(), recorded_files_.begin(), recorded_files_.end());
+        std::sort(files.begin(), files.end());
+        files.erase(std::unique(files.begin(), files.end()), files.end());
+    }
     spdlog::info("FileAnalyzer: found {} file(s) under {}", files.size(), repo_root_.string());
 
     const auto& exclude_patterns =
@@ -269,9 +321,20 @@ void FileAnalyzer::run() {
     int skipped = 0;
 
     for (const auto& file_path : files) {
+        const auto recorded_issue = recorded_file_issues_.find(file_path);
+        const auto reason = recorded_issue == recorded_file_issues_.end()
+                                ? unassessed_source_reason(repo_root_, file_path)
+                                : std::optional<std::string>{recorded_issue->second};
+        if (reason) {
+            coverage_.files.push_back(
+                FileCoverage{file_path.generic_string(), "skipped", "none", 0});
+            coverage_.files.back().reason = reason;
+            continue;
+        }
         // Apply exclude_paths from config.
         if (!exclude_patterns.empty()) {
-            const auto rel = std::filesystem::relative(file_path, repo_root_);
+            const auto rel = file_path.lexically_relative(
+                std::filesystem::absolute(repo_root_).lexically_normal());
             if (matches_exclude_pattern(rel, exclude_patterns)) {
                 spdlog::debug("FileAnalyzer: excluding '{}' (matched exclude pattern)",
                               file_path.string());
@@ -282,10 +345,18 @@ void FileAnalyzer::run() {
                 continue;
             }
         }
+        if (is_generated_source(file_path)) {
+            ++skipped;
+            coverage_.files.push_back(
+                FileCoverage{file_path.generic_string(), "excluded", "none", 0});
+            coverage_.files.back().reason =
+                "matched generated-source filename/directory heuristic; generation is not verified";
+            continue;
+        }
         analyze_file(file_path);
     }
     if (skipped > 0) {
-        spdlog::info("FileAnalyzer: excluded {} file(s) by config", skipped);
+        spdlog::info("FileAnalyzer: explicitly excluded {} file(s)", skipped);
     }
 
     if (compile_db_ != nullptr) {
@@ -325,8 +396,10 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         CXIndex index{nullptr};
         CXTranslationUnit unit{nullptr};
         ~ClangResources() noexcept {
-            if (unit != nullptr) clang_disposeTranslationUnit(unit);
-            if (index != nullptr) clang_disposeIndex(index);
+            if (unit != nullptr)
+                clang_disposeTranslationUnit(unit);
+            if (index != nullptr)
+                clang_disposeIndex(index);
         }
     } resources;
     CXIndex index = clang_createIndex(/*excludeDeclarationsFromPCH=*/0,
@@ -414,11 +487,12 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
     }
 
     // Measurements bind to the live TU source buffer, independently of finding thresholds.
-    outcome.metrics = measure_native_file(tu, file_path, repo_root_, outcome,
-                                         coverage_.max_token_records);
+    outcome.metrics =
+        measure_native_file(tu, file_path, repo_root_, outcome, coverage_.max_token_records);
     if ((*outcome.metrics)["physical_loc"].is_number_unsigned()) {
         const auto observed_loc = (*outcome.metrics)["physical_loc"].get<std::uint64_t>();
-        const auto remaining = static_cast<std::uint64_t>(std::numeric_limits<int>::max() - total_loc_);
+        const auto remaining =
+            static_cast<std::uint64_t>(std::numeric_limits<int>::max() - total_loc_);
         total_loc_ += static_cast<int>(std::min(observed_loc, remaining));
     }
     ++file_count_;
@@ -441,7 +515,6 @@ void FileAnalyzer::analyze_file(const std::filesystem::path& file_path) {
         finding.file = std::filesystem::relative(finding.file, repo_root_).generic_string();
         findings_.push_back(std::move(finding));
     }
-
 }
 
 }  // namespace cppulse

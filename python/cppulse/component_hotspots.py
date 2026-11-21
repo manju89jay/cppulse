@@ -66,9 +66,13 @@ def aggregate_component_hotspots(
     scope = _inventory(declared_files, "Declared")
     excluded = _inventory(excluded_files, "Excluded")
     if scope & excluded or len(scope | excluded) > 100000:
-        raise ContractError("Excluded component members must be outside attempted scope")
+        raise ContractError(
+            "Excluded component members must be outside attempted scope"
+        )
     if scope | excluded != {row["file"] for row in behavior["files"]}:
-        raise ContractError("Component mapping must exactly cover declared hotspot scope")
+        raise ContractError(
+            "Component mapping must exactly cover declared hotspot scope"
+        )
     if not isinstance(hotspot_scores, list):
         raise ContractError("Measured hotspots must be a list of file calculations")
     measured: dict[str, int | float] = {}
@@ -77,10 +81,16 @@ def aggregate_component_hotspots(
             raise ContractError("Measured hotspot requires a file identity")
         path = row["file"]
         if path not in scope or path in measured:
-            raise ContractError("Measured hotspot is duplicate or outside declared scope")
+            raise ContractError(
+                "Measured hotspot is duplicate or outside declared scope"
+            )
         required = {
-            "change_frequency", "complexity_score", "finding_count", "physical_loc",
-            "hotspot_score", "debt_density",
+            "change_frequency",
+            "complexity_score",
+            "finding_count",
+            "physical_loc",
+            "hotspot_score",
+            "debt_density",
         }
         if not required <= row.keys():
             raise ContractError("Measured hotspot is missing calculation inputs")
@@ -92,10 +102,10 @@ def aggregate_component_hotspots(
         )
         for name in ("hotspot_score", "debt_density"):
             actual = _number(row[name], name)
-            if not math.isclose(
-                actual, expected[name], rel_tol=1e-12, abs_tol=0.0
-            ):
-                raise ContractError("Measured hotspot calculation disagrees with inputs")
+            if not math.isclose(actual, expected[name], rel_tol=1e-12, abs_tol=0.0):
+                raise ContractError(
+                    "Measured hotspot calculation disagrees with inputs"
+                )
         measured[path] = row["hotspot_score"]
 
     # A valid legacy calculation cannot qualify absent behavioral history. Still
@@ -108,24 +118,27 @@ def aggregate_component_hotspots(
         members = sorted(component["files"])
         known = [
             {"file": path, "score": measured[path]}
-            for path in members if path in measured
+            for path in members
+            if path in measured
         ]
         missing = [path for path in members if path not in measured]
         observed = math.fsum(row["score"] for row in known) if known else None
         availability = (
-            "unavailable" if observed is None
-            else "partial" if missing or history != "available"
-            else "available"
+            "unavailable"
+            if observed is None
+            else "partial" if missing or history != "available" else "available"
         )
-        components.append({
-            "id": component["id"],
-            "files": members,
-            "measured_files": known,
-            "unavailable_files": missing,
-            "availability": availability,
-            "score": observed if availability == "available" else None,
-            "observed_score": observed,
-        })
+        components.append(
+            {
+                "id": component["id"],
+                "files": members,
+                "measured_files": known,
+                "unavailable_files": missing,
+                "availability": availability,
+                "score": observed if availability == "available" else None,
+                "observed_score": observed,
+            }
+        )
     return {
         "version": "1.0.0",
         "method": "sum-measured-file-hotspots-v1",

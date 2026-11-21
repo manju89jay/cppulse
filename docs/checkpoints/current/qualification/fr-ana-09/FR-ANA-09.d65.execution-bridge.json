@@ -1,0 +1,142 @@
+{
+  "criterion": "FR-ANA-09",
+  "exact_prior_independent_review": {
+    "sha256": "db7a007aedf3d252241f8bf13849135b6cb2ce67d945f363ebdda8bbf2167cd6",
+    "size_bytes": 83923
+  },
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Static dependency bridge for the independently accepted prior typed scope",
+  "observed_projection_log_sha256": "9adb7ceab01e97551c58266302b9850f82689d0b8e03940f2dc2b81984b1b43d",
+  "original_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "prior_guard_roles": {
+    "actual_wrapper": {
+      "actual_exit": 0,
+      "before_after_direct_input_map_sha256": "450e143bb3210c834a0dd7e4caba8694b03aa5de322e8e1a176d23ccc0d7c542",
+      "original_record": {
+        "sha256": "476c5c03472e5918ec6bf1cb8adacaa23cab0f72a4198baec798de37bdb968fd",
+        "size_bytes": 3524567
+      },
+      "outer_command_sha256": "985b3f85a585cd504cfb3d46a7f73e668808b89d865b95afea7c390d371342c2",
+      "raw_log": {
+        "sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+        "size_bytes": 84
+      },
+      "registered_inputs": {
+        "sha256": "bd0bd9b708c663351a2789268ba9b557fcf46f107537b6d74b16a33da11e699a",
+        "size_bytes": 1764055
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 10317,
+      "stable_runtime_entries": 260105
+    }
+  },
+  "prior_input_roles_retained_in_custody": {
+    "exact_observer": {
+      "sha256": "1348a2dc6f096fe6e0cb7abde3d34a963f31651b64b427371df0c099ace9e36b",
+      "size_bytes": 19849
+    },
+    "finite_fixture_producer_guard": {
+      "sha256": "bd0bd9b708c663351a2789268ba9b557fcf46f107537b6d74b16a33da11e699a",
+      "size_bytes": 1764055
+    },
+    "finite_observation": {
+      "sha256": "e18a8dde844294ff010d907ad7bbc13aebb3e2422748cabd2f5a7b199e9363da",
+      "size_bytes": 9704
+    },
+    "genuine_provider_raw_commitments": {
+      "bytes": {
+        "clang-tidy": {
+          "artifact_id": "a-2a7767f73899440b5f50c2feb20f84c0793e4724bd532985b66f519cbd448a03",
+          "sha256": "37fac5ed1df3dfb01e59d712961d0f9dbd3ccb7f576c9bb4d89b73d2edcc1310",
+          "size_bytes": 887
+        },
+        "cppcheck": {
+          "artifact_id": "a-07164b07438106d71fed1595ec65e3da77065af5177ad37b66e55948fa4ae724",
+          "sha256": "866e70fc37d977a9b92b3367c2a6a3f8fab4772a7a504adca8a84c0dc33bf8a7",
+          "size_bytes": 2249
+        },
+        "gcc-first": {
+          "artifact_id": "a-0f1f17c64308906d22d6ffe18cd31836553fe21b74e6c81ff95d18ddb4ab1ed2",
+          "sha256": "84ff9a2b031f71e951fa523875ca1b64bd4b8042050ee851009b727cc818971f",
+          "size_bytes": 1446
+        },
+        "gcc-repeat": {
+          "artifact_id": "a-be4a4b5a340142d26c2fe79d2d5e3e6a494df52303c953bd467a5776bb46ed33",
+          "sha256": "84ff9a2b031f71e951fa523875ca1b64bd4b8042050ee851009b727cc818971f",
+          "size_bytes": 1446
+        }
+      },
+      "primary_locations": {
+        "clang-tidy": [
+          [
+            "modernize-use-nullptr",
+            "main.cpp",
+            5
+          ],
+          [
+            "clang-analyzer-core.NullDereference",
+            "main.cpp",
+            6
+          ]
+        ],
+        "cppcheck": [
+          [
+            "arrayIndexOutOfBounds",
+            "main.cpp",
+            11
+          ],
+          [
+            "nullPointer",
+            "main.cpp",
+            6
+          ],
+          [
+            "zerodiv",
+            "main.cpp",
+            21
+          ],
+          [
+            "uninitvar",
+            "main.cpp",
+            16
+          ]
+        ],
+        "gcc": [
+          [
+            "-Wuninitialized",
+            "warning.cpp",
+            4
+          ]
+        ]
+      },
+      "run": {
+        "manifest_sha256": "2f6328fa3d6942310c202aa847b798c7e096a484736aea67a8333d12840f0fd7",
+        "run_id_utf8_sha256": "074baaa3179dd7dddcf2d8dc880d4e59071cd542380de6d92ef5e9f9b015b53c"
+      }
+    },
+    "original_native_analyzer": {
+      "sha256": "ee4cc94471e42aea718b3bbf4bf8ab1e2e159f0831ef4e865116412244c6cb6d"
+    },
+    "producer_package": {
+      "sha256": "513ee6a502305dc137993dd44d18cddce84a796922fc5b72f6b24e460159b492"
+    }
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_execution_claimed": false,
+  "replay_material": "The original toolchain, exact package, registered observers, source, finite fixtures, custody bodies, outputs and runtime environment are available separately through owner custody.",
+  "selected_source_scope": "All 242 receiving package files, original installed-import checkpoint, requirement and package configuration. Finite source fixture, commands, tool binaries, source snapshots and policy/raw records are committed as their original private roles.",
+  "semantic_impact_of_delta": "The actual completed bounded analyze ran prediction and emitted the retained legacy roadmap. The changed tie sort could affect a freshly generated roadmap or a fresh compatibility report. Native work-unit normalization precedes prediction. The receipt measures its selected typed finding, diagnostics from independently observed providers, retained imported identifiers and context/overlap groups. The joined snapshot carries the byte-identical old roadmap from native analysis. Its typed relationships and the other retained report views are read from pinned old snapshots, preserving their historical order. A fresh d65 analyze output and equivalence of its legacy report are outside this receipt.",
+  "shared_exact_boundary_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

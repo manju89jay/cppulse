@@ -1,4 +1,5 @@
 """Exact bounded global duplication oracle and adversarial controls."""
+
 from copy import deepcopy
 from pathlib import Path
 import random
@@ -329,9 +330,7 @@ def test_false_scope_hint_does_not_hide_errors(tmp_path, case):
     expected = (
         KeyboardInterrupt
         if case == "cancel"
-        else RuntimeError
-        if case == "tail"
-        else ContractError
+        else RuntimeError if case == "tail" else ContractError
     )
     with pytest.raises(expected):
         indexed_duplicate_token_counts(

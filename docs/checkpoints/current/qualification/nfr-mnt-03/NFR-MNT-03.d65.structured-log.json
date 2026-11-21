@@ -1,0 +1,53 @@
+{
+  "criterion": "Use one registry for rule metadata; generate registration helpers, reference documentation, example configuration, and integration metadata from it.",
+  "id": "NFR-MNT-03",
+  "independent_whole_review_sha256": "72dd16d42144e84764653d5ed9360a617eef0e2ba13232a1cd7d41899cc1a716",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_current_d65_generated_output_check": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/roadmap-order-qualification/checkout/scripts/check_generated.py"
+      ],
+      "raw_log_sha256": "f672aa44c2f1a9e4ebd425cbb674c6dddc3e7cfa4a3c3b3bb9f576de6139ada6",
+      "record_sha256": "bafa818bf48e0ccf128c26e4f5aa51092624593edbde5e31c93f5147f19efe9a",
+      "stable_guard_pins": 1419
+    },
+    "actual_earlier_installed_registry_and_interfaces": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch05/run_batch.sh"
+      ],
+      "raw_log_sha256": "32c494b95f49ff65e9ff3df4476d26831760e174693eaf81228a1014495bac63",
+      "record_sha256": "7c41fad039490c7c84b84ea003d4a326dfe411c654d9e4534586e93656eea061",
+      "stable_guard_pins": 2798
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_installed_original_registry_tests": 104,
+    "actual_native_threshold_low_and_high_counts": [
+      1,
+      0
+    ],
+    "actual_public_matching_mcp_rule_metadata_views": 22,
+    "actual_read_only_input_store_unchanged": true,
+    "actual_registry_body_sha256": "ed99c005b614a385bcf8700b17df4b1262bbb42fc5ea44614aa7a56d6c21e3fc",
+    "actual_unsupported_native_memory_option_exit": 2,
+    "earlier_execution_scope": "One authoritative installed registry drives native registration, generated reference/configuration and public integration metadata. The current generated-output verification passed. All 22 actual public MCP rule metadata views match their registry entries with private native binding metadata removed, and the unknown ID returns the expected structured contract error. The genuine native threshold case yields one finding at the supported low threshold and zero at the high threshold, with unsupported memory-rule options refused. All 104 exact installed registry and configuration cases passed.",
+    "unknown_registry_id_is_structured_contract_refusal": true,
+    "unsupported_published_findings": false,
+    "valid_current_d65_generated_outputs_actual_exit": 0
+  },
+  "preserved_epoch_and_result_limits": [
+    "Current Linux installed registry and generated integration surfaces. Additional platforms and broader CI closure are outside this review.",
+    "The installed earlier registry lookup, generator, and native options consume exact authoritative tables and compiled source. The observed historical store is an immutable input to the MCP readback. Current generated output checking executed on d65. The changed history note, legacy completion and roadmap tie ordering do not enter the required metadata and configuration predicates."
+  ],
+  "primary_observed_role": "actual_earlier_installed_registry_and_interfaces",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Use one registry for rule metadata; generate registration helpers, reference documentation, example configuration, and integration metadata from it."
+}

@@ -1,0 +1,205 @@
+{
+  "criterion": "Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators",
+  "id": "M5-01",
+  "independent_whole_review_sha256": "8b7cbded5e6743bb5dfbc9e90b423735490de8fedde88eecdb060ae265b9576d",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_profile12_local_api_html": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch24/profile12-unix/launch.sh",
+        "/workspace/work/current38-batch24/results"
+      ],
+      "raw_log_sha256": "f57e41b21e391ab6b110af5dd96fd6d028f274df569beb4f42dc4e732639c48b",
+      "record_sha256": "c0434854463880f10f9a81e868febe894092145d6f703eafcdd69cef7dfcf3fe",
+      "stable_guard_pins": 533
+    },
+    "actual_pure_contract_banks": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch22/contracts/launch.sh",
+        "/workspace/work/current38-batch22/results/contracts"
+      ],
+      "raw_log_sha256": "06000ad6f74f026f004207706a30d2d3c9636a993b0dd658e720d28c3d65d6fa",
+      "record_sha256": "74f0cc12e682958b8e1f838a3406bee8524b85cc4a2c66f026c17aebd1e0fe9e",
+      "stable_guard_pins": 1211
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_pure_and_presentation_bank_scoped_outcomes": {
+      "contracts": {
+        "installed": {
+          "actual_test_count": 785,
+          "exact_selection_sha256": "00e421159d5e0ca39add700504e7c8143cd08f5b855acabc4bf5d843b5a683ab",
+          "junit_sha256": "4339f3239b9c6d01594bd6468155b8c77680c483fc3f82fb260a8909e7f8b12e",
+          "nonpasses": {
+            "error": 0,
+            "failure": 0,
+            "skipped": 0
+          },
+          "observed_exit": 0
+        },
+        "source": {
+          "actual_test_count": 785,
+          "exact_selection_sha256": "00e421159d5e0ca39add700504e7c8143cd08f5b855acabc4bf5d843b5a683ab",
+          "junit_sha256": "fad670219fbedfd945bf19ebf3f181f580d2e424a616f9351e8a7aa4e39890a5",
+          "nonpasses": {
+            "error": 0,
+            "failure": 0,
+            "skipped": 0
+          },
+          "observed_exit": 0
+        }
+      },
+      "profile12-unix": {
+        "installed": {
+          "actual_test_count": 2,
+          "junit_sha256": "c888b6bfa93eb43a753c48183bd3e7e0cda7430b9133f7dd00ab8d64971b32c2",
+          "nonpasses": {
+            "error": 0,
+            "failure": 0,
+            "skipped": 0
+          },
+          "observed_exit": 0,
+          "ordered_exact_junit_classname_and_name_arrays_sha256": "25f2b732183cab15893bd0a5281975636be852fb88f849aab4ce80effc5cc4f6"
+        },
+        "source": {
+          "actual_test_count": 2,
+          "junit_sha256": "1fb05738da71930b88dcb1e62e4022f8a8fc06228c7b1367077ca611a9609adf",
+          "nonpasses": {
+            "error": 0,
+            "failure": 0,
+            "skipped": 0
+          },
+          "observed_exit": 0,
+          "ordered_exact_junit_classname_and_name_arrays_sha256": "25f2b732183cab15893bd0a5281975636be852fb88f849aab4ce80effc5cc4f6"
+        }
+      }
+    },
+    "adapter_and_actual_producer_prerequisites": {
+      "B19_FR_EVD_04": "d066bd00f7c607fb21c3008edbd17bfd253a94cc33b1771d670475804067e6b0",
+      "B20_M5_02": "5361d267f631f95a48d7cdc9c5f03bf633705fd2b9ae46d8f9e135beac19ccb5",
+      "B21_FR_EVD_02_and_M5_03": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+      "B23_NFR_MNT_09_mixed_observer_wrapper_1_preserved": "2bf48efaa49dd7dfee57f752b77ba9e3378f46ba79f67170cfc91df55948c584",
+      "prior_actual_LCOV_M5_04": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4"
+    },
+    "live_lcov_actual_installed_command_exits": {
+      "assess": 1,
+      "check": 1,
+      "report-html": 0,
+      "report-json": 0
+    },
+    "live_lcov_controls": {
+      "branch": "failed",
+      "line": "passed",
+      "missing": "unknown",
+      "not-this-kind": "not_applicable"
+    },
+    "live_lcov_measurements": {
+      "branch": [
+        1,
+        2
+      ],
+      "function": [
+        2,
+        3
+      ],
+      "line": [
+        5,
+        8
+      ]
+    },
+    "live_lcov_source_and_assessment_sha256": [
+      "307236e341f923ffd3dcd18307d8518e38feb920194523c21565c94313a6b80b",
+      "0b9f19f78beccf3d40211718dce05ec8b1eb6275e6ab78d5bb2940f458aa9397"
+    ],
+    "original_live_lcov_case": "test_genuine_retained_lcov_public_assess_check_report_and_deviation",
+    "profile12_stored_assessment_equivalence": {
+      "insufficient_evidence": {
+        "assessment_sha256": "43358c6987d55c232d2cecf8b7b241759add85fabbfbeff3c6638a8a029c4e31",
+        "control": "unknown",
+        "manifest": "96939d311aa1bbdb66a068aeac2cea9adbb26036440b1eb3d4bf1077ee5db05f"
+      },
+      "passed": {
+        "assessment_sha256": "4891f5170a47852ce33e3cc5f1bf8e810b1636be3d14a3ee17131d9030fdead3",
+        "control": "passed",
+        "manifest": "dbd965557e50f6285f04e170886a85bbe59ec8493ea02ed222422a74e1417afd"
+      }
+    },
+    "semantic_test_examples_by_original_predicate": {
+      "cycle": [
+        "test_receipt_dependencies_cannot_cycle",
+        "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[cycle]"
+      ],
+      "declared context and source binding": [
+        "test_declared_missing_context_remains_a_valid_unobserved_requirement",
+        "test_subject_matrix_bundle_rejects_actual_identity_errors[distribution_sha]"
+      ],
+      "declared review and deviation": [
+        "test_declared_review_quorum_cannot_exceed_selected_record_count",
+        "test_earlier_profiles_do_not_silently_gain_new_evaluators[reviewed_evidence-1.1.0]",
+        "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[active]"
+      ],
+      "duplicate and dangling": [
+        "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[duplicate]",
+        "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unknown_dependency]",
+        "test_missing_expected_id_is_unknown_and_not_a_dangling_actual_reference"
+      ],
+      "stale and mismatched": [
+        "test_stale_evidence_remains_a_historical_fact_not_a_fresh_pass",
+        "test_stale_outputs_mean_recollect_not_invalid_or_known_policy_failure",
+        "test_bundle_does_not_accept_unresolved_or_mismatched_references[artifact]",
+        "test_bundle_does_not_accept_unresolved_or_mismatched_references[source]",
+        "test_bundle_does_not_accept_unresolved_or_mismatched_references[receipt]",
+        "test_bundle_does_not_accept_unresolved_or_mismatched_references[context]"
+      ],
+      "unsupported": [
+        "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unsupported_profile]",
+        "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unsupported_option]"
+      ]
+    },
+    "supported_typed_predicates": [
+      "test_outcomes",
+      "required_contexts",
+      "finding_limit",
+      "minimum_analysis_coverage",
+      "minimum_coverage",
+      "sanitizer_outcome",
+      "metric_threshold",
+      "reviewed_evidence"
+    ],
+    "tested_evaluator_profiles": [
+      "1.0.0",
+      "1.1.0",
+      "1.2.0"
+    ],
+    "unchanged_public115_pure_cases_per_origin": [
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[cycle]",
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[duplicate]",
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[mismatched_source]",
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unknown_dependency]",
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unsupported_option]",
+      "test_public_contracts_reject_invalid_pack_and_actual_reference_claims[unsupported_profile]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[active]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[denied]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[expired]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[future]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[unknown_required]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[wrong_context]",
+      "test_public_declared_deviations_never_rewrite_raw_scores_or_unknowns[wrong_source]",
+      "test_public_hand_calculation_four_outcomes_and_blocking_precedence[1.0.0]",
+      "test_public_hand_calculation_four_outcomes_and_blocking_precedence[1.1.0]",
+      "test_public_hand_calculation_four_outcomes_and_blocking_precedence[1.2.0]"
+    ]
+  },
+  "preserved_epoch_and_result_limits": [
+    "The source and installed package origins and XML hashes are distinct, although the current selections and outcomes match exactly. The B24 presentation tests use local in-process ASGI over a Unix socket pair under actual nonlocal socket-family denial. The synthetic declared reviewers do not authenticate a human.",
+    "Prior genuine LCOV/JUnit/header/adapter and B17 sanitizer donor runs keep their originally observed tool inputs and source/wheel epochs. The B23 mixed wrapper1 and raw unknown collect2 retain their original roles. Earlier mixed LCOV wrapper and import recovery statuses are retained by their separately signed scopes.",
+    "The evidence spans only the recorded profiles and input families. It does not cover general authentication, arbitrary deployment or full production and publication."
+  ],
+  "primary_observed_role": "actual_pure_contract_banks",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Finalize context-matrix, evidence, policy-pack, assessment, and deviation schemas plus adapter/evaluator contracts. | Semantic validation includes provenance, duplicate IDs, cycles, stale/mismatched evidence, and unsupported evaluators"
+}

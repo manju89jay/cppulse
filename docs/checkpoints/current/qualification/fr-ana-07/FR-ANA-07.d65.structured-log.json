@@ -1,0 +1,55 @@
+{
+  "criterion": "An empty, failed, or materially incomplete required analysis shall not receive an unqualified health 100. Full-scope health is unavailable until its prerequisites are met.",
+  "id": "FR-ANA-07",
+  "independent_whole_review_sha256": "1a4193bb1bafedb254da8364d94570d63f955102f9a4553397e089df167a46e7",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "earlier_measured_native_and_readback": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch04/run_batch.sh",
+        "/workspace/work/current38-batch04/results"
+      ],
+      "raw_log_sha256": "2ad66341ddbaee581d0d37e3a2001cb22f3791607922113f72b562713225cafd",
+      "record_sha256": "2f76e79f40bffb0c4e277e02c04e9f5c10df76007367517433802c3dd9ab223a",
+      "stable_guard_pins": 3396
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_1e_to_d65_changed_source_paths": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "actual_new_publication_cases": 6,
+    "clean_complete_default_and_safety_profile_health": 100,
+    "complete_optional_omission_health": 100,
+    "earlier_observed_scope": "The eleven original installed health cases and six fresh publication controls demonstrate that full-scope health requires the relevant same-source and same-profile native facts. Complete default and safety-critical cases and the optional omission retain 100. Required omissions, fallback, failed parsing and absent prerequisites retain null. Actual native failure, authored consumer failure and late source-change controls preserve verified producer facts where applicable and retain earlier completed heads without claiming a new full-scope result.",
+    "earlier_original_health_cases": 11,
+    "independent_current_d65_related_fail_closed_receipt_sha256": "e6128589ed2630e3bf9787bea3fa199436623890b4cd27930d45857295884177",
+    "native_error_authored_consumer_error_and_late_source_changes_preserve_prior_completed": true,
+    "required_omission_fallback_failed_parse_and_absent_inputs_health": null,
+    "same_source_exact_earlier_manifests_independently_checked": 7
+  },
+  "preserved_epoch_and_result_limits": [
+    "Controlled local Linux/native inputs and explicitly authored failure controls. Score calibration, additional platform support and full-program acceptance remain outside this evidence.",
+    "The earlier native measurement and scoped health prerequisites are independent of ranking order. The d65 legacy completion path affects the report completion label, and fresh d65 controls separately verify null health and partial/unverified output for six incomplete native cases. Scoring and native evidence qualification inputs retain their measured predicates."
+  ],
+  "primary_observed_role": "earlier_measured_native_and_readback",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "An empty, failed, or materially incomplete required analysis shall not receive an unqualified health 100. Full-scope health is unavailable until its prerequisites are met."
+}

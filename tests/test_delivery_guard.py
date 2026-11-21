@@ -37,7 +37,7 @@ def test_rewording_a_requirement_cannot_silently_narrow_scope(ledger: dict) -> N
 
 
 def test_source_presence_cannot_mark_a_requirement_verified(ledger: dict) -> None:
-    ledger["items"][0]["state"] = "verified"
+    ledger["items"][0].update(state="verified", evidence=[], review={})
     with pytest.raises(ValueError, match="evidence and independent review"):
         verify_ledger(ROOT, ledger)
 

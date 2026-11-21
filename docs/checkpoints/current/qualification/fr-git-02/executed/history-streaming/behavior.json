@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "window_days": 365,
+  "half_life_days": 10,
+  "max_commits": 3,
+  "max_files_per_commit": 20,
+  "max_pair_records": 100,
+  "minimum_support": 2,
+  "aliases": {},
+  "bot_ids": [],
+  "former_contributor_ids": [],
+  "offboarding_ids": [],
+  "teams": {},
+  "components": {"api": ["a.cpp"], "impl": ["b.cpp"]},
+  "exclude_paths": [],
+  "exclude_commit_ids": [],
+  "include_merges": false,
+  "pair_attribution": "author_only"
+}

@@ -1,0 +1,60 @@
+{
+  "candidate_manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+  "criterion": "FR-GIT-02",
+  "dependency_readback_for_each_source_change": {
+    "docs/DECISIONS.md": "Governance narration outside the selected commands\u2019 input boundary.",
+    "docs/plans/production-scope-authority.md": "Governance inventory outside the selected commands\u2019 input boundary.",
+    "tests/test_pipeline_failures.py": "Supplemental test outside the chosen history selectors and the finite coverage observer."
+  },
+  "external_attestation": "The exact wheel, installed distribution, runtime leaves and kernel denial evidence remain in custody. The Git object oracle, Git objects, SQLite databases, command streams, selected outputs, and complete private review remain in custody under their original pins. The exact public observer and finite authored fixture declarations preserve the original receiver paths.",
+  "historical_custody": {
+    "original_basis": {
+      "complete_condition_basis_raw_proof": "work/metrics117/current36-source-proof.json",
+      "historical_only": true,
+      "path": "work/memory-review82/metrics117-current/review.json",
+      "sha256": "bf514aa463bd7551e02035cb756c85867351aa24e80fb7890cd3370b7e22438b"
+    },
+    "raw_and_review_hashes_without_bodies": {
+      "work/history-current52/fr02-canonical-proof.json": "a5fd8f876a3282802d101c0d0e09569917155659e1638cfb4e7d49d615de65d9",
+      "work/history-current52/worker/fr02/fanout-observations.json": "974eda4d085eb4f7c70e2e1c5c538995e270d5917cbe6d118e4d0ce716e5c6dd",
+      "work/history-current52/worker/fr02/qualification.json": "21e238f3305b38a3c35675f8bdca5ec4d7e1063e916bf80fbdfb1cd6ab4c17cc",
+      "work/runtime-review7/history-streaming52/review.json": "500d15f36f7334d3002ea3eccddfa89a0f1813a3d29fd2fd96240121ec0a3138"
+    },
+    "retained_checkpoint": "docs/checkpoints/20261117/git-history-edge-closure.md"
+  },
+  "projection_log_sha256": "b6c0f66daafa3f44800425d053776a6ea695adfdff92bea32662fedfce878d1f",
+  "public_product_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "selected_raw_receipt_hashes": {
+    "cold-fanout.json": "d433d7020120a3e1ea0b0e2a2980be5d90eb99b2693f7f980cf66b8973cb3422",
+    "fresh-fanout.json": "d433d7020120a3e1ea0b0e2a2980be5d90eb99b2693f7f980cf66b8973cb3422",
+    "network-denial.json": "aecc3ae2594a801864556a7827a974e7f86fc097a024b0b68ac989fef088a9d9",
+    "original-history.xml": "3c7da5e24f78fe5bd914ecf46d66eafc070b04d07c244a488eb2e6cbd3fe78e3",
+    "preregistered Git object oracle": "ab64f23c8125a7a2f94f0eb3cdf1b316cadc6c5834e11819647f474e5940c720",
+    "qualification.json": "dff39b27b9af8ff1e7c36b965ade5d248cbd9a2da50766e170690f8dc86dee75",
+    "record-bound-fanout.json": "2f2d33c1cecf88d9fe811e1849b01aad0cb149c3478f856c5ca4cef59b6ac6e1",
+    "repository-after.json": "1d3007008fc17dde7b4b251eef8b33f7900e143ee410ccd3d1330d96a42d7e64",
+    "repository-before.json": "1d3007008fc17dde7b4b251eef8b33f7900e143ee410ccd3d1330d96a42d7e64",
+    "traversal-bound-fanout.json": "a85a3124bba87b16761e215b299a69e954dead03fbdb561d2b8f8b4fefd313df",
+    "warm-fanout.json": "d596f6d4bc11febaccf48f709c6696c2784a1b6ad36a550caca1f01ecf5ab054"
+  },
+  "stable_original_execution": {
+    "actual_exit": 0,
+    "argv": [
+      "bash",
+      "/workspace/work/current38-batch11/run.sh"
+    ],
+    "checked_source_before_after_equal": true,
+    "guard_bound_files": 10069,
+    "guard_record_sha256": "ceaa043f14cb31caf9b74feb6f648ab3ebf7a6b5b823dbfcc4bc34035a311b1d",
+    "preregistration_sha256": "c2121d0dd83f33986d457f55a35b0f8e6edabdcf593ab7666c90469a4884bad0",
+    "raw_log_sha256": "e308810f7bc21279cfa880b2892d63985e2540b98af226b72c7c6d14b897a50f",
+    "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "runtime_leaf_count": 260105,
+    "scope": "History streaming and separate generated-wiring phase"
+  },
+  "test_freeze_sha256": "99148afdd53a1566ff157d7f80b6813fd4ae80041f7008bce8a0ad7bb532d459",
+  "tracked_source_scope": "Entire checked-in cppulse Python package, selected tracked fixture or regression source, and exact published observer text. The current mutable delivery ledger, review pointer and proof are outside the hash set.",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "whole_review_sha256": "4fc457fc60f32a0ea4ff07dd1e8d1be0a5523f5f20b6973a096539a569e6435e"
+}

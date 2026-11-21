@@ -1,0 +1,72 @@
+{
+  "criterion": "The local core shall remain MIT-licensed and usable on public, private, and commercial projects without a cppulse account or subscription. Third-party dependencies retain their own licenses.",
+  "id": "PR-01",
+  "independent_whole_review_sha256": "64551b737f9c2d9b3ec0c9928c512764d646d67c649f6ec0006fae5095e3acdb",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "d65_actual_bounded_no_account_scope": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/legacy-refresh/launch.sh",
+        "/workspace/work/roadmap-order-qualification/legacy-refresh/results"
+      ],
+      "raw_log_sha256": "1b6ef13eb0cb75e87044ed4a2458f8860deac6caea75a7c738fcf6396f7c96d0",
+      "record_sha256": "bfcbce25bcf99a761519876ac59d8f2c83526745dff37a04c5acdd03b07e06ed",
+      "stable_guard_pins": 779
+    },
+    "d65_actual_offline_git_scope": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/namespace-producers-v2/launch.sh",
+        "/workspace/work/roadmap-order-qualification/namespace-producers-v2/results"
+      ],
+      "raw_log_sha256": "37cf38d00f981c850cb398bd16f78a959d80fbaf92df649898d1056483c8cc76",
+      "record_sha256": "d29f63062524d45b8217b935f15ee633adb749914cd4eaa4f33bf0a5aaee22db",
+      "stable_guard_pins": 2296
+    },
+    "earlier_genuine_offline_and_attribution": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-next/criteria/run_batch.sh"
+      ],
+      "raw_log_sha256": "32a2eb7ecf5e4a9cdf016a33c70323a63463ad2fa1e81ac9892af85607aac224",
+      "record_sha256": "96b1c877d4a756fd6d98f85c3186e161431c698d52b8b939effec42ec8b3d2e1",
+      "stable_guard_pins": 2705
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "bundled_production_entries": 44,
+    "complete_retained_license_bodies": 57,
+    "current_wheel_first_party_license_byte_match": true,
+    "current_wheel_installed_and_source_notice_sha256": "632035adbad56b068aa6941d29e1aebb59071c74af3c6d7e780a0d0e623a8667",
+    "d65_actual_no_account_bounded_installed_commands": 2,
+    "d65_actual_offline_git_calls": {
+      "installed": 3,
+      "source": 2
+    },
+    "earlier_actual_bounded_no_account_genuine_native_receipts": 3,
+    "earlier_execution_scope": "The corrected installed wheel and native kit retain the exact first-party MIT grant, including commercial use and sale, and retain the third-party license texts. The installed CLI completed actual local bounded native analysis on a disposable private project from an empty account home under kernel socket denial, with three passing real analyzer process receipts and all 68 run artifacts verified.",
+    "earlier_independently_rehashed_snapshot_artifacts": 68,
+    "first_party_mit_sha256": "dba6bd4fba5b0966e6aa48a0714ad7b3e9ec5e5a96ff47a1e91cadd4c02732d1",
+    "four_exact_retained_native_license_file_sha256": {
+      "clang-builtins-copyright.txt": "4c22cf66ddd6dfae2ac4e034342f93a9c96581d5e88c7bb700a125a71cf66cd7",
+      "cppulse-LICENSE.txt": "dba6bd4fba5b0966e6aa48a0714ad7b3e9ec5e5a96ff47a1e91cadd4c02732d1",
+      "fmt-copyright.txt": "dfaa7ad8c59bedf69b82afb0114431727f211c8438cc3356226dc95d80f9a27a",
+      "spdlog-copyright.txt": "88b216278febf1918de9e71fdec8fe9d13a51f5874d423072b2a18e4f996855f"
+    },
+    "separately_checked_python_dependency_license_sets": 5,
+    "verified_lodash_resolved_and_notice_version": "4.18.1"
+  },
+  "preserved_epoch_and_result_limits": [
+    "The disposable local project demonstrates offline use without an account. The MIT text establishes project-use and commercial rights. No external project or alternate platform was newly qualified.",
+    "The earlier 1e genuine integrated no-account run keeps all original 3 process and 68 artifact facts. The d65 native commands used installed origins. The d65 Git commands covered the installed canonical entrypoint, installed namespace shim, installed console shim, source canonical entrypoint and source namespace shim. Both d65 scopes ran under real total socket denial and clean account-home initialization. No private or commercial third-party repository was needed to establish the license grant. Other platforms and any publication of binary artifacts remain outside qualification."
+  ],
+  "primary_observed_role": "earlier_genuine_offline_and_attribution",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "The local core shall remain MIT-licensed and usable on public, private, and commercial projects without a cppulse account or subscription. Third-party dependencies retain their own licenses."
+}

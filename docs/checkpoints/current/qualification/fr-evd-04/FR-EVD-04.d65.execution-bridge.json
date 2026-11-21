@@ -1,0 +1,90 @@
+{
+  "criterion": "FR-EVD-04",
+  "exact_shared_source_and_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Exact binding of prior signed source and artifact roles to the approved receiving scope",
+  "observed_projection_log_sha256": "8ac68a2f69ea908bb2c5cd22ece2aad966c8a77d442f9c99898e5d43304065ed",
+  "old_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "original_independent_review": {
+    "sha256": "d066bd00f7c607fb21c3008edbd17bfd253a94cc33b1771d670475804067e6b0",
+    "size_bytes": 162636
+  },
+  "original_wrapper_guard": {
+    "actual_exit": 0,
+    "actual_job_record": {
+      "sha256": "cba56f572bc701c759a65f41b35437eb0904d8d6e7d03d6ba42b2d75568e90cc",
+      "size_bytes": 524232
+    },
+    "original_full_before_after_map_sha256": "ccc31a1331bb02e9ebff0a8c3c21ef568040646f09266a479bcec4ccdf77a5ba",
+    "outer_command_sha256": "9409a5a5ff94d32f6fb2a0532a0d69513e156358ddbcd1537abdd1f8b14dabc7",
+    "raw_job_log": {
+      "sha256": "796d792c37244e68ea8d4754ca791133fd473dc2cfdad68c7fe03b552efcd7de",
+      "size_bytes": 176
+    },
+    "registered_inputs": {
+      "sha256": "ad1a991ff44949632734100e32f7c35bca1079b07aaf14a8d51c0a4bb9213960",
+      "size_bytes": 436047
+    },
+    "resource_stop": null,
+    "runtime_before_and_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries_verified": 260105,
+    "stable_guard_count": 1130
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_comparison_only": true,
+  "replay_prerequisite": "The prior exact wheel, registered runtime manifest, guarded source and named raw inputs and commands remain in owner custody. Restore those registered inputs to repeat the finite measured scope.",
+  "retains_prior_execution_identity": true,
+  "reviewed_roles_in_private_custody": {
+    "authored_observer": {
+      "sha256": "d0d60670224138d29eb561ed1e2129882134c78eae812e1c8fa5ad317555608d",
+      "size_bytes": 20458
+    },
+    "native_analyzer": {
+      "sha256": "ee4cc94471e42aea718b3bbf4bf8ab1e2e159f0831ef4e865116412244c6cb6d"
+    },
+    "outer_and_phase_guard": {
+      "sha256": "ad1a991ff44949632734100e32f7c35bca1079b07aaf14a8d51c0a4bb9213960",
+      "size_bytes": 436047
+    },
+    "real_cppcheck": {
+      "sha256": "2f6328fa3d6942310c202aa847b798c7e096a484736aea67a8333d12840f0fd7",
+      "size_bytes": 23308
+    },
+    "real_cppcheck_raw_xml": {
+      "sha256": "866e70fc37d977a9b92b3367c2a6a3f8fab4772a7a504adca8a84c0dc33bf8a7"
+    },
+    "real_lcov": {
+      "sha256": "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+      "size_bytes": 32263
+    },
+    "scoped_phase_launcher": {
+      "sha256": "fb618d73ce0c8c22440cb96dc21b041d07735d498875ecbc278edd55d0929e65",
+      "size_bytes": 784
+    },
+    "signed_cppcheck_donor_review": {
+      "sha256": "db7a007aedf3d252241f8bf13849135b6cb2ce67d945f363ebdda8bbf2167cd6",
+      "size_bytes": 83923
+    },
+    "signed_lcov_donor_review": {
+      "sha256": "6340c2de0a5a1d8db1fb4712e1ba3e379be99b103944c6fe5c7d83c483cf513a",
+      "size_bytes": 69914
+    },
+    "whole_observation": {
+      "sha256": "9c7296123dac5d601cd5d86d086d2be71cce1af4a4a26ccfa5166ece4d65c97a",
+      "size_bytes": 909
+    }
+  },
+  "scope_input_selection": "All 242 package namespace files with the original role-checking assertions, pytest settings, root package configuration and original evidence/native budget checkpoint definitions. The available previous producer tool/fixture bytes and native source/build inputs remain bound in the exact original donor/guard records.",
+  "semantic_path_influence": "Retained-source and artifact checks execute typed assessment, verification and report paths. Each of the six report requests selects an exact manifest with no roadmap artifact, including the deliberate missing or modified raw-byte controls. The prelaunch wrong-role collection and the native SDK capture-budget assertions never reach legacy analyze or prediction. The sole changed package module sorts roadmap recommendations. The two governance documents and roadmap-only test are outside these measurements."
+}

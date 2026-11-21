@@ -1,0 +1,25 @@
+# Root context, restricted to analyzer build and test inputs.
+**
+!analyzer-core/
+analyzer-core/*
+!analyzer-core/CMakeLists.txt
+!analyzer-core/docker-entrypoint.sh
+!analyzer-core/src/
+!analyzer-core/src/**
+!analyzer-core/tests/
+!analyzer-core/tests/**
+!tools/
+tools/*
+!tools/frozen_container_supervisor.cpp
+**/.git
+**/.venv
+**/attachments
+**/build
+**/evidence
+**/oracle
+**/output
+**/review
+**/work
+**/*.tar.gz
+**/*.whl
+**/*.zip

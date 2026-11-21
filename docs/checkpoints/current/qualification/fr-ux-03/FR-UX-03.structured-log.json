@@ -1,0 +1,118 @@
+{
+  "actual_scoped_commands": [
+    [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/git-scope-qualification/legacy-gates/original-nine.py",
+      "/workspace/work/git-scope-qualification/legacy-gates/results/cases/original-nine",
+      "/workspace/work/git-scope-qualification/gates/candidate"
+    ],
+    [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/git-scope-qualification/legacy-gates/native-negatives.py",
+      "/workspace/work/git-scope-qualification/legacy-gates/results/cases/native-negatives",
+      "/workspace/work/git-scope-qualification/gates/candidate"
+    ]
+  ],
+  "actual_scoped_exit_code": 0,
+  "criterion": "FR-UX-03",
+  "observed": {
+    "actual_consumer_cases": {
+      "absolute-from-tmp": {
+        "actual_exit": 0,
+        "command_sha256": "8ef352a487c239d9c816b364acbee5cc6826f30d5f9b2dd491d45d2895a62006"
+      },
+      "config-relative-outside": {
+        "actual_exit": 0,
+        "command_sha256": "c8db0a798addf9e1d7d91d13988949be61dcf37c9afbd52d525d6716793a4a99"
+      },
+      "doctor-outside": {
+        "actual_exit": 0,
+        "command_sha256": "a5d18e12db6879de3b7a8c5bf29b489f884f3989d0a716dd3a54ac790e53082f"
+      },
+      "init-outside": {
+        "actual_exit": 0,
+        "command_sha256": "85017816cdd57a3fed2d84cb1db697eea0e0f26fd466cea3783877e4de919f77"
+      },
+      "legacy-from-root": {
+        "actual_exit": 0,
+        "command_sha256": "99e4ad56d981c9cd5489ac710ed04608ecd49d788fe03210a92dc9108195fcff"
+      },
+      "relative-from-root": {
+        "actual_exit": 0,
+        "command_sha256": "f1472a73f6a35dd0336b69f6ebc68143a28a787468ed9b6f02daff6cd6f5c8fc"
+      },
+      "report-html": {
+        "actual_exit": 0,
+        "command_sha256": "dc029c7b299d59947352ce30d533798c7b55b7937aa2184322ef7ae8cb67b53f"
+      },
+      "report-json": {
+        "actual_exit": 0,
+        "command_sha256": "83b223dd343d8f04c85fa1e23ad3d0e832de7be8f3c17d38aca8f6f2c6df405e"
+      },
+      "unsupported-from-tmp": {
+        "actual_exit": 3,
+        "command_sha256": "a6248d56b3b9f8da687c447865411078e97fecbce6652ec46b4b19b58a6115ea"
+      }
+    },
+    "actual_native_negative_cases": {
+      "declared-empty-database": {
+        "actual_exit": 3,
+        "command_sha256": "90689b0c390c26d4c43cbcee65049aeddd1cea85d2ff8be7a5ea3b2364dd248b"
+      },
+      "missing-detector": {
+        "actual_exit": 3,
+        "command_sha256": "8d353c4f885f5c9f10c8ae30649b8152b55ae7af4aa319303f6f10f62463e4c3"
+      },
+      "parse-failed": {
+        "actual_exit": 3,
+        "command_sha256": "5696c8d4987a00008d6de2e6b20b3c218d9bef98e8cea993ea2882f703daa796"
+      },
+      "skipped": {
+        "actual_exit": 3,
+        "command_sha256": "69890be2c3a1bb0df0f4845e8863df4ad2576dac915bac1b9ae7ae5693c43a91"
+      },
+      "source-free": {
+        "actual_exit": 3,
+        "command_sha256": "83d111cc99a002ee30ba9a7d8582a7a04b0b180f3636fe15883063f02db00d00"
+      },
+      "unresolved-declared-context": {
+        "actual_exit": 3,
+        "command_sha256": "eb2a99c2300d54fbed7b6442903556555c084359976be50549f5a4f2c0e7a382"
+      }
+    },
+    "enclosing_batch_retained": {
+      "exit_code": 1,
+      "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "semantic_phase_markers": {
+      "native-negatives": {
+        "exit_code": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original-nine": {
+        "exit_code": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "supplemental_limit": "Both ancillary old 35-case banks had 34 passes and one old exception-expectation failure. A separate reviewed source/test epoch verified the two corrected stage controls. It did not replace these original outcomes.",
+    "unrelated_supplemental_suites": {
+      "installed-contracts": {
+        "exit_code": 1,
+        "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      "source-contracts": {
+        "exit_code": 1,
+        "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      }
+    }
+  },
+  "original_execution_log_sha256": "022a179371f3cf5c024cd11582cc1041eaa3334f012481d36332dc22a7bfa070",
+  "original_execution_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "original_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "original_whole_review_sha256": "1d2118891a1c24e2fd7a90900c55e04a1435c99e5a7dcbd28b1a21c1dd76c581",
+  "portability": "Rechecking these source hashes is portable. Rerunning the original qualification requires its declared external candidate, runtime and other custody inputs.",
+  "record_kind": "public structured projection of a retained independently accepted semantic execution",
+  "scope": "Installed work from /tmp and /. Literal shell metacharacters and paths, installed native discovery, exact argument and working-directory binding, preserved snapshots and JSON/HTML report parity. Bounded unsupported exit 3 and six incomplete legacy analysis exit-3 controls remain distinct from legacy descriptive exit 0 with null health and unverified publication."
+}

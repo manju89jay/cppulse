@@ -1,0 +1,129 @@
+{
+  "criterion": "FR-GIT-05",
+  "d65_common_receiving_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "d65_executed_by_this_lane": false,
+  "exact_prior_review": {
+    "sha256": "72dd16d42144e84764653d5ed9360a617eef0e2ba13232a1cd7d41899cc1a716",
+    "size_bytes": 87936
+  },
+  "executed_and_receiving_identity_and_delta": {
+    "changed_repo_paths_and_roles": {
+      ".dockerignore": "Root container build context selection.",
+      ".github/workflows/ci.yml": "Hosted workflow tool selection.",
+      "analyzer-core/Dockerfile": "Analyzer container build layout.",
+      "analyzer-core/Dockerfile.dockerignore": "Analyzer build-context allowlist.",
+      "docker-compose.yml": "Container composition and image build wiring.",
+      "docs/DECISIONS.md": "Decision-history entries.",
+      "docs/plans/production-scope-authority.md": "Decision index and maintenance authority.",
+      "python/cppulse/git_miner/main.py": "The retained-history disclosure is emitted only for configured windows.",
+      "python/cppulse/pipeline.py": "Legacy analyze makes descriptive completion explicit and pins the imported run.",
+      "python/cppulse/predictor/roadmap_generator.py": "Break equal-impact roadmap ordering by file and category.",
+      "tests/test_cli_exit_contract.py": "Legacy analyze and CLI exit-regression tests.",
+      "tests/test_git_behavior.py": "History-disclosure regression.",
+      "tests/test_pipeline_failures.py": "Pipeline failure-regression assertions.",
+      "tests/test_roadmap_order.py": "Direct deterministic roadmap regression."
+    },
+    "console_installation": {
+      "difference": "Only the installation-specific interpreter line differs.",
+      "new": {
+        "sha256": "47f72f5823c11a0283f6a530bdfab1ef0483576e30a4e415f1e99ab7df0657aa",
+        "size_bytes": 240
+      },
+      "old": {
+        "sha256": "e19f78c8940c2d1b75e06e4773d9dd72cee64e61a15d3cabddb98c4a813bccc2",
+        "size_bytes": 253
+      }
+    },
+    "executed_install_receipt": {
+      "sha256": "e6ffdd76a737b04b420a04711ece9d698c62bc34755c4e825ce47900a4190b29",
+      "size_bytes": 40971
+    },
+    "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+    "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+    "pipeline_changed_definitions": [
+      "_legacy_analysis_completed",
+      "analyze"
+    ],
+    "receiving_install_receipt": {
+      "sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+      "size_bytes": 83803
+    },
+    "receiving_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "receiving_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+    "selected_generate_report_function_sha256": "13b99e6abe76e09b8a4275354985493763a9fddb28919d4e8589cb858b0e8824",
+    "wheel_body_diff": {
+      "cppulse-0.2.0.dev2.dist-info/RECORD": {
+        "executed_sha256": "1a35ca58d6f30b78a0e11dfdc959cac846b898e0c6078cfcc01a75532f9cf06e",
+        "receiving_sha256": "dde3816b5454a2de9a9dbd0959111811c1ccc438caf9b611357352c6e3cf462b"
+      },
+      "cppulse/git_miner/main.py": {
+        "executed_sha256": "985dfc989de04ff333752a53498968aa60568d3ec14df6af8f83ebb80fedc129",
+        "receiving_sha256": "f2bc9aaee4fdf2ceedcf981890a7393d8b65c91e4287ca53075abe5ca7695827"
+      },
+      "cppulse/pipeline.py": {
+        "executed_sha256": "ef4c0d3871a4ad325465e54210b1cbdb57467bf0925b8410c7e77d7240e746e0",
+        "receiving_sha256": "5dc3df4a77a2460a1fce8a72a69142fff80ba5471f7ddb04da3efb464c84649b"
+      },
+      "cppulse/predictor/roadmap_generator.py": {
+        "executed_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089",
+        "receiving_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+      }
+    },
+    "wheel_entry_count": 248
+  },
+  "kind": "Static compatibility proof for the accepted prior specific Git execution",
+  "observed_projection_log_sha256": "b1fb7fd46aa761ead161f5ef388c026a3f0c00c16ae0cd9aeb6f11ab68309c5e",
+  "original_fixture_custody": {
+    "actual_sources_refs_objects_reflogs_and_worktree_unchanged": true,
+    "before_and_after_raw_fixture_commitment": {
+      "sha256": "8f6e0ad6130fe0a0e8035552d2cee507c9552fa3b0c489c6ab72c4ebd196af64",
+      "size_bytes": 3286
+    },
+    "equivalent_authored_declaration": {
+      "sha256": "257635276b92106ceefde916ff2a50356b49fd312c405ecb4c1078a6d22dfe1e",
+      "size_bytes": 3290
+    },
+    "expected_object_graph_commitment": {
+      "sha256": "ba39081d2a46b9aa064e15ba75f3f99da13df8f1b055776bb1b209d4223c1c65",
+      "size_bytes": 10974
+    }
+  },
+  "original_wrapper_guard": {
+    "actual_exit": 0,
+    "before_after_direct_input_map_sha256": "7d5e4fa7dbb7e94b19199be93de7e9e74fe9a4cc1665599e2b23dce3f237b645",
+    "original_record": {
+      "sha256": "7c41fad039490c7c84b84ea003d4a326dfe411c654d9e4534586e93656eea061",
+      "size_bytes": 966019
+    },
+    "outer_command_sha256": "49888f40237e090c5aaf5642980f743872c953787f88ba24a641b63f8f8d0628",
+    "raw_log": {
+      "sha256": "32c494b95f49ff65e9ff3df4476d26831760e174693eaf81228a1014495bac63",
+      "size_bytes": 453
+    },
+    "registered_inputs": {
+      "sha256": "02ef7e4787f116753b080b905878046ebf54eaf6b1b3d2e6925fb7954b6c79bf",
+      "size_bytes": 482764
+    },
+    "resource_stop": null,
+    "runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "stable_direct_inputs": 2798,
+    "stable_runtime_entries": 260105
+  },
+  "prior_qualification_identity": {
+    "sha256": "b476a8eb381dce6d4612f673381ba46654283e1040361d52b49c7b331b05f81e",
+    "size_bytes": 37250
+  },
+  "replay_material": "Restore the original registered wheel, tooling, finite private fixture and guard material. Raw Git, store manifests, actual configuration bodies and runtime details remain in owner custody.",
+  "same_receiving_candidate_as_shared_witness": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "scoped_observer": {
+    "sha256": "008173653dd75b13408869e8b5d956274cb3c5f186d76a9c466836758d367098"
+  },
+  "semantic_delta_impact": "All five processes called the installed Git-miner API with a configured behavior window. The exact old history disclosure was present for every selected result and the d65 code still emits it in that same active branch. Its removal from unconfigured runs is outside this five-case scope. The measured ownership, weighting, fragmentation and cohort values are Git behavior. These direct calls reach neither analyze, prediction nor legacy report production."
+}

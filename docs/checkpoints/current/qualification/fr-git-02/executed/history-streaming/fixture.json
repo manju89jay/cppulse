@@ -1,0 +1,17 @@
+{
+  "cutoff": "2026-11-10T00:00:00Z",
+  "oversized_commit": "large-record",
+  "expected_fix": "newest-fix",
+  "expected_fix_parent": "parent-of-newest-fix",
+  "commits": [
+    {"id":"root", "actor":"Ada", "date":"2026-11-01T12:00:00+00:00", "message":"initial selected files", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 1;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 1;\n", "solo.hpp":"inline int solo() { return 1; }\n"}},
+    {"id":"second", "actor":"Ben", "date":"2026-11-02T12:00:00+00:00", "message":"change two components", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 2;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 2;\n"}},
+    {"id":"third", "actor":"Ada", "date":"2026-11-03T12:00:00+00:00", "message":"adjust both units", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 3;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 3;\n"}},
+    {"id":"older-fix", "actor":"Ben", "date":"2026-11-04T12:00:00+00:00", "message":"fix older defect", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 4;\n"}},
+    {"id":"large-record", "actor":"Ada", "date":"2026-11-05T12:00:00+00:00", "message":"large metadata record", "message_padding":2048, "files":{"record-only.cpp":"int large_record_control = 1;\n"}},
+    {"id":"sixth", "actor":"Ben", "date":"2026-11-06T12:00:00+00:00", "message":"revise both components", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 6;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 6;\n"}},
+    {"id":"parent-of-newest-fix", "actor":"Ada", "date":"2026-11-07T12:00:00+00:00", "message":"prepare selected workload", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 7;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 7;\n"}},
+    {"id":"newest-fix", "actor":"Ben", "date":"2026-11-08T12:00:00+00:00", "message":"fix newest defect", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 8;\n"}},
+    {"id":"tip", "actor":"Ada", "date":"2026-11-09T12:00:00+00:00", "message":"update both units", "files":{"a.cpp":"int anchor_a = 1;\nint revision_a = 9;\n", "b.cpp":"int anchor_b = 1;\nint revision_b = 9;\n"}}
+  ]
+}

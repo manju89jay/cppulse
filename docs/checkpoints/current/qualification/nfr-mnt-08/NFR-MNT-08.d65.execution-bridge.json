@@ -1,0 +1,20 @@
+{
+  "actual_projection_log_sha256": "7f023d7d2a8c9c381874ff37a4aeb95215dc5d8114a0a73d9ca90a50fc6dd295",
+  "complete_private_receipts_by_role": {
+    "bare_strict_command_actual": "087ca42d0ded419692aa1df5ac61632cd8598abb6aaabb03ec396ae678d2fc35",
+    "bare_strict_output": "90e9ae73f9858cd425ef974c022e73c54e06a77891f01a1bd7346ad8114c317d",
+    "exact_current_governance_summary": "dae8f163c2f4ed04f76e96afa1c8519563352105f682cebfca41d7e489f7b7e9",
+    "exact_registration": "437922642edc03d304a301d1c772a6c38249bb160ccb0f87e802ad1c0b880d43",
+    "executed_original_ledger": "dc07cf42487e77a4ff348a3e37bc84a2af62d25e924eb3cdefe5010c2e88845b",
+    "matched_source_and_object_records": "86b82e05ba99ffcce36e74d9bd8dea34bf93d500f7f84d195292ddf583f5c5cf",
+    "planning_command_actual": "a54708e400f6396d64c59727946febaa1e16f699c1423d72812d44fa8d92a462",
+    "planning_output": "5796f44a92105544b962be8332754c52834317decdb53b225d78686d0f3e5fa4",
+    "previous_exact_public_proof": "cd75b27efef54cd8503d898780a8bf674bf2cdbbb927e9e01babc038cbf18311"
+  },
+  "id": "NFR-MNT-08",
+  "immutable_independent_whole_review_sha256": "9c6c5dd6beaae9b1d70d91977ee54fb3f43f2a93cc95422bf0feca07988aec70",
+  "portability": "Selected relative source hashes and canonical scope can be read on the public checkout. The receiving object view, runtime and raw pre/post records remain attested in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked d65 decision, plan, authority and checker inputs plus executed observer sources. The stable ledger scope uses UTF8 JSON with ASCII escaping, sorted keys, indent 2 and a terminal LF. It selects top-level source_hashes, phases and items, dropping only evidence and review from each item.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

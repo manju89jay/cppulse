@@ -1,0 +1,76 @@
+{
+  "candidate_manifest": {
+    "sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "size_bytes": 83816
+  },
+  "checked_coverage_producer_recipe": {
+    "sha256": "f5fe23bd4caa59a1fe35bb87b77a2ab32db9336a92b19ca4a5cb2f2385c58ab0",
+    "size_bytes": 12989
+  },
+  "criterion": "FR-EVD-01",
+  "dependency_readback_for_each_source_change": {
+    "docs/DECISIONS.md": "Governance narration outside the selected commands\u2019 input boundary.",
+    "docs/plans/production-scope-authority.md": "Governance inventory outside the selected commands\u2019 input boundary.",
+    "tests/test_pipeline_failures.py": "The exact B14 observer runs the six JUnit, two import, and two coverage assertions. These callable tests and their retained producers do not import the supplemental pipeline-failure test."
+  },
+  "exact_execution": {
+    "actual_exit": 0,
+    "argv": [
+      "bash",
+      "/workspace/work/current38-batch14/evidence-imports/launch.sh",
+      "/workspace/work/current38-batch14/results/evidence-imports"
+    ],
+    "guard_bound_files": 10418,
+    "job_log": {
+      "sha256": "36e135e733ec5aba267387f50d953aef2c3099d66833d09be5d3b7781bc843ed",
+      "size_bytes": 290
+    },
+    "job_record": {
+      "sha256": "cfd88194871d351bad30611f4a742b4e816c161df9d8e8310455c6d7db172fda",
+      "size_bytes": 3596250
+    },
+    "network_denial": {
+      "sha256": "914f0adcf743918d5105162b8aa2e51ea7ded50137884766084ddd5ec13efc10",
+      "size_bytes": 590
+    },
+    "preregistration": {
+      "sha256": "e09d5f783b448aaabbfecb98ff8c9d26b673c1136e57ef944db4e61a1be294d9",
+      "size_bytes": 1803405
+    },
+    "runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries": 260105,
+    "scope": "Ten direct unchanged FR-EVD-01 assertion calls with genuine registered producer inputs",
+    "source_before_after_equal": true
+  },
+  "input_descriptor": {
+    "sha256": "f3df4ea454fdfb49a4ccb00418cfa2e14f4269029c4e52f1e513ef9d0016a90e",
+    "size_bytes": 7733
+  },
+  "observer_child_denial": {
+    "sha256": "6effa80b249906d48c865fee92926ee5193ca7b3383aacd76e6f10195145224b",
+    "size_bytes": 58
+  },
+  "observer_summary": {
+    "sha256": "136c1bebcf4721697a220f398077c3a44571b41e3e37bce2bfb4e8d72f5c5fa0",
+    "size_bytes": 1175
+  },
+  "original_assertion_module": {
+    "sha256": "31f34817a04088f7331cb9d4e1712833457f34cee0ed3626abbfaf3b97af90d2",
+    "size_bytes": 23189
+  },
+  "original_closeout_source_proof": {
+    "sha256": "3a2d518268919f49097c1cbf7c83fe6d521f3adad5062591893836d0ec349954",
+    "size_bytes": 6582022
+  },
+  "original_historical_condition": "Original genuine CTest/JUnit six-record and pytest1/1/1 count/context matrices plus real LCOV/Cobertura covered/total/kind/context imports survive public import/evaluation/report flow. Test/coverage adapter, fact contracts, evaluator and report bytes remain unchanged; current registry/config defaults preserve old semantics under accepted87/native149 gates.",
+  "private_finite_fixture_plan_sha256": "7e12755ff316b29db416d1571b78990535cbef63117f45944c43480b04425dd5",
+  "projection_log_sha256": "f0a0f0947a298079240d58c3b34ebe6930ac66157294efa396be083b489c659c",
+  "public_product_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "raw_dependency_custody": "Exact original candidate and runtime, plans, normalized stores, raw JUnit and coverage bytes, original closeout records and complete review are retained in private custody. The ordinary observer and the authored two fresh fixture texts are the original registered bytes. The tracked test module provides the unchanged selected assertion code.",
+  "tracked_source_scope": "Entire checked-in cppulse Python package, selected tracked fixture or regression source, and exact published observer text. The current mutable delivery ledger, review pointer and proof are outside the hash set.",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "whole_review_sha256": "3553f6871faa56ca8d1403ecef654a7b87fb7228e20bf6e373dfd558a853f8cd"
+}

@@ -1,0 +1,69 @@
+{
+  "criterion": "The first supported language is C++. Additional languages, managed hosting, enterprise identity, and automatic semantic refactoring are expansion work.",
+  "id": "PR-06",
+  "independent_whole_review_sha256": "7b4ffde039472316b851009f78ee59bf0285f41977a7433541ec64dd4b7cd025",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_native_language_retry": {
+      "actual_exit": 0,
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "guarded_execution_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch02/language-retry/run.sh"
+      ],
+      "raw_log_sha256": "2b0687a21b59606eb98168c6f5ff72886935113c5affd6cefefef7e89007b04d",
+      "record_sha256": "d9f7472b51cd86fd8a6e5bbce5fbe266c0ad5db88d99eb2bc6c57a6d56cd9697",
+      "stable_guard_pins": 2776
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_supported_analyses": [
+      ".cpp",
+      ".c++"
+    ],
+    "analyzed_language_standard": "C++17",
+    "current_d65_plan_scope": {
+      "milestone_tasks": 60,
+      "missing": 0,
+      "requirements": 118,
+      "supplemental": 9
+    },
+    "current_d65_separate_plan_exit": 0,
+    "earlier_actual_scope": "The original scope authority and plan checker retain C++ as the first supported analyzed language and keep language, hosting, identity and semantic refactoring expansion intact. Nine original tests passed. Actual installed native C++17 analyzed both .cpp and .c++ with zero parse errors, reported .py and .ts as skipped, and rejected each explicitly selected unsupported input with exit 2 and no findings output.",
+    "exact_1e_to_d65_changed_paths": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "explicit_unsupported_native_exit2_without_findings": [
+      ".py",
+      ".ts"
+    ],
+    "parse_errors": 0,
+    "preserved_first_language_attempt_exit": 1,
+    "unsupported_scanned_skipped": [
+      ".py",
+      ".ts"
+    ],
+    "verified_original_tests": 9
+  },
+  "preserved_epoch_and_result_limits": [
+    "Only C++17 on the installed corrected Linux candidate was executed. The project may contain Python and TypeScript without including them in analyzed-language support.",
+    "This actual bounded native fixture did not invoke Python ranking or history. The native analyzer and kit selected for d65 have the same pinned bytes; changed Git/legacy/roadmap code is outside the selected language producer. Earlier unsupported file-list attempt used a plain-text fixture, and the new exact earlier JSON-array attempt has its own exit 0."
+  ],
+  "primary_observed_role": "actual_native_language_retry",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "The first supported language is C++. Additional languages, managed hosting, enterprise identity, and automatic semantic refactoring are expansion work."
+}

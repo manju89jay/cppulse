@@ -1,0 +1,14 @@
+{
+  "criterion": "NFR-MNT-08",
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "structured_projection_log_sha256": "0493b8f115de6ef7a6db9b92a64cf51e7651973f570ece0feb7bd81b9f1d9850",
+  "complete_original_execution_and_guard_custody_review_sha256": "0bd752a13948034df7d25109f284d841999ca5a3f0b055d6ff06f6282e41f7f3",
+  "historical_wheel_and_receiving_scope_kept_separate": true,
+  "private_runtime_leaf_inventory_sha256": "8480b00542473173fed20dff6c9df3d879620dcd4d96b6da86fc584c3d36a460",
+  "semantic_and_disclosure_review_scope": "The current proof and selected evidence projection require independent review before a pointer update.",
+  "scope_projection_sha256": "c9f2523b41045534b5ef38bf380daf9394ba51508fc7d64b5ab3ace548395b0a",
+  "executed_old_ledger_sha256": "dc07cf42487e77a4ff348a3e37bc84a2af62d25e924eb3cdefe5010c2e88845b",
+  "mutable_ledger_role": "The original governance check read exact ledger bytes. Later evidence/review pointers are mutable; the original stable scope fields are independently unchanged. The proof does not hash the mutable ledger.",
+  "actual_governance_guard_sha256": "c810928ec999522afae962f018374cbc99bf98d0a423b8ac29156021f75cba0a",
+  "local_git_attestation": "The exact prior proposal commit was available. The ref observations apply only to the identified local receiving scopes."
+}

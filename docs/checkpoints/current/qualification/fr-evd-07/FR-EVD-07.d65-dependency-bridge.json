@@ -1,0 +1,138 @@
+{
+  "criterion": "FR-EVD-07",
+  "d65_source_compatibility_target": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "dependency_review": {
+    "actual_header_scope_receipt": {
+      "sha256": "c0815d9d496166ebaf32b7d91d46445a81b23d6b6b3c8b963be95d20bd15c902",
+      "size_bytes": 6918
+    },
+    "new_target_delta_pin_not_an_execution_input": {
+      "python/cppulse/predictor/roadmap_generator.py": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+    },
+    "normalized_scope": "Finite selected int workload with SELECTED_MACRO=7. Other template types and macro values were not exercised.",
+    "old_broad_product_pin": {
+      "python/cppulse/predictor/roadmap_generator.py": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "selected_native_checks": [
+      "selected-int-macro7",
+      "standalone-header"
+    ],
+    "six_pinned_evidence_report_routes": {
+      "missing-named-test-report-html.command.json": {
+        "checked_manifest_sha256": "07863961a96cd9887dc9c41b1f6161a3265d7205e27cfc3b34f366595ff367d6",
+        "command": {
+          "sha256": "edbfdf90d5ab91d5cf7275210502086194d938f2bd9a3409651f2a384c4b77b6",
+          "size_bytes": 591
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      },
+      "missing-named-test-report-json.command.json": {
+        "checked_manifest_sha256": "07863961a96cd9887dc9c41b1f6161a3265d7205e27cfc3b34f366595ff367d6",
+        "command": {
+          "sha256": "136ded8a34156fd2977e882c144fd37915997e7e4fd0fb97075071f87609ba13",
+          "size_bytes": 591
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      },
+      "omit-selfcontainment-report-html.command.json": {
+        "checked_manifest_sha256": "a68c1d4df726e239e443038e77d61fbcd93ad48f27beef229c444eef4fffcb2d",
+        "command": {
+          "sha256": "1c1cd78c209623b8d767a9e9379dc3368171bbef3a2a27a944ed001a39296117",
+          "size_bytes": 593
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      },
+      "omit-selfcontainment-report-json.command.json": {
+        "checked_manifest_sha256": "a68c1d4df726e239e443038e77d61fbcd93ad48f27beef229c444eef4fffcb2d",
+        "command": {
+          "sha256": "74217667db5d7b46faccf548a885bf27282b7ff9dde3c13394ecf93b2e8c3e5b",
+          "size_bytes": 593
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      },
+      "positive-report-html.command.json": {
+        "checked_manifest_sha256": "8560031f992d681b0e89a7dc406d0eba93162d22a9a632a4e2d66529b7271996",
+        "command": {
+          "sha256": "3641126b036faa8eba4a69b3257be52da11624e83094bb35d549cfa71b7df890",
+          "size_bytes": 581
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      },
+      "positive-report-json.command.json": {
+        "checked_manifest_sha256": "8560031f992d681b0e89a7dc406d0eba93162d22a9a632a4e2d66529b7271996",
+        "command": {
+          "sha256": "74695db2692d950c9d142e245f000ca736d68e3644670a91067aca3cc0375ba3",
+          "size_bytes": 581
+        },
+        "mode": "typed_evidence",
+        "roadmap_artifact_present": false
+      }
+    },
+    "two_governance_paths_and_new_predictor_test": "The two governance files were not read by the selected executions. The new roadmap sorting regression was not among the original selected criterion tests.",
+    "unchanged_origin_evidence_files": 8,
+    "unchanged_origin_evidence_map_sha256": "c054652bee779372c761b254c6d1e5ad9b0e3ccd0ad8a1f617dced3385c8e0ea",
+    "unchanged_product_source_files": 243,
+    "unchanged_product_source_map_sha256": "341ee5b1c4308cc11615f06f9ff8327b7e8d9afffed0687740afb90594aadbb0",
+    "why_roadmap_has_no_influence": "The installed observers run a CMake/GCC/CTest consumer and independent standalone-header fixture, compare typed consumer facts, and render pinned evidence reports. The typed report entry reaches presentation.build_snapshot_view without predictor execution. Each selected manifest lacks an existing roadmap."
+  },
+  "execution_scope": "This dependency review does not introduce a new criterion execution. Runtime, tool, artifact and before/after identities of the original execution remain byte-for-byte in their original custody roles.",
+  "kind": "Source-delta dependency review of previously executed criterion proof",
+  "matching_exact_source_and_artifact_boundary": {
+    "path": "docs/checkpoints/current/qualification/d65-compatibility/exact-source-and-artifact-boundary.json",
+    "sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+    "size_bytes": 5279
+  },
+  "original_full_direct_input_custody": {
+    "before_after_inputs_equal": true,
+    "checked_runtime_entries": 260105,
+    "full_direct_file_count": 1757,
+    "full_original_before_after_map_sha256": "2fb010ab8a2c4176556e909aa498c13d3be3fa0b45f754fd356f148dca1dc4f4",
+    "original_command_log": {
+      "sha256": "56ea73024f96f6f48d94cfc854fd13a6d76dfb1ee3b6fbbcde673d235f04cd79",
+      "size_bytes": 150
+    },
+    "original_job": {
+      "sha256": "edfa4ecfc5a23202a995d4d3ff2fe2ada0d633bf052ba15e561cdb06c58f1773",
+      "size_bytes": 600222
+    },
+    "original_preregistration": {
+      "sha256": "aaf3a7f7b30c953875149b2c4de75b365afd004cb4b0fdea138e094cf3829e96",
+      "size_bytes": 300374
+    },
+    "original_semantic_review": {
+      "sha256": "e72c38be1660f4d7c79e5e5d8f9157f39cebb740776efd0f5db259d9f518f394",
+      "size_bytes": 136055
+    },
+    "recorded_actual_exit": 0,
+    "recorded_outer_command_sha256": "fc8a2fdc87c8b9cb797bc16e47e79e6a82e13f4f6ecedde524d77429e649e552",
+    "unchanged_runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    }
+  },
+  "original_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "original_qualification": {
+    "execution_bridge_sha256": "03db509f3fed70a9db8a4a9ae4668f81885988de75997e1eac320bceec874001",
+    "full_original_source_pin_count": 252,
+    "full_original_source_pin_map_sha256": "30aa33b86f3a2b9bb11ed3cea57256acd96b8f06d61a143b2b6a06da8d1daa0f",
+    "original_execution_bridge_path": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.execution-bridge.json",
+    "original_passing_command": [
+      "bash",
+      "/workspace/work/current38-batch10/header-da3-writable/launch.sh",
+      "/workspace/work/current38-batch10/results-da3/header"
+    ],
+    "original_public_pointer_review": {
+      "sha256": "997a5414856c2cd92b2f34538d983895561d1a2d1212330ab38c90b1bb332c5e",
+      "size_bytes": 7784
+    },
+    "proof_path": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.proof.json",
+    "proof_sha256": "65db74f7531baa608591eaa915bc825ebc2a842d8503d076eb01aa680a3ad964",
+    "structured_log_path": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.structured-log.json",
+    "structured_log_sha256": "06a782448f7b9a51831df664d1bbfbf84c6919eb88534bb5d4cb0b7406154a94"
+  }
+}

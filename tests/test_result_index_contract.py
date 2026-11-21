@@ -1,4 +1,5 @@
 """Selected-artifact scope and identities remain explicit before indexing."""
+
 from copy import deepcopy
 import json
 from pathlib import Path

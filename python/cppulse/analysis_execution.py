@@ -52,6 +52,7 @@ from cppulse.work_units import (
 
 _EXTENSIONS = {
     ".cpp",
+    ".c++",
     ".cc",
     ".cxx",
     ".h",
@@ -79,14 +80,61 @@ class AnalysisExecution:
     plan: dict[str, Any]
     source_observations: dict[str, Any]
     rejected: list[tuple[dict[str, Any], str]]
+    compilation_database: list[dict[str, Any]] | None = None
 
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def discover_sources(root: Path) -> tuple[list[str], list[str]]:
-    """Discover native-supported regular C++ files; retain traversal gaps."""
+def _declared_source(root: Path, row: dict[str, Any]) -> tuple[str | None, str | None]:
+    """Classify one declaration without following a source symlink or opening it."""
+    spelling = Path(row["directory"]) / row["file"]
+    path = Path(os.path.abspath(spelling))
+    try:
+        relative = path.relative_to(root)
+    except ValueError:
+        return None, f"Unassessed declared compilation unit {path}: outside source root"
+    identity = relative.as_posix()
+    prefix = f"Unassessed declared compilation unit {identity}: "
+    if (
+        identity == "."
+        or "\\" in identity
+        or ":" in identity
+        or any(ord(character) < 32 or ord(character) == 127 for character in identity)
+    ):
+        return None, prefix + "unsafe source identity"
+    # Check the source spelling before normalizing '..', which could otherwise
+    # conceal a symlink traversed by the original compiler declaration.
+    current = Path(spelling.anchor)
+    try:
+        for component in spelling.parts[1:]:
+            current /= component
+            info = current.lstat()
+            if stat.S_ISLNK(info.st_mode):
+                return None, prefix + "source path contains a symlink"
+        if not stat.S_ISREG(info.st_mode):
+            return None, prefix + "source is not a regular file"
+    except FileNotFoundError:
+        return None, prefix + "source is missing"
+    except OSError:
+        return None, prefix + "source is unreadable or has a non-directory parent"
+    if path.suffix.lower() not in _EXTENSIONS:
+        return None, prefix + "unsupported C++ source extension"
+    return identity, None
+
+
+def discover_sources(
+    root: Path, database: list[dict[str, Any]] | None = None
+) -> tuple[list[str], list[str]]:
+    """Reconcile supported regular files and database declarations within root.
+
+    Missing, unsafe and unsupported declarations are explicit unassessed gaps,
+    never invented hashed files or work units. Generated-looking files stay in
+    the inventory so native exclusion metadata explains their assessed scope.
+    Database commands and their ordering are not rewritten here.
+    """
+    root = root.absolute()
     paths: list[str] = []
     gaps: list[str] = []
 
@@ -113,7 +161,13 @@ def discover_sources(root: Path) -> tuple[list[str], list[str]]:
                 )
                 continue
             paths.append(path.relative_to(root).as_posix())
-    return sorted(paths), sorted(gaps)
+    for row in database or []:
+        identity, reason = _declared_source(root, row)
+        if identity is not None:
+            paths.append(identity)
+        if reason is not None:
+            gaps.append(reason)
+    return sorted(set(paths)), sorted(set(gaps))
 
 
 def observe_source_inputs(root: Path, paths: list[str]) -> list[dict[str, Any]]:
@@ -652,14 +706,14 @@ def run_analysis(
     began = time.monotonic()
     root, base = _roots(config.repo, config.execution["work_directory"] or work_root)
     base.mkdir(parents=True, exist_ok=True)
-    paths, gaps = discover_sources(root)
+    database, db_digest = _database(config, config.execution["output_bytes"])
+    paths, gaps = discover_sources(root, database)
     source_before = observe_source_inputs(root, paths)
     source = snapshot_inputs(root, paths, inventory_complete=not gaps)
     if source_before != observe_source_inputs(root, paths):
         raise IntegrityError(
             "Source inputs changed while establishing the initial boundary"
         )
-    database, db_digest = _database(config, config.execution["output_bytes"])
     resource_snapshot = (
         snapshot_inputs(native.resource_dir, _resource_files(native.resource_dir))
         if native.resource_dir is not None
@@ -704,8 +758,16 @@ def run_analysis(
         {
             "unit_id": "unit-"
             + digest_json(
-                {"file": path, "database": db_digest, "configuration": config.settings,
-                 **({"ruleset_digest": config.ruleset["digest"]} if config.ruleset else {})}
+                {
+                    "file": path,
+                    "database": db_digest,
+                    "configuration": config.settings,
+                    **(
+                        {"ruleset_digest": config.ruleset["digest"]}
+                        if config.ruleset
+                        else {}
+                    ),
+                }
             )[:32],
             "primary_file": path,
             "context_mode": "compilation_database" if database else "fallback",
@@ -953,11 +1015,12 @@ def run_analysis(
         ):
             observed = _observed_context(unit, report)
             contexts[observed["id"]] = observed
-    after_paths, after_gaps = discover_sources(root)
     try:
-        _, after_db = _database(config, config.execution["output_bytes"])
+        after_database, after_db = _database(config, config.execution["output_bytes"])
     except (ContractError, IntegrityError, OSError):
+        after_database = None
         after_db = "changed"
+    after_paths, after_gaps = discover_sources(root, after_database)
     change_reasons: list[str] = []
     source_after = observe_source_inputs(root, paths)
     source_observations = {
@@ -1069,7 +1132,9 @@ def run_analysis(
         "source_observations_sha256": digest_json(source_observations),
         "status": status,
         "input_verification": (
-            "changed" if changed else "unavailable" if include_unknown else "verified"
+            "changed"
+            if changed
+            else "unavailable" if include_unknown or gaps else "verified"
         ),
         "unit_count": len(units),
         "completed_units": completed,
@@ -1114,6 +1179,7 @@ def run_analysis(
         plan,
         source_observations,
         rejected,
+        database,
     )
 
 

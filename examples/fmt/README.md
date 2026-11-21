@@ -1,3 +1,5 @@
+> **Historical, unqualified snapshot.** Counts/provenance and legacy score claims below are not current acceptance; do not treat them as calibrated bug probabilities or verified ownership. See [provenance and known inconsistencies](../../docs/examples/historical-showcases.md).
+
 # cppulse Report: {fmt}
 
 > **Historical, unverified example — not a current benchmark.** The original report and artifacts below are preserved. Their finding, category and severity totals disagree; scores, “Bug Probability,” risk labels and effort estimates cannot establish comparative health, calibrated defect risk, memory safety, accuracy or production suitability. No fresh upstream scan or complete project coverage is claimed. See the [historical totals audit](../../README.md#historical-examples-inconsistent-totals), [verified synthetic demo](../../docs/portfolio/demo-verification.md) and [current workflow scope](../../docs/development/public-cli.md).

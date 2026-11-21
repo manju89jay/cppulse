@@ -1,4 +1,5 @@
 """Bounded one-file reuse of the frozen native-metric semantic validator."""
+
 # Exact finite budgets intentionally exclude booleans and subclasses.
 # ruff: noqa: E721
 from __future__ import annotations

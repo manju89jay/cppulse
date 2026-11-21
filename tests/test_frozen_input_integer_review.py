@@ -1,4 +1,5 @@
 """Exact private integer fields cannot authorize invalid timestamp syntax."""
+
 import pytest
 from cppulse.contracts.frozen_input import load_frozen_input, validate_frozen_input
 from cppulse.errors import ContractError

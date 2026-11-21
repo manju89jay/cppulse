@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "exit_code": 0,
+  "command": [
+    "bash",
+    "/workspace/work/governance-qualification/work-checks/run.sh"
+  ],
+  "log": "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.structured-log.json",
+  "log_sha256": "0493b8f115de6ef7a6db9b92a64cf51e7651973f570ece0feb7bd81b9f1d9850",
+  "source_files": {
+    ".clang-format": "f713e741dffa7853888412af8a7575a35afb720c16bdf1797c417c4e848201dd",
+    ".claude/rules/cpp-style.md": "be44c2c0321810a63c8236e5050cc018bcbc3339c367a47fde1409ebf7444245",
+    "AGENTS.md": "b57f3319d561f4825d73c532d3dbf585889dcd391dce197b276e89429145e61b",
+    "TASK_SPEC.md": "cdfbf074d26ed385ffc54296f609c465bf5e8747797e7936ce9ba50730ca258c",
+    "analyzer-core/CMakeLists.txt": "e3a5036197c2d2c53006eb29924dd6058518534f36815c07fb666af1ef46863c",
+    "docs/DECISIONS.md": "20e73c9587be3a3dabe00a312bc1348b6543130b48d542e1a870679a41fd077b",
+    "docs/plans/cppulse-production-completion-plan.md": "09592a2247b92ba8a5e30fa1b3816effdb3cedc016347f287b0437d47ba7a8e3",
+    "docs/plans/production-completion-traceability.json": "1bfa63ffce166c5d28d5dcc024788e8eb77e409380ec4afce5eadf47e16cd811",
+    "docs/plans/production-scope-authority.md": "07e16a120bfbb24f2b21223c6b2adceb02296d0b7e445c2f08a66c06ccba761a",
+    "docs/plans/verify_production_plan.py": "95fb4ddabd240fb1e679c82459ebdbba51e0dcd286b32c796ec61c2f03a7255b",
+    "docs/specs/production-platform/design.md": "ea33a09872a83b0b65452fff65994e3e42a4329903f84e922cccc0da29a8b531",
+    "docs/specs/production-platform/requirements.md": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+    "docs/specs/production-platform/tasks.md": "0adf5fd834351ceffd56d50d32cd5334241c962a7139dc24c773d66d6e6a9c71",
+    "scripts/verify_delivery.py": "44f5aa3dbaf0673398f0737f0293898b1ea5bad8f968d1215ed140250dc161bf",
+    ".claude/rules/safety-critical.md": "61897ed7d4413840d1c60eb1d69cefd50395131d812dee15516837a47c2b4fd1",
+    "docs/checkpoints/current/qualification/nfr-mnt-08/executed-scope-observer.py": "c96ae7cc3864c5a511866bc9f49aa3ac3383984f35e3a2eaf62a6a62023fe3ac",
+    "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.execution-bridge.json": "e7e58b10e349fdc9aaabf4c655a72754c00eaae89313c042456aac7bd86c90cd"
+  },
+  "source_epoch": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "scope": "Original independently tested semantic scope. The proof is staged for independent receipt review."
+}

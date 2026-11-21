@@ -30,8 +30,12 @@ class PredictorInputs:
 
 def _identity(value: os.stat_result) -> tuple[int, ...]:
     return (
-        value.st_dev, value.st_ino, value.st_mode, value.st_size,
-        value.st_mtime_ns, value.st_ctime_ns,
+        value.st_dev,
+        value.st_ino,
+        value.st_mode,
+        value.st_size,
+        value.st_mtime_ns,
+        value.st_ctime_ns,
     )
 
 
@@ -52,7 +56,9 @@ def open_predictor_inputs(
     try:
         fd = os.open(path, flags)
     except OSError as error:
-        raise IntegrityError(f"Native predictor input is missing or unsafe: {path}") from error
+        raise IntegrityError(
+            f"Native predictor input is missing or unsafe: {path}"
+        ) from error
     with os.fdopen(fd, "rb") as stream:
         before = os.fstat(stream.fileno())
         if not stat.S_ISREG(before.st_mode):
@@ -63,7 +69,9 @@ def open_predictor_inputs(
                 current = path.stat(follow_symlinks=False)
             except OSError as error:
                 raise IntegrityError("Native predictor input disappeared") from error
-            if _identity(os.fstat(stream.fileno())) != _identity(before) or _identity(current) != _identity(before):
+            if _identity(os.fstat(stream.fileno())) != _identity(before) or _identity(
+                current
+            ) != _identity(before):
                 raise IntegrityError("Native predictor input changed during processing")
 
         guard()
@@ -77,11 +85,13 @@ def open_predictor_inputs(
             expected_size=before.st_size,
             directory=directory,
             source_guard=guard,
-            projection_limits=ProjectionLimits(json_limits=JsonStreamLimits(
-                max_bytes=256 * 1024**2,
-                max_item_bytes=16 * 1024**2,
-                max_array_items=10_000_000,
-            )),
+            projection_limits=ProjectionLimits(
+                json_limits=JsonStreamLimits(
+                    max_bytes=256 * 1024**2,
+                    max_item_bytes=16 * 1024**2,
+                    max_array_items=10_000_000,
+                )
+            ),
             store_limits=store_limits,
         ) as reader:
             document = reader.document
@@ -89,14 +99,18 @@ def open_predictor_inputs(
             native = analysis.get("native_metrics") if analysis is not None else None
             header = (
                 {key: value for key, value in native.items() if key != "files"}
-                if native is not None else None
+                if native is not None
+                else None
             )
             validate_streamed_native_metrics(
-                reader.iter_analysis_files(), reader.iter_metric_files(),
-                metrics_header=header, directory=directory,
+                reader.iter_analysis_files(),
+                reader.iter_metric_files(),
+                metrics_header=header,
+                directory=directory,
             )
             claims = _reported_hotspot_claims(
-                document, reader.iter_metric_files(),
+                document,
+                reader.iter_metric_files(),
                 header.get("metric_version") if header is not None else None,
             )
             document["findings"] = list(reader.iter_findings())

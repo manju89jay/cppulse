@@ -1,0 +1,41 @@
+{
+  "command": [
+    [
+      "bash",
+      "/workspace/work/current38-next/criteria/launch_original.sh",
+      "privacy-installed"
+    ],
+    [
+      "bash",
+      "/workspace/work/current38-next/criteria/launch_original.sh",
+      "privacy-source"
+    ]
+  ],
+  "exit_code": 0,
+  "log": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.structured-log.json",
+  "log_sha256": "2a741afbf75be3c397659494d348b58cda388cd0032a05ad36d79bfe6b365dfc",
+  "source_files": {
+    "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.execution-bridge.json": "4bec8a788123ad9e9df40a9845cda0a3a6ddada82ea79e456630e9f7369ebde8",
+    "docs/checkpoints/current/qualification/fr-ux-11/executed/launch_original.sh": "298cc130138185f54fca4b61bd76d6186fe1b3541b6a0686f2177d6b894fb0c8",
+    "docs/checkpoints/current/qualification/fr-ux-11/executed/run_original.py": "7ebc4167e2056b6f8d696eaeef157e97b52fb1a2f76b4cc21bb9fbc39a7fd185",
+    "docs/specs/production-platform/requirements.md": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+    "pyproject.toml": "f10f7eed61bc764dcac60c621f77ce3cb5169eda5403f096182705d2931912c4",
+    "python/cppulse/__init__.py": "f0c86fb816a2c4a7f2003aed5fd64756289a3a63f27468b9b60305c5c004c3fb",
+    "python/cppulse/__main__.py": "c29af8d76cc07be764f29ab78d75361c3d2a156136024f7e6e9cc5086900c682",
+    "python/cppulse/cli.py": "a77848665ac74c8c99091d45acb70150bfb3140d6b8187b1e6fa1684fbce2258",
+    "python/cppulse/compatibility.py": "e33894fd87f84e0e0c3a9d89141902838b7ce3fb190407bea4700c752570c570",
+    "python/cppulse/config.py": "c4daa823baedca19e69d155b0d8405c102b7f647ceb16d4f98275e4a1256aeaf",
+    "python/cppulse/contracts/__init__.py": "e22b26bf2eeb3acb676a8e6023a2d9217fc5ec17e7488b8f3a86dcdb607d3904",
+    "python/cppulse/contracts/validation.py": "d88bf512fab39db7538e9eee16ec5ba2afb3ec0484f5f2fd7d589dde5a598041",
+    "python/cppulse/errors.py": "d146cc4c34191e26f3c1340489f69a1e78b1e1eb650710ecd643a2ecb932cfc0",
+    "python/cppulse/identities.py": "dda870071016e4511492e9531214465e9ab5c103432dff5a52afaf52cbaa3bd9",
+    "python/cppulse/importer.py": "031c443a62fb2b8d7e7e2831faf04f823a4d558d64321830a161024d99914c86",
+    "python/cppulse/native.py": "580d662990407067b96fd3d697d6c5fd7e6af694d7130f2c38487a49e9206ab9",
+    "python/cppulse/pipeline.py": "5dc3df4a77a2460a1fce8a72a69142fff80ba5471f7ddb04da3efb464c84649b",
+    "python/cppulse/run_store.py": "26c3219151edfa33d9f6f3e364ac4409ed7ad68f5a77d9f138ed6520b04bfb4d",
+    "python/cppulse/store_coordination.py": "797603e1e3f173c46ecdd78b624ce032442aa6c14d32fd6d0a695d3faca97f6e",
+    "tests/test_diagnostic_privacy112.py": "c0b79f1cbcbb7b656b841d3c04f557ad425c394448759a75a1d71c04692f4028",
+    "tests/test_installed_cli.py": "6bd355511bd37cb3bfd36b8fbfa5e9a624c2f0a2b3ac3ed1f021a6520e4cdedb"
+  },
+  "status": "passed"
+}

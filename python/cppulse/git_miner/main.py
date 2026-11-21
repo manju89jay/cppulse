@@ -205,8 +205,14 @@ def run(
     selected_szz_cutoff = None
     if szz_cutoff is not None:
         try:
-            selected_szz_cutoff = datetime.fromisoformat(szz_cutoff.replace("Z", "+00:00"))
-            if selected_szz_cutoff.tzinfo is None or selected_szz_cutoff.utcoffset() != timezone.utc.utcoffset(selected_szz_cutoff):
+            selected_szz_cutoff = datetime.fromisoformat(
+                szz_cutoff.replace("Z", "+00:00")
+            )
+            if (
+                selected_szz_cutoff.tzinfo is None
+                or selected_szz_cutoff.utcoffset()
+                != timezone.utc.utcoffset(selected_szz_cutoff)
+            ):
                 raise ContractError("SZZ cutoff must be an aware UTC timestamp")
         except (ContractError, ValueError, TypeError, AttributeError) as exc:
             logger.error("Invalid SZZ cutoff: %s", exc)
@@ -341,13 +347,12 @@ def run(
             "The SZZ cutoff selects bug-fix labels only. Other metrics use retained "
             "history; this output is not a historical feature snapshot or future-defect validation."
         )
-    # Scope disclosure is informational, not a new collection failure. Preserve
-    # the availability and values derived from the actual retained history.
-    output_doc["metadata"]["limitations"].append(_RETAINED_HISTORY_SCOPE)
     behavior_doc = None
     if selected_behavior is not None:
         from .behavior import analyze_behavior, records_from_scan
 
+        # A configured window leaves the retained-history metrics unchanged.
+        output_doc["metadata"]["limitations"].append(_RETAINED_HISTORY_SCOPE)
         try:
             if shared_scan is None:
                 raise ValueError(

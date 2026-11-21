@@ -1,0 +1,2 @@
+Authored distribution marker for the consumer declaration fixture.
+This text is not a compiled or linked library.

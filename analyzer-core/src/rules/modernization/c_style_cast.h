@@ -14,10 +14,11 @@
 namespace cppulse {
 
 /**
- * @brief Flags CXCursor_CStyleCastExpr cursors.
+ * @brief Flags non-void CXCursor_CStyleCastExpr cursors.
  *
  * C-style casts (T)expr bypass C++ type-safety checks.  Use static_cast,
- * dynamic_cast, const_cast, or reinterpret_cast explicitly.
+ * dynamic_cast, const_cast, or reinterpret_cast explicitly. Canonical void-result
+ * casts are intentional discards; nested non-void casts remain independently checked.
  */
 class CStyleCastRule : public RuleBase<CStyleCastRule> {
    public:

@@ -1,0 +1,79 @@
+{
+  "criterion": "Allow a declared matrix of library consumers: compiler, OS/target, standard, macros, dependency configuration, linking mode, and required tests.",
+  "id": "FR-EVD-06",
+  "independent_whole_review_sha256": "42b2429a7fa7a91be14114b949121804616a2d79cf3f5cb81fc3f57712b426b9",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_declared_consumer_phase": {
+      "actual_enclosing_exit": 1,
+      "actual_exit": 0,
+      "companion_provenance_actual_exit": 1,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch08/consumer-launch-v2.sh",
+        "/workspace/work/current38-batch08/results/consumer"
+      ],
+      "outer_guard_record_sha256": "62590bd2a432cd847b819639c342f37009b60d2a128e5e46f919cb5d0d65ab0a",
+      "raw_log_sha256": "6ff9ac81e5c7e7a6cb73672930bc695e34901ee3ae431b17ddc38b8b92c719f7"
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_1e_to_d65_changed_source_paths": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "consumer_build_and_test_processes": 0,
+    "declared_cases": 4,
+    "dimensions": [
+      "compiler",
+      "OS/target",
+      "standard",
+      "macros",
+      "dependency configuration",
+      "linking mode",
+      "required tests"
+    ],
+    "earlier_observed_scope": "The exact installed public consumer declaration API retained four authored configurations and all seven original dimensions, including requested Windows, Clang, header-only and explicit unknowns. Exact source and package identities, original parent manifest bytes and repeat publication identity were preserved. No subprocess represented a consumer execution. Actual pinned JSON and HTML retained both typed artifacts and no policy assessment. The unsupported view with missing contexts was refused without an output.",
+    "negative_cases": [
+      "foreign subject",
+      "duplicate case",
+      "dependency mismatch",
+      "missing artifact",
+      "stale source"
+    ],
+    "original_installed_consumer_contract_cases": 33,
+    "report_roles": {
+      "html": {
+        "exact_command_record_sha256": "0a6987f0c3b5b06f63a4b2b0223673366c23e9bf3fa03e194ea73354e5ccb41e",
+        "exit": 0
+      },
+      "json": {
+        "exact_command_record_sha256": "d3e9aa7baedbc7d71adea20fd60f444cfcca71c1bc5216fdb493437b10811b45",
+        "exit": 0
+      }
+    },
+    "uncatalogued_view_refusal_actual_exit": 2,
+    "unverified_source_and_repeat_pin": true
+  },
+  "preserved_epoch_and_result_limits": [
+    "The four cases are fresh declaration-only fixtures. They do not qualify actual build, test, linking, platform, package distribution or original raw historical matrix restoration. The unrelated provenance harness failure remains separate.",
+    "The exact declaration-only API and typed report path consumes its finite selected snapshot. No build/test or predictor roadmap is produced in this declared scope. Earlier mixed outer exit 1 and separate provenance failure are preserved."
+  ],
+  "primary_observed_role": "actual_declared_consumer_phase",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Allow a declared matrix of library consumers: compiler, OS/target, standard, macros, dependency configuration, linking mode, and required tests."
+}

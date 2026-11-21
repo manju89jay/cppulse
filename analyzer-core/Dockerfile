@@ -17,14 +17,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgmock-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy CMakeLists.txt first for better layer caching
+# Keep the analyzer and its Linux supervisor source in their repository layout.
 WORKDIR /src
-COPY CMakeLists.txt .
-
-# Copy source and build
-COPY . .
-RUN cmake -B build && cmake --build build \
-    && cd build && ctest --output-on-failure
+COPY analyzer-core/CMakeLists.txt analyzer-core/
+COPY analyzer-core/src/ analyzer-core/src/
+COPY analyzer-core/tests/ analyzer-core/tests/
+COPY tools/frozen_container_supervisor.cpp tools/
+RUN cmake -S analyzer-core -B build && cmake --build build \
+    && ctest --test-dir build --output-on-failure
 
 # --------------------------------------------------------------------------
 # Runtime stage
@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /src/build/cppulse-analyzer /usr/local/bin/cppulse-analyzer
-COPY docker-entrypoint.sh /usr/local/bin/cppulse-analyzer-entrypoint
+COPY analyzer-core/docker-entrypoint.sh /usr/local/bin/cppulse-analyzer-entrypoint
 RUN chmod +x /usr/local/bin/cppulse-analyzer-entrypoint
 
 ENTRYPOINT ["/usr/local/bin/cppulse-analyzer-entrypoint"]

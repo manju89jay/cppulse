@@ -338,10 +338,15 @@ def iter_json_array(
     Every array element, including ignored elements, has the same compact-byte
     cap. Caller streams are never closed here. Abandoning iteration proves nothing.
     """
-    if type(limits) is not JsonStreamLimits:  # noqa: E721 -- closed private budget profile
+    if (
+        type(limits) is not JsonStreamLimits
+    ):  # noqa: E721 -- closed private budget profile
         raise ContractError("JSON stream limits require the frozen budget dataclass")
     limits.validate()
-    if type(expected_size) is not int or not 0 <= expected_size <= limits.max_bytes:  # noqa: E721 -- exact size pin, no coercion
+    if (
+        type(expected_size) is not int  # noqa: E721 -- exact size pin
+        or not 0 <= expected_size <= limits.max_bytes
+    ):
         raise ContractError("JSON stream needs an exact bounded expected size")
     if (
         not isinstance(expected_sha256, str)

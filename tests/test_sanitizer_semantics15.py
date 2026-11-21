@@ -1,4 +1,5 @@
 """Tiny authored retained-log regressions, not actual sanitizer execution."""
+
 from pathlib import Path
 
 import pytest

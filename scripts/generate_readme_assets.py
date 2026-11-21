@@ -90,7 +90,6 @@ def generate_category_bars(categories: dict[str, float], output_path: Path) -> N
     gap = 12
     label_w = 150
     bar_area_w = 200
-    score_w = 60
     padding = 20
     n = len(categories)
     h = padding * 2 + n * bar_h + (n - 1) * gap + 30  # +30 for title

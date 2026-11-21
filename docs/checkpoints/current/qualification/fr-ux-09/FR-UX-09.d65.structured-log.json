@@ -1,0 +1,545 @@
+{
+  "actual_installed_metadata": {
+    "actual_core_distributions": 5,
+    "actual_transitive_core_distributions": 9,
+    "dashboard_assets_bundled": true,
+    "independently_rehashed_materialized_files": 3791,
+    "installed_distributions_including_cppulse": 15,
+    "requires_dist_matches_source": 22
+  },
+  "actual_scoped_command": [
+    "/usr/bin/bash",
+    "/workspace/work/current38-batch18/report-replay/worker.sh",
+    "/workspace/work/current38-batch18/results/report-replay"
+  ],
+  "criterion": "FR-UX-09",
+  "criterion_text": "Support deterministic HTML/JSON reporting without optional PDF or web dependencies. Installation of PDF/dashboard/ML shall be optional.",
+  "exact_route_pairs": {
+    "component-legacy-flat-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "c1c78cd418a8cd1a8e36ebdd8afe4f0ff8783bdac30934c055c3466460d59aaf",
+          "size_bytes": 646
+        },
+        {
+          "sha256": "ef6e43c637bc86bb7ae22de937f3b6ddfd87ba797aac40a4e6c7bb715d0b2272",
+          "size_bytes": 657
+        }
+      ],
+      "report": {
+        "bytes": 13605,
+        "sha256": "f313ea3df4fce1149b81045ab68d2564b6cadb2d2a8f91e0146910a856c2ea17"
+      }
+    },
+    "component-legacy-flat-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "f783333671eb5f15e38af93b75801ec6ad2c4172ea1bbaa8675258b18ba14f12",
+          "size_bytes": 646
+        },
+        {
+          "sha256": "d9c2cb9d37e2d16fa9529fe09d420838d19ebd09e08ae6a4e53f99225a996390",
+          "size_bytes": 657
+        }
+      ],
+      "report": {
+        "bytes": 13402,
+        "sha256": "a65cb07a5f32c5a29808dea22c405e30acf79d377e9192107c9e56cf778a9f02"
+      }
+    },
+    "legacy-concrete-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "88c965ba0c516680ecfb5916b8db99e428727a5da53f6c1aa81ef31b16b2073a",
+          "size_bytes": 716
+        },
+        {
+          "sha256": "400aae82fa741c933802ae10e62df0befb5ef275d9368c23b1acd61b4f100a1e",
+          "size_bytes": 727
+        }
+      ],
+      "report": {
+        "bytes": 13605,
+        "sha256": "f313ea3df4fce1149b81045ab68d2564b6cadb2d2a8f91e0146910a856c2ea17"
+      }
+    },
+    "legacy-concrete-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "244f4f171ae14aa82a13cc6c08ae60d9c2dbb83158fb3370799e5f465335929c",
+          "size_bytes": 716
+        },
+        {
+          "sha256": "4fb32b23cb785abcee232f5f807993f4740f5327794db7a9c81bdfddb25516f6",
+          "size_bytes": 727
+        }
+      ],
+      "report": {
+        "bytes": 13402,
+        "sha256": "a65cb07a5f32c5a29808dea22c405e30acf79d377e9192107c9e56cf778a9f02"
+      }
+    },
+    "legacy-direct-producer-flat-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "98247037e2dc466294ee30e14fe5729aefa9725698a029de1fbfb14f967a68d8",
+          "size_bytes": 682
+        },
+        {
+          "sha256": "b81503a16b34bf798c5e7bad7168b87343123f3757d67859217170fd0e50e8e6",
+          "size_bytes": 693
+        }
+      ],
+      "report": {
+        "bytes": 13295,
+        "sha256": "9a8086daec6dd2c2016bb905422bf22615838c05d1935327d6a989b2f844e187"
+      }
+    },
+    "legacy-direct-producer-flat-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "2783c1f6c86ac7bb5d80dd9a85a0ffad82e0b341ec7ff0b252aebf32daa74761",
+          "size_bytes": 682
+        },
+        {
+          "sha256": "135657ae0269f53f800a6b8b6a60fe81ea3c975c7f5c9974117dc81f8713960a",
+          "size_bytes": 693
+        }
+      ],
+      "report": {
+        "bytes": 13415,
+        "sha256": "b2166dfcc72b34622e831ea833dcba505b6e846f085d7a79f0c276ae7291f3b9"
+      }
+    },
+    "legacy-flat-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "714f00ed3e275e5855cdcf07b94e1c55541ab34e5f2d4f385ffa8ee5d5241d51",
+          "size_bytes": 634
+        },
+        {
+          "sha256": "1deb61f483d809e7ef3912d07714d66b72157bf1d95c53a80fe4caf049ed5a58",
+          "size_bytes": 645
+        }
+      ],
+      "report": {
+        "bytes": 13605,
+        "sha256": "f313ea3df4fce1149b81045ab68d2564b6cadb2d2a8f91e0146910a856c2ea17"
+      }
+    },
+    "legacy-flat-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "3d1a87eb3890a4a42ef035281c448a4b6ec917fd441bc7e2358e9f836ee5e1ff",
+          "size_bytes": 634
+        },
+        {
+          "sha256": "c1df41e9ce7cc8208824ad493e35e674b327d4598901d8202d443b25918d24e0",
+          "size_bytes": 645
+        }
+      ],
+      "report": {
+        "bytes": 13402,
+        "sha256": "a65cb07a5f32c5a29808dea22c405e30acf79d377e9192107c9e56cf778a9f02"
+      }
+    },
+    "legacy-store-latest-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "0ccbd4ecf2c6e1c189a5848ea7e6da73eeecae8ae3e1db3f200a3f6880707b73",
+          "size_bytes": 686
+        },
+        {
+          "sha256": "91fdd1655fab62f666ef2a5bc1627fc93831301b6230bb9b6ec0b3cfd50d1caf",
+          "size_bytes": 697
+        }
+      ],
+      "report": {
+        "bytes": 13605,
+        "sha256": "f313ea3df4fce1149b81045ab68d2564b6cadb2d2a8f91e0146910a856c2ea17"
+      }
+    },
+    "legacy-store-latest-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "5c8d5ef79ce6c6e1f57540a2475cb15601eef0c58ac2d9bfd221df8ff23b7a6f",
+          "size_bytes": 686
+        },
+        {
+          "sha256": "60d34ea4e1f0ea1e94da317eb2cd49e02487bc9d76f5c00f7e02a9322527bd4b",
+          "size_bytes": 697
+        }
+      ],
+      "report": {
+        "bytes": 13402,
+        "sha256": "a65cb07a5f32c5a29808dea22c405e30acf79d377e9192107c9e56cf778a9f02"
+      }
+    },
+    "legacy-store-pinned-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "177abf852c4df27f9a105a77fef196bdbc0dd2d29be0dabe0fe93609100d2ef1",
+          "size_bytes": 839
+        },
+        {
+          "sha256": "5ac991f1ddac879f6e5eb1c6d393fdb48937aa65ff24f4203b88c651fb65c700",
+          "size_bytes": 850
+        }
+      ],
+      "report": {
+        "bytes": 13605,
+        "sha256": "f313ea3df4fce1149b81045ab68d2564b6cadb2d2a8f91e0146910a856c2ea17"
+      }
+    },
+    "legacy-store-pinned-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "3afdf7140384cb5df5d74d5a2ae7f556bee114c10fa7596f8137b70f8dce6866",
+          "size_bytes": 839
+        },
+        {
+          "sha256": "927b51e0ba3e180e992857798785e76c90b420e403c5b91710931a869936d060",
+          "size_bytes": 850
+        }
+      ],
+      "report": {
+        "bytes": 13402,
+        "sha256": "a65cb07a5f32c5a29808dea22c405e30acf79d377e9192107c9e56cf778a9f02"
+      }
+    },
+    "typed-concrete-pinned-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "3730f8eb0d9eb208783d3de25df12a41843430bed7a6847d29ce6dc78fdebd7b",
+          "size_bytes": 899
+        },
+        {
+          "sha256": "611e9c22a99b313005f33763809d3695551fb7c8520372db849ec3cd181fa4eb",
+          "size_bytes": 910
+        }
+      ],
+      "report": {
+        "bytes": 28565,
+        "sha256": "b9e0034ff56047b881fd5e5805609efd71f4892c06a39f0e3a01214c55b554f3"
+      }
+    },
+    "typed-concrete-pinned-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "8855d107cc2f3ec40def09b5fe48cb884e8ff52f4f3851ec4c8f16f4e6c71687",
+          "size_bytes": 899
+        },
+        {
+          "sha256": "8bf82b896e5f3af9581f6c70111e596110f2f56b85d933d1aec118301e9f5d7d",
+          "size_bytes": 910
+        }
+      ],
+      "report": {
+        "bytes": 185568,
+        "sha256": "565d0552dd28e2e431311d1364680da37479d7cec2a6889fc57c8a59132cb3f5"
+      }
+    },
+    "typed-latest-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "3101c74a126c6f2221a2b332104b75f30d777a53a4fcade516d6faa9233a8b5d",
+          "size_bytes": 690
+        },
+        {
+          "sha256": "2a5f612bea11697154392cfce55642d3c407733549168489ec216176e87142a5",
+          "size_bytes": 701
+        }
+      ],
+      "report": {
+        "bytes": 28565,
+        "sha256": "b9e0034ff56047b881fd5e5805609efd71f4892c06a39f0e3a01214c55b554f3"
+      }
+    },
+    "typed-latest-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "5876ae7c07a763be4ab50a759e2f79bd8007a5afc07530769f5c1c2aa50c05b7",
+          "size_bytes": 690
+        },
+        {
+          "sha256": "164b608fc30a4370e74416bba2e35b66d21edfebce280409dd6ae8c0d2239b88",
+          "size_bytes": 701
+        }
+      ],
+      "report": {
+        "bytes": 185568,
+        "sha256": "565d0552dd28e2e431311d1364680da37479d7cec2a6889fc57c8a59132cb3f5"
+      }
+    },
+    "typed-legacy-import-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "4009eb96b1828904e23aa0d363b32e8ec9d1a9e05844ffdb9f00f583842424d5",
+          "size_bytes": 822
+        },
+        {
+          "sha256": "8e31321378745436aaba9d0acefb98c93793901a975a4cde9b2e6dcc0e24a5a0",
+          "size_bytes": 833
+        }
+      ],
+      "report": {
+        "bytes": 10111,
+        "sha256": "7eaa4c9fcdd29da49eb473e3aef897072a99e79353c4b1c5546ea965351bd30a"
+      }
+    },
+    "typed-legacy-import-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "c7ffd424705152c3b9614318d92adce0c6ec8d7d0627f7d5c491f4ef2953fda9",
+          "size_bytes": 822
+        },
+        {
+          "sha256": "456b32200011e1712d5b9c1b2ad17025bb38e6ef726ab589e95e99e719c8da1f",
+          "size_bytes": 833
+        }
+      ],
+      "report": {
+        "bytes": 36937,
+        "sha256": "b74d5a096fd08be41e340d34e3fbe0c25b7d09f0e3197f4884275fcc96d5bf7d"
+      }
+    },
+    "typed-store-pinned-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "ce369b7b3997f2d1d132a6808ca23a94245990be3993564dcf2bdc0edef17c74",
+          "size_bytes": 855
+        },
+        {
+          "sha256": "51d8fbd399b12f632c77baa26a450fea8b02bcb6a02a710a8c9a9bcc69e197ba",
+          "size_bytes": 866
+        }
+      ],
+      "report": {
+        "bytes": 28565,
+        "sha256": "b9e0034ff56047b881fd5e5805609efd71f4892c06a39f0e3a01214c55b554f3"
+      }
+    },
+    "typed-store-pinned-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "488956f7fb6611649b9c2098f24eadae28bac9fc8faaafecf531a7e4ce700092",
+          "size_bytes": 855
+        },
+        {
+          "sha256": "83d84c96aa48300493fbe054166e9dbd053d906c3727de82b057d9dd97794ffa",
+          "size_bytes": 866
+        }
+      ],
+      "report": {
+        "bytes": 185568,
+        "sha256": "565d0552dd28e2e431311d1364680da37479d7cec2a6889fc57c8a59132cb3f5"
+      }
+    },
+    "typed-unsupported-html": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "35cc66477e14df0dad6cef3ba82446ac668b10bff7372f87d6b1e1181c8d9c02",
+          "size_bytes": 856
+        },
+        {
+          "sha256": "f6e9156944eeef78000dabb27e09be4d16416ebb35bbd1e76757ae4d9d289cad",
+          "size_bytes": 867
+        }
+      ],
+      "report": {
+        "bytes": 32066,
+        "sha256": "ef253795ddbeb0f98b286d534e5bf7e7433973624e98be3176574fc22b440e93"
+      }
+    },
+    "typed-unsupported-json": {
+      "actual_pair_receipts": [
+        {
+          "sha256": "21ae1493a4882211db3eafd1510fa1665441c12f50b34f6ee6db4846012d822b",
+          "size_bytes": 856
+        },
+        {
+          "sha256": "be322405213a917da22673009cf2162b2bfbd34247c19752b6254de2e692abee",
+          "size_bytes": 867
+        }
+      ],
+      "report": {
+        "bytes": 222733,
+        "sha256": "1b77d46cf2fcd18f7f2a2f24a459672848581ba75f51857d313a101eb9c821ac"
+      }
+    }
+  },
+  "executed_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "executed_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "fresh_import": {
+    "artifact_count": 5,
+    "input_verification": "unverified",
+    "manifest_sha256": "5b5dc36fe1a683fe1063e351856033093d6f90c5619842ca3bb09251f7930b68",
+    "operation": "archive-import",
+    "run_id_utf8_sha256": "50794cb39f400cdb199cf4ca726ab7e81ff958424928fb69f2bad297ba7a32c9"
+  },
+  "independent_profiles": [
+    {
+      "cwd_sha256": "e5692a2419bf5738d4716b3312ec707e37b0f828201d2b957651e34b3ba94cbb",
+      "declared_socket_disabled": true,
+      "environment_receipt": {
+        "sha256": "3db7c7ea1103be79a6be7bf1a627365bda69af01171c361671dca456b3372558",
+        "size_bytes": 787
+      },
+      "hash_seed": "7",
+      "optional_modules_absent": [
+        "fastapi",
+        "joblib",
+        "matplotlib",
+        "pydyf",
+        "shap",
+        "sklearn",
+        "uvicorn",
+        "weasyprint",
+        "xgboost"
+      ],
+      "timezone": "Etc/UTC"
+    },
+    {
+      "cwd_sha256": "b969bfaa19987b65ff91153ad5e0abb63a8cf6b0bb5da2991c9482c43e12c69e",
+      "declared_socket_disabled": true,
+      "environment_receipt": {
+        "sha256": "0632386e620c5d0d4c89d36ccaf2880c3950739a20c12dd630e4b1f5d9b8c6e4",
+        "size_bytes": 798
+      },
+      "hash_seed": "305",
+      "optional_modules_absent": [
+        "fastapi",
+        "joblib",
+        "matplotlib",
+        "pydyf",
+        "shap",
+        "sklearn",
+        "uvicorn",
+        "weasyprint",
+        "xgboost"
+      ],
+      "timezone": "Pacific/Honolulu"
+    }
+  ],
+  "kernel_denial": {
+    "receipt": {
+      "sha256": "db3029244e9bf4c1294d039d0aeb3483ca5346b825a49daab9ce5d06121659a5",
+      "size_bytes": 540
+    },
+    "scoped_command": [
+      "/usr/bin/bash",
+      "/workspace/work/current38-batch18/report-replay/worker.sh",
+      "/workspace/work/current38-batch18/results/report-replay"
+    ],
+    "socket_errno": {
+      "AF_INET": 101,
+      "AF_INET6": 101,
+      "AF_UNIX": 101
+    }
+  },
+  "limits": [
+    "The transferred historical index and original checkpoint bind the 61 route, outcome and custody receipt identities. Complete historical R85 stores and R86 case/command bodies were unavailable.",
+    "All 11 historical route shapes were freshly exercised with genuine current donor material. The fresh archive created another run identity and kept the original flat document bytes, unverified input status and empty contexts.",
+    "The selected 4cf source and installed da3 wheel pair has a documentation and test-only tree delta. The later d65 product candidate has no coverage from this review.",
+    "This gate covers deterministic core HTML/JSON and optional resource separation. Functional PDF rendering, serving of bundled assets, statistical ML behavior, broader release and P14 conclusions require their independent obligations."
+  ],
+  "negative_controls": {
+    "legacy-pdf-missing": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "d2abd6cd322462ad4b461272b53e0b6353f91f02ede4658a2013d2ce21449691",
+        "size_bytes": 648
+      }
+    },
+    "partial-legacy-refusal": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "a51e7e1d99dc32682d5b50209ea8fbab5fdfa6ec5bbab28979587a7154d59d7f",
+        "size_bytes": 696
+      }
+    },
+    "typed-pdf-missing": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "cc1dd1a3b3f495e9a8685f043cf2b94967a3e0cd6a452b2c27e7e5b0fb128257",
+        "size_bytes": 853
+      }
+    },
+    "unsupported-contract-html": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "3635859c0a67b4b67defb9efad0cae9ff791bededad945f07ad1ff9c227f0ca4",
+        "size_bytes": 685
+      }
+    },
+    "unsupported-contract-json": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "ac94b593aec40cf07468adcfd9956e86e235c79688e9059c19af02b5ca99d9df",
+        "size_bytes": 685
+      }
+    },
+    "web-missing": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "3e8186ef808a3f48ca2ac166b0e29c6eae383071ec6f104c49b238268d10b471",
+        "size_bytes": 528
+      }
+    }
+  },
+  "observed_counts": {
+    "command_receipts": 53,
+    "negative_controls": 6,
+    "positive_commands": 44,
+    "whole_byte_pairs": 22
+  },
+  "outer_wrapper_exit": 0,
+  "retained_roadmap_material": {
+    "complete": {
+      "contract": {
+        "kind": "roadmap",
+        "version": "prototype_v1"
+      },
+      "retained_item_count": 0,
+      "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+      "size_bytes": 39
+    },
+    "direct": {
+      "contract": {
+        "kind": "roadmap",
+        "version": "prototype_v1"
+      },
+      "retained_item_count": 0,
+      "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+      "size_bytes": 39
+    },
+    "unsupported": {
+      "contract": {
+        "kind": "roadmap",
+        "version": "prototype_v1"
+      },
+      "retained_item_count": 1,
+      "sha256": "102b6e13c5d4915b354f84741e1732026f8cc7a8ea116496db4da1d1ba7f1119",
+      "size_bytes": 375
+    }
+  },
+  "retained_route_manifests": {
+    "complete": {
+      "sha256": "73277951453b0a5b99a1b9ac0116ce0e06ea6b708e5c91ab2e903af244d91782",
+      "size_bytes": 24178
+    },
+    "direct": {
+      "sha256": "be9e627eb0868a540869476247f1bcddd7641232dc702648907b0199c1d15b40",
+      "size_bytes": 3967
+    },
+    "import": {
+      "sha256": "5b5dc36fe1a683fe1063e351856033093d6f90c5619842ca3bb09251f7930b68",
+      "size_bytes": 3297
+    },
+    "unsupported": {
+      "sha256": "0c01aef695a55c99515dd22fcb487323757b350e54957edeeb9988ada6ae3e32",
+      "size_bytes": 29575
+    }
+  },
+  "scoped_exit": 0
+}

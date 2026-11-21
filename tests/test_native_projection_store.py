@@ -1,4 +1,5 @@
 """Private compressed projection store contract controls."""
+
 import hashlib
 import io
 import sqlite3

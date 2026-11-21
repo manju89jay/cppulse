@@ -1,0 +1,60 @@
+{
+  "criterion": "Never substitute severity or finding count for an advertised complexity measurement. Missing measurements remain unavailable.",
+  "id": "FR-ANA-04",
+  "independent_whole_review_sha256": "7b4ffde039472316b851009f78ee59bf0285f41977a7433541ec64dd4b7cd025",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_complexity_producer_and_consumers": {
+      "actual_enclosing_exit": 1,
+      "actual_exit": 0,
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "guarded_execution_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch02/launch.sh",
+        "complexity"
+      ],
+      "outer_guard_record_sha256": "5f5d31776516e52b7c997ec185d794657df3b5750e1f877ef94ae7b9dc3f6a51",
+      "phase_exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "raw_log_sha256": "6304a1e0ee9ca32b01152cdde8ede5095850261f36fc687abd6d672474eb0fdc"
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_json_html_api_and_pdf_roles": "Matched measured or unavailable complexity. The documented API check invoked the application handler. Both actual PDFs and their two independent text extractions agree with the qualified labels.",
+    "earlier_actual_scope": "Eight exact original installed cases passed. The actual native baseline measured classify at cyclomatic complexity 3 and physical LOC 6. The authored info, error and warning perturbations preserved 3 and 6 while finding counts were 1, 1 and 17. Missing measurement remained unavailable with 17 severe findings. Actual public JSON and HTML, actual API handler and two actual PDFs retained measured or missing inventory and the installed dashboard and reports label complexity finding health separately.",
+    "eight_original_installed_semantic_cases": 8,
+    "exact_1e_to_d65_changed_paths": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "independent_consumer_fixture_perturbation_finding_counts": [
+      1,
+      1,
+      17
+    ],
+    "junit_sha256": "abfee6e6ba046320b0410c0d72b952c874919e9c919b4019d01580a8dd496680",
+    "native_cyclomatic_complexity": 3,
+    "observed_function": "classify",
+    "physical_loc": 6,
+    "unavailable_complexity_stays_unavailable_with_findings": 17
+  },
+  "preserved_epoch_and_result_limits": [
+    "The perturbations are explicit consumer fixtures and the API exercise invokes the existing handler without claiming a live HTTP service.",
+    "The exact producer measures physical LOC and callable cyclomatic complexity before any report presentation. The selected presentation consumes deliberate changed finding-count fixtures and independently typed measured/missing facts, not comparator ordering of roadmap items. Changes to legacy completion, Git metadata and roadmap ties leave these observed measurement and reader predicates unaffected."
+  ],
+  "primary_observed_role": "actual_complexity_producer_and_consumers",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Never substitute severity or finding count for an advertised complexity measurement. Missing measurements remain unavailable."
+}

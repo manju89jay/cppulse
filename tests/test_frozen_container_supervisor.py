@@ -1,4 +1,5 @@
 """Actual small Linux supervisor; no Docker daemon or analyzer is invoked."""
+
 from __future__ import annotations
 
 import json

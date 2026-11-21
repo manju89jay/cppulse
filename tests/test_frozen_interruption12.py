@@ -1,4 +1,5 @@
 """Model interrupted Docker create; no daemon or native process is invoked."""
+
 from __future__ import annotations
 
 import json

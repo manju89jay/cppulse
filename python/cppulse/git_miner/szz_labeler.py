@@ -100,7 +100,8 @@ class SZZLabeler:
         options = owner.options if owner is not None else HistoryOptions.from_document()
         if owner is not None and (
             Path(owner.repo.git_dir).resolve() != Path(self._repo.git_dir).resolve()
-            or Path(owner.repo.common_dir).resolve() != Path(self._repo.common_dir).resolve()
+            or Path(owner.repo.common_dir).resolve()
+            != Path(self._repo.common_dir).resolve()
         ):
             raise ContractError("SZZ shared history belongs to a different repository")
         self.limitations = list(scan.limitations)
@@ -150,7 +151,9 @@ class SZZLabeler:
                 f"SZZ skipped {skipped_post_cutoff} post-cutoff bug-fix commits "
                 "encountered before the tracing cap; these do not consume that cap."
             )
-        self.provenance["skipped_post_cutoff_fix_commits_encountered"] = skipped_post_cutoff
+        self.provenance["skipped_post_cutoff_fix_commits_encountered"] = (
+            skipped_post_cutoff
+        )
         bug_introducing: dict[str, set[str]] = {}
         # A direct object lookup is memoized per distinct observed origin. This
         # does not walk history again or materialize the shared history stream.
@@ -175,22 +178,32 @@ class SZZLabeler:
                             raise IntegrityError("SZZ origin is not a commit object")
                         if info.size > options.max_record_bytes:
                             failure_reason = "metadata exceeds max_record_bytes"
-                            raise IntegrityError("Origin metadata exceeds max_record_bytes")
+                            raise IntegrityError(
+                                "Origin metadata exceeds max_record_bytes"
+                            )
                         committed_date = self._repo.commit(sha).committed_date
-                        if type(committed_date) is not int:
+                        if type(committed_date) is not int:  # noqa: E721 -- exact time
                             failure_reason = "origin commit timestamp is invalid"
                             raise ValueError("Origin commit time is not an integer")
                         origin_dates[sha] = committed_date
                     except (
-                        git.BadName, git.BadObject, git.GitCommandError,
-                        ValueError, UnicodeError, OSError, IndexError, OverflowError,
+                        git.BadName,
+                        git.BadObject,
+                        git.GitCommandError,
+                        ValueError,
+                        UnicodeError,
+                        OSError,
+                        IndexError,
+                        OverflowError,
                     ) as exc:
                         origin_dates[sha] = None
                         self.limitations.append(
                             f"SZZ origin metadata unavailable for {sha[:8]}; "
                             f"candidate omitted: {failure_reason}."
                         )
-                        logger.debug("SZZ origin lookup failed for %s: %s", sha[:8], exc)
+                        logger.debug(
+                            "SZZ origin lookup failed for %s: %s", sha[:8], exc
+                        )
                 origin_date = origin_dates[sha]
                 if origin_date is None:
                     continue

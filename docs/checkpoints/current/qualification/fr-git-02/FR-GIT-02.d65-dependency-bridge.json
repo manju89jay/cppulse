@@ -1,0 +1,111 @@
+{
+  "criterion": "FR-GIT-02",
+  "d65_source_compatibility_target": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "dependency_review": {
+    "actual_install_observer_receipt": {
+      "sha256": "dff39b27b9af8ff1e7c36b965ade5d248cbd9a2da50766e170690f8dc86dee75",
+      "size_bytes": 4170
+    },
+    "four_selected_source_history_cases": {
+      "sha256": "3c7da5e24f78fe5bd914ecf46d66eafc070b04d07c244a488eb2e6cbd3fe78e3",
+      "size_bytes": 775
+    },
+    "new_target_delta_pin_not_an_execution_input": {
+      "python/cppulse/predictor/roadmap_generator.py": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+    },
+    "old_broad_product_pin": {
+      "python/cppulse/predictor/roadmap_generator.py": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "shared_scan_fanout": {
+      "cold": {
+        "sha256": "d433d7020120a3e1ea0b0e2a2980be5d90eb99b2693f7f980cf66b8973cb3422",
+        "size_bytes": 11387
+      },
+      "fresh": {
+        "sha256": "d433d7020120a3e1ea0b0e2a2980be5d90eb99b2693f7f980cf66b8973cb3422",
+        "size_bytes": 11387
+      },
+      "record-bound": {
+        "sha256": "2f2d33c1cecf88d9fe811e1849b01aad0cb149c3478f856c5ca4cef59b6ac6e1",
+        "size_bytes": 10316
+      },
+      "traversal-bound": {
+        "sha256": "a85a3124bba87b16761e215b299a69e954dead03fbdb561d2b8f8b4fefd313df",
+        "size_bytes": 3940
+      },
+      "warm": {
+        "sha256": "d596f6d4bc11febaccf48f709c6696c2784a1b6ad36a550caca1f01ecf5ab054",
+        "size_bytes": 1201
+      }
+    },
+    "two_governance_paths_and_new_predictor_test": "The two governance files were not read by the selected executions. The new roadmap sorting regression was not among the original selected criterion tests.",
+    "unchanged_origin_evidence_files": 8,
+    "unchanged_origin_evidence_map_sha256": "7311892c37fca91e4d6f715cb1dcc43e45f72f6fb5dffd06a398ea366a51e8f1",
+    "unchanged_product_source_files": 244,
+    "unchanged_product_source_map_sha256": "5232bf01791032e468b94c32d67f6f8a4c6500d1891c52aa994abbfbf52c1de7",
+    "verified_output_roles": [
+      "git_history.json",
+      "git_metrics.json",
+      "git_behavior.json"
+    ],
+    "why_roadmap_has_no_influence": "The installed observer directly calls the history/miner/SZZ/behavior stack and tests shared scan reuse and bounds. The four source cases are selected history-cache tests. Neither scope imports or invokes the roadmap generator. The separate generated-wiring phase is outside this criterion."
+  },
+  "execution_scope": "This dependency review does not introduce a new criterion execution. Runtime, tool, artifact and before/after identities of the original execution remain byte-for-byte in their original custody roles.",
+  "kind": "Source-delta dependency review of previously executed criterion proof",
+  "matching_exact_source_and_artifact_boundary": {
+    "path": "docs/checkpoints/current/qualification/d65-compatibility/exact-source-and-artifact-boundary.json",
+    "sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+    "size_bytes": 5279
+  },
+  "original_full_direct_input_custody": {
+    "before_after_inputs_equal": true,
+    "checked_runtime_entries": 260105,
+    "full_direct_file_count": 10069,
+    "full_original_before_after_map_sha256": "1450abe3f1104363aa2960b27371ddc6a3edb614cf2b6fbfcc05c214afa197ea",
+    "original_command_log": {
+      "sha256": "e308810f7bc21279cfa880b2892d63985e2540b98af226b72c7c6d14b897a50f",
+      "size_bytes": 543
+    },
+    "original_job": {
+      "sha256": "ceaa043f14cb31caf9b74feb6f648ab3ebf7a6b5b823dbfcc4bc34035a311b1d",
+      "size_bytes": 3424508
+    },
+    "original_preregistration": {
+      "sha256": "c2121d0dd83f33986d457f55a35b0f8e6edabdcf593ab7666c90469a4884bad0",
+      "size_bytes": 1712116
+    },
+    "original_semantic_review": {
+      "sha256": "4fc457fc60f32a0ea4ff07dd1e8d1be0a5523f5f20b6973a096539a569e6435e",
+      "size_bytes": 16789
+    },
+    "recorded_actual_exit": 0,
+    "recorded_outer_command": [
+      "bash",
+      "/workspace/work/current38-batch11/run.sh"
+    ],
+    "unchanged_runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    }
+  },
+  "original_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "original_qualification": {
+    "execution_bridge_sha256": "5079f8adade0dc4a855270c101ea78a5ff37612bdc4276c7c6dccf6a16cfb251",
+    "full_original_source_pin_count": 253,
+    "full_original_source_pin_map_sha256": "8939077a09c8e229a018a6824f70e1c74aeb39e189e4c46c49b73ef4a7f19242",
+    "original_execution_bridge_path": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.execution-bridge.json",
+    "original_passing_command": [
+      "bash",
+      "/workspace/work/current38-batch11/history-streaming/launch.sh",
+      "/workspace/work/current38-batch11/results/history-streaming"
+    ],
+    "original_public_pointer_review": {
+      "sha256": "ae8a9677fb40ad9531c001521efb2cee3d51d81c1724d05df6d364c411b6d16d",
+      "size_bytes": 9626
+    },
+    "proof_path": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.proof.json",
+    "proof_sha256": "bc81fb3f7d71477cad243aabfe67ecb5c3028dd10fa8caca015b77eb8dd856d3",
+    "structured_log_path": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.structured-log.json",
+    "structured_log_sha256": "b6c0f66daafa3f44800425d053776a6ea695adfdff92bea32662fedfce878d1f"
+  }
+}

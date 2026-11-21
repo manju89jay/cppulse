@@ -1,0 +1,21 @@
+{
+  "actual_projection_log_sha256": "837b5902971bf0f624a898b64c51db1856412dd3e6dc1281b43894e46205f075",
+  "complete_private_receipts_by_role": {
+    "actual_declared_adapter_and_profile_ownership": "f745f14d9d4750407bf3d03ec1ebd587f695617dcd59fa62d24835e090131d8f",
+    "actual_exact_version_controls_summary": "939bccd1cf55930dad40384a22cd6f6b7b18dc35a1226f024c1afc8122a904ee",
+    "actual_failed_extra_observer": "a497ab4f9ee3c017a9c4b056dcdf083187245786d5624e4723f7cfc0ea002cfa",
+    "actual_raw_parser_matrix": "fef949b35b495c07f2cc13ca9aa857628e75c11cf4752bfd23d1d968248212c5",
+    "actual_runtime_pre_and_post": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "actual_unknown_adapter_collect2_stdout": "a4d553a61e0c40b8b31753fa02a1369739007b86d9de006bc5d6dbf01b70a2ad",
+    "exact_prior_genuine_sanitizer_producer_consumer_review": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+    "exact_prior_unsupported_public_version_review": "d066bd00f7c607fb21c3008edbd17bfd253a94cc33b1771d670475804067e6b0",
+    "original_d65_registration": "f7a5acb197941e738081f61320e97cff2305b64bac109fce51a4153e5445b635",
+    "outer_original_observer1_record": "114d150a8f1d387adc28c87b2ce5d016c9fcd5b94d07c5c7072e5a13347defc6"
+  },
+  "id": "NFR-MNT-09",
+  "immutable_independent_whole_review_sha256": "2bf48efaa49dd7dfee57f752b77ba9e3378f46ba79f67170cfc91df55948c584",
+  "portability": "Declared adapter files and ordinary authored case labels are available. Real original raw test/coverage/provider and sanitizer artifacts, complete guards and raw refusals remain in custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked d65 producer-version and profile ownership, normalized input sources and recorded authored declaration under the same real runtime. A recognized parser result, independent execution receipts and rejected imports keep distinct provenance.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

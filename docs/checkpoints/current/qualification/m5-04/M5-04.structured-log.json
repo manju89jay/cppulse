@@ -1,0 +1,77 @@
+{
+  "kind": "Structured public projection of actual original semantic execution",
+  "criterion_id": "M5-04",
+  "criterion": "Implement the pure policy evaluator, four control outcomes, three scores, gate precedence, and bounded deviations. | Hand-calculated examples and invariants pass; averages cannot override blocking failures/unknowns",
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "installed_wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "original_semantic_commands": [
+    {
+      "scope": "Original pure predicates plus named supplemental control cases",
+      "argv": [
+        "bash",
+        "/workspace/work/current38-policy-m5/run-v2.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "scope": "Exact original test_genuine_retained_lcov_public_assess_check_report_and_deviation selected in the m5-policy115 phase",
+      "actual_outer_argv": [
+        "bash",
+        "/workspace/work/current38-batch12/run-continuation.sh"
+      ],
+      "phase_launcher_sha256": "47924b72407200c565549aa501d1dcee761a5eb9aa7fa90762704bab7d913d83",
+      "actual_outer_exit": 1,
+      "actual_selected_semantic_phase_exit": 0,
+      "outer_exit_scope": "Two unrelated coverage import harness phases failed in that epoch and remain retained."
+    }
+  ],
+  "original_review_sha256": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4",
+  "pure_actual_junit_sha256": "023eecb803b21d6b5e2755f12af41f3d10b43d2b55eff9771e8893fdba235b59",
+  "live_actual_junit_sha256": "53a846b4a30639f5a433c5997793fa544f39c3907940f11fdc06a2d2c2c1a2b6",
+  "pure_counts": {
+    "original_property_and_exact_synthetic_cases": 272,
+    "supplemental_targeted_cases": 11,
+    "skips": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "genuine_lcov_measured": {
+    "branch": [
+      1,
+      2
+    ],
+    "function": [
+      2,
+      3
+    ],
+    "line": [
+      5,
+      8
+    ]
+  },
+  "actual_four_outcomes": {
+    "branch": "failed",
+    "line": "passed",
+    "missing": "unknown",
+    "not-this-kind": "not_applicable"
+  },
+  "active_independent_score_values": {
+    "evidence_completeness": 60.0,
+    "maximum_possible_readiness": 80.0,
+    "observed_satisfaction": 66.66666666666667,
+    "readiness": 40.0
+  },
+  "whole_predicates": [
+    "The installed pure bank retained exact selected JUnit identities with 256 property cases, 16 original policy115 synthetic/contract cases and 11 targeted invariants. No failures, errors or skips. Source and installed package hashes and exact tool/runtime boundaries were checked.",
+    "Three evaluator profiles show the same four outcomes and hand-calculated weights of 4 passed, 2 failed and 4 unknown. The nonapplicable weight of 1,000 is excluded. Scores remain readiness 40, completeness 60, observed satisfaction 200/3, and maximum possible readiness 80. A required failure blocks the gate while a required unknown cannot become a positive result under favorable averages.",
+    "The bounded properties cover input order, common weight scaling, tightening thresholds and improving unknown evidence. The 11 exact selected invariants also cover no project IO/network/process/environment reads, explicit UTC, exact thresholds without display-rounding promotion, empty selection, deviation permission, incomplete failure, exact all-context approval and forbidden unknown/threshold deviations.",
+    "Seven authored deviations retained raw failed and unknown controls and raw scores. Scoped active deviations were honored for a required failed control only when allowed; an active declaration left a still-required unknown gate insufficient_evidence. Denied, wrong source, wrong context, future, and expiry-at-evaluation cases left the gate failed.",
+    "The genuine original observable consumer case used the actual GCC/gcov 14.2 in C++17 mode, CTest 3.31.6 and gcovr 8.8 LCOV material with line 5/8, branch 1/2 and function 2/3. The complete original source-producer and 510-file LCOV store stayed unchanged. The writable derived copy retains byte-identical original runs. Actual installed assess and check returned 1 with a blocking failed branch and an unknown missing test; the two exact pinned reports returned 0 and read the same stored failed assessment.",
+    "The active scoped declaration on genuine facts was an authored QA control. With the different policy making the missing test optional, the gate outcome changed while the raw statuses and scores stayed fixed. The original failed branch, unknown test, and raw scores remained identical. Stored declaration scope, context, exact source digest and UTC approval/expiry were independently read back."
+  ],
+  "source_and_runtime_scope": "Actual external GCC, gcov, gcovr and CTest produced the measured artifacts. The tracked recipe is available. The exact historical/raw new stores, instrumented files and measured inventory remain in controlled custody.",
+  "independent_semantic_execution_review_sha256": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4",
+  "scope_observer_sha256": "e6a2376e26c3f34d0b6bfc5ea906168361d4c7778bcf097e499edfcdcab4a6a2",
+  "scope_observer_availability": "Exact selected harness text is included as a receiving execution record. The surrounding declared runtime and original evidence inputs remain external."
+}

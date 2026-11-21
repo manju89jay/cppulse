@@ -974,9 +974,7 @@ def analyze_branch_delivery(
         if branches
         and all(row["history_complete"] for row in branches)
         and not capture["limitations"]
-        else "partial"
-        if graph
-        else "unavailable"
+        else "partial" if graph else "unavailable"
     )
     report = {
         "version": "1.0.0",

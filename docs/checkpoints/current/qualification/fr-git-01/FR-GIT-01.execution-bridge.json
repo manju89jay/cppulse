@@ -1,0 +1,81 @@
+{
+  "criterion": "FR-GIT-01",
+  "actual_fresh_execution_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "actual_wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "original_prior_guarded_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "original_prior_closed_input_map_sha256": "b150ffe286eebad009ed558a4dfb53f22effb9090107c5d4f7cf38691506afaa",
+  "actual_fresh_registered_input_manifest_sha256": "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+  "actual_fresh_direct_guard_count": 1679,
+  "approved_prior_doc_and_test_independent_dependency_analysis": [
+    {
+      "path": "docs/DECISIONS.md",
+      "original": {
+        "git_blob": "1b03eaa95a391e7801eaa91420d45913e9bba5a8",
+        "sha256": "e9da0f1883ef1a01a717ae0a63b0719f27c7b3e126a76053ef1be2d879efbccf"
+      },
+      "current": {
+        "git_blob": "ebfa4151c22f90b74646eeb61224f2f9dbe96395",
+        "sha256": "20e73c9587be3a3dabe00a312bc1348b6543130b48d542e1a870679a41fd077b"
+      },
+      "dependency_analysis": "The Git producer and both explicitly selected tests do not read the decision document. The wheel preparer selects Python package inputs, README, license and packaging configuration. The change documents observed legacy native completion."
+    },
+    {
+      "path": "docs/plans/production-scope-authority.md",
+      "original": {
+        "git_blob": "e286073b261f08a81b36c94e3fcb971a833c088a",
+        "sha256": "07cb20b00e6e6d89f39d8f04cd029446e80738d22d51c52c7135f263b6bae351"
+      },
+      "current": {
+        "git_blob": "320b74ce0fd88a3d7ac2457597297187fb805e2c",
+        "sha256": "07e16a120bfbb24f2b21223c6b2adceb02296d0b7e445c2f08a66c06ccba761a"
+      },
+      "dependency_analysis": "Neither Git collection nor either selected test consumes this governance document. The changes index decisions and record receiving local ref custody. The tested repository is the separate fixed six-commit corpus, so proposed parent metadata has no effect on that corpus."
+    },
+    {
+      "path": "tests/test_pipeline_failures.py",
+      "original": {
+        "git_blob": "4f9c6c78a139c8a820a126933e69cd855edab551",
+        "sha256": "6ee4fb45e4589e22309d2d074b1ee0ce74aa812b05d264a3ff39a178a8dc636a"
+      },
+      "current": {
+        "git_blob": "b90007c435d1fe2c5c6f581d22fad70c412011ca",
+        "sha256": "37dfa7725a89d4120efe6d442f055f8eb799f8107c3d65491b1d6185e58af53c"
+      },
+      "dependency_analysis": "The actual pytest collection was filtered to the two recorded node IDs. Neither Git test file nor the imported test_behavior_identity_history configuration helper imports this test module. The Git CLI subprocess reads installed Git modules and the registered corpus. This module tests the unrelated native/predictor pipeline failure path, and both failure cases were separately exercised after formatting."
+    }
+  ],
+  "eligible_checkout_dependency_files": 300,
+  "printed_evidence_projection_log_sha256": "be2c03e7751e4f9c890efea388deb3f258633dc8b46b90aadd2cddfca335b75f",
+  "original_fresh_raw_command_log_sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+  "verified_runtime_inventory_sha256": "8480b00542473173fed20dff6c9df3d879620dcd4d96b6da86fc584c3d36a460",
+  "external_material_scope": "Keep full exact original/fresh direct and runtime closure, original captured output/logs and upstream artifact descriptions in owner custody. Ordinary recipe source is staged for review. Reproduction requires a separately registered local runtime and genuine regenerated fixture.",
+  "staged_doc_and_ledger_dependencies": "This sample adds only qualification records in docs, and the ledger is byte-identical. These sources were not read by the actual Git producer, fixture generation or explicitly collected Git test cases. The actual 4cf full verification guard remains in private original custody.",
+  "independent_semantic_execution_review_sha256": "23c2b1b13337eadd6b3e15b0298025f10b079ce622bbb9349624b175fdf7d556",
+  "fresh_execution_raw_receipt_sha256": "519da0a7ea2f7b0531eb29f021abd55b84950a5ff26f1cb1f4dad20ad722e015",
+  "expected_negative_exits_confirmed": {
+    "invalid-window": 1,
+    "invalid-repository-path": 1
+  },
+  "exact_original_test_selectors": [
+    "tests/test_git_metric_window_scope.py::test_configured_behavior_windows_disclose_unfiltered_legacy_scope",
+    "tests/test_git_behavior.py::test_optional_miner_document_preserves_original_output_and_reuses_one_scan"
+  ],
+  "environmental_attestation": {
+    "scope": "Receiving execution verified these identities. Public reproduction needs independently registered local inputs.",
+    "git_executable_sha256": "356db14e102d68a1a37d8a1ac577dfd678d45d46e92f468bef8b7154e7bfdc60",
+    "docker_cli_sha256": "6c71cfe71faff949a602946a4df4799b563232e79d0b8b6fd343d0ef081c9621",
+    "host_launcher_python_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+    "kernel_receipt_provider_sha256": "835d7650bca3d26c4c02bd0a04bdee4b410b3cb6f36e124b1c9b10fb11c35c7a",
+    "runtime_checker_sha256": "ce9acb87a86bb3acf0c0c10437fbfaae36170db65ea98d8197fd622aeddfb879",
+    "complete_private_runtime_inventory_sha256": "8480b00542473173fed20dff6c9df3d879620dcd4d96b6da86fc584c3d36a460",
+    "worker_interpreter_and_dependencies_bound_by_private_runtime_inventory": true,
+    "docker_image": "sha256:27711d38b48e97272797021e2da5101bc9093049e804e5b83a358d9d4294f58a",
+    "image_root_layers": [
+      "sha256:8d68b2628e78897e0be037618095487af3283e6f8e37b836ca83947746d35238"
+    ],
+    "actual_candidate_manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "actual_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+    "runtime_receipt_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "runtime_receipts_equal": true
+  }
+}

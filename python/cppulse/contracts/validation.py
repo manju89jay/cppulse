@@ -1644,11 +1644,11 @@ def _semantic(kind: str, document: dict[str, Any]) -> None:
                     outcome = (
                         "error"
                         if counts["errors"]
-                        else "failed"
-                        if counts["failed"]
-                        else "passed"
-                        if counts["passed"]
-                        else "skipped"
+                        else (
+                            "failed"
+                            if counts["failed"]
+                            else "passed" if counts["passed"] else "skipped"
+                        )
                     )
                     if record["status"] != outcome:
                         _fail(

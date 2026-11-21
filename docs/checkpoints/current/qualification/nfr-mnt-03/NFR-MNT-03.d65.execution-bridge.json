@@ -1,0 +1,22 @@
+{
+  "actual_projection_log_sha256": "85ae95c256611f64500e6162e1f265f0083a2f1c82495dd7b8699a60c4294ed6",
+  "complete_private_receipts_by_role": {
+    "current_exact_d65_current_generated_record": "bafa818bf48e0ccf128c26e4f5aa51092624593edbde5e31c93f5147f19efe9a",
+    "earlier_actual_all_22_mcp_views_and_unknown_scope": "5ea66c90d60f9b7c0279652f319fb404d1fab404f44d8bf8bee7031d33842e0a",
+    "earlier_actual_registry_junit": "7f595b62d57607cd249f5da07c870752aa9cfc5e259a2e1b29ab2e6f10d8d9fc",
+    "earlier_exact_registry_binding": "260c930781f1742bb0ef7d09986ed8c8fdbdef2cc044de69d12dc23acb4e1e56",
+    "earlier_observed_registry_and_threshold": "80d48d2e67329cf1256fba1d17b9c2de26de4ab11f280ce04ca516909e39eeaa",
+    "earlier_real_native_unsupported_process_receipt": "4cd4437e8acc04ae3bd7349c6c1435f55935c395d3154f3c50bb134e8a7cf0cc"
+  },
+  "id": "NFR-MNT-03",
+  "immutable_independent_whole_review_sha256": "72dd16d42144e84764653d5ed9360a617eef0e2ba13232a1cd7d41899cc1a716",
+  "portability": "The current selected checkout hashes are independently checkable. Exact real earlier fixture and tools are described by scoped receipts. Original runs, package payloads and execution materials remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked package and required source, notice, generator or test dependencies. Explicit old whole-execution bytes and runtime/fixture guards remain bound. The independently approved earlier-to-current package byte difference is a distinct immutable witness.",
+  "shared_independently_reviewed_exact_original_to_d65_archive_delta": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d"
+  },
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

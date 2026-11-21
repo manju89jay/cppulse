@@ -1,4 +1,5 @@
 """Shared byte codec does not invent source provenance for assembled layers."""
+
 from copy import deepcopy
 import pytest
 from cppulse.contracts.frozen_input import validate_frozen_input

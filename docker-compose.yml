@@ -7,8 +7,8 @@ services:
   # ── 1. analyzer-core (C++17 static analysis) ────────────────────────────
   analyzer-core:
     build:
-      context: ./analyzer-core
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: analyzer-core/Dockerfile
     volumes:
       - ${REPO_PATH:-.}:/repo:ro
       - ${OUTPUT_PATH:-./output}:/output

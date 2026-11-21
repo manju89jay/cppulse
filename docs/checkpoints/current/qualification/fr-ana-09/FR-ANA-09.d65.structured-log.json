@@ -1,0 +1,266 @@
+{
+  "actual_public_processes": {
+    "external-collect": {
+      "actual_exit": 0,
+      "receipt": {
+        "sha256": "4eb1193b2ec668a970ab23a67776a0dd0670975200b3694f7e46e5310e99ba05",
+        "size_bytes": 458
+      },
+      "verb": "collect"
+    },
+    "native": {
+      "actual_exit": 0,
+      "receipt": {
+        "sha256": "16059acccc9e83e239ffa6d7800113d3a5a2afd1be2df489bb5a6f3d8781d989",
+        "size_bytes": 563
+      },
+      "verb": "analyze"
+    },
+    "unknown-adapter": {
+      "actual_exit": 2,
+      "receipt": {
+        "sha256": "eda7eb9f6b354698fd7fff1960b4f7764db3741d70a67dfcda01b25af985416e",
+        "size_bytes": 481
+      },
+      "verb": "collect"
+    }
+  },
+  "actual_scoped_command": [
+    "/workspace/verification-python-venv/bin/python",
+    "-B",
+    "/workspace/work/current38-batch16/external-analysis-v3/run.py",
+    "/workspace/work/current38-batch16/results/external-analysis-v3"
+  ],
+  "actual_snapshot_identifiers": {
+    "joined": {
+      "manifest_sha256": "cfd79d8c8842ac63b34a3145d9f6be52ce35dc8e45a7b50ae787754edb126629",
+      "run_id_utf8_sha256": "bf6397b891618a6a94a8727f11993d4a132e631046fd074cba3e7f6caefc9454"
+    },
+    "malformed": {
+      "manifest_sha256": "8cf47c7159c0dc29c690106a27de0de98b051ea7f551b00fc20477a9e014a413",
+      "run_id_utf8_sha256": "8f8978ac7d60b39ef6dbf6a955f05f03394ddb3c3287493058f84be06c99c663"
+    },
+    "native": {
+      "manifest_sha256": "54eaf5d30cbca0deeed90a69a0f7054ea66cfcebf3215836bf69d239225ba8cd",
+      "run_id_utf8_sha256": "64b10d2e6def83624674347c2670d10d756c79e3e45436bd7eb073632f20f433"
+    },
+    "public_external": {
+      "manifest_sha256": "dd14bb57f37f1f67b4208286568393cb5b28ab2722afc83764040d72b994afc0",
+      "run_id_utf8_sha256": "5edfbbe0a0c21f89663af90bb2c692dcb6f3419c90763a141be78074613e2049"
+    },
+    "raw_external": {
+      "manifest_sha256": "2f6328fa3d6942310c202aa847b798c7e096a484736aea67a8333d12840f0fd7",
+      "run_id_utf8_sha256": "074baaa3179dd7dddcf2d8dc880d4e59071cd542380de6d92ef5e9f9b015b53c"
+    }
+  },
+  "actual_typed_reports": {
+    "external-report-html": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [],
+      "receipt": {
+        "sha256": "e3c6b1f0a2b050db8aacce09c7a72c8d8be7b3c9f6359924f998a5898d4da5d0",
+        "size_bytes": 568
+      },
+      "report": {
+        "sha256": "27e1de322e8dd7af1b6755461bce3eec357fff1c882098923a078e699807510e",
+        "size_bytes": 30690
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "dd14bb57f37f1f67b4208286568393cb5b28ab2722afc83764040d72b994afc0",
+        "run_id_utf8_sha256": "5edfbbe0a0c21f89663af90bb2c692dcb6f3419c90763a141be78074613e2049"
+      }
+    },
+    "external-report-json": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [],
+      "receipt": {
+        "sha256": "fa1f24e7c692918e307bab5a3cf2d3af3bd635c52ce6968cbfe5d6c260abeb64",
+        "size_bytes": 568
+      },
+      "report": {
+        "sha256": "88b74b5c1d75233ead1960aefe2155984b522395b50b8561d94f0871141638e6",
+        "size_bytes": 155626
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "dd14bb57f37f1f67b4208286568393cb5b28ab2722afc83764040d72b994afc0",
+        "run_id_utf8_sha256": "5edfbbe0a0c21f89663af90bb2c692dcb6f3419c90763a141be78074613e2049"
+      }
+    },
+    "malformed-report-html": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [],
+      "receipt": {
+        "sha256": "f8c5c6d2b878df690bf6e3323bbe9d209b19a3fc4e508ef96bd0edc7d8b7ee61",
+        "size_bytes": 569
+      },
+      "report": {
+        "sha256": "15f7883598128a926309416cb0536a934c0e90b6958cb40a3b1fbb6483a3e101",
+        "size_bytes": 32460
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "8cf47c7159c0dc29c690106a27de0de98b051ea7f551b00fc20477a9e014a413",
+        "run_id_utf8_sha256": "8f8978ac7d60b39ef6dbf6a955f05f03394ddb3c3287493058f84be06c99c663"
+      }
+    },
+    "malformed-report-json": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [],
+      "receipt": {
+        "sha256": "6256273c5afc5b60d4852254a64b94e6748758314265b9948f5ade4f6655483a",
+        "size_bytes": 569
+      },
+      "report": {
+        "sha256": "16899875676b9344dd73d40b558d552c5cb28647334fd95399d142f0f44e1ae7",
+        "size_bytes": 162870
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "8cf47c7159c0dc29c690106a27de0de98b051ea7f551b00fc20477a9e014a413",
+        "run_id_utf8_sha256": "8f8978ac7d60b39ef6dbf6a955f05f03394ddb3c3287493058f84be06c99c663"
+      }
+    },
+    "native-joined-report-html": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [
+        {
+          "contract": {
+            "kind": "roadmap",
+            "version": "prototype_v1"
+          },
+          "retained_item_count": 1,
+          "sha256": "df0c9d3fc60ccd067facaf4bb73d653aa48ef2ed632c17248af551cf989f589f",
+          "size_bytes": 343
+        }
+      ],
+      "receipt": {
+        "sha256": "2c84687c05915981d330120a65fbd9b4d7fc4f31427c6c5f4ff0ef88eac074f0",
+        "size_bytes": 571
+      },
+      "report": {
+        "sha256": "74befa115a01bb2ec830a8eaedf75925efcffcf70d5b7cb2944978939d107939",
+        "size_bytes": 44616
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "cfd79d8c8842ac63b34a3145d9f6be52ce35dc8e45a7b50ae787754edb126629",
+        "run_id_utf8_sha256": "bf6397b891618a6a94a8727f11993d4a132e631046fd074cba3e7f6caefc9454"
+      }
+    },
+    "native-joined-report-json": {
+      "actual_exit": 0,
+      "carried_legacy_roadmap": [
+        {
+          "contract": {
+            "kind": "roadmap",
+            "version": "prototype_v1"
+          },
+          "retained_item_count": 1,
+          "sha256": "df0c9d3fc60ccd067facaf4bb73d653aa48ef2ed632c17248af551cf989f589f",
+          "size_bytes": 343
+        }
+      ],
+      "receipt": {
+        "sha256": "66fbaa9211a7a25503289df5a87598866145ed211e117328d8bffc5b150b5ce6",
+        "size_bytes": 571
+      },
+      "report": {
+        "sha256": "f18abd5f55f87fb92d83d95dffa0e136f0c4d7a936ddf4ba335e519299d0f536",
+        "size_bytes": 335350
+      },
+      "selected_snapshot": {
+        "manifest_sha256": "cfd79d8c8842ac63b34a3145d9f6be52ce35dc8e45a7b50ae787754edb126629",
+        "run_id_utf8_sha256": "bf6397b891618a6a94a8727f11993d4a132e631046fd074cba3e7f6caefc9454"
+      }
+    }
+  },
+  "criterion": "FR-ANA-09",
+  "criterion_text": "Support normalized findings from external analyzers through adapters. Keep imported diagnostic identifiers and distinguish overlapping findings from independent confirmation.",
+  "earlier_attempts": {
+    "earlier_clang_tidy_setup": {
+      "actual_tool_exit": 1,
+      "retained_run": {
+        "manifest_sha256": "5471f0d5548bb64f44c3b7efc918d81187058211b65eb51b97bce8a4c42ab15a",
+        "run_id_utf8_sha256": "d35c8c2ee729ac3894a4186ee448d5fe17ed1ca6bab54d44f72e08d451cd0905"
+      },
+      "tool_output_commitments": [
+        {
+          "sha256": "6e3fe68c7a3aa4a2a87b636f874fe735f84d8fbd18746cc99e9f8e244f370983",
+          "size_bytes": 132
+        },
+        {
+          "sha256": "fae7c0f6240e2b3749de6626c33e60656ee6f2b14f85a6899b1ad60e74770ed4",
+          "size_bytes": 142
+        }
+      ]
+    },
+    "separate_context_collect": {
+      "actual_exit": 2,
+      "actual_wrapper_exit": 1,
+      "observer_exit_receipt": {
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "size_bytes": 2
+      },
+      "receipt": {
+        "sha256": "61965eafc76ff4cade8b4b15ed9d1d02eed4f720468952dbb8720320d348bbcc",
+        "size_bytes": 458
+      },
+      "wrapper_identity": {
+        "sha256": "0da1b8e093e333521135735866cf0cf2c5ec5a8ee554e2a3d46522fe32675729",
+        "size_bytes": 3450189
+      }
+    }
+  },
+  "executed_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "executed_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "kernel_denial": {
+    "receipt": {
+      "sha256": "ddd910e9fdef0a574954ef6253b2bc9ef2604b58b26dc762030107b7452e6e67",
+      "size_bytes": 594
+    },
+    "scoped_command": [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/current38-batch16/external-analysis-v3/run.py",
+      "/workspace/work/current38-batch16/results/external-analysis-v3"
+    ],
+    "socket_errno": {
+      "AF_INET": 101,
+      "AF_INET6": 101,
+      "AF_UNIX": 101
+    }
+  },
+  "limits": [
+    "Fresh finite diagnostics and configured provider methods are separately scoped from original historical producer artifacts and versions. Raw excerpts and derived attribution do not authenticate a producer, establish independent confirmation or assert a clean scan.",
+    "Earlier real Clang-tidy setup exit 1 and the earlier invalid-context collect exit 2 are preserved with their own source and execution contexts. They do not acquire green outcomes from this later fresh wrapper.",
+    "This scope covers selected Linux provider versions and contexts only. It conveys no broader policy, all-platform, ledger, or publication acceptance."
+  ],
+  "native_legacy_roadmap": [
+    {
+      "contract": {
+        "kind": "roadmap",
+        "version": "prototype_v1"
+      },
+      "retained_item_count": 1,
+      "sha256": "df0c9d3fc60ccd067facaf4bb73d653aa48ef2ed632c17248af551cf989f589f",
+      "size_bytes": 343
+    }
+  ],
+  "native_typed_finding": {
+    "column": 20,
+    "context_id": "ctx-2d201e4b4c838ff17380871b6ca22be438cab6a88311bf6b8f8226cc1c567d86",
+    "file": "main.cpp",
+    "id": "analysis-edfc77be8818fd07e0f3c193a34b9fe3fd8247fac4733c117f57d52443005a80",
+    "line": 5,
+    "rule_id": "CPP-MOD-007"
+  },
+  "observation_roles": [
+    "Exact approved historical package digests and selected binary, library and provider configuration member bytes match the prerun receipt. Actual receiving version/process receipts report the original three provider versions, with four ordinary diagnostic capture steps and nine total finite collection steps all exit 0.",
+    "Actual GCC JSON keeps -Wuninitialized and its supplemental note without an option. The normalized informational fallback stays a note. Both independently run GCC captures have the same raw bytes and distinct report/observation identities. Actual Clang-tidy has two named primary diagnostics and raw supplemental notes. Actual Cppcheck XML2 has four named primary diagnostics and preserves raw XML location and ancillary detail.",
+    "The installed public collect command exits 0 and records four usable import facts with each original and namespaced identifier, declared provider versions, context and selected files. Each import retains unverified provenance with no linked receipt or invented execution claim, even though actual provider execution has separate verified raw receipts.",
+    "The retained native snapshot supplies the genuine CPP-MOD-007 finding on main.cpp line 5. Its exact observation documents and each genuine provider byte remain bound in the joined store. The comparable source files are byte-identical across collection and native inventories while their source inventory digests remain distinct.",
+    "The pinned reported relationships retain repeated GCC occurrences and potential same-context location overlap for Clang-tidy/Cppcheck and native/import observations. Every group records independent_confirmation=false and confidence_adjustment=0. The actually compiled separate context is distinct and the observed frozen no-overlap control passed.",
+    "Six installed JSON and HTML reports read the exact normal, joined and malformed snapshots. The retained malformed authored derivative stays partial with no manufactured observations. Unsupported producer version yields unsupported, unknown adapter exits 2 without a store, and a pruned relationship is refused by the snapshot contract."
+  ],
+  "outer_wrapper_exit": 0,
+  "scoped_exit": 0,
+  "signed_prior_scope": "Fresh whole original receiving qualification using GNU-G++ 14.2.0 JSON, Clang-tidy 19.1.7 text and Cppcheck 2.17.1 XML2, with the original quantitative roles represented by newly authored finite fixtures and independently proven raw tool capture.",
+  "typed_context_group_count": 4
+}

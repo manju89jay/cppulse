@@ -11,7 +11,9 @@ import pytest
 SCHEMAS = Path(__file__).resolve().parents[1] / "docs" / "schemas"
 
 
-@pytest.mark.parametrize("path", sorted(SCHEMAS.glob("*.schema.json")), ids=lambda p: p.name)
+@pytest.mark.parametrize(
+    "path", sorted(SCHEMAS.glob("*.schema.json")), ids=lambda p: p.name
+)
 def test_contract_is_draft_seven(path: Path) -> None:
     """Every pipeline contract remains a valid draft-07 schema."""
     schema = json.loads(path.read_text(encoding="utf-8"))

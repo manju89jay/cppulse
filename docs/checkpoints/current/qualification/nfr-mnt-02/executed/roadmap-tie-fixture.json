@@ -1,0 +1,19 @@
+{
+  "findings": {"findings": [
+    {"file": "a.cpp", "category": "modernization", "severity": "warning", "rule_id": "CPP-MOD-001"},
+    {"file": "a.cpp", "category": "misra", "severity": "warning", "rule_id": "MISRA-006"},
+    {"file": "a.cpp", "category": "complexity", "severity": "warning", "rule_id": "CPP-CX-001"},
+    {"file": "z.cpp", "category": "memory_safety", "severity": "error", "rule_id": "CPP-MEM-001"}
+  ]},
+  "history": {"knowledge_silos": [{"file": "c.cpp"}, {"file": "a.cpp"}, {"file": "b.cpp"}]},
+  "risk": {"file_risks": [{"file": "z.cpp", "risk_level": "high"}]},
+  "base_projection": [
+    ["z.cpp", "memory_safety", 9.0, 4.0, ["CPP-MEM-001"]],
+    ["a.cpp", "complexity", 2.0, 3.0, ["CPP-CX-001"]],
+    ["a.cpp", "knowledge_silo", 2.0, 8.0, []],
+    ["a.cpp", "modernization", 2.0, 1.0, ["CPP-MOD-001"]],
+    ["b.cpp", "knowledge_silo", 2.0, 8.0, []],
+    ["c.cpp", "knowledge_silo", 2.0, 8.0, []]
+  ],
+  "safety_only": ["a.cpp", "misra", 2.0, 2.0, ["MISRA-006"]]
+}
