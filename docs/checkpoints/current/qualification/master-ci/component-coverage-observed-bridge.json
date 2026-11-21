@@ -1,0 +1,573 @@
+{
+  "actual_observations": {
+    "additional_controls": {
+      "report_fixture_controls": {
+        "junit_sha256": "41ad65dea537ae0212e0e186dfbf6fe52b2de621671f26173a84e2a147c80252",
+        "passed": 3
+      },
+      "workflow_and_facade": {
+        "junit_sha256": "4ac4512e050da1efd41569d0875b6ca6ff518ae906e9087ce36895ad53f0c2bb",
+        "passed": 55
+      }
+    },
+    "component_observation_sha256": "51b7acb17706075d1786fbbf02e5f7c096cc74b377eec17a9b545273d347c857",
+    "component_results": {
+      "git-miner": {
+        "baseline": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "behavior.py": {
+              "covered_statements": 0,
+              "statements": 373
+            },
+            "commit_utils.py": {
+              "covered_statements": 11,
+              "statements": 11
+            },
+            "history.py": {
+              "covered_statements": 99,
+              "statements": 114
+            },
+            "history_cache.py": {
+              "covered_statements": 488,
+              "statements": 660
+            },
+            "main.py": {
+              "covered_statements": 124,
+              "statements": 189
+            },
+            "miner.py": {
+              "covered_statements": 85,
+              "statements": 93
+            },
+            "schema_validator.py": {
+              "covered_statements": 29,
+              "statements": 29
+            },
+            "silo_detector.py": {
+              "covered_statements": 44,
+              "statements": 46
+            },
+            "szz_labeler.py": {
+              "covered_statements": 88,
+              "statements": 117
+            }
+          },
+          "coverage_report_sha256": "dd68d315d630f1e7137218d6730ffff08e2d3b2ea23f65905ac795b47145a5f1",
+          "coverage_xml_sha256": "e4387f14b780769132ed1c3653180dcc0be995b627304f91764d3f4776009ac1",
+          "covered_statements": 968,
+          "percent": 59.31,
+          "pytest_exit": 0,
+          "required_percent": 80.0,
+          "status": "failed",
+          "tests_log_sha256": "9e95cc94b727014aa51c436f96473e0e5db3631e433970e028182c61d88160d6",
+          "total_statements": 1632
+        },
+        "repaired": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "behavior.py": {
+              "covered_statements": 330,
+              "statements": 373
+            },
+            "commit_utils.py": {
+              "covered_statements": 11,
+              "statements": 11
+            },
+            "history.py": {
+              "covered_statements": 105,
+              "statements": 114
+            },
+            "history_cache.py": {
+              "covered_statements": 578,
+              "statements": 660
+            },
+            "main.py": {
+              "covered_statements": 157,
+              "statements": 189
+            },
+            "miner.py": {
+              "covered_statements": 85,
+              "statements": 93
+            },
+            "schema_validator.py": {
+              "covered_statements": 29,
+              "statements": 29
+            },
+            "silo_detector.py": {
+              "covered_statements": 44,
+              "statements": 46
+            },
+            "szz_labeler.py": {
+              "covered_statements": 88,
+              "statements": 117
+            }
+          },
+          "coverage_report_sha256": "aa15142b75957c73470ce1fa40b22e3c23bf2e4ffea80f4a025ded3d92a3c66c",
+          "coverage_xml_sha256": "64de137de7fe73d4f8a5926a566a4fe7a430dc2d8e8dc24a8c3bd06671a5a507",
+          "covered_statements": 1427,
+          "percent": 87.44,
+          "pytest_exit": 0,
+          "required_percent": 80.0,
+          "status": "passed",
+          "test_collection": [
+            "tests/",
+            "../tests/test_git_behavior.py",
+            "../tests/test_behavior_identity_history.py",
+            "../tests/test_git_history_cache.py",
+            "../tests/test_git_inventory_boundary.py",
+            "../tests/test_git_metric_window_scope.py"
+          ],
+          "tests_log_sha256": "950c613761e7a7565d122bc7b22bdbd987416e5d1130d92d2cdaad4af024a37d",
+          "tests_passed": 172,
+          "total_statements": 1632
+        }
+      },
+      "predictor": {
+        "baseline": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "evaluation.py": {
+              "covered_statements": 0,
+              "statements": 249
+            },
+            "feature_engineer.py": {
+              "covered_statements": 207,
+              "statements": 229
+            },
+            "health_scorer.py": {
+              "covered_statements": 39,
+              "statements": 40
+            },
+            "input_projection.py": {
+              "covered_statements": 53,
+              "statements": 59
+            },
+            "main.py": {
+              "covered_statements": 240,
+              "statements": 292
+            },
+            "measured_hotspots.py": {
+              "covered_statements": 13,
+              "statements": 22
+            },
+            "model.py": {
+              "covered_statements": 157,
+              "statements": 170
+            },
+            "roadmap_generator.py": {
+              "covered_statements": 73,
+              "statements": 73
+            },
+            "schema_validator.py": {
+              "covered_statements": 24,
+              "statements": 28
+            }
+          },
+          "coverage_report_sha256": "04e7fffdb1066b69232a3b40cbe018034cd5d8c3888f1439f78a126859b1945c",
+          "coverage_xml_sha256": "bf5368368428a6a0a4255a10d3fe3bf3af7f18f071e9d7555dcfc4acfc799f61",
+          "covered_statements": 806,
+          "percent": 69.36,
+          "pytest_exit": 0,
+          "required_percent": 75.0,
+          "status": "failed",
+          "tests_log_sha256": "1ac9582df715f950bdb60e7d48e9e324bb078951f78d04731247b5e6825bd5d4",
+          "total_statements": 1162
+        },
+        "repaired": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "evaluation.py": {
+              "covered_statements": 224,
+              "statements": 249
+            },
+            "feature_engineer.py": {
+              "covered_statements": 211,
+              "statements": 229
+            },
+            "health_scorer.py": {
+              "covered_statements": 39,
+              "statements": 40
+            },
+            "input_projection.py": {
+              "covered_statements": 53,
+              "statements": 59
+            },
+            "main.py": {
+              "covered_statements": 240,
+              "statements": 292
+            },
+            "measured_hotspots.py": {
+              "covered_statements": 13,
+              "statements": 22
+            },
+            "model.py": {
+              "covered_statements": 157,
+              "statements": 170
+            },
+            "roadmap_generator.py": {
+              "covered_statements": 73,
+              "statements": 73
+            },
+            "schema_validator.py": {
+              "covered_statements": 24,
+              "statements": 28
+            }
+          },
+          "coverage_report_sha256": "f5fb8e2e1e131c4e9bd91ef7c66c1396a84220a5747ed83aedbf7186b1748e6d",
+          "coverage_xml_sha256": "9edf4c22c94928ec8e4344b8e85f10765e483a87f9c77147ca6a1bf990d7d5ac",
+          "covered_statements": 1034,
+          "percent": 88.98,
+          "pytest_exit": 0,
+          "required_percent": 75.0,
+          "status": "passed",
+          "test_collection": [
+            "tests/",
+            "../tests/test_temporal_evaluation.py",
+            "../tests/test_risk_semantics118.py",
+            "../tests/test_roadmap_order.py"
+          ],
+          "tests_log_sha256": "74dd1a30ffa4930dbe28f5f43a01b7c2621b720b21d179feae62f116dd88ec06",
+          "tests_passed": 155,
+          "total_statements": 1162
+        }
+      },
+      "report-engine": {
+        "baseline": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "api.py": {
+              "covered_statements": 296,
+              "statements": 317
+            },
+            "pdf_generator.py": {
+              "covered_statements": 147,
+              "statements": 157
+            },
+            "schema_validator.py": {
+              "covered_statements": 23,
+              "statements": 23
+            },
+            "work_unit_api.py": {
+              "covered_statements": 17,
+              "statements": 45
+            }
+          },
+          "coverage_report_sha256": "ee8954d3374686d54050059f7be531acf291755ae0c3ae9ab0d23724946276ee",
+          "coverage_xml_sha256": "980197462862adbbc4ba077b0426ee23d9a38d44e8ae276526c29e18722f1830",
+          "covered_statements": 483,
+          "percent": 89.11,
+          "pytest_exit": 1,
+          "required_percent": 75.0,
+          "status": "failed",
+          "tests_log_sha256": "2aa3b3fd35c7569eb66e765164a748e6cb03774ff28b97a410d1ea2c44fd0dcb",
+          "total_statements": 542
+        },
+        "repaired": {
+          "canonical_file_statements": {
+            "__init__.py": {
+              "covered_statements": 0,
+              "statements": 0
+            },
+            "api.py": {
+              "covered_statements": 296,
+              "statements": 317
+            },
+            "pdf_generator.py": {
+              "covered_statements": 147,
+              "statements": 157
+            },
+            "schema_validator.py": {
+              "covered_statements": 23,
+              "statements": 23
+            },
+            "work_unit_api.py": {
+              "covered_statements": 40,
+              "statements": 45
+            }
+          },
+          "coverage_report_sha256": "a7d6bb0084495d067e9728a8cf0fd46e7ae5eacbf480503bd3a1efe4f4b4f33b",
+          "coverage_xml_sha256": "62c4fe07ab585f6602c5ef0dd6fbdd0e69f7ca35be198b06fe0dffd523d33997",
+          "covered_statements": 506,
+          "percent": 93.36,
+          "pytest_exit": 0,
+          "required_percent": 75.0,
+          "status": "passed",
+          "test_collection": [
+            "tests/",
+            "../tests/test_work_unit_api.py"
+          ],
+          "tests_log_sha256": "cca79c67b82b07d6d67e65211db10155b2e50ca850adff07e5786462d908e698",
+          "tests_passed": 222,
+          "total_statements": 542
+        }
+      }
+    },
+    "decision_index": {
+      "authority_sha256": "c39dab7faafda05b5adf8e392bce4802d64f5f973d64db387e95cd3e9dcbdd54",
+      "current_indexed_count": 105,
+      "decisions_sha256": "2ba5bb971fcacd0776aea6de606b90c763e834cf6203ac3859f6597e256ffbbe",
+      "new_heading": "PROD-20261121-38",
+      "previous_indexed_count": 104,
+      "prior_contents_preserved": true
+    },
+    "guarded_execution": {
+      "baseline_wrapper_sha256": "e9030f0e076e83d1214c4681aba982fba2b8eefcb8b7094217a46fcc700c05b9",
+      "repaired_disk_minimum_bytes": 4335144960,
+      "repaired_wrapper_sha256": "498800bdf0119dc67df0bedebf9f466eebef27ccb58a9077a5d51383ffc88228",
+      "unchanged_pinned_source": true
+    },
+    "hosted_followup": "Pending publication and GitHub Actions rerun",
+    "local_component_runs": {
+      "baseline": {
+        "receipt_sha256": "760073ae55f904b72a223d5face2bae9a6924fa53f8cf2527cc4bb0262168889"
+      },
+      "repaired": {
+        "receipt_sha256": "cab7aeabff2c64716f7342b2e5584511b2a7a2ba0deec87d2d0bb7a37a3831d3"
+      }
+    },
+    "local_initial_failures": {
+      "git_miner": "Actual local component result matches hosted 59.31% coverage failure.",
+      "predictor": "Original component tests passed but canonical coverage was below 75%.",
+      "report_engine": [
+        "Zip fixture lacked cppulse.store_coordination.",
+        "Store format v3 has a directory sentinel at latest_attempt.json and authoritative heads.json."
+      ]
+    },
+    "prior_hosted_result": {
+      "artifact_id": 14708683296,
+      "bytes": 122567,
+      "git_miner": {
+        "coverage": {
+          "minimum": 80.0,
+          "namespace": "cppulse.git_miner",
+          "percent": 59.31
+        },
+        "log_sha256": "e2f907280793e7ffcde4d4073b39808902e2e2179c17e5de4946635113235f69",
+        "passed": 90,
+        "pytest_exit": 0,
+        "status": "failed"
+      },
+      "public_root": {
+        "historical_deselected": 6,
+        "log_sha256": "abb845023cc8acb544be3514a0d1912d2065f09fdce9cb4aa66566655c562bcc",
+        "passed": 5063,
+        "seconds": 469.77,
+        "warnings": 18
+      },
+      "run_id": 44907679831,
+      "sha256": "af59929677229c27a120bab87104c82fa1b3ea01be5e2690c222d8e012daf956",
+      "source": "6523444079338e72dd0f60f4cbcb0a7c351c34d0"
+    }
+  },
+  "current_source_tree_before_evidence_changes": "218f22f2334c4955e0792f26ac5a63deceeb2e80",
+  "phase": "Bounded repair of component coverage selection and report test fixtures",
+  "previous_public_commit": "6523444079338e72dd0f60f4cbcb0a7c351c34d0",
+  "previous_public_tree": "e536f96c4c0dce26a1b6e2095cbbd8aab22f9834",
+  "qualification_scope": "Earlier passing criterion executions retain their original commands and logs. This bridge addresses only the exact changed inputs and new bounded checks. It does not represent a passing hosted run or production completion.",
+  "source_changes": {
+    "docs/DECISIONS.md": {
+      "current_sha256": "2ba5bb971fcacd0776aea6de606b90c763e834cf6203ac3859f6597e256ffbbe",
+      "previous_sha256": "f4c0cb263302e108ad8decca30a62aeec23c98bf792f82b17b7858b7bb395c22",
+      "reason": "Append-only decision and actual bounded local outcomes for component coverage."
+    },
+    "docs/plans/production-scope-authority.md": {
+      "current_sha256": "c39dab7faafda05b5adf8e392bce4802d64f5f973d64db387e95cd3e9dcbdd54",
+      "previous_sha256": "6c84a17a5d3d6c87ce4114700d0cf24ab26cd4da6e1db4c9a64a0b91d940e55b",
+      "reason": "Append-only decision index entry retains the existing authority and scope."
+    },
+    "report-engine/tests/test_packaged_report.py": {
+      "current_sha256": "ae3110b8018076706b37a7f010896bc735dc5b1d8505eb3aebed73c44be62652",
+      "previous_sha256": "34807ffa89189ab95221093ceb0f7d093315e6324e038c87755fc1b99a9e860f",
+      "reason": "Uses a current package resource archive, asserts its import origin, and keeps the optional-backend blocks and HTML/JSON behavior checks."
+    },
+    "report-engine/tests/test_snapshot_view_api.py": {
+      "current_sha256": "880e903e3aa0490fc043afc4cef6d80382dd75794de8baa10a34a186958c8a3b",
+      "previous_sha256": "251024c434e7c4ae5c3746023499b3e726cb5d5cb9b27894ae6ed737f8ef60d8",
+      "reason": "Uses each layout's authoritative pointer and preserves the current refusal, named read success and no-repair assertions."
+    },
+    "scripts/check_local.py": {
+      "current_sha256": "4a70a1ba737a68c5dc10b84b65f2ce96e6a47dca54db433ed177ca085c27e841",
+      "previous_sha256": "e65fe23492ac102bc783d61871c7e20f78a7503e093f046d8546774d86accd16",
+      "reason": "Retains the original component test directory, working directory and canonical thresholds and adds the public root tests that exercise the measured component. Fresh coverage must enumerate every canonical Python file."
+    },
+    "tests/test_dev_facade.py": {
+      "current_sha256": "053d071f2f438b7544c38e0ee84dbb1828fdffc24777e58e3b296e132665c725",
+      "previous_sha256": "e9a76eb341e11a612cc48c4d693a7766bb9a9678d1913214fd7b5b0bf85eb038",
+      "reason": "Asserts the original Git miner suite and all five selected canonical root test modules."
+    },
+    "tests/test_local_tooling.py": {
+      "current_sha256": "7574e87d699ee1a18e6ef18016203ebeab4320f37153008c27b9f4a813630127",
+      "previous_sha256": "bee1f096927b92570e3db8fcee054417e344afd995b7615ad23c8b1848a52e53",
+      "reason": "Preserves the low-coverage and shim tests against actual fixture inventory and rejects a report that omits a canonical file."
+    }
+  },
+  "unaffected_verified_criteria": [
+    "PR-01",
+    "FR-ANA-09",
+    "FR-GIT-01",
+    "FR-GIT-02",
+    "FR-GIT-03",
+    "FR-GIT-05",
+    "FR-GIT-06",
+    "FR-EVD-01",
+    "FR-EVD-02",
+    "FR-EVD-03",
+    "FR-EVD-04",
+    "FR-EVD-05",
+    "FR-EVD-07",
+    "FR-EVD-08",
+    "FR-EVD-09",
+    "FR-UX-03",
+    "FR-UX-09",
+    "FR-UX-11",
+    "FR-UX-12",
+    "NFR-MNT-02",
+    "NFR-MNT-09",
+    "M5-01",
+    "M5-02",
+    "M5-03",
+    "M5-04"
+  ],
+  "verified_criteria_spanning_changed_inputs": [
+    {
+      "affected_selected_paths": [
+        "docs/plans/production-scope-authority.md",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "PR-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/pr-06/PR-06.master-hosted-repair.proof.json",
+      "predecessor_sha256": "efd8f1ae174ed8b908607156a44c20b4e3d71932d4806839b6f0ce76162a408c"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "FR-ANA-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-hosted-repair.proof.json",
+      "predecessor_sha256": "ed1b21b5562364a0a52ac9d2e41f2f33b5477f02704c370a3f1d6d6c9c11aded"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "FR-ANA-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-hosted-repair.proof.json",
+      "predecessor_sha256": "4196f9da6bdbf6579cefe6a5b4a11478a4cb6bbd7de31ea848ea85755446e007"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "FR-ANA-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-hosted-repair.proof.json",
+      "predecessor_sha256": "4f234bceb526ed9e9f72ff896a460745367ecf398cba719100cc666bb7853e03"
+    },
+    {
+      "affected_selected_paths": [
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "FR-GIT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-hosted-repair.proof.json",
+      "predecessor_sha256": "72931f271ec7bc30a6cd20de9839eb11698a51d1df29c134c3a124367e1ac55c"
+    },
+    {
+      "affected_selected_paths": [
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "FR-EVD-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-hosted-repair.proof.json",
+      "predecessor_sha256": "2152b04e25ad4c82a1ec044914f7b85a268132cd8002810ac421bf2d33c8de51"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "NFR-MNT-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-hosted-repair.proof.json",
+      "predecessor_sha256": "038de0391501ffda1135b232aec878987a567d4c70c2cd52593cb61babdbaa4c"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "NFR-MNT-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-hosted-repair.proof.json",
+      "predecessor_sha256": "9838d6eba394d71ecf8a22513c99cf79863e6f787d56183938724add23124a25"
+    },
+    {
+      "affected_selected_paths": [
+        "docs/DECISIONS.md",
+        "docs/plans/production-scope-authority.md"
+      ],
+      "criterion": "NFR-MNT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-hosted-repair.proof.json",
+      "predecessor_sha256": "ffdadf8853f2efcdf5148697de12a3bc22aafcf3d1a4e357fb2075c283408176"
+    },
+    {
+      "affected_selected_paths": [
+        "scripts/check_local.py",
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "M1-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m1-07/M1-07.master-hosted-repair.proof.json",
+      "predecessor_sha256": "3661ce40d3fd0572b6ef0cd9b3687951724f77e239e390f8a9c5d304e2b6bbc3"
+    },
+    {
+      "affected_selected_paths": [
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "M4-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m4-01/M4-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "7cc52a037ffd2bed9979a6f9da0f1056166b71e2c625077fba3389c367c1797e"
+    },
+    {
+      "affected_selected_paths": [
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "M6-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-01/M6-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "0764b0afde577fc28dd0c6aecffb14746d908bb0b80ac95723d4330f033dcca3"
+    },
+    {
+      "affected_selected_paths": [
+        "tests/test_dev_facade.py",
+        "tests/test_local_tooling.py"
+      ],
+      "criterion": "M6-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-02/M6-02.master-hosted-repair.proof.json",
+      "predecessor_sha256": "343037ab0078d93d4b61dcb7bf22a8aa719be08b497f82d8a2569ef7d746f8dc"
+    }
+  ]
+}

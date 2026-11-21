@@ -258,6 +258,7 @@ decision text and source epoch.
 - `PROD-20261121-35` — refuse late bounded metadata changes during publication.
 - `PROD-20261121-36` — close the dashboard lock under the hosted npm version.
 - `PROD-20261121-37` — trust the Actions checkout for the pinned Git provider.
+- `PROD-20261121-38` — include canonical contract tests in component coverage.
 
 ## Receiving checkout provenance
 

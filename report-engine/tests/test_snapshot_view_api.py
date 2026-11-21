@@ -150,10 +150,15 @@ def test_named_reads_do_not_depend_on_or_repair_a_corrupt_current_pointer(
 ) -> None:
     client, store, source = snapshot_api
     selected = publish_attempt(store, "selected", source)
-    (store.root / "latest_attempt.json").write_text("corrupt current pointer")
+    current_pointer = store.root / (
+        "heads.json" if store.format_version == "3.0.0" else "latest_attempt.json"
+    )
+    assert current_pointer.is_file()
+    damage = "corrupt current pointer"
+    current_pointer.write_text(damage)
     assert client.get("/api/v1/view").status_code == 503
     assert client.get("/api/v1/view", params=pin(selected)).status_code == 200
-    assert (store.root / "latest_attempt.json").read_text() == "corrupt current pointer"
+    assert current_pointer.read_text() == damage
 
 
 def test_view_reader_never_creates_writer_state_or_upgrades_source_claims(

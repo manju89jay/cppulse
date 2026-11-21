@@ -257,14 +257,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/pr-06/PR-06.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/pr-06/PR-06.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole PR-06 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole PR-06 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "verified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#PR-06",
@@ -710,14 +710,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole FR-ANA-04 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole FR-ANA-04 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-04",
@@ -794,14 +794,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole FR-ANA-06 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole FR-ANA-06 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-06",
@@ -844,14 +844,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole FR-ANA-07 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole FR-ANA-07 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-ANA-07",
@@ -2279,14 +2279,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole FR-GIT-08 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole FR-GIT-08 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-GIT-08",
@@ -3604,14 +3604,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole FR-EVD-06 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole FR-EVD-06 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#FR-EVD-06",
@@ -5958,14 +5958,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole NFR-MNT-03 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole NFR-MNT-03 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-03",
@@ -6052,14 +6052,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole NFR-MNT-04 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole NFR-MNT-04 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "implemented but unverified",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-04",
@@ -6202,14 +6202,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole NFR-MNT-08 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole NFR-MNT-08 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "conflicting",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#NFR-MNT-08",
@@ -7203,14 +7203,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/m1-07/M1-07.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/m1-07/M1-07.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole M1-07 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole M1-07 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M1-07",
@@ -7586,14 +7586,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/m4-01/M4-01.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/m4-01/M4-01.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole M4-01 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole M4-01 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M4-01",
@@ -7970,14 +7970,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/m6-01/M6-01.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/m6-01/M6-01.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole M6-01 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole M6-01 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "partial",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-01",
@@ -8018,14 +8018,14 @@
       "original_optionality": "core",
       "remaining_work": "",
       "evidence": [
-        "docs/checkpoints/current/qualification/m6-02/M6-02.master-hosted-repair.proof.json"
+        "docs/checkpoints/current/qualification/m6-02/M6-02.master-component-coverage.proof.json"
       ],
       "review": {
         "accepted": true,
         "reviewer": "/root/independent_review",
-        "scope": "Whole M6-02 retains its original independently accepted execution. Exact current hosted-repair dependency bridge and bounded observations independently reviewed.",
-        "independent_public_proof_review_sha256": "c99dc018fc2326ba7446c1a7036789b6b0e0bb6a8fb25b6ce1fc9c3c03d3f3dc",
-        "approved_public_source_tree": "90238acc95aadc232e600863492cce5b40aa59c5"
+        "scope": "Whole M6-02 retains its original independently accepted execution. Exact current component coverage dependency bridge and bounded observations independently reviewed.",
+        "independent_public_proof_review_sha256": "7b61b943a005a9a4f23f14874a8d039ee522a085bcae0cc11701df649b812a0b",
+        "approved_public_source_tree": "218f22f2334c4955e0792f26ac5a63deceeb2e80"
       },
       "handoff_audit_status": "missing",
       "handoff_audit_reference": "docs/portfolio/cppulse-reconciliation-audit.html#M6-02",

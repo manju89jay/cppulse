@@ -33,6 +33,21 @@ HISTORICAL_ROOT_TESTS = (
     "tests/test_predictor_input_projection.py::test_public_predictor_preserves_frozen_legacy_results_without_eager_native_load",
     "tests/test_store_heads_v3_review.py::test_real_installed_old_wheel_fails_closed_and_reads_explicit_export",
 )
+COMPONENT_ROOT_TESTS = {
+    "git-miner": (
+        "test_git_behavior.py",
+        "test_behavior_identity_history.py",
+        "test_git_history_cache.py",
+        "test_git_inventory_boundary.py",
+        "test_git_metric_window_scope.py",
+    ),
+    "predictor": (
+        "test_temporal_evaluation.py",
+        "test_risk_semantics118.py",
+        "test_roadmap_order.py",
+    ),
+    "report-engine": ("test_work_unit_api.py",),
+}
 
 
 @dataclass(frozen=True)
@@ -287,6 +302,10 @@ def build_checks(
                         "--cov-report=xml:"
                         + str(output / (component + "-coverage.xml")),
                         "tests/",
+                        *(
+                            f"../tests/{name}"
+                            for name in COMPONENT_ROOT_TESTS[component]
+                        ),
                     ),
                     root / component,
                     coverage_namespace=canonical,
@@ -348,17 +367,29 @@ def build_checks(
 
 
 def canonical_coverage(report: Path, namespace: str, root: Path, cwd: Path) -> float:
-    """Calculate coverage of implementation files, excluding compatibility shims."""
+    """Require the entire canonical Python package and measure its statements."""
     document = json.loads(report.read_text(encoding="utf-8"))
-    source = root / "python" / Path(*namespace.split("."))
+    source = (root / "python" / Path(*namespace.split("."))).resolve()
+    remaining = {path.resolve() for path in source.rglob("*.py") if path.is_file()}
     covered = statements = 0
     for filename, entry in document["files"].items():
         path = Path(filename)
         if not path.is_absolute():
             path = cwd / path
-        if path.resolve().is_relative_to(source.resolve()):
+        path = path.resolve()
+        if path.is_relative_to(source):
+            if path not in remaining:
+                raise ValueError(
+                    f"Unexpected or duplicate canonical coverage file: {path}"
+                )
+            remaining.remove(path)
             covered += entry["summary"]["covered_lines"]
             statements += entry["summary"]["num_statements"]
+    if remaining:
+        missing = ", ".join(
+            sorted(path.relative_to(source).as_posix() for path in remaining)
+        )
+        raise ValueError(f"Missing canonical coverage files for {namespace}: {missing}")
     if not statements:
         raise ValueError(f"No canonical coverage statements recorded for {namespace}")
     return 100.0 * covered / statements

@@ -19,16 +19,21 @@ def package_archive(tmp_path: Path) -> Path:
 
     package = Path(cppulse.__file__).resolve().parent
     archive = tmp_path / "cppulse-package.zip"
-    paths = [package / "__init__.py", package / "errors.py", package / "run_store.py"]
-    for directory in ("contracts", "report_engine"):
-        paths.extend(
-            path
-            for path in (package / directory).rglob("*")
-            if path.is_file() and path.suffix in {".py", ".json", ".html", ".css"}
-        )
+    suffixes = {
+        ".py",
+        ".json",
+        ".html",
+        ".css",
+        ".cmake",
+        ".js",
+        ".txt",
+        ".md",
+        ".yaml",
+    }
     with zipfile.ZipFile(archive, "w") as output:
-        for path in paths:
-            output.write(path, Path("cppulse") / path.relative_to(package))
+        for path in package.rglob("*"):
+            if path.is_file() and path.suffix in suffixes:
+                output.write(path, Path("cppulse") / path.relative_to(package))
     return archive
 
 
@@ -45,6 +50,8 @@ class BlockRenderExtras(importlib.abc.MetaPathFinder):
         if fullname.split('.')[0] in {'matplotlib', 'weasyprint'}:
             raise ModuleNotFoundError('Optional rendering dependency blocked: ' + fullname)
 sys.meta_path.insert(0, BlockRenderExtras())
+import cppulse
+assert cppulse.__file__.startswith(sys.argv[1] + '/'), cppulse.__file__
 """
     # This subprocess exercises a second, zipped copy of the package. Do not
     # let pytest-cov auto-register that copy as duplicate canonical source.
