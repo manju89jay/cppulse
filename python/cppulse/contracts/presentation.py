@@ -225,9 +225,8 @@ def semantic(document: dict[str, Any]) -> None:
                 manifest["source"]["digest"],
                 path + "/source_digest",
             )
-        # Requested policy targets may be absent, yielding an explicit stored
-        # unknown/incomplete control. Only actual observation/job proof binds
-        # every context reference to the collected inventory.
+        # A policy or consumer matrix may require an absent context.
+        # Observation and execution documents still bind to collected contexts.
         observed_kinds = {
             "execution_receipt",
             "execution_facts",
@@ -240,7 +239,6 @@ def semantic(document: dict[str, Any]) -> None:
             "sanitizer_facts",
             "external_analysis_facts",
             "consumer_usage",
-            "consumer_matrix",
             "collection_plan",
             "recipe",
         }

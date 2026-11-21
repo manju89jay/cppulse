@@ -1,6 +1,6 @@
 # LevelDB: an inspectable historical result
 
-**Historical native-only analysis, captured 16 November 2026. These are not results from today's candidate.** A fresh one-file run of the current native candidate was attempted on 19 November 2026, but the unchanged resource guard refused admission before analysis. [Exact refusal and attempted argv](fresh-run-status.json). No numbers below were regenerated using the older Windows showcase or `scripts/refresh_showcase.py`.
+**Historical native-only analysis, captured 16 November 2026.** A one-file replay with the 19 November 2026 comparison candidate was refused by the resource guard before analysis. The counts remain from the 16 November run. [Exact refusal and attempted argv](fresh-run-status.json)
 
 ## Project, producer and scope
 
@@ -16,7 +16,7 @@
 | Compilation database SHA256 | `fc219c31d586557664a345bc807301b4b1d78d7a0579d1faa625b167a73d91a0` |
 | Original raw report SHA256 | `aee5cca53b7adbd1c8cf7e844d31b9fb0079cadc1a67686abbfc2266d227edf4` |
 
-The artifact hash identifies the historical native producer; no matching binary is distributed with this documentation. It differs from the current candidate native hash `1a34a3ad2a344728af729ec6d54c0277e01bac9503435e7462982d06f45d17c1`. Hashes identify retained bytes, not producer authentication or a complete host-dependency attestation.
+The artifact hash identifies the retained 16 November native producer. The 19 November comparison candidate had native SHA256 `1a34a3ad2a344728af729ec6d54c0277e01bac9503435e7462982d06f45d17c1`. These identities describe their recorded artifacts. Exact reproduction requires the matching binary and dependencies.
 
 ## What was observed
 
@@ -67,7 +67,7 @@ This is the original captured argv rendered as shell text, **not a command to ru
   --file-size-bytes 268435456
 ```
 
-Exact reproduction requires the matching historical executable, selected upstream commit, database and resource bytes, path layout and compiler environment. Preserve the original output and choose a fresh output directory. Merely replacing the historical executable with today's candidate produces a new measurement and must not be expected to reproduce these counts. The manifest does not establish a closed compiler/header/runtime dependency bundle.
+Exact reproduction requires the matching historical executable, selected upstream commit, database and resource bytes, path layout and compiler environment. Preserve the original output and choose a fresh output directory. Another executable produces a new measurement. The recorded manifest covers the retained scope and leaves compiler, header and runtime dependency closure unestablished.
 
 For a fresh project run with the current development CLI, follow the [README quickstart](../../../README.md#quickstart) and supply that project's actual compilation database. Source setup is separate from this retained result; no new upstream clone, build or test run was made to publish this page.
 

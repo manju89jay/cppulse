@@ -24,14 +24,14 @@ from uuid import uuid4
 
 from cppulse.config import EffectiveConfig
 from cppulse.contracts import validate
-from cppulse.errors import ContractError, IntegrityError
+from cppulse.errors import ContractError, InputChanged, IntegrityError
 from cppulse.execution import CancellationToken
 from cppulse.identities import (
+    _input_discrepancies,
     context_identity,
     digest_json,
     hash_artifact,
     snapshot_inputs,
-    verify_inputs,
 )
 from cppulse.native import NativeInstallation
 from cppulse.tooling import load_rule_registry
@@ -81,6 +81,7 @@ class AnalysisExecution:
     source_observations: dict[str, Any]
     rejected: list[tuple[dict[str, Any], str]]
     compilation_database: list[dict[str, Any]] | None = None
+    unqualified_input_reasons: tuple[str, ...] = ()
 
 
 def _now() -> str:
@@ -205,6 +206,31 @@ def observe_source_inputs(root: Path, paths: list[str]) -> list[dict[str, Any]]:
         except OSError:
             records.append({"path": relative, "kind": "unavailable"})
     return records
+
+
+def compare_source_observations(
+    previous: list[dict[str, Any]], current: list[dict[str, Any]]
+) -> tuple[bool, list[str]]:
+    """Separate checked metadata differences from observations that cannot compare."""
+    changed = False
+    unavailable = []
+    for before, after in zip(previous, current, strict=True):
+        if "unavailable" in (before["kind"], after["kind"]):
+            unavailable.append(after["path"])
+        elif before != after:
+            changed = True
+    return changed, unavailable
+
+
+def _observed_absent(path: Path) -> bool:
+    """A failed read proves disappearance only when the path itself is absent."""
+    try:
+        path.lstat()
+    except (FileNotFoundError, NotADirectoryError):
+        return True
+    except OSError:
+        pass
+    return False
 
 
 def _database(
@@ -439,6 +465,8 @@ def _contains_dynamic_input_query(path: Path) -> bool:
 def verify_include_bindings(
     results: list[tuple[dict[str, Any], dict[str, Any]]],
     source: dict[str, Any],
+    *,
+    unreadable_dependencies: set[str] | None = None,
 ) -> tuple[list[str], list[str]]:
     """Bind native TU include buffers to selected/current dependency bytes.
 
@@ -449,7 +477,7 @@ def verify_include_bindings(
     source_files = {row["path"]: row for row in source["files"]}
     changes: set[str] = set()
     unknown: set[str] = set()
-    current: dict[str, dict[str, Any] | None] = {}
+    current: dict[str, dict[str, Any] | InputChanged | str] = {}
     inspected_queries: set[str] = set()
     for unit, result in results:
         report = _report(unit, result)
@@ -523,10 +551,26 @@ def verify_include_bindings(
                             "dependency.bin",
                             "application/octet-stream",
                         )
-                    except (ContractError, IntegrityError, OSError):
-                        current[physical] = None
+                    except InputChanged as error:
+                        current[physical] = error
+                    except (ContractError, IntegrityError, OSError) as error:
+                        if _observed_absent(path):
+                            current[physical] = InputChanged(
+                                "Dependency path is absent"
+                            )
+                        else:
+                            current[physical] = str(error) or type(error).__name__
                 observed = current[physical]
-                if observed is None or any(
+                if isinstance(observed, str):
+                    if unreadable_dependencies is not None:
+                        unreadable_dependencies.add(target)
+                    unknown.add(
+                        "Native TU include buffer could not be verified against current dependency: "
+                        + target
+                        + "; "
+                        + observed
+                    )
+                elif isinstance(observed, InputChanged) or any(
                     identity[key] != observed[key] for key in ("sha256", "size_bytes")
                 ):
                     changes.add(
@@ -542,7 +586,7 @@ def _aggregate(
     plan: dict[str, Any],
     results: list[tuple[dict[str, Any], dict[str, Any]]],
     *,
-    input_changed: bool,
+    input_block_reason: str | None,
     unavailable_reasons: dict[str, str] | None = None,
 ) -> Path:
     """Stream compatible native output without retaining every unit token stream."""
@@ -577,7 +621,7 @@ def _aggregate(
             raise IntegrityError(
                 "Unit parser/rule/metric versions differ during aggregation"
             )
-        if not input_changed:
+        if input_block_reason is None:
             total_loc += report["metadata"]["total_loc"]
             file_count += report["metadata"]["file_count"]
     analysis_header = analysis_header or {"enabled_rules": []}
@@ -587,17 +631,13 @@ def _aggregate(
         for descriptor in plan["units"]:
             pair = by_file.get(descriptor["primary_file"])
             report = _report(*pair) if pair else None
-            if report is None or input_changed:
-                reason = (
-                    "Global source inputs changed; raw unit facts retained separately."
-                    if input_changed
-                    else (
-                        pair[1]["reason"]
-                        if pair
-                        else (unavailable_reasons or {}).get(
-                            descriptor["primary_file"],
-                            "Unit was not attempted before interruption.",
-                        )
+            if report is None or input_block_reason is not None:
+                reason = input_block_reason or (
+                    pair[1]["reason"]
+                    if pair
+                    else (unavailable_reasons or {}).get(
+                        descriptor["primary_file"],
+                        "Unit was not attempted before interruption.",
                     )
                 )
                 inventory, metric = _unavailable(
@@ -645,7 +685,7 @@ def _aggregate(
             stream.write("}")
         stream.write('}},"findings":[')
         first = True
-        if not input_changed:
+        if input_block_reason is None:
             for unit, result in results:
                 report = _report(unit, result)
                 for finding in report["findings"] if report else []:
@@ -707,6 +747,9 @@ def run_analysis(
     root, base = _roots(config.repo, config.execution["work_directory"] or work_root)
     base.mkdir(parents=True, exist_ok=True)
     database, db_digest = _database(config, config.execution["output_bytes"])
+    database_path = config.compilation_database
+    if database_path is not None and database_path.is_dir():
+        database_path = database_path / "compile_commands.json"
     paths, gaps = discover_sources(root, database)
     source_before = observe_source_inputs(root, paths)
     source = snapshot_inputs(root, paths, inventory_complete=not gaps)
@@ -1015,13 +1058,34 @@ def run_analysis(
         ):
             observed = _observed_context(unit, report)
             contexts[observed["id"]] = observed
+    change_reasons: list[str] = []
+    postflight_unavailable: list[str] = []
     try:
         after_database, after_db = _database(config, config.execution["output_bytes"])
-    except (ContractError, IntegrityError, OSError):
-        after_database = None
-        after_db = "changed"
+    except InputChanged as error:
+        after_database, after_db = database, db_digest
+        change_reasons.append(
+            f"Selected compilation database changed during native execution: {error}"
+        )
+    except (ContractError, IntegrityError, OSError) as error:
+        after_database, after_db = database, db_digest
+        if db_digest is not None and (
+            isinstance(error, ContractError)
+            or isinstance(error.__cause__, (json.JSONDecodeError, UnicodeError))
+        ):
+            change_reasons.append(
+                "Selected compilation database became invalid during native execution."
+            )
+        elif database_path is not None and _observed_absent(database_path):
+            change_reasons.append(
+                "Selected compilation database became unavailable during native execution."
+            )
+        else:
+            cause = error.__cause__ if isinstance(error.__cause__, OSError) else error
+            postflight_unavailable.append(
+                f"Selected compilation database could not be rechecked after execution: {cause}"
+            )
     after_paths, after_gaps = discover_sources(root, after_database)
-    change_reasons: list[str] = []
     source_after = observe_source_inputs(root, paths)
     source_observations = {
         "version": "1.0.0",
@@ -1034,11 +1098,26 @@ def run_analysis(
     }
     _check("analysis_source_observations", source_observations)
     _write(attempt / "source-observations.json", source_observations)
-    if source_after != source_before:
+    metadata_changed, missing_observations = compare_source_observations(
+        source_before, source_after
+    )
+    if metadata_changed:
         change_reasons.append(
             "Source metadata or parent namespace changed during execution; original bytes may have been restored."
         )
-    if bool(verify_inputs(root, source)) or paths != after_paths or gaps != after_gaps:
+    postflight_unavailable.extend(
+        "Source filesystem observation could not be compared after native execution: "
+        + path
+        for path in missing_observations
+    )
+    source_changed = False
+    for changed_identity, diagnosis in _input_discrepancies(root, source):
+        if changed_identity:
+            source_changed = True
+        else:
+            postflight_unavailable.append(diagnosis)
+    inventory_changed = paths != after_paths or gaps != after_gaps
+    if source_changed or (inventory_changed and not missing_observations):
         change_reasons.append(
             "Source content or discovery inventory changed during native execution."
         )
@@ -1057,10 +1136,19 @@ def run_analysis(
             change_reasons.append(
                 "Retained compilation database changed during native execution."
             )
-    except (ContractError, IntegrityError, OSError):
+    except InputChanged as error:
         change_reasons.append(
-            "Retained compilation database became unavailable during native execution."
+            f"Retained compilation database changed during native execution: {error}"
         )
+    except (ContractError, IntegrityError, OSError) as error:
+        if shared_database is not None and _observed_absent(shared_database):
+            change_reasons.append(
+                "Retained compilation database became unavailable during native execution."
+            )
+        else:
+            postflight_unavailable.append(
+                f"Retained compilation database could not be rechecked after execution: {error}"
+            )
     if native.resource_dir is not None:
         try:
             current_resources = snapshot_inputs(
@@ -1070,10 +1158,19 @@ def run_analysis(
                 change_reasons.append(
                     "Selected builtin resources changed during native execution."
                 )
-        except (ContractError, IntegrityError, OSError):
+        except InputChanged as error:
             change_reasons.append(
-                "Selected builtin resources became unavailable during native execution."
+                f"Selected builtin resources changed during native execution: {error}"
             )
+        except (ContractError, IntegrityError, OSError) as error:
+            if _observed_absent(native.resource_dir):
+                change_reasons.append(
+                    "Selected builtin resources became unavailable during native execution."
+                )
+            else:
+                postflight_unavailable.append(
+                    f"Selected builtin resources could not be rechecked after execution: {error}"
+                )
     try:
         if (
             hash_artifact(
@@ -1084,19 +1181,41 @@ def run_analysis(
             change_reasons.append(
                 "Selected native executable changed during native execution."
             )
-    except (ContractError, IntegrityError, OSError):
+    except InputChanged as error:
         change_reasons.append(
-            "Selected native executable became unavailable after execution."
+            f"Selected native executable changed during native execution: {error}"
         )
-    include_changes, include_unknown = verify_include_bindings(results, source)
+    except (ContractError, IntegrityError, OSError) as error:
+        if _observed_absent(native.analyzer):
+            change_reasons.append(
+                "Selected native executable became unavailable after execution."
+            )
+        else:
+            postflight_unavailable.append(
+                f"Selected native executable could not be rechecked after execution: {error}"
+            )
+    unreadable_dependencies: set[str] = set()
+    include_changes, include_unknown = verify_include_bindings(
+        results, source, unreadable_dependencies=unreadable_dependencies
+    )
     change_reasons.extend(include_changes)
     changed = bool(change_reasons)
+    unqualified = [*gaps, *include_unknown, *postflight_unavailable]
+    input_block_reason = None
+    if changed:
+        input_block_reason = (
+            "Global source inputs changed; raw unit facts retained separately."
+        )
+    elif postflight_unavailable or unreadable_dependencies:
+        input_block_reason = (
+            "Input binding could not be rechecked; raw unit facts retained separately."
+        )
     report_path = _aggregate(
         root,
         attempt,
         plan,
         results,
-        input_changed=changed,
+        input_block_reason=input_block_reason,
         unavailable_reasons={unit["primary_file"]: reason for unit, reason in rejected},
     )
     outcomes = Counter(result["outcome"] for _, result in results)
@@ -1112,13 +1231,7 @@ def run_analysis(
         len(results) < len(units) and failure is None and token.is_cancelled()
     ):
         status = "cancelled"
-    elif (
-        units
-        and completed == len(units)
-        and not gaps
-        and failure is None
-        and not include_unknown
-    ):
+    elif units and completed == len(units) and not unqualified and failure is None:
         status = "completed"
     else:
         status = "partial"
@@ -1132,9 +1245,7 @@ def run_analysis(
         "source_observations_sha256": digest_json(source_observations),
         "status": status,
         "input_verification": (
-            "changed"
-            if changed
-            else "unavailable" if include_unknown or gaps else "verified"
+            "changed" if changed else "unavailable" if unqualified else "verified"
         ),
         "unit_count": len(units),
         "completed_units": completed,
@@ -1159,6 +1270,7 @@ def run_analysis(
             *gaps,
             *change_reasons,
             *include_unknown,
+            *postflight_unavailable,
             *([failure] if failure else []),
         ],
         "started_at": started,
@@ -1180,6 +1292,7 @@ def run_analysis(
         source_observations,
         rejected,
         database,
+        tuple(unqualified),
     )
 
 

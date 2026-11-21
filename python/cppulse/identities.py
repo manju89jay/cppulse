@@ -7,7 +7,7 @@ No function executes Git, a compiler, a shell or a network operation.
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Iterator, Mapping
 from copy import deepcopy
 import hashlib
 import json
@@ -166,6 +166,10 @@ def _hash_file(root: Path, path: Path | str) -> dict[str, Any]:
             current, _ = _checked_path(root, identity)
             current_info = current.lstat()
         except IntegrityError as exc:
+            if isinstance(exc.__cause__, OSError) and not isinstance(
+                exc.__cause__, (FileNotFoundError, NotADirectoryError)
+            ):
+                raise
             raise InputChanged("Input changed while reading it", path=identity) from exc
         if (
             _stat_identity(before) != _stat_identity(after)
@@ -245,12 +249,47 @@ def snapshot_inputs(
     if dirty is not None:
         document["dirty"] = dirty
     validate("source", document)
-    errors = verify_inputs(directory, document)
-    if errors:
+    discrepancies = list(_input_discrepancies(directory, document))
+    if any(changed for changed, _ in discrepancies):
         raise InputChanged(
-            "Selected inputs changed during snapshot: " + "; ".join(errors)
+            "Selected inputs changed during snapshot: "
+            + "; ".join(reason for _, reason in discrepancies)
+        )
+    if discrepancies:
+        raise IntegrityError(
+            "Could not recheck selected inputs during snapshot: "
+            + "; ".join(reason for _, reason in discrepancies)
         )
     return document
+
+
+def _input_discrepancies(
+    root: Path | str, snapshot: dict[str, Any]
+) -> Iterator[tuple[bool, str]]:
+    """Yield diagnoses with an explicit flag for observed input change."""
+    validate("source", snapshot)
+    try:
+        directory = _root_directory(root)
+    except IntegrityError as exc:
+        yield isinstance(exc.__cause__, (FileNotFoundError, NotADirectoryError)), str(
+            exc
+        )
+        return
+    for expected in snapshot["files"]:
+        identity = expected["path"]
+        try:
+            observed = _hash_file(directory, identity)
+        except (IntegrityError, InputChanged) as exc:
+            changed = isinstance(exc, InputChanged) or isinstance(
+                exc.__cause__, (FileNotFoundError, NotADirectoryError)
+            )
+            yield changed, f"{identity}: {exc}"
+            continue
+        if (
+            observed["sha256"] != expected["sha256"]
+            or observed["size_bytes"] != expected["size_bytes"]
+        ):
+            yield True, f"{identity}: content differs from the selected snapshot"
 
 
 def verify_inputs(root: Path | str, snapshot: dict[str, Any]) -> list[str]:
@@ -259,25 +298,7 @@ def verify_inputs(root: Path | str, snapshot: dict[str, Any]) -> list[str]:
     Replacements with identical bytes remain content-equivalent once stable.
     New unlisted additions require a fresh discovery inventory, not this check.
     """
-    validate("source", snapshot)
-    try:
-        directory = _root_directory(root)
-    except IntegrityError as exc:
-        return [str(exc)]
-    errors = []
-    for expected in snapshot["files"]:
-        identity = expected["path"]
-        try:
-            observed = _hash_file(directory, identity)
-        except (IntegrityError, InputChanged) as exc:
-            errors.append(f"{identity}: {exc}")
-            continue
-        if (
-            observed["sha256"] != expected["sha256"]
-            or observed["size_bytes"] != expected["size_bytes"]
-        ):
-            errors.append(f"{identity}: content differs from the selected snapshot")
-    return errors
+    return [diagnosis for _, diagnosis in _input_discrepancies(root, snapshot)]
 
 
 def context_identity(payload: Mapping[str, Any]) -> dict[str, Any]:

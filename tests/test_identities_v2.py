@@ -14,6 +14,7 @@ import pytest
 from cppulse.contracts import validate
 from cppulse.errors import ContractError, InputChanged, IntegrityError
 from cppulse.identities import (
+    _input_discrepancies,
     canonical_json_bytes,
     context_identity,
     digest_json,
@@ -81,6 +82,20 @@ def test_snapshot_is_sorted_content_based_and_independent_of_git_metadata(
     assert first["digest"] == independent
     validate("source", first)
     assert verify_inputs(tmp_path, first) == []
+
+
+def test_snapshot_recheck_observes_replaced_root_ancestor(tmp_path: Path) -> None:
+    parent = tmp_path / "parent"
+    root = parent / "source"
+    root.mkdir(parents=True)
+    (root / "a.cpp").write_text("int value;\n")
+    snapshot = snapshot_inputs(root, ["a.cpp"])
+    parent.rename(tmp_path / "original-parent")
+    parent.write_text("This formerly traversable path is now a regular file.\n")
+
+    [(changed, diagnosis)] = _input_discrepancies(root, snapshot)
+    assert changed
+    assert verify_inputs(root, snapshot) == [diagnosis]
 
 
 def test_inventory_and_kind_are_semantic_but_unlisted_additions_are_not_observed(

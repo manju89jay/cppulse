@@ -1,3 +1,17 @@
+# Current public checkpoint
+
+PR #12 merged into `master` at `d7a0c531bfdb339a6932c0f5ba7b446a3ec45f55`.
+The reviewed PR tree passed all five Linux CI jobs. The retained 187 items remain
+at 38 verified, 96 open, 51 active and 2 blocked across P0–P14. Strict verifier
+exit 3 on the merged tree records valid, incomplete delivery.
+[Current handoff](../CODEX_CLOUD_HANDOFF.md) ·
+[Live ledger](production-delivery-ledger.json)
+
+## Historical delivery records
+
+The entries below retain the states, authority and commands of their recorded
+checkpoints.
+
 > Current T1–T3 checkpoint (2026-11-19T17:28:37.515243+00:00): approved local packs/three genuine clang-tidy19.1.7 families/configuration forwarding and mounted-output repair qualified on wheel6b33. Source427, installed prior264+172 batch cases plus arithmetic2, and actual bounded Docker smoke passed; independent review accepted. Complete prior38 proof refreshed; unchanged strict checker ACTUAL3, current-valid/full-program-incomplete. Canonical states and all187 definitions/P0–P14 unchanged:38verified/96open/51active/2blocked. No new canonical closure; PR-04/M0-05 remain unfinished. [Exact evidence, scope and limitations](../checkpoints/20261119/rulesets-t123.md). One tested same-branch checkpoint push is authorized; no later feature intake. Older entries below are historical.
 
 > 19 November2026 development checkpoint: user authorizes ONE conventional commit on existing codex/cppulse-local-core-20261114; no merge/push/refupdates/deployment/publication. Code writers frozen. Batch118 PR-04/M0-05 qualification/review accepted but proof integration remains capacity-blocked after the ONE bounded recovery; ledger38/96/51/2 unchanged, strictinvalid2. All187/P0–P14 retained. See docs/checkpoints/20261119/development-checkpoint.md. Earlier no-commit wording is historical except that the standing restriction resumes after this one checkpoint.

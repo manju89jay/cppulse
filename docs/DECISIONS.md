@@ -859,3 +859,30 @@ Keep sealed private compression, packaged JSON-schema checks and original native
 - **Tradeoffs**. Component gates now run a small set of repository-level tests, some of which also run in the full root suite. Each uses the same collection process and regular local fixtures. Existing historical lanes keep their current test selections.
 - **Verification**. Preserve the hosted and local failing receipts. The repaired local gates measured 87.44% for Git miner, 88.98% for predictor and 93.36% for report engine, with the same canonical files and statement totals. The omitted-file, shim, threshold, optional-dependency and corrupt-pointer controls passed. The repair's hosted rerun remains pending.
 - **Interview angle**. Explain the difference between a passing test process and a passing coverage gate, and why a missing module cannot improve a statement-coverage result.
+
+## PROD-20261121-39 — Separate the public handoff from historical trials
+
+- **Context**. The scoped Linux checkpoint merged into master while the README and handoff still described it as awaiting publication. The developer evaluations and LevelDB measurements describe different historical runs.
+- **Decision**. Point readers to the merged first trial and shared developer commands. Publish a bounded summary of the ten simulations with pinned upstream links and unresolved limits. Date the LevelDB producer identities and retain the original evidence.
+- **Why**. Developers need a usable entry point and the scope behind each claim. Keeping provenance visible helps them choose appropriate checks for their own build.
+- **Tradeoffs**. The summary reports bounded observations and limits. It leaves human usefulness, broader environment coverage and production acceptance open.
+- **Verification**. Check current and historical links, run the finite trial from the installed wheel, compare the README with its packaged metadata and run the generated metadata check.
+- **Interview angle**. Explain how to preserve a useful historical measurement while updating the instructions a reader follows today.
+
+## PROD-20261121-40 — Explain why bounded source binding is unverified
+
+- **Context**. A completed native receipt can coexist with an unqualified include or compiler context. The bounded publication explanation previously described every unavailable check as a change.
+- **Decision**. Carry checked changes and unqualified inputs separately through the bounded publication guard. Retain the underlying causes and next steps in the run manifest, which the CLI and evidence report already read.
+- **Why**. A reader needs to distinguish a rerun after an edit from a missing binding that requires checking the selected inputs or context. Both findings can apply to the same attempt.
+- **Tradeoffs**. The binding explanation describes the selected observed scope. An actual change still aborts guarded publication. Partial archives keep their diagnostics, and qualified health still requires its original evidence.
+- **Verification**. Exercise unchanged unqualified, changed, mixed and verified-clean inputs, postflight tool and resource loss, and late publication checks. Compare the pinned manifest explanation with public JSON and HTML.
+- **Interview angle**. Explain what facts justify describing an input as changed, what remains unknown, and why either condition can leave the same partial result.
+
+## PROD-20261121-41 — Verify two finite fmt consumers
+
+- **Context**. The first trial illustrates one authored C++ consumer. A library developer also needs to see how two ways of consuming the same release produce distinct context and evidence bindings.
+- **Decision**. Build the locked fmt 10.2.1 source and select compiled and header-only distribution views. Verify actual package use and header self-containment separately from the existing finite test policy. Preserve missing matrix cases as declarations in evidence reports. Provision the public fmt source explicitly before the hosted example runs.
+- **Why**. A policy can accept the two selected workload outcomes without proving package applicability. Declared requirements must remain visible when a context or its execution evidence is missing.
+- **Tradeoffs**. Verification is finite and pinned to the supported GCC, GNU ld and CTest producers. The two distribution views omit broader upstream analysis and uninstantiated templates.
+- **Verification**. Run both configurations, the deliberately incorrect authored expectation, the absent header-only lane and a stale-workspace check. Compare the selected source, execution, package-use and assessment pins with JSON and HTML. Keep actual hosted results separate.
+- **Interview angle**. Explain which observed data proves a static archive contributed to one build and which data allows a required but unexecuted lane to remain unknown.

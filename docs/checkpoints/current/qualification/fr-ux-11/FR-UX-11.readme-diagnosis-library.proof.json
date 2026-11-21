@@ -1,0 +1,50 @@
+{
+  "command": [
+    [
+      "bash",
+      "/workspace/work/current38-next/criteria/launch_original.sh",
+      "privacy-installed"
+    ],
+    [
+      "bash",
+      "/workspace/work/current38-next/criteria/launch_original.sh",
+      "privacy-source"
+    ]
+  ],
+  "current_source_tree_for_batch": "47090ff3d4f6d9c8a9186d1ce8d694f29068109a",
+  "dependency_transition": "docs/checkpoints/current/qualification/readme-diagnosis-library-observed-bridge.json",
+  "evidence_scope_note": "Original criterion execution command and log are retained. The current bridge separately binds the observed developer journeys, changed input verification and targeted package checks.",
+  "exit_code": 0,
+  "historical_execution_archive": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.proof.json",
+  "log": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.structured-log.json",
+  "log_sha256": "2a741afbf75be3c397659494d348b58cda388cd0032a05ad36d79bfe6b365dfc",
+  "predecessor_public_proof": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.master-ci.proof.json",
+  "source_files": {
+    "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.execution-bridge.json": "4bec8a788123ad9e9df40a9845cda0a3a6ddada82ea79e456630e9f7369ebde8",
+    "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.master-ci.proof.json": "2ba1bc9c3855bb9a7d642a37e73b0b9152f7701d15c4539dd089d98c1d362649",
+    "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.proof.json": "658ecbacd4cdce63761c68ec31b05aad76701c9252336498db0ac6240d438463",
+    "docs/checkpoints/current/qualification/fr-ux-11/executed/launch_original.sh": "298cc130138185f54fca4b61bd76d6186fe1b3541b6a0686f2177d6b894fb0c8",
+    "docs/checkpoints/current/qualification/fr-ux-11/executed/run_original.py": "7ebc4167e2056b6f8d696eaeef157e97b52fb1a2f76b4cc21bb9fbc39a7fd185",
+    "docs/checkpoints/current/qualification/master-ci/observed-ci-and-source-bridge.json": "d190755a78b28145a64e7154c0516101077d81048b51dd9f2fee97b6745e37c5",
+    "docs/checkpoints/current/qualification/readme-diagnosis-library-observed-bridge.json": "3d5541397dc6215b6ec566fbd3f5ff020423afd3ec94d234111ff39f58347f23",
+    "docs/specs/production-platform/requirements.md": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+    "pyproject.toml": "f10f7eed61bc764dcac60c621f77ce3cb5169eda5403f096182705d2931912c4",
+    "python/cppulse/__init__.py": "f0c86fb816a2c4a7f2003aed5fd64756289a3a63f27468b9b60305c5c004c3fb",
+    "python/cppulse/__main__.py": "c29af8d76cc07be764f29ab78d75361c3d2a156136024f7e6e9cc5086900c682",
+    "python/cppulse/cli.py": "c03576a9eb1d707e08b115bc15afadc631477264880e9fd6aa2362bce0b5c97e",
+    "python/cppulse/compatibility.py": "e33894fd87f84e0e0c3a9d89141902838b7ce3fb190407bea4700c752570c570",
+    "python/cppulse/config.py": "5909f67b23a779f325280e881ff2e91cea480954a1cb0bb565f430fe79a1297b",
+    "python/cppulse/contracts/__init__.py": "e22b26bf2eeb3acb676a8e6023a2d9217fc5ec17e7488b8f3a86dcdb607d3904",
+    "python/cppulse/contracts/validation.py": "aaabd926d2c835c77244ffe053125fb16fd527def54b092cf95c9c832d40bfb9",
+    "python/cppulse/errors.py": "d146cc4c34191e26f3c1340489f69a1e78b1e1eb650710ecd643a2ecb932cfc0",
+    "python/cppulse/identities.py": "fc01ca0d375d73b7e7855a6a2330f00b6a55cc038109fca1a9931f0792a84f0d",
+    "python/cppulse/importer.py": "031c443a62fb2b8d7e7e2831faf04f823a4d558d64321830a161024d99914c86",
+    "python/cppulse/native.py": "580d662990407067b96fd3d697d6c5fd7e6af694d7130f2c38487a49e9206ab9",
+    "python/cppulse/pipeline.py": "785ba79d01aa6df79697218617f6910e4637c9d9f23cd01e49b323c3e1e93890",
+    "python/cppulse/run_store.py": "8c5eb816991508fde2adcfec5451b91a02d5429d5133264bf71adc5911be92e0",
+    "python/cppulse/store_coordination.py": "797603e1e3f173c46ecdd78b624ce032442aa6c14d32fd6d0a695d3faca97f6e",
+    "tests/test_diagnostic_privacy112.py": "996e7c2849a31214acc0bcb0f66f054f503c4f2355e0beffb1a56b71ed853cc3",
+    "tests/test_installed_cli.py": "6bd355511bd37cb3bfd36b8fbfa5e9a624c2f0a2b3ac3ed1f021a6520e4cdedb"
+  },
+  "status": "passed"
+}

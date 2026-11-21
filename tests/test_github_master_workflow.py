@@ -284,3 +284,27 @@ def test_explicit_hosted_root_selection_preserves_unfiltered_default(
         f"--deselect={node}" for node in HISTORICAL_ROOT_TESTS
     )
     assert len(HISTORICAL_ROOT_TESTS) == len(set(HISTORICAL_ROOT_TESTS)) == 5
+
+
+def test_fmt_example_acquires_dependencies_before_execution(workflow: dict) -> None:
+    steps = workflow["jobs"]["test-python"]["steps"]
+    names = [step.get("name") for step in steps]
+    fetch = names.index("Acquire the locked fmt source for the consumer example")
+    verify = names.index("Verify the two fmt consumer configurations")
+    retain = names.index("Retain fmt source pins and actual consumer records")
+    assert (
+        fetch
+        < verify
+        < retain
+        < names.index("Shared public source contracts, scope and generated checks")
+    )
+    assert all(
+        not steps[index].get("if") and not steps[index].get("continue-on-error")
+        for index in (fetch, verify)
+    )
+    assert 'demo_fmt_matrix.py fetch --output "$RUNNER_TEMP/cppulse-fmt-source"' in (
+        steps[fetch]["run"]
+    )
+    assert "demo_fmt_matrix.py run" in steps[verify]["run"]
+    assert '--fmt-source "$RUNNER_TEMP/cppulse-fmt-source/fmt"' in steps[verify]["run"]
+    assert steps[retain]["if"] == "always()"

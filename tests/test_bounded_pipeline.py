@@ -2,19 +2,35 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+import errno
+from html import escape
 import json
+import os
 from pathlib import Path
+import shutil
 from typing import Any
 
 import pytest
 
 from cppulse.config import effective_config
 from cppulse.errors import InputChanged, IntegrityError
+from cppulse.native import NativeInstallation
 from cppulse.pipeline import analyze
-from cppulse.run_store import RunStore
+from cppulse.presentation import (
+    build_snapshot_view,
+    render_snapshot_html,
+    render_snapshot_json,
+)
+from cppulse.run_store import RunSnapshot, RunStore
 from cppulse.work_units import _check
 import test_analysis_execution as fixtures
-from cppulse.native import NativeInstallation
+
+
+INPUT_CHANGED = "Source or context inputs changed during bounded analysis."
+INPUT_UNAVAILABLE = (
+    "Source or context inputs could not be verified for bounded analysis."
+)
 
 
 @pytest.fixture
@@ -22,14 +38,22 @@ def native() -> NativeInstallation:
     return fixtures.native.__wrapped__()
 
 
-def config(tmp_path: Path, *, output_inside: bool = False, **options: Any):
-    source = tmp_path / "source"
+def config(
+    tmp_path: Path,
+    *,
+    output_inside: bool = False,
+    source_parent: Path | None = None,
+    compilation_database: Path | None = None,
+    **options: Any,
+):
+    source = (source_parent or tmp_path) / "source"
     source.mkdir(exist_ok=True)
     (source / "main.cpp").write_text("int value() { return 1; }\n")
     output = source / "output" if output_inside else tmp_path / "store"
     return effective_config(
         source,
         output,
+        compilation_database=compilation_database,
         execution={
             "mode": "bounded",
             "jobs": 2,
@@ -52,6 +76,61 @@ def private_json(snapshot: Any, identifier: str, kind: str) -> dict[str, Any]:
     return document
 
 
+def assert_input_explanations(
+    snapshot: RunSnapshot,
+    *,
+    changed: bool,
+    unavailable: bool,
+    causes: tuple[str, ...] = (),
+) -> None:
+    view = build_snapshot_view(snapshot)
+    document = json.loads(render_snapshot_json(view))
+    assert (
+        document["run"]["input_verification"] == snapshot.manifest["input_verification"]
+    )
+    limitations = snapshot.manifest["limitations"]
+    assert document["run"]["limitations"] == limitations
+    html = render_snapshot_html(view)
+    for message, present in (
+        (INPUT_CHANGED, changed),
+        (INPUT_UNAVAILABLE, unavailable),
+    ):
+        assert (message in limitations) is present
+        assert (message in html) is present
+    for cause in causes:
+        assert any(cause in limitation for limitation in limitations), limitations
+        assert escape(cause) in html
+
+
+def after_native_workers(
+    monkeypatch: pytest.MonkeyPatch, action: Callable[[], object]
+) -> None:
+    """Apply an authored perturbation at the real engine's first postflight read."""
+    from cppulse import analysis_execution as engine
+
+    original = engine.discover_sources
+    calls = 0
+
+    def discover(root: Path, database=None):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            action()
+        return original(root, database)
+
+    monkeypatch.setattr(engine, "discover_sources", discover)
+
+
+def test_equal_unavailable_source_observations_do_not_establish_a_binding() -> None:
+    from cppulse.analysis_execution import compare_source_observations
+
+    unavailable = {"kind": "unavailable", "path": "main.cpp"}
+    assert compare_source_observations([unavailable], [unavailable]) == (
+        False,
+        ["main.cpp"],
+    )
+
+
 def test_public_bounded_analyze_retains_original_receipts_and_current_source(
     tmp_path: Path, native: Any, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -64,6 +143,7 @@ def test_public_bounded_analyze_retains_original_receipts_and_current_source(
     assert summary["input_verification"] == "verified"
     snapshot = RunStore(cfg.output).open_run(summary["run_id"])
     snapshot.verify()
+    assert_input_explanations(snapshot, changed=False, unavailable=False)
     bindings = private_json(
         snapshot, "analysis-bindings", "analysis_execution_bindings"
     )
@@ -82,6 +162,358 @@ def test_public_bounded_analyze_retains_original_receipts_and_current_source(
         stage["id"] == "archive-import" for stage in snapshot.manifest["stages"]
     )
     assert json.loads(Path(summary["report"]).read_bytes())
+
+
+@pytest.mark.parametrize(
+    ("changed", "unavailable", "execution_verification"),
+    [
+        pytest.param(False, True, "unavailable", id="unknown-only"),
+        pytest.param(True, False, "changed", id="actual-change"),
+        pytest.param(True, True, "changed", id="change-and-unknown"),
+    ],
+)
+def test_bounded_input_explanations_keep_changed_and_unavailable_distinct(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    changed: bool,
+    unavailable: bool,
+    execution_verification: str,
+) -> None:
+    select_native(monkeypatch, native)
+    cfg = config(tmp_path)
+    source = cfg.repo / "main.cpp"
+    causes = []
+    if unavailable:
+        source.write_text("int value() { return VALUE; }\n")
+        (cfg.repo / "forced.hpp").write_text("#define VALUE 1\n")
+        (cfg.repo / "compile_commands.json").write_text(
+            json.dumps(
+                [
+                    {
+                        "directory": str(cfg.repo),
+                        "file": "main.cpp",
+                        "arguments": [
+                            "clang++",
+                            "-std=c++17",
+                            "-include",
+                            "forced.hpp",
+                            "-c",
+                            "main.cpp",
+                        ],
+                    }
+                ]
+            )
+        )
+        causes.append(
+            "Input closure is unqualified for hidden/PCH/module/overlay/response context flag: -include"
+        )
+    if changed:
+        after_native_workers(
+            monkeypatch, lambda: source.write_text("int after_native() { return 2; }\n")
+        )
+        causes.append(
+            "Source content or discovery inventory changed during native execution."
+        )
+    result = analyze(cfg, report_format="json", timeout=60)
+    snapshot = RunStore(cfg.output).open_run(result["run_id"])
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert summary["input_verification"] == execution_verification
+    assert result["analysis_status"] == "partial"
+    assert snapshot.manifest["status"] == "partial"
+    assert (
+        result["input_verification"]
+        == snapshot.manifest["input_verification"]
+        == "unverified"
+    )
+    bindings = private_json(
+        snapshot, "analysis-bindings", "analysis_execution_bindings"
+    )
+    assert bindings["units"] and all(
+        snapshot.read_json(row["receipt_artifact_id"])["status"] == "passed"
+        for row in bindings["units"]
+    )
+    assert_input_explanations(
+        snapshot, changed=changed, unavailable=unavailable, causes=tuple(causes)
+    )
+
+
+@pytest.mark.parametrize("renamed", [True, False], ids=["renamed", "unreadable"])
+def test_bounded_postflight_source_root_diagnosis(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    renamed: bool,
+) -> None:
+    select_native(monkeypatch, native)
+    parent = tmp_path / "selected"
+    parent.mkdir()
+    cfg = config(tmp_path, source_parent=parent)
+    original = (cfg.repo / "main.cpp").read_bytes()
+    moved = parent / "moved-source"
+    original_lstat = os.lstat
+    mode = parent.stat().st_mode
+
+    def deny_root_lookup(path: Any, *args: Any, **kwargs: Any) -> os.stat_result:
+        if isinstance(path, (str, Path)) and Path(path).is_relative_to(cfg.repo):
+            raise PermissionError(errno.EACCES, "Permission denied", str(path))
+        return original_lstat(path, *args, **kwargs)
+
+    def lose_root_access() -> None:
+        if renamed:
+            cfg.repo.rename(moved)
+        elif getattr(os, "geteuid", lambda: 0)() == 0:
+            # Privileged test runners can traverse a mode-000 directory.
+            monkeypatch.setattr(os, "lstat", deny_root_lookup)
+        else:
+            parent.chmod(0)
+
+    after_native_workers(monkeypatch, lose_root_access)
+    try:
+        result = analyze(cfg, report_format="json", timeout=60)
+    finally:
+        parent.chmod(mode)
+        monkeypatch.setattr(os, "lstat", original_lstat)
+
+    assert cfg.repo.exists() == (not renamed)
+    assert ((moved if renamed else cfg.repo) / "main.cpp").read_bytes() == original
+    store = RunStore(cfg.output)
+    snapshot = store.open_run(result["run_id"])
+    snapshot.verify()
+    assert snapshot.manifest_sha256 == store.resolve_latest_attempt().manifest_sha256
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert summary["outcomes"]["complete"] == 1
+    assert summary["input_verification"] == ("changed" if renamed else "unavailable")
+    assert result["analysis_status"] == snapshot.manifest["status"] == "partial"
+    assert (
+        result["input_verification"]
+        == snapshot.manifest["input_verification"]
+        == "unverified"
+    )
+    assert snapshot.read_json("risk_scores")["health_score"]["overall"] is None
+    bindings = private_json(
+        snapshot, "analysis-bindings", "analysis_execution_bindings"
+    )
+    (unit,) = bindings["units"]
+    receipt = snapshot.read_json(unit["receipt_artifact_id"])
+    original_result = private_json(snapshot, unit["result_artifact_id"], "work_result")
+    assert receipt == original_result["execution_receipt"]
+    assert receipt["status"] == "passed"
+    assert receipt["source_digest"] == snapshot.manifest["source"]["digest"]
+    cause = (
+        "Source content or discovery inventory changed during native execution."
+        if renamed
+        else "Input root unavailable:"
+    )
+    assert_input_explanations(
+        snapshot, changed=renamed, unavailable=True, causes=(cause,)
+    )
+
+
+def selected_resource_fixture(
+    tmp_path: Path, native: NativeInstallation
+) -> NativeInstallation:
+    resource = tmp_path / "resources"
+    (resource / "include").mkdir(parents=True)
+    (resource / "include/stddef.h").write_text(
+        "// Authored finite builtin resource fixture.\n"
+    )
+    return NativeInstallation(native.analyzer, resource, native.library_dirs, None)
+
+
+@pytest.mark.parametrize("disappearing", ["resources", "native"])
+def test_bounded_observed_postflight_loss_keeps_specific_change_cause(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    disappearing: str,
+) -> None:
+    selected = selected_resource_fixture(tmp_path, native)
+    if disappearing == "native":
+        analyzer = tmp_path / "isolated-analyzer"
+        shutil.copy2(native.analyzer, analyzer)
+        selected = NativeInstallation(
+            analyzer, selected.resource_dir, selected.library_dirs, None
+        )
+        after_native_workers(monkeypatch, analyzer.unlink)
+        cause = "Selected native executable became unavailable after execution."
+    else:
+        resource = selected.resource_dir
+        assert resource is not None
+        after_native_workers(monkeypatch, lambda: shutil.rmtree(resource))
+        cause = "Selected builtin resources became unavailable during native execution."
+    select_native(monkeypatch, selected)
+    cfg = config(tmp_path)
+    result = analyze(cfg, report_format="json", timeout=60)
+    snapshot = RunStore(cfg.output).open_run(result["run_id"])
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert summary["input_verification"] == "changed"
+    assert summary["outcomes"]["complete"] == 1
+    assert result["analysis_status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
+    assert_input_explanations(
+        snapshot, changed=True, unavailable=False, causes=(cause,)
+    )
+
+
+@pytest.mark.parametrize("blocked_at", ["inventory", "content-recheck"])
+def test_bounded_resource_read_blocked_only_at_publication_is_unavailable(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    blocked_at: str,
+) -> None:
+    from cppulse import work_units
+    from cppulse import analysis_execution as engine
+
+    selected = selected_resource_fixture(tmp_path, native)
+    select_native(monkeypatch, selected)
+    run_analysis = engine.run_analysis
+    cause = "Authored publication-time resource read refusal"
+    assert selected.resource_dir is not None
+    header = selected.resource_dir / "include/stddef.h"
+    original = header.read_bytes()
+    original_open = os.open
+    opens = 0
+
+    def unreadable(_root: Path):
+        raise PermissionError(cause)
+
+    def refuse_content_recheck(path: Any, *args: Any, **kwargs: Any) -> int:
+        nonlocal opens
+        if path == header:
+            opens += 1
+            if opens == 2:
+                raise PermissionError(cause)
+        return original_open(path, *args, **kwargs)
+
+    def run_then_block_resources(*args: Any, **kwargs: Any):
+        result = run_analysis(*args, **kwargs)
+        assert result.summary["input_verification"] == "verified"
+        if blocked_at == "inventory":
+            monkeypatch.setattr(work_units, "_resource_files", unreadable)
+        else:
+            monkeypatch.setattr(os, "open", refuse_content_recheck)
+        return result
+
+    monkeypatch.setattr(engine, "run_analysis", run_then_block_resources)
+    cfg = config(tmp_path)
+    result = analyze(cfg, report_format="json", timeout=60)
+    snapshot = RunStore(cfg.output).open_run(result["run_id"])
+    assert result["analysis_status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
+    assert header.read_bytes() == original
+    if blocked_at == "content-recheck":
+        assert opens >= 2
+    assert_input_explanations(
+        snapshot, changed=False, unavailable=True, causes=(cause,)
+    )
+
+
+@pytest.mark.parametrize("malformed", [True, False], ids=["changed", "unreadable"])
+def test_bounded_postflight_distinguishes_malformed_from_unreadable_database(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    malformed: bool,
+) -> None:
+    from cppulse import analysis_execution as engine
+
+    select_native(monkeypatch, native)
+    database = tmp_path / "external-compilation-database.json"
+    database.write_text(
+        json.dumps(
+            [
+                {
+                    "directory": str(tmp_path / "source"),
+                    "file": "main.cpp",
+                    "arguments": ["clang++", "-std=c++17", "-c", "main.cpp"],
+                }
+            ]
+        )
+    )
+    cfg = config(tmp_path, compilation_database=database)
+    saved = database.read_bytes()
+    original_open = os.open
+
+    def refuse_read(path: Any, *args: Any, **kwargs: Any) -> int:
+        if path == database:
+            raise PermissionError("Authored database read refusal")
+        return original_open(path, *args, **kwargs)
+
+    read_database = engine._database
+    calls = 0
+
+    def change_or_refuse_at_second_read(*args: Any, **kwargs: Any):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            if malformed:
+                database.write_bytes(b"{broken")
+            else:
+                monkeypatch.setattr(os, "open", refuse_read)
+        return read_database(*args, **kwargs)
+
+    monkeypatch.setattr(engine, "_database", change_or_refuse_at_second_read)
+    result = analyze(cfg, report_format="json", timeout=60)
+    snapshot = RunStore(cfg.output).open_run(result["run_id"])
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert calls == 2 and summary["outcomes"]["complete"] == 1
+    assert (database.read_bytes() != saved) is malformed
+    assert result["analysis_status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
+    cause = (
+        "Selected compilation database became invalid during native execution."
+        if malformed
+        else "Authored database read refusal"
+    )
+    assert_input_explanations(
+        snapshot, changed=malformed, unavailable=not malformed, causes=(cause,)
+    )
+
+
+@pytest.mark.parametrize("blocked", ["dependency", "native"])
+def test_bounded_postflight_cannot_read_an_unchanged_input(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    blocked: str,
+) -> None:
+    from cppulse import analysis_execution as engine
+
+    select_native(monkeypatch, native)
+    cfg = config(tmp_path)
+    dependency = cfg.repo / "dependency.inc"
+    dependency.write_text("#define VALUE 7\n")
+    (cfg.repo / "main.cpp").write_text(
+        '#include "dependency.inc"\nint value() { return VALUE; }\n'
+    )
+    target = dependency if blocked == "dependency" else native.analyzer
+    original = target.read_bytes()
+    hash_artifact = engine.hash_artifact
+    cause = f"Authored postflight {blocked} read refusal"
+
+    def refuse_selected(path, artifact_id, *args):
+        if Path(path) == target and artifact_id == blocked:
+            raise PermissionError(cause)
+        return hash_artifact(path, artifact_id, *args)
+
+    after_native_workers(
+        monkeypatch,
+        lambda: monkeypatch.setattr(engine, "hash_artifact", refuse_selected),
+    )
+    result = analyze(cfg, report_format="json", timeout=60)
+    snapshot = RunStore(cfg.output).open_run(result["run_id"])
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert target.read_bytes() == original
+    assert summary["input_verification"] == "unavailable"
+    assert summary["status"] == "partial" and summary["outcomes"]["complete"] == 1
+    assert result["analysis_status"] == "partial"
+    assert snapshot.manifest["input_verification"] == "unverified"
+    assert snapshot.read_json("risk_scores")["health_score"]["overall"] is None
+    assert_input_explanations(
+        snapshot, changed=False, unavailable=True, causes=(cause,)
+    )
 
 
 def test_public_resume_runs_fresh_and_store_inside_repo_scope_stays_finite(
@@ -191,6 +623,12 @@ def test_source_change_before_publication_cannot_keep_current_verified_claim(
     assert snapshot.manifest["status"] == "partial"
     assert snapshot.manifest["input_verification"] == "unverified"
     assert any("inputs changed" in line for line in snapshot.manifest["limitations"])
+    assert_input_explanations(
+        snapshot,
+        changed=True,
+        unavailable=False,
+        causes=("Source filesystem observations changed before bounded publication",),
+    )
     assert not any(
         row["id"] in {"risk_scores", "normalized-risk", "report-json", "roadmap"}
         for row in snapshot.manifest["artifacts"]

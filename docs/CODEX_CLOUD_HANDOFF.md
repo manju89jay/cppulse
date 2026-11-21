@@ -4,7 +4,17 @@ GitHub's default branch is `master`. Base every new pull request on `master`.
 The existing workflow selects pushes to `master`, pull requests targeting
 `master`, and manual dispatch. It uses the shared local developer facade and
 reports the jobs that actually run. Recorded local results cover the selected
-checks only. The current workflow has yet to run on GitHub.
+checks only.
+
+[PR #12](https://github.com/manju89jay/cppulse/pull/12) merged at
+`d7a0c531bfdb339a6932c0f5ba7b446a3ec45f55`. Master contains the
+[C++/CTest first trial](../examples/first-trial/README.md). The merge tree
+`59c0f86aed01dadbae62499e58c89340650fce53` matches the reviewed PR head
+`f30b068ab0621f3c2ef8ce16c3aafe6e4775f9be`. All five Linux jobs passed on
+that PR tree, including integration with Docker Compose. All five jobs also
+passed on the separate push run for the merged master commit.
+[PR checks](https://github.com/manju89jay/cppulse/actions/runs/44910856000) ·
+[Master push checks](https://github.com/manju89jay/cppulse/actions/runs/44912649822)
 
 The hosted `root-public` section records the exact historical comparison tests
 kept in the complete local `root` section. The nine live health tests use the
@@ -13,13 +23,20 @@ runner. Other live producer tests retain their actual fixture requirements.
 See the [developer workflow](development/workflow.md) for input ownership and
 provisioning. The existing local full gate still requires the complete suite.
 
-The sealed reviewer-fix checkpoint is tree `1b895c00097224ae6fe7e17888a2256e80fa8fec`.
+The unchanged ordinary verifier exited 0 on the merged master tree. Strict
+verification exited 3 with 38 verified, 96 open, 51 active and 2 blocked.
+All 187 criteria and P0–P14 remain in scope. This branch accepts local work in
+the authorized README, partial-diagnosis and finite library-consumer batch.
+The owner publishes only the final tested and reviewed checkpoint.
+
+## Historical reviewer-fix checkpoint before publication
+
+The earlier sealed reviewer-fix checkpoint was tree `1b895c00097224ae6fe7e17888a2256e80fa8fec`.
 Its ordered proposed parents are master `d1e598028aec76f6455a7ed45602945274b72f8d`
 and historical main `82120d26b51f99b64068f9d66f6e000fcaee97c2`. The saved local
 generated facade exited 0 and unchanged strict verification exited 3. All 187
-criteria and P0–P14 are retained. This branch policy leaves existing pull
-requests and the original checkpoint history intact. Publication of the CI
-update requires its own qualification and owner review.
+criteria and P0–P14 were retained. The CI update was then qualified separately
+before PR #12 merged. Earlier records below describe their original epochs.
 
 # Historical reviewer-fix verification on fresh Cloud — 20 November 2026
 

@@ -171,6 +171,38 @@ jobs:
         python scripts/prepare_ci_evidence.py --checkout "$PWD" --output "$evidence_dir" \
           --coverage "$RUNNER_TEMP/cppulse-policy-coverage" --console "$(command -v cppulse)"
         printf 'CPPULSE_EVIDENCE116_INPUTS=%s\n' "$evidence_dir/evidence116-input.json" >> "$GITHUB_ENV"
+    - name: Acquire the locked fmt source for the consumer example
+      shell: bash
+      run: |
+        records="$PWD/review/ci/fmt-matrix"
+        mkdir -p "$records"
+        python scripts/demo_fmt_matrix.py fetch --output "$RUNNER_TEMP/cppulse-fmt-source" \
+          2>&1 | tee "$records/fetch.log"
+    - name: Verify the two fmt consumer configurations
+      shell: bash
+      run: |
+        python scripts/demo_fmt_matrix.py run \
+          --fmt-source "$RUNNER_TEMP/cppulse-fmt-source/fmt" \
+          --output "$RUNNER_TEMP/cppulse-fmt-matrix" --compiler g++-14 \
+          --console "$(command -v cppulse)" 2>&1 | tee review/ci/fmt-matrix/run.log
+    - name: Retain fmt source pins and actual consumer records
+      if: always()
+      shell: bash
+      run: |
+        records="$PWD/review/ci/fmt-matrix"
+        dependency="$RUNNER_TEMP/cppulse-fmt-source"
+        matrix="$RUNNER_TEMP/cppulse-fmt-matrix"
+        mkdir -p "$records"
+        for file in "$dependency"/*.json; do
+          if [[ -f "$file" ]]; then cp "$file" "$records/"; fi
+        done
+        if [[ -d "$matrix" ]]; then
+          cd "$matrix"
+          {
+            find . -maxdepth 2 -type f \( -name '*.json' -o -name 'report.html' \) -print0
+            find . -type f -path './*/store/*' -print0
+          } | tar -czf "$records/records.tar.gz" --null -T -
+        fi
     - name: Shared public source contracts, scope and generated checks
       run: python tools/dev.py verify --scope changed --section root-public --section generated --output-dir
         review/ci/contracts

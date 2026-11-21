@@ -16,7 +16,7 @@ from typing import Any, TYPE_CHECKING
 from cppulse import __version__
 from cppulse.compatibility import read_prototype_document
 from cppulse.config import EffectiveConfig
-from cppulse.errors import ContractError
+from cppulse.errors import ContractError, InputChanged
 from cppulse.identities import digest_json
 from cppulse.importer import import_pipeline
 from cppulse.native import discover_native
@@ -24,6 +24,40 @@ from cppulse.run_store import RunStore
 
 DOCUMENTS = ("findings", "git_metrics", "risk_scores", "roadmap")
 logger = logging.getLogger(__name__)
+
+
+class _SourceBindingChanged(InputChanged):
+    """A bounded source check observed a change."""
+
+    def __init__(self, message: str, unavailable: tuple[str, ...] = ()) -> None:
+        super().__init__(message)
+        self.unavailable = unavailable
+
+
+class _SourceBindingUnavailable(ContractError):
+    """The bounded source check could not establish the selected identity."""
+
+    default_code = "INPUT_BINDING_UNAVAILABLE"
+
+
+def _binding_notes(*, changed: bool, unavailable: bool) -> list[str]:
+    notes = []
+    if changed:
+        notes.extend(
+            [
+                "Source or context inputs changed during bounded analysis.",
+                "Run analysis again after the intended source and context are stable.",
+            ]
+        )
+    if unavailable:
+        notes.extend(
+            [
+                "Source or context inputs could not be verified for bounded analysis.",
+                "Inspect the retained causes and check the selected inputs and compiler context before rerunning.",
+            ]
+        )
+    return notes
+
 
 if TYPE_CHECKING:
     from cppulse.analysis_execution import AnalysisExecution
@@ -455,13 +489,15 @@ def _publish_bounded(
     """Retain original native receipts and explicit input/output bindings once."""
     from cppulse.compatibility import read_risk_scores
     from cppulse.analysis_execution import (
+        _observed_absent,
+        compare_source_observations,
         discover_sources,
         observe_source_inputs,
         verify_include_bindings,
         _database,
     )
-    from cppulse.identities import hash_artifact, snapshot_inputs, verify_inputs
-    from cppulse.errors import IntegrityError, InputChanged
+    from cppulse.identities import _input_discrepancies, hash_artifact, snapshot_inputs
+    from cppulse.errors import IntegrityError
     from cppulse.work_units import (
         _check,
         _resource_files,
@@ -703,69 +739,126 @@ def _publish_bounded(
         )
         plan = execution.plan
 
-        def source_check() -> None:
-            errors = verify_inputs(config.repo, execution.source)
-            database, database_digest = _database(
-                config, config.execution["output_bytes"]
-            )
-            paths, gaps = discover_sources(config.repo, database)
+        def check_source_binding() -> None:
+            changes, unavailable = [], []
+            for changed, reason in _input_discrepancies(config.repo, execution.source):
+                (changes if changed else unavailable).append(reason)
+            selected = [row["path"] for row in execution.source["files"]]
             observations = execution.source_observations
             _check("analysis_source_observations", observations)
-            if (
-                observe_source_inputs(
-                    config.repo, [row["path"] for row in execution.source["files"]]
-                )
-                != observations["after"]
-            ):
-                raise InputChanged(
+            current = observe_source_inputs(config.repo, selected)
+            metadata_changed, missing_observations = compare_source_observations(
+                observations["after"], current
+            )
+            unavailable.extend(
+                "Source filesystem observation could not be compared before bounded publication: "
+                + path
+                for path in missing_observations
+            )
+            if metadata_changed:
+                changes.append(
                     "Source filesystem observations changed before bounded publication"
                 )
-            if (
-                errors
-                or paths != [row["path"] for row in execution.source["files"]]
-                or gaps != plan["discovery_gaps"]
-            ):
-                raise InputChanged(
-                    "Source inventory changed before bounded publication"
+            if changes:
+                raise _SourceBindingChanged(
+                    "; ".join(dict.fromkeys(changes)), tuple(unavailable)
                 )
+            try:
+                database, database_digest = _database(
+                    config, config.execution["output_bytes"]
+                )
+            except (ContractError, IntegrityError, OSError) as error:
+                selected_database = config.compilation_database
+                if selected_database is not None and selected_database.is_dir():
+                    selected_database = selected_database / "compile_commands.json"
+                if (
+                    selected_database is not None
+                    and plan["compilation_database_sha256"] is not None
+                    and _observed_absent(selected_database)
+                ):
+                    raise _SourceBindingChanged(
+                        "Selected compilation database disappeared before bounded publication",
+                        tuple(unavailable),
+                    ) from error
+                raise
+            paths, gaps = discover_sources(config.repo, database)
+            if paths != selected or gaps != plan["discovery_gaps"]:
+                if missing_observations:
+                    unavailable.append(
+                        "Source inventory could not be reverified before bounded publication."
+                    )
+                else:
+                    raise _SourceBindingChanged(
+                        "Source inventory changed before bounded publication",
+                        tuple(unavailable),
+                    )
             if database_digest != plan["compilation_database_sha256"]:
-                raise InputChanged(
-                    "Compilation database changed before bounded publication"
+                raise _SourceBindingChanged(
+                    "Compilation database changed before bounded publication",
+                    tuple(unavailable),
                 )
             include_changes, include_unknown = verify_include_bindings(
                 execution.results, execution.source
             )
-            if include_changes or include_unknown:
-                raise InputChanged(
-                    "Native include buffer binding changed or is unavailable before publication"
+            unavailable.extend(include_unknown)
+            if include_changes:
+                raise _SourceBindingChanged(
+                    "Native include buffer binding changed before publication. "
+                    + "; ".join(include_changes),
+                    tuple(unavailable),
                 )
+            if unavailable:
+                raise _SourceBindingUnavailable("; ".join(unavailable))
             checked_resources = set()
             checked_native = set()
             for unit, result in execution.results:
                 native_path = result["execution_receipt"]["argv"][0]
                 if native_path not in checked_native:
-                    from cppulse.identities import hash_artifact
-
-                    if (
-                        hash_artifact(
+                    try:
+                        native_identity = hash_artifact(
                             native_path, "native", "native", "application/octet-stream"
-                        )["sha256"]
-                        != unit["native"]["sha256"]
-                    ):
-                        raise InputChanged(
+                        )
+                    except (ContractError, IntegrityError, OSError) as error:
+                        if _observed_absent(Path(native_path)):
+                            raise _SourceBindingChanged(
+                                "Native executable disappeared before bounded publication"
+                            ) from error
+                        raise
+                    if native_identity["sha256"] != unit["native"]["sha256"]:
+                        raise _SourceBindingChanged(
                             "Native executable changed before bounded publication"
                         )
                     checked_native.add(native_path)
                 resources = _resource_manifest(unit, Path(unit["work_root"]))
                 if resources is not None and resources["root"] not in checked_resources:
-                    actual = snapshot_inputs(
-                        resources["root"], _resource_files(Path(resources["root"]))
-                    )
+                    resource_root = Path(resources["root"])
+                    try:
+                        actual = snapshot_inputs(
+                            resource_root, _resource_files(resource_root)
+                        )
+                    except (ContractError, IntegrityError, OSError) as error:
+                        if _observed_absent(resource_root):
+                            raise _SourceBindingChanged(
+                                "Builtin resources disappeared before bounded publication"
+                            ) from error
+                        raise
                     if actual["files"] != resources["source"]["files"]:
-                        raise InputChanged(
+                        raise _SourceBindingChanged(
                             "Builtin resources changed before bounded publication"
                         )
                     checked_resources.add(resources["root"])
+
+        def source_check() -> None:
+            try:
+                check_source_binding()
+            except (_SourceBindingChanged, _SourceBindingUnavailable):
+                raise
+            except InputChanged as error:
+                raise _SourceBindingChanged(str(error)) from error
+            except (ContractError, IntegrityError, OSError) as error:
+                raise _SourceBindingUnavailable(
+                    f"Could not check the selected source or context before bounded publication: {error}"
+                ) from error
 
         # Retain only SDK buffers actually observed by a TU. These are separate
         # from selected project source, and remain unqualified until a consumer
@@ -773,15 +866,40 @@ def _publish_bounded(
         from cppulse.sdk_inputs import retain_used_sdk_inputs
 
         retain_used_sdk_inputs(stage, execution)
+        verification = execution.summary["input_verification"]
+        binding_failure = (
+            failure
+            if isinstance(failure, (_SourceBindingChanged, _SourceBindingUnavailable))
+            else None
+        )
         verified = (
-            execution.summary["input_verification"] == "verified"
+            verification == "verified"
             and not integrity_events
+            and binding_failure is None
         )
         if verified:
             try:
                 source_check()
-            except (ContractError, IntegrityError, InputChanged, OSError):
+            except (_SourceBindingChanged, _SourceBindingUnavailable) as error:
+                binding_failure = error
                 verified = False
+        changed = verification == "changed" or isinstance(
+            binding_failure, _SourceBindingChanged
+        )
+        unavailable = (
+            verification == "unavailable"
+            or bool(execution.unqualified_input_reasons or integrity_events)
+            or isinstance(binding_failure, _SourceBindingUnavailable)
+            or (
+                isinstance(binding_failure, _SourceBindingChanged)
+                and bool(binding_failure.unavailable)
+            )
+        )
+        binding_details = []
+        if binding_failure is not None:
+            binding_details.append(str(binding_failure))
+            if isinstance(binding_failure, _SourceBindingChanged):
+                binding_details.extend(binding_failure.unavailable)
         interrupted = isinstance(failure, KeyboardInterrupt)
         status = (
             "completed"
@@ -833,15 +951,10 @@ def _publish_bounded(
             "config_digest": digest_json(config.as_dict()),
             "versions": {"cppulse": __version__},
             "limitations": [
+                *_binding_notes(changed=changed, unavailable=unavailable),
                 *execution.summary["limitations"],
                 *integrity_events,
-                *(
-                    [
-                        "Source or context inputs changed; current verified input binding is unavailable."
-                    ]
-                    if not verified
-                    else []
-                ),
+                *binding_details,
                 "No target build/test/sanitizer recipe was executed. Source binding and native analysis are not verification or policy approval.",
                 "Experimental compatibility risk data is retained separately; raw per-unit facts and receipts remain primary.",
             ],
@@ -867,14 +980,25 @@ def _publish_bounded(
             material = stage.project(
                 manifest, source_check=source_check if verified else None
             )
-        except InputChanged:
+        except (InputChanged, _SourceBindingUnavailable) as error:
             # No typed facts have been written yet, so the raw frozen material
             # can still be interpreted honestly as an unverified partial run.
             verified = False
             manifest["status"] = "partial"
             manifest["stages"][0]["status"] = "error"
-            manifest["limitations"].append(
-                "Inputs changed before staged normalization; no current verified source claim is made."
+            observed_change = isinstance(error, InputChanged)
+            unavailability = (
+                error.unavailable if isinstance(error, _SourceBindingChanged) else ()
+            )
+            manifest["limitations"].extend(
+                [
+                    *_binding_notes(
+                        changed=observed_change,
+                        unavailable=not observed_change or bool(unavailability),
+                    ),
+                    str(error),
+                    *unavailability,
+                ]
             )
             material = stage.project(manifest)
         final_manifest = append_work_unit_analysis(
