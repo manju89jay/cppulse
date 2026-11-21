@@ -1,0 +1,409 @@
+{
+  "actual_observations": {
+    "affected_source": {
+      "cases": 69,
+      "errors": 0,
+      "failures": 0,
+      "receipt_sha256": "f016170c01ef2645361fa7cec40daabc79a7bf941647102f9acb4d8e781276a6",
+      "skips": 0
+    },
+    "baseline": {
+      "cases": 3,
+      "command_exit": 1,
+      "errors": 0,
+      "failures": 2,
+      "guard": {
+        "freeze_sha256": "1273537356a88f650f64e6d6a47cdf918f01e25cfc91e953bab88043622cf5df",
+        "guard_exit": 0,
+        "guard_sha256": "31184ae81c206707511754d6363e0bb9469b7a1a1a3a7d1e6e39680e492a7b6e",
+        "source_pins": 12
+      },
+      "log_sha256": "37874123c801586a03a68b95bce8a69dde5c3c9ffb7d63ac8d679ec405b60e53",
+      "receipt_sha256": "f056795b09447ca63878c15c5e82cde7afa40085d9d2452ac86f1e3358919245",
+      "skips": 0
+    },
+    "controls": {
+      "source_root_ancestor_is_a_file": "A real retained-source recheck classified the formerly traversable ancestor as changed and preserved the compatibility diagnostic.",
+      "source_root_rename": "Observed rename after one complete native unit. Analysis retained the original receipt and published a partial, unverified attempt with null qualified health.",
+      "source_root_unreadable": "The unprivileged run denied traversal through POSIX permissions after one complete native unit. Analysis retained the original receipt and classified the source as unavailable."
+    },
+    "format_facade_sha256": "6a2378fb27099e1c1c04dc72ccda8922fc410950f54ed1c547cde3877f67cdef",
+    "independent_source_review_sha256": "b19bab9e2991fe84dd3d47e2f4b1713bfce6809721e8d30ade8d0d71a91cf4e8",
+    "installed": {
+      "cases": 3,
+      "errors": 0,
+      "failures": 0,
+      "receipt_sha256": "3f9b42d7f8561ed9bfdcb823801b7bc3864ba06abf2a184f48f517e70b6eada6",
+      "skips": 0
+    },
+    "installed_origin_receipt_sha256": "f4a5862959718672eba93b34d4272d65ed52760b3cd9d73443d4c32783346319",
+    "native_inputs": {
+      "analyzer_sha256": "1361394cb912096659a54bb0d9aca10380780634f1f5eb983ba60532a1864bf2",
+      "selected_clang_resource_sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e"
+    },
+    "package": {
+      "changed_members": [
+        "cppulse-0.2.0.dev2.dist-info/RECORD",
+        "cppulse/identities.py"
+      ],
+      "entries": 248,
+      "matching_installed_members_except_installer_record": 247,
+      "metadata_sha256": "d85650af3917ff6b910daba91e10071419c7f7723706fe4ea1dffb625d38ca49",
+      "predecessor_wheel_sha256": "1d8a3825f94b1083b4476a1cbfde8b37b6f51a376d735936f00706dd0d80e244",
+      "source_tree": "67984331610076b0b9230f29707696862af30e40",
+      "wheel_sha256": "3fb369df5ad5a4bef5a455477c46d408b7f727ab5204241a697e5ade14e5f8e5"
+    },
+    "qualification_guard": {
+      "freeze_sha256": "d31558faa7edffe1d275302a4b5efa8c5d7f752b78378cd62404888bd09a3ba5",
+      "guard_exit": 0,
+      "guard_sha256": "fe391eaa97f53da0ce59ad5839daa9d2f932d91440222f29bc031e4a9bdbb599",
+      "source_pins": 260
+    },
+    "selected_private_runtime_sha256": "a37e60e2a674ddb3e9f201681050091b008f7eb532784219b5851ad817c2cc8f"
+  },
+  "affected": [
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "PR-01",
+      "prior_proof": "docs/checkpoints/current/qualification/pr-01/PR-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "f6d4fda5e256c52b1ac1901237193e4e3e58e9fd985d26a83229599d70ffb93c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "PR-06",
+      "prior_proof": "docs/checkpoints/current/qualification/pr-06/PR-06.readme-diagnosis-library.proof.json",
+      "prior_sha256": "1f3f01226401911c1d9c2cd0b5e428c5c94fdfe3c939f1c770ff95909764c831"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "FR-ANA-04",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.readme-diagnosis-library.proof.json",
+      "prior_sha256": "78ef82f9c81a9bb8d35f40037e14323356d333a01eeb5e726b5dd2a336cc4846"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "FR-ANA-06",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.readme-diagnosis-library.proof.json",
+      "prior_sha256": "f6880817b48c6845a9a6fb7c217c0a9178e5d6191ca3b0c8b2efd64e5fef6962"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "FR-ANA-07",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.readme-diagnosis-library.proof.json",
+      "prior_sha256": "3ba2b97a68947b887fb5beb0da0d17acbc273c3ede164527e5f971d20b802835"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-ANA-09",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ana-09/FR-ANA-09.readme-diagnosis-library.proof.json",
+      "prior_sha256": "5e708e0e3478db013bbc271495bda4e66f263c6ae340e0e4a5ca19bee0ff393c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-GIT-01",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "34e21afc17988f4c3f2bfabf5502532482fcdad86e9c001e17c481595f80f59c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-GIT-02",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.readme-diagnosis-library.proof.json",
+      "prior_sha256": "dc39bfad01f2519b8b268f61c4a25a4744de0f8d0620dc9115631c35dd9f641c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-GIT-03",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-03/FR-GIT-03.readme-diagnosis-library.proof.json",
+      "prior_sha256": "4685ccfe33155eeb893490854c55ac8d4553dc953035b68266f232200116d9de"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-GIT-05",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-05/FR-GIT-05.readme-diagnosis-library.proof.json",
+      "prior_sha256": "5a68ae8ebd326724eba759061f34c6588b80152f1a37f684288b47d59b6d245b"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-GIT-06",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-06/FR-GIT-06.readme-diagnosis-library.proof.json",
+      "prior_sha256": "de2c4106e378b13cbfe300f286ea7d026561c59174c4d448a8af70ee36af94bf"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "FR-GIT-08",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.readme-diagnosis-library.proof.json",
+      "prior_sha256": "24d7bf0bdf8c9d57e0881dc944d24b3d73941f8820c306a20cfb36314f5664dc"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-01",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "34bc80629b13dddd813bcad2b3943d48d858458a885094da8d35124cac626b2c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-02",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-02/FR-EVD-02.readme-diagnosis-library.proof.json",
+      "prior_sha256": "c49973540782d768f804858cc3fff24d103407ed9c5c3c6f39bb3fdca8a28147"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-03",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-03/FR-EVD-03.readme-diagnosis-library.proof.json",
+      "prior_sha256": "38249cb8a728bfd2ae515c70db2eed4d2ab8b6f59e6db9365c80148787b3129e"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py"
+      ],
+      "id": "FR-EVD-04",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-04/FR-EVD-04.readme-diagnosis-library.proof.json",
+      "prior_sha256": "a79793f77b27b0d75dd56d453c5182b3d65118ea6155c05f664ca088be52cceb"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-05",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-05/FR-EVD-05.readme-diagnosis-library.proof.json",
+      "prior_sha256": "52103a2efa9407518f198a2dc68c74f45127e907c56b114f2c6e4c428581e41c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "FR-EVD-06",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.readme-diagnosis-library.proof.json",
+      "prior_sha256": "5ea0827e98408c06125697dae0fc645d7fa3bc8fc0eefe570af839dc080b0946"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-07",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.readme-diagnosis-library.proof.json",
+      "prior_sha256": "c5a1f0dacbd516c7ee5f4fe8272f7e719468520db4d1d2ec01fd49ad4dbeb296"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-08",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-08/FR-EVD-08.readme-diagnosis-library.proof.json",
+      "prior_sha256": "bc1849d8b1f047b4fb207a0f9c622175bac9f8a5ca3d987d429700098058eaa6"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-EVD-09",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.readme-diagnosis-library.proof.json",
+      "prior_sha256": "abf51a382c158963eb610a2c5cb32a03545592e51779d7b0e2b48229f121b83d"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-UX-03",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ux-03/FR-UX-03.readme-diagnosis-library.proof.json",
+      "prior_sha256": "5ed46103b38a002274c293b9d015198293d168d85b295dd069780d7370af4052"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-UX-09",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ux-09/FR-UX-09.readme-diagnosis-library.proof.json",
+      "prior_sha256": "10c913caa1e48de69d5efca7b1f2e21c8b1bc57ddbb785f4b6b8d246ec4af09f"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-UX-11",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.readme-diagnosis-library.proof.json",
+      "prior_sha256": "9ed869a4a14e1a324ac41a10f8ae6c04d2a8762bfd2513000922611849b2604c"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "FR-UX-12",
+      "prior_proof": "docs/checkpoints/current/qualification/fr-ux-12/FR-UX-12.readme-diagnosis-library.proof.json",
+      "prior_sha256": "50a46af645f6655b96bbb8b66420324eb5b57defafdec2fb6e52bf1a378d5892"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "NFR-MNT-02",
+      "prior_proof": "docs/checkpoints/current/qualification/nfr-mnt-02/NFR-MNT-02.readme-diagnosis-library.proof.json",
+      "prior_sha256": "493336c99efc61db6954e5fa2301d3b3112494bb5d70a642f5bff1abd6216bca"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "NFR-MNT-03",
+      "prior_proof": "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.readme-diagnosis-library.proof.json",
+      "prior_sha256": "5b8a4db85ab4c67b1a2f2068dd89f9102e88f792c13491bc1f6eb137d87e0f4d"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "NFR-MNT-04",
+      "prior_proof": "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.readme-diagnosis-library.proof.json",
+      "prior_sha256": "98bcafd24dae3aa9302d3a3bebb016249d9d97a2a06380368f90be18f32440a4"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "NFR-MNT-09",
+      "prior_proof": "docs/checkpoints/current/qualification/nfr-mnt-09/NFR-MNT-09.readme-diagnosis-library.proof.json",
+      "prior_sha256": "182d61cc000dfd99e0cedcac9328913e3f912d25a473f4b540895771cc34935f"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "M1-07",
+      "prior_proof": "docs/checkpoints/current/qualification/m1-07/M1-07.readme-diagnosis-library.proof.json",
+      "prior_sha256": "2927183c8e735dbb5b5348fc0a78d3ba590be99acec1e6ba7dee6226c9293c79"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "M4-01",
+      "prior_proof": "docs/checkpoints/current/qualification/m4-01/M4-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "ba7caf94a74f8e39b5ef86639f93adc97ff16a8be2cad5e226a93cf960e26a8b"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "M5-01",
+      "prior_proof": "docs/checkpoints/current/qualification/m5-01/M5-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "a6114fa4172083ffc9b47a5e6704cf46c10e08c42c2ba455357cca439321d362"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "M5-02",
+      "prior_proof": "docs/checkpoints/current/qualification/m5-02/M5-02.readme-diagnosis-library.proof.json",
+      "prior_sha256": "cc98fbebb1a9ed52638dbf2b80875350680571907699a87096385cf441045177"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "M5-03",
+      "prior_proof": "docs/checkpoints/current/qualification/m5-03/M5-03.readme-diagnosis-library.proof.json",
+      "prior_sha256": "e915ab5fffe6e54756be504f07edc4cf6b5c361b188512757a5706f25baeaac4"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py"
+      ],
+      "id": "M5-04",
+      "prior_proof": "docs/checkpoints/current/qualification/m5-04/M5-04.readme-diagnosis-library.proof.json",
+      "prior_sha256": "660a89d5c873b18f27814e94977f1a737c8b3f894d79679f744d1aeea6236475"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "M6-01",
+      "prior_proof": "docs/checkpoints/current/qualification/m6-01/M6-01.readme-diagnosis-library.proof.json",
+      "prior_sha256": "c1e88debbc471d648dadd5ac20f469b73b91d4467fb5f22717eb08e0caf08f54"
+    },
+    {
+      "changed_inputs": [
+        "python/cppulse/identities.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_identities_v2.py"
+      ],
+      "id": "M6-02",
+      "prior_proof": "docs/checkpoints/current/qualification/m6-02/M6-02.readme-diagnosis-library.proof.json",
+      "prior_sha256": "e2cae79abdd7991f4c3b499c27704e874a649c80d11631acb11f2e445742e1fd"
+    }
+  ],
+  "current_source_tree_before_evidence_changes": "67984331610076b0b9230f29707696862af30e40",
+  "prerequisite_commit": "ce9215aa95db614fdf49d1aafca96358f7651d89",
+  "prerequisite_tree": "e00a4b3ba8bc29a9a6701cfc84b97970de431cc1",
+  "prior_evidence": "Each updated proof preserves its original execution command, log, and semantic scope and binds its immutable predecessor proof. The follow-up adds current evidence for the changed inputs; earlier hosted and local executions keep their own identities.",
+  "retained_private_custody": "Digests identify retained local test, wheel, and runtime records. No copied private bodies, local paths, or raw run identifiers are in this public projection.",
+  "scope": "Repair the bounded diagnosis for a source root that becomes absent or untraversable.",
+  "source_changes": {
+    "python/cppulse/identities.py": {
+      "current_sha256": "bae05552aeabc5d3cdb1c10e2b86c17747a40cd8d0aead27e503eaea3932aafe",
+      "prior_sha256": "fc01ca0d375d73b7e7855a6a2330f00b6a55cc038109fca1a9931f0792a84f0d",
+      "reason": "A checked missing or untraversable path to the prior source root is a changed input. A denied read leaves its state unavailable."
+    },
+    "tests/test_bounded_pipeline.py": {
+      "current_sha256": "68c783dff1e7802365983d762bcc91ec1578c0a1ac7ac9f5e8ad06fc1a57b9fa",
+      "prior_sha256": "60d0b619f44302f1fb020c2a305def2bb550c48935c48aba53faeb699250ca1a",
+      "reason": "Reproduces actual source-root rename and denied traversal after real native execution. Verifies original receipts and partial, unverified publication with null health."
+    },
+    "tests/test_identities_v2.py": {
+      "current_sha256": "1c0e280e4aeb99df547d1a391b28aa641de195b1fb044b3aeab617f4bdfb648d",
+      "prior_sha256": "2a944577e9ae9bf8334013ff50d2d33fc081c86c0c18b232741a419619c3565c",
+      "reason": "Replaces a recorded source-root ancestor with a file and verifies changed classification while retaining list-shaped compatibility diagnostics."
+    }
+  },
+  "unaffected": [
+    "NFR-MNT-08"
+  ]
+}

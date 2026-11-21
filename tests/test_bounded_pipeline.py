@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+import errno
 from html import escape
 import json
 import os
@@ -41,10 +42,11 @@ def config(
     tmp_path: Path,
     *,
     output_inside: bool = False,
+    source_parent: Path | None = None,
     compilation_database: Path | None = None,
     **options: Any,
 ):
-    source = tmp_path / "source"
+    source = (source_parent or tmp_path) / "source"
     source.mkdir(exist_ok=True)
     (source / "main.cpp").write_text("int value() { return 1; }\n")
     output = source / "output" if output_inside else tmp_path / "store"
@@ -233,6 +235,78 @@ def test_bounded_input_explanations_keep_changed_and_unavailable_distinct(
     )
     assert_input_explanations(
         snapshot, changed=changed, unavailable=unavailable, causes=tuple(causes)
+    )
+
+
+@pytest.mark.parametrize("renamed", [True, False], ids=["renamed", "unreadable"])
+def test_bounded_postflight_source_root_diagnosis(
+    tmp_path: Path,
+    native: NativeInstallation,
+    monkeypatch: pytest.MonkeyPatch,
+    renamed: bool,
+) -> None:
+    select_native(monkeypatch, native)
+    parent = tmp_path / "selected"
+    parent.mkdir()
+    cfg = config(tmp_path, source_parent=parent)
+    original = (cfg.repo / "main.cpp").read_bytes()
+    moved = parent / "moved-source"
+    original_lstat = os.lstat
+    mode = parent.stat().st_mode
+
+    def deny_root_lookup(path: Any, *args: Any, **kwargs: Any) -> os.stat_result:
+        if isinstance(path, (str, Path)) and Path(path).is_relative_to(cfg.repo):
+            raise PermissionError(errno.EACCES, "Permission denied", str(path))
+        return original_lstat(path, *args, **kwargs)
+
+    def lose_root_access() -> None:
+        if renamed:
+            cfg.repo.rename(moved)
+        elif getattr(os, "geteuid", lambda: 0)() == 0:
+            # Privileged test runners can traverse a mode-000 directory.
+            monkeypatch.setattr(os, "lstat", deny_root_lookup)
+        else:
+            parent.chmod(0)
+
+    after_native_workers(monkeypatch, lose_root_access)
+    try:
+        result = analyze(cfg, report_format="json", timeout=60)
+    finally:
+        parent.chmod(mode)
+        monkeypatch.setattr(os, "lstat", original_lstat)
+
+    assert cfg.repo.exists() == (not renamed)
+    assert ((moved if renamed else cfg.repo) / "main.cpp").read_bytes() == original
+    store = RunStore(cfg.output)
+    snapshot = store.open_run(result["run_id"])
+    snapshot.verify()
+    assert snapshot.manifest_sha256 == store.resolve_latest_attempt().manifest_sha256
+    summary = private_json(snapshot, "analysis-summary", "analysis_execution_summary")
+    assert summary["outcomes"]["complete"] == 1
+    assert summary["input_verification"] == ("changed" if renamed else "unavailable")
+    assert result["analysis_status"] == snapshot.manifest["status"] == "partial"
+    assert (
+        result["input_verification"]
+        == snapshot.manifest["input_verification"]
+        == "unverified"
+    )
+    assert snapshot.read_json("risk_scores")["health_score"]["overall"] is None
+    bindings = private_json(
+        snapshot, "analysis-bindings", "analysis_execution_bindings"
+    )
+    (unit,) = bindings["units"]
+    receipt = snapshot.read_json(unit["receipt_artifact_id"])
+    original_result = private_json(snapshot, unit["result_artifact_id"], "work_result")
+    assert receipt == original_result["execution_receipt"]
+    assert receipt["status"] == "passed"
+    assert receipt["source_digest"] == snapshot.manifest["source"]["digest"]
+    cause = (
+        "Source content or discovery inventory changed during native execution."
+        if renamed
+        else "Input root unavailable:"
+    )
+    assert_input_explanations(
+        snapshot, changed=renamed, unavailable=True, causes=(cause,)
     )
 
 

@@ -271,7 +271,9 @@ def _input_discrepancies(
     try:
         directory = _root_directory(root)
     except IntegrityError as exc:
-        yield False, str(exc)
+        yield isinstance(exc.__cause__, (FileNotFoundError, NotADirectoryError)), str(
+            exc
+        )
         return
     for expected in snapshot["files"]:
         identity = expected["path"]
