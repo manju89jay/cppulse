@@ -305,7 +305,9 @@ def test_optional_miner_document_preserves_original_output_and_reuses_one_scan(
     tmp_path, monkeypatch
 ):
     from cppulse.git_miner import main as main_module
+    from cppulse.git_miner.history_cache import validate_history_document
     from cppulse.git_miner.main import run
+    from cppulse.report_engine.pdf_generator import PDFGenerator
 
     repo = git.Repo.init(tmp_path / "repo")
     source = Path(repo.working_tree_dir)
@@ -322,7 +324,12 @@ def test_optional_miner_document_preserves_original_output_and_reuses_one_scan(
     output = tmp_path / "output"
     assert run(source, output, szz_cutoff=CUTOFF.isoformat()) == 0
     original = json.loads((output / "git_metrics.json").read_text())
+    original_history = json.loads((output / "git_history.json").read_text())
+    note = main_module._RETAINED_HISTORY_SCOPE
+    assert note not in original["metadata"]["limitations"]
+    assert note not in original_history["limitations"]
     assert not (output / "git_behavior.json").exists()
+    assert note not in PDFGenerator(output).render_html()
     configured = tmp_path / "behavior.json"
     configured.write_text(json.dumps(config().document))
     seen = []
@@ -345,16 +352,28 @@ def test_optional_miner_document_preserves_original_output_and_reuses_one_scan(
     )
     assert len(seen) == 1
     after = json.loads((output / "git_metrics.json").read_text())
+    history = json.loads((output / "git_history.json").read_text())
+    validate_history_document("result", history)
+    assert after["metadata"]["limitations"].count(note) == 1
+    assert history["limitations"].count(note) == 1
+    assert note in PDFGenerator(output).render_html()
     original["metadata"].pop("analyzed_at")
     after["metadata"].pop("analyzed_at")
+    after["metadata"]["limitations"].remove(note)
+    history["limitations"].remove(note)
     assert after == original
+    assert history == original_history
     behavior = json.loads((output / "git_behavior.json").read_text())
     assert behavior["head"] == repo.head.commit.hexsha
     assert by_file(behavior)["authors"][0]["id"] == "alice@example.com"
     validate_behavior_report(behavior)
-    prior = (output / "git_metrics.json").read_bytes()
-    assert run(source, output, behavior_config=configured) == 1
-    assert (output / "git_metrics.json").read_bytes() == prior
+    prior = {path.name: path.read_bytes() for path in output.iterdir()}
+    for request in (
+        {"behavior_config": configured},
+        {"behavior_cutoff": CUTOFF.isoformat()},
+    ):
+        assert run(source, output, **request) == 1
+        assert {path.name: path.read_bytes() for path in output.iterdir()} == prior
 
 
 @pytest.mark.parametrize(

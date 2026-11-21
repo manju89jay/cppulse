@@ -3,6 +3,7 @@
 These types do not parse a stream, verify a report schema, normalize evidence or
 authenticate a producer. Only a fully consumed producer can emit completion.
 """
+
 # Closed wire profiles deliberately reject coercion and subclasses.
 # ruff: noqa: E721
 

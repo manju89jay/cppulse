@@ -1,0 +1,179 @@
+{
+  "actual_scoped_commands": [
+    [
+      "bash",
+      "/workspace/work/current38-batch10/header-da3-writable/launch.sh",
+      "/workspace/work/current38-batch10/results-da3/header"
+    ]
+  ],
+  "actual_scoped_exit_code": 0,
+  "criterion": "FR-EVD-07",
+  "observed": {
+    "actual_named_tests": [
+      "selected-int-macro7",
+      "standalone-header"
+    ],
+    "actual_variants": {
+      "missing-named-test": {
+        "independent_comparison_readback": {
+          "case_id": "selected-int-macro7",
+          "local_test_evidence_ids": [],
+          "local_test_status": "unknown",
+          "matching_dimensions": [
+            "abi",
+            "compiler",
+            "dependencies",
+            "exceptions",
+            "language_standard",
+            "linking",
+            "macros",
+            "os",
+            "rtti",
+            "sanitizers",
+            "target"
+          ],
+          "mismatches": [],
+          "missing_local_checks": [
+            "nonexistent-required-test",
+            "selected-instantiation:selected<int>/SELECTED_MACRO=7"
+          ],
+          "reason": "All selected known configuration dimensions correspond; this is not an application-test or release pass.",
+          "required_local_checks": [
+            "nonexistent-required-test",
+            "include/demo.hpp",
+            "selected-instantiation:selected<int>/SELECTED_MACRO=7",
+            "package-use:consumer-header-use",
+            "package-use:selfcontained-header-use"
+          ],
+          "status": "compatible",
+          "upstream_case_id": "selected-int-macro7"
+        },
+        "report_hashes": {
+          "html": "aa12f3dee79838a0a4e918e329a67a86d8d7c87ed2165248e2e7d7b780fa430f",
+          "json": "56a18de89da7f8826bf0a7a7b687d6e283f4e550ee3397ed95c9aa13f626cbd6"
+        },
+        "snapshot": {
+          "manifest_sha256": "07863961a96cd9887dc9c41b1f6161a3265d7205e27cfc3b34f366595ff367d6",
+          "run_id": "499334d5ae6543ccbe5ed13e52db0a97"
+        }
+      },
+      "omit-selfcontainment": {
+        "independent_comparison_readback": {
+          "case_id": "selected-int-macro7",
+          "local_test_evidence_ids": [
+            "declared-template-checks"
+          ],
+          "local_test_status": "passed",
+          "matching_dimensions": [
+            "abi",
+            "compiler",
+            "dependencies",
+            "exceptions",
+            "language_standard",
+            "linking",
+            "macros",
+            "os",
+            "rtti",
+            "sanitizers",
+            "target"
+          ],
+          "mismatches": [],
+          "missing_local_checks": [
+            "include/demo.hpp"
+          ],
+          "reason": "All selected known configuration dimensions correspond; this is not an application-test or release pass.",
+          "required_local_checks": [
+            "declared-template-checks",
+            "include/demo.hpp",
+            "selected-instantiation:selected<int>/SELECTED_MACRO=7",
+            "package-use:consumer-header-use"
+          ],
+          "status": "compatible",
+          "upstream_case_id": "selected-int-macro7"
+        },
+        "report_hashes": {
+          "html": "e60c69accd6c27019148debe5021b1316b8a3017fc5c37783e1889d4b51890b2",
+          "json": "ff1570f83c097cf2633a6b27a1b86e72316a019565e085413253505b23285f75"
+        },
+        "snapshot": {
+          "manifest_sha256": "a68c1d4df726e239e443038e77d61fbcd93ad48f27beef229c444eef4fffcb2d",
+          "run_id": "40ecde7deac94e078569a07b841e587e"
+        }
+      },
+      "positive": {
+        "independent_comparison_readback": {
+          "case_id": "selected-int-macro7",
+          "local_test_evidence_ids": [
+            "declared-template-checks"
+          ],
+          "local_test_status": "passed",
+          "matching_dimensions": [
+            "abi",
+            "compiler",
+            "dependencies",
+            "exceptions",
+            "language_standard",
+            "linking",
+            "macros",
+            "os",
+            "rtti",
+            "sanitizers",
+            "target"
+          ],
+          "mismatches": [],
+          "missing_local_checks": [],
+          "reason": "All selected known configuration dimensions correspond; this is not an application-test or release pass.",
+          "required_local_checks": [
+            "declared-template-checks",
+            "include/demo.hpp",
+            "selected-instantiation:selected<int>/SELECTED_MACRO=7",
+            "package-use:consumer-header-use",
+            "package-use:selfcontained-header-use"
+          ],
+          "status": "compatible",
+          "upstream_case_id": "selected-int-macro7"
+        },
+        "report_hashes": {
+          "html": "1132e4ce66d2524cc02cc125f0229807b7e5794f154f3765d0787321637fd6b8",
+          "json": "aeb5972e2bb07aa5d194a854b32ce179279256bac2aaf5315b427f8a7f67917e"
+        },
+        "snapshot": {
+          "manifest_sha256": "8560031f992d681b0e89a7dc406d0eba93162d22a9a632a4e2d66529b7271996",
+          "run_id": "1a9d306613e141bca0379f4ea3705909"
+        }
+      }
+    },
+    "executed_report_command_records_sha256": {
+      "missing-named-test-report-html.command.json": "edbfdf90d5ab91d5cf7275210502086194d938f2bd9a3409651f2a384c4b77b6",
+      "missing-named-test-report-json.command.json": "136ded8a34156fd2977e882c144fd37915997e7e4fd0fb97075071f87609ba13",
+      "omit-selfcontainment-report-html.command.json": "1c1cd78c209623b8d767a9e9379dc3368171bbef3a2a27a944ed001a39296117",
+      "omit-selfcontainment-report-json.command.json": "74217667db5d7b46faccf548a885bf27282b7ff9dde3c13394ecf93b2e8c3e5b",
+      "positive-report-html.command.json": "3641126b036faa8eba4a69b3257be52da11624e83094bb35d549cfa71b7df890",
+      "positive-report-json.command.json": "74695db2692d950c9d142e245f000ca736d68e3644670a91067aca3cc0375ba3"
+    },
+    "finite_scope": "Finite selected int workload with SELECTED_MACRO=7. Other template types and macro values were not exercised.",
+    "junit_counts": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 2,
+      "skipped": 0,
+      "total": 2
+    },
+    "observed_phase": {
+      "exit_code": 0,
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "tool_versions": {
+      "ctest": "3.31.6",
+      "gcc": "14.2.0",
+      "ld": "2.44"
+    }
+  },
+  "original_execution_log_sha256": "56ea73024f96f6f48d94cfc854fd13a6d76dfb1ee3b6fbbcde673d235f04cd79",
+  "original_execution_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "original_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "original_whole_review_sha256": "e72c38be1660f4d7c79e5e5d8f9157f39cebb740776efd0f5db259d9f518f394",
+  "portability": "Rechecking these source hashes is portable. Rerunning the original qualification requires its declared external candidate, runtime and other custody inputs.",
+  "record_kind": "public structured projection of a retained independently accepted semantic execution",
+  "scope": "Header self-containment and a declared selected<int> consumer with SELECTED_MACRO=7. Two separately compiled binaries are proven by independent depfiles and real CTest observations. Missing required standalone and named-test controls preserve unknown/missing scope. Six JSON/HTML commands read the exact resulting snapshots."
+}

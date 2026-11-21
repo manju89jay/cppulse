@@ -122,6 +122,14 @@ def test_explicit_ci_component_uses_canonical_coverage_command(tmp_path: Path) -
     assert "--cov=src" in argv
     assert "--cov=cppulse.git_miner" in argv
     assert any(value.startswith("--cov-report=xml:") for value in argv)
+    assert argv[-6:] == [
+        "tests/",
+        "../tests/test_git_behavior.py",
+        "../tests/test_behavior_identity_history.py",
+        "../tests/test_git_history_cache.py",
+        "../tests/test_git_inventory_boundary.py",
+        "../tests/test_git_metric_window_scope.py",
+    ]
     assert any("subset" in value.lower() for value in document["limitations"])
 
 

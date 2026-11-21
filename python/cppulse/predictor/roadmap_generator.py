@@ -92,7 +92,8 @@ class RoadmapGenerator:
         a knowledge silo is detected. Each item is scored by:
             impact_score = risk_level_weight * severity_weight * (1 + is_hotspot)
 
-        Items are sorted by impact_score descending and assigned priority ranks.
+        Items are sorted by descending impact, then by file and category, before
+        assigning priority ranks.
 
         Args:
             findings_data: Parsed findings.json dict.
@@ -176,8 +177,7 @@ class RoadmapGenerator:
             )
             raw_items.append((impact, item))
 
-        # Sort by impact descending, assign priorities
-        raw_items.sort(key=lambda x: x[0], reverse=True)
+        raw_items.sort(key=lambda entry: (-entry[0], entry[1].file, entry[1].category))
         result: list[RoadmapItem] = []
         for idx, (_, item) in enumerate(raw_items, start=1):
             item.priority = idx

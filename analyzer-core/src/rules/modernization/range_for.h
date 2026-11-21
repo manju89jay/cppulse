@@ -14,15 +14,17 @@
 namespace cppulse {
 
 /**
- * @brief Flags simple index-based for loops that iterate from 0 to container.size()
- *        and could be replaced with a range-based for loop.
+ * @brief Suggests range-for for a conservative fixed-array accumulation pattern.
  *
- * Heuristic: a CXCursor_ForStmt whose init declares an integer variable
- * initialized to 0 is a candidate.
+ * Recognizes a zero-initialized int/unsigned index, a literal bound matching the
+ * constant scalar array size, unit increment, and a single built-in scalar +=
+ * of array[index]. Pointer ranges, calls, index reuse, writes and other shapes
+ * remain unassessed. This is a review suggestion, not an automatic rewrite or
+ * a general semantic-equivalence engine.
  */
 class RangeForRule : public RuleBase<RangeForRule> {
    public:
-    /// @brief Inspect one AST cursor for a candidiate index-based for loop.
+    /// @brief Inspect one AST cursor for a proven fixed-array traversal shape.
     void check_impl(CXCursor cursor, const std::string& file_path);
 
     /// @brief Return the rule identifier.

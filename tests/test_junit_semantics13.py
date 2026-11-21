@@ -1,4 +1,5 @@
 """Closed outcome structure; imported XML never proves a test executed."""
+
 from __future__ import annotations
 
 import hashlib

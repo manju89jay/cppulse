@@ -1,0 +1,25 @@
+{
+  "actual_projection_log_sha256": "40ae70ce292d609dc5025b4d080e96ab5c85875c26c6be64ff6fba3e8050f48c",
+  "complete_private_receipts_by_role": {
+    "earlier_actual_adapter_fixture_outcomes": "4f9f1abf111a9ba72ccc1f4165cdfba5e5c07d422dea8a5c2a947316c5d24be3",
+    "earlier_actual_policy_fixture_outcomes": "774970cbd89d2f29f7740f1708696c6f5f325098bd98520aefdbf4c888c28563",
+    "earlier_actual_private_compiled_rule_draft_refusal": "3af04d893d085160453f105b5f47e5e01a8fd83b8ec0691e2473395effc47b23",
+    "earlier_actual_private_compiled_rule_negative": "3db5b86314c09145f40762d5008075e0a09812bb39ed94c08fbc817c2fd36ab2",
+    "earlier_actual_private_compiled_rule_positive": "d1a6b3e2cd45fccfa4642867ff8c9a770cd9fc0ee4e2bf383a08f8e5b21e3049",
+    "earlier_actual_public_cli_draft_and_duplicate_results": "9294386494fcbbb1959fab4912f79fdd9774409d750081a385c86edd4e24ba9e",
+    "earlier_actual_selected_extension_junit": "bffc9cb2282e0d94bcaccbe213b78736ce6abe01da15021f5035a78d2afcb0c1",
+    "earlier_exact_selected_extension_origin_and_tests": "34a9d813ce32dfa4ea1700bbdd3697c0f4c00d63b47f4f974c6976c0fd891141",
+    "earlier_frozen_batch_registration": "6d02b1e1207627eabc5e5ae3cef28d8eaa65a8fad908c84eef9615bc205850a6"
+  },
+  "id": "NFR-MNT-04",
+  "immutable_independent_whole_review_sha256": "64551b737f9c2d9b3ec0c9928c512764d646d67c649f6ec0006fae5095e3acdb",
+  "portability": "The current selected checkout hashes are independently checkable. Exact real earlier fixture and tools are described by scoped receipts. Original runs, package payloads and execution materials remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked package and required source, notice, generator or test dependencies. Explicit old whole-execution bytes and runtime/fixture guards remain bound. The independently approved earlier-to-current package byte difference is a distinct immutable witness.",
+  "shared_independently_reviewed_exact_original_to_d65_archive_delta": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d"
+  },
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

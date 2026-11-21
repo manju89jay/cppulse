@@ -1,4 +1,5 @@
 """Bounded native JSON-schema checks preserve closed-prefix information."""
+
 import hashlib
 import io
 import json

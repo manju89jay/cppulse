@@ -1,4 +1,5 @@
 """Finite runtime declaration contracts; no source reads or execution claims."""
+
 from copy import deepcopy
 import pytest
 from cppulse.errors import ContractError

@@ -1,0 +1,503 @@
+{
+  "actual_observations": {
+    "branch_provider_compatibility": {
+      "cases": 73,
+      "error_count": 0,
+      "exit": 0,
+      "failure_count": 0,
+      "junit_sha256": "0f034443e5cbf794918cb26187f7ea32dd1e105ef70e709b455f1223c2e337d9",
+      "mode": "Actual pinned Git with the workflow's exact GIT_CONFIG_SYSTEM registration and otherwise empty HOME.",
+      "skip_count": 0,
+      "source_pin_count": 10,
+      "source_stable": true,
+      "wrapper_sha256": "616481c5d873950fd9b3439c497211af1e6659ed12b89da25af9bf4e801495ef"
+    },
+    "dashboard_asset_producer_and_offline_install": {
+      "asset_record_sha256": "8726b5b6ce08eff1e394bc60240080b1379bb6b8a6fd65b59b5caa192a94d516",
+      "exit": 0,
+      "network_denial_sha256": "999af160c81695fbf1a4ab23d75031a5a7d3d407f79edcff68220ba58d653fec",
+      "only_wheel_member_changes": [
+        "cppulse-0.2.0.dev2.dist-info/RECORD",
+        "cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "packaged_html_css_js_notice_exact": [
+        {
+          "path": "assets/index-DywbVYHp.css",
+          "sha256": "e695ab5866a0c6335135fa3ff0cfad16199ab0df56ae28f8b280800baf30bb2a",
+          "size_bytes": 16347
+        },
+        {
+          "path": "assets/index-Oj0uaDaJ.js",
+          "sha256": "3aa8b0b66afb5ec5cd3c2a9b326c08b8f62604cea18403a42e8acbe9d297b4b9",
+          "size_bytes": 559438
+        },
+        {
+          "path": "assets/third-party-notices.txt",
+          "sha256": "632035adbad56b068aa6941d29e1aebb59071c74af3c6d7e780a0d0e623a8667",
+          "size_bytes": 68352
+        },
+        {
+          "path": "index.html",
+          "sha256": "2e7b2324165b8faa6cefa80d49a97820c11f1ad3aad1743a2ce3f78b9e71b17e",
+          "size_bytes": 402
+        }
+      ],
+      "source_pin_count": 295,
+      "source_stable": true,
+      "verified_license_bodies": 57,
+      "verified_production_entries": 44,
+      "wheel_record_sha256": "486d671f3f69a8e649963d08b9aded1b0a7d8b0d127855f43fe762eacfad009b",
+      "wheel_sha256": "cfa29515ecba9e90f049dd06c7c0f10c569f2a01ba45067e2cfcf6934ecd86b5",
+      "wrapper_sha256": "39604f9287077426381a6933dffcec08552b9b1ed1b48ddfa8cce0ef7382c98b"
+    },
+    "dashboard_checks": {
+      "facade_result_sha256": "aa215e469315d34dfec25731c456a99c1b2a89a33e33cb2700eb561fee41bf2b",
+      "guarded_execution_receipt_sha256": "2f6dda343e4d9178e9d68b8d613c0e1dd53485998d22ec9fa5ae6a9817b4f137",
+      "production_build_exit": 0,
+      "tests_passed": 64
+    },
+    "dashboard_install": {
+      "lock_delta_receipt_sha256": "6744077f2e5505eeada5a8a132e98734c3ec4d1e56d4f6ad88883a86acd2918b",
+      "node": "20.20.2",
+      "npm": "10.8.2",
+      "original_error": "EUSAGE missing esbuild optional peer closure",
+      "original_exit": 1,
+      "original_log_sha256": "a4cdca3a17e95846384f01bdb02f8f908dbda50ef57a2f3d02bb3da39d12d7ee",
+      "repaired_exit": 0,
+      "repaired_log_sha256": "f7c7999d929ff6a5b0df15b1465f05d4c5e1e091b2cd4fa4ee848ed3491010b1"
+    },
+    "decision_index": {
+      "current_authority_sha256": "6c84a17a5d3d6c87ce4114700d0cf24ab26cd4da6e1db4c9a64a0b91d940e55b",
+      "current_decisions_sha256": "f4c0cb263302e108ad8decca30a62aeec23c98bf792f82b17b7858b7bb395c22",
+      "current_indexed_decisions": 104,
+      "existing_decisions_and_authority_text_preserved": true,
+      "exit": 0,
+      "new_ordered_ids": [
+        "PROD-20261121-36",
+        "PROD-20261121-37"
+      ],
+      "previous_indexed_decisions": 102
+    },
+    "local_disk_recovery_receipt_sha256": "d5f53973844dc88987bba711daa9460a39e67020392e4c834ba3191dc48a49d4",
+    "prior_hosted_run": {
+      "api_summary_sha256": "0b0fb0af0dcdaa2400113e32865a0c9f35fb487caf6955550b84a43054a27a9b",
+      "head": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+      "id": 44905173898,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "failed_steps": [],
+          "head_sha": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+          "id": 136849098056,
+          "name": "build-cpp",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            "Build producer prerequisites for actual contract integration"
+          ],
+          "head_sha": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+          "id": 136849098242,
+          "name": "test-python",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "failed_steps": [],
+          "head_sha": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+          "id": 136849098260,
+          "name": "lint",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "failed_steps": [
+            "Install locked dashboard dependencies"
+          ],
+          "head_sha": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+          "id": 136849098280,
+          "name": "build-dashboard",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "failed_steps": [],
+          "head_sha": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+          "id": 136849586664,
+          "name": "integration",
+          "status": "completed"
+        }
+      ],
+      "rerun_of_followup": "pending"
+    },
+    "workflow_contracts": {
+      "actionlint_exit": 0,
+      "cases": 14,
+      "checkout_test": "Git ownership-test mode. Declared checkout passes from a fresh HOME, and sibling and nested repositories remain rejected.",
+      "error_count": 0,
+      "failure_count": 0,
+      "git_identity": "git version 2.52.0",
+      "junit_sha256": "3a03c14f8f712afb3f23b9f5d8a5157cc480a9190addd4b4ac373db636dca125",
+      "skip_count": 0
+    }
+  },
+  "current_source_tree_before_evidence_changes": "90238acc95aadc232e600863492cce5b40aa59c5",
+  "phase": "Bounded repair of two observed hosted CI failures",
+  "previous_public_commit": "9565891e9b842113bbbf4cbdf7109c016a5c769b",
+  "previous_public_tree": "72e79b61965647ea0270f8886f19e0cd022c2485",
+  "qualification_scope": "Earlier passing criterion executions retain their original commands and logs. This bridge addresses only the exact changed inputs and new bounded checks. It does not represent a passing hosted run or production completion.",
+  "source_changes": {
+    ".github/workflows/ci.yml": {
+      "current_sha256": "bd7407f422c95969fab2e0a03a3ca81dfc141af10d172230ac63a71aad4b885a",
+      "previous_sha256": "9f817382a1b16b0ae194d614c8658bda3e192a4dd59f16a3454ac50ce696c854",
+      "reason": "Hosted CI pins the observed Node/npm toolchain and selects an exact temporary Git system allowlist for the declared workspace. Producer, consumer and integration commands keep their original checks."
+    },
+    "dashboard/package-lock.json": {
+      "current_sha256": "030730d3a3a722197266679524da949b2c407691952ed17684f29ab7704eeccf",
+      "previous_sha256": "8d0477005339c41a244277568ccb5281274393dbc6028b63a6d0c7003d9d2212",
+      "reason": "Adds npm 10.8.2's closure of 27 development-only optional peer entries. Every prior entry and production dependency stays byte-equivalent as a JSON value."
+    },
+    "docs/DECISIONS.md": {
+      "current_sha256": "f4c0cb263302e108ad8decca30a62aeec23c98bf792f82b17b7858b7bb395c22",
+      "previous_sha256": "f109d22565fbdda2e541cabc3eef3d1bb910ed17a8a77672aced73cae8ba5554",
+      "reason": "Appends the two repair decisions and bounded observed outcomes. Existing decision material is unchanged."
+    },
+    "docs/plans/production-scope-authority.md": {
+      "current_sha256": "6c84a17a5d3d6c87ce4114700d0cf24ab26cd4da6e1db4c9a64a0b91d940e55b",
+      "previous_sha256": "0512534b08a07957ef1054460325ea58180dd5b57878214399b8e44ae177b70c",
+      "reason": "Adds the two decision entries in order while preserving the prior authority text and all original scope."
+    },
+    "python/cppulse/data/dashboard/asset-manifest.json": {
+      "current_sha256": "70a50af8375107125709d7cb9402546f302f442b8355b8a6956427fdaa43ec9b",
+      "previous_sha256": "ac95d70944fe4cbd0cd12de26651c7074012b083859ade8a33ad459de3ee855a",
+      "reason": "Current lock source pin regenerated by the production asset builder. All four file paths, sizes and SHA-256 values are identical to the published tree."
+    },
+    "tests/test_github_master_workflow.py": {
+      "current_sha256": "d1791fce66334644a8948677821794f85e6fcc8cc8ecc30c845e3cb1426c729a",
+      "previous_sha256": "849d35e1efcfc187a97d10a0cf7fdb1cdce75bb95731358f5f71c1fb3945f910",
+      "reason": "Adds exact locked-install and workspace ownership controls. The prior assertions are retained."
+    }
+  },
+  "unaffected_verified_criteria": [
+    "FR-UX-11"
+  ],
+  "verified_criteria_spanning_changed_inputs": [
+    {
+      "affected_selected_paths": [
+        "dashboard/package-lock.json",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "PR-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/pr-01/PR-01.master-ci.proof.json",
+      "predecessor_sha256": "bb4cf9c8c61b6b99331369d408dfc90827264079ff5f10e20a3b18fc3e59ba22"
+    },
+    {
+      "affected_selected_paths": [
+        "docs/plans/production-scope-authority.md",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "PR-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/pr-06/PR-06.master-ci.proof.json",
+      "predecessor_sha256": "eabb90df3cd19326a82df99d4ce345f6c53fd227721567eb2d1d1e1731beb7c4"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-ANA-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-ci.proof.json",
+      "predecessor_sha256": "296a6cd83dd6b7413a4625a5a886285c5b942270782bf2c41b9bd2676b5022ca"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-ANA-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-ci.proof.json",
+      "predecessor_sha256": "16c55aadfcfdae00ba0f114eb9736b8a3a84cfc52aab1995030a141d23974c1c"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-ANA-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-ci.proof.json",
+      "predecessor_sha256": "6173c22fc04766b72fa82561a6f9a2b94233f7f7c31987a6219594f615749bcb"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-ANA-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-09/FR-ANA-09.master-ci.proof.json",
+      "predecessor_sha256": "eda399d484383b5b7fa5596e341980b67611e9fce787c8ad13a9237750c08661"
+    },
+    {
+      "affected_selected_paths": [
+        "dashboard/package-lock.json",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.master-ci.proof.json",
+      "predecessor_sha256": "7258d20af9f1eb5f46a2de35104e57c104cca5514b0c76edb73550abf5196483"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.master-ci.proof.json",
+      "predecessor_sha256": "61f27999b762c49891e7f577af38c7d02aa85be944194d988473c6cc3e53868d"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-03/FR-GIT-03.master-ci.proof.json",
+      "predecessor_sha256": "cab87836c6db282dc7a39af52715afa36a9cd2ca2ce4e608767e427a5ed24b33"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-05",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-05/FR-GIT-05.master-ci.proof.json",
+      "predecessor_sha256": "fe127735d43a28005e13375d8b00150cd962232e8aeda16ebcb4f569a46a64ae"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-06/FR-GIT-06.master-ci.proof.json",
+      "predecessor_sha256": "7e6f93a7948179e63ae8d6d584e9ef9d4d304687409ede8d460a39156d6fa20a"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-GIT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-ci.proof.json",
+      "predecessor_sha256": "a5b9247bd057812030251aff77779cd01b51ed35675eed77247b94b934085ef7"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.master-ci.proof.json",
+      "predecessor_sha256": "adbca55706f1d97102d531b68752bcea9cfd3bac3e12db391329b41bbdb69c0e"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-02/FR-EVD-02.master-ci.proof.json",
+      "predecessor_sha256": "2813002731b214bfe269c570af761ed04e967796c9c36068b7c20bf84d2f2b2a"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-03/FR-EVD-03.master-ci.proof.json",
+      "predecessor_sha256": "a87c7d96c29cf3bc6cfa3f1e9ef6da40dd37ca2dafe4c967cc862f0b499c047b"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-04/FR-EVD-04.master-ci.proof.json",
+      "predecessor_sha256": "786cf5c62ab489b468775ddb41dd304c298bb369385da310dc4de50fb4fe826b"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-05",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-05/FR-EVD-05.master-ci.proof.json",
+      "predecessor_sha256": "a4e6a049e39df7716ac739bbe682737470f4d9c9fec67834cc40edc49716ad2f"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-ci.proof.json",
+      "predecessor_sha256": "761b47174ffed29b05da1a8b3a6a287ea709368f03b3334e4dfae65d155b760f"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.master-ci.proof.json",
+      "predecessor_sha256": "df45b0c8c116a525692c80f411d62d3da852bea3ca5b390f0ae4945792520122"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-08/FR-EVD-08.master-ci.proof.json",
+      "predecessor_sha256": "53e2fbe7f9676e4ec1fa026a96236f2c5749434fb24fbc7c34718b863843ec7d"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-EVD-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.master-ci.proof.json",
+      "predecessor_sha256": "4cbb8d5ca229a0df267c306c231625af5107c961341207deba6f191274218010"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-UX-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-03/FR-UX-03.master-ci.proof.json",
+      "predecessor_sha256": "46b327af64f0c4ff554615e218037f909afe18a08b0ef876adb810e7074a528c"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-UX-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-09/FR-UX-09.master-ci.proof.json",
+      "predecessor_sha256": "7c75599cd4658ef002587a8914f504017845a30caf6667d05ae6d3829dbdfe1f"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "FR-UX-12",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-12/FR-UX-12.master-ci.proof.json",
+      "predecessor_sha256": "2a47053689c86ea21458e3d0e3cbd65b44c2336744a58a6afc5e963029c1eb35"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "NFR-MNT-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-02/NFR-MNT-02.master-ci.proof.json",
+      "predecessor_sha256": "1508f63ac7cfcaa8daf7230172d60c68fd4e6a83a07a0bafe924a4f1d0998847"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "NFR-MNT-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-ci.proof.json",
+      "predecessor_sha256": "6fb3d8e5271caeaeafa847364f22ac81f5e9a55b5b6d6ca20977a23767b418cd"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "NFR-MNT-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-ci.proof.json",
+      "predecessor_sha256": "3c8bbc1b66d387b4cc8d0eb406de76a67fe96cf9403f090c69fc804a6be9f035"
+    },
+    {
+      "affected_selected_paths": [
+        "docs/DECISIONS.md",
+        "docs/plans/production-scope-authority.md"
+      ],
+      "criterion": "NFR-MNT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-ci.proof.json",
+      "predecessor_sha256": "4e518bee292391405695784d6e99186b6b8233e37c5c808ae3c461e8bdaa7eb6"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "NFR-MNT-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-09/NFR-MNT-09.master-ci.proof.json",
+      "predecessor_sha256": "84b78e6fbd7e2d279de4a8d2b1882a8a32e722edf027b558ce4fee160e40e2a4"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "M1-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m1-07/M1-07.master-ci.proof.json",
+      "predecessor_sha256": "c12af01f4677a775b19e340897ad2352e55c8c7dc11d983b24f90dde71690796"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M4-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m4-01/M4-01.master-ci.proof.json",
+      "predecessor_sha256": "7147b66608dd5e398922b967917af81c6b0ae612343e986ad8a76fa774802a1f"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M5-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-01/M5-01.master-ci.proof.json",
+      "predecessor_sha256": "0f1860c6d85ba56ba35c4b64c261bca23881f578b47139bc88e0ec93c78d9569"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M5-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-02/M5-02.master-ci.proof.json",
+      "predecessor_sha256": "2a68bea213374aae0a68cd40b8112e714c1a3b8cdacc2719743908d9f656beb8"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M5-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-03/M5-03.master-ci.proof.json",
+      "predecessor_sha256": "c5d2b9079869ae854ef75d0bdb8374ff0d1d03e335177ad53c6873cec8f6d4d2"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml"
+      ],
+      "criterion": "M5-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-04/M5-04.master-ci.proof.json",
+      "predecessor_sha256": "53bfa1dbbb2259d3557074fafce8998720b84a40515e5a25ee20a2da1df4e85d"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M6-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-01/M6-01.master-ci.proof.json",
+      "predecessor_sha256": "a9c3e8601c5c8195f81156aef307f177c8d87079e2a2870cea2e4603b8ecc93c"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/data/dashboard/asset-manifest.json"
+      ],
+      "criterion": "M6-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-02/M6-02.master-ci.proof.json",
+      "predecessor_sha256": "cf12b7e2de16da87e014dad9a78cd88f7afa642a9e71f7c1967ef4579b51e4ed"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "criterion": "M5-04",
+  "current_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "execution_claim": "The two previous semantic runs keep their original source, artifact, exits and guard identities. This bridge does not retag them as executions on d65 or create a new policy run.",
+  "kind": "Static d65 source dependency bridge for a prior accepted execution",
+  "no_influence_review": {
+    "actual_live_consumer_phase_exit": 0,
+    "d65_target_generator_sha256_not_executed_in_this_lane": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f",
+    "genuine_scope": "The original selected coverage snapshot carries actual LCOV facts. The public assess/check and pinned evidence reports use typed stored coverage and policy. The two report invocations select a manifest with no roadmap artifact.",
+    "governance_and_predictor_test": "The two modified governance files are outside this evaluator and the selected coverage flow. The added predictor test is not among the selected pure or original live policy cases.",
+    "live_case_phase": {
+      "sha256": "c4719d764a5218e3721269f550d657bcc9842ef3164030846762ecb999bfa467",
+      "size_bytes": 1135
+    },
+    "live_report_pair": {
+      "html": {
+        "actual_exit": 0,
+        "exact_command": {
+          "sha256": "3e601e6647172ac1b7d6e3671109ecc109d547792b394aa6f4bfc9e7fe61afe9",
+          "size_bytes": 707
+        },
+        "public_representation": {
+          "sha256": "5a1875e7a2906c07cd0e0e2236df4de019b699601c7a920f4890ddd71dccfccf",
+          "size_bytes": 37190
+        },
+        "roadmap_artifact_present": false,
+        "selected_run": {
+          "manifest_sha256": "0b9f19f78beccf3d40211718dce05ec8b1eb6275e6ab78d5bb2940f458aa9397",
+          "run_id": "722e7e585d1c415b88549dc8f8312a00"
+        }
+      },
+      "json": {
+        "actual_exit": 0,
+        "exact_command": {
+          "sha256": "05635dee5f24293c83c11b4c6f18a33abbf5152037c0a80216e34403c2d80fc0",
+          "size_bytes": 707
+        },
+        "public_representation": {
+          "sha256": "6b7b1fb3495805b66c0c3041968601a47e85ee371f4dfe3466dfba46acce18c7",
+          "size_bytes": 177322
+        },
+        "roadmap_artifact_present": false,
+        "selected_run": {
+          "manifest_sha256": "0b9f19f78beccf3d40211718dce05ec8b1eb6275e6ab78d5bb2940f458aa9397",
+          "run_id": "722e7e585d1c415b88549dc8f8312a00"
+        }
+      }
+    },
+    "original_conservative_generator_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089",
+    "pure_scope": "The 283 selected original and supplemental cases run the pure policy and contract arithmetic, precedence and deviations. They do not enter predictor or analyze dispatch.",
+    "separate_original_failed_import_observer_exits": {
+      "cobertura": 1,
+      "lcov": 1
+    }
+  },
+  "original_executed_scope": {
+    "original_execution_bridge_sha256": "20f43bad270e3a2917bb964fdb5132d5871b85d9f90b4215264485ec2cd0b7c6",
+    "original_log_sha256": "d6dced8fdee3fae714cd9dd70a4efcd0c6ec386b50b01101c032c60fc8451391",
+    "original_proof_path": "docs/checkpoints/current/qualification/m5-04/M5-04.proof.json",
+    "original_proof_sha256": "867b8ebc549c28fe0d45b58805aef125811f88f79ffff3889b01bcfa63f66bc6",
+    "original_semantic_command_sha256": "f84183169344a0db9f933ef7ccf166cf2aa08379fb7233ca7083f95fbc3dc36e",
+    "public_pointer_review": {
+      "sha256": "566858cbb3063ac92a71e282bb36481ba36c64496bf60a9d87d2f9d7b73274cf",
+      "size_bytes": 5554
+    },
+    "semantic_review": {
+      "sha256": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4",
+      "size_bytes": 23419
+    },
+    "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+    "wheel_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe"
+  },
+  "private_original_full_direct_custody": {
+    "genuine_live_consumer_and_separate_import_harness": {
+      "actual_exit": 1,
+      "actual_job_log": {
+        "sha256": "0b2451a022971f68d71e78e3c42467146aec51b46297391ac0756527b658064d",
+        "size_bytes": 1645
+      },
+      "actual_job_record": {
+        "sha256": "4760c21b76eb49e212050bb67887ad7cb7cbcb03b9a8829c800e5fee01677670",
+        "size_bytes": 3964704
+      },
+      "original_freeze": {
+        "sha256": "9d6eb0b7bbaaceca2cb5984f39111e2dd986c52cb50db6e7a7fc08677bfbf6e5",
+        "size_bytes": 1982558
+      },
+      "original_full_before_after_map_sha256": "06ebf7d1623409d89bd4349a72b082d2952b8d2fe0315f1c02ae4952a007c7c9",
+      "outer_command_sha256": "1655ab3d1e0027001ab160b00d1d04387be6b73633e0044711096ab13a33e819",
+      "runtime_before_and_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_guard_count": 11396
+    },
+    "original_genuine_coverage_producer": {
+      "actual_exit": 1,
+      "actual_job_log": {
+        "sha256": "73eac07b07e55e24a6e18aedc931d7bccb31282824275c338a4f5c6fae9a9ab5",
+        "size_bytes": 1179
+      },
+      "actual_job_record": {
+        "sha256": "911bb942f3d113414356357ab0d63f4a84f5cf80ccd65479e9cac5253ea457fe",
+        "size_bytes": 3613572
+      },
+      "original_freeze": {
+        "sha256": "f031b895fb76265ddcb44da0f821d41d66483bf8a9d938e857c756fac2c08b0e",
+        "size_bytes": 1807142
+      },
+      "original_full_before_after_map_sha256": "7a617f2be7b2cf3b11d0d86a6c2bf0b31dde9d19431b0fd4b302a54637818f59",
+      "outer_command_sha256": "ab5fc4d96dbc4362ff8395c4354df89d5a6d4374bf9a01177664ab1c3b36aecd",
+      "runtime_before_and_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_guard_count": 10721
+    },
+    "pure_bank": {
+      "actual_exit": 0,
+      "actual_job_log": {
+        "sha256": "d30efaa97c7cb1eb3b7364bc24f15f1021fd569bd94058bd438e0f967d3c0f1f",
+        "size_bytes": 505
+      },
+      "actual_job_record": {
+        "sha256": "6b4e0f1ed8f27b6b1678b073a696645fef4adcd2d11be6f08cdc6c9c27846633",
+        "size_bytes": 598969
+      },
+      "original_freeze": {
+        "sha256": "2a1edbb54c44367782b457cf3a4da9ae41726892e64a762bc0f150a20c467dc0",
+        "size_bytes": 305647
+      },
+      "original_full_before_after_map_sha256": "6db088605de80dc7847c117ec238510ba5fdef1abf918a6e8de1cecc2a1ae841",
+      "outer_command_sha256": "d48c9c7188c7f9d60f7396900b90dfb54efeec9cb9e2d0f00b29ff8df3b63379",
+      "runtime_before_and_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_guard_count": 1753
+    }
+  },
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

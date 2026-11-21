@@ -1,6 +1,12 @@
 # Existing GitHub CI invokes the same local developer facade.
 # These are source/selected integration jobs, not a release qualification.
 name: CI
+'on':
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -11,10 +17,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
-    - name: Install C++ formatter
-      run: |-
-        sudo apt-get update
-        sudo apt-get install -y --no-install-recommends clang-format
+      with:
+        fetch-depth: 0
+        persist-credentials: false
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
@@ -23,55 +28,151 @@ jobs:
           git-miner/requirements.txt
           predictor/requirements.txt
           report-engine/requirements.txt
-    - name: Install Python linters
-      run: python -m pip install ruff==0.2.1 black==24.1.1 jsonschema==4.21.1 packaging==26.3
+    - name: Install the pinned C++ formatter and Python linters
+      run: python -m pip install clang-format==19.1.7 ruff==0.2.1 black==24.1.1 jsonschema==4.21.1 packaging==26.3
+    - name: Select the pinned clang-format 19 executable
+      run: printf 'CPPULSE_CLANG_FORMAT=%s\n' "$(command -v clang-format)" >> "$GITHUB_ENV"
     - name: Shared local formatting checks
+      env:
+        CPPULSE_FORMAT_BASE: ${{ github.event.pull_request.base.sha }}
+        CPPULSE_FORMAT_HEAD: ${{ github.event.pull_request.head.sha }}
+        CPPULSE_FORMAT_ALL_TRACKED: ${{ github.event_name != 'pull_request' }}
       run: python tools/dev.py verify --scope changed --section format --output-dir review/ci/format
   build-cpp:
     runs-on: ubuntu-24.04
+    env:
+      LIBCLANG_ROOT: /usr/lib/llvm-19
     steps:
     - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Install C++ dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends \
           build-essential cmake \
-          libclang-dev llvm-dev \
+          libclang-19-dev llvm-19-dev \
           nlohmann-json3-dev libspdlog-dev libcli11-dev \
           libgtest-dev libgmock-dev
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     - name: Install local verification metadata dependencies
-      run: python -m pip install jsonschema==4.21.1 packaging==26.3
+      run: python -m pip install jsonschema==4.21.1 packaging==26.3 cmake==3.31.6
     - name: Shared native configure, build and tests
       run: python tools/dev.py verify --scope changed --section native --output-dir review/ci/native
   test-python:
     runs-on: ubuntu-24.04
+    container: python:3.11-slim-trixie@sha256:b701198cb708b68d9413ca67d6311bd97c9389a2c5fe4da0511fc652642366cd
+    env:
+      LIBCLANG_ROOT: /usr/lib/llvm-19
     steps:
+    - name: Install the public producer toolchain
+      run: |
+        apt-get update
+        apt-get install -y --no-install-recommends \
+          git libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 \
+          libgdk-pixbuf-2.0-0 libffi-dev libcairo2 \
+          ca-certificates curl xz-utils gettext libcurl4-openssl-dev poppler-utils \
+          libexpat1-dev libssl-dev zlib1g-dev \
+          build-essential cmake gcc-14=14.2.0-19 g++-14=14.2.0-19 \
+          binutils=2.44-3 clang-19 clang-tidy-19=1:19.1.7-3+b1 strace \
+          abigail-tools=2.6-2 libabigail5=2.6-2 \
+          libclang-19-dev llvm-19-dev \
+          nlohmann-json3-dev libspdlog-dev libcli11-dev libgtest-dev libgmock-dev
     - uses: actions/checkout@v4
-    - name: Install system dependencies
-      run: |-
-        sudo apt-get update
-        sudo apt-get install -y --no-install-recommends \
-          git libpango-1.0-0 libpangocairo-1.0-0 \
-          libgdk-pixbuf-2.0-0 libffi-dev libcairo2
-
-        sudo apt-get install -y --no-install-recommends build-essential cmake libclang-dev llvm-dev nlohmann-json3-dev libspdlog-dev libcli11-dev libgtest-dev libgmock-dev
-    - uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
-        cache: pip
-        cache-dependency-path: |
-          git-miner/requirements.txt
-          predictor/requirements.txt
-          report-engine/requirements.txt
+        persist-credentials: false
+    - name: Build the pinned Git provider for actual local branch tests
+      shell: bash
+      run: |
+        git_provider="$RUNNER_TEMP/cppulse-git"
+        bash scripts/install_ci_git.sh "$git_provider"
+        printf '%s\n' "$git_provider/installed/bin" >> "$GITHUB_PATH"
+    - name: Trust the Actions checkout for the pinned Git provider
+      shell: bash
+      run: |
+        workspace=$(realpath -e -- "${GITHUB_WORKSPACE:?}")
+        test -e "$workspace/.git"
+        case "$workspace" in
+          */\*) exit 2 ;;
+        esac
+        git_config=$(mktemp -- "${RUNNER_TEMP:?}/cppulse-workspace-git.XXXXXX")
+        git config --file "$git_config" --add safe.directory "$workspace"
+        printf 'GIT_CONFIG_SYSTEM=%s\n' "$git_config" >> "${GITHUB_ENV:?}"
     - name: Install declared development and optional component dependencies
-      run: python -m pip install -e '.[dev,ml,pdf,web]' packaging==26.3 pypdf==7.1.0
+      run: >-
+        python -m pip install -e '.[dev,ml,pdf,web]'
+        packaging==26.3 pypdf==7.1.0 cmake==3.31.6 setuptools==75.8.0 wheel==0.45.1
+    - name: Install pinned verification tools in a separate environment
+      run: |
+        python -m venv "$RUNNER_TEMP/cppulse-verification"
+        "$RUNNER_TEMP/cppulse-verification/bin/python" -m pip install -r requirements-verification.txt
     - name: Build producer prerequisites for actual contract integration
       run: python tools/dev.py verify --scope changed --section native --output-dir review/ci/contracts-native
-    - name: Shared contracts, scope and generated checks
-      run: python tools/dev.py verify --scope changed --section root --section generated --output-dir
+    - name: Select runner tools for source contract tests
+      shell: bash
+      run: |
+        analyzer="$GITHUB_WORKSPACE/analyzer-core/build/cppulse-analyzer"
+        resource_dir=$(clang-19 -print-resource-dir)
+        registration="$GITHUB_WORKSPACE/review/ci/contracts-native/native-registration.json"
+        test -x "$analyzer"
+        test -f "$resource_dir/include/stddef.h"
+        gcovr="$RUNNER_TEMP/cppulse-verification/bin/gcovr"
+        pre_commit="$RUNNER_TEMP/cppulse-verification/bin/pre-commit"
+        tidy=$(command -v clang-tidy-19)
+        test -x "$gcovr"
+        test -x "$pre_commit"
+        printf '/work/native-deps/usr/lib/llvm-19\n/work/abi-tooling/prefix/\n' >> .git/info/exclude
+        mkdir -p work/native-deps/usr/lib
+        ln -s "$LIBCLANG_ROOT" work/native-deps/usr/lib/llvm-19
+        abi_prefix=work/abi-tooling/prefix/usr
+        install -D -m 755 /usr/bin/abidiff "$abi_prefix/bin/abidiff"
+        install -D -m 644 /usr/lib/x86_64-linux-gnu/libabigail.so.5 \
+          "$abi_prefix/lib/x86_64-linux-gnu/libabigail.so.5"
+        python tools/register_ci_native.py \
+          --build-result review/ci/contracts-native/development-results.json \
+          --resource-dir "$resource_dir" --output "$registration"
+        {
+          printf 'CPPULSE_ANALYZER=%s\n' "$analyzer"
+          printf 'CPPULSE_WORK_UNIT_NATIVE=%s\n' "$analyzer"
+          printf 'CPPULSE_CLANG_RESOURCE_DIR=%s\n' "$resource_dir"
+          printf 'CPPULSE_CI_NATIVE_REGISTRATION=%s\n' "$registration"
+          printf 'CPPULSE_TIDY19_TOOL=%s\n' "$tidy"
+          printf 'CPPULSE_GCOVR=%s\n' "$gcovr"
+          printf 'CPPULSE_PRE_COMMIT=%s\n' "$pre_commit"
+        } >> "$GITHUB_ENV"
+    - name: Produce the live LCOV policy fixture
+      shell: bash
+      run: |
+        coverage_dir="$RUNNER_TEMP/cppulse-policy-coverage"
+        python scripts/demo_coverage.py --output "$coverage_dir" --gcovr "$CPPULSE_GCOVR"
+        python - "$coverage_dir" "$(command -v cppulse)" <<'PY'
+        import json
+        from pathlib import Path
+        import sys
+
+        output = Path(sys.argv[1])
+        observed = json.loads((output / "latest-demo.json").read_text())
+        descriptor = {
+            "console": sys.argv[2],
+            "store": observed["store"],
+            "workspace": observed["workspace"],
+            "run_id": observed["lcov"]["run_id"],
+            "manifest_sha256": observed["lcov"]["manifest_sha256"],
+        }
+        (output / "policy-input.json").write_text(json.dumps(descriptor) + "\n")
+        PY
+        printf 'CPPULSE_POLICY115_INPUTS=%s\n' "$coverage_dir/policy-input.json" >> "$GITHUB_ENV"
+    - name: Produce fresh sanitizer, JUnit and consumer fixtures
+      shell: bash
+      run: |
+        evidence_dir="$RUNNER_TEMP/cppulse-evidence116"
+        python scripts/prepare_ci_evidence.py --checkout "$PWD" --output "$evidence_dir" \
+          --coverage "$RUNNER_TEMP/cppulse-policy-coverage" --console "$(command -v cppulse)"
+        printf 'CPPULSE_EVIDENCE116_INPUTS=%s\n' "$evidence_dir/evidence116-input.json" >> "$GITHUB_ENV"
+    - name: Shared public source contracts, scope and generated checks
+      run: python tools/dev.py verify --scope changed --section root-public --section generated --output-dir
         review/ci/contracts
     - name: Shared git-miner tests
       run: python tools/dev.py verify --scope changed --section python --component git-miner --output-dir
@@ -92,9 +193,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: '20.20.2'
         cache: npm
         cache-dependency-path: dashboard/package-lock.json
     - uses: actions/setup-python@v5
@@ -103,7 +206,9 @@ jobs:
     - name: Install local verification metadata dependencies
       run: python -m pip install jsonschema==4.21.1 packaging==26.3
     - name: Install locked dashboard dependencies
-      run: npm ci --prefix dashboard
+      run: |
+        test "$(npm --version)" = '10.8.2'
+        npm ci --prefix dashboard
     - name: Shared dashboard tests and production build
       run: python tools/dev.py verify --scope changed --section dashboard --output-dir review/ci/dashboard
   integration:
@@ -111,20 +216,25 @@ jobs:
     - build-cpp
     - test-python
     runs-on: ubuntu-24.04
+    env:
+      LIBCLANG_ROOT: /usr/lib/llvm-19
     steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        persist-credentials: false
     - name: Install C++ dependencies
       run: |-
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends \
           build-essential cmake \
-          libclang-dev llvm-dev \
+          libclang-19-dev llvm-19-dev \
           nlohmann-json3-dev libspdlog-dev libcli11-dev \
           libgtest-dev libgmock-dev
 
-        sudo apt-get install -y --no-install-recommends libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libffi-dev libcairo2
+        sudo apt-get install -y --no-install-recommends \
+          libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 \
+          libgdk-pixbuf-2.0-0 libffi-dev libcairo2
     - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
@@ -133,7 +243,7 @@ jobs:
           git-miner/requirements.txt
           predictor/requirements.txt
     - name: Install Python dependencies
-      run: python -m pip install -e '.[dev,ml,pdf,web]' packaging==26.3 pypdf==7.1.0
+      run: python -m pip install -e '.[dev,ml,pdf,web]' packaging==26.3 pypdf==7.1.0 cmake==3.31.6
     - name: Shared native integration and Compose checks
       run: python tools/dev.py verify --scope changed --section native --section integration --with-docker
         --output-dir review/ci/integration
@@ -143,10 +253,3 @@ jobs:
       with:
         name: integration-records
         path: review/ci/integration/
-'on':
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main

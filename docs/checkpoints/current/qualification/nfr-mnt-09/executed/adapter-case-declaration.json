@@ -1,0 +1,21 @@
+{
+  "unrecognized_format": {
+    "gcc-json": "{\n",
+    "clang-tidy-text": "Authored unsupported diagnostic grammar.\n",
+    "cppcheck-xml": "<results",
+    "ctest-log": "Authored input outside the CTest LastTest grammar.\n",
+    "ctest-junit": "<testsuite>",
+    "generic-junit": "<testsuite tests=\"0\"><testcase name=\"authored-contradiction\"/></testsuite>",
+    "lcov": "SF:main.cpp\nDA:1,not-an-integer\nend_of_record\n",
+    "cobertura": "<unknown/>"
+  },
+  "known_empty_gcc": "[]",
+  "generic_caller_claim": {"name": "authored-generic-import-claim", "version": "99"},
+  "unsupported_declared_producer_version": "99",
+  "unsupported_declared_adapter_version": "99.0.0",
+  "runtime_negative": {
+    "asan": "AddressSanitizer:DEADLYSIGNAL\n",
+    "ubsan": "main.cpp:1:2: runtime error: division by zero\n",
+    "tsan": "FATAL: ThreadSanitizer: unexpected memory mapping 0x1-0x2\n"
+  }
+}

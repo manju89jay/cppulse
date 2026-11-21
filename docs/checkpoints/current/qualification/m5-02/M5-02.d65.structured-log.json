@@ -1,0 +1,207 @@
+{
+  "criterion": "Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently",
+  "id": "M5-02",
+  "independent_whole_review_sha256": "5361d267f631f95a48d7cdc9c5f03bf633705fd2b9ae46d8f9e135beac19ccb5",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_selected_gnu_consumer": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch20/consumer-matrix/launch.sh",
+        "/workspace/work/current38-batch20/results/consumer-matrix"
+      ],
+      "raw_log_sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+      "record_sha256": "c104462670f237dc1201ebe54b56b3803ab78f13273d58d847a35f5faa752409",
+      "stable_guard_pins": 762
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "archive_member_library_o_sha256": "5c12a26a70e758e3b3fd24adac1ddf86639dfa20112c1c3c362473c5f67a15ce",
+    "archive_sha256": "66dddded6dfe0f999a9e9f46d70cee3e4e119ab566bc3de24f724f744bc3049a",
+    "authored_denominator_and_context_control": [
+      "INVALID_CONTRACT /files/measurements",
+      "SUBJECT_MISMATCH /coverage_facts"
+    ],
+    "depfile_sha256": "8eb647570aebc8935cb049eca91d2a2ef6105038b633a6515c286b1549dd94ed",
+    "direct_original_consumer_and_archive_assertion": "test_fresh_genuine_archive_depfile_linkmap_and_executed_binary",
+    "earlier_actual_coverage_dimensions": {
+      "cobertura": {
+        "branch": [
+          1,
+          2
+        ],
+        "line": [
+          5,
+          8
+        ]
+      },
+      "lcov": {
+        "branch": [
+          1,
+          2
+        ],
+        "function": [
+          2,
+          3
+        ],
+        "line": [
+          5,
+          8
+        ]
+      }
+    },
+    "earlier_coverage_import_scope_retained": true,
+    "earlier_junit_modes_and_counts": {
+      "clean": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "total": 2
+      },
+      "disabled": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "fail": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "pytest": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 1,
+        "skipped": 1,
+        "total": 3
+      },
+      "skip": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "zero": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "total": 0
+      }
+    },
+    "earlier_junit_receipt_contrasts": {
+      "clean": {
+        "assess": 0,
+        "check": 0
+      },
+      "failure": {
+        "assess": 1,
+        "check": 1
+      },
+      "show-only": {
+        "assess": 3,
+        "check": 3
+      },
+      "skipped": {
+        "assess": 3,
+        "check": 3
+      },
+      "zero": {
+        "assess": 3,
+        "check": 3
+      }
+    },
+    "earlier_required_header_controls": {
+      "missing-named-test-comparison": {
+        "local_test_status": "unknown",
+        "missing_local_checks": [
+          "nonexistent-required-test",
+          "selected-instantiation:selected<int>/SELECTED_MACRO=7"
+        ]
+      },
+      "omit-selfcontainment-comparison": {
+        "local_test_status": "passed",
+        "missing_local_checks": [
+          "include/demo.hpp"
+        ]
+      },
+      "positive-comparison": {
+        "local_test_status": "passed",
+        "missing_local_checks": []
+      }
+    },
+    "fresh_actual_exercised_binary_sha256": "9040cff26b3a590fde4a404637b46a7b69d271c0af7ef50da35e2bd852f3197c",
+    "fresh_archive_run": {
+      "manifest_sha256": "8484628080e115e060180976ee83cd7e03788efc77a156a7ab9f0cb3475c9dd6",
+      "run_id": "20ce868aa7574c23bc2cdf5c88235c5d"
+    },
+    "gnu_link_map_sha256": "3882bae083d8fcc0bdae58b49f44cd1e333d0578493d5c0297aa6511eccbcc9b",
+    "missing_map": "Same raw archive; unverified selected usage, header depfile only; no selected archive-use proof",
+    "outside_subject": "Actual tracked helper checks rejected selected executable outside distribution selector scope",
+    "packaged_header_sha256": "ef61b3ae683f12e68b310032d23749ad874c73f1c1a086d4b389ada3ddbc2442",
+    "public_reports": {
+      "exit_codes": [
+        0,
+        0
+      ],
+      "html_sha256": "3a6444721202b639f90d90504c38b786df8048ced5c20ba0b3cc1304a1dcc0e9",
+      "json_sha256": "1d109a7ff7923685284c6918ba4668468dd8c9838458c959e5cf7c17eafd9fa8",
+      "pinned_run": {
+        "manifest_sha256": "370f3e8162c7cc17b1b2a2dc4a56b44d2b46949a69ce7b113a5e591cf2872195",
+        "run_id": "d1878ddb4c244db681c920bee007bb3c"
+      }
+    },
+    "recorded_usage_configuration": {
+      "abi": "observed-macros-v1:__GXX_ABI_VERSION=1019;__GLIBCXX__=20250315;_GLIBCXX_USE_CXX11_ABI=1",
+      "compiler": {
+        "name": "GNU",
+        "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+        "version": "14.2.0"
+      },
+      "dependencies": [
+        {
+          "availability": "available",
+          "id": "input-1a3ddd95187ef442e91fdcf50d069c6cc79bb663aae10d51582a2a1508ca0893",
+          "sha256": "ef61b3ae683f12e68b310032d23749ad874c73f1c1a086d4b389ada3ddbc2442"
+        },
+        {
+          "availability": "available",
+          "id": "input-f663ccecd3a13e8c1714b86b633837e7f40b1ef63a92ff615eb71b7e78fb88e2",
+          "sha256": "66dddded6dfe0f999a9e9f46d70cee3e4e119ab566bc3de24f724f744bc3049a"
+        }
+      ],
+      "exceptions": true,
+      "language_standard": "c++17",
+      "linking": "static",
+      "macros": {},
+      "os": "linux",
+      "rtti": true,
+      "sanitizers": [],
+      "target": "x86_64-linux-gnu"
+    },
+    "roles_real_exit_zero": [
+      "archive",
+      "configuration",
+      "consumer",
+      "execute",
+      "library",
+      "target"
+    ],
+    "shadow_source": "Separate actual GNU capture ran in shadow cwd and the original unchanged assertion required unverified mismatched source identity"
+  },
+  "preserved_epoch_and_result_limits": [
+    "Current fresh producer is a selected synthetic archive/header consumer fixture in the verified GNU Linux profile. Static describes the exact selected distribution dependencies, without asserting host runtime or general ABI closure.",
+    "Prior header, coverage and JUnit true runs retain their original db15 wheels and source/run bindings. Current d65 archive qualification does not rerun those earlier producers. Import parsing, accepted execution receipts and authored mismatches retain separate origins.",
+    "No claim covers producer authentication, original full 116 count, M5-03 sanitizer matrix, global P14 Unicode evidence, or rollout/publication."
+  ],
+  "primary_observed_role": "actual_selected_gnu_consumer",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Produce selected consumer/context inventories and CTest/JUnit, LCOV/Cobertura adapters with execution scope. | Missing/zero/skipped tests and denominator/context mismatches never pass silently"
+}

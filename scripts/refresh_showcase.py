@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -45,14 +46,31 @@ def _run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
 
 
 def clone_or_update(project: dict) -> Path:
-    """Clone or update a project repo in the showcase cache."""
+    """Select an explicit immutable revision without resetting existing work."""
+    revision = project.get("revision", "")
+    if re.fullmatch(r"[0-9a-f]{40}", revision) is None:
+        raise ValueError(
+            f"{project['id']}: an explicit full upstream revision is required; "
+            "historical floating registry entries cannot be refreshed"
+        )
     repo_dir = SHOWCASE_CACHE / project["id"]
     SHOWCASE_CACHE.mkdir(parents=True, exist_ok=True)
 
     if repo_dir.exists():
-        print(f"  Updating {project['id']}...")
-        _run(["git", "-C", str(repo_dir), "fetch", "--depth", "1"])
-        _run(["git", "-C", str(repo_dir), "reset", "--hard", "FETCH_HEAD"])
+        actual = _run(
+            ["git", "-C", str(repo_dir), "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        dirty = _run(
+            ["git", "-C", str(repo_dir), "status", "--porcelain"],
+            capture_output=True,
+            text=True,
+        ).stdout
+        if actual != revision or dirty:
+            raise ValueError(
+                f"{project['id']}: preserve existing cache; supply a clean pinned checkout"
+            )
     else:
         print(f"  Cloning {project['id']}...")
         depth = str(project.get("clone_depth", 1))
@@ -60,12 +78,17 @@ def clone_or_update(project: dict) -> Path:
             [
                 "git",
                 "clone",
+                "--no-checkout",
                 "--depth",
                 depth,
                 project["repo_url"],
                 str(repo_dir),
             ]
         )
+        _run(
+            ["git", "-C", str(repo_dir), "fetch", "--depth", depth, "origin", revision]
+        )
+        _run(["git", "-C", str(repo_dir), "checkout", "--detach", revision])
 
     return repo_dir
 
@@ -84,9 +107,9 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         analyzer_bin = analyzer_bin.with_suffix(".exe")
 
     if not analyzer_bin.exists():
-        print(f"  WARNING: analyzer-core binary not found at {analyzer_bin}")
-        print("  Skipping analysis — build analyzer-core first (cmake --build)")
-        return
+        raise FileNotFoundError(
+            f"No analyzer at {analyzer_bin}; no derived assets regenerated"
+        )
 
     # Step 1: analyzer-core → findings.json
     print(f"  Running analyzer-core on {project_id}...")
@@ -96,7 +119,7 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
             "--repo",
             str(repo_dir),
             "--output",
-            str(output_dir / "findings.json"),
+            str(output_dir),
         ]
     )
 
@@ -106,13 +129,21 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         [
             sys.executable,
             "-m",
-            "git_miner",
+            "cppulse.git_miner.main",
             "--repo",
             str(repo_dir),
             "--output",
-            str(output_dir / "git_metrics.json"),
+            str(output_dir),
         ]
     )
+
+    git_metrics = json.loads(
+        (output_dir / "git_metrics.json").read_text(encoding="utf-8")
+    )
+    if not git_metrics.get("file_metrics"):
+        raise ValueError(
+            f"{project_id}: empty history metrics cannot support a showcase"
+        )
 
     # Step 3: predictor → risk_scores.json + roadmap.json
     print(f"  Running predictor on {project_id}...")
@@ -120,15 +151,22 @@ def run_analysis(project_id: str, repo_dir: Path) -> None:
         [
             sys.executable,
             "-m",
-            "predictor",
-            "--findings",
-            str(output_dir / "findings.json"),
-            "--git-metrics",
-            str(output_dir / "git_metrics.json"),
-            "--output-dir",
+            "cppulse.predictor.main",
+            "--input",
+            str(output_dir),
+            "--output",
             str(output_dir),
         ]
     )
+
+    # A prior PDF did not render these newly produced JSON bytes. Never attach
+    # that old report to a refreshed showcase. This is the explicit generator's
+    # output directory; research stores are not selected by this function.
+    pdf = output_dir / "report.pdf"
+    if pdf.is_symlink() or (pdf.exists() and not pdf.is_file()):
+        raise ValueError(f"{project_id}: unsafe stale PDF output")
+    if pdf.exists():
+        pdf.unlink()
 
 
 # ── Phase 3: Regenerate derived files ────────────────────────────────────────
@@ -149,6 +187,28 @@ def regen_svgs(project_id: str) -> None:
             str(ASSETS_DIR / project_id),
         ]
     )
+
+
+def validate_result_counts(project_ids: list[str]) -> None:
+    """Refuse inconsistent records before any derived card/README is written."""
+    from collections import Counter
+
+    for project_id in project_ids:
+        data = json.loads(
+            (EXAMPLES_DIR / project_id / "findings.json").read_text(encoding="utf-8")
+        )
+        records, summary = data["findings"], data["summary"]
+        counts, declared = (
+            Counter(row["category"] for row in records),
+            summary["by_category"],
+        )
+        if summary["total_findings"] != len(records) or any(
+            declared.get(key, 0) != counts.get(key, 0)
+            for key in set(declared) | set(counts)
+        ):
+            raise ValueError(
+                f"{project_id}: finding records and summary counters disagree"
+            )
 
 
 def regen_example_readmes(project_ids: list[str] | None = None) -> None:
@@ -191,7 +251,7 @@ def update_architecture_showcase_result() -> None:
     Finds the top-scoring project and writes its result into the markers.
     """
     arch_path = REPO_ROOT / "docs" / "architecture.md"
-    content = arch_path.read_text()
+    content = arch_path.read_text(encoding="utf-8")
 
     start_marker = "<!-- SHOWCASE_RESULT:START -->"
     end_marker = "<!-- SHOWCASE_RESULT:END -->"
@@ -247,7 +307,7 @@ def update_architecture_showcase_result() -> None:
         + content[end_idx:]
     )
 
-    arch_path.write_text(new_content)
+    arch_path.write_text(new_content, encoding="utf-8")
     print(f"  Updated architecture.md with {best_project['display_name']} result")
 
 
@@ -296,6 +356,8 @@ def print_diff(before: dict[str, float], after: dict[str, float]) -> None:
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(
         description="Refresh showcase analysis and regenerate all derived files."
     )
@@ -343,6 +405,7 @@ def main() -> None:
         print("\n=== Skipping analysis (--skip-analysis) ===")
 
     # Phase 3: Regenerate all derived files
+    validate_result_counts(project_ids)
     print("\n=== Phase 3: Regenerate derived files ===")
 
     for pid in project_ids:

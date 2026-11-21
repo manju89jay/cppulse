@@ -204,9 +204,7 @@ def _case_status(element: Element) -> Outcome:
         else (
             "failed"
             if "failure" in outcomes
-            else "skipped"
-            if "skipped" in outcomes
-            else "passed"
+            else "skipped" if "skipped" in outcomes else "passed"
         )
     )
     allowed = {
@@ -421,9 +419,7 @@ def parse_test_report(
         else (
             "failed"
             if counts["failed"]
-            else "passed"
-            if counts["passed"]
-            else "skipped"
+            else "passed" if counts["passed"] else "skipped"
         )
     )
     limitations = [_ORIGIN_LIMIT]

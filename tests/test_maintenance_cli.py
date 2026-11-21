@@ -24,16 +24,29 @@ def test_maintenance_dispatches_explicit_scope(
 
     import cppulse.workflows as workflows
 
+    health = {
+        "aggregate": {"overall": 90},
+        "scorer": {
+            "id": "analyzed-kloc-context-v4",
+            "profile": "default",
+            "allow_inferred_parse": False,
+        },
+        "required_context_ids": ["debug", "release"],
+        "optional_context_ids": ["experimental"],
+        "contexts": [],
+        "consumer_assurance": "not_assessed",
+    }
     monkeypatch.setattr(
         workflows,
         "read_documents",
         lambda _: {
             "maintenance_health": [
+                health,
                 {
-                    "aggregate": {"overall": 90},
-                    "scorer": {"id": "test-method"},
-                    "consumer_assurance": "not_assessed",
-                }
+                    **health,
+                    "required_context_ids": ["debug"],
+                    "aggregate": {"overall": 100},
+                },
             ]
         },
     )
@@ -68,7 +81,9 @@ def test_maintenance_dispatches_explicit_scope(
     assert received["required_context_ids"] == ["debug", "release"]
     assert received["optional_context_ids"] == ["experimental"]
     assert received["allow_inferred_parse"] is False
-    assert '"run_id": "derived"' in capsys.readouterr().out
+    output = capsys.readouterr().out
+    assert '"run_id": "derived"' in output
+    assert '"overall": 90' in output
 
 
 def test_missing_required_context_cli_publishes_explicit_incomplete_result(

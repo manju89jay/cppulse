@@ -1,0 +1,29 @@
+{
+  "actual_execution_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "criterion": "FR-EVD-07",
+  "dependency_readback_for_each_source_change": {
+    "docs/DECISIONS.md": "Append-only decision narration. No executions read it.",
+    "docs/plans/production-scope-authority.md": "Append-only governance inventory. No executions read it.",
+    "tests/test_pipeline_failures.py": "The adjusted test concerns a later supplemental pytest control. This semantic receipt ran the exact selected executable observers. Neither imports this test or depends on supplemental aggregate bank success. The original exclusion and any later distinct control outcomes remain explicitly identified."
+  },
+  "external_attestation_roles": [
+    "Exact da3 wheel, installed console/payload, and candidate manifest are retained in custody. The installed artifact binds the required runtime and the wheel RECORD independently.",
+    "Actual GCC/GNU linker, CMake/CTest, Runtime Docker image and kernel denial helper are attested tools. Raw compiler/test/denial receipts, compiled binaries and per-artifact snapshot bytes remain in custody.",
+    "The external attestation has equal before and after checked runtime inventories and the complete run-specific direct pin map. The included source text preserves the exact observer and declared fixture, with original receiver paths. Replaying requires the matching external tool/receiver setup."
+  ],
+  "original_direct_file_pins": 1756,
+  "original_direct_preregistration_sha256": "aaf3a7f7b30c953875149b2c4de75b365afd004cb4b0fdea138e094cf3829e96",
+  "original_runtime_pre_post_receipt_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+  "original_unchanged_job_record_sha256": "edfa4ecfc5a23202a995d4d3ff2fe2ada0d633bf052ba15e561cdb06c58f1773",
+  "original_whole_review_sha256": "e72c38be1660f4d7c79e5e5d8f9157f39cebb740776efd0f5db259d9f518f394",
+  "projection_log_sha256": "06a782448f7b9a51831df664d1bbfbf84c6919eb88534bb5d4cb0b7406154a94",
+  "public_product_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "scope_of_current_inputs": "Exact selected executed observer and fixture sources, and the conservative tracked closure of applicable package/source inputs. Original extra attic and runtime inputs remain bound in the complete private freeze and job record. The mutable ledger, its review pointer, and the proof itself are outside this acyclic hash set.",
+  "selected_raw_catalog_hashes": {
+    "collection-request.json": "377fb2435280349fa138cf6d161f2f5f9e14d548bbce3caf0daf7edd4ec3d04e",
+    "network-denial.json": "9de5a9d72820a0f5f4f6d3144b0104fb2938375dafc6c783fa2977fb5125316b",
+    "qualification.json": "c0815d9d496166ebaf32b7d91d46445a81b23d6b6b3c8b963be95d20bd15c902",
+    "subject.json": "5b315dbbf3be6885853abe3bd9c8b298598c8e4c4e790f61337c751871ec41c0",
+    "usages.json": "8f5b328151cbefe4fec8c9b03790867be3662a972800dc470fb863ba6bcdda2e"
+  }
+}

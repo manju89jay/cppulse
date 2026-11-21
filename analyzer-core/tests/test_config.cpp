@@ -5,12 +5,11 @@
 
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <filesystem>
 #include <fstream>
 
 #include "config.h"
+#include "test_temp_directory.h"
 
 namespace {
 

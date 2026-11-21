@@ -1,4 +1,5 @@
 """Exact imported counter semantics; fixtures prove no execution provenance."""
+
 from __future__ import annotations
 
 import hashlib

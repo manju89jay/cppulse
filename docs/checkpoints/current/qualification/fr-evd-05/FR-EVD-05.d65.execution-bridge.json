@@ -1,0 +1,108 @@
+{
+  "boundary_roles": "The criterion executed with the separately identified 1e artifact. The shared 4cf/db15 to d65 witness fixes the common receiving endpoint. The exact 1e to d65 source and wheel deltas are recorded in this bridge.",
+  "criterion": "FR-EVD-05",
+  "dependency_influence": "Collection and check use the unchanged collection, workflow, policy, import, and store code. Exactly two report commands select the same pinned mixed manifest with no roadmap artifact. All seven manifests have that property. The selected generate_report function is byte-identical across both trees. Neither legacy analyze definition, Git mining, nor roadmap generation is called. No CI/Docker build, changed source test, or governance document participates.",
+  "executed_review": {
+    "sha256": "d0b30fb6c174a8afd97daec2d29d1e654144d3a43be241ef4fc85a7779f2db8a",
+    "size_bytes": 82559
+  },
+  "execution_and_receiving_artifact_identities": {
+    "changed_repo_paths_and_roles": {
+      ".dockerignore": "Root container build context selection.",
+      ".github/workflows/ci.yml": "Hosted workflow tool selection.",
+      "analyzer-core/Dockerfile": "Analyzer container build layout.",
+      "analyzer-core/Dockerfile.dockerignore": "Analyzer build-context allowlist.",
+      "docker-compose.yml": "Container composition and image build wiring.",
+      "docs/DECISIONS.md": "Decision-history entries.",
+      "docs/plans/production-scope-authority.md": "Decision index and maintenance authority.",
+      "python/cppulse/git_miner/main.py": "The retained-history disclosure is emitted only for configured windows.",
+      "python/cppulse/pipeline.py": "Legacy analyze makes descriptive completion explicit and pins the imported run.",
+      "python/cppulse/predictor/roadmap_generator.py": "Break equal-impact roadmap ordering by file and category.",
+      "tests/test_cli_exit_contract.py": "Legacy analyze and CLI exit-regression tests.",
+      "tests/test_git_behavior.py": "History-disclosure regression.",
+      "tests/test_pipeline_failures.py": "Pipeline failure-regression assertions.",
+      "tests/test_roadmap_order.py": "Direct deterministic roadmap regression."
+    },
+    "console_installation": {
+      "difference": "Only the installation-specific interpreter line differs.",
+      "new": {
+        "sha256": "47f72f5823c11a0283f6a530bdfab1ef0483576e30a4e415f1e99ab7df0657aa",
+        "size_bytes": 240
+      },
+      "old": {
+        "sha256": "e19f78c8940c2d1b75e06e4773d9dd72cee64e61a15d3cabddb98c4a813bccc2",
+        "size_bytes": 253
+      }
+    },
+    "executed_install_receipt": {
+      "sha256": "e6ffdd76a737b04b420a04711ece9d698c62bc34755c4e825ce47900a4190b29",
+      "size_bytes": 40971
+    },
+    "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+    "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+    "pipeline_changed_definitions": [
+      "_legacy_analysis_completed",
+      "analyze"
+    ],
+    "receiving_install_receipt": {
+      "sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+      "size_bytes": 83803
+    },
+    "receiving_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "receiving_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+    "selected_generate_report_function_sha256": "13b99e6abe76e09b8a4275354985493763a9fddb28919d4e8589cb858b0e8824",
+    "wheel_body_diff": {
+      "cppulse-0.2.0.dev2.dist-info/RECORD": {
+        "executed_sha256": "1a35ca58d6f30b78a0e11dfdc959cac846b898e0c6078cfcc01a75532f9cf06e",
+        "receiving_sha256": "dde3816b5454a2de9a9dbd0959111811c1ccc438caf9b611357352c6e3cf462b"
+      },
+      "cppulse/git_miner/main.py": {
+        "executed_sha256": "985dfc989de04ff333752a53498968aa60568d3ec14df6af8f83ebb80fedc129",
+        "receiving_sha256": "f2bc9aaee4fdf2ceedcf981890a7393d8b65c91e4287ca53075abe5ca7695827"
+      },
+      "cppulse/pipeline.py": {
+        "executed_sha256": "ef4c0d3871a4ad325465e54210b1cbdb57467bf0925b8410c7e77d7240e746e0",
+        "receiving_sha256": "5dc3df4a77a2460a1fce8a72a69142fff80ba5471f7ddb04da3efb464c84649b"
+      },
+      "cppulse/predictor/roadmap_generator.py": {
+        "executed_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089",
+        "receiving_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+      }
+    },
+    "wheel_entry_count": 248
+  },
+  "kind": "Exact source and artifact dependency bridge for owner review",
+  "native_tool_and_fixture_custody": "Exact compiler, CTest, kernel denial, first-trial workspace, ELF, JUnit, immutable stores, and full review remain in private custody. The C++ fixture and the original 12 test cases are tracked source.",
+  "observed_projection_log_sha256": "cb8c70928317bd7da0998f9ed40644a00f0d02392bf6c9042706b620d39ab24f",
+  "original_draft_identity": {
+    "bridge": {
+      "sha256": "3f37072ae5ec26808baa0784651dd3e0aedd7f8b4e5f1f97fb60d5cb37188c95",
+      "size_bytes": 5888
+    },
+    "log": {
+      "sha256": "e47ae3c1a0a30c57370615d556bf22d5b623bcd9fdf9ddd52a2448fe437bcf32",
+      "size_bytes": 13626
+    },
+    "proof": {
+      "sha256": "d383b40aec1545101c4b40ed8f64114044ad261de19893360fc2408adfb755ef",
+      "size_bytes": 14035
+    }
+  },
+  "raw_mixed_qualification": {
+    "sha256": "f34a535a57c4de8f6ad34c8d5d01e38b4c466d9c6143f7638244e0dccd6072fa",
+    "size_bytes": 4956
+  },
+  "retained_native_elf_sha256": "80639b3a00b1dd5dcfded7f8a2508191ebe925f2e1dd4d141620ecaa4bb3f898",
+  "same_receiving_boundary_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "seven_retained_manifest_sha256": {
+    "06a9ee682ec7455d998fa13bce957458": "9a63c719a460899b15ea5a840cddc7af138344d73aebe33d8e29a3ca9f3792fc",
+    "312c80a9166742fa9062e196803a8dbd": "f772e919f30160f2b9eefe912e0887b0cefdc644982fc26a110b897769a2ee53",
+    "4df2698508fd44d1adc5d7ef010a7a7c": "9488ef1ce44c6aea273de3981e53156cf893a3168d3216b88cb2a6e2c90f70b2",
+    "e872b2ebe1f74132941187c689bfe960": "14111e0d42ad129553f17a15a183e72de3ea67ea287106c53d2c536e3d5d1b5c",
+    "f72f99ef56714497b15e7ec8ee116ac7": "67e1e2285f21c1792769fa4ec40c1179652525f44f990aa57ed3d0811197084a",
+    "f8827392820e452799d4c0253a110f02": "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+    "ff8fcc5438ac4c12946bb3851ad1cefe": "7d9b403f57b8207becc346669da8c11fc6a5c11423537ff0ca9701bf481b2f8e"
+  },
+  "source_selection": "All 242 receiving package namespace modules, schemas and report templates, including snapshot.css. The first-trial fixture, pytest.ini, the two direct test files and thirteen confirmed transitive test imports are bound to their unchanged actual source bytes. The three changed receiving Python files are pinned as compatibility inputs and their prior bytes remain in the original guard.",
+  "supplementary_transport_origin": "The primary observer asserted the earlier installed package origin. It ran the tracked Python fixture preparation script and six installed CLI commands. Twelve supplementary transport pytest cases passed with zero skipped. The checkout pytest.ini prepended the checkout and its python directory to the launcher Python path, and that separate process has no origin assertion. The twelve outcomes are selected transport results."
+}

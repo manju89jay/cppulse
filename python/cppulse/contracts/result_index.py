@@ -3,6 +3,7 @@
 These checks do not read a store, build an index or validate any source report.
 The public paging and transactional producer gates remain separate.
 """
+
 from __future__ import annotations
 
 import json

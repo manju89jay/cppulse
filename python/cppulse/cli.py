@@ -134,7 +134,9 @@ def _rule_option_overrides(values: list[str]) -> dict:
             identifier, option = name.rsplit(".", 1)
             result.setdefault(identifier, {})[option] = json.loads(encoded)
         except (ValueError, TypeError) as error:
-            raise ContractError("Rule override requires ID.OPTION=JSON: " + value) from error
+            raise ContractError(
+                "Rule override requires ID.OPTION=JSON: " + value
+            ) from error
     return result
 
 
@@ -142,9 +144,16 @@ def _analysis_options(command: argparse.ArgumentParser) -> None:
     command.add_argument("--repo", type=Path, required=True)
     command.add_argument("--output", type=Path, default=Path("output"))
     command.add_argument("--config", type=Path)
-    command.add_argument("--ruleset", type=Path, help="Select a local data-only JSON ruleset pack")
-    command.add_argument("--rule-option", action="append", default=[], metavar="ID.OPTION=JSON",
-                         help="Override a supported native detector option; last repeated value wins")
+    command.add_argument(
+        "--ruleset", type=Path, help="Select a local data-only JSON ruleset pack"
+    )
+    command.add_argument(
+        "--rule-option",
+        action="append",
+        default=[],
+        metavar="ID.OPTION=JSON",
+        help="Override a supported native detector option; last repeated value wins",
+    )
     command.add_argument("--profile", choices=["default", "safety-critical"])
     command.add_argument("--compilation-database", type=Path)
     command.add_argument(
@@ -265,8 +274,11 @@ def _parser() -> argparse.ArgumentParser:
         "config", help="Print effective settings without running analysis"
     )
     _analysis_options(config)
-    config.add_argument("--native-output", type=Path,
-                        help="Write native-compatible settings and a retained identity sidecar; refuse existing files")
+    config.add_argument(
+        "--native-output",
+        type=Path,
+        help="Write native-compatible settings and a retained identity sidecar; refuse existing files",
+    )
     for name in ("analyze", "watch"):
         command = subcommands.add_parser(name)
         _analysis_options(command)
@@ -291,7 +303,11 @@ def _parser() -> argparse.ArgumentParser:
     capture.add_argument("--request", type=Path, required=True)
     capture.add_argument("--workspace", type=Path, required=True)
     capture.add_argument("--store", type=Path, required=True)
-    capture.add_argument("--ruleset", type=Path, help="Require the explicit recipe to match this local pack")
+    capture.add_argument(
+        "--ruleset",
+        type=Path,
+        help="Require the explicit recipe to match this local pack",
+    )
     assess = subcommands.add_parser(
         "assess", help="Assess retained current material; execute no project commands"
     )
@@ -570,7 +586,9 @@ def _new_command(args: argparse.Namespace) -> tuple[dict[str, Any] | None, int]:
                 selected_pack = args.ruleset.resolve(strict=True)
                 workspace = args.workspace.resolve(strict=True)
                 if not selected_pack.is_relative_to(workspace):
-                    raise ContractError("Collection ruleset must be inside its declared workspace")
+                    raise ContractError(
+                        "Collection ruleset must be inside its declared workspace"
+                    )
                 request["ruleset"] = selected_pack.relative_to(workspace).as_posix()
             with _cancellation() as token:
                 result = collect_request(
@@ -977,9 +995,13 @@ def main(argv: list[str] | None = None) -> int:
                 result = config.as_dict()
                 if args.native_output is not None:
                     native_path = args.native_output
-                    identity_path = native_path.with_name(native_path.name + ".identity.json")
+                    identity_path = native_path.with_name(
+                        native_path.name + ".identity.json"
+                    )
                     if native_path.exists() or identity_path.exists():
-                        raise ContractError("Native settings/identity output already exists")
+                        raise ContractError(
+                            "Native settings/identity output already exists"
+                        )
                     native_path.parent.mkdir(parents=True, exist_ok=True)
                     with native_path.open("x") as stream:
                         json.dump(config.settings, stream, indent=2)

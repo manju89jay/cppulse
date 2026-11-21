@@ -1,4 +1,5 @@
 """Native byte streaming preserves the existing pure transformation contract."""
+
 from dataclasses import asdict
 from copy import deepcopy
 import importlib.util

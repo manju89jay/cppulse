@@ -1,4 +1,5 @@
 """Closed native objects cannot hide discarded fields or present-empty prefixes."""
+
 import hashlib
 import io
 

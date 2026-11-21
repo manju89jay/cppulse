@@ -906,9 +906,7 @@ def main() -> None:
         phase=(
             "collection"
             if args.collect_only
-            else "normalization"
-            if args.normalize_only
-            else "assessment"
+            else "normalization" if args.normalize_only else "assessment"
         ),
         tools=json.loads((batch / "tools.json").read_bytes()),
         selected_job_contexts={"native": NATIVE_JOB, "build_tests": BUILD_JOB},

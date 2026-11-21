@@ -1,4 +1,5 @@
 """Projection records are provisional until a single verified completion."""
+
 from dataclasses import replace
 import hashlib
 import io

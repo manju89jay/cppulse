@@ -36,8 +36,11 @@ def validate_native(settings: dict[str, Any]) -> None:
     """Validate native options against the existing registry capabilities."""
     from cppulse.config import _validate_project_settings
 
-    schema = json.loads(resources.files("cppulse").joinpath(
-        "data/project_config.schema.json").read_bytes())
+    schema = json.loads(
+        resources.files("cppulse")
+        .joinpath("data/project_config.schema.json")
+        .read_bytes()
+    )
     _validate_project_settings(settings, schema)
     rules = {r["id"]: r for r in load_rule_registry()["rules"]}
     unknown = set(settings.get("rules", {})) - rules.keys()
@@ -45,9 +48,13 @@ def validate_native(settings: dict[str, Any]) -> None:
         raise ValueError("Unknown rule IDs: " + ", ".join(sorted(unknown)))
     for identifier, options in settings.get("rules", {}).items():
         try:
-            _validate_project_settings(options, rules[identifier]["configuration_schema"])
+            _validate_project_settings(
+                options, rules[identifier]["configuration_schema"]
+            )
         except jsonschema.ValidationError as error:
-            raise ValueError(f"Unsupported configuration for {identifier}: {error.message}") from error
+            raise ValueError(
+                f"Unsupported configuration for {identifier}: {error.message}"
+            ) from error
 
 
 def merge_native(base: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
@@ -89,8 +96,9 @@ def resolve_ruleset(path: Path) -> ResolvedRuleset:
     from cppulse import __version__
     from cppulse.config import _validate_project_settings
 
-    schema = json.loads(resources.files("cppulse").joinpath(
-        "data/ruleset.schema.json").read_bytes())
+    schema = json.loads(
+        resources.files("cppulse").joinpath("data/ruleset.schema.json").read_bytes()
+    )
     registry = load_rule_registry()
     rule_ids = {r["id"] for r in registry["rules"]}
     native: dict[str, Any] = {}
@@ -108,7 +116,10 @@ def resolve_ruleset(path: Path) -> ResolvedRuleset:
             raise ValueError("Ruleset inherits accepts local file paths only")
         selected = selected.resolve(strict=True)
         if selected in stack:
-            raise ValueError("Ruleset inheritance cycle: " + " -> ".join(map(str, [*stack, selected])))
+            raise ValueError(
+                "Ruleset inheritance cycle: "
+                + " -> ".join(map(str, [*stack, selected]))
+            )
         if selected in seen:
             return
         if len(stack) >= MAX_DEPTH or len(seen) + len(stack) >= MAX_PACKS:
@@ -141,9 +152,14 @@ def resolve_ruleset(path: Path) -> ResolvedRuleset:
         if "select" in supplied:
             chosen = set(supplied.pop("select"))
             if chosen - rule_ids:
-                raise ValueError("Unknown selected native rule IDs: " + ", ".join(sorted(chosen - rule_ids)))
-            native = merge_native(native, {"rules": {
-                r: {"enabled": r in chosen} for r in sorted(rule_ids)}})
+                raise ValueError(
+                    "Unknown selected native rule IDs: "
+                    + ", ".join(sorted(chosen - rule_ids))
+                )
+            native = merge_native(
+                native,
+                {"rules": {r: {"enabled": r in chosen} for r in sorted(rule_ids)}},
+            )
             for r in rule_ids:
                 origins[f"native.rules.{r}.enabled"] = str(selected) + "#native.select"
         validate_native(supplied)
@@ -153,42 +169,81 @@ def resolve_ruleset(path: Path) -> ResolvedRuleset:
         for provider, value in document.get("providers", {}).items():
             for name in value["scope_files"]:
                 p = PurePosixPath(name)
-                if p.is_absolute() or p.as_posix() != name or ".." in p.parts or "\\" in name or ":" in name or "\0" in name:
-                    raise ValueError("Provider scope_files requires literal relative POSIX files")
+                if (
+                    p.is_absolute()
+                    or p.as_posix() != name
+                    or ".." in p.parts
+                    or "\\" in name
+                    or ":" in name
+                    or "\0" in name
+                ):
+                    raise ValueError(
+                        "Provider scope_files requires literal relative POSIX files"
+                    )
             # A provider declaration is an atomic versioned scope and check set.
             providers[provider] = deepcopy(value)
             for key in _leaves(value, "providers." + provider + "."):
                 origins[key] = str(selected)
-        records.append({"path": str(selected), "name": named[0],
-                        "version": named[1], "format_version": document["format_version"],
-                        "sha256": digest, "raw_json": raw.decode("utf-8")})
+        records.append(
+            {
+                "path": str(selected),
+                "name": named[0],
+                "version": named[1],
+                "format_version": document["format_version"],
+                "sha256": digest,
+                "raw_json": raw.decode("utf-8"),
+            }
+        )
         seen.add(selected)
 
     try:
         visit(path)
-    except (OSError, ValueError, TypeError, jsonschema.ValidationError, RecursionError) as error:
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        jsonschema.ValidationError,
+        RecursionError,
+    ) as error:
         raise ContractError(f"Invalid ruleset {path}: {error}") from error
     preset_native: dict[str, Any] = {}
     preset_origins: dict[str, str] = {}
     for filename, preset in preset_layers:
-        preset_native = {"rules": {r: {"enabled": preset == "all-native"} for r in sorted(rule_ids)}}
+        preset_native = {
+            "rules": {r: {"enabled": preset == "all-native"} for r in sorted(rule_ids)}
+        }
         for identifier in rule_ids:
-            preset_origins[f"native.rules.{identifier}.enabled"] = filename + "#preset=" + preset
+            preset_origins[f"native.rules.{identifier}.enabled"] = (
+                filename + "#preset=" + preset
+            )
     native = merge_native(preset_native, native)
     origins = {**preset_origins, **origins}
     identity = {
-        "format_version": "1.0.0", "tool_version": __version__,
+        "format_version": "1.0.0",
+        "tool_version": __version__,
         "registry_format_version": registry["version"],
         "registry_sha256": digest_json(registry),
-        "native_rule_versions": {r["id"]: r.get("rule_version", r.get("version")) for r in registry["rules"]},
-        "native_defaults": {r["id"]: {k: v["default"] for k, v in r["configuration_schema"]["properties"].items()
-                                        if "default" in v} for r in registry["rules"]},
-        "packs": records, "origins": origins,
-        "native": deepcopy(native), "providers": deepcopy(providers),
+        "native_rule_versions": {
+            r["id"]: r.get("rule_version", r.get("version")) for r in registry["rules"]
+        },
+        "native_defaults": {
+            r["id"]: {
+                k: v["default"]
+                for k, v in r["configuration_schema"]["properties"].items()
+                if "default" in v
+            }
+            for r in registry["rules"]
+        },
+        "packs": records,
+        "origins": origins,
+        "native": deepcopy(native),
+        "providers": deepcopy(providers),
     }
     for identifier, options in identity["native_defaults"].items():
         for option in options:
-            origins.setdefault(f"native.rules.{identifier}.{option}", "registry-default")
+            origins.setdefault(
+                f"native.rules.{identifier}.{option}", "registry-default"
+            )
     identity["digest"] = digest_json(identity)
     return ResolvedRuleset(native, providers, identity)
 
@@ -205,11 +260,15 @@ def clang_tidy_arguments(provider: dict[str, Any]) -> list[str]:
     for identifier, check in sorted(checks.items()):
         for name, value in check.get("options", {}).items():
             options[identifier + "." + name] = (
-                ";".join(value) if isinstance(value, list)
+                ";".join(value)
+                if isinstance(value, list)
                 else "true" if value is True else "false"
             )
-    return ["--checks=" + ",".join(["-*", *selected]),
-            "--config=" + json.dumps({"CheckOptions": options}, sort_keys=True, separators=(",", ":"))]
+    return [
+        "--checks=" + ",".join(["-*", *selected]),
+        "--config="
+        + json.dumps({"CheckOptions": options}, sort_keys=True, separators=(",", ":")),
+    ]
 
 
 def bind_collection_ruleset(request: dict[str, Any], workspace: Path) -> dict[str, Any]:
@@ -219,7 +278,9 @@ def bind_collection_ruleset(request: dict[str, Any], workspace: Path) -> dict[st
     ordinary source verification, receipts and import semantics remain intact.
     """
     if "resolved_ruleset" in request:
-        raise ContractError("resolved_ruleset is collector-generated; declare ruleset instead")
+        raise ContractError(
+            "resolved_ruleset is collector-generated; declare ruleset instead"
+        )
     if "ruleset" not in request:
         return request
     root = workspace.resolve(strict=True)
@@ -230,15 +291,27 @@ def bind_collection_ruleset(request: dict[str, Any], workspace: Path) -> dict[st
     selected = set(request["source"]["files"])
     for row in resolved.identity["packs"]:
         source = Path(row["path"])
-        if not source.is_relative_to(root) or source.relative_to(root).as_posix() not in selected:
-            raise ContractError("Every inherited pack must be an explicitly declared source input")
+        if (
+            not source.is_relative_to(root)
+            or source.relative_to(root).as_posix() not in selected
+        ):
+            raise ContractError(
+                "Every inherited pack must be an explicitly declared source input"
+            )
     provider = resolved.providers.get("clang-tidy")
     if provider is None:
-        raise ContractError("Collection ruleset needs an explicit supported provider declaration")
-    imports = [n for n in request["normalizers"] if n["kind"] == "external_import"
-               and n["adapter"] == "clang-tidy-text"]
+        raise ContractError(
+            "Collection ruleset needs an explicit supported provider declaration"
+        )
+    imports = [
+        n
+        for n in request["normalizers"]
+        if n["kind"] == "external_import" and n["adapter"] == "clang-tidy-text"
+    ]
     if not imports:
-        raise ContractError("Collection ruleset requires a clang-tidy-text external_import role")
+        raise ContractError(
+            "Collection ruleset requires a clang-tidy-text external_import role"
+        )
     steps = {s["id"]: s for s in request["plan"]["recipe"]["steps"]}
     expected_args = clang_tidy_arguments(provider)
     for item in imports:
@@ -247,20 +320,41 @@ def bind_collection_ruleset(request: dict[str, Any], workspace: Path) -> dict[st
         if set(item["scope_files"]) != set(provider["scope_files"]):
             raise ContractError("Declared provider scope does not match the ruleset")
         argv = steps[item["report"]["step_id"]]["argv"]
-        front = argv[:argv.index("--")] if "--" in argv else argv
+        front = argv[: argv.index("--")] if "--" in argv else argv
         if any(a.startswith("@") for a in front):
-            raise ContractError("Provider response files are outside this explicit finite settings contract")
+            raise ContractError(
+                "Provider response files are outside this explicit finite settings contract"
+            )
         for flag in ("--checks", "--config"):
             supplied = [a for a in front if a == flag or a.startswith(flag + "=")]
             expected = next(a for a in expected_args if a.startswith(flag + "="))
             if supplied != [expected]:
-                raise ContractError("Explicit recipe must contain exactly the resolved " + flag + " argument")
-        if any(a.startswith(("--config-file", "-config", "-checks", "--load", "-load", "--checks-file")) for a in front):
-            raise ContractError("Recipe has a competing provider configuration/plugin argument")
+                raise ContractError(
+                    "Explicit recipe must contain exactly the resolved "
+                    + flag
+                    + " argument"
+                )
+        if any(
+            a.startswith(
+                (
+                    "--config-file",
+                    "-config",
+                    "-checks",
+                    "--load",
+                    "-load",
+                    "--checks-file",
+                )
+            )
+            for a in front
+        ):
+            raise ContractError(
+                "Recipe has a competing provider configuration/plugin argument"
+            )
     result = deepcopy(request)
     result["resolved_ruleset"] = resolved.identity
     result["resolved_ruleset"]["provider_arguments"] = {"clang-tidy": expected_args}
     # This is retained declarative configuration, not a producer authentication.
-    result["resolved_ruleset"]["digest"] = digest_json({
-        k: v for k, v in result["resolved_ruleset"].items() if k != "digest"})
+    result["resolved_ruleset"]["digest"] = digest_json(
+        {k: v for k, v in result["resolved_ruleset"].items() if k != "digest"}
+    )
     return result

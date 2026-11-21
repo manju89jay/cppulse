@@ -1,4 +1,5 @@
 """Producer-to-contract checks with actual nanosecond filesystem metadata."""
+
 import os
 from pathlib import Path
 import pytest

@@ -18,13 +18,20 @@ def component_priority() -> dict:
         "behavior_configuration_digest": "a" * 64,
         "behavior_input_digest": "b" * 64,
         "history_status": "available",
-        "components": [{
-            "id": "api", "files": ["src/a.cpp"],
-            "measured_files": [{"file": "src/a.cpp", "score": 0}],
-            "unavailable_files": [], "availability": "available",
-            "score": 0, "observed_score": 0,
-        }],
-        "limitations": ["Heuristic priority; historical co-change is not a static dependency."],
+        "components": [
+            {
+                "id": "api",
+                "files": ["src/a.cpp"],
+                "measured_files": [{"file": "src/a.cpp", "score": 0}],
+                "unavailable_files": [],
+                "availability": "available",
+                "score": 0,
+                "observed_score": 0,
+            }
+        ],
+        "limitations": [
+            "Heuristic priority; historical co-change is not a static dependency."
+        ],
     }
 
 
@@ -35,8 +42,12 @@ def test_v2_component_zero_is_measured_and_round_trips() -> None:
     assert read_risk_scores(risk)["component_hotspots"] == component_priority()
 
 
-@pytest.mark.parametrize("change", ["sum", "missing", "duplicate", "outside", "overlap"])
-def test_component_contract_rejects_inconsistent_or_out_of_scope_claims(change: str) -> None:
+@pytest.mark.parametrize(
+    "change", ["sum", "missing", "duplicate", "outside", "overlap"]
+)
+def test_component_contract_rejects_inconsistent_or_out_of_scope_claims(
+    change: str,
+) -> None:
     risk = read_risk_scores(legacy_risk())
     value = component_priority()
     row = value["components"][0]
@@ -101,9 +112,7 @@ def test_finite_members_with_overflowing_sum_are_invalid_contract_evidence() -> 
     value = component_priority()
     row = value["components"][0]
     row["files"].append("src/b.cpp")
-    row["measured_files"] = [
-        {"file": name, "score": 1e308} for name in row["files"]
-    ]
+    row["measured_files"] = [{"file": name, "score": 1e308} for name in row["files"]]
     row.update(score=1e308, observed_score=1e308)
     risk["component_hotspots"] = value
     with pytest.raises(ContractError):
@@ -125,7 +134,9 @@ def test_excluded_component_member_stays_outside_attempted_ranking_scope() -> No
 
 
 @pytest.mark.parametrize("change", ["ranked", "measured", "unmapped"])
-def test_excluded_members_cannot_inflate_scores_or_escape_component_mapping(change: str) -> None:
+def test_excluded_members_cannot_inflate_scores_or_escape_component_mapping(
+    change: str,
+) -> None:
     risk = read_risk_scores(legacy_risk())
     value = component_priority()
     value["excluded_files"] = ["src/a.cpp" if change != "unmapped" else "src/b.cpp"]

@@ -3,6 +3,7 @@
 Completion certifies structural/number/byte checks only. Consumers still need a
 transaction plus their own report schema, aggregate and provenance checks.
 """
+
 from __future__ import annotations
 
 from contextlib import closing

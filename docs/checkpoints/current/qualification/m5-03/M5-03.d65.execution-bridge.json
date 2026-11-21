@@ -1,0 +1,260 @@
+{
+  "complete_private_custody": {
+    "genuine_raw_and_derived_receipts": {
+      "asan-all-skipped": {
+        "original_direct_assertion_receipt": {
+          "sha256": "cc5e431c842bb8eab03ea05c7092b6e3ffbc5139b81db2ba25fffc11c8cc1610",
+          "size_bytes": 465
+        },
+        "raw_role_observer": {
+          "sha256": "feacfe7916a6c633046d55dfe84469c049d52c8781c7ab993acd031cbb963115",
+          "size_bytes": 4052
+        },
+        "selected_phase_receipt": {
+          "sha256": "d76f93b6b7df52c017914bb2f5c1330435fdeb6d8c09e28f503a7cfb744363f1",
+          "size_bytes": 11605
+        }
+      },
+      "asan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "5ee09c22c709878baea92bc2ecad4cb87f02b309475b02e4264031fd09236c1c",
+          "size_bytes": 447
+        },
+        "raw_role_observer": {
+          "sha256": "d93d0e9446a9d9791e4fd9abdb5d9eeafa62366843426365bc4c1f4ea10679bd",
+          "size_bytes": 4072
+        },
+        "selected_phase_receipt": {
+          "sha256": "ba823ac3b4c10504516a2422f70206ce1f75d2fd3130c93336f6ec85fbeba553",
+          "size_bytes": 13863
+        }
+      },
+      "asan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "1ecf4941ce98fde424cf56332148505709e6b6ebbb3efaefa3d6d70a6d4d8db8",
+          "size_bytes": 449
+        },
+        "raw_role_observer": {
+          "sha256": "4ae5419a05d063bd43f49668a97e86d9a7ed896c55be32d158d979481cad5958",
+          "size_bytes": 4046
+        },
+        "selected_phase_receipt": {
+          "sha256": "a2d27ba103b8d1f54da75bc01350503c54c8367edf53410ebb6b1bc95b6bbc25",
+          "size_bytes": 13235
+        }
+      },
+      "asan-plain-object": {
+        "original_direct_assertion_receipt": {
+          "sha256": "8c5becd7e2d076611051bd17b165177bb2c0269b3f46356a73fae0aaa9156db8",
+          "size_bytes": 466
+        },
+        "raw_role_observer": {
+          "sha256": "2495a3e2dd8abfe6ae2d204ed659a099ccd12785db142ecffe2b6712b70cc4dd",
+          "size_bytes": 4053
+        },
+        "selected_phase_receipt": {
+          "sha256": "5abc3a9c182f6f122d7da29505a4f48e062e67fa401eb242613b2c77559c41e3",
+          "size_bytes": 12420
+        }
+      },
+      "asan-prebuilt-gap": {
+        "original_direct_assertion_receipt": {
+          "sha256": "495e4ef16fff97e3849aa2a95291c7fa2b1dddd9c87fcc91fdb753498965842a",
+          "size_bytes": 466
+        },
+        "raw_role_observer": {
+          "sha256": "03365413daf4202daec43206a51501ee9c79f4106e09b3f29b8571b560878926",
+          "size_bytes": 4061
+        },
+        "selected_phase_receipt": {
+          "sha256": "16092105a110eaf56ce79716b6c9acec0034427d52ab2a38821adf927c79f06d",
+          "size_bytes": 14219
+        }
+      },
+      "asan-prebuilt-gap-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "cf1cea7196bb3547c9acf4d925197f652ac19963c79008d93548456a5e33aa38",
+          "size_bytes": 459
+        },
+        "raw_role_observer": {
+          "sha256": "da13c4c1ade1cbb2e5a6e10e6750d45240282d565a73c2063cad89d88fd70292",
+          "size_bytes": 4093
+        },
+        "selected_phase_receipt": {
+          "sha256": "6448e163bc8acb1abc463bf498f9935ac0c47c302e0de614996a67aa192d46c8",
+          "size_bytes": 14974
+        }
+      },
+      "asan-substituted-binary": {
+        "original_direct_assertion_receipt": {
+          "sha256": "f991ebaeb4a55dd476f19d40612091beab80650ecd58691c21668d0860e3ffab",
+          "size_bytes": 472
+        },
+        "raw_role_observer": {
+          "sha256": "46dfe3995fadfbbfabafd5f24c86064d99137fcba0c2ed1548cf590c71bf412a",
+          "size_bytes": 4073
+        },
+        "selected_phase_receipt": {
+          "sha256": "8c2949b441eb25109107e8075f2d2b0457b09d249cc09fb0d2403454b3f9158c",
+          "size_bytes": 11742
+        }
+      },
+      "asan-zero-tests": {
+        "original_direct_assertion_receipt": {
+          "sha256": "d0d8957134bb49e038f8c7ba2d6159584af381fa3d730eaf9bc4f6cd7c3b9047",
+          "size_bytes": 464
+        },
+        "raw_role_observer": {
+          "sha256": "436cc64abc222ef62b9edad3b2c254ecf5d6a1007e35787932d3eee69bd876e4",
+          "size_bytes": 4051
+        },
+        "selected_phase_receipt": {
+          "sha256": "f65d0b7c46570b132115324397cccfbb4b30698456153a9442b95ead48264468",
+          "size_bytes": 11587
+        }
+      },
+      "tsan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "b05f0c4daa0fe7d72aa8f0dcff56f327a62372459f8f3fd1bc96a5b86246dde9",
+          "size_bytes": 447
+        },
+        "raw_role_observer": {
+          "sha256": "738ee57802ad8437da754959228a748cff368c53c750bd9717e092476cc3b26e",
+          "size_bytes": 4074
+        },
+        "selected_phase_receipt": {
+          "sha256": "286fd1208c573f5fc902a3e7beacf4f80a513edb2040a00d1a45fb5704ca669a",
+          "size_bytes": 13767
+        }
+      },
+      "tsan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "84ce679822e6d2ebbee7b893eab0594fc8a32735f975a353ec5ed096de4135b6",
+          "size_bytes": 449
+        },
+        "raw_role_observer": {
+          "sha256": "62336d252174d64cf1c9d4b8e2d109186e6e51095a60ba4b10bd867d7fb618ef",
+          "size_bytes": 4048
+        },
+        "selected_phase_receipt": {
+          "sha256": "0d47662e2db26e9107eb1c570df26cfcc8dfe36e0091524d97df668c0998cdfd",
+          "size_bytes": 13261
+        }
+      },
+      "ubsan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "966a667285a923cbc85b3ed01b6ea2ead3a8e9d60d11dcac630e729aa2851564",
+          "size_bytes": 448
+        },
+        "raw_role_observer": {
+          "sha256": "c544df9847b91543a9c45b100bdd2cad69182658ffb7c8a6713ae601b5763cc4",
+          "size_bytes": 4047
+        },
+        "selected_phase_receipt": {
+          "sha256": "2bfeb25113ae8ab6da7aadc2b064a2d2e8e3b13cd2379e1c9b500b031e9be217",
+          "size_bytes": 13845
+        }
+      },
+      "ubsan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "a44fee900ed6c2ba50dd6359f9790561e644929db61553e613b1b1ce09befc83",
+          "size_bytes": 450
+        },
+        "raw_role_observer": {
+          "sha256": "9557e865880040fcf7f5236b5957b49a1b2bf9c8141322faf6844f837d6f4304",
+          "size_bytes": 4049
+        },
+        "selected_phase_receipt": {
+          "sha256": "ede75693fb28ab991ae9ef3d0b4952c737c77e23c8bc19b6014eb5c041a66cd0",
+          "size_bytes": 13258
+        }
+      }
+    },
+    "joint_guard": {
+      "actual_exit": 0,
+      "actual_job_log": {
+        "sha256": "0e407a8b69b9f49b5d7410f1aa62358476554b932e5596183c057cc40b517d33",
+        "size_bytes": 412
+      },
+      "actual_job_record": {
+        "sha256": "e76374d8e947d79a3d0de47e31e1c45f4a38b2b870a3b984f2f37a9df5f997a7",
+        "size_bytes": 299681
+      },
+      "original_freeze": {
+        "sha256": "53c54cde80f530822d4529604a3b46fcdaf010e1501b1a29595f4802ccbe9939",
+        "size_bytes": 235110
+      },
+      "original_full_before_after_map_sha256": "74ad2f5e0ec759d4d409fe9b65e0d371140f595a4b35d6b73c18dd0feb154ca7",
+      "outer_command_sha256": "caaa3260481935256e152c1e428259610f6c065247765099b6d1da828584e35c",
+      "runtime_before_and_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_guard_count": 646
+    },
+    "original_runner_and_recipe_phase_source_sha256": {
+      "frozen_cases": "d290c86b2619d5f192a6cfdf3db48351eb9953daef66a93bf11a1a6ff0fb3069",
+      "inside_group_phases": "960036d104364a6c5b0e730e46965e382e0efd1b4b75df30908aa8a959664643",
+      "inside_observer": "9a5ba110649962b0c4b4677e7887e53f9c1f3f443d4af607a1eb3b8b75afdb63"
+    },
+    "original_whole_review": {
+      "sha256": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+      "size_bytes": 273775
+    },
+    "retained_earlier_B17_producer_roles": {
+      "asan-prebuilt-gap": {
+        "original_B17_typed_fact": {
+          "sha256": "763e2f10a4163a9fb4f597ec6e626b4f3816f15cc7fdb0f8a21a61374a90fbc4",
+          "size_bytes": 3834
+        },
+        "original_raw_selection": {
+          "manifest_sha256": "b3eee7a41e895d49f0ea87a2ea68598009bfc8497d2fe819c3a8a98d4fc2fd41",
+          "run_id": "84faac9125394ba7b0ea6b3426a94c83"
+        },
+        "producer_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+        "review_sha256": "91fac9d01bd78d3adb506d464ed5c0489616f37e06fc696e08bb6cc4e401e7b4"
+      },
+      "asan-prebuilt-gap-bad": {
+        "original_B17_typed_fact": {
+          "sha256": "719ddd22f36384221c2304e93ba3bdcccfa7c476912f8fe0f185875aaf02841a",
+          "size_bytes": 4348
+        },
+        "original_raw_selection": {
+          "manifest_sha256": "14165b8fd6679f646ed950b01968ee42c16862785fd8d236f10eff82fcdfa35f",
+          "run_id": "2de77d40322a4ba1996439ef67769aa6"
+        },
+        "producer_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+        "review_sha256": "91fac9d01bd78d3adb506d464ed5c0489616f37e06fc696e08bb6cc4e401e7b4"
+      },
+      "asan-substituted-binary": {
+        "original_B17_typed_fact": {
+          "sha256": "63d6c6e428b9ed938deac8b8599978d8eedbb4f9a42bdcb765cbcce5994737ea",
+          "size_bytes": 3285
+        },
+        "original_raw_selection": {
+          "manifest_sha256": "fed1636ca15ab644c4e068be08b1f7c3e30f92bc83b01e9d3754943bb923dfa2",
+          "run_id": "f5dd971dfe8540948a9d27a5bd1abce9"
+        },
+        "producer_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+        "review_sha256": "91fac9d01bd78d3adb506d464ed5c0489616f37e06fc696e08bb6cc4e401e7b4"
+      }
+    },
+    "selected_negative_control_receipts": {
+      "authored-runtime-and-version": {
+        "sha256": "b263df183975bd0dfc5df9a7f70d6bbcc7c711be2b2cb833b8ad8ba54c8af178",
+        "size_bytes": 1235
+      },
+      "integrity-and-reference": {
+        "sha256": "46ba74b748e1b275ef2e10eda4d2458f64e7b4c932130f4322f44ac244fb8fac",
+        "size_bytes": 669
+      }
+    }
+  },
+  "current_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+  "id": "M5-03",
+  "observed_projection_log_sha256": "92cfdf5393d6b066c66b9caa53026193e319e93aa43bf0ea461f9b272f0531d0",
+  "portability": "Replay requires the reviewed local GNU/CTest runtime and original command registration or independently frozen genuine input bodies. The structured receipt contains the observed selected command scope and SHA commitments.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "source_dependencies": "Exact d65 product package, bounded tracked demo, fixture and selected test source. Runtime leaves, raw bytes, privately registered observer, and full direct guards remain under their original custody.",
+  "source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f"
+}

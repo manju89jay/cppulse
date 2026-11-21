@@ -1,0 +1,639 @@
+{
+  "actual_ambiguity_control": {
+    "actual_exit": 1,
+    "command": {
+      "sha256": "07d9d818750884c2eb985d9f8ebd1ac7171ec5b35c255e07d4c9ffda5137feb9",
+      "size_bytes": 642
+    },
+    "producer_created_output": false,
+    "stderr": {
+      "sha256": "2bb176a144dd8f36e4143fc3167655b4f85e630c367034ecfcb38336342f4204",
+      "size_bytes": 336
+    }
+  },
+  "actual_scoped_command": [
+    "/workspace/verification-python-venv/bin/python",
+    "-B",
+    "/workspace/work/current38-batch13/components-v3/observer.py",
+    "/workspace/work/current38-batch13/components-v3/results"
+  ],
+  "component_cases": {
+    "component-complete": {
+      "actual_installed_http_statuses": {
+        "different_manifest_pin": 503,
+        "file-risk-scope": 200,
+        "git_behavior-json": 200,
+        "normalized-risk": 200,
+        "report-json": 200,
+        "risk_scores": 200,
+        "snapshot-html": 200,
+        "snapshot-view": 200
+      },
+      "actual_native_cli_exit": 0,
+      "case_analysis_scope": {
+        "api/a.cpp": "complete",
+        "api/b.cpp": "complete",
+        "spare/d.cpp": "complete",
+        "ui/c.cpp": "complete"
+      },
+      "case_readback": {
+        "sha256": "20858640d1ea7bba54f781f10d8ec22a59e7956c12321a12f33c3bfb60d41690",
+        "size_bytes": 9588
+      },
+      "component_hotspots": [
+        {
+          "availability": "available",
+          "files": [
+            "spare/d.cpp"
+          ],
+          "id": "__unassigned__",
+          "measured_files": [
+            {
+              "file": "spare/d.cpp",
+              "score": 0.0
+            }
+          ],
+          "observed_score": 0.0,
+          "score": 0.0,
+          "unavailable_files": []
+        },
+        {
+          "availability": "available",
+          "files": [
+            "api/a.cpp",
+            "api/b.cpp"
+          ],
+          "id": "api",
+          "measured_files": [
+            {
+              "file": "api/a.cpp",
+              "score": 3428.5714285714284
+            },
+            {
+              "file": "api/b.cpp",
+              "score": 2285.714285714286
+            }
+          ],
+          "observed_score": 5714.285714285714,
+          "score": 5714.285714285714,
+          "unavailable_files": []
+        },
+        {
+          "availability": "available",
+          "files": [
+            "ui/c.cpp"
+          ],
+          "id": "ui",
+          "measured_files": [
+            {
+              "file": "ui/c.cpp",
+              "score": 3428.5714285714284
+            }
+          ],
+          "observed_score": 3428.5714285714284,
+          "score": 3428.5714285714284,
+          "unavailable_files": []
+        }
+      ],
+      "configured_history_scope_note_retained": true,
+      "file_risk_ranking": {
+        "declared_files": 4,
+        "ranked_files": 4,
+        "unranked_files": 0,
+        "version": "file-eligibility-1"
+      },
+      "historical_cochange": {
+        "jaccard": 1.0,
+        "left": "api",
+        "left_confidence": 1.0,
+        "left_touches": 3,
+        "right": "ui",
+        "right_confidence": 1.0,
+        "right_touches": 3,
+        "support": 3
+      },
+      "observed_native_command": {
+        "sha256": "88d1b8334ecf52968d1c7f29161b193944f5c72aeaba1fcef3cf462a77ebb536",
+        "size_bytes": 869
+      },
+      "old_report_and_api_role_receipts": {
+        "evidence-report.html": {
+          "sha256": "d2c769d3c6d9db979022cc0e195dadfb4a90572e99612a68683700875f8cabae",
+          "size_bytes": 55725
+        },
+        "evidence-report.json": {
+          "sha256": "cef6a2496c4a47dbef93471c4968748cc34f72980c9c0bc17994dd0cb0aa846c",
+          "size_bytes": 516289
+        },
+        "http-file-risk-scope.body": {
+          "sha256": "9ae29cfd05a2526029292b70fdd7981c64e391590f502b060aabe018a39bfd4c",
+          "size_bytes": 2024
+        },
+        "http-git_behavior-json.body": {
+          "sha256": "c0a8a1bed2fad4befa622fdfdab372aff4aa7ce0d9d48ea87866d4ec243ad4fe",
+          "size_bytes": 9439
+        },
+        "http-normalized-risk.body": {
+          "sha256": "5b73d8cb32a1ae3ce5ad57997be3dbd12d66b420b2d493bf510cafc7f2f5f686",
+          "size_bytes": 8378
+        },
+        "http-report-json.body": {
+          "sha256": "7ca112d61dd65aebba08b5d7baa92c42acc19b8c60cfbce29112be6d0971e298",
+          "size_bytes": 76584
+        },
+        "http-risk_scores.body": {
+          "sha256": "ac7432b5a4bda7d23b51d1dc1b7dd9a9847e556de17cec6bf2f2b7aa5713ebfe",
+          "size_bytes": 11195
+        },
+        "http-snapshot-html.body": {
+          "sha256": "d2c769d3c6d9db979022cc0e195dadfb4a90572e99612a68683700875f8cabae",
+          "size_bytes": 55725
+        },
+        "http-snapshot-view.body": {
+          "sha256": "8e8a009c3da1c31ce255b27fa63bef0c085678972b0858494ae9f64ac34e95ab",
+          "size_bytes": 455282
+        },
+        "http-wrong-pin.body": {
+          "sha256": "24b569dc8646896b4b5969a713c34e203d911bbf0098517f9772806f85acb274",
+          "size_bytes": 127
+        },
+        "report-html.command.json": {
+          "sha256": "1d0c504c7215f2a1ac3eda66f4e7c1b727e74b9349af1ac301212a53ea15c750",
+          "size_bytes": 585
+        },
+        "report-html.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "report-html.stdout": {
+          "sha256": "0728eab4a057393e1dc1a2ee821c3ae35067c1ef378524a46eaebc5f7216b6fb",
+          "size_bytes": 327
+        },
+        "report-json.command.json": {
+          "sha256": "bb24eadbbc382c4d7db90615d75587f56984d90c5350be1463cc77c1c0a211a1",
+          "size_bytes": 585
+        },
+        "report-json.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "report-json.stdout": {
+          "sha256": "0172846926ba4a48503acd941522942eddc0844eb9c3f899228e43e5f0ca4525",
+          "size_bytes": 328
+        }
+      },
+      "old_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 7,
+        "sha256": "99832c34d84c911205fa15237812d0e7e984744b5f3d3c30f371077da1c20bf3",
+        "size_bytes": 2070
+      },
+      "original_git_metrics": {
+        "sha256": "1aa02be718b0a5961b24f2957bbf82b7e985f5a9b760e17c2a17fd667bd806e7",
+        "size_bytes": 4890
+      },
+      "original_snapshot": {
+        "manifest": {
+          "sha256": "3d3fc5b26253b67f43b11597bea8727c15aad8917122146fa8d8e26132d84aff",
+          "size_bytes": 59515
+        },
+        "run_id_utf8_sha256": "b8f0c3b3a0e51816fefec052d14365a5507285a89131f14812bd7f586919ea5b",
+        "verified_artifact_count": 84
+      },
+      "provenance": "Historical co-change is not a static include/call dependency or evidence that one change causes another.",
+      "scoped_hotspot_primitives": {
+        "api/a.cpp": {
+          "cyclomatic_complexity": 2,
+          "findings": [
+            {
+              "line": 3,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 4,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 5,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 2,
+              "rule_id": "MISRA-006"
+            }
+          ],
+          "physical_lines": 7,
+          "score": 3428.5714285714284,
+          "touches": 3
+        },
+        "api/b.cpp": {
+          "cyclomatic_complexity": 2,
+          "findings": [
+            {
+              "line": 3,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 4,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 5,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 2,
+              "rule_id": "MISRA-006"
+            }
+          ],
+          "physical_lines": 7,
+          "score": 2285.714285714286,
+          "touches": 2
+        },
+        "spare/d.cpp": {
+          "cyclomatic_complexity": 1,
+          "findings": [],
+          "physical_lines": 1,
+          "score": 0.0,
+          "touches": 1
+        },
+        "ui/c.cpp": {
+          "cyclomatic_complexity": 2,
+          "findings": [
+            {
+              "line": 3,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 4,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 5,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 2,
+              "rule_id": "MISRA-006"
+            }
+          ],
+          "physical_lines": 7,
+          "score": 3428.5714285714284,
+          "touches": 3
+        }
+      }
+    },
+    "component-excluded-member": {
+      "actual_installed_http_statuses": {
+        "different_manifest_pin": 503,
+        "file-risk-scope": 200,
+        "git_behavior-json": 200,
+        "normalized-risk": 200,
+        "report-json": 200,
+        "risk_scores": 200,
+        "snapshot-html": 200,
+        "snapshot-view": 200
+      },
+      "actual_native_cli_exit": 0,
+      "case_analysis_scope": {
+        "api/a.cpp": "complete",
+        "api/b.cpp": "partial",
+        "spare/d.cpp": "complete",
+        "ui/c.cpp": "complete"
+      },
+      "case_readback": {
+        "sha256": "87061495556ba07ba4bd5ae40517f9d6edcd89946a0111271068caccce1bc51a",
+        "size_bytes": 8805
+      },
+      "component_hotspots": [
+        {
+          "availability": "available",
+          "files": [
+            "spare/d.cpp"
+          ],
+          "id": "__unassigned__",
+          "measured_files": [
+            {
+              "file": "spare/d.cpp",
+              "score": 0.0
+            }
+          ],
+          "observed_score": 0.0,
+          "score": 0.0,
+          "unavailable_files": []
+        },
+        {
+          "availability": "partial",
+          "files": [
+            "api/a.cpp",
+            "api/b.cpp"
+          ],
+          "id": "api",
+          "measured_files": [
+            {
+              "file": "api/a.cpp",
+              "score": 3428.5714285714284
+            }
+          ],
+          "observed_score": 3428.5714285714284,
+          "score": null,
+          "unavailable_files": [
+            "api/b.cpp"
+          ]
+        },
+        {
+          "availability": "available",
+          "files": [
+            "ui/c.cpp"
+          ],
+          "id": "ui",
+          "measured_files": [
+            {
+              "file": "ui/c.cpp",
+              "score": 3428.5714285714284
+            }
+          ],
+          "observed_score": 3428.5714285714284,
+          "score": 3428.5714285714284,
+          "unavailable_files": []
+        }
+      ],
+      "configured_history_scope_note_retained": true,
+      "file_risk_ranking": {
+        "declared_files": 3,
+        "ranked_files": 3,
+        "unranked_files": 0,
+        "version": "file-eligibility-1"
+      },
+      "historical_cochange": {
+        "jaccard": 1.0,
+        "left": "api",
+        "left_confidence": 1.0,
+        "left_touches": 3,
+        "right": "ui",
+        "right_confidence": 1.0,
+        "right_touches": 3,
+        "support": 3
+      },
+      "observed_native_command": {
+        "sha256": "eb92ba20c929ba9909a7e914d3626e94ee5e67a0fbb37b4b4e2fc39958c65e20",
+        "size_bytes": 1001
+      },
+      "old_report_and_api_role_receipts": {
+        "evidence-report.html": {
+          "sha256": "1f548fe71fc8e33e0c4fc2b3db63ea24d5014b87810333a73b112b9aa46aa818",
+          "size_bytes": 52234
+        },
+        "evidence-report.json": {
+          "sha256": "a4ed517d0e5a3461ed0c295931772de3c6288f82af946901088b656a8e010c3f",
+          "size_bytes": 465687
+        },
+        "http-file-risk-scope.body": {
+          "sha256": "7acaad66b92312758745943842ed55994f6db0e0a268bb3dfe3ffddc5451a0d5",
+          "size_bytes": 1560
+        },
+        "http-git_behavior-json.body": {
+          "sha256": "c0a8a1bed2fad4befa622fdfdab372aff4aa7ce0d9d48ea87866d4ec243ad4fe",
+          "size_bytes": 9439
+        },
+        "http-normalized-risk.body": {
+          "sha256": "80783f46bedcb5fcd9b8d4b86464de22e07be3c02e3733f689d725c57dbbbb5e",
+          "size_bytes": 7400
+        },
+        "http-report-json.body": {
+          "sha256": "0507e980727d3414af4944a751f5834b92643682779b86c133bab17e1fe638d8",
+          "size_bytes": 59663
+        },
+        "http-risk_scores.body": {
+          "sha256": "b8b0b0994cde040c615f4de858ac06a81f42575c35ea0adbe2d6c4ca2e40a23f",
+          "size_bytes": 9900
+        },
+        "http-snapshot-html.body": {
+          "sha256": "1f548fe71fc8e33e0c4fc2b3db63ea24d5014b87810333a73b112b9aa46aa818",
+          "size_bytes": 52234
+        },
+        "http-snapshot-view.body": {
+          "sha256": "7f422a1d862b85f191aa90d15fb3b07c63161e16f9f856e6ff26319c5df784ac",
+          "size_bytes": 416622
+        },
+        "http-wrong-pin.body": {
+          "sha256": "24b569dc8646896b4b5969a713c34e203d911bbf0098517f9772806f85acb274",
+          "size_bytes": 127
+        },
+        "report-html.command.json": {
+          "sha256": "069e111b96435f96a1ea85c9651fba2103b71e220fbd5f2edee6d0d248e62efa",
+          "size_bytes": 599
+        },
+        "report-html.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "report-html.stdout": {
+          "sha256": "7f7d58fa93ae067d1e972de3566689877ce54be495eff2e3ebc7b4df3a3b5eb5",
+          "size_bytes": 334
+        },
+        "report-json.command.json": {
+          "sha256": "9d0f94df63a7b29b7a25e082b22799a12576ae5cf7808a4d9c5fba5909754e0d",
+          "size_bytes": 599
+        },
+        "report-json.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "report-json.stdout": {
+          "sha256": "1a81fe541334425c15fec6044fc2cf40b1fe60de98723f61a44de4ad3568d66d",
+          "size_bytes": 335
+        }
+      },
+      "old_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 5,
+        "sha256": "e119c113598fd12e0c67a1b963b13abf3e49f8c33cde961986be77ad18c4e16d",
+        "size_bytes": 1487
+      },
+      "original_git_metrics": {
+        "sha256": "f926532381f7044b943852993e64835667f74385f43a07ffa4bdeafa1b595b78",
+        "size_bytes": 4890
+      },
+      "original_snapshot": {
+        "manifest": {
+          "sha256": "8c369db08b15664952efb034a484105d8996af22aba2fb717b7de2995eb72747",
+          "size_bytes": 58048
+        },
+        "run_id_utf8_sha256": "e13d5499cb21ad97d257aabcaa8c9647b765d9386c0d7e11189a456ec2c7a5c9",
+        "verified_artifact_count": 84
+      },
+      "provenance": "Historical co-change is not a static include/call dependency or evidence that one change causes another.",
+      "scoped_hotspot_primitives": {
+        "api/a.cpp": {
+          "cyclomatic_complexity": 2,
+          "findings": [
+            {
+              "line": 3,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 4,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 5,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 2,
+              "rule_id": "MISRA-006"
+            }
+          ],
+          "physical_lines": 7,
+          "score": 3428.5714285714284,
+          "touches": 3
+        },
+        "spare/d.cpp": {
+          "cyclomatic_complexity": 1,
+          "findings": [],
+          "physical_lines": 1,
+          "score": 0.0,
+          "touches": 1
+        },
+        "ui/c.cpp": {
+          "cyclomatic_complexity": 2,
+          "findings": [
+            {
+              "line": 3,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 4,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 5,
+              "rule_id": "CPP-MOD-001"
+            },
+            {
+              "line": 2,
+              "rule_id": "MISRA-006"
+            }
+          ],
+          "physical_lines": 7,
+          "score": 3428.5714285714284,
+          "touches": 3
+        }
+      }
+    }
+  },
+  "configured_history_scope_note": "Legacy file metrics use the retained history scope. The configured behavior lookback and cutoff apply only to behavioral metrics; history collection bounds and other limitations still apply.",
+  "criterion": "FR-GIT-06",
+  "criterion_text": "Aggregate hotspots and coupling by user-defined architectural component. Label historical co-change separately from static include/call dependencies.",
+  "earlier_observer_failures": [
+    {
+      "diagnostic": {
+        "sha256": "b08938683826c20a401628571097f56a3a9dfcf3070b2cb72f42b96b4b324b6b",
+        "size_bytes": 452
+      },
+      "producer_exit": 1,
+      "scope": "v1 fixture construction"
+    },
+    {
+      "actual_outer_exit": 1,
+      "diagnostic": {
+        "sha256": "21dd272cf386901a84cc57637cd1915688e858bf4b7e0f33340970b0b87e6bee",
+        "size_bytes": 892
+      },
+      "producer_observer_exit": 1,
+      "scope": "v2 producer observer",
+      "separate_report_and_api_exit": 0,
+      "two_actual_native_processes_exit": [
+        0,
+        0
+      ]
+    }
+  ],
+  "executed_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "executed_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "limits": [
+    "V2 wrapper remained red on an incorrect old-fixture numeric oracle and an uninspected teardown home change. Its two actual native command exits were 0 and its separate public report/API phase returned 0. V3 checked their original bytes with an initially empty home and did not rerun those producers or API calls.",
+    "The original installed65 corpus and historical SDK 2 KiB decline/five integrity-control receipts are absent. Those are distinct evidence roles and are not reported as newly executed by this component criterion.",
+    "The API is installed in-process ASGI under Docker network-none and kernel non-AF_UNIX socket denial. The fixture evidence establishes component scope and historical coupling without static dependency or predictive validation.",
+    "This private review did not change any source, result, canonical ledger, or publication state."
+  ],
+  "numeric_fixture_equivalence": {
+    "current_count": "Three Git touches, maximum callable CC 2, seven physical lines and four actual findings give 3 × 2 × 4 × 1000 / 7.",
+    "current_excluded_api_observed_score": 3428.5714285714284,
+    "historical_excluded_api_observed_score": 2571.4285714285716,
+    "review_scope": "The historical literal applies to the historical fixture. This fresh fixture retains the original independence, sum, ranking and exclusion predicates."
+  },
+  "scoped_readback_exit": 0,
+  "separate_scoped_denial": {
+    "actual_producer": {
+      "receipt": {
+        "sha256": "1d6acd5907b822e9d3d30e984f9fbf7c8553c1c9561591e5de109999aa1c2d5e",
+        "size_bytes": 774
+      },
+      "scoped_command": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch13/components-v2/run_components.py",
+        "/workspace/work/current38-batch13/components-v2/results/producer",
+        "/workspace/work/git-scope-qualification/gates/candidate/artifact.json",
+        "/workspace/work/attribution-epoch/installed/native/cppulse-native-0.2.0.dev2-linux-x86_64"
+      ],
+      "socket_errno": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      }
+    },
+    "in_process_asgi": {
+      "blocked_external_socket_families": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_NETLINK": 101,
+        "AF_PACKET": 101
+      },
+      "command": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch13/components-v2/read_public.py",
+        "/workspace/work/current38-batch13/components-v2/results/report-api",
+        "/workspace/work/current38-batch13/components-v2/results/producer",
+        "/workspace/work/git-scope-qualification/gates/candidate/artifact.json"
+      ],
+      "receipt": {
+        "sha256": "1d00a17e0fa5a5e348f04b7ba7c521d6bb8cbef5835521bb4bc5c73b1b07b2af",
+        "size_bytes": 712
+      },
+      "unix_socket_control_succeeded": true
+    },
+    "readback": {
+      "receipt": {
+        "sha256": "277af0d2c5aee8f4ac46e451f6458b908cf5398ff012a624bf51a08d0f600306",
+        "size_bytes": 585
+      },
+      "scoped_command": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch13/components-v3/observer.py",
+        "/workspace/work/current38-batch13/components-v3/results"
+      ],
+      "socket_errno": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      }
+    }
+  },
+  "v3_initial_home_empty": true,
+  "v3_readback": {
+    "sha256": "6a1ed90c9cd67fe9877c38788b637ef5b1e45d2d4d57848e896494851935cd77",
+    "size_bytes": 1035
+  },
+  "v3_readback_created_no_native_or_api_producer_results": true
+}

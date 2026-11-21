@@ -1,0 +1,71 @@
+{
+  "criterion": "Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames",
+  "id": "M6-01",
+  "independent_whole_review_sha256": "d0ef1e27087b00da18230bfa469b1a022bc52398a1f3fd0341f874a2e12fd65f",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "earlier_actual_scoped_history_campaign": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-history-next/run_batch.sh",
+        "/workspace/work/current38-history-next/results"
+      ],
+      "raw_log_sha256": "8cf05111863c205a4afa196a62492f4e7ae7843534c5e43d22117afb841336c4",
+      "record_sha256": "b05adc514c4483bf2024bd76ddad9d3cc24287ae4979968cdcf31444e0c86f3c",
+      "stable_guard_pins": 3030
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actually_observed_successful_native_receipts": 3,
+    "all_source_changes_reviewed": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "artifacts_independently_rehashed": 68,
+    "prior_semantic_scope": "The packaged versioned shared-history contract passed 45 exact installed tests covering Git-derived aliases, bots, bulk and merge exclusions, stable first-parent rename identity, distinct-commit coupling, component relations, shallow and empty histories, and explicit source/context and malformed-data rejection. Readback of the current installed public history store verifies the packaged source/context binding and disclosed unavailable symbol-history scope with unauthenticated producer provenance.",
+    "scoped_phases": {
+      "history-readback": {
+        "actual_result_sha256": "50f3d860c7cb94f6dcc28ce2febecc166f20db08d091ba7da7aca2e7bf814082",
+        "actual_scope_exit": 0,
+        "exact_prior_current_verified_artifact_count": 68,
+        "original_prior_scope_reexecuted_here": false
+      },
+      "shared-history": {
+        "actual_result_sha256": "13662bca13c9310364b1aaebf5001d87dfdce792a27f5e0791e5fc1a92b15976",
+        "actual_scope_exit": 0,
+        "exact_case_count": 45,
+        "exact_original_junit_sha256": "08db5abb5df8a0a50bfb22fa4ce38099aa79b95fb9a4619f645f88a8e66f4022"
+      }
+    },
+    "shared_history_source_mismatch": {
+      "error": "INVALID_SHARED_HISTORY",
+      "path": "/source_digest"
+    },
+    "symbol_history_scope": "explicitly unavailable for the observed source-bound producer"
+  },
+  "preserved_epoch_and_result_limits": [
+    "The separately executed current installed public history result was independently read back in this epoch. A production symbol producer, authenticity attestations and other platforms remain outside this proof.",
+    "Historical outputs and exact producer identities remain those actually observed. No new d65 history or report execution is implied.",
+    "Default Git metadata no longer carries the optional behavior scope sentence. The selected cutoff result uses the unchanged SZZ provenance and explicit cutoff. Configured behavior scopes still carry the old note. Numeric, source identity, and bound computations are unchanged by either case.",
+    "The other runtime changes refine legacy completion and roadmap ties. These scoped historical typed metrics, direct Git producers and readback of pinned snapshots have no semantic dependence on those controls. CI/Compose wiring, decision text and later test edits are unrelated to the executed conditional scopes.",
+    "The earlier genuine bounded public history producer reached roadmap generation and retained its historical roadmap bytes. Changed tie ordering cannot feed back into the selected Git, shared-history or weighted metrics. The exact donor artifacts remain in their observed epoch."
+  ],
+  "primary_observed_role": "earlier_actual_scoped_history_campaign",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Define contributor identity, rename history, coupling support, and component/symbol history contracts. | Synthetic histories specify aliases, bots, bulk commits, merges, and renames"
+}

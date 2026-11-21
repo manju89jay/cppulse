@@ -1,4 +1,5 @@
 """New protocol contract controls; no claim that v3 publication is integrated."""
+
 from copy import deepcopy
 import pytest
 from cppulse.errors import ContractError

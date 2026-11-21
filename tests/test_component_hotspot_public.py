@@ -17,28 +17,52 @@ from tests.test_maintenance_metrics_contract import native_metric_report
 
 def test_public_build_and_normalization_preserve_component_priority() -> None:
     findings = deepcopy(native_metric_report())
-    findings["findings"] = [{
-        "file": "a.cpp", "rule_id": "CPP-MOD-001", "category": "modernization",
-        "severity": "warning", "line": 1, "column": 1, "message": "Declared fixture",
-    }]
+    findings["findings"] = [
+        {
+            "file": "a.cpp",
+            "rule_id": "CPP-MOD-001",
+            "category": "modernization",
+            "severity": "warning",
+            "line": 1,
+            "column": 1,
+            "message": "Declared fixture",
+        }
+    ]
     findings["summary"] = {
-        "total_findings": 1, "by_category": {"modernization": 1},
+        "total_findings": 1,
+        "by_category": {"modernization": 1},
         "by_severity": {"warning": 1},
     }
-    findings["metadata"]["analysis"]["native_metrics"]["files"][0]["source_content_sha256"] = "a" * 64
+    findings["metadata"]["analysis"]["native_metrics"]["files"][0][
+        "source_content_sha256"
+    ] = ("a" * 64)
     history = {
         "version": "1.0.0",
-        "metadata": {"repo_path": "/repo", "history_status": "available", "total_commits": 2},
-        "file_metrics": [{"file": "a.cpp", "change_frequency": 2,
-                          "unique_contributors": 1, "age_days": 1, "lines_of_code": 9999}],
+        "metadata": {
+            "repo_path": "/repo",
+            "history_status": "available",
+            "total_commits": 2,
+        },
+        "file_metrics": [
+            {
+                "file": "a.cpp",
+                "change_frequency": 2,
+                "unique_contributors": 1,
+                "age_days": 1,
+                "lines_of_code": 9999,
+            }
+        ],
         "knowledge_silos": [],
     }
     frame = FeatureEngineer().build_features(findings, history)
     predictor = BugPredictor()
     predictor.train(frame, pd.Series([0]))
     behavior = analyze_behavior(
-        [record(1), record(2)], ["a.cpp"], config(components={"api": ["a.cpp"]}),
-        cutoff=CUTOFF, head="a" * 40,
+        [record(1), record(2)],
+        ["a.cpp"],
+        config(components={"api": ["a.cpp"]}),
+        cutoff=CUTOFF,
+        head="a" * 40,
     )
     result = build_risk_scores(
         frame, predictor.predict(frame), predictor, HealthScorer(), behavior=behavior
@@ -56,14 +80,31 @@ def test_feature_exclusion_is_explicit_without_changing_attempted_denominator() 
     findings = deepcopy(native_metric_report())
     del findings["metadata"]["analysis"]["native_metrics"]
     findings["metadata"]["file_count"] = 2
-    findings["metadata"]["analysis"]["files"].append({
-        "path": "/repo/b.cpp", "status": "excluded", "compile_context": "database",
-        "error_count": 0,
-    })
+    findings["metadata"]["analysis"]["files"].append(
+        {
+            "path": "/repo/b.cpp",
+            "status": "excluded",
+            "compile_context": "database",
+            "error_count": 0,
+        }
+    )
     history = {
-        "version": "1.0.0", "metadata": {"repo_path": "/repo", "history_status": "available", "total_commits": 2},
-        "file_metrics": [{"file": name, "change_frequency": 2, "unique_contributors": 1,
-                          "age_days": 1, "lines_of_code": 10} for name in ["a.cpp", "b.cpp"]],
+        "version": "1.0.0",
+        "metadata": {
+            "repo_path": "/repo",
+            "history_status": "available",
+            "total_commits": 2,
+        },
+        "file_metrics": [
+            {
+                "file": name,
+                "change_frequency": 2,
+                "unique_contributors": 1,
+                "age_days": 1,
+                "lines_of_code": 10,
+            }
+            for name in ["a.cpp", "b.cpp"]
+        ],
         "knowledge_silos": [],
     }
     frame = FeatureEngineer().build_features(findings, history)
@@ -73,8 +114,10 @@ def test_feature_exclusion_is_explicit_without_changing_attempted_denominator() 
     predictor = BugPredictor()
     predictor.train(frame, pd.Series([0]))
     behavior = analyze_behavior(
-        [record(1, files=("a.cpp", "b.cpp"))], ["a.cpp", "b.cpp"],
-        config(components={"api": ["*.cpp"]}), cutoff=CUTOFF,
+        [record(1, files=("a.cpp", "b.cpp"))],
+        ["a.cpp", "b.cpp"],
+        config(components={"api": ["*.cpp"]}),
+        cutoff=CUTOFF,
     )
     risk = build_risk_scores(
         frame, predictor.predict(frame), predictor, HealthScorer(), behavior=behavior

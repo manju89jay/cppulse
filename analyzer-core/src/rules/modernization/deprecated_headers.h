@@ -14,10 +14,12 @@
 namespace cppulse {
 
 /**
- * @brief Flags #include directives that reference deprecated C headers.
+ * @brief Flags direct literal standard C header operands resolved as system headers.
  *
  * C headers such as <stdio.h> have C++ replacements (<cstdio>).  Using
- * the C++ versions ensures symbols are in the std:: namespace.
+ * the C++ versions provide their standard C++ declarations. Qualified, quoted,
+ * macro-expanded and non-system shadow includes are not replacement candidates.
+ * Compiler-marked system include roots are trusted, not independently attested.
  */
 class DeprecatedHeadersRule : public RuleBase<DeprecatedHeadersRule> {
    public:

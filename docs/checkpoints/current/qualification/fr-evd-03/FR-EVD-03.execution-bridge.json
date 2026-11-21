@@ -1,0 +1,100 @@
+{
+  "criterion": "FR-EVD-03",
+  "dependency_readback_for_each_source_change": {
+    "docs/DECISIONS.md": "Governance narration outside the selected commands\u2019 input boundary.",
+    "docs/plans/production-scope-authority.md": "Governance inventory outside the selected commands\u2019 input boundary.",
+    "tests/test_pipeline_failures.py": "The exact B14 primary and follow-up observers cover the five real CTest modes and three archive-only imports. Neither observer executes or imports the supplemental pipeline-failure test."
+  },
+  "exact_executions": {
+    "follow-up": {
+      "actual_exit": 0,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch14/no-false-followup/launch.sh",
+        "/workspace/work/current38-batch14/no-false-followup-results"
+      ],
+      "guard_bound_files": 11070,
+      "job_log": {
+        "sha256": "76611618574d2ea170627aa26f803148eac34a7ed90cc3ec974c3cc401bcb095",
+        "size_bytes": 70
+      },
+      "job_record": {
+        "sha256": "dc3319dcbb95c88c742ce3b12d00e37eb0b848496669c20075bd2c70eef77b77",
+        "size_bytes": 3905683
+      },
+      "network_denial": {
+        "sha256": "5fda4e247a72f24de1a632dcec388513e0fc5081ed3fb911a2795bd5d74aa25a",
+        "size_bytes": 548
+      },
+      "preregistration": {
+        "sha256": "0d68487c58f26bce15daa11873f9df4f93a06ba8c4b2c546a1e97a7231c9abba",
+        "size_bytes": 1952973
+      },
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "runtime_entries": 260105,
+      "scope": "Readback of the original show-only collection and three new authored import-only controls",
+      "source_before_after_equal": true
+    },
+    "original": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch14/no-false-verification/launch.sh",
+        "/workspace/work/current38-batch14/results/no-false-verification"
+      ],
+      "guard_bound_files": 10067,
+      "job_log": {
+        "sha256": "82c0691159b77215995fd35593a631ad2e02c8fff0d778f22508fcf02ac9d6cc",
+        "size_bytes": 3642
+      },
+      "job_record": {
+        "sha256": "aaba8d5d0ae66d5e0507039aed2982b528538f579c32b662607096ead0ca6b41",
+        "size_bytes": 3424095
+      },
+      "network_denial": {
+        "sha256": "3761889043b97c381a0f4a7fea61a0f5f5e65fab753d7a83a3c6db5372a15b67",
+        "size_bytes": 556
+      },
+      "preregistration": {
+        "sha256": "52e35d6f3259dabf28366c836d5a7894f303a95f122dbf423e84925c8e355acd",
+        "size_bytes": 1712128
+      },
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "runtime_entries": 260105,
+      "scope": "Four verified native case observers and four retained harness failures",
+      "source_before_after_equal": true
+    }
+  },
+  "original_checkpoints": [
+    {
+      "sha256": "3a2d518268919f49097c1cbf7c83fe6d521f3adad5062591893836d0ec349954",
+      "size_bytes": 6582022
+    },
+    {
+      "sha256": "b2aa6dd5739848275e6c4ccae5df19e247b44f683520a71c672c33ef35d4678a",
+      "size_bytes": 3353
+    }
+  ],
+  "original_result_file_count": 991,
+  "original_result_inventory": {
+    "sha256": "0465f9a5e34e403f34da62969ce0c2262c9a9a237c0b25781c918e9865265fa6",
+    "size_bytes": 175895
+  },
+  "private_fixture_declarations_sha256": "7b97effa63ab0aadae5848edb9c59fc4d96e1a6f77ec5b5931de77f1c3d73b39",
+  "projection_log_sha256": "2ee43c692268b65167fcc2a6b8b4f5fe5762507f1fc575f3c85f7c17ef5109c2",
+  "public_product_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "raw_dependency_custody": "The original wheel, tool/runtime closure, exact finite scenario metadata and sealed original inputs remain in custody. The original CTest fixture definition and executed observer text are available as checked-in source or byte-identical copies. The raw JUnit, compiler and CTest outputs, writer/import documents, immutable stores and prior failure records remain in private custody.",
+  "sealed_original_results_before_after": {
+    "sha256": "d642c53bd6f82163e6e0bcfbe10debd779c8ff3b99818af5f798f5bc7c443943",
+    "size_bytes": 8278
+  },
+  "tracked_source_scope": "Entire checked-in cppulse Python package, selected tracked fixture or regression source, and exact published observer text. The current mutable delivery ledger, review pointer and proof are outside the hash set.",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "whole_review_sha256": "6e3ce9a9e808bcbf16c1a5834cd40d323190248afdf826142c16ae8217d58d62"
+}

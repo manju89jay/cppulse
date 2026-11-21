@@ -1,4 +1,5 @@
 """Distinct declared roots must not collapse into one actual tar namespace."""
+
 import gzip
 import hashlib
 import io
@@ -74,6 +75,6 @@ def test_two_actual_roots_cannot_verify_duplicate_tar_namespace(tmp_path: Path):
         "qualification": "Two real source directories and distinct declared POSIX roots; no Docker or extraction required. Tar duplicate member names cannot represent two distinct retained destinations.",
     }
     (tmp_path / "collision-proof.json").write_text(json.dumps(proof, indent=2) + "\n")
-    assert (
-        len(set(names)) == len(names)
+    assert len(set(names)) == len(
+        names
     ), "Distinct declared /input and //input collapsed into duplicate actual tar member names"

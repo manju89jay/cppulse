@@ -1,4 +1,5 @@
 """Versioned external namespaces and conservative relationship semantics."""
+
 from copy import deepcopy
 
 import pytest

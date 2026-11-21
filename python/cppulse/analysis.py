@@ -1247,7 +1247,8 @@ def _normalize_metrics(
             ):
                 raise ContractError("Invalid global duplication count")
             if any(
-                value is not None and (type(value) is not int or value < 0)  # noqa: E721 -- exact nonnegative counts
+                value is not None
+                and (type(value) is not int or value < 0)  # noqa: E721 -- exact count
                 for value in (count.tokens, count.lines)
             ):
                 raise ContractError("Invalid global duplication count")

@@ -1,4 +1,5 @@
 """Bounded canonical JSON ingestion for private runtime declarations."""
+
 from __future__ import annotations
 import json
 from typing import Any

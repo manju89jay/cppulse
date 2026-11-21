@@ -1,6 +1,5 @@
 // Generated from cppulse/data/rule_registry.json; use scripts/check_generated.py.
 #pragma once
-#include "generated_rule_types.h"
 #include <cstddef>
 #include <set>
 #include <stdexcept>
@@ -8,58 +7,104 @@
 #include <string_view>
 #include <utility>
 
+#include "generated_rule_types.h"
+
 namespace cppulse {
 inline constexpr std::size_t generated_native_rule_count = 22;
 
 inline std::set<std::string> generated_native_rule_options(std::string_view id) {
-    if (id == "CPP-MEM-001") return {"enabled"};
-    if (id == "CPP-MEM-002") return {"enabled"};
-    if (id == "CPP-MEM-003") return {"enabled"};
-    if (id == "CPP-MOD-001") return {"enabled"};
-    if (id == "CPP-MOD-002") return {"enabled"};
-    if (id == "CPP-MOD-003") return {"enabled"};
-    if (id == "CPP-MOD-004") return {"enabled"};
-    if (id == "CPP-MOD-005") return {"enabled"};
-    if (id == "CPP-MOD-006") return {"enabled"};
-    if (id == "CPP-MOD-007") return {"enabled"};
-    if (id == "CPP-MOD-008") return {"enabled"};
-    if (id == "CPP-MOD-009") return {"enabled"};
-    if (id == "CPP-CX-001") return {"enabled", "error_threshold", "warning_threshold"};
-    if (id == "CPP-CX-002") return {"enabled", "error_threshold", "warning_threshold"};
-    if (id == "CPP-CX-003") return {"enabled", "error_threshold", "warning_threshold"};
-    if (id == "MISRA-001") return {"enabled"};
-    if (id == "MISRA-002") return {"enabled"};
-    if (id == "MISRA-003") return {"enabled"};
-    if (id == "MISRA-004") return {"enabled"};
-    if (id == "MISRA-005") return {"enabled"};
-    if (id == "MISRA-006") return {"enabled"};
-    if (id == "MISRA-007") return {"enabled"};
+    if (id == "CPP-MEM-001")
+        return {"enabled"};
+    if (id == "CPP-MEM-002")
+        return {"enabled"};
+    if (id == "CPP-MEM-003")
+        return {"enabled"};
+    if (id == "CPP-MOD-001")
+        return {"enabled"};
+    if (id == "CPP-MOD-002")
+        return {"enabled"};
+    if (id == "CPP-MOD-003")
+        return {"enabled"};
+    if (id == "CPP-MOD-004")
+        return {"enabled"};
+    if (id == "CPP-MOD-005")
+        return {"enabled"};
+    if (id == "CPP-MOD-006")
+        return {"enabled"};
+    if (id == "CPP-MOD-007")
+        return {"enabled"};
+    if (id == "CPP-MOD-008")
+        return {"enabled"};
+    if (id == "CPP-MOD-009")
+        return {"enabled"};
+    if (id == "CPP-CX-001")
+        return {"enabled", "error_threshold", "warning_threshold"};
+    if (id == "CPP-CX-002")
+        return {"enabled", "error_threshold", "warning_threshold"};
+    if (id == "CPP-CX-003")
+        return {"enabled", "error_threshold", "warning_threshold"};
+    if (id == "MISRA-001")
+        return {"enabled"};
+    if (id == "MISRA-002")
+        return {"enabled"};
+    if (id == "MISRA-003")
+        return {"enabled"};
+    if (id == "MISRA-004")
+        return {"enabled"};
+    if (id == "MISRA-005")
+        return {"enabled"};
+    if (id == "MISRA-006")
+        return {"enabled"};
+    if (id == "MISRA-007")
+        return {"enabled"};
     throw std::invalid_argument("Unknown registry rule ID: " + std::string{id});
 }
 
 inline bool generated_native_rule_default_enabled(std::string_view id) {
-    if (id == "CPP-MEM-001") return true;
-    if (id == "CPP-MEM-002") return true;
-    if (id == "CPP-MEM-003") return true;
-    if (id == "CPP-MOD-001") return true;
-    if (id == "CPP-MOD-002") return true;
-    if (id == "CPP-MOD-003") return true;
-    if (id == "CPP-MOD-004") return true;
-    if (id == "CPP-MOD-005") return true;
-    if (id == "CPP-MOD-006") return true;
-    if (id == "CPP-MOD-007") return true;
-    if (id == "CPP-MOD-008") return true;
-    if (id == "CPP-MOD-009") return true;
-    if (id == "CPP-CX-001") return true;
-    if (id == "CPP-CX-002") return true;
-    if (id == "CPP-CX-003") return true;
-    if (id == "MISRA-001") return true;
-    if (id == "MISRA-002") return true;
-    if (id == "MISRA-003") return true;
-    if (id == "MISRA-004") return true;
-    if (id == "MISRA-005") return true;
-    if (id == "MISRA-006") return true;
-    if (id == "MISRA-007") return true;
+    if (id == "CPP-MEM-001")
+        return true;
+    if (id == "CPP-MEM-002")
+        return true;
+    if (id == "CPP-MEM-003")
+        return true;
+    if (id == "CPP-MOD-001")
+        return true;
+    if (id == "CPP-MOD-002")
+        return true;
+    if (id == "CPP-MOD-003")
+        return true;
+    if (id == "CPP-MOD-004")
+        return true;
+    if (id == "CPP-MOD-005")
+        return true;
+    if (id == "CPP-MOD-006")
+        return true;
+    if (id == "CPP-MOD-007")
+        return true;
+    if (id == "CPP-MOD-008")
+        return true;
+    if (id == "CPP-MOD-009")
+        return true;
+    if (id == "CPP-CX-001")
+        return true;
+    if (id == "CPP-CX-002")
+        return true;
+    if (id == "CPP-CX-003")
+        return true;
+    if (id == "MISRA-001")
+        return true;
+    if (id == "MISRA-002")
+        return true;
+    if (id == "MISRA-003")
+        return true;
+    if (id == "MISRA-004")
+        return true;
+    if (id == "MISRA-005")
+        return true;
+    if (id == "MISRA-006")
+        return true;
+    if (id == "MISRA-007")
+        return true;
     throw std::invalid_argument("Unknown registry rule ID: " + std::string{id});
 }
 

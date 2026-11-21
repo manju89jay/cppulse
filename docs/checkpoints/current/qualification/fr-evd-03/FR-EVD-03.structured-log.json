@@ -1,0 +1,1551 @@
+{
+  "actual_checked_ctest_version": "3.31.6",
+  "actual_enclosing_wrappers": {
+    "follow-up": {
+      "actual_exit": 0,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch14/no-false-followup/launch.sh",
+        "/workspace/work/current38-batch14/no-false-followup-results"
+      ],
+      "guard_bound_files": 11070,
+      "job_log": {
+        "sha256": "76611618574d2ea170627aa26f803148eac34a7ed90cc3ec974c3cc401bcb095",
+        "size_bytes": 70
+      },
+      "job_record": {
+        "sha256": "dc3319dcbb95c88c742ce3b12d00e37eb0b848496669c20075bd2c70eef77b77",
+        "size_bytes": 3905683
+      },
+      "network_denial": {
+        "sha256": "5fda4e247a72f24de1a632dcec388513e0fc5081ed3fb911a2795bd5d74aa25a",
+        "size_bytes": 548
+      },
+      "preregistration": {
+        "sha256": "0d68487c58f26bce15daa11873f9df4f93a06ba8c4b2c546a1e97a7231c9abba",
+        "size_bytes": 1952973
+      },
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "runtime_entries": 260105,
+      "scope": "Readback of the original show-only collection and three new authored import-only controls",
+      "source_before_after_equal": true
+    },
+    "original": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch14/no-false-verification/launch.sh",
+        "/workspace/work/current38-batch14/results/no-false-verification"
+      ],
+      "guard_bound_files": 10067,
+      "job_log": {
+        "sha256": "82c0691159b77215995fd35593a631ad2e02c8fff0d778f22508fcf02ac9d6cc",
+        "size_bytes": 3642
+      },
+      "job_record": {
+        "sha256": "aaba8d5d0ae66d5e0507039aed2982b528538f579c32b662607096ead0ca6b41",
+        "size_bytes": 3424095
+      },
+      "network_denial": {
+        "sha256": "3761889043b97c381a0f4a7fea61a0f5f5e65fab753d7a83a3c6db5372a15b67",
+        "size_bytes": 556
+      },
+      "preregistration": {
+        "sha256": "52e35d6f3259dabf28366c836d5a7894f303a95f122dbf423e84925c8e355acd",
+        "size_bytes": 1712128
+      },
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "runtime_entries": 260105,
+      "scope": "Four verified native case observers and four retained harness failures",
+      "source_before_after_equal": true
+    }
+  },
+  "actual_followup_phases": {
+    "contradictory": {
+      "actual_exit": 0,
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "empty": {
+      "actual_exit": 0,
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "show-only": {
+      "actual_exit": 0,
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "unsupported": {
+      "actual_exit": 0,
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  },
+  "actual_selected_original_phases": [
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch14/no-false-verification/run.py",
+        "clean",
+        "/workspace/work/current38-batch14/results/no-false-verification/clean"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch14/no-false-verification/run.py",
+        "failure",
+        "/workspace/work/current38-batch14/results/no-false-verification/failure"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch14/no-false-verification/run.py",
+        "zero",
+        "/workspace/work/current38-batch14/results/no-false-verification/zero"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch14/no-false-verification/run.py",
+        "skipped",
+        "/workspace/work/current38-batch14/results/no-false-verification/skipped"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "authored_import_only_controls": {
+    "contradictory": {
+      "authored_report": {
+        "sha256": "47b86209c2c9493adafb948b6b645be20d5407b5943d1e84b81c9d6b1b82c658",
+        "size_bytes": 58
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/workspace",
+              "--run-id",
+              "f9a7ec3fa0ae460da918cfece36f1be0",
+              "--manifest-sha256",
+              "0261e8f8eeca4810f5b0d85b366a47504e6ba0a265010296206531bd311adfc7",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/policy.json"
+            ],
+            "command_sha256": "1a0b5f846dd0fdb24b9f2f15af9c6ed469a2a78532a88e9f8de7bf559f47f9b0",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/contradictory/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "6b3532dd79084d3cc0acda3a7e0292700c672ed1452588a8a6f4ea7644715485"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/workspace",
+              "--run-id",
+              "f9a7ec3fa0ae460da918cfece36f1be0",
+              "--manifest-sha256",
+              "0261e8f8eeca4810f5b0d85b366a47504e6ba0a265010296206531bd311adfc7",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/policy.json"
+            ],
+            "command_sha256": "939f351334d983559faa7896dda5ace229ad6a0b247c8aaecc214e71da60e2fb",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/contradictory/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "a5f498fe3716a0822019c5e2bab54c6c5cb129a341dd92ee3b51067a2a6d85a0"
+        }
+      },
+      "manifest": {
+        "sha256": "0261e8f8eeca4810f5b0d85b366a47504e6ba0a265010296206531bd311adfc7",
+        "size_bytes": 2632
+      },
+      "observed_writer_only_command": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/cppulse/.venv/bin/python",
+          "-B",
+          "writer.py"
+        ],
+        "command_sha256": "e32bdfc8fa2edb30350210193ffbc0f1ba89351ff25f416c6437ea9bcbf2593d",
+        "cwd": "/workspace/work/current38-batch14/no-false-followup-results/contradictory/workspace"
+      },
+      "parsed_origin": "import",
+      "phase_result": {
+        "sha256": "868bb6106a4f829189851873728151a5cb631d61d03a1fc9e6863a97c9dd98a0",
+        "size_bytes": 2077
+      },
+      "pure_gate": "insufficient_evidence",
+      "pure_result": {
+        "sha256": "f0ad3ca510c0c02b14fa27fa230da74e6cbcfb87a7f053b4bcc3c42b5ae782c9",
+        "size_bytes": 1918
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/import-store",
+              "--evidence",
+              "--run-id",
+              "f9a7ec3fa0ae460da918cfece36f1be0",
+              "--manifest-sha256",
+              "0261e8f8eeca4810f5b0d85b366a47504e6ba0a265010296206531bd311adfc7",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/historical.html"
+            ],
+            "command_sha256": "9d864a6bc6b16ce8d4399ca90c3ce125286734a766711777ff97d4129b359739",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/contradictory/outside"
+          },
+          "report": {
+            "sha256": "0e09237e1824d1cfa98939d0ed89812865bb02bda3152add9673f4a6262691ab",
+            "size_bytes": 9507
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/import-store",
+              "--evidence",
+              "--run-id",
+              "f9a7ec3fa0ae460da918cfece36f1be0",
+              "--manifest-sha256",
+              "0261e8f8eeca4810f5b0d85b366a47504e6ba0a265010296206531bd311adfc7",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/contradictory/historical.json"
+            ],
+            "command_sha256": "5ccc7bed07e7554a83c2cb0eda8bda9a40778de3c993406dd8257ea89b58977c",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/contradictory/outside"
+          },
+          "report": {
+            "sha256": "8330ef76db459269b9e89164a6dfc63fe8a2a4a5a94ce1844d5e6aaa3a811839",
+            "size_bytes": 8898
+          }
+        }
+      },
+      "test_receipt": null,
+      "usability": "malformed"
+    },
+    "empty": {
+      "authored_report": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/workspace",
+              "--run-id",
+              "966f5a705f404ae9b65a119ab653a21c",
+              "--manifest-sha256",
+              "0cee8be8c4aa7c40036fd2f5f438f86924ec23ac0ba6508e9079494ca4682843",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/policy.json"
+            ],
+            "command_sha256": "bed38257a426f6c79c2d819e4ee0e4f6c0eaeaeb53f1c0b72892ffe60c060bc7",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/empty/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "2dcc705758515c6108341a8bb78f3da85e6ce0df1e2e3df31084c03bc26a1ec4"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/workspace",
+              "--run-id",
+              "966f5a705f404ae9b65a119ab653a21c",
+              "--manifest-sha256",
+              "0cee8be8c4aa7c40036fd2f5f438f86924ec23ac0ba6508e9079494ca4682843",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/policy.json"
+            ],
+            "command_sha256": "559b373abb4ffd9fcae5f652b16dfcd8cdd67cdee95d54cec131a206c5665caf",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/empty/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "01d45504cae61ced9112c2e35a6e1f08fbe7c3fd27fed1f7175c991abb5793d7"
+        }
+      },
+      "manifest": {
+        "sha256": "0cee8be8c4aa7c40036fd2f5f438f86924ec23ac0ba6508e9079494ca4682843",
+        "size_bytes": 2622
+      },
+      "observed_writer_only_command": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/cppulse/.venv/bin/python",
+          "-B",
+          "writer.py"
+        ],
+        "command_sha256": "e867bfa2a0bc15abc249cb5e1bcb912c7d80c7f24e951d9b92eb667455b07f23",
+        "cwd": "/workspace/work/current38-batch14/no-false-followup-results/empty/workspace"
+      },
+      "parsed_origin": "import",
+      "phase_result": {
+        "sha256": "b106876315e98ffbd290c5c84ecd9e953e98812da3cf838c7002546adbdf6e60",
+        "size_bytes": 2060
+      },
+      "pure_gate": "insufficient_evidence",
+      "pure_result": {
+        "sha256": "0c380bb5bb71f7a6d49e14b3129241343f0ba611b7223b5f2da1ce9bbffd7048",
+        "size_bytes": 1910
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/import-store",
+              "--evidence",
+              "--run-id",
+              "966f5a705f404ae9b65a119ab653a21c",
+              "--manifest-sha256",
+              "0cee8be8c4aa7c40036fd2f5f438f86924ec23ac0ba6508e9079494ca4682843",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/historical.html"
+            ],
+            "command_sha256": "a525da55813b94e12d7fac3ef692be4ac2102455a5cae89511c6bac9ce0aa000",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/empty/outside"
+          },
+          "report": {
+            "sha256": "8593a44b7f9c6b2b1cdf18f5a1a5a90dea375adfc3af6dd156d3cccf3ab42bf2",
+            "size_bytes": 9482
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/import-store",
+              "--evidence",
+              "--run-id",
+              "966f5a705f404ae9b65a119ab653a21c",
+              "--manifest-sha256",
+              "0cee8be8c4aa7c40036fd2f5f438f86924ec23ac0ba6508e9079494ca4682843",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/empty/historical.json"
+            ],
+            "command_sha256": "6151c0a609a45b13b7445642c002bce98ddcec6e3cac53d5e79b1d5da2b869b7",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/empty/outside"
+          },
+          "report": {
+            "sha256": "41ce14cc5c21dce19adf143ac31412f1635b1f26dd3c0a96517e27094c1bd4f4",
+            "size_bytes": 8862
+          }
+        }
+      },
+      "test_receipt": null,
+      "usability": "malformed"
+    },
+    "unsupported": {
+      "authored_report": {
+        "sha256": "5da38c1b7383eee32814e680871e179a1ee91145e4e314efcbcd01eb5601705e",
+        "size_bytes": 10
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/workspace",
+              "--run-id",
+              "542b82c4293e4fae9d2dbdf9c51c39b8",
+              "--manifest-sha256",
+              "bbf8187898d1386b84b3b8c4e11fc065c59b3277273450371b345f3ad6278b0b",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/policy.json"
+            ],
+            "command_sha256": "e7eed2c5812f30e8c3826a09d5f29ea0709ae8a4a52e770c53fc2ded8332bc60",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/unsupported/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "85ea0fe53be346a25560edb15c1375b4589486d34c71a069dab9e14f2864b8e7"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/import-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/workspace",
+              "--run-id",
+              "542b82c4293e4fae9d2dbdf9c51c39b8",
+              "--manifest-sha256",
+              "bbf8187898d1386b84b3b8c4e11fc065c59b3277273450371b345f3ad6278b0b",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/policy.json"
+            ],
+            "command_sha256": "018e6cae24f3e127ad86b93a75dbb9f0e615b7ec02437128d8dd8ae8a213a504",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/unsupported/outside"
+          },
+          "reason": "UNVERIFIED_SOURCE",
+          "result_sha256": "b3efe3bb9cfe99c7f74289361a24bad7b0980cbeb7e42a0088a0e4fa41f12ca6"
+        }
+      },
+      "manifest": {
+        "sha256": "bbf8187898d1386b84b3b8c4e11fc065c59b3277273450371b345f3ad6278b0b",
+        "size_bytes": 2630
+      },
+      "observed_writer_only_command": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/cppulse/.venv/bin/python",
+          "-B",
+          "writer.py"
+        ],
+        "command_sha256": "3fd625b1cd5e63ccaed8cab01b978e723f2f12a4e6c0875e69894e43d2c12031",
+        "cwd": "/workspace/work/current38-batch14/no-false-followup-results/unsupported/workspace"
+      },
+      "parsed_origin": "import",
+      "phase_result": {
+        "sha256": "12b677c19ade9c21d3e74565f52c5af7c44775f950647805908dbb2eb9281ad4",
+        "size_bytes": 2122
+      },
+      "pure_gate": "insufficient_evidence",
+      "pure_result": {
+        "sha256": "fb68dd1f3aeb7374b2c7c76c88789da5a49d32c3643cb93bbdcc2bc4bb4826a1",
+        "size_bytes": 1916
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/import-store",
+              "--evidence",
+              "--run-id",
+              "542b82c4293e4fae9d2dbdf9c51c39b8",
+              "--manifest-sha256",
+              "bbf8187898d1386b84b3b8c4e11fc065c59b3277273450371b345f3ad6278b0b",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/historical.html"
+            ],
+            "command_sha256": "f40c89089152d6824022fad3009c1e485692ed7c19d1a392d138e66681027f9e",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/unsupported/outside"
+          },
+          "report": {
+            "sha256": "3c8b911d37287869be2bfd9f4c0b589adbea7627587a9e39b263e9009ea2c3c3",
+            "size_bytes": 9546
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/import-store",
+              "--evidence",
+              "--run-id",
+              "542b82c4293e4fae9d2dbdf9c51c39b8",
+              "--manifest-sha256",
+              "bbf8187898d1386b84b3b8c4e11fc065c59b3277273450371b345f3ad6278b0b",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/unsupported/historical.json"
+            ],
+            "command_sha256": "b0b647abcfb9d30c5e6babf65ed2d085f288d53a746078dae902e8c627133fb7",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/unsupported/outside"
+          },
+          "report": {
+            "sha256": "0b31b20a0cf041b14a95e3a2bc06ba8306a0e4a173437405d8a67bbac0eea823",
+            "size_bytes": 8939
+          }
+        }
+      },
+      "test_receipt": null,
+      "usability": "unsupported"
+    }
+  },
+  "criterion": "FR-EVD-03",
+  "criterion_text": "An empty report, zero tests, entirely skipped tests, process success alone, or unsupported parsing shall not imply successful verification.",
+  "native_collections": {
+    "clean": {
+      "collection": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "collect",
+          "--workspace",
+          "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+          "--store",
+          "/workspace/work/current38-batch14/results/no-false-verification/clean/store",
+          "--request",
+          "/workspace/work/current38-batch14/results/no-false-verification/clean/collection-request.json"
+        ],
+        "command_sha256": "47cea36a2db9e8eacedf4c79713be32c0ec3e126161c6a1804d0a3c5d68b4f27",
+        "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/outside"
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+              "--run-id",
+              "47d0373f74ed475982c9d537cd525166",
+              "--manifest-sha256",
+              "9db775c13b13265be943518f6b7dcb550b9547b0db63a26081a00322768ded09",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/policy.json"
+            ],
+            "command_sha256": "cc7fca2eac5d604d2c9059384998adaf622650dc0aa8561947313e1b433e3730",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/outside"
+          },
+          "gate": "passed",
+          "result_sha256": "eab6e9473d8b7107ae4633fce0de5d69550cab78b1e456eac2703c759f5e8493"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+              "--run-id",
+              "47d0373f74ed475982c9d537cd525166",
+              "--manifest-sha256",
+              "9db775c13b13265be943518f6b7dcb550b9547b0db63a26081a00322768ded09",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/policy.json"
+            ],
+            "command_sha256": "457aa270f8a22192f9ee8b6a9de46212b841290eb9d86922f31d755f5ee851a9",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/outside"
+          },
+          "gate": "passed",
+          "result_sha256": "8224c953940308397b530fccb410cf894e4d55277062ed0e1da93353ac8a4448"
+        }
+      },
+      "ctest": {
+        "build": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "--build",
+            "build"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+          "fact_sha256": "075b1c1ae0ef3a2c2f1cc9aaa10a76b30a6132b89494c121d10f7ac15d502893"
+        },
+        "configure": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/x86_64-linux-gnu-g++-14"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+          "fact_sha256": "5e33d4ba4202f285f2b992e410b8b2ffdf4a6c22c6c1aedb641eb4b05c9f7a06"
+        },
+        "inventory": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace/build",
+          "fact_sha256": "f363320e198166f0051f979c3563b380313f2dc57bfaf3f0a92007221193509a"
+        },
+        "tests": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--output-junit",
+            "junit.xml"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace/build",
+          "fact_sha256": "d68b4dbcc65ba712e4b8c44c7fc5b83817757c68730047db80eeab6d87ab19e9"
+        },
+        "version": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--version"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/workspace",
+          "fact_sha256": "ca5212a54b4c7d9d0915ee4e6c165b1d5ed9fb228a1233a3fa470f082caca1ef"
+        }
+      },
+      "junit": {
+        "sha256": "1735144e2a838daa1f735ced1f92f5ac84d8a91bf768955cdb0d940bb85d8970",
+        "size_bytes": 331
+      },
+      "last_test": {
+        "sha256": "b0a037e9a1c5f432b115c0269270d4fc99738d3a3d09385b6cb64147231c423a",
+        "size_bytes": 725
+      },
+      "phase_result": {
+        "sha256": "bac274bdb49bb39ef4146f7f4bf5354966deeb28c6813ba3503d35d5c9191633",
+        "size_bytes": 5819
+      },
+      "producer_snapshot": {
+        "sha256": "9db775c13b13265be943518f6b7dcb550b9547b0db63a26081a00322768ded09",
+        "size_bytes": 18098
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/store",
+              "--evidence",
+              "--run-id",
+              "d684210993b940018d2d2aeb0349adea",
+              "--manifest-sha256",
+              "e53f7c80fd5795f911f229b1b8671ccace4472959d4b966d8f003a0fb5eaa85c",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/assessed.html"
+            ],
+            "command_sha256": "70ae154dbe075a034976c8808252c07aa37c6746634a16368646003b47f36b55",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/outside"
+          },
+          "report": {
+            "sha256": "3cf8f45418fbbb1f93a83311040bf0183d9f80123b95fa8325710e46dd91e2e5",
+            "size_bytes": 26331
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/store",
+              "--evidence",
+              "--run-id",
+              "d684210993b940018d2d2aeb0349adea",
+              "--manifest-sha256",
+              "e53f7c80fd5795f911f229b1b8671ccace4472959d4b966d8f003a0fb5eaa85c",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/clean/assessed.json"
+            ],
+            "command_sha256": "1a3f8e25075af0f48706d49bb71a83721c01754ec6418c026851332293426c98",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/clean/outside"
+          },
+          "report": {
+            "sha256": "eff4f4f44e5dc9b7716c1e5bcfcafcfead012f4b56686ab2b59e336feb6d5d73",
+            "size_bytes": 96094
+          }
+        }
+      },
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "failure": {
+      "collection": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "collect",
+          "--workspace",
+          "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+          "--store",
+          "/workspace/work/current38-batch14/results/no-false-verification/failure/store",
+          "--request",
+          "/workspace/work/current38-batch14/results/no-false-verification/failure/collection-request.json"
+        ],
+        "command_sha256": "c425188c4bb62ccfbb61eae9e3dcbeb04841a4f5df8d023b7b04431e529f24b9",
+        "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/outside"
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 1,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+              "--run-id",
+              "eddcd5937f8a4feaa68305037db29c9b",
+              "--manifest-sha256",
+              "6021629a57fc4dc6a2a5deb8b12783f5e76d4ae803a40239f554922454d3fa38",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/policy.json"
+            ],
+            "command_sha256": "79c6101406c0ab797fddfaf0369cbf4e56b2afe4d1593b4084f8369357bf08ea",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/outside"
+          },
+          "gate": "failed",
+          "result_sha256": "d9f60b6914c1b4df0b45322afd861052688d06afe9d14a2998f10918ca21f70c"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 1,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+              "--run-id",
+              "eddcd5937f8a4feaa68305037db29c9b",
+              "--manifest-sha256",
+              "6021629a57fc4dc6a2a5deb8b12783f5e76d4ae803a40239f554922454d3fa38",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/policy.json"
+            ],
+            "command_sha256": "3a7d9b4afdcbf8ffa887835964e2ed8ee4d141c19abbd7901ee64b0511cc6df7",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/outside"
+          },
+          "gate": "failed",
+          "result_sha256": "35a9995a739b71f77362801361820192682479cfb2a770410b63169d66537c7b"
+        }
+      },
+      "ctest": {
+        "build": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "--build",
+            "build"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+          "fact_sha256": "c09d65db92270a11fcfa4fe031c0c6f292cde8012d078fa738d232480f205b16"
+        },
+        "configure": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/x86_64-linux-gnu-g++-14"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+          "fact_sha256": "2c0b283dff3f12967b1882b16cd273e19ee36570af9653af5a50993a45f62a96"
+        },
+        "inventory": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace/build",
+          "fact_sha256": "a8288b005e3139ce8368a5875a8bf6f46188f983cb57c8ece81058a6cd76414d"
+        },
+        "tests": {
+          "actual_exit": 8,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--output-junit",
+            "junit.xml"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace/build",
+          "fact_sha256": "1746d1cff39fd04c10aea239f42fe6a5227d099338fa58007747f3b3989773cc"
+        },
+        "version": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--version"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/workspace",
+          "fact_sha256": "9df9efde5678f8625eb9b5745307be09478d31ce94b441690bce75b4a304e1c5"
+        }
+      },
+      "junit": {
+        "sha256": "f04ec2a670131f44b7201d04148f583bf941358cbed5e75121461e45c45586bc",
+        "size_bytes": 363
+      },
+      "last_test": {
+        "sha256": "12c587cb020f90820075b9654df202e443ff10df5f96547cc7b7821ae3142803",
+        "size_bytes": 729
+      },
+      "phase_result": {
+        "sha256": "40cdd7fd1c8fe7d0b9e0ba6995b7880d6d0903deab0f9fc2fd4bb9b777f35188",
+        "size_bytes": 5777
+      },
+      "producer_snapshot": {
+        "sha256": "6021629a57fc4dc6a2a5deb8b12783f5e76d4ae803a40239f554922454d3fa38",
+        "size_bytes": 18128
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/store",
+              "--evidence",
+              "--run-id",
+              "4b5f77b7552249389b5b89de6c3fa57f",
+              "--manifest-sha256",
+              "7e3499380d78651d57b5d13075486dfaafaea9c400bb591ab3feca16c5894afd",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/assessed.html"
+            ],
+            "command_sha256": "f4847bd1eb4f6912e46215eb062ea645497b1e733d3532454f4dcaba758dc085",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/outside"
+          },
+          "report": {
+            "sha256": "6099cd1bfd746edfcbd87c9f637db6f0ec567f81eec0f4709b2137352df56081",
+            "size_bytes": 27352
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/store",
+              "--evidence",
+              "--run-id",
+              "4b5f77b7552249389b5b89de6c3fa57f",
+              "--manifest-sha256",
+              "7e3499380d78651d57b5d13075486dfaafaea9c400bb591ab3feca16c5894afd",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/failure/assessed.json"
+            ],
+            "command_sha256": "4bc51eaf6794a20c33b568cc0903f894d6a60f37dc2ce755fe9fe22d7980e0a8",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/failure/outside"
+          },
+          "report": {
+            "sha256": "7b367d3f16c877d7f25de3ba36155de6e5b4ad1342a661d37074d3e22ac9276a",
+            "size_bytes": 96866
+          }
+        }
+      },
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "show-only": {
+      "collection": {
+        "actual_exit": 3,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "collect",
+          "--workspace",
+          "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+          "--store",
+          "/workspace/work/current38-batch14/results/no-false-verification/show-only/store",
+          "--request",
+          "/workspace/work/current38-batch14/results/no-false-verification/show-only/collection-request.json"
+        ],
+        "command_sha256": "971ca10bb84504861f1f47c35865fd873952272593cad3a92aed6474e3fa2f0c",
+        "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/outside"
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/show-only-private-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+              "--run-id",
+              "732ae0a5e6734dc3ae0ec52cc8324d36",
+              "--manifest-sha256",
+              "d219c38127e9263e12ab7b5a52162ea76eccc77a5d8b3d43e512803cb3b3efd6",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/policy.json"
+            ],
+            "command_sha256": "53ee24f1f3a4ecaca0e27ac600c031d0b0092815ed03ade13bda5089069a3e2d",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/show-only/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "08798663f35968cecb1ae358b91344505303ef21258010705b743288e8cfb569"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/show-only-private-store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+              "--run-id",
+              "732ae0a5e6734dc3ae0ec52cc8324d36",
+              "--manifest-sha256",
+              "d219c38127e9263e12ab7b5a52162ea76eccc77a5d8b3d43e512803cb3b3efd6",
+              "--policy",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/policy.json"
+            ],
+            "command_sha256": "37c5b2eda7e46f06f0a83b056c8970a96478312bd82edb9dfecfbbf90ba88da0",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/show-only/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "5d0431b9a9c045cc483c0d3061713747db298b3770c16608c4ae49e726979a5a"
+        }
+      },
+      "ctest": {
+        "build": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "--build",
+            "build"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+          "fact_sha256": "a466804467545711820b3542a4783d8d3df097af358d34ace4068ed1271d2068"
+        },
+        "configure": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/x86_64-linux-gnu-g++-14"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+          "fact_sha256": "6cc6885909e416c739f7ee5e977f6d82d575213d04f09f5b1ee8bf37ea407e84"
+        },
+        "inventory": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace/build",
+          "fact_sha256": "659c390d0169dba3d0ccc433af36633e52bc8895ebaf983c3583cb054a4744d8"
+        },
+        "tests": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace/build",
+          "fact_sha256": "bdb17cb23c53d29e9441f5736743af89d1245dfa6b7734df7dd246cf180b119d"
+        },
+        "version": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--version"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/show-only/workspace",
+          "fact_sha256": "9cfd31965082a9aca59d855b68a18541f3c25a4ce02dd335c60c41a4f45550f5"
+        }
+      },
+      "junit": null,
+      "last_test": {
+        "sha256": "6ce64ce3f784d82273d6e639d73c8aa1734c34a8e37cfced3ab1c7c676486f0d",
+        "size_bytes": 121
+      },
+      "named_test_events": 0,
+      "phase_result": {
+        "sha256": "d851be7928da34d2c5d739e7b0d6fc0a381b76e5c533bfb3db68a22559c8a1c2",
+        "size_bytes": 6701
+      },
+      "producer_snapshot": {
+        "sha256": "d219c38127e9263e12ab7b5a52162ea76eccc77a5d8b3d43e512803cb3b3efd6",
+        "size_bytes": 17037
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/show-only-private-store",
+              "--evidence",
+              "--run-id",
+              "46e3485db74940baaec524b516839c90",
+              "--manifest-sha256",
+              "0410e9a7c32e6260df2dc3eb6dea285ccde0741c20444d523a803ece2356dd70",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/assessed.html"
+            ],
+            "command_sha256": "37cf75ef35ebb09e7a83edc445be958554da37e9a96a9323f4c3d6cfaf979920",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/show-only/outside"
+          },
+          "report": {
+            "sha256": "873c64823b7075a2ad58f5c33f8ede7b5b3e714fdbf14ab16c43e5d5293f9e42",
+            "size_bytes": 26512
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/show-only-private-store",
+              "--evidence",
+              "--run-id",
+              "46e3485db74940baaec524b516839c90",
+              "--manifest-sha256",
+              "0410e9a7c32e6260df2dc3eb6dea285ccde0741c20444d523a803ece2356dd70",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/no-false-followup-results/show-only/assessed.json"
+            ],
+            "command_sha256": "832e52c5f091d1398ce52b66ec35a1acbda9b2746c528235338191279a4b1bf3",
+            "cwd": "/workspace/work/current38-batch14/no-false-followup-results/show-only/outside"
+          },
+          "report": {
+            "sha256": "450e2b8a521c64501b51187b1ea6e60f6fa8cad16394289a93f546bdd3641247",
+            "size_bytes": 93114
+          }
+        }
+      },
+      "test_counts": null
+    },
+    "skipped": {
+      "collection": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "collect",
+          "--workspace",
+          "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+          "--store",
+          "/workspace/work/current38-batch14/results/no-false-verification/skipped/store",
+          "--request",
+          "/workspace/work/current38-batch14/results/no-false-verification/skipped/collection-request.json"
+        ],
+        "command_sha256": "f1d8521e2b5889d7573e7d37c4315a1881031b1d932ac9b29a6cc33f9bd2ab69",
+        "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/outside"
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+              "--run-id",
+              "a158f731fae34cf09cc0a80d53051575",
+              "--manifest-sha256",
+              "40d069988beb179a4174b826da5d595c8e86ba27a08338a566c5301cc9f389ba",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/policy.json"
+            ],
+            "command_sha256": "e465757b3ec985d64127b20ca82fb4c90f99075567a79f5775f9395efad6786d",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "a0eb7fb4e55bf006fb270770e0d7b78f67413e17aa4af64a04f2eba495394f8f"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+              "--run-id",
+              "a158f731fae34cf09cc0a80d53051575",
+              "--manifest-sha256",
+              "40d069988beb179a4174b826da5d595c8e86ba27a08338a566c5301cc9f389ba",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/policy.json"
+            ],
+            "command_sha256": "08e20730aca92d703f2ff24d97e4af5bd89f913622761ca45301bc137ddc8c55",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "410166bdff019917fdb45ef3ee97c1204a1126305b5d000d809b8641c74a0ceb"
+        }
+      },
+      "ctest": {
+        "build": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "--build",
+            "build"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+          "fact_sha256": "ba17a1025bb0922bc50e497a050b360ef9629e7181ca4e8a962ac5b6b0dffdd6"
+        },
+        "configure": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/x86_64-linux-gnu-g++-14"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+          "fact_sha256": "16b140503b44005e36332cb9a48dea27fa04b424d7bfb9a4d769c2ed97e70ab8"
+        },
+        "inventory": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace/build",
+          "fact_sha256": "aff90dca262bbede0d9203dd7a8aec2bf4050c7d9618ebeddd138198640b9f8c"
+        },
+        "tests": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--output-junit",
+            "junit.xml"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace/build",
+          "fact_sha256": "b1238c16bc4bb11471b44b2e60d07dc03bb618e0821ea6986489caecb6c2128f"
+        },
+        "version": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--version"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/workspace",
+          "fact_sha256": "d1225653cdd804cd3a982573febb2b0eba35f046ef4e346872d84632800f6b30"
+        }
+      },
+      "junit": {
+        "sha256": "83d8d1d05843fa01f7c7feae7f0435736cdbe08d3c1e21dea81129e2b45721c5",
+        "size_bytes": 378
+      },
+      "last_test": {
+        "sha256": "1f7bc0f0dfc39c98de459665948afca6dd25276d46b3dee59f784352c6462325",
+        "size_bytes": 729
+      },
+      "phase_result": {
+        "sha256": "da2c81dd0f8ea7bc4bd076c47812de9ed0d16b364bc9e2f59f42b09ed6a86051",
+        "size_bytes": 6063
+      },
+      "producer_snapshot": {
+        "sha256": "40d069988beb179a4174b826da5d595c8e86ba27a08338a566c5301cc9f389ba",
+        "size_bytes": 18101
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/store",
+              "--evidence",
+              "--run-id",
+              "07e74c81aae44a93a40310cd0520cd3d",
+              "--manifest-sha256",
+              "af5241a79f2d983f0f89910a3b0937051a774c80dbb439401c9e95b179d8e273",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/assessed.html"
+            ],
+            "command_sha256": "3d7e5ece158c930102c228424862535551b24f1e0615b3bd9e1a6e29a80656e7",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/outside"
+          },
+          "report": {
+            "sha256": "9176cb15029783b7db8abf15f87cb1f8fb85eceab5a36a33c72b97e87994c7df",
+            "size_bytes": 27060
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/store",
+              "--evidence",
+              "--run-id",
+              "07e74c81aae44a93a40310cd0520cd3d",
+              "--manifest-sha256",
+              "af5241a79f2d983f0f89910a3b0937051a774c80dbb439401c9e95b179d8e273",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/skipped/assessed.json"
+            ],
+            "command_sha256": "f0a9e991f3bc5fd28588b72876f6b0c198394ae392d7cb3d873e1d62f514e27c",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/skipped/outside"
+          },
+          "report": {
+            "sha256": "f23ad3d0e41b2aa3bebe03ad0b321d6ac26365eea49ce425e5d8056c09d2de74",
+            "size_bytes": 96828
+          }
+        }
+      },
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      }
+    },
+    "zero": {
+      "collection": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "collect",
+          "--workspace",
+          "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+          "--store",
+          "/workspace/work/current38-batch14/results/no-false-verification/zero/store",
+          "--request",
+          "/workspace/work/current38-batch14/results/no-false-verification/zero/collection-request.json"
+        ],
+        "command_sha256": "c28c48b90b20cffc597db4d7bc5b00eeb4f2b93965872dfb9d1ea662fe39dd18",
+        "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/outside"
+      },
+      "consumer": {
+        "assess": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "assess",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+              "--run-id",
+              "98a4096abd474093a5f2e886f9e4902f",
+              "--manifest-sha256",
+              "64eefe3e81686c1853a4d75de473b01df92c5c6b1b8e988b77ad08efdbe829cf",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/policy.json"
+            ],
+            "command_sha256": "c1e88465f19643c85be7e84cc547ccb4fc3ecf3ace4f3f5dce2f7e043be0fbee",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "279826a053d42875952f5e79c39f58b7ac209c4ee9a364449ea24e7ec1e655db"
+        },
+        "check": {
+          "actual_command": {
+            "actual_exit": 3,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "check",
+              "--store",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/store",
+              "--workspace",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+              "--run-id",
+              "98a4096abd474093a5f2e886f9e4902f",
+              "--manifest-sha256",
+              "64eefe3e81686c1853a4d75de473b01df92c5c6b1b8e988b77ad08efdbe829cf",
+              "--policy",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/policy.json"
+            ],
+            "command_sha256": "29ea688ffb42ca6f923cbba460681c4dfcc251a9683d50b6808e9c5eed41cc08",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/outside"
+          },
+          "gate": "insufficient_evidence",
+          "result_sha256": "e5a6f78c2813647841538bfb9021859c4b1c0a0264117598dc1cdfa96ee57f75"
+        }
+      },
+      "ctest": {
+        "build": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "--build",
+            "build"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+          "fact_sha256": "6e62a3f797494b0e3a1dee097247c3850b210f92251ad636b8ce1e15c8340ce4"
+        },
+        "configure": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/x86_64-linux-gnu-g++-14"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+          "fact_sha256": "fb7c99de3a0599afc136b99920f885a6cff756b8e6ad1dd3445c46f22f7b744f"
+        },
+        "inventory": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--show-only=json-v1"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace/build",
+          "fact_sha256": "f574334e4bcc2acdac6d23a6ddf347b9f24cedb9498c930ab0a42d9b8ec28d7f"
+        },
+        "tests": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--output-junit",
+            "junit.xml"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace/build",
+          "fact_sha256": "d5ac224c7c7d201cdcfd30d9baccd5b08868c5436ad4c59de335bd159d32dae0"
+        },
+        "version": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/cppulse/.venv/bin/ctest",
+            "--version"
+          ],
+          "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/workspace",
+          "fact_sha256": "14467665fa8500dbf43e37749c18371d83d4e4fefc6e4aaf8ce8215fc58da1b7"
+        }
+      },
+      "junit": {
+        "sha256": "582a6a17099f7d3eaf885486e86f71aecd8fd22879481598d2e38fdef162e82f",
+        "size_bytes": 175
+      },
+      "last_test": {
+        "sha256": "6ce64ce3f784d82273d6e639d73c8aa1734c34a8e37cfced3ab1c7c676486f0d",
+        "size_bytes": 121
+      },
+      "phase_result": {
+        "sha256": "5731024cf0f492ccca9a575965e30a88d3f889969ed851b3d0b6312a8c3145bf",
+        "size_bytes": 6054
+      },
+      "producer_snapshot": {
+        "sha256": "64eefe3e81686c1853a4d75de473b01df92c5c6b1b8e988b77ad08efdbe829cf",
+        "size_bytes": 18096
+      },
+      "reports": {
+        "html": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/store",
+              "--evidence",
+              "--run-id",
+              "112de108505841a8a22769ab1820a23b",
+              "--manifest-sha256",
+              "2868c773e0e5ec07542f18899ae7965b58ce441b8913a1c827b381c66d9ce929",
+              "--format",
+              "html",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/assessed.html"
+            ],
+            "command_sha256": "5ea9e26984b610ae5ae9fce3d43373fe36cd651194bbc0a45ef3232a3f9d1896",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/outside"
+          },
+          "report": {
+            "sha256": "50612d1630f53472a9198a1694927f5d5334ae55c5cdfb49b7452c95d1fa3802",
+            "size_bytes": 26990
+          }
+        },
+        "json": {
+          "actual_command": {
+            "actual_exit": 0,
+            "argv": [
+              "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+              "report",
+              "--input",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/store",
+              "--evidence",
+              "--run-id",
+              "112de108505841a8a22769ab1820a23b",
+              "--manifest-sha256",
+              "2868c773e0e5ec07542f18899ae7965b58ce441b8913a1c827b381c66d9ce929",
+              "--format",
+              "json",
+              "--output",
+              "/workspace/work/current38-batch14/results/no-false-verification/zero/assessed.json"
+            ],
+            "command_sha256": "72f4b86432e45d742f7b7b2e3e1f77d06b74fdf327bb4ae66d84ecd38eadacbc",
+            "cwd": "/workspace/work/current38-batch14/results/no-false-verification/zero/outside"
+          },
+          "report": {
+            "sha256": "51abd1459f06fdf4edd6575ae1ae8b37d928f2a9871692e522c984f739f305b8",
+            "size_bytes": 96670
+          }
+        }
+      },
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "total": 0
+      }
+    }
+  },
+  "original_whole_review_sha256": "6e3ce9a9e808bcbf16c1a5834cd40d323190248afdf826142c16ae8217d58d62",
+  "preserved_original_failed_observers": {
+    "contradictory": {
+      "diagnostic": {
+        "sha256": "550807e168ac0d1a5a44afdd83702bd0eba4b585f0d19c5dc969d2517c5fc84e",
+        "size_bytes": 714
+      },
+      "observation": "The observer stopped before collection. The authored request had an empty bindings list.",
+      "recorded_harness_exit": 1
+    },
+    "empty": {
+      "diagnostic": {
+        "sha256": "550807e168ac0d1a5a44afdd83702bd0eba4b585f0d19c5dc969d2517c5fc84e",
+        "size_bytes": 714
+      },
+      "observation": "The observer stopped before collection. The authored request had an empty bindings list.",
+      "recorded_harness_exit": 1
+    },
+    "show-only": {
+      "diagnostic": {
+        "sha256": "7ce11dede83209183c0bf8fb09c3a8841d1ae813fddf63009d4c23c011b684f6",
+        "size_bytes": 814
+      },
+      "observation": "The original observer stopped on the expected absence of a log file. The genuine show-only command emits a log without a named test event and no JUnit.",
+      "recorded_harness_exit": 1
+    },
+    "unsupported": {
+      "diagnostic": {
+        "sha256": "550807e168ac0d1a5a44afdd83702bd0eba4b585f0d19c5dc969d2517c5fc84e",
+        "size_bytes": 714
+      },
+      "observation": "The observer stopped before collection. The authored request had an empty bindings list.",
+      "recorded_harness_exit": 1
+    }
+  },
+  "record_kind": "Public projection of retained independent execution",
+  "scope_limits": [
+    "The first observer retains four genuine green native outcomes and all four red harness phases. The follow-up reused its genuine show-only producer and did not rerun CTest.",
+    "The import negatives are archive-only authored XML with an actual byte-copy command. The initial public collection request failures remain red. Stored imports have no verified sources or test receipts, while the pure evaluator independently returns unknown.",
+    "Historical exact producer archives and review bodies are retained as historical references and were not regenerated or claimed as current execution. No ledger or publication action was taken."
+  ],
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+}

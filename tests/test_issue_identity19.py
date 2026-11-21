@@ -1,4 +1,5 @@
 """Canonical caller/provider identities over mocked transport only."""
+
 from pathlib import Path
 import json
 
@@ -128,7 +129,10 @@ def test_monetary_floats_and_fractional_wall_budget_remain_numbers(tmp_path):
         transport=lambda *_: (200, {}, json.dumps([issue()]).encode()),
     )
     assert report["status"] == "complete" and report["issue_count"] == 1
-    assert report["costs"][0]["issue"] == 1 and type(report["costs"][0]["issue"]) is int  # noqa: E721 -- exact identity type
+    assert (
+        report["costs"][0]["issue"] == 1
+        and type(report["costs"][0]["issue"]) is int  # noqa: E721 -- exact ID type
+    )
     assert report["costs"][0]["roi_ratio"] == "0.5"
     assert report["costs"][0]["currency"] == "USD"
 

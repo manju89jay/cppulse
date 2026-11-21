@@ -15,7 +15,6 @@
 #include <vector>
 
 #include "finding.h"
-
 #include "generated_rule_types.h"
 
 namespace cppulse {

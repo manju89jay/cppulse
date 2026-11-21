@@ -38,14 +38,24 @@ def test_excluded_native_peer_publishes_unknown_global_duplication(
     documents = read_documents(snapshot)
     validate_bundle(documents)
     scope = documents["analysis_scope"][0]
-    excluded = next(row for row in scope["units"] if row["primary_file"] == "second.cpp")
+    excluded = next(
+        row for row in scope["units"] if row["primary_file"] == "second.cpp"
+    )
     assert excluded["parse_status"] == "excluded"
     assert excluded["execution"] is not None and excluded["outcome"] == "partial"
     duplicates = [
-        row for doc in documents["analysis_metrics"] for row in doc["items"]
+        row
+        for doc in documents["analysis_metrics"]
+        for row in doc["items"]
         if row["metric"] in {"duplicate_tokens", "duplicate_lines"}
     ]
     assert len(duplicates) == 2
     assert {row["file"] for row in duplicates} == {"main.cpp"}
-    assert {row["metric"] for row in duplicates} == {"duplicate_tokens", "duplicate_lines"}
-    assert all(row["availability"] == "unavailable" and row["value"] is None for row in duplicates)
+    assert {row["metric"] for row in duplicates} == {
+        "duplicate_tokens",
+        "duplicate_lines",
+    }
+    assert all(
+        row["availability"] == "unavailable" and row["value"] is None
+        for row in duplicates
+    )

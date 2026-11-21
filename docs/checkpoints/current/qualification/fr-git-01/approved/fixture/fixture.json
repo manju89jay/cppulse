@@ -1,0 +1,31 @@
+{
+  "custody": "New deterministic real Git history equivalent to the original recorded FR-GIT-01 edge predicates. The original object archive is unavailable.",
+  "criterion": "Preserve existing metrics while handling absent history, shallow boundaries, deleted files, renames, merges, and configured time windows explicitly.",
+  "cutoff": "2026-11-10T00:00:00Z",
+  "branch": "main",
+  "commits": [
+    {"id":"root","parents":[],"date":"2026-10-24T12:00:00Z","actor":"Alice","subject":"initial active, branch and retired source","add":{"before.cpp":["active",30],"retired.cpp":["retired",3],"side.cpp":["side",4]}},
+    {"id":"edit","parents":["root"],"date":"2026-11-01T12:00:00Z","actor":"Bob","subject":"add active line","add":{"before.cpp":["active",31]}},
+    {"id":"rename","parents":["edit"],"date":"2026-11-05T12:00:00Z","actor":"Alice","subject":"rename current source without content change","rename":{"before.cpp":"renamed.cpp"}},
+    {"id":"delete","parents":["rename"],"date":"2026-11-07T12:00:00Z","actor":"Bob","subject":"remove retired source","remove":["retired.cpp"]},
+    {"id":"side","parents":["rename"],"date":"2026-11-09T12:00:00Z","actor":"Carol","subject":"edit existing branch source","add":{"side.cpp":["side",5]}},
+    {"id":"merge","parents":["delete","side"],"date":"2026-11-09T18:00:00Z","actor":"Alice","subject":"merge independently edited branch","from_parent":{"side.cpp":"side"}}
+  ],
+  "expected": {
+    "repository_commits":6, "shallow_depth":1,
+    "renamed":{"file":"renamed.cpp","change_frequency":3,"lines_of_code":31,"lines_added_total":31,"lines_removed_total":0},
+    "current_files":["renamed.cpp","side.cpp"],
+    "window7":{"outside_window":2,"merge":1,"no_selected_files":1},
+    "window2":{"outside_window":4,"merge":1}
+  },
+  "cases": [
+    {"label":"default-full-history","repo":"source","exit":0},
+    {"label":"depth1-shallow-boundary","repo":"shallow","exit":0},
+    {"label":"absent-history","repo":"absent","exit":0},
+    {"label":"unborn-history","repo":"unborn","exit":0},
+    {"label":"seven-day-window","repo":"source","exit":0,"window":7},
+    {"label":"two-day-window","repo":"source","exit":0,"window":2},
+    {"label":"invalid-window","repo":"source","exit":1,"window":0},
+    {"label":"invalid-repository-path","repo":"missing","exit":1}
+  ]
+}

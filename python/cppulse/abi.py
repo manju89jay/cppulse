@@ -531,9 +531,7 @@ def compare(document: dict[str, Any], output_root: Path) -> dict[str, Any]:
                 check_status = (
                     "unusable"
                     if checked["timed_out"] or checked["log_truncated"]
-                    else "unsupported"
-                    if invalid
-                    else "validated"
+                    else "unsupported" if invalid else "validated"
                 )
                 preflight.append(
                     {

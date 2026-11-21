@@ -1,0 +1,24 @@
+{
+  "actual_projection_log_sha256": "fe8ece25dee2e7ee5235a053f610695d64cacbd3875007a57e3d2ff539f3308e",
+  "complete_private_receipts_by_role": {
+    "actual_bounded_gnu_git_legacy_producer_runner": "97c1a7d29f1bcd4e42f4bee1ecb0d239b9ff0e9ebd6d8af19fe353bafce8456f",
+    "actual_local_api_and_shim_identity_runner": "487497240cafeba6264e653766ba0365791d2984d7ccecf3808a295e895cd97a",
+    "current_actual_semantic_runner": "9bbbbb7d0e4136f6ebfc6d670d0e3e1724ea7a3852c00a6baa19c5bc9013a275",
+    "current_cross_origin_parity_receipt": "b52056278ea51963127ebd68a0e6d451ab4520dff1f5f4390f9a4e2c189beb0b",
+    "current_cross_origin_registration": "1b404d3c4bbc3560125978b74d7fc097802b7464ac39f19eda99e6a9b1aa851b",
+    "current_git_and_malformed_actual_result": "c545c907c4fb303c427a5c83a88720c7cd16f23fbe8550d8e618f96bfb229fdf",
+    "current_git_and_malformed_scope_registration": "ce54148ea42b78ffbdf111876ce9d11699b46e69389493fe4ebcd137b7dd2f0b",
+    "current_local_unix_actual_result": "8d0c254aae311754b0a4373cdc1ede79cad587e02986b4afea853b441dbffbcf",
+    "current_local_unix_registration": "fe4dd5d204c8dda2df21499a842645c07d9624875f45d5fef35f0c5e7b796428",
+    "retained_original_B9_alias_observer": "aa11efcc7f4b55b3e25f16211558da310314c947b85630054de9cccbbbfc35ea",
+    "retained_original_B9_report_pdf_and_malformed_observer": "84e66472c62f6f1303e3a86b4d0cccc3df25e5ffda841b3a2b17fe94bf2612a8",
+    "retained_previous_tied_order_and_first_wrapper": "6f98177c1e707d11c93d630fc98952e116649e31a6a3a0fa3044b56f2b5024b3",
+    "retained_second_setup_and_collection_receipt": "25c33438b2987c66b59264d78ddc72382eb30cb83ebf0a262406a225990728ca"
+  },
+  "id": "NFR-MNT-02",
+  "immutable_independent_whole_review_sha256": "001bf7042f94de2ceb1b3d3b59fd08fbeb41cb5bfa9405c33e9015bbf15dd0d5",
+  "portability": "Source hashes are checkable on an ordinary checkout. Reproduction requires the declared OS, tools and exact candidate build, and the genuine retained four-document fixture, Git history and older comparison material which remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact checked d65 package namespace, exact migration shims, selected case and fixture sources, package metadata, and supplemental original tracked helper files. The prior role and environment maps remain fully bound in the independent private review.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

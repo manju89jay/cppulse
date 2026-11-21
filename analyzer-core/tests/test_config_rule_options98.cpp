@@ -5,8 +5,6 @@
 
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <filesystem>
 #include <fstream>
 #include <limits>
@@ -16,6 +14,7 @@
 #include <vector>
 
 #include "config.h"
+#include "test_temp_directory.h"
 
 namespace {
 
@@ -109,10 +108,10 @@ TEST_P(NativeRuleOptions98Test, PreservesSupportedComplexityThresholdExtremes) {
             for (const bool enabled : {false, true}) {
                 SCOPED_TRACE(std::string{rule} + (reversed ? " reversed" : " forward") +
                              (enabled ? " enabled" : " disabled"));
-                const auto config = load_document(rule_document(
-                    rule, {{"enabled", enabled ? "true" : "false"},
-                           {"warning_threshold", reversed ? maximum : "0"},
-                           {"error_threshold", reversed ? "0" : maximum}}));
+                const auto config = load_document(
+                    rule_document(rule, {{"enabled", enabled ? "true" : "false"},
+                                         {"warning_threshold", reversed ? maximum : "0"},
+                                         {"error_threshold", reversed ? "0" : maximum}}));
                 ASSERT_EQ(config.rules.size(), 1u);
                 const auto& settings = config.rules.at(rule);
                 EXPECT_EQ(settings.enabled, enabled);
@@ -134,8 +133,8 @@ TEST_P(NativeRuleOptions98Test, PreservesDefaultsAndEnabledWithoutInventingThres
     EXPECT_EQ(defaults.max_token_records, cppulse::kDefaultMaxTokenRecords);
     EXPECT_TRUE(defaults.exclude_paths.empty());
     EXPECT_TRUE(defaults.rules.empty());
-    for (const auto* rule : {"CPP-CX-001", "CPP-CX-002", "CPP-CX-003", "CPP-MEM-001",
-                             "CPP-MOD-001", "MISRA-001"}) {
+    for (const auto* rule :
+         {"CPP-CX-001", "CPP-CX-002", "CPP-CX-003", "CPP-MEM-001", "CPP-MOD-001", "MISRA-001"}) {
         SCOPED_TRACE(rule);
         const auto config = load_document(rule_document(rule, {}));
         const auto& settings = config.rules.at(rule);
@@ -151,13 +150,11 @@ TEST_P(NativeRuleOptions98Test, PreservesDefaultsAndEnabledWithoutInventingThres
 }
 
 TEST_P(NativeRuleOptions98Test, RejectsInvalidSupportedThresholdTypesAndRanges) {
-    const auto above_maximum = std::to_string(static_cast<long long>(
-                                                std::numeric_limits<int>::max()) +
-                                            1);
+    const auto above_maximum =
+        std::to_string(static_cast<long long>(std::numeric_limits<int>::max()) + 1);
     for (const auto* option : {"warning_threshold", "error_threshold"}) {
         for (const auto& value :
-             std::vector<std::string>{"true", "\"9\"", "9.0", "9.5", "-1", above_maximum,
-                                      "null"}) {
+             std::vector<std::string>{"true", "\"9\"", "9.0", "9.5", "-1", above_maximum, "null"}) {
             // Native integral JSON spelling remains strict, including the value 9.0.
             expect_rejected(rule_document("CPP-CX-001", {{option, value}}));
         }
@@ -172,16 +169,15 @@ TEST_P(NativeRuleOptions98Test, RejectsNonBooleanEnabled) {
 
 TEST_P(NativeRuleOptions98Test, RejectsUnknownRootRuleAndOption) {
     expect_rejected(GetParam() == ConfigFormat98::kJson ? "{\"unsupported_option\":true}"
-                                                      : "unsupported_option: true\n");
+                                                        : "unsupported_option: true\n");
     expect_rejected(rule_document("CPP-NOT-A-RULE", {{"enabled", "true"}}));
     expect_rejected(rule_document("CPP-CX-001", {{"unsupported_option", "9"}}));
 }
 
-INSTANTIATE_TEST_SUITE_P(
-    PublicFormats, NativeRuleOptions98Test,
-    ::testing::Values(ConfigFormat98::kJson, ConfigFormat98::kYaml),
-    [](const ::testing::TestParamInfo<ConfigFormat98>& info) {
-        return info.param == ConfigFormat98::kJson ? "Json" : "Yaml";
-    });
+INSTANTIATE_TEST_SUITE_P(PublicFormats, NativeRuleOptions98Test,
+                         ::testing::Values(ConfigFormat98::kJson, ConfigFormat98::kYaml),
+                         [](const ::testing::TestParamInfo<ConfigFormat98>& info) {
+                             return info.param == ConfigFormat98::kJson ? "Json" : "Yaml";
+                         });
 
 }  // namespace

@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 try:
-    import yaml
+    import yaml  # noqa: F401 -- preserve the intentional import availability probe
 
     _HAS_YAML = True
 except ImportError:
@@ -142,9 +142,7 @@ def _derive_labels(features_df: pd.DataFrame, profile: str = "default") -> pd.Se
     if profile == "safety-critical":
         buggy = buggy | (features_df["misra_findings"] >= 1)
     if observed.any():
-        buggy.loc[observed] = (
-            features_df.loc[observed, "szz_bug_introductions"] >= 1
-        )
+        buggy.loc[observed] = features_df.loc[observed, "szz_bug_introductions"] >= 1
     return buggy.astype(int)
 
 
@@ -251,7 +249,9 @@ def build_risk_scores(
     health = health_scorer.compute(features_df)
     health_status = "no_data" if health.overall is None else "scored"
     limitations = list(features_df.attrs.get("limitations", []))
-    if (not features_df.empty or features_df.attrs.get("health_declared_file_count", 0)) and (
+    if (
+        not features_df.empty or features_df.attrs.get("health_declared_file_count", 0)
+    ) and (
         features_df.attrs.get("health_availability") != "scored"
         or features_df.attrs.get("health_profile") != health_scorer.profile_name
         or features_df.attrs.get("health_prerequisites")
@@ -350,7 +350,9 @@ def build_risk_scores(
                 "weights": dict(health_scorer._profile["weights"]),
                 "category_scales": {
                     category: scale
-                    for category, (_, scale) in health_scorer._profile["categories"].items()
+                    for category, (_, scale) in health_scorer._profile[
+                        "categories"
+                    ].items()
                 },
                 "denominator_files": len(features_df),
                 "declared_files": features_df.attrs.get("health_declared_file_count"),
@@ -497,7 +499,10 @@ def run(
     def output_guard() -> None:
         """Validate both leaves before any publication; do not follow aliases."""
         info = output_dir.lstat()
-        if not stat.S_ISDIR(info.st_mode) or (info.st_dev, info.st_ino) != boundary_identity:
+        if (
+            not stat.S_ISDIR(info.st_mode)
+            or (info.st_dev, info.st_ino) != boundary_identity
+        ):
             raise IntegrityError("Predictor output directory changed during generation")
         for name in names:
             try:
@@ -505,7 +510,9 @@ def run(
             except FileNotFoundError:
                 continue
             if not stat.S_ISREG(leaf.st_mode):
-                raise IntegrityError("Predictor output leaf must remain a regular file: " + name)
+                raise IntegrityError(
+                    "Predictor output leaf must remain a regular file: " + name
+                )
 
     output_guard()
     # A mountpoint can have a different device from its parent. Exclusive owned
@@ -521,7 +528,10 @@ def run(
             if source_digest is not None:
                 qualification["source_digest"] = source_digest
             _run_projected(
-                input_dir, stage, profile, inputs.findings,
+                input_dir,
+                stage,
+                profile,
+                inputs.findings,
                 inputs.measured_hotspot_metrics,
                 **qualification,
             )
@@ -564,8 +574,11 @@ def _run_projected(
     logger.info("Engineering features...")
     engineer = FeatureEngineer()
     features_df = engineer.build_features(
-        findings_data, git_metrics_data, profile=profile,
-        maintenance_health=maintenance_health, source_digest=source_digest,
+        findings_data,
+        git_metrics_data,
+        profile=profile,
+        maintenance_health=maintenance_health,
+        source_digest=source_digest,
     )
     features_df.attrs["measured_hotspot_metrics"] = measured_hotspot_metrics
     logger.info("Feature matrix shape: %s", features_df.shape)
@@ -607,7 +620,8 @@ def _run_projected(
         git_metrics_data.get("metadata", {}).get("limitations", [])
     )
     if label_source in {
-        "feature_derived_heuristic", "mixed_szz_and_feature_derived_heuristic"
+        "feature_derived_heuristic",
+        "mixed_szz_and_feature_derived_heuristic",
     }:
         risk_scores["metadata"]["limitations"].append(
             "Labels are derived from features; cross-validation is not evidence of future-defect predictive accuracy."
@@ -665,7 +679,9 @@ def _predictor_settings(config_path: Path) -> dict[str, Any]:
 
     settings = read_settings(config_path)
     if "ruleset" in settings or "execution" in settings or "history" in settings:
-        raise ContractError("Predictor component needs resolved native settings; use cppulse config --native-output")
+        raise ContractError(
+            "Predictor component needs resolved native settings; use cppulse config --native-output"
+        )
     return settings
 
 
@@ -734,12 +750,19 @@ def main() -> None:
         config_profile = settings.get("profile", "default")
         profile = args.profile or config_profile
         identity_path = args.config.with_name(args.config.name + ".identity.json")
-        retained = {"settings": deepcopy(settings), "profile_source": "config",
-                    "limitations": ["Retained component configuration; no Docker execution or complete environment claim."]}
+        retained = {
+            "settings": deepcopy(settings),
+            "profile_source": "config",
+            "limitations": [
+                "Retained component configuration; no Docker execution or complete environment claim."
+            ],
+        }
         if identity_path.is_file():
             retained = json.loads(identity_path.read_bytes())
             if retained.get("settings") != settings:
-                raise ContractError("Configuration identity sidecar does not match native settings")
+                raise ContractError(
+                    "Configuration identity sidecar does not match native settings"
+                )
         retained["settings"]["profile"] = profile
         if args.profile is not None:
             retained["profile_source"] = "command"
@@ -752,7 +775,9 @@ def main() -> None:
                 identity["digest"] = digest_json(identity)
     run(input_dir=args.input, output_dir=args.output, profile=profile)
     if retained is not None:
-        (args.output / "effective_config.json").write_text(json.dumps(retained, indent=2) + "\n")
+        (args.output / "effective_config.json").write_text(
+            json.dumps(retained, indent=2) + "\n"
+        )
 
 
 if __name__ == "__main__":

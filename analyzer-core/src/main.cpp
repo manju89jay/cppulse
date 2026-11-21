@@ -38,6 +38,7 @@ int main(int argc, char* argv[]) {
     std::string repo_path;
     std::string output_dir = "output";
     std::string config_path;
+    std::string profile;
     std::string single_file;
     std::string compilation_database;
     std::string resource_directory;
@@ -59,6 +60,11 @@ int main(int argc, char* argv[]) {
     app.add_option(
         "--config", config_path,
         "Path to .cppulserc.yml/.json config file (auto-discovered from repo root if omitted)");
+    const auto* profile_option =
+        app.add_option("--profile", profile,
+                       "Legacy scoring-profile config override: default or safety-critical; "
+                       "native detector enablement is independent (use per-rule enabled settings)")
+            ->check(CLI::IsMember({"default", "safety-critical"}));
     // Backward-compatible positional argument for single-file analysis.
     app.add_option("file", single_file, "C++ source file to analyze (single-file mode)")
         ->required(false);
@@ -72,13 +78,14 @@ int main(int argc, char* argv[]) {
     app.add_option("--execution-limits-report", limits_report,
                    "Write observed native limit capabilities as JSON");
 
-    app.add_option("--file-size-bytes", file_size_bytes, "Native Linux per-file output size hard limit");
+    app.add_option("--file-size-bytes", file_size_bytes,
+                   "Native Linux per-file output size hard limit");
 
     CLI11_PARSE(app, argc, argv);
 
     try {
-        const auto guards =
-            cppulse::apply_native_execution_limits({address_space_bytes, cpu_seconds, file_size_bytes});
+        const auto guards = cppulse::apply_native_execution_limits(
+            {address_space_bytes, cpu_seconds, file_size_bytes});
         if (!limits_report.empty()) {
             std::ofstream stream{limits_report, std::ios::binary | std::ios::trunc};
             stream << guards.dump(2) << "\n";
@@ -88,6 +95,8 @@ int main(int argc, char* argv[]) {
         }
         if (!file_list.empty() && repo_path.empty())
             throw std::runtime_error("--file-list requires --repo");
+        if (profile_option->count() > 0 && repo_path.empty())
+            throw std::runtime_error("--profile requires --repo");
         std::optional<std::filesystem::path> resource_path;
         if (!resource_directory.empty()) {
             std::error_code resource_error;
@@ -127,6 +136,18 @@ int main(int argc, char* argv[]) {
                 if (found.has_value()) {
                     config = cppulse::load_config(found.value());
                 }
+            }
+            // Validate selected config first. Never filter completed findings:
+            // effective rule options and the retained execution identity must agree.
+            if (profile_option->count() > 0) {
+                if (!config.has_value())
+                    config = cppulse::ProjectConfig{};
+                config->profile = profile;
+                spdlog::warn(
+                    "Legacy --profile '{}' sets the configuration's scoring profile; "
+                    "the native component performs no scoring and does not filter detectors. "
+                    "Use explicit rule enabled settings; score with the public cppulse pipeline.",
+                    profile);
             }
 
             std::optional<std::filesystem::path> database_path;

@@ -1,0 +1,60 @@
+{
+  "criterion": "Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit",
+  "id": "M4-01",
+  "independent_whole_review_sha256": "1a4193bb1bafedb254da8364d94570d63f955102f9a4553397e089df167a46e7",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "earlier_measured_native_and_readback": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch04/run_batch.sh",
+        "/workspace/work/current38-batch04/results"
+      ],
+      "raw_log_sha256": "2ad66341ddbaee581d0d37e3a2001cb22f3791607922113f72b562713225cafd",
+      "record_sha256": "2f76e79f40bffb0c4e277e02c04e9f5c10df76007367517433802c3dd9ab223a",
+      "stable_guard_pins": 3396
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_1e_to_d65_changed_source_paths": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "actual_contract_cases": 5,
+    "actual_functions": 1,
+    "actual_measured_lexical_cases": 7,
+    "callable": "classify",
+    "cyclomatic_complexity": 3,
+    "distinct_metric_deltas": 9,
+    "earlier_observed_scope": "The same-candidate typed contract bank and genuine cppulse-metrics-1 producer establish function and file units, identities and availability. The fresh five contract and seven measured lexical cases retain the thirty-token method, disjoint occurrences, union counts and unavailable outcomes for incomplete input. Actual stored comparisons and fresh installed readback retain zero for compatible scope and null for a separate missing required context, with nine metric deltas and all pinned JSON and HTML report bindings verified.",
+    "function_length": 6,
+    "incompatible_missing_context_delta": null,
+    "matched_comparison_delta": 0,
+    "method": "cppulse-metrics-1",
+    "observed_lexical_token_window": 30,
+    "physical_and_code_lines": 6,
+    "total_exact_cases": 12
+  },
+  "preserved_epoch_and_result_limits": [
+    "Finite lexical comparison in this Linux scope. Semantic-clone, calibration and other-platform claims remain outside the evidence. The unavailable historical SDK store remains separate.",
+    "Native metrics, duplication and comparison inputs are selected measured facts. They precede any predictor roadmap ordering. Earlier installed reports rendered immutable bound artifacts and keep their original bytes. Git scope disclosure and current legacy completion changes are outside these selected metric and replay predicates."
+  ],
+  "primary_observed_role": "earlier_measured_native_and_readback",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Define versioned function/file metrics, snapshot comparison, and duplication observations. | Units, denominators, availability, and comparison compatibility are explicit"
+}

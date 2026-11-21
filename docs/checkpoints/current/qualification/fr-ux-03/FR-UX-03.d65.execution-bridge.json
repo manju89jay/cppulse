@@ -1,0 +1,18 @@
+{
+  "actual_projection_log_sha256": "40e970e34f413aa1a09f188e660b4f85c9fbd50c88978d86487d4783ecd7aa85",
+  "complete_private_receipts_by_role": {
+    "after_external_runtime": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "before_external_runtime": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "earlier_da3_mixed_record": "f13c749e9e15f480a7aaec3c14d07cd5877e9b27e0299c6488c717b14c8c6606",
+    "earlier_fourcf_public_proof": "3d94ff45080a116005ba55cbc386c33017519cb7170672eecd8559b9295f3636",
+    "exact_nine_scope_markers": "4e82b67b0d6e3c3c7933b87857e91453326a910d98bdcb35a5bb033585409d52",
+    "exact_registration": "fcab24b37e36ff0686c7960670d1da533ea2d50ce86ea38b1b65229512266725",
+    "named_native_negative_readback": "d956d05f57f05d19111a08237ae960c1a005ad97dfc1dc3dcba918d92be5e845"
+  },
+  "id": "FR-UX-03",
+  "immutable_independent_whole_review_sha256": "e6128589ed2630e3bf9787bea3fa199436623890b4cd27930d45857295884177",
+  "portability": "Exact artifact packages, runtime, native tools/material and raw producer and consumer logs remain in custody. Relative source hashes and declared report semantics are reviewable on the public checkout.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact current namespace and tracked native source/supervisor closure, package metadata, original exact synthetic input drivers, new affected archive check and its actual source and installed inputs.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

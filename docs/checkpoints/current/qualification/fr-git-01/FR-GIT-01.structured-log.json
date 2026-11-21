@@ -1,0 +1,216 @@
+{
+  "kind": "Structured public projection of actual FR-GIT-01 semantic execution",
+  "criterion": "FR-GIT-01",
+  "scope": "Installed legacy Git histories and the two selected source/installed regressions on one controlled Linux runtime.",
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "runtime_artifact_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "actual_semantic_command": [
+    "/usr/bin/python3.13",
+    "-E",
+    "-B",
+    "/workspace/work/current38-public-evidence/fr-git-01-portable/launch.py",
+    "/workspace/work/portable-git01-receiving/registration.json",
+    "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+    "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37"
+  ],
+  "actual_semantic_exit": 0,
+  "actual_run_record_sha256": "519da0a7ea2f7b0531eb29f021abd55b84950a5ff26f1cb1f4dad20ad722e015",
+  "actual_raw_log_sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+  "exact_source_registration_sha256": "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+  "actual_candidate_manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+  "actual_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "qualification_raw_sha256": "88b4b360ba762c414147d76093ae35f5d27acbeefad0a269bcd46118044006e7",
+  "before_after_runtime_attestation": {
+    "inventory_sha256": "8480b00542473173fed20dff6c9df3d879620dcd4d96b6da86fc584c3d36a460",
+    "entries_verified": 260105,
+    "equal_pre_and_post_receipts": true,
+    "receipt_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "scope": "Checked in receiving custody. Public consumers need their own registered runtime to rerun."
+  },
+  "fresh_fixture": {
+    "generation": "The approved exact synthetic recipe generated a new local six-commit Git repository and actual depth-one clone.",
+    "source_recipe_sha256": "45037d775391cb71dc0530b9306a5e94d4d9990978dbcbe65e7d02ab5dddef9f",
+    "declared_fixture_sha256": "994047d2ef2647ac3515adcdcae6b26f699621f1e49093e6febfbda415ea2c16",
+    "generated_object_declaration_sha256": "a55ac6bf69661eda57a3c7930e2585961945160a4aab6db38339502710e24fba",
+    "before_inventory_sha256": "8f7ca8afd9f7854cc4af760b616e46e5ac6808bad0f5ea7b2870b466169c9174",
+    "after_inventory_sha256": "8f7ca8afd9f7854cc4af760b616e46e5ac6808bad0f5ea7b2870b466169c9174",
+    "unchanged_during_actual_checks": true,
+    "availability": "The recipe is proposed for disclosure. Actual raw repository files stay in receiving custody."
+  },
+  "whole_cases": {
+    "default-full-history": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "partial",
+      "commits": 6,
+      "metrics_files": [
+        "renamed.cpp",
+        "side.cpp"
+      ],
+      "legacy_scope_note": false,
+      "history_scope_note": false,
+      "legacy_sha256": "6b90ccfd689dea4b6895e70bcc6269299c43e8e23c08c157b63b41170aada8dc",
+      "history_sha256": "1add1e315bacb45e8fb5fd969c0dbedf9adb5e26c062fbca6be75254f741d399",
+      "behavior_sha256": null
+    },
+    "depth1-shallow-boundary": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "partial",
+      "commits": 1,
+      "metrics_files": [
+        "renamed.cpp",
+        "side.cpp"
+      ],
+      "legacy_scope_note": false,
+      "history_scope_note": false,
+      "legacy_sha256": "6c78b5ca514a40e00bd260da637199992fd585aa42eabcaa72f350d128a9f9b1",
+      "history_sha256": "9bcec3b605db0201cd2eb3d57de91ecbc0199bf1630db1367cb4c1d2ded7a55d",
+      "behavior_sha256": null
+    },
+    "absent-history": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "unavailable",
+      "commits": 0,
+      "metrics_files": [],
+      "legacy_scope_note": false,
+      "history_scope_note": false,
+      "legacy_sha256": "1342c438d8cdaacfaa7bd092a9fd715252f23d79a182f2afe388f99f94998802",
+      "history_sha256": null,
+      "behavior_sha256": null
+    },
+    "unborn-history": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "unavailable",
+      "commits": 0,
+      "metrics_files": [],
+      "legacy_scope_note": false,
+      "history_scope_note": false,
+      "legacy_sha256": "7fa18e73f394ddf3bbdd993d78d979c7e965e118c62274045afc8bb47a0edcac",
+      "history_sha256": "3619221b29bbab869073c8f7f40aa141a713568194980e0823be60bb56858212",
+      "behavior_sha256": null
+    },
+    "seven-day-window": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "partial",
+      "commits": 6,
+      "metrics_files": [
+        "renamed.cpp",
+        "side.cpp"
+      ],
+      "legacy_scope_note": true,
+      "history_scope_note": true,
+      "legacy_sha256": "70c938fb2738c1b5169628baca90988cdc5646ca3144ec9602a1815a982a10b1",
+      "history_sha256": "d660a899945331812db00b89f50c62c3b81df099603b9d6522294b5d520fd45d",
+      "behavior_sha256": "4f789607522d93a2e5d0ec99cd109633c6357663900892dab3b19996ae494c64",
+      "behavior_counts": {
+        "observed_commits": 6,
+        "accepted_commits": 2,
+        "excluded_commits": {
+          "merge": 1,
+          "no_selected_files": 1,
+          "outside_window": 2
+        },
+        "dropped_pair_updates": 0
+      }
+    },
+    "two-day-window": {
+      "expected_exit": 0,
+      "actual_outcome_control_passed": true,
+      "exit_status": 0,
+      "availability": "partial",
+      "commits": 6,
+      "metrics_files": [
+        "renamed.cpp",
+        "side.cpp"
+      ],
+      "legacy_scope_note": true,
+      "history_scope_note": true,
+      "legacy_sha256": "ad3c2a4119780e955f70df8a36eeba7ef85444cb0aca4691f0271056cf8295ae",
+      "history_sha256": "d660a899945331812db00b89f50c62c3b81df099603b9d6522294b5d520fd45d",
+      "behavior_sha256": "13d12f64a6e8ba38ca9352c829ba7cab95375ea655c6c74a9bc53f85870759b6",
+      "behavior_counts": {
+        "observed_commits": 6,
+        "accepted_commits": 1,
+        "excluded_commits": {
+          "merge": 1,
+          "outside_window": 4
+        },
+        "dropped_pair_updates": 0
+      }
+    },
+    "invalid-window": {
+      "expected_exit": 1,
+      "actual_outcome_control_passed": true,
+      "exit_status": 1
+    },
+    "invalid-repository-path": {
+      "expected_exit": 1,
+      "actual_outcome_control_passed": true,
+      "exit_status": 1
+    }
+  },
+  "additional_observed_scope_predicates": {
+    "default_behavior_only_note_absent": true,
+    "default_behavior_report_absent": true,
+    "configured_note_exactly_once_in_both_documents": true,
+    "other_complete_legacy_documents_equal_excluding_generation_time_only": true,
+    "other_complete_history_documents_equal": true
+  },
+  "required_scope_conditions": [
+    "Current legacy metrics omit deleted and replaced path identities. The renamed file retains three changes and 31 current lines.",
+    "Absent and unborn histories are explicitly unavailable. A real depth-one clone reports its unavailable parent delta without assigning changes.",
+    "Merge histories retain the first-parent and cross-branch lineage limitations.",
+    "Both configured windows report their actual accepted and excluded commits. The behavioral scope note occurs once in both configured documents.",
+    "The default report has no behavioral note or sidecar. Other legacy and raw history fields remain equal apart from the analysis timestamp.",
+    "Invalid window and repository path have actual exit 1 with meaningful diagnostics and no primary outputs. These are successful negative controls."
+  ],
+  "actual_phases": {
+    "git-public": {
+      "actual_exit": 0,
+      "kernel_socket_probes": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      },
+      "initial_account_home_empty": true,
+      "raw_process_receipt_sha256": "01a850da710c77f8314f078a041a566ee8c917caa601d788dd5b827804503cce",
+      "kernel_denial_receipt_sha256": "de068c971c4a7193aefc2126ba3a147383f5b387e5b120621e94c75a7a35fd98"
+    },
+    "git-source": {
+      "actual_exit": 0,
+      "kernel_socket_probes": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      },
+      "initial_account_home_empty": true,
+      "raw_process_receipt_sha256": "b5789f2054bbfb7516e770e047a05639e59d89b7240a1c5938802c64dea45d9d",
+      "kernel_denial_receipt_sha256": "867e2e64153a34c3ff5ec75bc9dd3d2364948cf137b2b6e3d59919fd91338007",
+      "actual_regressions_passed": 2,
+      "junit_sha256": "cbbc11d50949414bcd2ee0d46bb6a4507027b43fc6debf7ac531473e3883a098"
+    },
+    "git-installed": {
+      "actual_exit": 0,
+      "kernel_socket_probes": {
+        "AF_INET": 101,
+        "AF_INET6": 101,
+        "AF_UNIX": 101
+      },
+      "initial_account_home_empty": true,
+      "raw_process_receipt_sha256": "3f2d86362a6427033c7e05eff1dece9381f77ccacad41126b7d4f4e61e4f0c62",
+      "kernel_denial_receipt_sha256": "4e3e7de732fe80254756ff18162932e6fa3c6970549ca8663a833fa9d2e9d5b6",
+      "actual_regressions_passed": 2,
+      "junit_sha256": "41a48c5c7fd9a00b5d19ff8d5172bbae6abebf3944775f8c8b0e4380624d986b"
+    }
+  },
+  "publication_state": "Observed actual execution. Independent whole-predicate review and owner review of this exact public projection are pending."
+}

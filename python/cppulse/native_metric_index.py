@@ -1,4 +1,5 @@
 """A bounded ordered identity census over caller-owned lazy metric rows."""
+
 # Exact finite declarations intentionally exclude bool/subclasses.
 # ruff: noqa: E721
 from __future__ import annotations

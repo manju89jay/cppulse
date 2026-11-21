@@ -1,0 +1,436 @@
+{
+  "actual_cases": {
+    "author-only": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "d28cc7a127b8ff6730bb4443e7ebc1e4103020b51627328881acfcefabeb913b",
+        "size_bytes": 962
+      },
+      "actual_installed_analyze_exit": 0,
+      "configured_history_scope_note_retained": true,
+      "git_metrics": {
+        "sha256": "3b95836c75fda6b950ff34f5b8dba3fa4d4ff806a8a8680271c297fdf962d3ce",
+        "size_bytes": 3194
+      },
+      "legacy_report_original_bytes": {
+        "sha256": "84630b70143298cccc0e8199d38ea89a2ab13fd65691a60b12b6b8a738f71d1a",
+        "size_bytes": 23385
+      },
+      "legacy_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "observed_behavior": {
+        "sha256": "b2b7c56e28192d540437a8665847e6b190d3528e185b3b2c5b79d8f960991610",
+        "size_bytes": 5710
+      },
+      "observed_file_attribution": [
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.6666666666666666,
+              "weighted_changes": 2.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.3333333333333333,
+              "weighted_changes": 1.0
+            }
+          ],
+          "fixture_file": "a.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        },
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 1.0,
+              "weighted_changes": 3.0
+            }
+          ],
+          "fixture_file": "b.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        }
+      ],
+      "requested_behavior": {
+        "sha256": "8244b179ac6fa27689ed3fff15c5e8ee7a13f9b29fe7d221f9811a6fe12c6730",
+        "size_bytes": 523
+      },
+      "typed_snapshot": {
+        "independently_observed_successful_native_receipts": 2,
+        "manifest": {
+          "sha256": "d0a910b31fec5c0d1e893048b1c5cac1f5e183f986daa6ff3dff56b0931a9b31",
+          "size_bytes": 34487
+        },
+        "run_id_utf8_sha256": "81484928b905a82e92b245f551a2ad861e22213011fbc57bfa62673bcdbeeef8",
+        "verified_artifact_count": 53
+      },
+      "visible_knowledge_proxy_limitation": true
+    },
+    "bots-included": {
+      "accepted_counts": {
+        "accepted_commits": 5,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {},
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "902695d801d023d3fcbdd587cfc753e61c48e1d41dca1f8d7e6be558385d1f4a",
+        "size_bytes": 970
+      },
+      "actual_installed_analyze_exit": 0,
+      "configured_history_scope_note_retained": true,
+      "git_metrics": {
+        "sha256": "b66511763b45dd39cf7b39f6d9be6529db832825222002449cba1e4b583daee8",
+        "size_bytes": 3194
+      },
+      "legacy_report_original_bytes": {
+        "sha256": "41426327b63a7314b1d5f6d1854cf1c6fb05fc8e526a8763a6ea81cd0e1e845c",
+        "size_bytes": 23385
+      },
+      "legacy_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "observed_behavior": {
+        "sha256": "b3c7bb06928c860730bbfb7b0246f017fd94814b845ce3f69b9589d9f88f416c",
+        "size_bytes": 6915
+      },
+      "observed_file_attribution": [
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.375,
+              "weighted_changes": 1.5
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.375,
+              "weighted_changes": 1.5
+            },
+            {
+              "fixture_author": "Build-bot",
+              "former_contributor": false,
+              "share": 0.25,
+              "weighted_changes": 1.0
+            }
+          ],
+          "fixture_file": "a.cpp",
+          "touches": 4,
+          "weighted_mass": 4.0
+        },
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.5,
+              "weighted_changes": 2.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.25,
+              "weighted_changes": 1.0
+            },
+            {
+              "fixture_author": "Build-bot",
+              "former_contributor": false,
+              "share": 0.25,
+              "weighted_changes": 1.0
+            }
+          ],
+          "fixture_file": "b.cpp",
+          "touches": 4,
+          "weighted_mass": 4.0
+        }
+      ],
+      "requested_behavior": {
+        "sha256": "d77178480999969fe6412a3d5885866a75f841ee5162235c593ad1cf15fdb838",
+        "size_bytes": 498
+      },
+      "typed_snapshot": {
+        "independently_observed_successful_native_receipts": 2,
+        "manifest": {
+          "sha256": "e5f2cb80f6e448190456e81380f40775e741ac7d50834778320dd47e122661c8",
+          "size_bytes": 34507
+        },
+        "run_id_utf8_sha256": "9671327427680328c75236b0a236654290d28083a9f373c5a8ee98b3c4154b2c",
+        "verified_artifact_count": 53
+      },
+      "visible_knowledge_proxy_limitation": true
+    },
+    "configured": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "4ea08b636ba2c7f29420f37c9df9528374e110ab586a786d4de9e68c22d6e0ef",
+        "size_bytes": 958
+      },
+      "actual_installed_analyze_exit": 0,
+      "configured_history_scope_note_retained": true,
+      "git_metrics": {
+        "sha256": "9f9eb2dd589902757edafcb938284a5340914a2ff8f24f1d360fc0399e25e144",
+        "size_bytes": 3194
+      },
+      "legacy_report_original_bytes": {
+        "sha256": "6cd348a5a25b560201a6b046267c413ee51ae20b3885e6370430aa34df773529",
+        "size_bytes": 23385
+      },
+      "legacy_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "observed_behavior": {
+        "sha256": "815300dcdd446abeee2dd235a242d0b846cfe1f46bdb2e17dbb596b34fd76d78",
+        "size_bytes": 6046
+      },
+      "observed_file_attribution": [
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.5,
+              "weighted_changes": 1.5
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.5,
+              "weighted_changes": 1.5
+            }
+          ],
+          "fixture_file": "a.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        },
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.6666666666666666,
+              "weighted_changes": 2.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.3333333333333333,
+              "weighted_changes": 1.0
+            }
+          ],
+          "fixture_file": "b.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        }
+      ],
+      "requested_behavior": {
+        "sha256": "1afa90679625bfbbab994a49159b559d0ab2ab54cd1bceda0128692b99d16395",
+        "size_bytes": 529
+      },
+      "typed_snapshot": {
+        "independently_observed_successful_native_receipts": 2,
+        "manifest": {
+          "sha256": "25857b87c502a1174a02557c79613240fb37dccb05d0742551039ae2cd372af4",
+          "size_bytes": 34477
+        },
+        "run_id_utf8_sha256": "c5651e59de63fa357ea94b1f697b9cdc83f884cbc76cd424a10bb6648a8a9322",
+        "verified_artifact_count": 53
+      },
+      "visible_knowledge_proxy_limitation": true
+    },
+    "configured-repeat": {
+      "accepted_counts": {
+        "accepted_commits": 4,
+        "dropped_pair_updates": 0,
+        "excluded_commits": {
+          "bot_only": 1
+        },
+        "observed_commits": 5
+      },
+      "actual_command": {
+        "sha256": "1d0edeaa8f68ebabdada7705cce07c3cd7b93ae9360c241e7c95c582f5502871",
+        "size_bytes": 986
+      },
+      "actual_installed_analyze_exit": 0,
+      "configured_history_scope_note_retained": true,
+      "git_metrics": {
+        "sha256": "4f092d589fa4e905312e5de98812f12273b38a6c42a56e4af50fe0a5e932391a",
+        "size_bytes": 3194
+      },
+      "legacy_report_original_bytes": {
+        "sha256": "b2eb6417a2aae68db1e3078883ceaa10ff2d6f310111c36115913435fb211459",
+        "size_bytes": 23385
+      },
+      "legacy_roadmap_original_order": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "observed_behavior": {
+        "sha256": "815300dcdd446abeee2dd235a242d0b846cfe1f46bdb2e17dbb596b34fd76d78",
+        "size_bytes": 6046
+      },
+      "observed_file_attribution": [
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.5,
+              "weighted_changes": 1.5
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.5,
+              "weighted_changes": 1.5
+            }
+          ],
+          "fixture_file": "a.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        },
+        {
+          "authorship": [
+            {
+              "fixture_author": "Alice",
+              "former_contributor": false,
+              "share": 0.6666666666666666,
+              "weighted_changes": 2.0
+            },
+            {
+              "fixture_author": "Bob",
+              "former_contributor": true,
+              "share": 0.3333333333333333,
+              "weighted_changes": 1.0
+            }
+          ],
+          "fixture_file": "b.cpp",
+          "touches": 3,
+          "weighted_mass": 3.0
+        }
+      ],
+      "requested_behavior": {
+        "sha256": "1afa90679625bfbbab994a49159b559d0ab2ab54cd1bceda0128692b99d16395",
+        "size_bytes": 529
+      },
+      "typed_snapshot": {
+        "independently_observed_successful_native_receipts": 2,
+        "manifest": {
+          "sha256": "4c87c65e5cb8882a925876e1f6b5fe7294565c4d850f955f8ec12c4ea65af3ee",
+          "size_bytes": 34547
+        },
+        "run_id_utf8_sha256": "123a4a6207710aee10f2ac4dcb7fa64cd033fef1e80f3b7d624887528636de2f",
+        "verified_artifact_count": 53
+      },
+      "visible_knowledge_proxy_limitation": true
+    }
+  },
+  "actual_finite_case_count": 4,
+  "configured_history_scope_note": "Legacy file metrics use the retained history scope. The configured behavior lookback and cutoff apply only to behavioral metrics; history collection bounds and other limitations still apply.",
+  "criterion": "FR-GIT-03",
+  "criterion_text": "Support contributor aliases, bot exclusion, former contributors, and configured pair-programming attribution. Authorship is a knowledge proxy, not proof of expertise.",
+  "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+  "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+  "finite_qualification": "Four actual installed public analyze journeys completed over one fresh authored equivalent five-commit local history. Alias consolidation, absent duplicate attribution, former Bob, configured pair versus author-only changes and explicit bot override reproduce the original literal shares. The repeat gives an identical configured behavior document and all published outcomes disclose the knowledge-proxy limitation.",
+  "initial_empty_account_home_preflight": {
+    "sha256": "f9c990979ea96329fecf238a12b885878d10e1e891b8ce85c53946cd8bec262b",
+    "size_bytes": 817
+  },
+  "kernel_socket_denial": {
+    "receipt": {
+      "sha256": "74d86a8b65b433d17c1e62438774b359c023fc33a68f1d1a4bfd07ad766280d3",
+      "size_bytes": 581
+    },
+    "scoped_command": [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/current38-batch05/git/recheck.py",
+      "git-03",
+      "/workspace/work/current38-batch05/results/git-03"
+    ],
+    "socket_errno": {
+      "AF_INET": 101,
+      "AF_INET6": 101,
+      "AF_UNIX": 101
+    }
+  },
+  "limits": [
+    "Original criterion predicates were exercised with a freshly authored equivalent fixture. Broader authorship, individual performance and source authenticity claims are outside this evidence."
+  ],
+  "new_finite_fixture_commit_count": 5,
+  "original_batch_wrapper_exit": 0,
+  "original_observations": [
+    "The four verified native/public snapshot manifests retain 53 hash-checked artifacts each and two genuine exit-0 installed native receipts per run. All local Git source, objects, refs and worktree bytes stayed fixed."
+  ],
+  "phase_status": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size_bytes": 2
+  },
+  "scoped_actual_command": [
+    "/workspace/verification-python-venv/bin/python",
+    "-B",
+    "/workspace/work/current38-batch05/git/recheck.py",
+    "git-03",
+    "/workspace/work/current38-batch05/results/git-03"
+  ],
+  "scoped_exit": 0,
+  "unchanged_private_fixture_roles": {
+    "actual_sources_refs_objects_reflogs_and_worktree_unchanged": true,
+    "before_and_after_raw_fixture_commitment": {
+      "sha256": "6a08e617134480ec6c29c7bb1d4169ffe2d618d30a25b2c396635f3d34c4fd96",
+      "size_bytes": 3684
+    },
+    "equivalent_authored_declaration": {
+      "sha256": "257635276b92106ceefde916ff2a50356b49fd312c405ecb4c1078a6d22dfe1e",
+      "size_bytes": 3290
+    },
+    "expected_object_graph_commitment": {
+      "sha256": "ba39081d2a46b9aa064e15ba75f3f99da13df8f1b055776bb1b209d4223c1c65",
+      "size_bytes": 10974
+    }
+  }
+}

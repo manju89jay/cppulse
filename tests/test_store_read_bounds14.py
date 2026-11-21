@@ -1,4 +1,5 @@
 """Malformed sizes/growing files must fail without reading an unbounded body."""
+
 import pytest
 
 from cppulse import run_store as module
@@ -70,9 +71,11 @@ def test_declared_artifact_growth_is_rejected_before_body_read(
             path.write_bytes(path.read_bytes() + b" " * 4096)
             reads, _ = tracked_reader(monkeypatch, path)
             with pytest.raises(IntegrityError):
-                projection.read_bytes(
-                    "source"
-                ) if operation == "projection" else stage.publish(document)
+                (
+                    projection.read_bytes("source")
+                    if operation == "projection"
+                    else stage.publish(document)
+                )
     assert reads == [], "Registered size mismatch must fail before artifact body IO"
 
 
@@ -96,8 +99,10 @@ def test_growth_after_stat_is_bounded_by_initial_size_and_one_probe(
     reads, delivered = tracked_reader(monkeypatch, path, append=True)
     retained = []
     with pytest.raises(IntegrityError):
-        module._stream_file(path, write=retained.append) if streaming else module._read(
-            path
+        (
+            module._stream_file(path, write=retained.append)
+            if streaming
+            else module._read(path)
         )
     assert reads and all(0 <= count <= 6 for count in reads)
     assert sum(delivered) <= 6

@@ -9,14 +9,13 @@
 
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <string>
 
 #include "analyzer.h"
+#include "test_temp_directory.h"
 
 namespace {
 

@@ -540,6 +540,7 @@ def collect_request(
     validate("collection_request", request)
     if "ruleset" in request or "resolved_ruleset" in request:
         from cppulse.rulesets import bind_collection_ruleset
+
         request = bind_collection_ruleset(request, Path(workspace))
         validate("collection_request", request)
     if len(_bytes(request)) > int(request["plan"]["limits"]["max_metadata_bytes"]):
@@ -556,7 +557,9 @@ def collect_request(
         for pack in request["resolved_ruleset"]["packs"]:
             name = Path(pack["path"]).relative_to(workspace).as_posix()
             if observed.get(name) != pack["sha256"]:
-                raise InputChanged("Ruleset changed while establishing collection inputs: " + name)
+                raise InputChanged(
+                    "Ruleset changed while establishing collection inputs: " + name
+                )
     source["limitations"] = list(
         dict.fromkeys([*source["limitations"], *request["source"]["limitations"]])
     )

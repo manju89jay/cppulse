@@ -1,4 +1,5 @@
 """Authored identity controls; these fixtures do not authenticate producers."""
+
 from __future__ import annotations
 
 from typing import Any
@@ -28,9 +29,15 @@ def inputs(
     }
     history = {
         "metadata": {"history_status": "available"},
-        "file_metrics": [{"file": "a.cpp", "change_frequency": 3,
-                          "unique_contributors": 2, "age_days": 30,
-                          "lines_of_code": 10}],
+        "file_metrics": [
+            {
+                "file": "a.cpp",
+                "change_frequency": 3,
+                "unique_contributors": 2,
+                "age_days": 30,
+                "lines_of_code": 10,
+            }
+        ],
     }
     if findings_root is not None:
         findings["metadata"]["repo_path"] = findings_root
@@ -39,22 +46,33 @@ def inputs(
     return findings, history
 
 
-@pytest.mark.parametrize("roots", [
-    ("/repo", "/repo"), ("/repo/", "/repo//."),
-    ("C:\\repo\\", "c:/repo/"),
-    ("//server/share/repo", "\\\\server\\share\\repo\\"),
-])
-def test_consistent_lexical_roots_preserve_observed_join(roots: tuple[str, str]) -> None:
+@pytest.mark.parametrize(
+    "roots",
+    [
+        ("/repo", "/repo"),
+        ("/repo/", "/repo//."),
+        ("C:\\repo\\", "c:/repo/"),
+        ("//server/share/repo", "\\\\server\\share\\repo\\"),
+    ],
+)
+def test_consistent_lexical_roots_preserve_observed_join(
+    roots: tuple[str, str]
+) -> None:
     frame = FeatureEngineer().build_features(*inputs(*roots))
     assert frame.iloc[0]["file"] == "a.cpp"
     assert frame.iloc[0]["change_frequency"] == 3
     assert frame.attrs["rank_availability"]["a.cpp"].eligible
 
 
-@pytest.mark.parametrize("roots", [
-    ("/repo-A", "/repo-B"), ("/repo", "repo"),
-    ("C:/repo", "D:/repo"), ("/repo", "C:/repo"),
-])
+@pytest.mark.parametrize(
+    "roots",
+    [
+        ("/repo-A", "/repo-B"),
+        ("/repo", "repo"),
+        ("C:/repo", "D:/repo"),
+        ("/repo", "C:/repo"),
+    ],
+)
 def test_conflicting_origins_cannot_borrow_same_relative_file_history(
     roots: tuple[str, str],
 ) -> None:
@@ -68,7 +86,9 @@ def test_empty_history_cannot_constrain_independent_static_features() -> None:
     frame = FeatureEngineer().build_features(findings, history)
     assert frame["file"].tolist() == ["a.cpp"]
     assert not frame.attrs["rank_availability"]["a.cpp"].eligible
-    assert "missing_file_history" in frame.attrs["rank_availability"]["a.cpp"].reason_codes
+    assert (
+        "missing_file_history" in frame.attrs["rank_availability"]["a.cpp"].reason_codes
+    )
 
 
 @pytest.mark.parametrize("roots", [(None, "/repo"), ("/repo", None), (None, None)])

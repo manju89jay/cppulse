@@ -772,3 +772,90 @@ Keep sealed private compression, packaged JSON-schema checks and original native
 
 - **Mounted output repair**: Predictor creates an exclusive private stage inside the validated output directory, then completes both output generation/schema validation and the original-input integrity guard before publication. It rechecks the output directory and regular target leaves, closes writers, and uses one atomic `os.replace` per file. A second publication failure is an error and may leave the first file updated; this is not a pairwise transaction or crash-durability guarantee. Output symlinks/nonregular leaves are rejected and cleanup owns only the private stage. The original Docker bind-mount EXDEV failure is retained.
 - **Configuration identity repair**: Project configuration settings and their content hash come from one read of the same bytes. Predictor derives its profile and retained settings from one validated read as well. Controlled live-file mutation tests distinguish the selected bytes from a later filesystem value.
+
+
+## PROD-20261120-29: Integrate reviewer fixes without inheriting old score or evidence claims
+
+- **Context**: The approved finite review exposed missing `.c++` database units, three modernization-context errors and an incomplete first trial. Main and the tested checkpoint diverged; main's historical density/empty100 scoring is incompatible with current measured-context prerequisites. The originating Cloud workspace could not admit a new native build.
+- **Decision**: Prepare one deliberate two-parent integration based on same-tested-tree master plus main, retaining all main-only history and referencing large historical result blobs instead of copying96MB into the checkout. Keep canonical Git/PDF implementations, versioned unknown-preserving scoring and shared CI. Resolve native profile overrides before execution. Reconcile declared units with explicit gaps/exclusions; restrict detector repairs to proven source shapes and three rule-version bumps. Provide an authored finite C++/CTest example with genuine positive/missing/stale acceptance controls.
+- **Why**: Missing declarations, contextual style hints, historical arithmetic and a failed storage admission cannot become claims of clean code, calibrated probabilities or current qualification. Source transfer must preserve exact bodies/modes/tree, not depend on an unverified commit/push.
+- **Tradeoffs**: The conservative range-for subset intentionally does not suggest many valid rewrites. Compiler-marked custom system roots remain trusted for header identity. First-trial execution requires actual CTest3.31.6. All187 definitions/states/P0–P14 remain intact; PR-04/M0-05 and external human/platform obligations remain unfinished.
+- **Verification**: At source handoff, the originating workspace had only mechanical static checks. Wrapper admission exit 1 at 4,332,023,808 B free prevented producer start. The portable hash-checked transfer preserved the source and historical records. Receiving-host results and their remaining acceptance requirements are recorded below and in the [batch record](development/reviewer-fixes.md).
+- **Interview angle**: Preserve history and evidence identities independently from current source claims; treat unavailable prerequisites as explicit blockers rather than green results.
+
+## PROD-20261120-30 — Qualify literal exclusions and range-for advice on the receiving host
+
+- **Context**. The frozen v2 run built with GCC 14.2 and libclang 19.1.7. CTest 3.31.6 found that a literal `.c++` exclusion let the intended translation unit through and matched a different `.cc` file. It also found a volatile array accepted as a read-only range-for candidate. A separate native run showed that applying advice which stripped `metrics::` changed the executable result from 16 to 70 when a local `values` shadowed that name.
+- **Decision**. Preserve literal plus signs when translating native exclusion globs. Check array element qualification where libclang exposes it and describe the range-for rewrite without inventing an identifier. Keep the original detection controls and exercise both an exact literal exclusion and a qualified array with shadowed names.
+- **Why**. Exclusion must select the same file the user named. Range-for advice must respect the observed array binding and the rule's conservative read-only scope.
+- **Tradeoffs**. Range-for advice describes the rewrite without supplying a ready-to-paste loop. The existing `.c++` discovery scope, detector IDs, format versions and original acceptance criteria still apply.
+- **Verification**. The receiving Cloud run preserves the exact v2 source and its two failed native CTests. The repaired code passed all 175 CTests, and the installed first trial passed its real CTest, missing-evidence and stale-source controls. The receiving-host OSS analyses retained partial results. The README records those observed outcomes and the release gate. Because it becomes wheel metadata, the documentation revision requires its own source freeze, build and installed verification. The strict delivery evidence for the original 38 criteria remains pending.
+
+## PROD-20261120-31 — Match dashboard notices to the resolved production dependencies
+
+- **Context**. The installed dashboard and lockfile resolved Lodash 4.18.1, while the bundled notice identified 4.17.23. The resolved production inventory contains 44 package entries and 57 license bodies, including the upstream Victory license and the notices for its vendored components.
+- **Decision**. Update the Lodash heading to 4.18.1, preserve every license body, and regenerate the bundled notice and its manifest with the dashboard asset producer. Preserve the prior source tree and its verification records under their original identity.
+- **Verification**. The renewed inventory compares each lockfile entry, installed package identity, and complete license body. The previous inventory had one version mismatch. The correction requires a fresh source freeze and verification of the rebuilt wheel and installed bytes. Whole-delivery acceptance still requires the complete current proof.
+
+## PROD-20261121-32 — Separate legacy analysis completion from health qualification
+
+- **Context**. An installed legacy invocation from `/` passed the literal source path to the native analyzer. The analyzer used the selected compilation database, analyzed the file with zero parse errors and produced the report. The archive correctly retained unverified inputs and a null health score. The CLI used that score to classify the descriptive analysis as partial.
+- **Decision**. Derive legacy completion from the retained native inventory and requested report. Require a nonempty, consistent source inventory, observed successful parses with working directories and arguments, and the required profile detectors. A selected compilation database requires observed database context for each in-scope file. Empty scope, skipped or failed units and missing required results remain partial.
+- **Why**. A descriptive report can help a user inspect a successfully analyzed scope while the prerequisites for full-scope health and source verification remain unavailable.
+- **Tradeoffs**. Legacy publication keeps the unverified archive and any unavailable health score. Optional Git history keeps its own availability disclosure. Bounded analysis and operational error reporting retain their existing contracts.
+- **Verification**. The installed Linux replay exercised all nine original working-directory cases. The legacy invocation completed with exit 0, null health and an unverified archive. The bounded unsupported-input control still returned 3. Six additional native controls returned 3 for empty scope, a skipped file, parse errors, a missing required detector, inferred context and fallback context under an explicitly selected database. Retain the earlier failing legacy receipt with its original source and artifact identities.
+- **Interview angle**. Explain how one CLI response can describe a completed native analysis and an unavailable health score. The retained inventory and report support the first claim, while source bindings and complete qualified prerequisites govern the second.
+
+## PROD-20261121-33 — Order tied roadmap rows by file and category
+
+- **Context**. Four retained predictor entry-point runs emitted the same three knowledge-silo rows with equal impact. The row order and assigned priorities varied because their input came from a Python set.
+- **Decision**. Keep impact descending as the primary sort. Break exact ties by the existing file path and then category in ascending order before assigning priorities. The default profile continues to omit MISRA rows. The safety-critical profile applies the same ordering to its included rows.
+- **Why**. The file and category already identify the roadmap row. Using them as tie-breakers makes priorities reproducible across hash seeds and entry points while preserving impact, weights, other row fields, and profile selection.
+- **Tradeoffs**. Equal-impact rows now have an explicit lexical order. Stored reports keep their original priorities. New reports may reorder ties from older generated reports.
+- **Verification**. The original four differing outputs remain in custody. Qualification is pending. Planned checks cover full roadmap output and priorities across multiple Python hash seeds, source and installed entry points, both profiles, and a higher-impact control. The separate old69 comparison retains its original input and exact parity assertions.
+- **Interview angle**. Show how a stable sort can preserve nondeterminism from an unordered input. Name the existing row fields that make the ordering total within the expected output scope.
+
+## PROD-20261121-34 — Bind master CI to current producers and explicit test scopes
+
+- **Context**. New pull requests target `master`. A clean Actions checkout has no local edits for the formatter to discover. The health controls need an actual current analyzer, while archived differential tests need their original inputs.
+- **Decision**. Pin clang-format 19.1.7, Black 24.1.1 and Ruff 0.2.1. Use the PR base and head for formatting selection alongside local changes. Keep the shared native and component checks. Register the current analyzer and selected Clang headers after native configuration, build and CTest succeed for the same source. Keep the exact historical comparisons in the complete local suite and name their exclusions in the hosted command.
+- **Why**. A committed test change must reach Black and Ruff. A current analyzer must exercise all nine live health controls with its own preregistered identity. The suite also retains the two pure health cases. Archive identity remains part of each historical assertion.
+- **Tradeoffs**. The hosted lane depends on real provider and evidence fixtures. Its results cover the recorded source checks. Full and historical assurance still require their separate inputs and acceptance.
+- **Verification**. Exercise a real clean Git checkout with committed changes, check the workflow and its command selection, and run the live health cases with a registered build. Hosted results require an actual GitHub run.
+- **Interview angle**. Explain why a source diff and a build receipt are stronger inputs for CI than a dirty-worktree check or a fixed digest from a past build.
+
+## PROD-20261121-35 — Refuse late bounded metadata changes during publication
+
+- **Context**. The clean CI replay changed a work-unit result after the report was generated. Bounded publication kept the original receipt but still returned a completed result. A separate late external-header mutation already raised `InputChanged` during publication.
+- **Decision**. Recheck the observed work-unit metadata in the store's final publication callback. A change aborts the candidate publication. Existing failure handling can retain a separate partial attempt with the original receipt and conflicting bytes as diagnostics.
+- **Why**. FR-EVD-04 requires detection of changed evidence. The same failed publication cannot supply current complete analysis or qualified health for FR-ANA-07.
+- **Tradeoffs**. Publication reads the retained metadata a second time. A later diagnostic attempt can fail independently if its inputs change again. A successful run keeps its existing results and pointer behavior.
+- **Verification**. Exercise the actual native pipeline with unchanged metadata, then with a late result mutation. Confirm the earlier completed pointer and original receipt remain intact, and preserve the conflicting bytes only as diagnostics. Keep the external-header test on its existing final-window failure contract.
+- **Interview angle**. Explain how a final pointer update can race with an earlier integrity check, even when the archived receipt itself remains byte-identical.
+
+## PROD-20261121-36 — Close the dashboard lock under the hosted npm version
+
+- **Context**. GitHub Actions run 44905173898 stopped at the dashboard's locked install under Node 20.20.2 and npm 10.8.2. The lock recorded esbuild 0.21.5 for the production Vite build. It lacked the compatible optional esbuild peer and platform entries for the Vite 8 used by Vitest.
+- **Decision**. Regenerate the lock with npm 10.8.2 and preserve all previously locked entries. Pin Node 20.20.2 in this hosted lane and check its bundled npm version before the locked install. Keep the shared dashboard tests and production build after `npm ci`.
+- **Why**. A fresh checkout should resolve exactly the same test and build dependencies selected during qualification. Retaining both esbuild versions preserves the distinct dependency requirements of the existing Vite versions.
+- **Tradeoffs**. The lock adds 27 development-only entries for esbuild 0.28.2 and its platform packages. The pin makes tool upgrades explicit for this job.
+- **Verification**. The original lock failed with npm EUSAGE on the same toolchain. A fresh install with the regenerated lock passed with all 343 previous entries unchanged. All 64 dashboard tests and the production build passed. The shipped HTML, CSS, JavaScript and notices were byte-identical, including the verified 44 production dependencies and 57 license bodies. The rebuilt and installed wheel changed only the asset manifest and its RECORD entry. The hosted rerun remains pending.
+- **Interview angle**. Explain how an optional test-tool peer can make a locked install fail while the versions used by the production build stay unchanged.
+
+## PROD-20261121-37 — Trust the Actions checkout for the pinned Git provider
+
+- **Context**. GitHub Actions run 44905173898 installed Git 2.52.0 in the Python job's container. Its first developer-facade call stopped before native configuration because Git rejected the ownership of the mounted checkout.
+- **Decision**. After adding the pinned Git binary to the job path, register the canonical `GITHUB_WORKSPACE` checkout in a job-owned file under `RUNNER_TEMP`. Require a checkout marker and reject a wildcard directory entry. Select the file in later steps through `GIT_CONFIG_SYSTEM` so the entry survives a fresh HOME.
+- **Why**. The workflow controls which Actions checkout it builds. The exact allowlist entry lets the selected Git inspect that checkout and preserves ownership checks for other repositories.
+- **Tradeoffs**. The trust entry applies for the lifetime of this CI job. The step depends on Actions declaring an existing checkout path.
+- **Verification**. Execute the actual registration step with Git 2.52.0 under its ownership-test mode. Require Git to reject all initially untrusted repositories, then accept the declared checkout from a fresh HOME while continuing to reject both a sibling and a nested repository. The hosted rerun remains pending.
+- **Interview angle**. Explain why a checkout can gain trust for an ephemeral CI job without turning off Git's ownership check for other repositories.
+
+## PROD-20261121-38 — Include canonical contract tests in component coverage
+
+- **Context**. GitHub Actions run 44907679831 on the published checkpoint passed the public root suite. The Git miner component passed all 90 tests and measured 59.31% against its required 80% canonical threshold. Local replay matched that result and measured 69.36% for the predictor against 75%. The local report-engine replay also exposed two component fixtures that assumed an older package or store layout.
+- **Decision**. Keep each original component collection and working directory. Add explicit public root contracts for behavior and history, temporal prediction and risk, and the work-unit API to their matching coverage sessions. Keep the canonical thresholds and fail a report that omits a canonical Python file. Exercise the packaged report from an archive of the current package, and corrupt the authority pointer used by each store format in the named-read test.
+- **Why**. Component coverage needs to observe the canonical code its clients actually exercise. The on-disk inventory gives unexecuted files a place in the denominator. A named-read test needs to damage the authority that a current read would really open.
+- **Tradeoffs**. Component gates now run a small set of repository-level tests, some of which also run in the full root suite. Each uses the same collection process and regular local fixtures. Existing historical lanes keep their current test selections.
+- **Verification**. Preserve the hosted and local failing receipts. The repaired local gates measured 87.44% for Git miner, 88.98% for predictor and 93.36% for report engine, with the same canonical files and statement totals. The omitted-file, shim, threshold, optional-dependency and corrupt-pointer controls passed. The repair's hosted rerun remains pending.
+- **Interview angle**. Explain the difference between a passing test process and a passing coverage gate, and why a missing module cannot improve a statement-coverage result.

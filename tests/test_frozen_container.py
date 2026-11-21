@@ -1,4 +1,5 @@
 """Owned lifecycle tests use only an injected Docker executor, never a daemon."""
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -348,9 +349,11 @@ def test_selected_inside_image_bytes_are_checked_before_start(
         if argv[1] == "cp" and argv[2].endswith(target):
             data = archive(
                 {
-                    "native"
-                    if selected == "native"
-                    else "cppulse-runtime-supervisor": b"different bytes"
+                    (
+                        "native"
+                        if selected == "native"
+                        else "cppulse-runtime-supervisor"
+                    ): b"different bytes"
                 }
             )
             return DockerCommandResult("passed", 0, data, b"", len(data), 0)

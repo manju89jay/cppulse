@@ -1,0 +1,878 @@
+{
+  "actual_callable_assertions": [
+    {
+      "case": "junit-clean",
+      "passed": true
+    },
+    {
+      "case": "junit-fail",
+      "passed": true
+    },
+    {
+      "case": "junit-skip",
+      "passed": true
+    },
+    {
+      "case": "junit-disabled",
+      "passed": true
+    },
+    {
+      "case": "junit-zero",
+      "passed": true
+    },
+    {
+      "case": "junit-pytest",
+      "passed": true
+    },
+    {
+      "case": "test-import-ctest-junit",
+      "passed": true
+    },
+    {
+      "case": "test-import-generic-junit",
+      "passed": true
+    },
+    {
+      "case": "coverage-lcov",
+      "passed": true
+    },
+    {
+      "case": "coverage-cobertura",
+      "passed": true
+    }
+  ],
+  "actual_fresh_fixture_subprocesses": [
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/ctest",
+        "--version"
+      ],
+      "command_sha256": "1f9d906758c323ae5cc71fa1b26b8c179491c2a2b7381d58dfe6480366f38b8e",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/disabled"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/cmake",
+        "-S",
+        ".",
+        "-B",
+        "build"
+      ],
+      "command_sha256": "3453283b7941acd9e906827be747bc43af20725c11c08a7fec4352c438e24fe1",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/disabled"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/ctest",
+        "--show-only=json-v1"
+      ],
+      "command_sha256": "db5ac6163f8a161a6728375465399f97aa4e0d53ed11b75b8b372f0e1294d00c",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/disabled/build"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/ctest",
+        "--output-on-failure",
+        "--output-junit",
+        "junit.xml"
+      ],
+      "command_sha256": "baaea5ba0cc916e5b5163d2768661e0aabb8a51de3231f80f7c56b7aec77cf77",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/disabled/build"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "--version"
+      ],
+      "command_sha256": "8966cdc86958cbcd496232a0b22ca0c86bc511426fdcbaeaaf1ddca0b704b902",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/pytest"
+    },
+    {
+      "actual_exit": 1,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "scratch",
+        "-q",
+        "--junitxml=junit.xml",
+        "test_producer_fixture.py"
+      ],
+      "command_sha256": "be9ab11712db8b3fb9be4e255f7aa11703c0c4089caaf79432a958cb493ec09d",
+      "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/pytest"
+    }
+  ],
+  "actual_observer_child": {
+    "actual_exit": 0,
+    "argv": [
+      "/workspace/verification-python-venv/bin/python",
+      "-B",
+      "/workspace/work/current38-batch14/evidence-imports/observe.py",
+      "/workspace/work/current38-batch14/results/evidence-imports"
+    ],
+    "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "actual_wrapper": {
+    "actual_exit": 0,
+    "argv": [
+      "bash",
+      "/workspace/work/current38-batch14/evidence-imports/launch.sh",
+      "/workspace/work/current38-batch14/results/evidence-imports"
+    ],
+    "guard_bound_files": 10418,
+    "job_log": {
+      "sha256": "36e135e733ec5aba267387f50d953aef2c3099d66833d09be5d3b7781bc843ed",
+      "size_bytes": 290
+    },
+    "job_record": {
+      "sha256": "cfd88194871d351bad30611f4a742b4e816c161df9d8e8310455c6d7db172fda",
+      "size_bytes": 3596250
+    },
+    "network_denial": {
+      "sha256": "914f0adcf743918d5105162b8aa2e51ea7ded50137884766084ddd5ec13efc10",
+      "size_bytes": 590
+    },
+    "preregistration": {
+      "sha256": "e09d5f783b448aaabbfecb98ff8c9d26b673c1136e57ef944db4e61a1be294d9",
+      "size_bytes": 1803405
+    },
+    "runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries": 260105,
+    "scope": "Ten direct unchanged FR-EVD-01 assertion calls with genuine registered producer inputs",
+    "source_before_after_equal": true
+  },
+  "criterion": "FR-EVD-01",
+  "criterion_text": "Import CTest/JUnit results and coverage reports, initially LCOV and Cobertura. Preserve test counts, failed/skipped cases, covered/total counts, measurement type, and context.",
+  "junit_readback": {
+    "clean": {
+      "cases": [
+        {
+          "identity": "case-fc8a5569f639421c627c3da69d6352bca0ff59a56175ccf8adb87f7c5abe9370-1",
+          "name": "selected-int-macro7",
+          "status": "passed"
+        },
+        {
+          "identity": "case-ac3f08dce40540531c0abc0be636094b30036fafc5e6bcb49098d57f7c93e012-1",
+          "name": "standalone-header",
+          "status": "passed"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "total": 2
+      },
+      "import_status": "passed",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "7413631d9598ca462c9d4cf82a34d828393a050185fc18e49d9c52b33ff7aba8",
+        "size_bytes": 1602
+      },
+      "producer_exit": 0,
+      "provider": {
+        "name": "ctest",
+        "version": "3.31.6"
+      },
+      "raw_report": {
+        "sha256": "daeb894fae5c6d597e698256dadc73438eb76bad566d077302ed43f5808f865c",
+        "size_bytes": 502
+      },
+      "retained_context": "selected-gcc-header",
+      "retained_original_manifest": {
+        "sha256": "dcc5e6dfe4f95b776afa1c69181bbb8f54f167ce06facc5b200e5d329a87aa23",
+        "size_bytes": 28433
+      },
+      "retained_original_run": "28f2576afe7c44c7a51f0ca50529ec90"
+    },
+    "disabled": {
+      "actual_fresh_producer": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/cppulse/.venv/bin/ctest",
+          "--output-on-failure",
+          "--output-junit",
+          "junit.xml"
+        ],
+        "command_sha256": "baaea5ba0cc916e5b5163d2768661e0aabb8a51de3231f80f7c56b7aec77cf77",
+        "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/disabled/build"
+      },
+      "cases": [
+        {
+          "identity": "case-e346336056417d6d803751aecb9a74b0e7ef6d8b9cc87811da69e5074179ec12-1",
+          "name": "disabled-only",
+          "status": "skipped"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "import_status": "skipped",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "dd89e5ea8d4da3429216d3cb4a7c83cd125448661f73a3fe692141695685dfaa",
+        "size_bytes": 1375
+      },
+      "producer_exit": 0,
+      "provider": {
+        "name": "ctest",
+        "version": "3.31.6"
+      },
+      "raw_report": {
+        "sha256": "d9ac8146ac4bf2be31b817642de0ab347ad1174fb5b8b40e22d425ec314e9620",
+        "size_bytes": 340
+      }
+    },
+    "fail": {
+      "cases": [
+        {
+          "identity": "case-490b8397bc92a36a9be65a318065807947d9d48715dbcc44c5fc8a9b62377e3e-1",
+          "name": "actual-case",
+          "status": "failed"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "import_status": "failed",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "fc1e9c962deda6b7703177c603ec3497dea212629a37e92bdedee384cf629a26",
+        "size_bytes": 1347
+      },
+      "producer_exit": 8,
+      "provider": {
+        "name": "ctest",
+        "version": "3.31.6"
+      },
+      "raw_report": {
+        "sha256": "f04ec2a670131f44b7201d04148f583bf941358cbed5e75121461e45c45586bc",
+        "size_bytes": 363
+      },
+      "retained_context": "native",
+      "retained_original_manifest": {
+        "sha256": "6021629a57fc4dc6a2a5deb8b12783f5e76d4ae803a40239f554922454d3fa38",
+        "size_bytes": 18128
+      },
+      "retained_original_run": "eddcd5937f8a4feaa68305037db29c9b"
+    },
+    "pytest": {
+      "actual_fresh_producer": {
+        "actual_exit": 1,
+        "argv": [
+          "/workspace/verification-python-venv/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-c",
+          "/dev/null",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp",
+          "scratch",
+          "-q",
+          "--junitxml=junit.xml",
+          "test_producer_fixture.py"
+        ],
+        "command_sha256": "be9ab11712db8b3fb9be4e255f7aa11703c0c4089caaf79432a958cb493ec09d",
+        "cwd": "/workspace/work/current38-batch14/results/evidence-imports/produced/pytest"
+      },
+      "cases": [
+        {
+          "identity": "case-31988ec8d9942ebd2449454eb8d2f12ad47d9ef4835f047c4a7caca807addf2f-1",
+          "name": "test_passed",
+          "status": "passed"
+        },
+        {
+          "identity": "case-787435cd5882dcf577ac3c59c78d1cfa005d428a5cce4264de1adfce653eef1b-1",
+          "name": "test_failed",
+          "status": "failed"
+        },
+        {
+          "identity": "case-c8a9cea06005ec34c81085849d35253bf31370baa4bc25b1cb5cbfeb0907fa09-1",
+          "name": "test_skipped",
+          "status": "skipped"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 1,
+        "skipped": 1,
+        "total": 3
+      },
+      "import_status": "failed",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "63f504d8fae606cdb59c9abb320eca57777c8c3bfc5835c0050c3df3d360778e",
+        "size_bytes": 1849
+      },
+      "producer_exit": 1,
+      "provider": {
+        "name": "pytest",
+        "version": "8.0.0"
+      },
+      "raw_report": {
+        "sha256": "88364de8af563f5f4de2cd394ebfb8421e3afa72e639ab6d767db98d63cfcfc5",
+        "size_bytes": 804
+      }
+    },
+    "skip": {
+      "cases": [
+        {
+          "identity": "case-490b8397bc92a36a9be65a318065807947d9d48715dbcc44c5fc8a9b62377e3e-1",
+          "name": "actual-case",
+          "status": "skipped"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "import_status": "skipped",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "0102a1e4f1015b41cd31c74cf36f9ffadc999376684af3c4673a881cd031adfd",
+        "size_bytes": 1396
+      },
+      "producer_exit": 0,
+      "provider": {
+        "name": "ctest",
+        "version": "3.31.6"
+      },
+      "raw_report": {
+        "sha256": "83d8d1d05843fa01f7c7feae7f0435736cdbe08d3c1e21dea81129e2b45721c5",
+        "size_bytes": 378
+      },
+      "retained_context": "native",
+      "retained_original_manifest": {
+        "sha256": "40d069988beb179a4174b826da5d595c8e86ba27a08338a566c5301cc9f389ba",
+        "size_bytes": 18101
+      },
+      "retained_original_run": "a158f731fae34cf09cc0a80d53051575"
+    },
+    "zero": {
+      "cases": [],
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "total": 0
+      },
+      "import_status": "skipped",
+      "origin": "import",
+      "parser_result": {
+        "sha256": "1beed031cdfdf2555c60c88062171a51064ba9b7c0fdb56791705997a73991ce",
+        "size_bytes": 1164
+      },
+      "producer_exit": 0,
+      "provider": {
+        "name": "ctest",
+        "version": "3.31.6"
+      },
+      "raw_report": {
+        "sha256": "582a6a17099f7d3eaf885486e86f71aecd8fd22879481598d2e38fdef162e82f",
+        "size_bytes": 175
+      },
+      "retained_context": "native",
+      "retained_original_manifest": {
+        "sha256": "64eefe3e81686c1853a4d75de473b01df92c5c6b1b8e988b77ad08efdbe829cf",
+        "size_bytes": 18096
+      },
+      "retained_original_run": "98a4096abd474093a5f2e886f9e4902f"
+    }
+  },
+  "original_assertion_function_counts": {
+    "test_genuine_coverage_methods_denominators_context_and_public_output": 2,
+    "test_genuine_ctest_and_generic_junit_counts_are_not_process_success": 6,
+    "test_public_test_import_keeps_context_and_import_origin": 2
+  },
+  "original_whole_review_sha256": "3553f6871faa56ca8d1403ecef654a7b87fb7228e20bf6e373dfd558a853f8cd",
+  "public_report_pairs": {
+    "coverage-cobertura": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-cobertura/store",
+            "--evidence",
+            "--run-id",
+            "1bbe1e3c0ac2489594c6ca7934bd13c9",
+            "--manifest-sha256",
+            "985e9204b0bca084c5aa536a26be197ae0142b2655c9dc9fce8715a30a7690e1",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-cobertura/report.json"
+          ],
+          "command_sha256": "25b93bc3085643fb7b55eb6a9b8b1afc88fd777c5cd21fa1ec2773feadba24ee"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-cobertura/store",
+            "--evidence",
+            "--run-id",
+            "1bbe1e3c0ac2489594c6ca7934bd13c9",
+            "--manifest-sha256",
+            "985e9204b0bca084c5aa536a26be197ae0142b2655c9dc9fce8715a30a7690e1",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-cobertura/report.html"
+          ],
+          "command_sha256": "49c7f57f68a4b563f67ffeabd64f31026705c39a955645be26d84210b59c4548"
+        }
+      ],
+      "context": "gcc-coverage-job",
+      "coverage_dimensions": {
+        "branch": {
+          "covered": 1,
+          "method": "cobertura-condition-counts-v1",
+          "total": 2
+        },
+        "line": {
+          "covered": 5,
+          "method": "cobertura-lines-v1",
+          "total": 8
+        }
+      },
+      "manifest": {
+        "sha256": "985e9204b0bca084c5aa536a26be197ae0142b2655c9dc9fce8715a30a7690e1",
+        "size_bytes": 32263
+      },
+      "report_fact_origin": "execution",
+      "reports": {
+        "html": {
+          "sha256": "26617ad35e99ff5dacf71db6ad3f7b47152ab5e874f381f68f52a222b1aead6b",
+          "size_bytes": 28082
+        },
+        "json": {
+          "sha256": "8c1f9739950eb86a7103d117c4a26ea5da3d3a6c3adfd8041c8d61cfc17a027f",
+          "size_bytes": 151489
+        }
+      },
+      "run_id": "1bbe1e3c0ac2489594c6ca7934bd13c9",
+      "separate_import_execution_receipt": null,
+      "separate_import_fact": {
+        "sha256": "a542c48d4c12ddefab865f9b5a56e3117e5314b3f99ecf12ec77f858f68a990a",
+        "size_bytes": 3789
+      },
+      "separate_import_origin": "import"
+    },
+    "coverage-lcov": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-lcov/store",
+            "--evidence",
+            "--run-id",
+            "437087f4193341fb808170d94aea981a",
+            "--manifest-sha256",
+            "cd068499306ae2e68a372ec1d59ac072c044ca8cbb156f98f3cc1b95178c555b",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-lcov/report.json"
+          ],
+          "command_sha256": "983a096a7c06ea1630f64de13f1f98a851b1f588fd39fb713f71276a6290ad36"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-lcov/store",
+            "--evidence",
+            "--run-id",
+            "437087f4193341fb808170d94aea981a",
+            "--manifest-sha256",
+            "cd068499306ae2e68a372ec1d59ac072c044ca8cbb156f98f3cc1b95178c555b",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/coverage-lcov/report.html"
+          ],
+          "command_sha256": "4865804086cf4044cd8858bee11409ba66d5d1577a4c1bb65febf99a36e097f8"
+        }
+      ],
+      "context": "gcc-coverage-job",
+      "coverage_dimensions": {
+        "branch": {
+          "covered": 1,
+          "method": "lcov-brda-v1",
+          "total": 2
+        },
+        "function": {
+          "covered": 2,
+          "method": "lcov-fnda-v1",
+          "total": 3
+        },
+        "line": {
+          "covered": 5,
+          "method": "lcov-da-v1",
+          "total": 8
+        }
+      },
+      "manifest": {
+        "sha256": "cd068499306ae2e68a372ec1d59ac072c044ca8cbb156f98f3cc1b95178c555b",
+        "size_bytes": 32263
+      },
+      "report_fact_origin": "execution",
+      "reports": {
+        "html": {
+          "sha256": "65ad2e8e03835e6e5974e0ff5db410527f9c2f684a646e98580a853dc7ce7981",
+          "size_bytes": 28130
+        },
+        "json": {
+          "sha256": "6764a98081f9942b95358ed22e65b8c4a6c75b8653eac5215b5bc1c637b0c485",
+          "size_bytes": 152165
+        }
+      },
+      "run_id": "437087f4193341fb808170d94aea981a",
+      "separate_import_execution_receipt": null,
+      "separate_import_fact": {
+        "sha256": "61ac1576e6d65f451b5eee8fa3b12149c57a7b65988865f6a9a55c7e11ed051e",
+        "size_bytes": 4519
+      },
+      "separate_import_origin": "import"
+    },
+    "junit-fail/import-report": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-fail/import-store",
+            "--evidence",
+            "--run-id",
+            "0e2e381a07334c9e83efa0508e280a56",
+            "--manifest-sha256",
+            "626d4e866646bb2f0f2fd55384ebd382f0f5ed3d877721534d4fa053fba10950",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-fail/import-report/report.json"
+          ],
+          "command_sha256": "61e7746e0957a0757227c3a6b0e710a0c52a944530fdd6d312ec8c28439e26ad"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-fail/import-store",
+            "--evidence",
+            "--run-id",
+            "0e2e381a07334c9e83efa0508e280a56",
+            "--manifest-sha256",
+            "626d4e866646bb2f0f2fd55384ebd382f0f5ed3d877721534d4fa053fba10950",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-fail/import-report/report.html"
+          ],
+          "command_sha256": "df644f34513c11475dbb49db9d98b2b56866827436aab9adf35c30c70a8251f5"
+        }
+      ],
+      "adapter": {
+        "name": "ctest-junit",
+        "version": "1.0.0"
+      },
+      "context": "native",
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      },
+      "manifest": {
+        "sha256": "626d4e866646bb2f0f2fd55384ebd382f0f5ed3d877721534d4fa053fba10950",
+        "size_bytes": 19003
+      },
+      "origin": "import",
+      "receipt_id": null,
+      "reports": {
+        "html": {
+          "sha256": "9e2b3c9e9e8b183746e9058d40a9c12c04ef749049c3cf7131285707284caf87",
+          "size_bytes": 25539
+        },
+        "json": {
+          "sha256": "d6b8635ff8d98819ef0d6e66f322d45864d4e8847d6d92a0bccf9d8d6abf595a",
+          "size_bytes": 87510
+        }
+      },
+      "run_id": "0e2e381a07334c9e83efa0508e280a56"
+    },
+    "junit-skip/import-report": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-skip/import-store",
+            "--evidence",
+            "--run-id",
+            "7b14c430df114d2e8adaec8881bb406f",
+            "--manifest-sha256",
+            "1b7c00c0255d59846e63b8b2fffb94593d34b7f0762b0c343b9f4d22ab3177db",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-skip/import-report/report.json"
+          ],
+          "command_sha256": "3aa531a81489a9b99bb23872d8ecef805dce44d7d5e78042dd2eb22958000323"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-skip/import-store",
+            "--evidence",
+            "--run-id",
+            "7b14c430df114d2e8adaec8881bb406f",
+            "--manifest-sha256",
+            "1b7c00c0255d59846e63b8b2fffb94593d34b7f0762b0c343b9f4d22ab3177db",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/junit-skip/import-report/report.html"
+          ],
+          "command_sha256": "d988cd58573d6cc144d5d6d6d975dd0b9eccd409a6e5ee2df70527a42f0851ca"
+        }
+      ],
+      "adapter": {
+        "name": "ctest-junit",
+        "version": "1.0.0"
+      },
+      "context": "native",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 1,
+        "total": 1
+      },
+      "manifest": {
+        "sha256": "1b7c00c0255d59846e63b8b2fffb94593d34b7f0762b0c343b9f4d22ab3177db",
+        "size_bytes": 18976
+      },
+      "origin": "import",
+      "receipt_id": null,
+      "reports": {
+        "html": {
+          "sha256": "ee61ec0720f558693dc8f582b5321c8e087b4f451ccd9724d1a4435c649d6b61",
+          "size_bytes": 24982
+        },
+        "json": {
+          "sha256": "926502a2ea3920f2055a21c1865b1a2da4c5e9d46d4a18ef6205c2dafe2bdef3",
+          "size_bytes": 87085
+        }
+      },
+      "run_id": "7b14c430df114d2e8adaec8881bb406f"
+    },
+    "test-import-ctest-junit": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-ctest-junit/store",
+            "--evidence",
+            "--run-id",
+            "7ca3c70689ad4f97ab521163cb554eb4",
+            "--manifest-sha256",
+            "1cd377b12ca8bfad772fe5f93e7022923e2378b1a5d1f5d629449f33dc9cf467",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-ctest-junit/report.json"
+          ],
+          "command_sha256": "c1ed1479266dfdd939c12e0a7c14416b93c134ea3bd91514da9c7b568b6b411f"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-ctest-junit/store",
+            "--evidence",
+            "--run-id",
+            "7ca3c70689ad4f97ab521163cb554eb4",
+            "--manifest-sha256",
+            "1cd377b12ca8bfad772fe5f93e7022923e2378b1a5d1f5d629449f33dc9cf467",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-ctest-junit/report.html"
+          ],
+          "command_sha256": "0b4aa966586eb27c2060c1835c10d87b78be9199560f7a416c28575d6ad19b81"
+        }
+      ],
+      "adapter": {
+        "name": "ctest-junit",
+        "version": "1.0.0"
+      },
+      "context": "selected-gcc-header",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "total": 2
+      },
+      "manifest": {
+        "sha256": "1cd377b12ca8bfad772fe5f93e7022923e2378b1a5d1f5d629449f33dc9cf467",
+        "size_bytes": 29308
+      },
+      "origin": "import",
+      "receipt_id": null,
+      "reports": {
+        "html": {
+          "sha256": "ee7ca795380d9ae916bd9c20d2edb9f1dd5d941bc2fbf2f78f06546ab0f74276",
+          "size_bytes": 27167
+        },
+        "json": {
+          "sha256": "31772127fcf6e25c106f5bcd1847859f2c92762ac0806ec595c5f53bd4e15a3c",
+          "size_bytes": 140016
+        }
+      },
+      "run_id": "7ca3c70689ad4f97ab521163cb554eb4"
+    },
+    "test-import-generic-junit": {
+      "actual_report_commands": [
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-generic-junit/store",
+            "--evidence",
+            "--run-id",
+            "51393f8d66e74c29aea981583d66ffc4",
+            "--manifest-sha256",
+            "3cfb44b01a83efedfe5e6ed1a66011f514d772e1bd5e372f9d462cf1c0bd312b",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-generic-junit/report.json"
+          ],
+          "command_sha256": "3c19edc97145110701cefa9b261b8f82b268c1fa1bbff1da74556df54102310a"
+        },
+        {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-generic-junit/store",
+            "--evidence",
+            "--run-id",
+            "51393f8d66e74c29aea981583d66ffc4",
+            "--manifest-sha256",
+            "3cfb44b01a83efedfe5e6ed1a66011f514d772e1bd5e372f9d462cf1c0bd312b",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch14/results/evidence-imports/test-import-generic-junit/report.html"
+          ],
+          "command_sha256": "b07b7ad23fcf8bd5cdc62cb2b6955bf77c6944c8269ee4c4cbcc8e42962c7865"
+        }
+      ],
+      "adapter": {
+        "name": "generic-junit",
+        "version": "1.0.0"
+      },
+      "context": "selected-gcc-header",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "total": 2
+      },
+      "manifest": {
+        "sha256": "3cfb44b01a83efedfe5e6ed1a66011f514d772e1bd5e372f9d462cf1c0bd312b",
+        "size_bytes": 29308
+      },
+      "origin": "import",
+      "receipt_id": null,
+      "reports": {
+        "html": {
+          "sha256": "7d8c09f83ecf83e3c0721335ec8780ec874c58f3e1e5bca02663a6ab5f151298",
+          "size_bytes": 27305
+        },
+        "json": {
+          "sha256": "95331358eeb992ab680dacbe8353dc72a66f81b4325db8e569d935f012843ceb",
+          "size_bytes": 140147
+        }
+      },
+      "run_id": "51393f8d66e74c29aea981583d66ffc4"
+    }
+  },
+  "record_kind": "Public projection of retained independent execution",
+  "sanitizer_fixture_ran": false,
+  "scope_limits": [
+    "The current observer calls ten original assertion functions directly with genuine compatible inputs. The original whole-module pytest and sanitizer fixtures were not reconstructed or executed.",
+    "Existing B10/B12 and three green B14 producer artifacts are read back. Only the disabled CTest and mixed pytest fixture producers ran in this observer session.",
+    "The coverage JSON and HTML pairs render execution-backed measured facts. The separate imported-coverage normalization readback has no execution linkage or verified source, and EVD09 owns its original assessment gates.",
+    "Evidence-identity and local provider observations do not authenticate claims or approve unrelated verification, publication or ledger changes."
+  ],
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "whole_pytest_module_ran": false
+}

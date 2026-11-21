@@ -58,13 +58,19 @@ def test_changed_staged_material_cannot_publish_original_input_pins(
         target = (
             Path(command[-2])
             if selected == "old"
-            else Path(command[-1])
-            if selected == "new"
-            else Path(command[0])
-            if selected == "tool"
-            else cwd / "readelf"
-            if selected == "reader"
-            else next((cwd / "libraries").iterdir())
+            else (
+                Path(command[-1])
+                if selected == "new"
+                else (
+                    Path(command[0])
+                    if selected == "tool"
+                    else (
+                        cwd / "readelf"
+                        if selected == "reader"
+                        else next((cwd / "libraries").iterdir())
+                    )
+                )
+            )
         )
         target.chmod(0o600)
         target.write_bytes(b"different staged analysis bytes")

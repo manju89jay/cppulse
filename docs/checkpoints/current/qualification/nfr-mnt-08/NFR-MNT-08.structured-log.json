@@ -1,0 +1,47 @@
+{
+  "kind": "Structured public projection of actual original semantic execution",
+  "criterion_id": "NFR-MNT-08",
+  "criterion": "Store decisions and maintenance instructions with the code. Keep TASK_SPEC.md as the historical MVP and this specification as a proposed successor scope until accepted.",
+  "source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "original_semantic_command": [
+    "bash",
+    "/workspace/work/governance-qualification/work-checks/run.sh"
+  ],
+  "actual_semantic_exit": 0,
+  "actual_governance_phase_passed": true,
+  "actual_production_plan_exit": 0,
+  "actual_separate_public_strict_exit": 2,
+  "actual_strict_scope": "Other rows require a missing historical evidence root.",
+  "registered_guard_sha256": "c810928ec999522afae962f018374cbc99bf98d0a423b8ac29156021f75cba0a",
+  "actual_guarded_input_count": 10055,
+  "raw_command_log_sha256": "4137ea686393e928e7fe4b780ce194a123f6b81c0e590f10e9d36f540030ae3e",
+  "raw_governance_sha256": "eb4e83d648d0d0c2c1dc63a0a3eab52cdac9780fd641c811c5a3a03a83421eac",
+  "independent_execution_review_sha256": "0bd752a13948034df7d25109f284d841999ca5a3f0b055d6ff06f6282e41f7f3",
+  "whole_predicates": [
+    "The exact historical six-component TASK_SPEC and successor requirements, design and tasks are preserved. Their original proposed publication headings remain. The code-owned authority identifies the user-accepted 187-item, P0\u2013P14 implementation scope and retains the separate evidence-gated delivery state.",
+    "The entire exact predecessor decision bytes are preserved as a prefix, including all 98 pre-latest decision headings. All 99 current unique headings are recorded in index order, all table titles match headings, and the eight local links and anchored links in authority resolve. The appended decision includes the documented rationale fields.",
+    "Current maintenance instructions live beside the code. They identify the C++17 and .clang-format authority, distinguish build and analyzed-language coverage, preserve failures and artifact provenance, and define writer, verification, resource, leadership, independent review, and strict acceptance boundaries.",
+    "The proposed second-parent object resolves in both exact local checkouts. The receiving repository\u2019s existing local tracking ref matches its second parent, and the isolated review repository has no such ref. The appendix assigns the earlier absence observations to the originating workspace and leaves M0-01 open.",
+    "The current plan command exited 0 and reports 118 numbered requirements, 60 milestone tasks and 9 supplemental obligations. Separate actual public strict verification exited 2 because it cannot read the old canonical proof. The unchanged verifier still defines exit 0 for complete valid verification and exit 3 for valid but incomplete strict verification."
+  ],
+  "decision_heading_count": 99,
+  "rendering_limit": "All 99 IDs remain visible. One historical line renders outside the table.",
+  "accepted_work_scope": {
+    "total": 187,
+    "phase_count": 15,
+    "states": {
+      "verified": 38,
+      "open": 96,
+      "active": 51,
+      "blocked": 2
+    },
+    "original_current_ledger_from_actual_run_sha256": "dc07cf42487e77a4ff348a3e37bc84a2af62d25e924eb3cdefe5010c2e88845b",
+    "immutable_current_scope_projection_sha256": "c9f2523b41045534b5ef38bf380daf9394ba51508fc7d64b5ab3ace548395b0a",
+    "scope_hash_canonicalization": "UTF-8 JSON with sort_keys=True, ensure_ascii=True, indent=2 and one final newline. Top-level fields are source_hashes, phases, and items in ledger list order. Within each item every field except evidence and review is retained."
+  },
+  "external_context": "The Git object and ref observations are local to the actual receiving checkouts. No remote query, branch change or M0-01 closure occurred.",
+  "independent_semantic_execution_review_sha256": "0bd752a13948034df7d25109f284d841999ca5a3f0b055d6ff06f6282e41f7f3",
+  "ancillary_validation_outside_this_criterion": "The governance wrapper exited 0 with 10,055 unchanged input and 260,105 stable external runtime bindings. Ancillary source and installed checks ran both exact pipeline failure cases with zero failures, errors or skips. An independent in-memory check using Black 24.1.1 and the tracked py311/88 configuration reproduced the test formatting with identical parsed semantics.",
+  "scope_observer_sha256": "c96ae7cc3864c5a511866bc9f49aa3ac3383984f35e3a2eaf62a6a62023fe3ac",
+  "scope_observer_availability": "Exact selected harness text is included as a receiving execution record. The surrounding declared runtime and original evidence inputs remain external."
+}

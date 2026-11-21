@@ -3,14 +3,13 @@
  */
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <filesystem>
 #include <fstream>
 #include <string>
 
 #include "analyzer.h"
 #include "native_execution_limits.h"
+#include "test_temp_directory.h"
 
 namespace {
 class WorkUnitSelectionTest : public ::testing::Test {

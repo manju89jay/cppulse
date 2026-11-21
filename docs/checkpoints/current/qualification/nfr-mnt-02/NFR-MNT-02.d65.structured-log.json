@@ -1,0 +1,126 @@
+{
+  "criterion": "Introduce one namespaced Python distribution with shared contracts/configuration helpers while retaining existing component entry points during migration.",
+  "id": "NFR-MNT-02",
+  "independent_whole_review_sha256": "001bf7042f94de2ceb1b3d3b59fd08fbeb41cb5bfa9405c33e9015bbf15dd0d5",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "exact_current_cross_origin_regressions": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/gates-final/run-final-lookup.sh",
+        "tests",
+        "/workspace/work/roadmap-order-qualification/gates-final/final-lookup-freeze.json",
+        "/workspace/work/roadmap-order-qualification/gates-final/final-lookup-results"
+      ],
+      "raw_log_sha256": "2bfbffd022c878b19b57ebee6ac5261e631938dcfc28cfa457dc16c5eb4e72cb",
+      "record_sha256": "6b8f7846157cc127a1c8b4f14d1f4c59cd23d468c598d09d866547f0574a637c",
+      "stable_guard_pins": 2174
+    },
+    "exact_current_git_and_malformed_predictor": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/namespace-producers-v2/launch.sh",
+        "/workspace/work/roadmap-order-qualification/namespace-producers-v2/results"
+      ],
+      "raw_log_sha256": "37cf38d00f981c850cb398bd16f78a959d80fbaf92df649898d1056483c8cc76",
+      "record_sha256": "d29f63062524d45b8217b935f15ee633adb749914cd4eaa4f33bf0a5aaee22db",
+      "stable_guard_pins": 2296
+    },
+    "exact_current_local_unix_api": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/api-readback/launch.sh",
+        "/workspace/work/roadmap-order-qualification/api-readback/results"
+      ],
+      "raw_log_sha256": "0cb15cea90448b908033e50c2a31194db113362afae4f2d5de2de7c6cf665491",
+      "record_sha256": "15506f3d7a426bf7e84ef08ac39c7c95a0dc47af14351d367ffd07902c03bdd8",
+      "stable_guard_pins": 2223
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_uvicorn_version": "0.27.1",
+    "api_status_and_server_exits": {
+      "api-checkout": {
+        "actual_default_app_dir": true,
+        "alias_exit": 0,
+        "http_status": 200,
+        "raw_body_sha256": "074b0da916a698fe682b72af7b7401d60d79959943f051e8634c355923b71603",
+        "server_exit": 0
+      },
+      "api-installed-shim": {
+        "actual_default_app_dir": true,
+        "alias_exit": 0,
+        "http_status": 200,
+        "raw_body_sha256": "074b0da916a698fe682b72af7b7401d60d79959943f051e8634c355923b71603",
+        "server_exit": 0
+      }
+    },
+    "earlier_unaffected_report_and_configuration_roles": {
+      "earlier_three_actual_default_pdf_qualified_sections_each": 7,
+      "prior_report_artifact_roles_sha256": {
+        "checkout-shim-pdf": "5677e8977ee2f6d18731446e53bca0b444e1f7483ac66cb61a08b479b964dcc5",
+        "installed-canonical-html": "245e14bd1b20ad4090162e93c1d2946db47b1a5464f4db90b55f09f735768b6d",
+        "installed-canonical-json": "21f9f1af5cf297cd8f6a3e957bb397084c68157a0cd38fe3bb12e1610018dbee",
+        "installed-canonical-pdf": "18e35c6d90a866fef5a371ea16f98c9f35902397cf405ed51f5aa15723819365",
+        "installed-shim-html": "245e14bd1b20ad4090162e93c1d2946db47b1a5464f4db90b55f09f735768b6d",
+        "installed-shim-json": "21f9f1af5cf297cd8f6a3e957bb397084c68157a0cd38fe3bb12e1610018dbee",
+        "installed-shim-pdf": "7a16a2afcf1b40ce44a92b3871f78a6442c972d40711bf63f033a566c6c37818"
+      },
+      "prior_report_json_html_actual_exit0_and_equal_pairs": true,
+      "prior_shared_config_value_and_contract_forms": true
+    },
+    "genuine_unedited_legacy_differential": "Original single-finding old-code differential passed in both current origins under the same interpreter and backends. Protected original package and manifest remain in custody.",
+    "git_exit_by_variant": {
+      "installed-canonical": 0,
+      "installed-default-cwd": 0,
+      "installed-shim": 0,
+      "source-canonical": 0,
+      "source-shim": 0
+    },
+    "git_metrics_normalization": "Only distinct actual metadata.analyzed_at excluded for semantic equality.",
+    "git_real_history_selected_commits": 7,
+    "git_real_history_sha256": "2589e9cc7d243aff075ef85259689bbb0dd5fbd8339717d2e8e397ba32eca110",
+    "hash_seeds": [
+      1,
+      17,
+      101
+    ],
+    "malformed_predictor_module_controls": {
+      "bad-canonical": {
+        "exit": 1,
+        "no_primary_outputs": true,
+        "original_parser_error": true
+      },
+      "bad-shim": {
+        "exit": 1,
+        "no_primary_outputs": true,
+        "original_parser_error": true
+      }
+    },
+    "new_whole_roadmap_sha256": "4256723861685b8e3db464c9e5a676eee9519fd2f5861fd49ebb4e0d4dd7f8e4",
+    "one_additional_source_shim_without_pythonpath_exit": 0,
+    "real_predictor_canonical_and_shim_calls": 12,
+    "real_predictor_risks_comparison": "Retained raw twelve timestamps. All other risk fields and every whole material roadmap byte match, including additional default checkout source wrapper.",
+    "selected_source_and_installed_junit": {
+      "installed": {
+        "current_count": 247,
+        "junit": "ebc1995232bf7dd979c110c6ff7475e3e282ce9b87fc846206e79b414bb4bf12"
+      },
+      "source": {
+        "current_count": 247,
+        "junit": "154084cb7c7831e26c0b6e04bd50832056158d9a4f63688e75655acdb5c3e92c"
+      }
+    }
+  },
+  "preserved_epoch_and_result_limits": [
+    "Earlier four conflicting tied-roadmap results and subsequent setup and observer errors are preserved. The fresh d65 parity, direct checkout bootstrap, exact Git/malformed, and real Uvicorn ASGI runs are reported separately.",
+    "Earlier report, PDF, shared configuration and legacy/canonical identity roles apply only through independently verified exact unchanged paths. Their wrapper/result epochs remain in private custody.",
+    "The checked namespace applies to the measured packaging and runtime. No platform or full production claim follows."
+  ],
+  "primary_observed_role": "exact_current_cross_origin_regressions",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "One installed namespaced Python distribution with the same shared helpers and original entry points. Fresh exact producer/consumer parity, local app import and meaningful rejected inputs."
+}

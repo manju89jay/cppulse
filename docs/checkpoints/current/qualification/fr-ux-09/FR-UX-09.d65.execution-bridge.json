@@ -1,0 +1,157 @@
+{
+  "criterion": "FR-UX-09",
+  "exact_prior_independent_review": {
+    "sha256": "302fb4c786a5a808aa9b0b07d8e6dacccbb8a2f9ff2f9e2969d43dbb9e5c89af",
+    "size_bytes": 47769
+  },
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Static dependency bridge for the independently accepted prior typed scope",
+  "observed_projection_log_sha256": "408596405d026ba59219dc03c50af923d1d0d39fa8f09e352fd0b30d38d0ad79",
+  "original_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "prior_guard_roles": {
+    "actual_wrapper": {
+      "actual_exit": 0,
+      "before_after_direct_input_map_sha256": "45b4c1323e94edf938250ec7b54ded18f484f37b62b825089d65e7696add6e8d",
+      "original_record": {
+        "sha256": "14c5eb408283864bdbe3b78d232873e5dc62863e90fef72040a51229df53b628",
+        "size_bytes": 3494139
+      },
+      "outer_command_sha256": "8cb006475e41aa7eb6d05af09043ba64be477c5d1d1a945208b1a57ef8d30291",
+      "raw_log": {
+        "sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+        "size_bytes": 84
+      },
+      "registered_inputs": {
+        "sha256": "d33181833e99341297fef630216035fc88eb9bae2550851c9fba9e4cfe737c50",
+        "size_bytes": 1753608
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 10206,
+      "stable_runtime_entries": 260105
+    }
+  },
+  "prior_input_roles_retained_in_custody": {
+    "actual_exact_donor_manifests": {
+      "complete": {
+        "sha256": "73277951453b0a5b99a1b9ac0116ce0e06ea6b708e5c91ab2e903af244d91782",
+        "size_bytes": 24178
+      },
+      "direct": {
+        "sha256": "be9e627eb0868a540869476247f1bcddd7641232dc702648907b0199c1d15b40",
+        "size_bytes": 3967
+      },
+      "import": {
+        "sha256": "5b5dc36fe1a683fe1063e351856033093d6f90c5619842ca3bb09251f7930b68",
+        "size_bytes": 3297
+      },
+      "unsupported": {
+        "sha256": "0c01aef695a55c99515dd22fcb487323757b350e54957edeeb9988ada6ae3e32",
+        "size_bytes": 29575
+      }
+    },
+    "core_environment_receipts": {
+      "actual-environment-variation.json": {
+        "sha256": "3b90f4c380cda03951cd9567cbbd6488063f03fc07de937bd44e11f1c0b23d8a",
+        "size_bytes": 1753
+      },
+      "child-network-denial.json": {
+        "sha256": "6effa80b249906d48c865fee92926ee5193ca7b3383aacd76e6f10195145224b",
+        "size_bytes": 58
+      },
+      "core-materialized.json": {
+        "sha256": "f00156524eac5492a5743fd44ef902cb44987b79c9311a34f43177b201c1024f",
+        "size_bytes": 5813
+      },
+      "home-after.json": {
+        "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+        "size_bytes": 3
+      },
+      "home-before.json": {
+        "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+        "size_bytes": 3
+      },
+      "network-denial.json": {
+        "sha256": "db3029244e9bf4c1294d039d0aeb3483ca5346b825a49daab9ce5d06121659a5",
+        "size_bytes": 540
+      },
+      "observer_pass_marker": {
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "size_bytes": 2
+      },
+      "packaging-metadata.json": {
+        "sha256": "e82032d8fb7f915516b731e36c387977b7018c80e47c7f618701bb9bfb1feb22",
+        "size_bytes": 1996
+      }
+    },
+    "historic_authority": [
+      {
+        "sha256": "e474465280d7b16adea4636e161159428020e7ff7dc2e6bdbbed72703a4dfb35",
+        "size_bytes": 28807
+      },
+      {
+        "sha256": "9b85a004ebb728fa08f6de0b178b0833ad1eac4bb267fec71845fa6b118737ec",
+        "size_bytes": 4844
+      },
+      {
+        "sha256": "fad3d516c96e789e407d1956f360b27ae26f4f93c70e1db0c13f99b60de82a57",
+        "size_bytes": 6976886
+      },
+      {
+        "sha256": "7afbe4b42fb9e7acf7e5a164a8fb4d012ae822a93bec389f93c8dc8b81ab9b75",
+        "size_bytes": 8952
+      }
+    ],
+    "raw_command_bundle_sha256": "7b0be53acbff55ac6927cb2b6fb6f0f5d6c3d9ee12a47ad96d73f499a5deb454",
+    "retained_roadmap_material": {
+      "complete": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "direct": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 0,
+        "sha256": "6d4889ed6fdc8796107a4c2ea25f33d29b568c86565b9e62dc5bbf061bb581e8",
+        "size_bytes": 39
+      },
+      "unsupported": {
+        "contract": {
+          "kind": "roadmap",
+          "version": "prototype_v1"
+        },
+        "retained_item_count": 1,
+        "sha256": "102b6e13c5d4915b354f84741e1732026f8cc7a8ea116496db4da1d1ba7f1119",
+        "size_bytes": 375
+      }
+    },
+    "route_and_command_roles": {
+      "sha256": "d0d8c6666600859a98abce9a47e78c633c3e66b9c57da4409763bfd066f9dd9f",
+      "size_bytes": 56858
+    }
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_execution_claimed": false,
+  "replay_material": "The original toolchain, exact package, registered observers, source, finite fixtures, custody bodies, outputs and runtime environment are available separately through owner custody.",
+  "selected_source_scope": "All 242 receiving package files including bundled report assets, exact legacy PDF shim, requirements, project extras metadata and original deterministic optional-report checkpoint. Actual reports, donors and package installations are represented by exact private custody commitments.",
+  "semantic_impact_of_delta": "Legacy and typed routes read existing report inputs, some including a roadmap previously generated by another analyze command. Legacy JSON retains the old documents and legacy HTML renders those bytes with the unchanged report code. Typed routes select old immutable snapshots, and the fresh local import keeps the pre-existing flat document. This lane ran no predictor or new analyze, so the new tie sort does not run during selected report or dependency/refusal checks. A d65 producer may therefore generate a different ordering for new report material, which is outside the old whole-byte pairs.",
+  "shared_exact_boundary_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

@@ -239,8 +239,9 @@ class DiagnosticPrivacy112(unittest.TestCase):
 
     def test_function_redacts_real_failed_probe_and_private_user_inputs(self) -> None:
         environment = self._environment()
-        with patch.dict(os.environ, environment, clear=True), working_directory(
-            self.project
+        with (
+            patch.dict(os.environ, environment, clear=True),
+            working_directory(self.project),
         ):
             raw = cli.doctor()
             # The real collector reached the authored executable. No doctor or

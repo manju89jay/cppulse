@@ -1,4 +1,5 @@
 """Ephemeral indexed equivalent of the literal thirty-token duplication profile."""
+
 # Closed finite budgets deliberately exclude bool and subclasses.
 # ruff: noqa: E721
 from __future__ import annotations

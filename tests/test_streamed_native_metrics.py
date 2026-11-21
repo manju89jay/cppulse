@@ -1,4 +1,5 @@
 """Streaming native semantic parity without whole-report payload retention."""
+
 from copy import deepcopy
 from pathlib import Path
 import weakref

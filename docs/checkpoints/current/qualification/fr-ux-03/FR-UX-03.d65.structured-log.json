@@ -1,0 +1,76 @@
+{
+  "criterion": "The CLI shall run from an arbitrary working directory. Discover installed components without checkout-relative cd commands or shell-interpreted user arguments.",
+  "id": "FR-UX-03",
+  "independent_whole_review_sha256": "e6128589ed2630e3bf9787bea3fa199436623890b4cd27930d45857295884177",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "actual_d65_original_nine_and_controls": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/roadmap-order-qualification/legacy-refresh/launch.sh",
+        "/workspace/work/roadmap-order-qualification/legacy-refresh/results"
+      ],
+      "raw_log_sha256": "1b6ef13eb0cb75e87044ed4a2458f8860deac6caea75a7c738fcf6396f7c96d0",
+      "record_sha256": "bfcbce25bcf99a761519876ac59d8f2c83526745dff37a04c5acdd03b07e06ed",
+      "stable_guard_pins": 779
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "archive_contracts": {
+      "installed": {
+        "exact_five_case_ids": [
+          "test_archive_retains_bytes_and_marks_binding_unverified",
+          "test_mismatched_source_root_cannot_be_attached",
+          "test_original_output_edits_do_not_change_archive",
+          "test_import_summary_pins_its_run_after_latest_changes",
+          "test_changed_artifact_cannot_publish_mixed_import"
+        ],
+        "junit_sha256": "ff675feee600c01b3739ca5e064f7b5fc30a75545bd0680788971b44509839d6"
+      },
+      "source": {
+        "exact_five_case_ids": [
+          "test_archive_retains_bytes_and_marks_binding_unverified",
+          "test_mismatched_source_root_cannot_be_attached",
+          "test_original_output_edits_do_not_change_archive",
+          "test_import_summary_pins_its_run_after_latest_changes",
+          "test_changed_artifact_cannot_publish_mixed_import"
+        ],
+        "junit_sha256": "5929b9cfd4016b7ca27e577b6b15f0d7cd7420522c5416f996bd4d540492f68b"
+      }
+    },
+    "exact_nine_actual_cli_exits": {
+      "absolute-from-tmp": 0,
+      "config-relative-outside": 0,
+      "doctor-outside": 0,
+      "init-outside": 0,
+      "legacy-from-root": 0,
+      "relative-from-root": 0,
+      "report-html": 0,
+      "report-json": 0,
+      "unsupported-from-tmp": 3
+    },
+    "exact_six_legacy_noncompletion_exits": {
+      "declared-empty-database": 3,
+      "missing-detector": 3,
+      "parse-failed": 3,
+      "skipped": 3,
+      "source-free": 3,
+      "unresolved-declared-context": 3
+    },
+    "legacy_archive_verification": "unverified",
+    "legacy_descriptive_completion_exit": 0,
+    "legacy_qualified_health": null,
+    "native_analyzer_sha256": "ee4cc94471e42aea718b3bbf4bf8ab1e2e159f0831ef4e865116412244c6cb6d",
+    "native_kit_archive_sha256": "0494a62c123cb87497b181e27f9e93bd42288212543a3b0c46d51ed2d32ecfdc",
+    "separate_import_projection_health": null,
+    "verified_bounded_compatibility_and_typed_maintenance_health": 100
+  },
+  "preserved_epoch_and_result_limits": [
+    "Earlier da3 enclosing mixed failures and the original legacy unexpected exit 3 remain distinct.",
+    "Successful legacy descriptive processing retains unverified archive and null qualified health. The separate source and installed banks of 247 each are ancillary."
+  ],
+  "primary_observed_role": "actual_d65_original_nine_and_controls",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Installed absolute and relative paths and literal arguments from arbitrary working directories, plus truthful native incomplete and archive controls."
+}

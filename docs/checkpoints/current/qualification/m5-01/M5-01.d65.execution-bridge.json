@@ -1,0 +1,23 @@
+{
+  "actual_projection_log_sha256": "fa3db326ccf313e5e699aee4a7f3be87c51969a9146eaa1638bf5942ac86fa78",
+  "complete_private_receipts_by_role": {
+    "actual_b22_installed_junit": "4339f3239b9c6d01594bd6468155b8c77680c483fc3f82fb260a8909e7f8b12e",
+    "actual_b22_source_junit": "fad670219fbedfd945bf19ebf3f181f580d2e424a616f9351e8a7aa4e39890a5",
+    "actual_b24_installed_junit": "c888b6bfa93eb43a753c48183bd3e7e0cda7430b9133f7dd00ab8d64971b32c2",
+    "actual_b24_source_junit": "1fb05738da71930b88dcb1e62e4022f8a8fc06228c7b1367077ca611a9609adf",
+    "current_exact_applicable_adapter_whole_review": "2bf48efaa49dd7dfee57f752b77ba9e3378f46ba79f67170cfc91df55948c584",
+    "current_exact_consumer_whole_review": "5361d267f631f95a48d7cdc9c5f03bf633705fd2b9ae46d8f9e135beac19ccb5",
+    "current_exact_sanitizer_whole_review": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+    "original_b22_registration": "8a9e44e59727c995e3a0c333aebc8a901518c44b5283346e047e4ea9850576fa",
+    "original_b24_registration": "d7f8878624e1d9eb023042ec9843fd22e8ab4c86edc32c255425f323f3a3316a",
+    "prior_exact_live_lcov_case": "c4719d764a5218e3721269f550d657bcc9842ef3164030846762ecb999bfa467",
+    "prior_exact_policy_whole_review": "71f0529a0dfdab04d96bbe07a3151f29cdcaac4ed4c200a912937defbf81adf4",
+    "source_runtime_pre_and_post": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74"
+  },
+  "id": "M5-01",
+  "immutable_independent_whole_review_sha256": "8b7cbded5e6743bb5dfbc9e90b423735490de8fedde88eecdb060ae265b9576d",
+  "portability": "Public relative source hashes are checkable. The exact runtime, earlier retained real producer stores and full case scope/origin readbacks remain in custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked current test, extension, adapter, evaluator, presentation and package dependencies from both actual execution registrations. Genuine earlier execution roles retain all originally selected source and artifact commitments.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

@@ -1,0 +1,197 @@
+{
+  "criterion": "FR-EVD-01",
+  "d65_source_compatibility_target": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "dependency_review": {
+    "new_target_delta_pin_not_an_execution_input": {
+      "python/cppulse/predictor/roadmap_generator.py": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+    },
+    "old_broad_product_pin": {
+      "python/cppulse/predictor/roadmap_generator.py": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "selected_report_routes": {
+      "coverage-cobertura/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "985e9204b0bca084c5aa536a26be197ae0142b2655c9dc9fce8715a30a7690e1",
+        "exact_command_record": {
+          "sha256": "49c7f57f68a4b563f67ffeabd64f31026705c39a955645be26d84210b59c4548",
+          "size_bytes": 556
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "coverage-cobertura/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "985e9204b0bca084c5aa536a26be197ae0142b2655c9dc9fce8715a30a7690e1",
+        "exact_command_record": {
+          "sha256": "25b93bc3085643fb7b55eb6a9b8b1afc88fd777c5cd21fa1ec2773feadba24ee",
+          "size_bytes": 556
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "coverage-lcov/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "cd068499306ae2e68a372ec1d59ac072c044ca8cbb156f98f3cc1b95178c555b",
+        "exact_command_record": {
+          "sha256": "4865804086cf4044cd8858bee11409ba66d5d1577a4c1bb65febf99a36e097f8",
+          "size_bytes": 546
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "coverage-lcov/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "cd068499306ae2e68a372ec1d59ac072c044ca8cbb156f98f3cc1b95178c555b",
+        "exact_command_record": {
+          "sha256": "983a096a7c06ea1630f64de13f1f98a851b1f588fd39fb713f71276a6290ad36",
+          "size_bytes": 546
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "junit-fail/import-report/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "626d4e866646bb2f0f2fd55384ebd382f0f5ed3d877721534d4fa053fba10950",
+        "exact_command_record": {
+          "sha256": "df644f34513c11475dbb49db9d98b2b56866827436aab9adf35c30c70a8251f5",
+          "size_bytes": 561
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "junit-fail/import-report/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "626d4e866646bb2f0f2fd55384ebd382f0f5ed3d877721534d4fa053fba10950",
+        "exact_command_record": {
+          "sha256": "61e7746e0957a0757227c3a6b0e710a0c52a944530fdd6d312ec8c28439e26ad",
+          "size_bytes": 561
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "junit-skip/import-report/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "1b7c00c0255d59846e63b8b2fffb94593d34b7f0762b0c343b9f4d22ab3177db",
+        "exact_command_record": {
+          "sha256": "d988cd58573d6cc144d5d6d6d975dd0b9eccd409a6e5ee2df70527a42f0851ca",
+          "size_bytes": 561
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "junit-skip/import-report/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "1b7c00c0255d59846e63b8b2fffb94593d34b7f0762b0c343b9f4d22ab3177db",
+        "exact_command_record": {
+          "sha256": "3aa531a81489a9b99bb23872d8ecef805dce44d7d5e78042dd2eb22958000323",
+          "size_bytes": 561
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "test-import-ctest-junit/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "1cd377b12ca8bfad772fe5f93e7022923e2378b1a5d1f5d629449f33dc9cf467",
+        "exact_command_record": {
+          "sha256": "0b4aa966586eb27c2060c1835c10d87b78be9199560f7a416c28575d6ad19b81",
+          "size_bytes": 566
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "test-import-ctest-junit/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "1cd377b12ca8bfad772fe5f93e7022923e2378b1a5d1f5d629449f33dc9cf467",
+        "exact_command_record": {
+          "sha256": "c1ed1479266dfdd939c12e0a7c14416b93c134ea3bd91514da9c7b568b6b411f",
+          "size_bytes": 566
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "test-import-generic-junit/html-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3cfb44b01a83efedfe5e6ed1a66011f514d772e1bd5e372f9d462cf1c0bd312b",
+        "exact_command_record": {
+          "sha256": "b07b7ad23fcf8bd5cdc62cb2b6955bf77c6944c8269ee4c4cbcc8e42962c7865",
+          "size_bytes": 570
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "test-import-generic-junit/json-command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3cfb44b01a83efedfe5e6ed1a66011f514d772e1bd5e372f9d462cf1c0bd312b",
+        "exact_command_record": {
+          "sha256": "3c19edc97145110701cefa9b261b8f82b268c1fa1bbff1da74556df54102310a",
+          "size_bytes": 570
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      }
+    },
+    "two_governance_paths_and_new_predictor_test": "The selected pipelines do not read either governance document. The new roadmap test was not selected by the original criterion observers.",
+    "unchanged_origin_evidence_files": 6,
+    "unchanged_origin_evidence_map_sha256": "52e85b8a5b83dc69d8e69b182dd8f5058010b57a49b2c82be9b1ce35732ad4a2",
+    "unchanged_original_ten_assertion_receipt": {
+      "sha256": "136c1bebcf4721697a220f398077c3a44571b41e3e37bce2bfb4e8d72f5c5fa0",
+      "size_bytes": 1175
+    },
+    "unchanged_product_source_files": 245,
+    "unchanged_product_source_map_sha256": "2c3d6e30be96c2c7235f395dbf373017a088262aa83c3170e78acff549b39228",
+    "why_roadmap_has_no_influence": "The original observer called ten explicitly selected JUnit and LCOV/Cobertura assertions, including two actual fixture producers. Normalization, evidence persistence and report rendering do not enter the predictor. None of the twelve selected report manifests contains a roadmap."
+  },
+  "execution_scope": "The prior commands retain their original executed artifact identity, selected source scope, actual exits and review. The compatibility review introduces no criterion execution.",
+  "kind": "Source-delta dependency review of previously executed criterion proof",
+  "matching_exact_source_and_artifact_boundary": {
+    "path": "docs/checkpoints/current/qualification/d65-compatibility/exact-source-and-artifact-boundary.json",
+    "sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+    "size_bytes": 5279
+  },
+  "original_full_direct_input_custody": {
+    "original_observer": {
+      "before_after_inputs_equal": true,
+      "checked_runtime_entries": 260105,
+      "full_direct_file_count": 10418,
+      "full_original_before_after_map_sha256": "5fc9b8c3a2a4b88af81eb1e44c4b9442163d4fd0687bad6900bb70fa07d154ca",
+      "original_command_log": {
+        "sha256": "36e135e733ec5aba267387f50d953aef2c3099d66833d09be5d3b7781bc843ed",
+        "size_bytes": 290
+      },
+      "original_job": {
+        "sha256": "cfd88194871d351bad30611f4a742b4e816c161df9d8e8310455c6d7db172fda",
+        "size_bytes": 3596250
+      },
+      "original_preregistration": {
+        "sha256": "e09d5f783b448aaabbfecb98ff8c9d26b673c1136e57ef944db4e61a1be294d9",
+        "size_bytes": 1803405
+      },
+      "recorded_actual_exit": 0,
+      "recorded_outer_command_sha256": "5d626558822a339f0d91ee096e7d86b30a79cf3b66b3515187d17e8ea3e094fc",
+      "unchanged_runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      }
+    }
+  },
+  "original_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "original_qualification": {
+    "execution_bridge_sha256": "d5417900098d3889d559f5dad0ae5bdec88be9472d2df3b99aaf7ec30edca836",
+    "full_original_source_pin_count": 252,
+    "full_original_source_pin_map_sha256": "1781c5fdde3e4cc88d8cf08d49d95d27a616599cd59de7c3f4b0c15410b8e6c2",
+    "original_execution_bridge_path": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.execution-bridge.json",
+    "original_passing_command_sha256": "5d626558822a339f0d91ee096e7d86b30a79cf3b66b3515187d17e8ea3e094fc",
+    "original_public_pointer_review": {
+      "sha256": "d442b0755265aedd2d6003a3076078d13a95e62bebb66a58310c4a1b9b90dfa0",
+      "size_bytes": 14106
+    },
+    "original_semantic_review": {
+      "sha256": "3553f6871faa56ca8d1403ecef654a7b87fb7228e20bf6e373dfd558a853f8cd",
+      "size_bytes": 29486
+    },
+    "proof_path": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.proof.json",
+    "proof_sha256": "569f0335c586b04fa5e202c265f740ab775a38b4427a1e10d299687c07569148",
+    "structured_log_path": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.structured-log.json",
+    "structured_log_sha256": "f0a0f0947a298079240d58c3b34ebe6930ac66157294efa396be083b489c659c"
+  }
+}

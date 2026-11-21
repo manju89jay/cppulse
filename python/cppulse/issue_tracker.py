@@ -45,7 +45,7 @@ _ISSUE_VALIDATOR = jsonschema.validators.extend(
     jsonschema.Draft7Validator,
     type_checker=jsonschema.Draft7Validator.TYPE_CHECKER.redefine(
         "integer",
-        lambda _checker, value: type(value) is int,  # noqa: E721 -- exact counts and issue identities
+        lambda _checker, value: type(value) is int,  # noqa: E721 -- exact issue count
     ),
 )
 
@@ -351,9 +351,7 @@ def _costs_precise(
                 else (
                     "missing_benefit"
                     if not benefits
-                    else "zero_cost_denominator"
-                    if cost == 0
-                    else "calculated"
+                    else "zero_cost_denominator" if cost == 0 else "calculated"
                 )
             )
         )
@@ -624,7 +622,10 @@ def collect(
             if remaining <= 0:
                 raise TimeoutError("Overall issue collection wall budget exhausted")
             status, headers, body = get(url, remaining)
-            if type(status) is not int or not 100 <= status <= 599:  # noqa: E721 -- no float/bool status coercion
+            if (
+                type(status) is not int  # noqa: E721 -- exact HTTP status
+                or not 100 <= status <= 599
+            ):
                 raise ContractError(
                     "Provider HTTP status must be an exact integer within 100..599"
                 )

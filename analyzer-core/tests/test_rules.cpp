@@ -5,8 +5,6 @@
 
 #include <gtest/gtest.h>
 
-#include "test_temp_directory.h"
-
 #include <algorithm>
 #include <filesystem>
 #include <string>
@@ -14,6 +12,7 @@
 
 #include "analyzer.h"
 #include "finding.h"
+#include "test_temp_directory.h"
 
 namespace {
 

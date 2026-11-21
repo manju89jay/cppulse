@@ -1,0 +1,300 @@
+{
+  "criterion": "FR-EVD-09",
+  "d65_source_compatibility_target": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "dependency_review": {
+    "exact_original_producer_receipt": {
+      "sha256": "ce5541e639957d360f6decbd677521f89971fdc8221a3dad7aa595146b0fbfce",
+      "size_bytes": 2444
+    },
+    "new_target_delta_pin_not_an_execution_input": {
+      "python/cppulse/predictor/roadmap_generator.py": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+    },
+    "old_broad_product_pin": {
+      "python/cppulse/predictor/roadmap_generator.py": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "retained_mixed_wrapper_and_phase_record": {
+      "continuation_import_phase_exit": {
+        "cobertura": 1,
+        "lcov": 1
+      },
+      "continuation_import_reason": "The earlier observer supplied a datetime object rather than the installed evaluator\u2019s required RFC 3339 UTC string.",
+      "continuation_wrapper_exit": 1,
+      "original_decision_request_actual_exit": 2,
+      "original_wrapper_exit": 1,
+      "original_wrapper_reason": "The actual CLI produced structured invalid JSON and empty stderr. The earlier observer expected the wrong output channel.",
+      "retry_batch_wrapper_exit": 1,
+      "retry_coverage_imports_phase_exit": 0,
+      "retry_separate_git_fixture_phase_exit": 1,
+      "retry_separate_git_fixture_reason": "The separately scoped FR-GIT-06 fixture stopped at the author/committer timestamp print-format assertion."
+    },
+    "selected_report_routes": {
+      "cobertura/cobertura-branch-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3872883477da44647db90fc3f105a2781c36e43b75311f9aac36412bd300d5ff",
+        "exact_command_record": {
+          "sha256": "ede93857362ef33791bb83dcab592f121974d6ff0b04855a249694410ac455b7",
+          "size_bytes": 635
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "cobertura/cobertura-branch-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3872883477da44647db90fc3f105a2781c36e43b75311f9aac36412bd300d5ff",
+        "exact_command_record": {
+          "sha256": "9478188fbaed28d7523cdb3d967e3561389d6539b4c222b8da600b4065765509",
+          "size_bytes": 635
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "cobertura/cobertura-function-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "f7e84922a8bd32e20d1e46958f4699778b32a08312d7ebffb205b54f2e53d1da",
+        "exact_command_record": {
+          "sha256": "0724b2b991a5c0290e088e5d4431af4158d2d6ce1869fa1d17c4706c777c45a8",
+          "size_bytes": 637
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "cobertura/cobertura-function-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "f7e84922a8bd32e20d1e46958f4699778b32a08312d7ebffb205b54f2e53d1da",
+        "exact_command_record": {
+          "sha256": "d691e659d9be6a57f29e72f25e22db7773d5b9a25b28a13bfdebda2a8738f04b",
+          "size_bytes": 637
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "cobertura/cobertura-line-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "5e0cdab6f86e2fa1c762ad3d14026ef863c4490c9a1e4311284177fc2d61e729",
+        "exact_command_record": {
+          "sha256": "8fd5691d8e50b87d7adaac5e8d1249f0b566c73d7d93f636ab3bb2ad3084f537",
+          "size_bytes": 633
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "cobertura/cobertura-line-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "5e0cdab6f86e2fa1c762ad3d14026ef863c4490c9a1e4311284177fc2d61e729",
+        "exact_command_record": {
+          "sha256": "7e7297cff99963332e0fc3b2c6273b229bd4e3019decca33853db798b7c64fa7",
+          "size_bytes": 633
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "import-cobertura/cobertura-import-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+        "exact_command_record": {
+          "sha256": "79f19ba7f9a5a906bbbf8dc416d6ec805116a340e49b09bf6f23c64a3cee8af9",
+          "size_bytes": 690
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "import-cobertura/cobertura-import-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+        "exact_command_record": {
+          "sha256": "e8bd1ae41ea4a09b6e641948403f5a8b19da67eef492e15ccd73ca957100fa5b",
+          "size_bytes": 690
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "import-lcov/lcov-import-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+        "exact_command_record": {
+          "sha256": "dc7d59e2f5e156b0582feaff9a57ec3502f98b23f1f2624ced4c2a7d815071fe",
+          "size_bytes": 665
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "import-lcov/lcov-import-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+        "exact_command_record": {
+          "sha256": "eed08c871204e0bbfc80fe44fa99e2523065666471e07330497c138f3564f8c4",
+          "size_bytes": 665
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-branch-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3efc5aa5443340f7ad386693b0d4b136255fab83f791babd66adeea12425f410",
+        "exact_command_record": {
+          "sha256": "689e4e5dae7acd924419e922b9d142759efb4e0ed44c96b2ae9b8fca535ccd32",
+          "size_bytes": 615
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-branch-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "3efc5aa5443340f7ad386693b0d4b136255fab83f791babd66adeea12425f410",
+        "exact_command_record": {
+          "sha256": "747f34aaf6203dbacbe04ac4a04782b3f05ec56e0a32038116f25964393492fc",
+          "size_bytes": 615
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-function-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "0b8ee52f16d04ef5294ca29e391302c15c2e8917605ff3928a79da895dd838b8",
+        "exact_command_record": {
+          "sha256": "a3d9ea8a587438dc7e26b36196a7f3e7c07396d94a3364ab927b83e59d33e009",
+          "size_bytes": 617
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-function-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "0b8ee52f16d04ef5294ca29e391302c15c2e8917605ff3928a79da895dd838b8",
+        "exact_command_record": {
+          "sha256": "7aa6e2b1320daceace4ff6841b80d99d6fcb50997126883ab108a578a77ff591",
+          "size_bytes": 617
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-line-report-html.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "2376f52985780bbc27bc46cb0b11e7182d014ff7f32b43c1f60d73a75ca8cbec",
+        "exact_command_record": {
+          "sha256": "0395f1202bdaae68d715123859408a5d40133d89bf52048558011e68857df1b5",
+          "size_bytes": 613
+        },
+        "requested_format": "html",
+        "roadmap_artifact_present": false
+      },
+      "lcov/lcov-line-report-json.command.json": {
+        "actual_exit": 0,
+        "checked_manifest_sha256": "2376f52985780bbc27bc46cb0b11e7182d014ff7f32b43c1f60d73a75ca8cbec",
+        "exact_command_record": {
+          "sha256": "c0a6192f4c0862d6c8403cd9455ab62dd806fdc72279283010640f21ff7fb674",
+          "size_bytes": 613
+        },
+        "requested_format": "json",
+        "roadmap_artifact_present": false
+      }
+    },
+    "two_governance_paths_and_new_predictor_test": "The selected pipelines do not read either governance document. The new roadmap test was not selected by the original criterion observers.",
+    "unchanged_origin_evidence_files": 11,
+    "unchanged_origin_evidence_map_sha256": "71f3b6d2cb39cebd5ee130c791715b8c64164f9243b90138197af43b201fbe9d",
+    "unchanged_product_source_files": 244,
+    "unchanged_product_source_map_sha256": "80438b609f4f46c4b6f6290a93c5f3b59fb0c4a897429a2c722c7836f81c4ff6",
+    "why_roadmap_has_no_influence": "The genuine GCC/gcov/CTest/gcovr coverage fixture and the installed typed normalization and explicit policy/evidence commands operate on coverage facts and original role bindings. The separate import retry does not enter analysis or roadmap generation. All sixteen selected report manifests have no roadmap artifact."
+  },
+  "execution_scope": "The prior commands retain their original executed artifact identity, selected source scope, actual exits and review. The compatibility review introduces no criterion execution.",
+  "kind": "Source-delta dependency review of previously executed criterion proof",
+  "matching_exact_source_and_artifact_boundary": {
+    "path": "docs/checkpoints/current/qualification/d65-compatibility/exact-source-and-artifact-boundary.json",
+    "sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+    "size_bytes": 5279
+  },
+  "original_full_direct_input_custody": {
+    "independent_consumer_continuation": {
+      "before_after_inputs_equal": true,
+      "checked_runtime_entries": 260105,
+      "full_direct_file_count": 11396,
+      "full_original_before_after_map_sha256": "06ebf7d1623409d89bd4349a72b082d2952b8d2fe0315f1c02ae4952a007c7c9",
+      "original_command_log": {
+        "sha256": "0b2451a022971f68d71e78e3c42467146aec51b46297391ac0756527b658064d",
+        "size_bytes": 1645
+      },
+      "original_job": {
+        "sha256": "4760c21b76eb49e212050bb67887ad7cb7cbcb03b9a8829c800e5fee01677670",
+        "size_bytes": 3964704
+      },
+      "original_preregistration": {
+        "sha256": "9d6eb0b7bbaaceca2cb5984f39111e2dd986c52cb50db6e7a7fc08677bfbf6e5",
+        "size_bytes": 1982558
+      },
+      "recorded_actual_exit": 1,
+      "recorded_outer_command_sha256": "1655ab3d1e0027001ab160b00d1d04387be6b73633e0044711096ab13a33e819",
+      "unchanged_runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      }
+    },
+    "original_producer_wrapper": {
+      "before_after_inputs_equal": true,
+      "checked_runtime_entries": 260105,
+      "full_direct_file_count": 10721,
+      "full_original_before_after_map_sha256": "7a617f2be7b2cf3b11d0d86a6c2bf0b31dde9d19431b0fd4b302a54637818f59",
+      "original_command_log": {
+        "sha256": "73eac07b07e55e24a6e18aedc931d7bccb31282824275c338a4f5c6fae9a9ab5",
+        "size_bytes": 1179
+      },
+      "original_job": {
+        "sha256": "911bb942f3d113414356357ab0d63f4a84f5cf80ccd65479e9cac5253ea457fe",
+        "size_bytes": 3613572
+      },
+      "original_preregistration": {
+        "sha256": "f031b895fb76265ddcb44da0f821d41d66483bf8a9d938e857c756fac2c08b0e",
+        "size_bytes": 1807142
+      },
+      "recorded_actual_exit": 1,
+      "recorded_outer_command_sha256": "ab5fc4d96dbc4362ff8395c4354df89d5a6d4374bf9a01177664ab1c3b36aecd",
+      "unchanged_runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      }
+    },
+    "supplemental_import_wrapper": {
+      "before_after_inputs_equal": true,
+      "checked_runtime_entries": 260105,
+      "full_direct_file_count": 13448,
+      "full_original_before_after_map_sha256": "45a93711612d659ae7d36c90aef38c3adf804550fa5394de6a21b1aea8b3fbc3",
+      "original_command_log": {
+        "sha256": "0a2dd6e7aefd7b4b7f1898212cc65a42c756bdcc0fd4b05626d5cf65f28d34c9",
+        "size_bytes": 721
+      },
+      "original_job": {
+        "sha256": "d701a8ba0b5fff3d8d1d2ebf8537913d8df67ffaff71cfc0fb57e226cf86a284",
+        "size_bytes": 5052510
+      },
+      "original_preregistration": {
+        "sha256": "35f2b025c571304d2b206efc2a6987c2230e35051e5c998cc8ba976b584cee19",
+        "size_bytes": 2525961
+      },
+      "recorded_actual_exit": 1,
+      "recorded_outer_command_sha256": "c4254997fdc2ec6de964d65df0e7fefd522403438ebf0d797d621ea46e1136ed",
+      "unchanged_runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      }
+    }
+  },
+  "original_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "original_qualification": {
+    "execution_bridge_sha256": "0ef839de3f55730ccfdeed3d8d1e0b67a63a3bca2878c6e15358ce0bafa1df7a",
+    "full_original_source_pin_count": 256,
+    "full_original_source_pin_map_sha256": "1c4b6b9b35137468b1f037b9b53c2b867f6e21e7f6a63fb860051bff296e1e50",
+    "original_execution_bridge_path": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.execution-bridge.json",
+    "original_passing_command_sha256": "a11ed732df3c3874548259639a84e2d66edf455a25dc4563c4d1145734781d95",
+    "original_public_pointer_review": {
+      "sha256": "ae8a9677fb40ad9531c001521efb2cee3d51d81c1724d05df6d364c411b6d16d",
+      "size_bytes": 9626
+    },
+    "original_semantic_review": {
+      "sha256": "6340c2de0a5a1d8db1fb4712e1ba3e379be99b103944c6fe5c7d83c483cf513a",
+      "size_bytes": 69914
+    },
+    "proof_path": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.proof.json",
+    "proof_sha256": "52f07276abe0294937fd2db2af0e733035b26582fba3b582949cd2c06dc68362",
+    "structured_log_path": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.structured-log.json",
+    "structured_log_sha256": "754a6e6c411421a60ec7500a2e8ef64aa1ca8fc8e908e4304f6d037d2f574282"
+  }
+}

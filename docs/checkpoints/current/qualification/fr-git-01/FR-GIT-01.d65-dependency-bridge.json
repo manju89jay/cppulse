@@ -1,0 +1,192 @@
+{
+  "criterion": "FR-GIT-01",
+  "d65_source_compatibility_target": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "dependency_review": {
+    "actual_semantic_observer_receipt": {
+      "sha256": "88b4b360ba762c414147d76093ae35f5d27acbeefad0a269bcd46118044006e7",
+      "size_bytes": 7728
+    },
+    "new_target_delta_pin_not_an_execution_input": {
+      "python/cppulse/predictor/roadmap_generator.py": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f"
+    },
+    "old_broad_product_pin": {
+      "python/cppulse/predictor/roadmap_generator.py": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "original_eight_direct_history_receipts": {
+      "absent-history": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "4d5314d0c3abfbf66a933d824bbe7a5b18da3108f0b7b3dd6942c874f195395c",
+          "size_bytes": 496
+        },
+        "output_roles": [
+          "git_metrics.json"
+        ]
+      },
+      "default-full-history": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "5f7f59ee1810ffc48776df414f1c88de0a22080438257f3223f057a7f2cd2a82",
+          "size_bytes": 502
+        },
+        "output_roles": [
+          "git_history.json",
+          "git_metrics.json"
+        ]
+      },
+      "depth1-shallow-boundary": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "562a69fad9e942ce8227bc9148a79ee3b951e994ed7be298cf68ba02353924fd",
+          "size_bytes": 506
+        },
+        "output_roles": [
+          "git_history.json",
+          "git_metrics.json"
+        ]
+      },
+      "invalid-repository-path": {
+        "actual_exit": 1,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "ba058f7cbbe3041dbd8cfa126c0bea5effbb743c4cf1a91457019c48de267ccd",
+          "size_bytes": 506
+        },
+        "output_roles": []
+      },
+      "invalid-window": {
+        "actual_exit": 1,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "8b979ee07c46de691a9b0916abc3b0f215f01289c128a22c9cc6dd1b88928099",
+          "size_bytes": 678
+        },
+        "output_roles": []
+      },
+      "seven-day-window": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "df43fb4a0caede0407f2b51e0d38bf289f42606df89bdd612935eaddd1cf16b5",
+          "size_bytes": 682
+        },
+        "output_roles": [
+          "git_behavior.json",
+          "git_history.json",
+          "git_metrics.json"
+        ]
+      },
+      "two-day-window": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "ba8bb83ff06ee2d2b8f029b734eb2d600939e6d44d7b3771265d0748b91fac84",
+          "size_bytes": 678
+        },
+        "output_roles": [
+          "git_behavior.json",
+          "git_history.json",
+          "git_metrics.json"
+        ]
+      },
+      "unborn-history": {
+        "actual_exit": 0,
+        "argv_module": "cppulse.git_miner.main",
+        "checked_command_receipt": {
+          "sha256": "1b1675f435aba28bf6d44fada115f60188973ef11a2f0fc12a79dd6dd2db1053",
+          "size_bytes": 496
+        },
+        "output_roles": [
+          "git_history.json",
+          "git_metrics.json"
+        ]
+      }
+    },
+    "selected_history_assertion_phase_receipts": {
+      "installed": {
+        "sha256": "e49c59611239dfb237f14c8fe20322d232058ff96bbcacafbb37f9ed08def1cf",
+        "size_bytes": 4921
+      },
+      "source": {
+        "sha256": "1642aa1ad393022bf253d969d876eeb5eec0acb873381ff4d4a7b9f6684f31ff",
+        "size_bytes": 4759
+      }
+    },
+    "two_governance_paths_and_new_predictor_test": "The two governance files were not read by the selected executions. The new roadmap sorting regression was not among the original selected criterion tests.",
+    "unchanged_origin_evidence_files": 14,
+    "unchanged_origin_evidence_map_sha256": "ce54c0a463602276b8d39b9a933a017e74afd0f7e0f4d2515aa4c618c9d915d2",
+    "unchanged_product_source_files": 286,
+    "unchanged_product_source_map_sha256": "4fa616bb6e55293f51d8b4db76717f1a11cd73a635f8de923bc6f284b2329d34",
+    "why_roadmap_has_no_influence": "The eight finite repository cases explicitly invoke cppulse.git_miner.main. They observe metrics, raw history and behavior. The two other selected source and installed phases run history and behavior assertions. None enters analysis orchestration, predictor execution or report rendering."
+  },
+  "execution_scope": "This dependency review does not introduce a new criterion execution. Runtime, tool, artifact and before/after identities of the original execution remain byte-for-byte in their original custody roles.",
+  "kind": "Source-delta dependency review of previously executed criterion proof",
+  "matching_exact_source_and_artifact_boundary": {
+    "path": "docs/checkpoints/current/qualification/d65-compatibility/exact-source-and-artifact-boundary.json",
+    "sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+    "size_bytes": 5279
+  },
+  "original_full_direct_input_custody": {
+    "before_after_inputs_equal": true,
+    "checked_runtime_entries": 260105,
+    "full_direct_file_count": 1679,
+    "full_original_before_after_map_sha256": "aec51d5d1c1791da553da877e472b465d97e86fe1df33e1a8637aaecc87ad436",
+    "original_command_log": {
+      "sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+      "size_bytes": 84
+    },
+    "original_job": {
+      "sha256": "519da0a7ea2f7b0531eb29f021abd55b84950a5ff26f1cb1f4dad20ad722e015",
+      "size_bytes": 578695
+    },
+    "original_preregistration": {
+      "sha256": "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+      "size_bytes": 291844
+    },
+    "original_semantic_review": {
+      "sha256": "23c2b1b13337eadd6b3e15b0298025f10b079ce622bbb9349624b175fdf7d556",
+      "size_bytes": 20229
+    },
+    "recorded_actual_exit": 0,
+    "recorded_outer_command": [
+      "/usr/bin/python3.13",
+      "-E",
+      "-B",
+      "/workspace/work/current38-public-evidence/fr-git-01-portable/launch.py",
+      "/workspace/work/portable-git01-receiving/registration.json",
+      "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+      "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37"
+    ],
+    "unchanged_runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    }
+  },
+  "original_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "original_qualification": {
+    "execution_bridge_sha256": "74d19ff824e769574ef22cea844554c3406a92c1f071c83af20b57fa45e9265d",
+    "full_original_source_pin_count": 301,
+    "full_original_source_pin_map_sha256": "821d304f4786b2c51ba51aca3c09be6c86eec8d3ba7a4eee54f1fcf57fe7c0d2",
+    "original_execution_bridge_path": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.execution-bridge.json",
+    "original_passing_command": [
+      "/usr/bin/python3.13",
+      "-E",
+      "-B",
+      "/workspace/work/current38-public-evidence/fr-git-01-portable/launch.py",
+      "/workspace/work/portable-git01-receiving/registration.json",
+      "568360e8900cce12c1ea997852a0a073fac2718bc6bdb56b228e863178dcbfc5",
+      "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37"
+    ],
+    "original_public_pointer_review": {
+      "sha256": "5c0178bb5e78b860df6eb63771299c3614e12aed77b90a6a9898a3f93438cda9",
+      "size_bytes": 3723
+    },
+    "proof_path": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.proof.json",
+    "proof_sha256": "9c5be81547e2ce3606766b0499584fa7881532199952e50e6034b77177aa69ea",
+    "structured_log_path": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.structured-log.json",
+    "structured_log_sha256": "be2c03e7751e4f9c890efea388deb3f258633dc8b46b90aadd2cddfca335b75f"
+  }
+}

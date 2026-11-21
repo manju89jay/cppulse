@@ -1,0 +1,121 @@
+{
+  "artifact_role": "The db15 wheel remains the artifact that executed the original criterion commands. The d65 wheel is the separately identified compatibility target. Both wheels, candidate manifests, original source pin maps and runtime inventories remain in custody.",
+  "current_independent_candidate_review": {
+    "sha256": "001bf7042f94de2ceb1b3d3b59fd08fbeb41cb5bfa9405c33e9015bbf15dd0d5",
+    "size_bytes": 68848
+  },
+  "d65_candidate": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "four_exact_source_changes": {
+    "docs/DECISIONS.md": {
+      "d65_sha256": "68c9a0b359a335e066a397dfcdfd42f8cc1ee1f7e339ec012d0e4cae28d8352a",
+      "new_object": [
+        "100644",
+        "blob",
+        "a67fa77d9ff5ac2a7f09ce5bbb967f20d141b687"
+      ],
+      "old_object": [
+        "100644",
+        "blob",
+        "ebfa4151c22f90b74646eeb61224f2f9dbe96395"
+      ],
+      "original_sha256": "20e73c9587be3a3dabe00a312bc1348b6543130b48d542e1a870679a41fd077b"
+    },
+    "docs/plans/production-scope-authority.md": {
+      "d65_sha256": "3237e5a5efb7efdeb6b39c8ce3ac276946634b1982eb3daf8759528b2f68923b",
+      "new_object": [
+        "100644",
+        "blob",
+        "2d364f061f82c12b6bbb58fc1ae363c4f33c9366"
+      ],
+      "old_object": [
+        "100644",
+        "blob",
+        "320b74ce0fd88a3d7ac2457597297187fb805e2c"
+      ],
+      "original_sha256": "07e16a120bfbb24f2b21223c6b2adceb02296d0b7e445c2f08a66c06ccba761a"
+    },
+    "python/cppulse/predictor/roadmap_generator.py": {
+      "d65_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f",
+      "new_object": [
+        "100644",
+        "blob",
+        "b91124d716fc3435eec4157a98fbca981d0c03e8"
+      ],
+      "old_object": [
+        "100644",
+        "blob",
+        "d2abedcd9b25cb44ee6a25fdc0bea1e4ee83b69f"
+      ],
+      "original_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+    },
+    "tests/test_roadmap_order.py": {
+      "d65_sha256": "be6bb6d0c4cfbeb31eae31afdcb2b73a9a977d5572e0a7e92abf87a34558fa9f",
+      "new_object": [
+        "100644",
+        "blob",
+        "e407aa6be4c4a4a9beb492e638e791eef03ee4bd"
+      ],
+      "old_object": null,
+      "original_sha256": null
+    }
+  },
+  "installed_inventory": {
+    "changed_members": {
+      "cppulse-0.2.0.dev2.dist-info/RECORD": {
+        "d65_sha256": "eacefba693274e5678bf1ff8083ab3edcffeced617a605efb93fe39d3b990335",
+        "original_sha256": "3f03b5675e806bfd4dd733a98051b4a1fcc56fa5e315cae28d008c4cc5a1b3de"
+      },
+      "cppulse-0.2.0.dev2.dist-info/direct_url.json": {
+        "d65_sha256": "2ad4e2d939530a034bb85c0c1afd26a484f42182c60d28d5daad202a11f90c72",
+        "original_sha256": "6261d0a9c2efc144ce89e0b70a785eb6566c394d5b837611be4802729c2a930c"
+      },
+      "cppulse/predictor/roadmap_generator.py": {
+        "d65_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f",
+        "original_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+      }
+    },
+    "console_sha256": "47f72f5823c11a0283f6a530bdfab1ef0483576e30a4e415f1e99ab7df0657aa",
+    "different_direct_url_role": "Each installation separately refers to its own exact wheel digest and path.",
+    "each_total": 252,
+    "unchanged_bodies": 249
+  },
+  "kind": "Approved source boundary compared with the original proof and artifact epochs",
+  "ledger_role": "The mutable delivery ledger, review pointer and proof itself are outside any new source dependency hash set.",
+  "namespace_payloads": {
+    "changed_member": "cppulse/predictor/roadmap_generator.py",
+    "each_total": 242,
+    "unchanged_bodies": 241
+  },
+  "original_candidate": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "original_product_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "owner_exact_final_literal_record": {
+    "sha256": "890aa5d5846ac2c62fbdf1ada728e5f0da9eca96e52cb1a86764b394f0bd98e9",
+    "size_bytes": 3850
+  },
+  "prior_exact_public_stage_tree": "b670398fb7ffb785ac7baafc0384b551d0cc3a3c",
+  "prior_public_pointer_authority_sha256": "6aabac382175ad954ed92a58ac86968f55ea63f84c2842e2ceaa835ffe06d601",
+  "proposed_product_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "wheel_archive_members": {
+    "changed_members": {
+      "cppulse-0.2.0.dev2.dist-info/RECORD": {
+        "d65_sha256": "dde3816b5454a2de9a9dbd0959111811c1ccc438caf9b611357352c6e3cf462b",
+        "original_sha256": "d07ff80cd0b7d0c63b65a438f8f4c80d598d9026a7beca1a2443a32385177cb7"
+      },
+      "cppulse/predictor/roadmap_generator.py": {
+        "d65_sha256": "93435c7292104b22738534f76d371de40e3add158080a1841b967009c3fcf95f",
+        "original_sha256": "9b6b592b75246b5fc6a30df567a55564143b141040f61a4252f978e0b589b089"
+      }
+    },
+    "each_total": 248,
+    "unchanged_bodies": 246
+  },
+  "wheel_record_row_replaced": "cppulse/predictor/roadmap_generator.py"
+}

@@ -3,6 +3,7 @@
 Only the committed derived run is a RunSnapshot. Original source access is a
 strictly narrower metadata/selected-file projection, not a verified full run.
 """
+
 from __future__ import annotations
 
 from contextlib import contextmanager, nullcontext
@@ -401,7 +402,8 @@ def _check_cache_manifest(manifest, request, *, original_source=None):
         raise IntegrityError("Derived index must retain exactly two opaque artifacts")
     by_id = {row["id"]: row for row in entries}
     if any(
-        type(row["size_bytes"]) is not int or row["size_bytes"] < 0  # noqa: E721 -- exact descriptor bytes
+        type(row["size_bytes"]) is not int  # noqa: E721 -- exact descriptor bytes
+        or row["size_bytes"] < 0
         for row in entries
     ):
         raise IntegrityError("Derived index descriptor sizes must be exact integers")
@@ -500,7 +502,7 @@ def _receipt(snapshot, request, *, original_source=None, check=None):
         or receipt.get("read_scope") != "selected_artifact_only"
         or receipt.get("limitations") != _LIMITATIONS
         or receipt.get("complete") is not True
-        or type(receipt.get("rows")) is not int  # noqa: E721 -- exact count, no bool/coercion
+        or type(receipt.get("rows")) is not int  # noqa: E721 -- exact count
         or not 0 <= receipt["rows"] <= request["limits"]["max_rows"]
     ):
         raise IntegrityError(
@@ -650,7 +652,10 @@ class ResultIndex:
             ("per_page", per_page, 200),
             ("max_page_bytes", max_page_bytes, 32 * 1024**2),
         ]:
-            if type(value) is not int or not 1 <= value <= bound:  # noqa: E721 -- exact finite budgets
+            if (
+                type(value) is not int  # noqa: E721 -- exact finite budget
+                or not 1 <= value <= bound
+            ):
                 raise ContractError("Invalid result page budget: " + name)
         for value in (category, file, text):
             if value is not None and (
@@ -831,9 +836,12 @@ def build_result_index(source_store, cache_root, request) -> ResultIndex:
             _verify_database(snapshot, request, receipt, check)
             guard()
             return ResultIndex(store, snapshot, request, True)
-        with _directory(cache.root.parent) as cold_parent, publication_guard(
-            cold_parent, timeout_seconds=0, required=True
-        ) as cold_lease:
+        with (
+            _directory(cache.root.parent) as cold_parent,
+            publication_guard(
+                cold_parent, timeout_seconds=0, required=True
+            ) as cold_lease,
+        ):
             cold_lease.check()
             # Another builder might have completed between the first head read
             # and lease acquisition. Reuse only after checking that exact head.

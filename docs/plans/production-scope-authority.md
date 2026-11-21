@@ -247,3 +247,25 @@ decision text and source epoch.
 - `PROD-20261118-26` — deterministic maintenance replay, freshness, explicit scope and separate historical formula; [decision](../DECISIONS.md#prod-20261118-26-preserve-calculation-identity-during-explicit-maintenance-replay). Acceptance remains evidence/ledger governed.
 
 - `PROD-20261118-27` — repository identity and observed/absent proxy-label provenance; [decision](../DECISIONS.md#prod-20261118-27-keep-repository-and-proxy-label-identity-explicit). Original PR-04/M0-05 conditions remain unchanged.
+
+- `PROD-20261119-28` — resolve local detector packs separately from scoring and policy.
+- `PROD-20261120-29` — integrate reviewer fixes without inheriting old score or evidence claims.
+- `PROD-20261120-30` — qualify literal exclusions and range-for advice on the receiving host.
+- `PROD-20261120-31` — match dashboard notices to the resolved production dependencies.
+- `PROD-20261121-32` — separate legacy analysis completion from health qualification.
+- `PROD-20261121-33` — order tied roadmap rows by file and category after impact.
+- `PROD-20261121-34` — bind master CI to current producers and explicit test scopes.
+- `PROD-20261121-35` — refuse late bounded metadata changes during publication.
+- `PROD-20261121-36` — close the dashboard lock under the hosted npm version.
+- `PROD-20261121-37` — trust the Actions checkout for the pinned Git provider.
+- `PROD-20261121-38` — include canonical contract tests in component coverage.
+
+## Receiving checkout provenance
+
+The object and reference observations in batch111 apply to its originating
+workspace. The receiving checkout resolves the pinned commit
+`82120d26b51f99b64068f9d66f6e000fcaee97c2` as the proposed second parent.
+Its isolated review checkout has no matching branch ref. The receiving source
+repository retains a local remote-tracking reference at
+`refs/remotes/origin/feat/health-score-v2`. Those local observations leave
+the authoritative baseline and remaining M0-01 history requirements open.

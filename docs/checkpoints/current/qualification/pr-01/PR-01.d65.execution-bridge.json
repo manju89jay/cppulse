@@ -1,0 +1,23 @@
+{
+  "actual_projection_log_sha256": "06e1f2e54899576ecc8339c53c355d5b309f88db2e3fef4680edf62e58056057",
+  "complete_private_receipts_by_role": {
+    "d65_actual_git_qualified_independent_review": "001bf7042f94de2ceb1b3d3b59fd08fbeb41cb5bfa9405c33e9015bbf15dd0d5",
+    "d65_actual_native_independent_review": "e6128589ed2630e3bf9787bea3fa199436623890b4cd27930d45857295884177",
+    "d65_current_package_record": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "earlier_actual_installed_attribution_receipt": "b870068fca2bce65fa9bec938da72bcb0584249d42e3089d970e22a5fd094c8d",
+    "earlier_actual_no_account_integrated_bound_scope": "27ac8d196a5942dfc3a68f377dfe607c152223b525d68ba25abf8e804a77bc0d",
+    "earlier_rebuilt_license_scope_exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "exact_earlier_source_registration": "6d02b1e1207627eabc5e5ae3cef28d8eaa65a8fad908c84eef9615bc205850a6"
+  },
+  "id": "PR-01",
+  "immutable_independent_whole_review_sha256": "64551b737f9c2d9b3ec0c9928c512764d646d67c649f6ec0006fae5095e3acdb",
+  "portability": "The current selected checkout hashes are independently checkable. Exact real earlier fixture and tools are described by scoped receipts. Original runs, package payloads and execution materials remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact tracked package and required source, notice, generator or test dependencies. Explicit old whole-execution bytes and runtime/fixture guards remain bound. The independently approved earlier-to-current package byte difference is a distinct immutable witness.",
+  "shared_independently_reviewed_exact_original_to_d65_archive_delta": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d"
+  },
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

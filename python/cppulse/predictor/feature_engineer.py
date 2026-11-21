@@ -215,7 +215,8 @@ class FeatureEngineer:
             categories.add("misra")
         registry = load_rule_registry()
         required_rules = {
-            row["id"]: row["version"] for row in registry["rules"]
+            row["id"]: row["version"]
+            for row in registry["rules"]
             if row["category"] in categories
         }
 
@@ -229,7 +230,8 @@ class FeatureEngineer:
                 availability = "partial"
                 limitations.append(
                     "Full-scope health unavailable: required detectors are disabled or absent: "
-                    + ", ".join(sorted(missing_rules)) + "."
+                    + ", ".join(sorted(missing_rules))
+                    + "."
                 )
             all_files = {
                 coverage_identity(entry["path"], findings_data)
@@ -298,8 +300,11 @@ class FeatureEngineer:
         attrs = {
             "health_availability": availability,
             "health_declared_file_count": (
-                sum(entry["status"] != "excluded" for entry in coverage.get("files", []))
-                if coverage is not None else len(all_files)
+                sum(
+                    entry["status"] != "excluded" for entry in coverage.get("files", [])
+                )
+                if coverage is not None
+                else len(all_files)
             ),
             "health_profile": profile,
             "health_source_digest": source_digest,
@@ -322,7 +327,8 @@ class FeatureEngineer:
                     coverage_identity(entry["path"], findings_data)
                     for entry in (coverage.get("files", []) if coverage else [])
                     if entry["status"] == "excluded"
-                } - set(ranking)
+                }
+                - set(ranking)
             ),
         }
 

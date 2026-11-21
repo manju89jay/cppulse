@@ -1,0 +1,22 @@
+{
+  "actual_projection_log_sha256": "a8d264c2fd2d535d15f32adac34fd78ad4bfd063914368b30e09b6aae5ff036f",
+  "complete_private_receipts_by_role": {
+    "B11_actual_facade_result": "ef293f923eec19db9251247d7425af67767fc1d3ac029d2021ee72e2ab44a084",
+    "B11_actual_invalid_ledger_child": "c109f2f7b0729f4f329bf85ba23cfaea0d24f753219524cfa4cdbc88b1f70f83",
+    "B11_full_registration": "c2121d0dd83f33986d457f55a35b0f8e6edabdcf593ab7666c90469a4884bad0",
+    "B11_original_scope_wiring_junit": "5a56abb93b8bee065562600f2fb58e192bcc96c3b28c59da0d3577fe0cd74b94",
+    "B1_original_draft_native_refusal": "3af04d893d085160453f105b5f47e5e01a8fd83b8ec0691e2473395effc47b23",
+    "B1_original_extension_junit": "bffc9cb2282e0d94bcaccbe213b78736ce6abe01da15021f5035a78d2afcb0c1",
+    "B1_original_extension_origin_and_predicates": "34a9d813ce32dfa4ea1700bbdd3697c0f4c00d63b47f4f974c6976c0fd891141",
+    "B1_original_meaningful_adapter_results": "4f9f1abf111a9ba72ccc1f4165cdfba5e5c07d422dea8a5c2a947316c5d24be3",
+    "B1_original_meaningful_native_rule_compile": "c6fb36750fffc7d4329e59513dabce93e2c44dc66d8c1f761b87f831fb34df64",
+    "B1_original_meaningful_policy_results": "774970cbd89d2f29f7740f1708696c6f5f325098bd98520aefdbf4c888c28563",
+    "d65_exact_registration": "82c6bb76dcd75a51f018aff71ac5cbebc900679eda03e0b81d876d34118964b1"
+  },
+  "id": "M1-07",
+  "immutable_independent_whole_review_sha256": "e25e98ce4b687b47cf01f6221d552703bbbd5b74c0baac0682c3b35390249a47",
+  "portability": "The public verifier can recheck the relative selected source files. Repeating the complete qualification requires the attested Linux tools, runtime, released candidate build and the original private execution environments. The actual original records remain in custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact selected GitHub and GitLab wiring, tracked generator and generated artifacts, original meaningful fixture sources, 28 selected loaded Python package files and immutable scope material. Active delivery pointers and future aggregate reports are outside this acyclic proof input set.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

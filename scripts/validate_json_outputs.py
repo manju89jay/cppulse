@@ -3,7 +3,6 @@
 
 import json
 import sys
-from pathlib import Path
 
 CHECKS = [
     ("docs/schemas/findings.schema.json", "output/findings.json"),

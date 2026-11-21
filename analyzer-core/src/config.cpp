@@ -17,8 +17,8 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "rule_engine.h"
 #include "generated_rule_registration.h"
+#include "rule_engine.h"
 
 namespace cppulse {
 
@@ -423,8 +423,10 @@ std::string glob_to_regex(const std::string& glob) {
             }
         } else if (ch == '?') {
             regex += "[^/\\\\]";
-        } else if (ch == '.') {
-            regex += "\\.";
+        } else if (ch == '.' || ch == '+') {
+            // Both characters are literal in glob patterns.
+            regex += '\\';
+            regex += ch;
         } else if (ch == '/' || ch == '\\') {
             regex += "[/\\\\]";
         } else {

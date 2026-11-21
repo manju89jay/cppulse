@@ -64,6 +64,53 @@ integration definition requests Compose; GitLab's native integration does not
 claim a Docker-enabled runner. Component coverage writes both canonical JSON
 for the actual coverage gate and XML for existing CI report consumers.
 
+GitHub push and pull-request checks target `master`. The formatting job
+pins clang-format 19.1.7, Black 24.1.1 and Ruff 0.2.1. It compares the
+fetched PR base and head through `CPPULSE_FORMAT_BASE` and
+`CPPULSE_FORMAT_HEAD`. The shared formatter combines that merge-base diff with
+staged, modified and untracked local Python files under `scripts`, `tests` and
+`tools`. Supply both refs to reproduce this selection. On a push or manual
+dispatch, `CPPULSE_FORMAT_ALL_TRACKED=true` selects all tracked Python files
+in those directories alongside local edits. Unset or `false` keeps the local
+selection when no PR range is supplied.
+
+### Hosted source tests and historical assurance
+
+`--section root-public` keeps the source contracts and actual producer tests in
+the hosted lane. Its recorded pytest command names the historical comparisons
+checked separately by the default `root` section and `--scope full`.
+
+| Historical test | Exact local input |
+| --- | --- |
+| `test_elf_runtime.py::test_selected_actual_native_metadata_without_execution` | Retained old native TU-buffer analyzer at the path, SHA-256 and size asserted in the test |
+| `test_generated_rule_registration.py::test_generator_metadata_preserves_existing_public_v2_contract` | Retained candidate93 installed package and the qualified query20 interpreter and dependency closure selected by the test |
+| `test_native_normalizer_streaming.py::test_exact_output_parity_with_preserved_prechange_normalizer` (two cases) | `work/native-normalizer32/analysis-before.py` from the original qualification |
+| `test_predictor_input_projection.py::test_public_predictor_preserves_frozen_legacy_results_without_eager_native_load` | Candidate69 manifest and exact installed old69 wheel in its registered isolated prefix |
+| `test_store_heads_v3_review.py::test_real_installed_old_wheel_fails_closed_and_reads_explicit_export` | Registered older typed-service reader environment referenced by the test |
+
+Use the unchanged complete local profile with the exact authorized archived
+inputs for historical assurance. Keep those inputs in private custody. A
+runner's fresh native producer does not replace any historical comparison.
+
+For live health tests, run the native section from the checkout, then use
+`tools/register_ci_native.py` with its `development-results.json` and the
+matching Clang resource directory. Set `CPPULSE_CI_NATIVE_REGISTRATION`,
+`CPPULSE_WORK_UNIT_NATIVE`, and `CPPULSE_CLANG_RESOURCE_DIR` before executing the
+nine cases. The historical health invocation retains its original binary guard
+when no current registration is supplied.
+
+Live evidence tests also require genuine producer inputs. The workflow uses
+`scripts/demo_coverage.py` to produce an LCOV run and binds its immutable
+identity and CLI through `CPPULSE_POLICY115_INPUTS`.
+`scripts/prepare_ci_evidence.py` produces the twelve sanitizer cases and the
+selected CTest/JUnit, header and archive runs. It reopens the coverage run and
+registers the actual producer outputs in `CPPULSE_EVIDENCE116_INPUTS`. The
+Python contracts job runs in a digest-pinned Python 3.11 Debian environment on
+the Ubuntu runner. It installs the GCC, GNU binutils, libabigail, and Clang-Tidy
+versions required by the actual producer tests. The selected hosted lane
+builds the Git 2.52.0 provider used by branch-delivery tests from the pinned
+public release archive. The selected hosted lane does not establish P14.
+
 ## Full candidate verification
 
 Full verification cannot filter out sections or components. It also requires a

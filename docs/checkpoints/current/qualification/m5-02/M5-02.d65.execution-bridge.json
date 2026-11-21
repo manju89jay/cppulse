@@ -1,0 +1,22 @@
+{
+  "actual_projection_log_sha256": "67e5c3ca5887647e400a0856102b77e19913d9d13e8e4823edb9db75b482c55d",
+  "complete_private_receipts_by_role": {
+    "actual_raw_role_capture": "b52600bd5c360f83ea56a057f23f667abc16ca25e3a10710db82f1ef24849026",
+    "actual_whole_archive_result": "c349f9378f34d230df357dc4740093b66ba9c66993237f5db1e3d325bb4c3273",
+    "current_registration": "be76c416759784393ff8db473c3dd82fa59af133dc2584929794bfd3ee8b268b",
+    "current_runtime_pre_and_post": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+    "exact_missing_map_control": "4fd6f275b214ddabd9a7f197ecb156e6f54c954e88bcc0783f1b3d45611608f5",
+    "exact_original_assertion_inputs": "7ee6aa93f40f201ccd9cf9283f1de4c71764689beece7b9b39e5b79f9dfd9382",
+    "exact_wrong_working_directory_control": "2bb932158956e6abaecb63629bd81a50947eaafe5b5afdc5be833ae2d1434bc2",
+    "prior_exact_coverage_review": "6340c2de0a5a1d8db1fb4712e1ba3e379be99b103944c6fe5c7d83c483cf513a",
+    "prior_exact_header_review": "e72c38be1660f4d7c79e5e5d8f9157f39cebb740776efd0f5db259d9f518f394",
+    "prior_exact_no_false_verification_review": "6e3ce9a9e808bcbf16c1a5834cd40d323190248afdf826142c16ae8217d58d62",
+    "prior_exact_test_ingestion_review": "3553f6871faa56ca8d1403ecef654a7b87fb7228e20bf6e373dfd558a853f8cd"
+  },
+  "id": "M5-02",
+  "immutable_independent_whole_review_sha256": "5361d267f631f95a48d7cdc9c5f03bf633705fd2b9ae46d8f9e135beac19ccb5",
+  "portability": "The tracked recipe, input forms and selected source hashes are included. Exact compiler/environment, earlier raw fixture producers and the observed binaries and stores remain in custody under the documented real tool and source scope.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact d65 runtime source and original tracked GNU selected consumer fixture helper/assertion. Explicit earlier context, coverage and JUnit actual roles are preserved with original d65 dependency readback and earlier artifact commitments.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

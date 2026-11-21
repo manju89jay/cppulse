@@ -1,4 +1,5 @@
 """Reject producer-noncanonical regular names without weakening directory support."""
+
 import gzip
 import hashlib
 import io

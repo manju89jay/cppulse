@@ -52,7 +52,7 @@ describe("HealthScore", () => {
     render(<HealthScore healthScore={healthyScore} />);
     expect(screen.getByText("Memory Safety")).toBeInTheDocument();
     expect(screen.getByText("Modernization")).toBeInTheDocument();
-    expect(screen.getByText("Complexity")).toBeInTheDocument();
+    expect(screen.getByText("Complexity finding health")).toBeInTheDocument();
     expect(screen.getByText("MISRA subset")).toBeInTheDocument();
   });
 

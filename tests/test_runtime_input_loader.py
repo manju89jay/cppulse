@@ -1,4 +1,5 @@
 """Untrusted runtime declarations fail closed before filesystem consumption."""
+
 import pytest
 from cppulse.errors import ContractError
 from cppulse.identities import canonical_json_bytes

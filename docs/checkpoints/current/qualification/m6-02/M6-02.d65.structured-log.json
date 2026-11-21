@@ -1,0 +1,74 @@
+{
+  "criterion": "Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history",
+  "id": "M6-02",
+  "independent_whole_review_sha256": "d0ef1e27087b00da18230bfa469b1a022bc52398a1f3fd0341f874a2e12fd65f",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "earlier_actual_scoped_history_campaign": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-history-next/run_batch.sh",
+        "/workspace/work/current38-history-next/results"
+      ],
+      "raw_log_sha256": "8cf05111863c205a4afa196a62492f4e7ae7843534c5e43d22117afb841336c4",
+      "record_sha256": "b05adc514c4483bf2024bd76ddad9d3cc24287ae4979968cdcf31444e0c86f3c",
+      "stable_guard_pins": 3030
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "accepted_changes_full": 3,
+    "accepted_changes_shorter": 2,
+    "all_source_changes_reviewed": [
+      ".dockerignore",
+      ".github/workflows/ci.yml",
+      "analyzer-core/Dockerfile",
+      "analyzer-core/Dockerfile.dockerignore",
+      "docker-compose.yml",
+      "docs/DECISIONS.md",
+      "docs/plans/production-scope-authority.md",
+      "python/cppulse/git_miner/main.py",
+      "python/cppulse/pipeline.py",
+      "python/cppulse/predictor/roadmap_generator.py",
+      "tests/test_cli_exit_contract.py",
+      "tests/test_git_behavior.py",
+      "tests/test_pipeline_failures.py",
+      "tests/test_roadmap_order.py"
+    ],
+    "exact_example_weights": [
+      "7/4",
+      "3/4"
+    ],
+    "exact_jaccard": "2/3",
+    "legacy_values_invariant_to_shorter_window": true,
+    "observed_full_history_commits": 7,
+    "prior_semantic_scope": "All nine exact installed weighted-history and coupling controls passed. The bound current installed public Git results retain all legacy file values and agree with the installed API. The seven-commit run accepts three changes, with separate shorter behavior window accepting two; file weights 7/4 and 3/4, author shares, fragmentation, effective-author counts and coupling Jaccard reproduce from the recorded denominators. Real shallow and unborn controls leave missing deltas and absent denominators unavailable.",
+    "scoped_phases": {
+      "history-readback": {
+        "actual_result_sha256": "50f3d860c7cb94f6dcc28ce2febecc166f20db08d091ba7da7aca2e7bf814082",
+        "actual_scope_exit": 0,
+        "exact_prior_current_verified_artifact_count": 68,
+        "original_prior_scope_reexecuted_here": false
+      },
+      "weighted-history": {
+        "actual_result_sha256": "44fb781fb5483dd1430c34713de610d176c9a05aa833555b0bece69e02c57e7a",
+        "actual_scope_exit": 0,
+        "exact_case_count": 9,
+        "exact_original_junit_sha256": "7f9e6d15bafc65d45991193961d257f1c853b917a2e10b88dddb1d2b02fdf9a0"
+      }
+    },
+    "shallow_and_empty_denominators": "unavailable wherever measured inputs are absent"
+  },
+  "preserved_epoch_and_result_limits": [
+    "Familiarity and ownership are Git-derived proxies. The controlled history and original inputs remained unchanged, and the public prior-current result was read back under this epoch.",
+    "Historical outputs and exact producer identities remain those actually observed. No new d65 history or report execution is implied.",
+    "Default Git metadata no longer carries the optional behavior scope sentence. The selected cutoff result uses the unchanged SZZ provenance and explicit cutoff. Configured behavior scopes still carry the old note. Numeric, source identity, and bound computations are unchanged by either case.",
+    "The other runtime changes refine legacy completion and roadmap ties. These scoped historical typed metrics, direct Git producers and readback of pinned snapshots have no semantic dependence on those controls. CI/Compose wiring, decision text and later test edits are unrelated to the executed conditional scopes.",
+    "The earlier genuine bounded public history producer reached roadmap generation and retained its historical roadmap bytes. Changed tie ordering cannot feed back into the selected Git, shared-history or weighted metrics. The exact donor artifacts remain in their observed epoch."
+  ],
+  "primary_observed_role": "earlier_actual_scoped_history_campaign",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "Produce weighted ownership, familiarity, coupling, and fragmentation metrics from shared history. | No double counting or undefined denominator on shallow/empty history"
+}

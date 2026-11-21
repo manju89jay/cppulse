@@ -1,0 +1,65 @@
+{
+  "owner_approved_text_export_sha256": "0965b9c757c538abb41fb2112e49e7fa503278be3c617454ad0c2c51e0c763a5",
+  "historical_execution": {
+    "accepted_execution_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "accepted_actual_wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+    "actual_registration_sha256": "99148afdd53a1566ff157d7f80b6813fd4ae80041f7008bce8a0ad7bb532d459",
+    "signed_whole_review_sha256": "dbe9f4d0f1557ba74a3d763cb1b3ff145f1ec8f037e6b1fec68022ccffa704a5"
+  },
+  "approved_texts": [
+    {
+      "path": "approved/current/git_checks.py",
+      "sha256": "c29c8ced229d2f6c524cab2729f83e06f7a544eaacdcc0cd6b270685d81a2034",
+      "size_bytes": 10030,
+      "role": "Actual current assertion entrypoint, eight case orchestration and exact extra disclosure and parity checks."
+    },
+    {
+      "path": "approved/current/common.py",
+      "sha256": "574a403694518601689ef2e284c6e55206150c3cc262ea55d512256a35f41f43",
+      "size_bytes": 2571,
+      "role": "Exact path, byte and fixture continuity helpers imported by the current runner."
+    },
+    {
+      "path": "approved/current/run.sh",
+      "sha256": "e8ffca3b4c2c791890cff1f10b8eed09be441f89f89e36c369f2bad3c21198ea",
+      "size_bytes": 1033,
+      "role": "Actual outer Git gate shell phase dispatch."
+    },
+    {
+      "path": "approved/current/container.sh",
+      "sha256": "6f8cd780c83f33b760c7012e4238d5a9d1aa00bf880b67b90c8d6e472ec6b04e",
+      "size_bytes": 2595,
+      "role": "Actual controlled process configuration and kernel denial handoff."
+    },
+    {
+      "path": "approved/fixture/recheck.py",
+      "sha256": "4012af3236bfb6e0de314d6ed14e4bbe31b5ee0cbf69d106c421f673fa19f3fb",
+      "size_bytes": 15075,
+      "role": "Actual inherited case commands and original whole-criterion predicate assertions imported by the current runner."
+    },
+    {
+      "path": "approved/fixture/fixture.py",
+      "sha256": "45037d775391cb71dc0530b9306a5e94d4d9990978dbcbe65e7d02ab5dddef9f",
+      "size_bytes": 7120,
+      "role": "Locally authored deterministic Git object and repository generator."
+    },
+    {
+      "path": "approved/fixture/fixture.json",
+      "sha256": "994047d2ef2647ac3515adcdcae6b26f699621f1e49093e6febfbda415ea2c16",
+      "size_bytes": 2309,
+      "role": "Locally authored finite fixture recipe, scenario IDs, dates and expected controlled assertions."
+    },
+    {
+      "path": "approved/tests/test_git_metric_window_scope.py",
+      "sha256": "9054a98189c267673cee9e5561644119c3b41ff9b596dde996a6163d2c023106",
+      "size_bytes": 2904,
+      "role": "Actual tracked source and installed original window regression."
+    },
+    {
+      "path": "approved/tests/test_git_behavior.py",
+      "sha256": "9852da141838723f2f47bd612fad8f3c2fb9db91fd8880e5aada4f6d97c04c6b",
+      "size_bytes": 16578,
+      "role": "Actual tracked extended parity, rendered scope and invalid-half request test."
+    }
+  ]
+}

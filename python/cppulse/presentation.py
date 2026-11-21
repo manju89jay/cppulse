@@ -269,20 +269,33 @@ def build_snapshot_view(
     for artifact in artifacts:
         if artifact["id"] == "effective_config-json":
             if artifact["size_bytes"] > 8 * 1024**2:
-                raise ContractError("Retained configuration exceeds presentation byte limit")
+                raise ContractError(
+                    "Retained configuration exceeds presentation byte limit"
+                )
             raw = snapshot.read_bytes(artifact["id"])
             document = json.loads(raw)
             if not isinstance(document, dict):
                 raise ContractError("Retained configuration must contain an object")
-            configurations.append({"artifact_id": artifact["id"], "sha256": artifact["sha256"],
-                                   "size_bytes": artifact["size_bytes"], "raw_json": raw.decode("utf-8"),
-                                   "document": document})
-        elif artifact.get("contract") == {"kind": "collection_request", "version": "2.0.0"}:
+            configurations.append(
+                {
+                    "artifact_id": artifact["id"],
+                    "sha256": artifact["sha256"],
+                    "size_bytes": artifact["size_bytes"],
+                    "raw_json": raw.decode("utf-8"),
+                    "document": document,
+                }
+            )
+        elif artifact.get("contract") == {
+            "kind": "collection_request",
+            "version": "2.0.0",
+        }:
             wrapper, request = _payload(snapshot, artifact)
             if "resolved_ruleset" in request:
                 configurations.append({**wrapper, "document": request})
     if len(configurations) > 1:
-        raise ContractError("Selected snapshot contains ambiguous retained configuration")
+        raise ContractError(
+            "Selected snapshot contains ambiguous retained configuration"
+        )
     if configurations:
         view["configuration"] = configurations[0]
     from cppulse.external import external_relationships

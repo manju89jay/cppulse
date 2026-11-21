@@ -1,0 +1,32 @@
+{
+  "actual_projection_log_sha256": "2cba3cf35da25d1b67a7ac5d42bb03ca93bda31bbc6a0e188e3e3989cb45e518",
+  "already_reviewed_exact_1e_to_d65_archive_comparison": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d",
+    "scope": "Earlier measured wheel 4d2e to current wheel 42a6. This shared actual byte comparison adds no new execution for this criterion."
+  },
+  "complete_private_receipts_by_role": {
+    "actual_native_file_inventory": "8d1b00240607fc9ebb7ae75bf0e58a591f946ad5c4bcd9a3a048e244a4c20159",
+    "actual_original_language_retry_junit": "4c1e2e23604599744a16ba60ade1b57176ca67d063d8dd933588b515695d38ed",
+    "current_d65_scoped_plan0_independent_governance": "9c6c5dd6beaae9b1d70d91977ee54fb3f43f2a93cc95422bf0feca07988aec70",
+    "earlier_finite_native_guard": "440283365ab5204db849b2040e5f214be8ba749a1c6d6615a25a323fbd047820",
+    "earlier_python_explicit_refusal": "fc43e73a555dd4c1de0dcd0c231051a341d63582fdaf5e7b99f064f0558558fe",
+    "earlier_typescript_explicit_refusal": "260f4437a0d7c48298ba682215b0b79777ee4112361228ccb5822a53d1b529ce",
+    "exact_earlier_language_discovery_command": "7f08f233e7fb2e687a0fa4e8211e2fb9350781fefdfccbcfa23f00cb668d74d5",
+    "original_expansion_scope_and_plan_readback": "16c8bc79c23e582228ec3399a01f3bdf16d4e82dc6e7ad2a83033ed0182a8805",
+    "preserved_language_first_attempt_log": "0c2366b82af64d980cbaf2577aedbfba9f81950f64da4cd3abf08ec836780e63"
+  },
+  "id": "PR-06",
+  "immutable_independent_whole_review_sha256": "7b4ffde039472316b851009f78ee59bf0285f41977a7433541ec64dd4b7cd025",
+  "independently_identified_exact_public_scope_inputs": [
+    "scripts/verify_delivery.py",
+    "docs/plans/verify_production_plan.py",
+    "docs/plans/production-scope-authority.md",
+    "docs/checkpoints/20261118/scope-maintenance111.md"
+  ],
+  "portability": "The public checker reads current relative source hashes. Exact earlier full inputs, compiled binaries, package/tool identities, PDF/report/API and publication stores are attested in custody. Current d65 results are claimed only for separately stated observed roles.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Conservative exact d65 source namespace, native source/supervisor and original tracked test dependency paths. Original source, artifact, full preregistration, and distinct verified raw execution are retained. Each affected legacy or roadmap path is classified by its relationship to the stated predicates.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

@@ -1,4 +1,5 @@
 """Bounded external analyzer imports over authored serialized reports only."""
+
 from dataclasses import FrozenInstanceError
 import hashlib
 from pathlib import Path

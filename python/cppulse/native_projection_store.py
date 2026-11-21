@@ -1,4 +1,5 @@
 """Ephemeral compressed structural projections, never normalized evidence/cache."""
+
 # Closed finite profiles deliberately reject bools and subclasses.
 # ruff: noqa: E721
 from __future__ import annotations

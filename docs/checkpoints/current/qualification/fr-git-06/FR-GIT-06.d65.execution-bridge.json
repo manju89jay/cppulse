@@ -1,0 +1,118 @@
+{
+  "criterion": "FR-GIT-06",
+  "exact_prior_independent_review": {
+    "sha256": "5f12f5a7ede6ecd5f26f2a349492da941a44c8795961632b6a45874d448555d9",
+    "size_bytes": 34452
+  },
+  "executed_artifact": {
+    "build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+    "manifest_sha256": "5c8f500d2c36760f81cb2ee354ac6ed26c333b6130ba9cfae2b75df20cb7db37",
+    "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700"
+  },
+  "kind": "Static dependency bridge for the independently accepted prior typed scope",
+  "observed_projection_log_sha256": "be496fbbf195f2b33e9f7093beb9b4a4789a7ada4aa4e7c49988b5f920721585",
+  "original_attested_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "prior_guard_roles": {
+    "components-v2": {
+      "actual_exit": 1,
+      "before_after_direct_input_map_sha256": "003e921725144a29997ef93440f72918f6de21bb48acdcf0ec22075883744ffc",
+      "original_record": {
+        "sha256": "14da0bff41887cc555d41b75a44b3489d8d542ce8dbc4904b0f07101322b0013",
+        "size_bytes": 3479627
+      },
+      "outer_command_sha256": "c1a371097e47f8f1a2f9c21331035dbce6b2f516d956d61e51e8cd6c7b856a1c",
+      "raw_log": {
+        "sha256": "fb9cab028c5246c71f4c76cc2b0189aed6a139e9563b0376cfecb281809d61d7",
+        "size_bytes": 843
+      },
+      "registered_inputs": {
+        "sha256": "6eea06fd58dd31db1fcd70a246e756259b129bc5180c80b1282bd62ed060f228",
+        "size_bytes": 1741921
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 10170,
+      "stable_runtime_entries": 260105
+    },
+    "components-v3": {
+      "actual_exit": 0,
+      "before_after_direct_input_map_sha256": "b57b166c9a4ab27dbe7fa42abe3ddfbd3746ca43db9ce69070f681105b3b9890",
+      "original_record": {
+        "sha256": "6de6dfc767f34b9512894d9569e55ac621a419dc5290a8bc08e38844b5bccee5",
+        "size_bytes": 3700686
+      },
+      "outer_command_sha256": "2cd18c54de4fd95d332b2aae2c492fcfdf17411d07faba4ef2e719f7545a7175",
+      "raw_log": {
+        "sha256": "d5cfee126366881071b2b45d3b57b514669439c2a5ac4cbcdd29640190a2476a",
+        "size_bytes": 84
+      },
+      "registered_inputs": {
+        "sha256": "77a94ab6f72887de0f9fbc5247d4e8f41e06fa2f66c46130f12a6ec42d7d81b9",
+        "size_bytes": 1850999
+      },
+      "resource_stop": null,
+      "runtime_before_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_direct_inputs": 10600,
+      "stable_runtime_entries": 260105
+    }
+  },
+  "prior_input_roles_retained_in_custody": {
+    "prior_readback": {
+      "sha256": "6a1ed90c9cd67fe9877c38788b637ef5b1e45d2d4d57848e896494851935cd77",
+      "size_bytes": 1035
+    },
+    "private_actual_git_fixture": {
+      "sha256": "4f08ce77c32aa77dee50dbd86cbb16cb3f21523f2cf9a57feb630a54eff1c03e",
+      "size_bytes": 1344
+    },
+    "private_git_before_and_after": {
+      "sha256": "1c46dbd901074ac49578099a2ac202b75e4774f81c7927858977b918421f9e3b",
+      "size_bytes": 5131
+    },
+    "private_original_authorities": [
+      {
+        "sha256": "3a2d518268919f49097c1cbf7c83fe6d521f3adad5062591893836d0ec349954",
+        "size_bytes": 6582022
+      },
+      {
+        "sha256": "bfdc1a7175dfc15bea505f0ce53492d0a1543a2e1f5347f5b2123ac8dd333747",
+        "size_bytes": 19807
+      },
+      {
+        "sha256": "2316dfa38751f2924f148c1dcc12b6d03aa98143b211229b8cf1394d8f49acc3",
+        "size_bytes": 8019
+      }
+    ],
+    "qualification_scoped_report_api_roles": {
+      "actual_worker": {
+        "sha256": "7c534a09f769771585c212a6f8d5cd872ee22eb511b68e57b02f91d3b7de1a72",
+        "size_bytes": 6703
+      },
+      "native_producer": {
+        "sha256": "53390092974bb86e9df766cb4898387a353ea9a61941b435a1fa6c69509bb0e9",
+        "size_bytes": 13067
+      },
+      "readback_worker": {
+        "sha256": "ee5fadb600048c520883a67b01d430aa5c3edc57a2d7fb7cb53755fb20c2d6b2",
+        "size_bytes": 14408
+      }
+    },
+    "raw_git_commit_count": 3
+  },
+  "receiving_artifact": {
+    "build_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+    "manifest_sha256": "1d4764017e149709008b30176b4e5e174a45dcc904898e886f10a6026bd267e7",
+    "wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1"
+  },
+  "receiving_execution_claimed": false,
+  "replay_material": "The original toolchain, exact package, registered observers, source, finite fixtures, custody bodies, outputs and runtime environment are available separately through owner custody.",
+  "selected_source_scope": "All 242 receiving package paths, requirements, package configuration and the original component-hotspot checkpoint. Raw Git objects, finite source fixture, observers, sealed reports and protected historical authority bodies remain in owner custody.",
+  "semantic_impact_of_delta": "Both completed bounded analyze producers reached prediction and wrote legacy roadmaps, which can differ on equal-impact ordering for a fresh d65 run. Component hotspot ranking, exclusions and normalized risk are assembled before the roadmap is generated. Historical co-change is a separate measured Git behavior value with its provenance warning. The configured history disclosure already uses the d65 placement on this 4cf execution. The immutable old report/API inputs preserve original bytes and ordering. The v3 observer only verified those sealed results. The actual ambiguity control stopped in Git component configuration before an output was created. These observations do not claim a fresh d65 report or analyze.",
+  "shared_exact_boundary_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

@@ -9,7 +9,7 @@ from typing import Any
 import pytest
 
 from cppulse.config import effective_config
-from cppulse.errors import ContractError, PublicationConflict
+from cppulse.errors import ContractError, IntegrityError, PublicationConflict
 from cppulse.importer import import_pipeline
 from cppulse.pipeline import analyze, generate_report
 from cppulse.run_store import RunStore
@@ -51,18 +51,27 @@ def stub_native(
     )
 
 
+@pytest.mark.parametrize("missing_findings", [False, True])
 def test_component_system_exit_records_partial_attempt(
-    bundle: tuple[Path, Path, Path], monkeypatch: pytest.MonkeyPatch
+    bundle: tuple[Path, Path, Path],
+    monkeypatch: pytest.MonkeyPatch,
+    missing_findings: bool,
 ) -> None:
     import cppulse.git_miner.main as miner
 
     flat, source, store_root = bundle
     import_pipeline(flat, source, store_root, run_id="prior")
-    stub_native(monkeypatch)
-    # An analyzer claiming success without findings reproduces the existing
-    # predictor loader's SystemExit(1), rather than manufacturing an exception.
+    stub_native(
+        monkeypatch, findings=None if missing_findings else flat / "findings.json"
+    )
+    # The predictor checks native bytes before opening the missing Git input.
     monkeypatch.setattr(miner, "run", lambda *args: 0)
-    with pytest.raises(RuntimeError, match="[Pp]redictor.*1"):
+    error, message = (
+        (IntegrityError, "Native predictor input is missing or unsafe")
+        if missing_findings
+        else (RuntimeError, "[Pp]redictor.*1")
+    )
+    with pytest.raises(error, match=message):
         analyze(effective_config(source, store_root), report_format="json")
     store = RunStore(store_root)
     assert store.resolve_latest().run_id == "prior"

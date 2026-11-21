@@ -1,0 +1,24 @@
+{
+  "actual_projection_log_sha256": "4263af868d037ae7632cb01ffd9a3ed9618e226a2daeb0d2d3da9395ba9e5d67",
+  "already_reviewed_exact_1e_to_d65_archive_comparison": {
+    "checkout_relative_record": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.d65.execution-bridge.json",
+    "field": "one_e_to_d65_actual_archive_comparison",
+    "record_sha256": "e14d24a63bd92e8aa8a2b812aae53784dc56583a53b6877a4671308c975f0d9d",
+    "scope": "Earlier measured wheel 4d2e to current wheel 42a6. This shared actual byte comparison adds no new execution for this criterion."
+  },
+  "complete_private_receipts_by_role": {
+    "actual_contract_and_lexical_junit": "ff130a3e67fe04d375262203764f8c264b22955ace8c75701eb0a556a73182aa",
+    "actual_observer_implementation": "3716ff607473d291507762de0966b06861139eaaffa2b925ac2e9606c49217ed",
+    "actual_raw_evidence_independent_readback": "38576116598a0e10693f7139e05ae352632a31184693c1b07deb40ab40b75de2",
+    "earlier_same_source_native_fact_readback": "d8d4fc182d96c73b7551e4c520459982e7c9ac267ef3d2648611b2ab6bf23e63",
+    "exact_per_case_source_and_repository_declarations": "ba4854c135d66846bee80dfa7e9a2df5f2bb1ae2c87773719c8fe0276d62c367",
+    "full_earlier_registration": "a27a7a9fd250babf982d7172d4e29259d663faec5452d80c45484c292bd501fb",
+    "original_runtime_pre_post": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74"
+  },
+  "id": "M4-01",
+  "immutable_independent_whole_review_sha256": "1a4193bb1bafedb254da8364d94570d63f955102f9a4553397e089df167a46e7",
+  "portability": "An ordinary checkout can recheck relative source hashes. Exact compiled tools, private raw material, snapshots, runtime inputs and original observer records remain in owner custody.",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope_of_selected_inputs": "Exact d65 tracked package, contract, test and applicable native inputs. The independent review binds the full earlier registration, raw source/material inputs, runtime, artifacts, commands and their original observed epoch.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d"
+}

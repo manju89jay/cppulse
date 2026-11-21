@@ -326,8 +326,13 @@ def semantic(document: dict[str, Any]) -> None:
     if configuration is not None:
         descriptor = artifacts[configuration["artifact_id"]]
         kind = descriptor.get("contract", {}).get("kind")
-        if kind not in {None, "collection_request"} or (kind is None and descriptor["id"] != "effective_config-json"):
-            _fail("Configuration must select its original retained artifact", "/configuration")
+        if kind not in {None, "collection_request"} or (
+            kind is None and descriptor["id"] != "effective_config-json"
+        ):
+            _fail(
+                "Configuration must select its original retained artifact",
+                "/configuration",
+            )
         raw = payload(configuration, kind, "/configuration")
         _equal(configuration["document"], raw, "/configuration/document")
         if kind == "collection_request" and "resolved_ruleset" not in raw:

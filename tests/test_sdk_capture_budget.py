@@ -25,8 +25,15 @@ def sdk_execution(tmp_path_factory: pytest.TempPathFactory) -> Any:
         "#include <__stddef_size_t.h>\nint value() { return sizeof(size_t); }\n"
     )
     (config.repo / "compile_commands.json").write_text(
-        json.dumps([{"directory": str(config.repo), "file": str(source),
-                     "arguments": ["clang++", "-std=c++17", "-c", str(source)]}])
+        json.dumps(
+            [
+                {
+                    "directory": str(config.repo),
+                    "file": str(source),
+                    "arguments": ["clang++", "-std=c++17", "-c", str(source)],
+                }
+            ]
+        )
     )
     execution = run_analysis(
         config, execution_fixtures.native.__wrapped__(), root / "work", timeout=60
@@ -93,7 +100,9 @@ def test_over_budget_does_not_bypass_original_report_integrity(
         with RunStore(tmp_path / "store").begin() as stage:
             with pytest.raises(IntegrityError):
                 sdk_inputs.retain_used_sdk_inputs(stage, sdk_execution)
-            assert not any(row["id"].startswith("sdk-buffer-") for row in stage.artifacts)
+            assert not any(
+                row["id"].startswith("sdk-buffer-") for row in stage.artifacts
+            )
     finally:
         if path.is_symlink():
             path.unlink()
@@ -126,8 +135,15 @@ def test_declined_sdk_proof_publishes_unknown_not_qualified_health(
         "#include <__stddef_size_t.h>\nint value() { return sizeof(size_t); }\n"
     )
     (config.repo / "compile_commands.json").write_text(
-        json.dumps([{"directory": str(config.repo), "file": str(source),
-                     "arguments": ["clang++", "-std=c++17", "-c", str(source)]}])
+        json.dumps(
+            [
+                {
+                    "directory": str(config.repo),
+                    "file": str(source),
+                    "arguments": ["clang++", "-std=c++17", "-c", str(source)],
+                }
+            ]
+        )
     )
     pipeline_fixtures.select_native(
         monkeypatch, execution_fixtures.native.__wrapped__()
@@ -144,7 +160,10 @@ def test_declined_sdk_proof_publishes_unknown_not_qualified_health(
     assert not any(
         row["id"].startswith("sdk-buffer-") for row in snapshot.manifest["artifacts"]
     )
-    assert documents["analysis_inventory"][0]["items"][0]["buffer_coherence"] == "unverified"
+    assert (
+        documents["analysis_inventory"][0]["items"][0]["buffer_coherence"]
+        == "unverified"
+    )
     assert all(
         row["aggregate"]["overall"] is None for row in documents["maintenance_health"]
     )

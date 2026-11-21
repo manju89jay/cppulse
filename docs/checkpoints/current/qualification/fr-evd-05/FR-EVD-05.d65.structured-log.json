@@ -1,0 +1,405 @@
+{
+  "actual_commands": {
+    "check-attestation": {
+      "actual_exit": 3,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch07/provenance-v3/results/store",
+        "--workspace",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial",
+        "--run-id",
+        "f8827392820e452799d4c0253a110f02",
+        "--manifest-sha256",
+        "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+        "--policy",
+        "/workspace/work/current38-batch07/provenance-v3/results/policy-attestation.json"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "4a5d9cb5e49859f67964c1836a786043a07017301304523d2ac36fd2b503d64f",
+        "size_bytes": 641
+      }
+    },
+    "check-execution": {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch07/provenance-v3/results/store",
+        "--workspace",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial",
+        "--run-id",
+        "f8827392820e452799d4c0253a110f02",
+        "--manifest-sha256",
+        "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+        "--policy",
+        "/workspace/work/current38-batch07/provenance-v3/results/policy-execution.json"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "308a8393e085ab8d4c7c84c6ed48859f00ca009ef20996c1dbb2796b768768d3",
+        "size_bytes": 639
+      }
+    },
+    "check-import": {
+      "actual_exit": 3,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch07/provenance-v3/results/store",
+        "--workspace",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial",
+        "--run-id",
+        "f8827392820e452799d4c0253a110f02",
+        "--manifest-sha256",
+        "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+        "--policy",
+        "/workspace/work/current38-batch07/provenance-v3/results/policy-import.json"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "39940650ce5471bef40570b83aa3ab8a6a161407b1001020938eac6823e54f21",
+        "size_bytes": 636
+      }
+    },
+    "collect": {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "collect",
+        "--request",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial/collection-request.json",
+        "--workspace",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial",
+        "--store",
+        "/workspace/work/current38-batch07/provenance-v3/results/store"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "88e7b952e3440a38436ddc2874fef6c7b354a657db276c0c1ca08528647c9b5a",
+        "size_bytes": 497
+      }
+    },
+    "prepare": {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "/workspace/work/attribution-epoch/checkout/examples/first-trial/prepare.py",
+        "--workspace",
+        "/workspace/work/current38-batch07/provenance-v3/results/trial"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "cb40436b451a5b88e8dd66809ed94f3e56304043138efd19017d0f237f25eeea",
+        "size_bytes": 340
+      }
+    },
+    "report-html": {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "report",
+        "--input",
+        "/workspace/work/current38-batch07/provenance-v3/results/store",
+        "--evidence",
+        "--run-id",
+        "f8827392820e452799d4c0253a110f02",
+        "--manifest-sha256",
+        "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+        "--format",
+        "html",
+        "--output",
+        "/workspace/work/current38-batch07/provenance-v3/results/mixed.html"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "d9b6bbb8b625ea74aa5716e3bcc75abbaeb27e34c951dd08745e774010363401",
+        "size_bytes": 587
+      }
+    },
+    "report-json": {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/work/attribution-epoch/candidate/installed/bin/cppulse",
+        "report",
+        "--input",
+        "/workspace/work/current38-batch07/provenance-v3/results/store",
+        "--evidence",
+        "--run-id",
+        "f8827392820e452799d4c0253a110f02",
+        "--manifest-sha256",
+        "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+        "--format",
+        "json",
+        "--output",
+        "/workspace/work/current38-batch07/provenance-v3/results/mixed.json"
+      ],
+      "cwd": "/workspace/work/current38-batch07/provenance-v3/results",
+      "receipt": {
+        "sha256": "a4c486160ef69deac875bd3e5faea423c121a6e66d98139692afaea6a2d95b52",
+        "size_bytes": 587
+      }
+    }
+  },
+  "actual_denial": {
+    "actual_blocked_families_errno": {
+      "AF_INET": 101,
+      "AF_INET6": 101,
+      "AF_UNIX": 101
+    },
+    "actual_exec": [
+      "/usr/bin/bash",
+      "/workspace/work/current38-batch07/provenance-v3/phases.sh",
+      "/workspace/work/current38-batch07/provenance-v3/results"
+    ],
+    "local_environment": "Empty account home, Docker network-none and inherited kernel socket denial",
+    "receipt": {
+      "sha256": "260eaa0a35f29a5b3feb7ac8c932fd3512be0fed8d62e5f01fac8281d6254225",
+      "size_bytes": 540
+    }
+  },
+  "actual_genuine_ctest_counts": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 3,
+    "skipped": 0,
+    "total": 3
+  },
+  "actual_scope": {
+    "actual_exit": 0,
+    "argv": [
+      "bash",
+      "/workspace/work/current38-batch07/provenance-v3/launch.sh",
+      "/workspace/work/current38-batch07/provenance-v3/results"
+    ],
+    "exit_receipt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    "log": {
+      "sha256": "edcfab36d6fe6555005f3d238b5fe3b0ad0dee224c2bbd80153279fda6345f7f",
+      "size_bytes": 202
+    }
+  },
+  "common_ctest_junit_sha256": "ab7968af4334eeb12d324d9c0247138d86de7a3928f26372ae26394173fa620f",
+  "controlled_review_fields": {
+    "expiry": "2026-12-13T12:00:00Z",
+    "identity_assurance": "self_declared",
+    "reason": "Synthetic test fixture claim about the selected retained CTest artifact.",
+    "reviewer": "controlled-reviewer",
+    "scope": {
+      "files": [
+        "checks.cpp",
+        "clamp.h"
+      ],
+      "tests": [
+        "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+        "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+        "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+      ]
+    }
+  },
+  "criterion": "FR-EVD-05",
+  "criterion_text": "Distinguish execution-derived facts, imported producer claims, and human attestations. Report reviewers, rationale, expiry, and scope where supplied.",
+  "executed_wheel_sha256": "4d2e3907b78f8f0628a33a0ab235eb58bf755064ca1ae21678f90a848bfde654",
+  "historical_execution": {
+    "actual_exit": 1,
+    "actual_job_record": {
+      "sha256": "e207f62fb9980910b7f8963cecafc32af2077ce90f1f68ff0b12cbbe5f223d24",
+      "size_bytes": 1114149
+    },
+    "finished_utc": "2026-11-20T23:53:51.152326+00:00",
+    "guarded_file_count": 3170,
+    "job_log": {
+      "sha256": "4b5cc9a0226d2ef59b733bb51606cd8dc16fbbe2a8b8e61ea99d9e60201613fe",
+      "size_bytes": 468
+    },
+    "job_record": {
+      "sha256": "e207f62fb9980910b7f8963cecafc32af2077ce90f1f68ff0b12cbbe5f223d24",
+      "size_bytes": 1114149
+    },
+    "original_full_before_after_map_sha256": "bde89fc1a373b014bd47766907bed2e551d44904838d7a0ddd3ce613999523a1",
+    "outer_command_sha256": "a8ec1e8303e6a27e0e077b72ddeb9d2d4ac913c80ac8c9b27054b1a5f3ad1a3b",
+    "raw_job_log": {
+      "sha256": "4b5cc9a0226d2ef59b733bb51606cd8dc16fbbe2a8b8e61ea99d9e60201613fe",
+      "size_bytes": 468
+    },
+    "registered_inputs": {
+      "sha256": "8bf54df9e9acfade636872ddb572733000b3bc6ef74319087cae3a25a9afb451",
+      "size_bytes": 556849
+    },
+    "registration": {
+      "sha256": "8bf54df9e9acfade636872ddb572733000b3bc6ef74319087cae3a25a9afb451",
+      "size_bytes": 556849
+    },
+    "resource_stop": null,
+    "runtime_before_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_before_and_after": {
+      "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "size_bytes": 367
+    },
+    "runtime_entries": 260105,
+    "runtime_entries_verified": 260105,
+    "source_and_runtime_stable": true,
+    "stable_guard_count": 3170,
+    "started_utc": "2026-11-20T23:52:18.977345+00:00"
+  },
+  "kind": "Public structured projection of independently accepted prior execution",
+  "mixed_observer": {
+    "actual_exit": 0,
+    "exit_receipt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    }
+  },
+  "mixed_run_manifest": {
+    "sha256": "7bc8e7f03b49913a1f5d295da3c1db4ac8d514f1a81bae2c984b8d37b702c21b",
+    "size_bytes": 20103
+  },
+  "original_transport": {
+    "actual_cases": 12,
+    "actual_exit": 0,
+    "case_names": [
+      "test_html_distinguishes_all_record_origins_and_supplied_review_metadata",
+      "test_legacy_attestation_retains_supplied_reviewer_and_expiry_without_invention",
+      "test_review_claims_are_escaped_for_html_and_preserved_in_json",
+      "test_every_supplied_record_is_preserved_in_json_when_html_is_bounded",
+      "test_reporting_does_not_mutate_record_origin_status_or_identity_assurance",
+      "test_import_preserves_counts_context_failed_retries_and_skip[ctest-junit]",
+      "test_import_preserves_counts_context_failed_retries_and_skip[generic-junit]",
+      "test_unknown_malformed_or_contradictory_report_does_not_invent_clean[<unknown/>]",
+      "test_unknown_malformed_or_contradictory_report_does_not_invent_clean[<testsuite tests=\"0\"><testcase name=\"hidden\"/></testsuite>]",
+      "test_unknown_malformed_or_contradictory_report_does_not_invent_clean[<testsuite>]",
+      "test_zero_test_cases_remain_skipped_not_passed",
+      "test_public_collect_import_retains_context_and_counts"
+    ],
+    "errors": 0,
+    "exit_receipt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    "failures": 0,
+    "junit": {
+      "sha256": "ba5effdf6f2e22e09ab173a7cc92473a3215531fd8808137f9ac83da0bc0ac1f",
+      "size_bytes": 2066
+    },
+    "package_origin_scope": "The primary observer asserted the earlier installed package origin. It ran the tracked Python fixture preparation script and six installed CLI commands. Twelve supplementary transport pytest cases passed with zero skipped. The checkout pytest.ini prepended the checkout and its python directory to the launcher Python path, and that separate process has no origin assertion. The twelve outcomes are selected transport results.",
+    "skips": 0
+  },
+  "policy_status_by_required_origin": {
+    "attestation": "unknown",
+    "execution": "passed",
+    "import": "unknown"
+  },
+  "provenance": [
+    {
+      "has_execution_receipt": true,
+      "kind": "build",
+      "origin": "execution",
+      "scope": {
+        "files": [
+          "clamp.h",
+          "checks.cpp"
+        ]
+      }
+    },
+    {
+      "has_execution_receipt": true,
+      "kind": "tests",
+      "origin": "execution",
+      "scope": {
+        "files": [
+          "clamp.h",
+          "checks.cpp"
+        ],
+        "tests": [
+          "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+          "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+          "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+        ]
+      }
+    },
+    {
+      "has_execution_receipt": false,
+      "kind": "tests",
+      "origin": "import",
+      "scope": {
+        "files": [
+          "checks.cpp",
+          "clamp.h"
+        ],
+        "tests": [
+          "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+          "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+          "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+        ]
+      }
+    },
+    {
+      "has_execution_receipt": false,
+      "kind": "tests",
+      "origin": "attestation",
+      "scope": {
+        "files": [
+          "checks.cpp",
+          "clamp.h"
+        ],
+        "tests": [
+          "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+          "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+          "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+        ]
+      }
+    },
+    {
+      "has_execution_receipt": false,
+      "kind": "review",
+      "origin": "attestation",
+      "scope": {
+        "files": [
+          "checks.cpp",
+          "clamp.h"
+        ],
+        "tests": [
+          "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+          "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+          "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+        ]
+      }
+    }
+  ],
+  "receiving_candidate_was_executed_by_this_lane": false,
+  "reports": {
+    "html": {
+      "sha256": "ba67471974ff2c970dfb4cc0d34c6e588b6cab5ca1acf5b297046e82799936dd",
+      "size_bytes": 28057
+    },
+    "json": {
+      "sha256": "062daa458cdfd543b9c82d21c225e72decdb4f05953c7f9fdeb32d983e15b8f1",
+      "size_bytes": 96181
+    }
+  },
+  "retains_prior_execution_identity": true,
+  "scope_limits": [
+    "One controlled native Linux fixture. Both attestations are synthetic caller-supplied records, with no authenticated identity or actual human approval. The unrelated namespace lane remains open."
+  ],
+  "test_case_ids": [
+    "case-a73234a073b2699ca57e8a1fa4de33f616cbc6b449a35c30f8316dba73531803-1",
+    "case-7a36d1fe4e7f989e4314f64a6c40c6a534c54eb5008c6ec9dfd30cf7c24b2393-1",
+    "case-59656f9b2888ae81c48a739b0de0f16cf4b3a8919e7036254c802cb21c852eca-1"
+  ],
+  "unrelated_namespace_child": {
+    "actual_exit": 1,
+    "exit_receipt": {
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "size_bytes": 2
+    }
+  }
+}

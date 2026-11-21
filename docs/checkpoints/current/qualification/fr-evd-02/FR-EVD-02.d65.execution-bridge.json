@@ -1,0 +1,163 @@
+{
+  "complete_private_custody": {
+    "genuine_raw_and_derived_receipts": {
+      "asan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "5ee09c22c709878baea92bc2ecad4cb87f02b309475b02e4264031fd09236c1c",
+          "size_bytes": 447
+        },
+        "raw_role_observer": {
+          "sha256": "d93d0e9446a9d9791e4fd9abdb5d9eeafa62366843426365bc4c1f4ea10679bd",
+          "size_bytes": 4072
+        },
+        "selected_phase_receipt": {
+          "sha256": "ba823ac3b4c10504516a2422f70206ce1f75d2fd3130c93336f6ec85fbeba553",
+          "size_bytes": 13863
+        }
+      },
+      "asan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "1ecf4941ce98fde424cf56332148505709e6b6ebbb3efaefa3d6d70a6d4d8db8",
+          "size_bytes": 449
+        },
+        "raw_role_observer": {
+          "sha256": "4ae5419a05d063bd43f49668a97e86d9a7ed896c55be32d158d979481cad5958",
+          "size_bytes": 4046
+        },
+        "selected_phase_receipt": {
+          "sha256": "a2d27ba103b8d1f54da75bc01350503c54c8367edf53410ebb6b1bc95b6bbc25",
+          "size_bytes": 13235
+        }
+      },
+      "asan-plain-object": {
+        "original_direct_assertion_receipt": {
+          "sha256": "8c5becd7e2d076611051bd17b165177bb2c0269b3f46356a73fae0aaa9156db8",
+          "size_bytes": 466
+        },
+        "raw_role_observer": {
+          "sha256": "2495a3e2dd8abfe6ae2d204ed659a099ccd12785db142ecffe2b6712b70cc4dd",
+          "size_bytes": 4053
+        },
+        "selected_phase_receipt": {
+          "sha256": "5abc3a9c182f6f122d7da29505a4f48e062e67fa401eb242613b2c77559c41e3",
+          "size_bytes": 12420
+        }
+      },
+      "asan-zero-tests": {
+        "original_direct_assertion_receipt": {
+          "sha256": "d0d8957134bb49e038f8c7ba2d6159584af381fa3d730eaf9bc4f6cd7c3b9047",
+          "size_bytes": 464
+        },
+        "raw_role_observer": {
+          "sha256": "436cc64abc222ef62b9edad3b2c254ecf5d6a1007e35787932d3eee69bd876e4",
+          "size_bytes": 4051
+        },
+        "selected_phase_receipt": {
+          "sha256": "f65d0b7c46570b132115324397cccfbb4b30698456153a9442b95ead48264468",
+          "size_bytes": 11587
+        }
+      },
+      "tsan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "b05f0c4daa0fe7d72aa8f0dcff56f327a62372459f8f3fd1bc96a5b86246dde9",
+          "size_bytes": 447
+        },
+        "raw_role_observer": {
+          "sha256": "738ee57802ad8437da754959228a748cff368c53c750bd9717e092476cc3b26e",
+          "size_bytes": 4074
+        },
+        "selected_phase_receipt": {
+          "sha256": "286fd1208c573f5fc902a3e7beacf4f80a513edb2040a00d1a45fb5704ca669a",
+          "size_bytes": 13767
+        }
+      },
+      "tsan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "84ce679822e6d2ebbee7b893eab0594fc8a32735f975a353ec5ed096de4135b6",
+          "size_bytes": 449
+        },
+        "raw_role_observer": {
+          "sha256": "62336d252174d64cf1c9d4b8e2d109186e6e51095a60ba4b10bd867d7fb618ef",
+          "size_bytes": 4048
+        },
+        "selected_phase_receipt": {
+          "sha256": "0d47662e2db26e9107eb1c570df26cfcc8dfe36e0091524d97df668c0998cdfd",
+          "size_bytes": 13261
+        }
+      },
+      "ubsan-bad": {
+        "original_direct_assertion_receipt": {
+          "sha256": "966a667285a923cbc85b3ed01b6ea2ead3a8e9d60d11dcac630e729aa2851564",
+          "size_bytes": 448
+        },
+        "raw_role_observer": {
+          "sha256": "c544df9847b91543a9c45b100bdd2cad69182658ffb7c8a6713ae601b5763cc4",
+          "size_bytes": 4047
+        },
+        "selected_phase_receipt": {
+          "sha256": "2bfeb25113ae8ab6da7aadc2b064a2d2e8e3b13cd2379e1c9b500b031e9be217",
+          "size_bytes": 13845
+        }
+      },
+      "ubsan-clean": {
+        "original_direct_assertion_receipt": {
+          "sha256": "a44fee900ed6c2ba50dd6359f9790561e644929db61553e613b1b1ce09befc83",
+          "size_bytes": 450
+        },
+        "raw_role_observer": {
+          "sha256": "9557e865880040fcf7f5236b5957b49a1b2bf9c8141322faf6844f837d6f4304",
+          "size_bytes": 4049
+        },
+        "selected_phase_receipt": {
+          "sha256": "ede75693fb28ab991ae9ef3d0b4952c737c77e23c8bc19b6014eb5c041a66cd0",
+          "size_bytes": 13258
+        }
+      }
+    },
+    "joint_guard": {
+      "actual_exit": 0,
+      "actual_job_log": {
+        "sha256": "0e407a8b69b9f49b5d7410f1aa62358476554b932e5596183c057cc40b517d33",
+        "size_bytes": 412
+      },
+      "actual_job_record": {
+        "sha256": "e76374d8e947d79a3d0de47e31e1c45f4a38b2b870a3b984f2f37a9df5f997a7",
+        "size_bytes": 299681
+      },
+      "original_freeze": {
+        "sha256": "53c54cde80f530822d4529604a3b46fcdaf010e1501b1a29595f4802ccbe9939",
+        "size_bytes": 235110
+      },
+      "original_full_before_after_map_sha256": "74ad2f5e0ec759d4d409fe9b65e0d371140f595a4b35d6b73c18dd0feb154ca7",
+      "outer_command_sha256": "caaa3260481935256e152c1e428259610f6c065247765099b6d1da828584e35c",
+      "runtime_before_and_after": {
+        "sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+        "size_bytes": 367
+      },
+      "stable_guard_count": 646
+    },
+    "original_runner_and_recipe_phase_source_sha256": {
+      "frozen_cases": "d290c86b2619d5f192a6cfdf3db48351eb9953daef66a93bf11a1a6ff0fb3069",
+      "inside_group_phases": "960036d104364a6c5b0e730e46965e382e0efd1b4b75df30908aa8a959664643",
+      "inside_observer": "9a5ba110649962b0c4b4677e7887e53f9c1f3f443d4af607a1eb3b8b75afdb63"
+    },
+    "original_whole_review": {
+      "sha256": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+      "size_bytes": 273775
+    },
+    "retained_earlier_B17_producer_roles": {},
+    "selected_negative_control_receipts": {
+      "authored-runtime-and-version": {
+        "sha256": "b263df183975bd0dfc5df9a7f70d6bbcc7c711be2b2cb833b8ad8ba54c8af178",
+        "size_bytes": 1235
+      }
+    }
+  },
+  "current_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+  "id": "FR-EVD-02",
+  "observed_projection_log_sha256": "1623e931bbce08ad13aaf0e5b07e91feb002fcd479b3a8eee5118b022d818f28",
+  "portability": "Replay requires the reviewed local GNU/CTest runtime and original command registration or independently frozen genuine input bodies. The structured receipt contains the observed selected command scope and SHA commitments.",
+  "shared_source_artifact_witness_sha256": "70927c9861652f4eb3c73eaf30c076c5df5a78e0894cdf4aba14ec33bca4013d",
+  "source_dependencies": "Exact d65 product package, bounded tracked demo, fixture and selected test source. Runtime leaves, raw bytes, privately registered observer, and full direct guards remain under their original custody.",
+  "source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f"
+}

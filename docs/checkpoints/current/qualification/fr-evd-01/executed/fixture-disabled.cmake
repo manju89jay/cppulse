@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(evidence_import_disabled LANGUAGES NONE)
+enable_testing()
+add_test(NAME disabled-only COMMAND "${CMAKE_COMMAND}" -E false)
+set_tests_properties(disabled-only PROPERTIES DISABLED TRUE)

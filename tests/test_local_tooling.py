@@ -133,6 +133,8 @@ def test_canonical_coverage_excludes_legacy_shims(
     runner: ModuleType, tmp_path: Path
 ) -> None:
     canonical = tmp_path / "python/cppulse/predictor/model.py"
+    canonical.parent.mkdir(parents=True)
+    canonical.touch()
     legacy = tmp_path / "predictor/src/model.py"
     report = tmp_path / "coverage.json"
     report.write_text(
@@ -156,6 +158,12 @@ def test_canonical_coverage_excludes_legacy_shims(
     with pytest.raises(ValueError, match="No canonical coverage"):
         runner.canonical_coverage(report, "cppulse.git_miner", tmp_path, tmp_path)
 
+    (canonical.parent / "unexecuted.py").touch()
+    with pytest.raises(
+        ValueError, match="Missing canonical coverage files.*unexecuted.py"
+    ):
+        runner.canonical_coverage(report, "cppulse.predictor", tmp_path, tmp_path)
+
 
 def test_runner_plan_preserves_component_contracts(
     runner: ModuleType, tmp_path: Path
@@ -173,7 +181,10 @@ def test_runner_plan_preserves_component_contracts(
     assert component.argv[:4] == ("test-python", "-m", "pytest", "-v")
     assert "--cov=src" in component.argv
     assert "--cov=cppulse.git_miner" in component.argv
-    assert component.argv[-1] == "tests/"
+    assert component.argv[-6] == "tests/"
+    assert component.argv[-5:] == tuple(
+        f"../tests/{name}" for name in runner.COMPONENT_ROOT_TESTS["git-miner"]
+    )
     by_name = {check.name: check for check in checks}
     assert by_name["analyzer-tests"].depends_on == ("analyzer-build",)
     assert by_name["cli-build"].depends_on == ("cli-configure",)
@@ -392,6 +403,8 @@ def test_runner_successful_tests_cannot_mask_low_canonical_coverage(
 ) -> None:
     report = tmp_path / "git-miner-coverage.json"
     source = tmp_path / "python/cppulse/git_miner/history.py"
+    source.parent.mkdir(parents=True)
+    source.touch()
     script = (
         "from pathlib import Path; Path("
         + repr(str(report))

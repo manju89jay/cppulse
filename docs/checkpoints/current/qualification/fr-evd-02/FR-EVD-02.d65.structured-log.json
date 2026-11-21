@@ -1,0 +1,904 @@
+{
+  "actual_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+  "actual_joint_wrapper_exit": 0,
+  "actual_selected_case_and_control_phases": [
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "tsan-clean",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/tsan-clean"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "tsan-clean"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "tsan-bad",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/tsan-bad"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "tsan-bad"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "asan-clean",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/asan-clean"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "asan-clean"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "asan-bad",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/asan-bad"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "asan-bad"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "ubsan-clean",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/ubsan-clean"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "ubsan-clean"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "ubsan-bad",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/ubsan-bad"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "ubsan-bad"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "asan-plain-object",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/asan-plain-object"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "asan-plain-object"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "asan-zero-tests",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/asan-zero-tests"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "asan-zero-tests"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/verification-python-venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch21/sanitizer-matrix/run.py",
+        "authored-runtime-and-version",
+        "/workspace/work/current38-batch21/results/sanitizer-matrix/authored-runtime-and-version"
+      ],
+      "exit_marker_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "semantic_phase": "authored-runtime-and-version"
+    }
+  ],
+  "counted_original_predicates": {
+    "actual_assess_check_commands": 16,
+    "actual_cases": 8,
+    "actual_json_html_report_commands": 16,
+    "clean_failed_unsupported_counts": {
+      "failed": 3,
+      "passed": 3,
+      "unsupported": 2
+    },
+    "controls": {
+      "authored_runtime_logs": [
+        "asan",
+        "tsan",
+        "ubsan"
+      ],
+      "unknown_adapter_version": "999.0.0 selected assertion refused"
+    }
+  },
+  "criterion": "Import ASan, UBSan, and TSan evidence using versioned adapters and explicitly selected collection recipes. Record supported platform, invocation, instrumentation evidence, executed test scope, and outcomes.",
+  "earlier_raw_producer_scope": {},
+  "id": "FR-EVD-02",
+  "independent_whole_review": {
+    "sha256": "0743d787be419e56100fc56962dd62013565285478da3c62d2709e40c591b1a7",
+    "size_bytes": 273775
+  },
+  "joint_wrapper_scope": "The original wrapper served both signed criteria. Only the listed scoped phases substantiate this receipt.",
+  "kind": "Public projection of actual independently accepted d65 semantic executions",
+  "limits": [
+    "Only the named bounded GNU ELF Linux profile and selected test executions are measured.",
+    "SONAME and material bindings do not establish loaded runtime byte closure or producer authentication.",
+    "Authored runtime parser controls, reference and integrity negatives are separate from actual producer outcomes."
+  ],
+  "observed_actual_case_outcomes": {
+    "asan-bad": {
+      "actual_outcome": "failed",
+      "context": "gcc-asan",
+      "ctest_process_exit": 8,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [
+        "heap-buffer-overflow"
+      ],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "28fb12b35982267d82156ead41930e9d3c0ccd5667cae14f3eeb536130648185",
+        "run_id": "084ba52fc8434550b86743a5b448a636"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "3e0c258b8fdbeb5e5e648ea7ff3e9a086b6768c75de31e3d568d579767fe1de6",
+            "size_bytes": 602
+          },
+          "public_representation": {
+            "sha256": "58d3840863928b3c73de8a08ab039db4e9f28ce6b091709a210aba3817d4d9af",
+            "size_bytes": 37023
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "854e81db0ad38da6a5c1ee2f82d9fb5766c369aae1e084260807d9cd1491955f",
+            "run_id": "20cb3ad577694be480480c3c45e7b8dc"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "22684da8deb60092ca4de2acd828179626d074c92337d8382f5cb5f1a75337ee",
+            "size_bytes": 602
+          },
+          "public_representation": {
+            "sha256": "29b41daf8db6b23091b7cab5ad35ddcde011fb5dae7a9fba7e117a7fa5962d2f",
+            "size_bytes": 195486
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "854e81db0ad38da6a5c1ee2f82d9fb5766c369aae1e084260807d9cd1491955f",
+            "run_id": "20cb3ad577694be480480c3c45e7b8dc"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "6b621adc466538ef89093876442859b6a481907090d73ac5827ed8e5c0e8762a",
+            "size_bytes": 758
+          }
+        },
+        "check": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "7da88216d1571f37863cc900888883d95481275a3a92987186e578d99ed79b47",
+            "size_bytes": 757
+          }
+        },
+        "control": "failed",
+        "gate": "failed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "aa81d7b85ab22057177f46d1ca263610f3dab2a2857f21c3c781b701d163bfed",
+        "link_output_app": "829bdf9697b678fdbf4ae5e5c9dffcd70a7c2e79f245938c8dc6ac8a09ebc116",
+        "tests_input_app": "829bdf9697b678fdbf4ae5e5c9dffcd70a7c2e79f245938c8dc6ac8a09ebc116",
+        "tests_output_LastTest.log": "a57412953439baa4af8f4e8bf0e428fe1018f73c4db7e46428609358ed7f3ca3",
+        "tests_output_junit.xml": "0884b61337a9368c9e8d69a0d5aa47b88816f67523fcf74df1a6d8941ed3c7ba"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libasan.so.8",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "asan-clean": {
+      "actual_outcome": "passed",
+      "context": "gcc-asan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "4426e50087a43fc94216299f7c40b9cdec1e2cc6dca48362f495dbb685068d45",
+        "run_id": "5d021f5c7dda449da788dcfb5155c1ab"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "0693a0a1585c58349c26e0612625570fc6b9b44fb4c8ac8f8727df2390e51518",
+            "size_bytes": 606
+          },
+          "public_representation": {
+            "sha256": "49e59b7245293a811ad19d0090d8931e4928182d4437ecc744fe60b04aa73d4c",
+            "size_bytes": 35349
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "91a9ba67deddc0019c75d7b9cad1972d16544729121faea31b0a819597e333f7",
+            "run_id": "ffb53bc88f29486fba0004bad063bd9f"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "ffe8cfa883d2e9da9c4de67e84a167f199eda25e1e950b7adaefae01bd25d9e7",
+            "size_bytes": 606
+          },
+          "public_representation": {
+            "sha256": "0d830190e78e8036fb203b56fcacac370f18a7fa357fe83e2c9092dc18834898",
+            "size_bytes": 193822
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "91a9ba67deddc0019c75d7b9cad1972d16544729121faea31b0a819597e333f7",
+            "run_id": "ffb53bc88f29486fba0004bad063bd9f"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "c6b5beab581b5df709660f29382ad67d960d7a6a43237c6364fab45479a76f2f",
+            "size_bytes": 766
+          }
+        },
+        "check": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "54ee4596b86837f13b4e21d92a9367eea219148b81b75dbc419802b3e65c95c2",
+            "size_bytes": 765
+          }
+        },
+        "control": "passed",
+        "gate": "passed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "66b88db9bc22e75af56968ec6febf1f465ddf05904a384f9a1cd46b829cea0f7",
+        "link_output_app": "60412dff1bfe82f6fcecb5d764b5f18243d9a28d7059f5f06704a44d3ba257ca",
+        "tests_input_app": "60412dff1bfe82f6fcecb5d764b5f18243d9a28d7059f5f06704a44d3ba257ca",
+        "tests_output_LastTest.log": "7136a71416a673492962e6b7e7728dbb65940a1b6af19df4ef1695028d6b44a8",
+        "tests_output_junit.xml": "0cd0ef8629dd74779f6eacfa7090cebade30e67cbbd555561311d6d1c4c76d5a"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libasan.so.8",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "asan-plain-object": {
+      "actual_outcome": "unsupported",
+      "context": "gcc-asan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "unverified"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "146ba674343ef2c3042203ba26ee291c0a1186d99f973e4257c3d048bbb32f14",
+        "run_id": "6d9e53277cd24f00af8832bc45d08c21"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "6aa7cdbddb62fa5f98ca8165bd8965599207bfe9bde4ed4220125697f70336c6",
+            "size_bytes": 620
+          },
+          "public_representation": {
+            "sha256": "e384dd532f2adf0d2676d24546092b853cac067b20d74177a6730dec3ca40e01",
+            "size_bytes": 37240
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "d735f2da88432d842cb40225925187204f582cd29d95b1d8e1f18ebd81823c81",
+            "run_id": "c3fcbe41bfa34db6a6650a9f6a438f6e"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "d41102ecc9328401cf28b6654182215c87410c828863049739d9ae220988f232",
+            "size_bytes": 620
+          },
+          "public_representation": {
+            "sha256": "d5890ac15471ea9b16918eeebb7d6e4a803eb494a000d996600d041c5fffa034",
+            "size_bytes": 194588
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "d735f2da88432d842cb40225925187204f582cd29d95b1d8e1f18ebd81823c81",
+            "run_id": "c3fcbe41bfa34db6a6650a9f6a438f6e"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 3,
+          "exact_command": {
+            "sha256": "81bb10dff990a97e3fb2b8fa5015f137703c01ea5becc4f992174b106d852840",
+            "size_bytes": 794
+          }
+        },
+        "check": {
+          "actual_exit": 3,
+          "exact_command": {
+            "sha256": "b64a1a5f5625f3dec6fb0e212c8dfd945e033166f7bffb07870579748b724b75",
+            "size_bytes": 793
+          }
+        },
+        "control": "unknown",
+        "gate": "insufficient_evidence",
+        "incomplete": true
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "0d287cfd318ed450fb179e7ab2dca686fd2473bab2b82acf5df8896d44cca959",
+        "link_output_app": "99f5c8c745eceae6e9399a045537d4bacb67533127e992631776d12e0171abc5",
+        "tests_input_app": "99f5c8c745eceae6e9399a045537d4bacb67533127e992631776d12e0171abc5",
+        "tests_output_LastTest.log": "70dd23c9848e653f768cba05fdfc716c5e194924feafd2e4d783cd6106e6566c",
+        "tests_output_junit.xml": "aca18c4275d245dfe0d61fa13217386b4e95aa946c9ebc6b8f61effc9ef74123"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libasan.so.8",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "asan-zero-tests": {
+      "actual_outcome": "unsupported",
+      "context": "gcc-asan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [],
+      "exercised_test_proof_count": 0,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "7f8b6d61260bb5392697daa3660432302a3fdaae58574026e2b793c930808999",
+        "run_id": "e5b25fa9441b4e4b95524637aa0ddd49"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "7fd2c4d32547211abee2ddcdbbbd4b8ee0fe774730b0f535320aac5582a86fd0",
+            "size_bytes": 616
+          },
+          "public_representation": {
+            "sha256": "a0847734c5e40250c2502993bb3d0eaa54b223d21000f96339ef6a2c8a176aa5",
+            "size_bytes": 36384
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "3c56757ffc7df414d7438835b022133fc26a3e6cf06e15d5d0edb7e323beab4b",
+            "run_id": "14cbcb4d8de84ee7a1af8eda2125908c"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "41271ea907087a8e27f47e8aba387fb48701434faa2c2177bf47a3591806f0af",
+            "size_bytes": 616
+          },
+          "public_representation": {
+            "sha256": "60c014e9a89db42ef523fa6bcf47be197e0fc2be0be9c1bc6f129e3f9d397b75",
+            "size_bytes": 193701
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "3c56757ffc7df414d7438835b022133fc26a3e6cf06e15d5d0edb7e323beab4b",
+            "run_id": "14cbcb4d8de84ee7a1af8eda2125908c"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 3,
+          "exact_command": {
+            "sha256": "6f917cf8f6775cb376b90a04a7bfc341ee1b58011616ecf1cf01379b666595b7",
+            "size_bytes": 786
+          }
+        },
+        "check": {
+          "actual_exit": 3,
+          "exact_command": {
+            "sha256": "58b1f476c39b6c2623854e63eff9091785e9f3714b448a657ce9c1f115c22458",
+            "size_bytes": 785
+          }
+        },
+        "control": "unknown",
+        "gate": "insufficient_evidence",
+        "incomplete": true
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "1885c6b64e047025d6303c2810c0a27030b8e6abcb8c136eb63495433b901621",
+        "link_output_app": "79b7e883f73bb67d40a210bc07d71003dc12d56cdd11594c7faf4b35a7a996a2",
+        "tests_input_app": "79b7e883f73bb67d40a210bc07d71003dc12d56cdd11594c7faf4b35a7a996a2",
+        "tests_output_LastTest.log": "b849eee9653456d2763721d9804ed287a075be11ccf4663e34778cc821cd1e72",
+        "tests_output_junit.xml": "230ae36bc810e5cdd20d723a4405eb313ee1a8fe4334250095a60894ba7f7b94"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libasan.so.8",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "total": 0
+      }
+    },
+    "tsan-bad": {
+      "actual_outcome": "failed",
+      "context": "gcc-tsan",
+      "ctest_process_exit": 8,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [
+        "data-race"
+      ],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "55aaea6497e25ca029f1733347fe5feda558c05a9f457c29d484db58bf7b0c35",
+        "run_id": "16084e181eed44f387b2cc9f2be45d74"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "c8094a12e5507edfb5fa8dd8559c39581b5135c04eb5553d893e237de4cdc8d0",
+            "size_bytes": 602
+          },
+          "public_representation": {
+            "sha256": "4436374980cab2148776e4c5d9e6a56bae7daa45208a853b40374b97cdcace15",
+            "size_bytes": 36916
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "6d5e6101d820762e4800a4affcc5e1e759ddddd01e962eb82e1b3a7aa21baaad",
+            "run_id": "d489f998889d4cdf99515468746d1b1a"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "cc46add1c464ca16bbe53ee4c415652db2411b944a76bddc224ea7b24e11b589",
+            "size_bytes": 602
+          },
+          "public_representation": {
+            "sha256": "6df2151bb802c008ccfdc53a338f33a1f479b5516a3da9f8f74bf22ebc346ab1",
+            "size_bytes": 195433
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "6d5e6101d820762e4800a4affcc5e1e759ddddd01e962eb82e1b3a7aa21baaad",
+            "run_id": "d489f998889d4cdf99515468746d1b1a"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "2f5f0715f0f0151e0e49466d39b0df85d07ee1ae7c595abf59dec55b85ccc489",
+            "size_bytes": 758
+          }
+        },
+        "check": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "ca2b8db14c1df0b490027ba15691bbb2805850a7b8e0724cd32674af9ea688d4",
+            "size_bytes": 757
+          }
+        },
+        "control": "failed",
+        "gate": "failed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "4620601cf8eb5b5d1aead7cbd6b5bf2a7fd84719d6f7abd04c810aa539065e23",
+        "link_output_app": "aabfed18a516557029a26194cbf39aa35d9983c78a5b03bc879becaedf912b51",
+        "tests_input_app": "aabfed18a516557029a26194cbf39aa35d9983c78a5b03bc879becaedf912b51",
+        "tests_output_LastTest.log": "75adf33e86917bdf4a705f2ffc3bd9378c9935e2adbb6d918692555212126c77",
+        "tests_output_junit.xml": "33c505a54b794fe708323c41419a93e88de67f0cdd08455e88b5068dc5c6f277"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libtsan.so.2",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "tsan-clean": {
+      "actual_outcome": "passed",
+      "context": "gcc-tsan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "c52bbdc2e7467cb42e66d9926253061bf3339272cc5ff0858709e861f263e11b",
+        "run_id": "2d625a0254b84c21a330c57bfe8e0ba9"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "77a72eb659acfc2585f81d24ed5cf8f57848e182521f6c94079038fd294b36e2",
+            "size_bytes": 606
+          },
+          "public_representation": {
+            "sha256": "8d16117144f8961d698a0fc1bf14ee7032e30c99d8b7bc0ff3e290a1e07f8b78",
+            "size_bytes": 35353
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "2d40a5df4d1dafd5f78bb4884f50c78874b71f32f3ceab52e66d005a82893ff1",
+            "run_id": "016599895c8a466d84d6467f60f62acd"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "151245f96f34331a410a019280ccc9ce1a21ab1a766bca887aa4f94385249ba2",
+            "size_bytes": 606
+          },
+          "public_representation": {
+            "sha256": "3aafec21178e33cd74768d5a936823a196df9787f724980f8e24b6be425a5d3f",
+            "size_bytes": 193880
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "2d40a5df4d1dafd5f78bb4884f50c78874b71f32f3ceab52e66d005a82893ff1",
+            "run_id": "016599895c8a466d84d6467f60f62acd"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "b1b97ff61b5ce12809430cf0105391a2cb082e494b13a1f1633d2ae6cf3c4443",
+            "size_bytes": 766
+          }
+        },
+        "check": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "d43ec76968e538eb6530b91153f99462650ab631d594d345ad1469eb045bcbb9",
+            "size_bytes": 765
+          }
+        },
+        "control": "passed",
+        "gate": "passed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "c8bf7d4a7d202101e8becb2a56128c99712887cd8360ebb6f52ad2fa1e9a50fe",
+        "link_output_app": "7f6b2905adc5d3c08f9a629dcc6aa2f2621126f67b7d23191b127f76df6fdbe3",
+        "tests_input_app": "7f6b2905adc5d3c08f9a629dcc6aa2f2621126f67b7d23191b127f76df6fdbe3",
+        "tests_output_LastTest.log": "baf2a0168a1034be8054c23459e89124c388432b4289915f158ee46068db94e2",
+        "tests_output_junit.xml": "5ff81b4cf680348bcadf802790142fcc9d7feac92d80c3ea5fb39d376b8a14d3"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libtsan.so.2",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "ubsan-bad": {
+      "actual_outcome": "failed",
+      "context": "gcc-ubsan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [
+        "signed-integer-overflow"
+      ],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "4242bd08f0945a965824f77a4eb1e64c373a942c6d40c3ac7edb88eac1235b37",
+        "run_id": "f8cfd3984f514ca7a1142af39a33625a"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "0abba0616709778cb3752b96e7e9d8c99bb3c09d9ee7a381ef9dfaf378a4e0b1",
+            "size_bytes": 604
+          },
+          "public_representation": {
+            "sha256": "9ee47921b8160a0d9b2cf1487bd552e1f0358b2b4eaad3164594973e4b0e38f0",
+            "size_bytes": 36365
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "44e51173ad643b1cf78d9e6c953acbd9b4daf694761b094aa097553d94ce9773",
+            "run_id": "7e351e57ab204d62861d330a2e457916"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "149c120cb74605fd4527a61c96e089fac871b32876ea31df386672b9f4e35c94",
+            "size_bytes": 604
+          },
+          "public_representation": {
+            "sha256": "fc0f1e3b0187a81448cc6b22690c4240bb8b2f133f6fbd843986f78043e85371",
+            "size_bytes": 195058
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "44e51173ad643b1cf78d9e6c953acbd9b4daf694761b094aa097553d94ce9773",
+            "run_id": "7e351e57ab204d62861d330a2e457916"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "0f4a8423f58189584771bc6915c47fccc327485ff2bb056ed1e8e757700a14ef",
+            "size_bytes": 762
+          }
+        },
+        "check": {
+          "actual_exit": 1,
+          "exact_command": {
+            "sha256": "92366596ff8572a1fc611d25e1d32f84a80269b5898070fdf89a458fde032acb",
+            "size_bytes": 761
+          }
+        },
+        "control": "failed",
+        "gate": "failed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "c74913aee7d34b7fe61fcd8b2e707dc6cbd3fc48befb109dbe411c1d545cc25a",
+        "link_output_app": "1e2e156160f88a5369ed63ffa76bf1db330ce2f97dd6dbee49583243135d3177",
+        "tests_input_app": "1e2e156160f88a5369ed63ffa76bf1db330ce2f97dd6dbee49583243135d3177",
+        "tests_output_LastTest.log": "0423a87f6cf49d5d719edb9163482c87a1b5f12f4b2d7bde25201a1e1f107fe8",
+        "tests_output_junit.xml": "e6e6b93d7133c723c0d57ac8bafe1785802d683c354ba7d9ce1d301a3d87b19d"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libubsan.so.1",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "ubsan-clean": {
+      "actual_outcome": "passed",
+      "context": "gcc-ubsan",
+      "ctest_process_exit": 0,
+      "d65_consumer_wheel_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "declared_adapter": {
+        "name": "gcc-sanitizer",
+        "version": "1.0.0"
+      },
+      "diagnostic_kinds": [],
+      "exercised_test_proof_count": 1,
+      "instrumentation_component_states": [
+        "observed"
+      ],
+      "original_producer_run": {
+        "manifest_sha256": "88ba18f602b457e779da83a50f0af0a274cd37d313e41d936b3c0b9503cf10cc",
+        "run_id": "a98f9d99d7b84bee85bcf04cac975cf8"
+      },
+      "pinned_reports": {
+        "html": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "f382359f38cb8bcbd7ab490fe2b7ffb09466dc42348082b2c8e729d1f6e4cc4d",
+            "size_bytes": 608
+          },
+          "public_representation": {
+            "sha256": "dff4e086da88a0a5776643b2eb50e09f3dd2cf41e65a868909ca331b745f577f",
+            "size_bytes": 35364
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "1038d0bb5bba29a4b7b3348267e1b135e19970a39c8c83d698543d8006ed6f7f",
+            "run_id": "a3a9a1ba9694466e869c084263c0e037"
+          }
+        },
+        "json": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "cbe893a5a15a844d9938585257a0d6ee5544ba799e466d326125b3666a261c58",
+            "size_bytes": 608
+          },
+          "public_representation": {
+            "sha256": "e9663a6bc5f153a1858e6e0daf255c2554acf1dd33403c6f607e97b4dd53a62e",
+            "size_bytes": 193948
+          },
+          "roadmap_artifact_present": false,
+          "selected_run": {
+            "manifest_sha256": "1038d0bb5bba29a4b7b3348267e1b135e19970a39c8c83d698543d8006ed6f7f",
+            "run_id": "a3a9a1ba9694466e869c084263c0e037"
+          }
+        }
+      },
+      "policy": {
+        "assess": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "3ac3662df2449a1924792ae07cbf026e8ebb17e2dac08e964f973f16e4f76547",
+            "size_bytes": 770
+          }
+        },
+        "check": {
+          "actual_exit": 0,
+          "exact_command": {
+            "sha256": "0a10e3b32b666ea9352b48ed6f2a42e21cdb5ac3f2099839c8b769c9547059e6",
+            "size_bytes": 769
+          }
+        },
+        "control": "passed",
+        "gate": "passed",
+        "incomplete": false
+      },
+      "producer_retained_from_b17": false,
+      "raw_material_sha256_by_role": {
+        "compile_output_main.o": "f810fd0f5fb25a04aae4487c2d887c6ba3d9964a54c3c76299b954468a6bcb09",
+        "link_output_app": "4a4c81017cb4acab476822a768f71e46be9ddcb97a0fbf3a136d9810e94b5b58",
+        "tests_input_app": "4a4c81017cb4acab476822a768f71e46be9ddcb97a0fbf3a136d9810e94b5b58",
+        "tests_output_LastTest.log": "11505cf214009e839f55ed64f34b267525b3db3b566523916afdb7c0d2f032d5",
+        "tests_output_junit.xml": "2ff7a02b5f53e4493c30d483b7bba813710a3cd3c6b8b6501f4c3370ddbd1849"
+      },
+      "requested_files": [
+        "main.cpp"
+      ],
+      "retained_producer_artifact_sha256": "42a6cb60b55a3ab11c0be7933ac8baf0f5aafd843372d7671cec5cbb86fb7cf1",
+      "runtime_soname": "libubsan.so.1",
+      "source_digest": "add10713bdb07b55843726e08992508c2bac981c2b1cfb90b74df2a1b52e46c1",
+      "test_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    }
+  },
+  "qualified_scope": {
+    "adapter": "gcc-sanitizer 1.0.0",
+    "recipe": "synthetic-direct-gcc-sanitizer 2.0.0",
+    "runtime_profile": "Linux x86_64 little-endian unstripped dynamic ELF64 direct GCC 14.2.0 GNU binutils 2.44 CTest 3.31.6 selected finite source/components/test processes"
+  },
+  "source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f"
+}

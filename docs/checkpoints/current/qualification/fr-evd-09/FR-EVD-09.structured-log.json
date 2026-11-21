@@ -1,0 +1,1104 @@
+{
+  "actual_enclosing_wrappers": {
+    "continuation": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch12/run-continuation.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 11396,
+      "guard_record_sha256": "4760c21b76eb49e212050bb67887ad7cb7cbcb03b9a8829c800e5fee01677670",
+      "preregistration_sha256": "9d6eb0b7bbaaceca2cb5984f39111e2dd986c52cb50db6e7a7fc08677bfbf6e5",
+      "raw_log_sha256": "0b2451a022971f68d71e78e3c42467146aec51b46297391ac0756527b658064d",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "LCOV, Cobertura and invalid phases passed. Both import observers supplied an invalid time argument"
+    },
+    "producer": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch12/run.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 10721,
+      "guard_record_sha256": "911bb942f3d113414356357ab0d63f4a84f5cf80ccd65479e9cac5253ea457fe",
+      "preregistration_sha256": "f031b895fb76265ddcb44da0f821d41d66483bf8a9d938e857c756fac2c08b0e",
+      "raw_log_sha256": "73eac07b07e55e24a6e18aedc931d7bccb31282824275c338a4f5c6fae9a9ab5",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "Actual producer and LCOV completed before an observer rejected the valid structured decision refusal"
+    },
+    "supplemental_import_batch": {
+      "actual_exit": 1,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch13/run.sh"
+      ],
+      "checked_source_before_after_equal": true,
+      "guard_bound_files": 13448,
+      "guard_record_sha256": "d701a8ba0b5fff3d8d1d2ebf8537913d8df67ffaff71cfc0fb57e226cf86a284",
+      "preregistration_sha256": "35f2b025c571304d2b206efc2a6987c2230e35051e5c998cc8ba976b584cee19",
+      "raw_log_sha256": "0a2dd6e7aefd7b4b7f1898212cc65a42c756bdcc0fd4b05626d5cf65f28d34c9",
+      "runtime_before_after_sha256": "fe9ac9e1e174dcff77fb90f699e5ec66e40fb01782d12ce78017bb8fc3ca2d74",
+      "runtime_leaf_count": 260105,
+      "scope": "Import retry passed. A separate FR-GIT-06 fixture observer exited 1"
+    }
+  },
+  "actual_producer": {
+    "passed_tests": 1,
+    "run": {
+      "manifest_sha256": "11e2c0f1866b1640d3d1a8179c4fcde5247d4e453d78a0bad2fbf4d0b20fc7e8",
+      "run_id": "bbd421c7bf0a466dbfda0cc6ff9132ea"
+    },
+    "selected_test": "coverage-consumer",
+    "versions": {
+      "compiler-version": "x86_64-linux-gnu-g++-14 (Debian 14.2.0-19) 14.2.0",
+      "ctest-version": "ctest version 3.31.6",
+      "gcov-version": "gcov (Debian 14.2.0-19) 14.2.0",
+      "gcovr-version": "gcovr 8.8"
+    }
+  },
+  "actual_selected_semantic_commands": [
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch12/coverage-continuation/run.py",
+        "lcov",
+        "/workspace/work/current38-batch12/continuation-results/lcov"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch12/coverage-continuation/run.py",
+        "cobertura",
+        "/workspace/work/current38-batch12/continuation-results/cobertura"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/current38-batch12/coverage-continuation/run.py",
+        "invalid",
+        "/workspace/work/current38-batch12/continuation-results/invalid"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "actual_exit": 0,
+      "argv": [
+        "bash",
+        "/workspace/work/current38-batch12/coverage-import-retry/launch.sh",
+        "/workspace/work/current38-batch12/coverage-import-retry-results"
+      ],
+      "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "coverage_units_covered_total": {
+    "cobertura": {
+      "branch": [
+        1,
+        2
+      ],
+      "line": [
+        5,
+        8
+      ]
+    },
+    "lcov": {
+      "branch": [
+        1,
+        2
+      ],
+      "function": [
+        2,
+        3
+      ],
+      "line": [
+        5,
+        8
+      ]
+    }
+  },
+  "criterion": "FR-EVD-09",
+  "criterion_text": "Keep line, branch, function, decision, and MC/DC coverage distinct. Do not infer MC/DC from branch coverage.",
+  "execution_commands": {
+    "cobertura": {
+      "cobertura-branch-assess": {
+        "actual_exit": 1,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-branch-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "60034bdf64a2c5cf7e3a4615cd324a41700f94179aa2efa5af379e87aadb102c"
+      },
+      "cobertura-branch-check": {
+        "actual_exit": 1,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-branch-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "4e05fb71ea121e23660b03d142aa44de2e2833c8a5b7c7cf2e444fe76a2ef52a"
+      },
+      "cobertura-branch-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "801564cf0bca44369f6f1f9bc5e0fe4f",
+          "--manifest-sha256",
+          "3872883477da44647db90fc3f105a2781c36e43b75311f9aac36412bd300d5ff",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-branch-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "ede93857362ef33791bb83dcab592f121974d6ff0b04855a249694410ac455b7"
+      },
+      "cobertura-branch-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "801564cf0bca44369f6f1f9bc5e0fe4f",
+          "--manifest-sha256",
+          "3872883477da44647db90fc3f105a2781c36e43b75311f9aac36412bd300d5ff",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-branch-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "9478188fbaed28d7523cdb3d967e3561389d6539b4c222b8da600b4065765509"
+      },
+      "cobertura-function-assess": {
+        "actual_exit": 3,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-function-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "b25185641573c1cad522bfe427ace4065f194076028345f229327e220fe6ffdb"
+      },
+      "cobertura-function-check": {
+        "actual_exit": 3,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-function-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "517b1edd490185594eb682a8b347640b5a3eb7d8d967f913b8f8fad2f2d97dd9"
+      },
+      "cobertura-function-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "b8e3c8f4e2d94801a4190578b404b95d",
+          "--manifest-sha256",
+          "f7e84922a8bd32e20d1e46958f4699778b32a08312d7ebffb205b54f2e53d1da",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-function-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "0724b2b991a5c0290e088e5d4431af4158d2d6ce1869fa1d17c4706c777c45a8"
+      },
+      "cobertura-function-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "b8e3c8f4e2d94801a4190578b404b95d",
+          "--manifest-sha256",
+          "f7e84922a8bd32e20d1e46958f4699778b32a08312d7ebffb205b54f2e53d1da",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-function-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "d691e659d9be6a57f29e72f25e22db7773d5b9a25b28a13bfdebda2a8738f04b"
+      },
+      "cobertura-line-assess": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-line-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "9d04f748797e211b9f170d6445b66e98c16c966dcf8dd8970d4291895acab6e2"
+      },
+      "cobertura-line-check": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "57125a4e97374e4ea0288330d12e750f",
+          "--manifest-sha256",
+          "5d39b4bbf1f748c545678ac790dd1dbf76f94dd2135c42222cb8f9da6f362bd6",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-line-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "9b25e0b2ca62bb6204c71683ac4878ea9ba00967f41cca4be99fcb481f5d9460"
+      },
+      "cobertura-line-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "171746834812433583700ffc2c03c9eb",
+          "--manifest-sha256",
+          "5e0cdab6f86e2fa1c762ad3d14026ef863c4490c9a1e4311284177fc2d61e729",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-line-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "8fd5691d8e50b87d7adaac5e8d1249f0b566c73d7d93f636ab3bb2ad3084f537"
+      },
+      "cobertura-line-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/execution-store",
+          "--evidence",
+          "--run-id",
+          "171746834812433583700ffc2c03c9eb",
+          "--manifest-sha256",
+          "5e0cdab6f86e2fa1c762ad3d14026ef863c4490c9a1e4311284177fc2d61e729",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/cobertura/cobertura-line-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/cobertura/outside",
+        "record_sha256": "7e7297cff99963332e0fc3b2c6273b229bd4e3019decca33853db798b7c64fa7"
+      }
+    },
+    "lcov": {
+      "lcov-branch-assess": {
+        "actual_exit": 1,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-branch-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "408d47fa7e7df34b2d5ab7ff9edf98f77fe7b56d1eb34b554c80836363da8621"
+      },
+      "lcov-branch-check": {
+        "actual_exit": 1,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-branch-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "2d3e221e4dbb42e3e9a1c19d1b309aa83f775b1441645ba9fa93fb27e8156603"
+      },
+      "lcov-branch-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "5acf67d0446645a2a2c035fd22a36bd8",
+          "--manifest-sha256",
+          "3efc5aa5443340f7ad386693b0d4b136255fab83f791babd66adeea12425f410",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-branch-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "689e4e5dae7acd924419e922b9d142759efb4e0ed44c96b2ae9b8fca535ccd32"
+      },
+      "lcov-branch-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "5acf67d0446645a2a2c035fd22a36bd8",
+          "--manifest-sha256",
+          "3efc5aa5443340f7ad386693b0d4b136255fab83f791babd66adeea12425f410",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-branch-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "747f34aaf6203dbacbe04ac4a04782b3f05ec56e0a32038116f25964393492fc"
+      },
+      "lcov-function-assess": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-function-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "e85b45737d44dfa76eb4a974d563f26ca0290f626f244662bf9d37b86a6889d1"
+      },
+      "lcov-function-check": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-function-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "83eb6e657893107f38b3d90bf24d3497242382dba770330d9e671b17ebb0bd46"
+      },
+      "lcov-function-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "09f85196560a4d2d9e742b7fc5a56937",
+          "--manifest-sha256",
+          "0b8ee52f16d04ef5294ca29e391302c15c2e8917605ff3928a79da895dd838b8",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-function-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "a3d9ea8a587438dc7e26b36196a7f3e7c07396d94a3364ab927b83e59d33e009"
+      },
+      "lcov-function-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "09f85196560a4d2d9e742b7fc5a56937",
+          "--manifest-sha256",
+          "0b8ee52f16d04ef5294ca29e391302c15c2e8917605ff3928a79da895dd838b8",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-function-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "7aa6e2b1320daceace4ff6841b80d99d6fcb50997126883ab108a578a77ff591"
+      },
+      "lcov-line-assess": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "assess",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-line-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "87c12b8e219488a036a5f76b752edf0642a85bd48d7792256c13264326023d10"
+      },
+      "lcov-line-check": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "check",
+          "--store",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--workspace",
+          "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+          "--run-id",
+          "6ba019ade050473b9ce90c110a3e82a0",
+          "--manifest-sha256",
+          "5b0d777eb3583c99642bfe77383c106d1aa838913144b6dc60bc59c880fc1924",
+          "--policy",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-line-policy.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "f4738c8aa17756e8037d45028d69f12d143bb0ee771cdfb098001bbdc919a9e0"
+      },
+      "lcov-line-report-html": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "902be85d4c5e49688d3226e32e2d80ec",
+          "--manifest-sha256",
+          "2376f52985780bbc27bc46cb0b11e7182d014ff7f32b43c1f60d73a75ca8cbec",
+          "--format",
+          "html",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-line-report.html"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "0395f1202bdaae68d715123859408a5d40133d89bf52048558011e68857df1b5"
+      },
+      "lcov-line-report-json": {
+        "actual_exit": 0,
+        "argv": [
+          "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+          "report",
+          "--input",
+          "/workspace/work/current38-batch12/continuation-results/lcov/execution-store",
+          "--evidence",
+          "--run-id",
+          "902be85d4c5e49688d3226e32e2d80ec",
+          "--manifest-sha256",
+          "2376f52985780bbc27bc46cb0b11e7182d014ff7f32b43c1f60d73a75ca8cbec",
+          "--format",
+          "json",
+          "--output",
+          "/workspace/work/current38-batch12/continuation-results/lcov/lcov-line-report.json"
+        ],
+        "cwd": "/workspace/work/current38-batch12/continuation-results/lcov/outside",
+        "record_sha256": "c0a6192f4c0862d6c8403cd9455ab62dd806fdc72279283010640f21ff7fb674"
+      }
+    }
+  },
+  "execution_report_sha256": {
+    "cobertura": {
+      "branch.html": "a7f4f717a2332c17fc9472d6bd6cac228c3766d3f0537c7410237b4c70b8d9a2",
+      "branch.json": "fb224e78ed424614ebb9946e26122fb592ec87bf33aad032928f163dd9fb2314",
+      "function.html": "8aababe3877f3cc7a2cdc715a33e78d3b1458142942f30cc84a291f22d4c4a68",
+      "function.json": "7f98c245b048d3620aec126b6d4aee0b7ce47d798e9b85b5ae0b14ff30196c76",
+      "line.html": "6691d23e7c0e7d06adf2d8b1816086742b4d9a886bd8e37709f3cf8d778ff936",
+      "line.json": "dd8488cf030ba5543dd4f1286737d391960c540755c1b3a6599ccc650ff2553a"
+    },
+    "lcov": {
+      "branch.html": "dfcf236a0ed8c7ab380d3cbbb53807f7fecf836557abda9ca98315f468acf4bc",
+      "branch.json": "50982a705a2bc69e6fe2d9692637ac6e1ce43b882b0368c9bd88f55453fd618e",
+      "function.html": "393750710f189e6b7f7329b0a67c1227f1f9ca154d1b602bdea25edaedb491bc",
+      "function.json": "8ae6a459dd9df183ee18b637cd3246891d199a80019a75b1767b02f3df06d166",
+      "line.html": "6c8cbdad155a04413aaa0a968ec92c304e6feea2ff0b497fb9ae976f632f93cf",
+      "line.json": "3b672b005df3344751b752a4ac85bcafb34f32750171f0dca9ee2741adafb2c1"
+    }
+  },
+  "import_only": {
+    "cobertura": {
+      "commands": {
+        "cobertura-import-assess": {
+          "actual_exit": 3,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "assess",
+            "--store",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-store",
+            "--workspace",
+            "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+            "--run-id",
+            "dd66b3f7efc74c02b315f170c44b5a75",
+            "--manifest-sha256",
+            "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+            "--policy",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-policy.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/outside",
+          "record_sha256": "7f1912c95ce18589f1635199ebd61a3c26f707412fd21866b8d4f0a9698a0b68"
+        },
+        "cobertura-import-check": {
+          "actual_exit": 3,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "check",
+            "--store",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-store",
+            "--workspace",
+            "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+            "--run-id",
+            "dd66b3f7efc74c02b315f170c44b5a75",
+            "--manifest-sha256",
+            "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+            "--policy",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-policy.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/outside",
+          "record_sha256": "30e51616e3a968d28d124150303101e741d547133768d3af44566b805d004c34"
+        },
+        "cobertura-import-report-html": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-store",
+            "--evidence",
+            "--run-id",
+            "dd66b3f7efc74c02b315f170c44b5a75",
+            "--manifest-sha256",
+            "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-report.html"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/outside",
+          "record_sha256": "79f19ba7f9a5a906bbbf8dc416d6ec805116a340e49b09bf6f23c64a3cee8af9"
+        },
+        "cobertura-import-report-json": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-store",
+            "--evidence",
+            "--run-id",
+            "dd66b3f7efc74c02b315f170c44b5a75",
+            "--manifest-sha256",
+            "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/cobertura-import-report.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-cobertura/outside",
+          "record_sha256": "e8bd1ae41ea4a09b6e641948403f5a8b19da67eef492e15ccd73ca957100fa5b"
+        }
+      },
+      "origin": "import",
+      "pure_control_outcomes": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "receipt": {
+        "reports": {
+          "html": {
+            "sha256": "f0ec4e773077c7785ff5326163538cd32e68f03777baa8a235acf7245949f699",
+            "size_bytes": 8650
+          },
+          "json": {
+            "sha256": "a2bb657b1a98ae17e31f08bec2a9767ea8ac2d9f5875398495d90a13189f29ce",
+            "size_bytes": 14008
+          }
+        },
+        "responses": {
+          "assess": {
+            "error": {
+              "code": "UNVERIFIED_SOURCE",
+              "message": "Unverified historical execution cannot be upgraded by today's source check",
+              "path": ""
+            },
+            "exit": 3
+          },
+          "check": {
+            "error": {
+              "code": "UNVERIFIED_SOURCE",
+              "message": "Unverified historical execution cannot be upgraded by today's source check",
+              "path": ""
+            },
+            "exit": 3
+          }
+        },
+        "run": {
+          "manifest_sha256": "32bc88ea4baedfada1174eb82c81847b6a52d53b8f7368afa634fbbc3c8c9e2f",
+          "run_id": "dd66b3f7efc74c02b315f170c44b5a75"
+        }
+      }
+    },
+    "lcov": {
+      "commands": {
+        "lcov-import-assess": {
+          "actual_exit": 3,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "assess",
+            "--store",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-store",
+            "--workspace",
+            "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+            "--run-id",
+            "c267ac7fedf445fbab0ca13b049d9307",
+            "--manifest-sha256",
+            "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+            "--policy",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-policy.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/outside",
+          "record_sha256": "032ccdc43a3202c9f1c916fd833499da4e2da6e23681136dc66293ae9e2a61d6"
+        },
+        "lcov-import-check": {
+          "actual_exit": 3,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "check",
+            "--store",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-store",
+            "--workspace",
+            "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+            "--run-id",
+            "c267ac7fedf445fbab0ca13b049d9307",
+            "--manifest-sha256",
+            "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+            "--policy",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-policy.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/outside",
+          "record_sha256": "1f4d4bef79904a5a684e1de4a921b8b49b1f15984c896e7daf9c1aa7bdae0ebc"
+        },
+        "lcov-import-report-html": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-store",
+            "--evidence",
+            "--run-id",
+            "c267ac7fedf445fbab0ca13b049d9307",
+            "--manifest-sha256",
+            "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+            "--format",
+            "html",
+            "--output",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-report.html"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/outside",
+          "record_sha256": "dc7d59e2f5e156b0582feaff9a57ec3502f98b23f1f2624ced4c2a7d815071fe"
+        },
+        "lcov-import-report-json": {
+          "actual_exit": 0,
+          "argv": [
+            "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+            "report",
+            "--input",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-store",
+            "--evidence",
+            "--run-id",
+            "c267ac7fedf445fbab0ca13b049d9307",
+            "--manifest-sha256",
+            "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+            "--format",
+            "json",
+            "--output",
+            "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/lcov-import-report.json"
+          ],
+          "cwd": "/workspace/work/current38-batch12/coverage-import-retry-results/import-lcov/outside",
+          "record_sha256": "eed08c871204e0bbfc80fe44fa99e2523065666471e07330497c138f3564f8c4"
+        }
+      },
+      "origin": "import",
+      "pure_control_outcomes": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "receipt": {
+        "reports": {
+          "html": {
+            "sha256": "2130360599e772017ab5f35f9d9ac5d2d92f4f32b364e6158dba3bb106301ef5",
+            "size_bytes": 8697
+          },
+          "json": {
+            "sha256": "4000c91f0f36b498ec595df60f6f4b67151241d12f2d96aba305e7a751ee7460",
+            "size_bytes": 14682
+          }
+        },
+        "responses": {
+          "assess": {
+            "error": {
+              "code": "UNVERIFIED_SOURCE",
+              "message": "Unverified historical execution cannot be upgraded by today's source check",
+              "path": ""
+            },
+            "exit": 3
+          },
+          "check": {
+            "error": {
+              "code": "UNVERIFIED_SOURCE",
+              "message": "Unverified historical execution cannot be upgraded by today's source check",
+              "path": ""
+            },
+            "exit": 3
+          }
+        },
+        "run": {
+          "manifest_sha256": "126f4cb5db71aa97d122906a4ed2da10de454bf524ddf36ea9c4415f6206d622",
+          "run_id": "c267ac7fedf445fbab0ca13b049d9307"
+        }
+      }
+    }
+  },
+  "no_decision_or_mcdc_produced_from_branch": true,
+  "original_phase_outcomes": {
+    "continuation": {
+      "cobertura": {
+        "actual_exit": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "import-cobertura": {
+        "actual_exit": 1,
+        "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      "import-lcov": {
+        "actual_exit": 1,
+        "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      "invalid": {
+        "actual_exit": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "lcov": {
+        "actual_exit": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "initial_cli_decision_refusal": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "assess",
+        "--store",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/lcov-execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "ba9cafa044fe4293b710f0d3aac47746",
+        "--manifest-sha256",
+        "307236e341f923ffd3dcd18307d8518e38feb920194523c21565c94313a6b80b",
+        "--policy",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/decision-branch-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/results/coverage-dimensions/outside",
+      "record_sha256": "a426eac352c064f2f2feac1792fced1a7689c098ddac5d52cd8e3ff0da8547da",
+      "structured_error": {
+        "code": "INVALID_CONTRACT",
+        "message": "'decision' is not one of ['line', 'branch', 'function']",
+        "path": "/controls/0/parameters/measurement_kind"
+      }
+    },
+    "retry": {
+      "import-cobertura": {
+        "actual_exit": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "import-lcov": {
+        "actual_exit": 0,
+        "receipt_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    "separate_git_fixture": {
+      "actual_exit": 1,
+      "receipt_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    }
+  },
+  "original_wheel_build_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+  "original_whole_review_sha256": "6340c2de0a5a1d8db1fb4712e1ba3e379be99b103944c6fe5c7d83c483cf513a",
+  "policy_threshold_percent": 60,
+  "prior_harness_failures": {
+    "continuation_import_phase_exit": {
+      "cobertura": 1,
+      "lcov": 1
+    },
+    "continuation_import_reason": "The earlier observer supplied a datetime object rather than the installed evaluator\u2019s required RFC 3339 UTC string.",
+    "continuation_wrapper_exit": 1,
+    "original_decision_request_actual_exit": 2,
+    "original_wrapper_exit": 1,
+    "original_wrapper_reason": "The actual CLI produced structured invalid JSON and empty stderr. The earlier observer expected the wrong output channel.",
+    "retry_batch_wrapper_exit": 1,
+    "retry_coverage_imports_phase_exit": 0,
+    "retry_separate_git_fixture_phase_exit": 1,
+    "retry_separate_git_fixture_reason": "The separately scoped FR-GIT-06 fixture stopped at the author/committer timestamp print-format assertion."
+  },
+  "receiving_source_tree": "4cf0194a3313412511a688e5924f7bb28939d94d",
+  "record_kind": "Public projection of retained independent execution",
+  "scope_limit": "Finite executed LCOV and Cobertura on the exact selected Linux runtime with separate imported facts. The genuine producer runs once. Decisions and MC/DC remain unsupported.",
+  "wheel_sha256": "db15edf7a6821442ea9b5321ffd3c9ca4d198e704c103cb1f6f044300c034700",
+  "zero_threshold_refusals": {
+    "branch-line-method-zero-assess": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "assess",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/branch-line-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "e474f408e7b8864509b66d743456a721ab4f3c21b651916cffc4814f74cdfc8d",
+      "structured_error": {
+        "code": "UNSUPPORTED_VERSION",
+        "message": "Unsupported coverage measurement method/kind",
+        "path": "/controls/0/parameters/method"
+      }
+    },
+    "branch-line-method-zero-check": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/branch-line-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "cb3bbaee8ee5f7d8f6f4b1602bfe29329f3b4402f856285aff702fec6f1f9224",
+      "structured_error": {
+        "code": "UNSUPPORTED_VERSION",
+        "message": "Unsupported coverage measurement method/kind",
+        "path": "/controls/0/parameters/method"
+      }
+    },
+    "decision-branch-method-zero-assess": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "assess",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/decision-branch-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "0b35474fd81fbe3d4438c4fea8cf957e8d6d83a9c815d841c475dc175e4f4579",
+      "structured_error": {
+        "code": "INVALID_CONTRACT",
+        "message": "'decision' is not one of ['line', 'branch', 'function']",
+        "path": "/controls/0/parameters/measurement_kind"
+      }
+    },
+    "decision-branch-method-zero-check": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/decision-branch-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "2e1b8fcf8a17d33615846a60a155d43e85da6d25f32082ab9d38ad1ff6b4597d",
+      "structured_error": {
+        "code": "INVALID_CONTRACT",
+        "message": "'decision' is not one of ['line', 'branch', 'function']",
+        "path": "/controls/0/parameters/measurement_kind"
+      }
+    },
+    "mcdc-branch-method-zero-assess": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "assess",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/mcdc-branch-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "2f62e660ac15af1a9100e0b781e2ab995ee3bd2466e360891ec75c234d518f90",
+      "structured_error": {
+        "code": "INVALID_CONTRACT",
+        "message": "'mcdc' is not one of ['line', 'branch', 'function']",
+        "path": "/controls/0/parameters/measurement_kind"
+      }
+    },
+    "mcdc-branch-method-zero-check": {
+      "actual_exit": 2,
+      "argv": [
+        "/workspace/work/git-scope-qualification/gates/candidate/installed/bin/cppulse",
+        "check",
+        "--store",
+        "/workspace/work/current38-batch12/continuation-results/invalid/execution-store",
+        "--workspace",
+        "/workspace/work/current38-batch12/results/coverage-dimensions/producer/workspace",
+        "--run-id",
+        "2222e8d8b42546dd8a194ceb11a6a67b",
+        "--manifest-sha256",
+        "dbb6ba098d9d27c3cf5cfdb87f3910a820717c30e4b0b31ba1c47d6f0d4c8e34",
+        "--policy",
+        "/workspace/work/current38-batch12/continuation-results/invalid/mcdc-branch-method-zero-policy.json"
+      ],
+      "cwd": "/workspace/work/current38-batch12/continuation-results/invalid/outside",
+      "record_sha256": "6d6597aab3a22420bb636b8bb4078869acd6b7ce4a4d254a8e15811d9c06ea7b",
+      "structured_error": {
+        "code": "INVALID_CONTRACT",
+        "message": "'mcdc' is not one of ['line', 'branch', 'function']",
+        "path": "/controls/0/parameters/measurement_kind"
+      }
+    }
+  }
+}

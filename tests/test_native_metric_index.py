@@ -1,4 +1,5 @@
 """Lazy ordinal index lifetime, identity and finite admission controls."""
+
 from collections.abc import Sequence, Mapping
 from pathlib import Path
 import weakref

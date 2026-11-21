@@ -207,9 +207,16 @@ def build_context(
     total_loc = findings_meta.get("total_loc", 0)
     file_count = findings_meta.get("file_count", 0)
 
-    # Total findings from by_category (not the buggy total_findings field)
+    # Counts must describe the actual retained rows. Old showcase summaries can
+    # disagree with them; fail rather than regenerate a misleading results card.
     by_category = summary.get("by_category", {})
-    total_findings = sum(by_category.values())
+    actual_counts = Counter(f["category"] for f in findings)
+    if summary.get("total_findings") != len(findings) or any(
+        by_category.get(category, 0) != actual_counts.get(category, 0)
+        for category in set(by_category) | set(actual_counts)
+    ):
+        raise ValueError(f"{project_id}: finding records and summary counters disagree")
+    total_findings = len(findings)
 
     # Rules hit
     rules_hit = len(set(f["rule_id"] for f in findings))
@@ -299,6 +306,7 @@ def build_context(
         "roadmap_count": len(roadmap_items),
         "roadmap_hours": total_hours,
         "pdf_pages": pdf_pages,
+        "has_pdf": pdf_path.is_file(),
     }
 
 

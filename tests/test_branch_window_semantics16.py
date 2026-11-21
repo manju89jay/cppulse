@@ -1,4 +1,5 @@
 """Actual small Git histories retain subsecond window/chronology semantics."""
+
 from datetime import datetime, timezone
 
 import git

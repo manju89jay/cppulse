@@ -75,6 +75,7 @@ If you get stuck:
 ## What NOT to Do
 
 - Don't rewrite the CMakeLists.txt from scratch — extend the existing one
-- Don't use any external CI/CD services — just local docker-compose
+- Use the existing GitHub workflow and shared local checks. Base new pull
+  requests on `master`; see the [current handoff](docs/CODEX_CLOUD_HANDOFF.md).
 - Don't optimize prematurely — working > fast for v1.0
 - Don't skip DECISIONS.md — it's the entire point for interview prep

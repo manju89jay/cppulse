@@ -1,0 +1,114 @@
+{
+  "criterion": "Add rule/adapter generators and generated-documentation checks; make existing CI call shared local commands. | A generated extension passes registry/contract checks only after meaningful fixture implementation",
+  "id": "M1-07",
+  "independent_whole_review_sha256": "e25e98ce4b687b47cf01f6221d552703bbbd5b74c0baac0682c3b35390249a47",
+  "kind": "Structured public projection of actual independently accepted semantic executions",
+  "observed_passing_roles": {
+    "exact_current_generated_outputs": {
+      "actual_exit": 0,
+      "observed_exact_command": [
+        "/workspace/cppulse/.venv/bin/python",
+        "-B",
+        "/workspace/work/roadmap-order-qualification/checkout/scripts/check_generated.py"
+      ],
+      "raw_log_sha256": "f672aa44c2f1a9e4ebd425cbb674c6dddc3e7cfa4a3c3b3bb9f576de6139ada6",
+      "record_sha256": "bafa818bf48e0ccf128c26e4f5aa51092624593edbde5e31c93f5147f19efe9a",
+      "stable_guard_pins": 1419
+    },
+    "prior_installed_meaningful_extension_campaign": {
+      "actual_exit": 0,
+      "executed_source_tree": "1e950418b3eed8c7e81c07277349c484b64db0b0",
+      "independently_selected_actual_subphase_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-next/criteria/run_batch.sh"
+      ],
+      "raw_log_sha256": "32a2eb7ecf5e4a9cdf016a33c70323a63463ad2fa1e81ac9892af85607aac224",
+      "record_sha256": "96b1c877d4a756fd6d98f85c3186e161431c698d52b8b939effec42ec8b3d2e1",
+      "stable_guard_pins": 2705
+    },
+    "prior_receiving_shared_tooling_campaign": {
+      "actual_exit": 0,
+      "executed_source_tree": "da3f8f074ddbf5a89a9fd6d673f2b39b23b37bbe",
+      "independently_selected_actual_subphase_exit": 0,
+      "observed_exact_command": [
+        "bash",
+        "/workspace/work/current38-batch11/run.sh"
+      ],
+      "raw_log_sha256": "e308810f7bc21279cfa880b2892d63985e2540b98af226b72c7c6d14b897a50f",
+      "record_sha256": "ceaa043f14cb31caf9b74feb6f648ab3ebf7a6b5b823dbfcc4bc34035a311b1d",
+      "stable_guard_pins": 10069
+    }
+  },
+  "observed_predicates_and_negative_controls": {
+    "actual_B11_facade_exit": 1,
+    "actual_B11_generated_child_exit": 0,
+    "actual_B11_ledger_child_exit": 2,
+    "actual_generated_child_exit": 0,
+    "actual_meaningful_installed_lifecycle_plus_scaffold_tests_pass": 26,
+    "actual_scope_wiring_and_tooling_tests_pass": 10,
+    "adapter_outcomes": {
+      "malformed": "error",
+      "negative": "passed",
+      "positive": "failed"
+    },
+    "frozen_generated_outputs_count": 6,
+    "generated_outputs": {
+      "analyzer-core/src/generated_rule_registration.h": "bbd444aef52f6ec0774fa696cee7a0b5485cf95e732afdd1362f58f92678772c",
+      "analyzer-core/src/generated_rule_types.h": "d0e1180ea8fbb82e8e0b6b4c39693b9ab9a3ed635a9ffb597ee36344c25190a5",
+      "docs/generated/development.md": "0ce7e46f69833c8d8c94614607f420f2d0b5b723563a0e3576bf371a646dd414",
+      "docs/generated/native-config.example.json": "248e80b85cbe0db1bfa1d929693a1bb2b313dc2dcfa831bce68535aac7e51789",
+      "docs/generated/native-config.schema.json": "be42c70fc2ae4169b565d04e40607e8ddae8dea906301ff26c8aeae225d39623",
+      "docs/generated/rules.md": "a3d144b7a7f391edcf11185d9834c3a2893a68478a4c8b6e0c70019657b5243c"
+    },
+    "native_completed_clean_locations": 0,
+    "native_completed_positive_locations": 2,
+    "native_draft_exit": 42,
+    "ordinary_generator_and_duplicate_exits": [
+      0,
+      2,
+      0,
+      2,
+      0,
+      2
+    ],
+    "original_scope_wiring_and_tooling_cases": [
+      "test_existing_github_jobs_call_the_shared_local_facade",
+      "test_existing_gitlab_jobs_call_the_same_facade",
+      "test_gitlab_coverage_reports_point_to_actual_shared_outputs",
+      "test_native_integration_has_build_and_test_prerequisites",
+      "test_scope_integrity_guard_is_ordinary_check_not_completion_claim",
+      "test_checked_in_generated_files_are_current",
+      "test_generated_check_detects_drift_without_writing",
+      "test_generated_script_check_and_explicit_write",
+      "test_generator_is_explicit_and_keeps_draft_status",
+      "test_native_runner_forces_tests_and_rejects_zero_tests"
+    ],
+    "policy_outcomes": {
+      "failed": [
+        "failed",
+        0.0
+      ],
+      "missing": [
+        "unknown",
+        0.0
+      ],
+      "positive": [
+        "passed",
+        100.0
+      ],
+      "untouched_draft": [
+        "unknown",
+        0.0
+      ]
+    }
+  },
+  "preserved_epoch_and_result_limits": [
+    "The integrated generated facade previously exited 1 because its ledger child exited 2. Its generated child exited 0. The integrated command on the reconciled public ledger remains a separate downstream result.",
+    "The current generated child executed on d65. The earlier selected meaningful installed and wiring tests apply through independently matched required source and package dependencies.",
+    "The tests qualify finite extension fixtures. Remote hosted CI, enabling the authored draft extensions, and full production delivery remain outside the measured scope."
+  ],
+  "primary_observed_role": "exact_current_generated_outputs",
+  "reviewed_public_source_tree": "d65b9d69ef1ba5236af060c4b07b797b81d8ad1f",
+  "scope": "The original meaningful generator lifecycle, generated output checks, and shared local commands used by existing CI."
+}
