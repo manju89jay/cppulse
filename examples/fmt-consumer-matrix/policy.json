@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "id": "finite-fmt-consumer-tests",
+  "policy_version": "1.0.0",
+  "evaluator_profile": "1.0.0",
+  "standards": [],
+  "scope": {"include": ["main.cpp"], "exclude": []},
+  "contexts": ["fmt-compiled", "fmt-header-only"],
+  "gates": {"minimum_readiness": 100, "minimum_completeness": 100},
+  "controls": [
+    {
+      "id": "compiled-workload",
+      "title": "Authored workload in the compiled profile",
+      "kind": "test_outcomes",
+      "weight": 1,
+      "required": true,
+      "parameters": {"evidence_ids": ["fmt-compiled-tests"], "contexts": ["fmt-compiled"]},
+      "depends_on": []
+    },
+    {
+      "id": "header-only-workload",
+      "title": "Authored workload in the header-only profile",
+      "kind": "test_outcomes",
+      "weight": 1,
+      "required": true,
+      "parameters": {"evidence_ids": ["fmt-header-only-tests"], "contexts": ["fmt-header-only"]},
+      "depends_on": []
+    },
+    {
+      "id": "consumer-contexts",
+      "title": "Both selected consumer contexts exist",
+      "kind": "required_contexts",
+      "weight": 1,
+      "required": true,
+      "parameters": {"contexts": ["fmt-compiled", "fmt-header-only"]},
+      "depends_on": []
+    }
+  ]
+}

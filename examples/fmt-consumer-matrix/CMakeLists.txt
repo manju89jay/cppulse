@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.16)
+project(cppulse-fmt-consumer-matrix LANGUAGES NONE)
+
+if(NOT DEFINED CPPULSE_SELECTED_BINARY OR CPPULSE_SELECTED_BINARY STREQUAL "")
+    message(FATAL_ERROR "Pass -DCPPULSE_SELECTED_BINARY=<compiled fmt consumer>")
+endif()
+if(NOT DEFINED CPPULSE_EXPECTED_OUTPUT OR CPPULSE_EXPECTED_OUTPUT STREQUAL "")
+    message(FATAL_ERROR "Pass -DCPPULSE_EXPECTED_OUTPUT=answer=0042")
+endif()
+
+enable_testing()
+add_test(NAME authored_fmt_workload COMMAND "${CPPULSE_SELECTED_BINARY}" "${CPPULSE_EXPECTED_OUTPUT}")

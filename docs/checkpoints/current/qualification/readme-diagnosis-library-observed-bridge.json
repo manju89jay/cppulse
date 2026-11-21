@@ -1,0 +1,785 @@
+{
+  "actual_observations": {
+    "actual_source_guards": {
+      "coherent_candidate": {
+        "exit": 0,
+        "freeze_sha256": "75b3619dcba6402cd756250f1f4c31af06552f5ce0b51718ca623447f629e77d",
+        "source_pin_count": 307,
+        "source_stable": true,
+        "wrapper_sha256": "c47baa730fd662215686ce161ed530c78a842796fec8b9d81140ed69fab3474c"
+      },
+      "resource_and_database_diagnosis_controls": {
+        "exit": 0,
+        "freeze_sha256": "54470adc0eb8a622d0a34ed0185109877a6854d0426bdc3f52d75eea1693281d",
+        "source_pin_count": 160,
+        "source_stable": true,
+        "wrapper_sha256": "9124eceac29d4bc52ca7e88836e882e91751d183e07e5dbc494291ea693c48fd"
+      },
+      "t2": {
+        "exit": 0,
+        "freeze_sha256": "d781432d40d9c680cd122b45f56dc5017aa13ae802723265cf8a9cc997ee359a",
+        "source_pin_count": 12,
+        "source_stable": true,
+        "wrapper_sha256": "023a0a767b249f2b49eba41ff98e4bede16b0982c672b381887ec6ba3600d1ca"
+      },
+      "t3": {
+        "exit": 0,
+        "freeze_sha256": "cabd5ee9bd57b355e7f80aaddacf5a52dfc15d88bb290e52a26b445cc2d037b3",
+        "source_pin_count": 156,
+        "source_stable": true,
+        "wrapper_sha256": "acc218b550bd0b848086167cb10fc24e6456a25249c08999675d4b78e0875b29"
+      }
+    },
+    "applied_change_scope": {
+      "FR-ANA-07": "Fresh combined installed partial exit and native receipts preserve null qualified health.",
+      "FR-EVD-04": "Current positive, changed, unavailable and both together were tested across native and public workflow paths.",
+      "FR-EVD-06": "Expected missing matrix declaration remains visible with unknown policy controls; observed usage still requires actual collected context.",
+      "M1-07": "Additive dependency setup keeps the unchanged shared verification jobs and thresholds.",
+      "NFR-MNT-02": "Wheel member inventory and exact installed metadata/origin were checked.",
+      "NFR-MNT-08": "Existing decision headings remain an exact ordered prefix and the complete current index matches."
+    },
+    "candidate_build_origin": {
+      "build_exit": 0,
+      "fresh_install_receipt_sha256": "eb44aeac180d4ff90aa38dbc093564bad0950f3062bd411531445dfd8ab64595",
+      "receipt_sha256": "a17a11ec83bad78f59ed83452bacfd146babaa5529ff7ade6f9de19e6e99b607",
+      "wheel_built_on_current_source": true
+    },
+    "candidate_package": {
+      "changed_members": [
+        "cppulse-0.2.0.dev2.dist-info/METADATA",
+        "cppulse-0.2.0.dev2.dist-info/RECORD",
+        "cppulse/analysis_execution.py",
+        "cppulse/contracts/presentation.py",
+        "cppulse/identities.py",
+        "cppulse/pipeline.py"
+      ],
+      "entries": 248,
+      "matching_installed_members_except_installer_record": 247,
+      "metadata_sha256": "d85650af3917ff6b910daba91e10071419c7f7723706fe4ea1dffb625d38ca49",
+      "old_readme_wheel_sha256": "0178818bd0b97f30b5fe77341b1ba13761e7502d6b29e55176d15111ec0c3e4b",
+      "readme_sha256": "13fa7c556b6d54a6b81e6f86ecc487e932afbf8d97793a1aae64f1e39800597e",
+      "source_tree": "47090ff3d4f6d9c8a9186d1ce8d694f29068109a",
+      "wheel_sha256": "1d8a3825f94b1083b4476a1cbfde8b37b6f51a376d735936f00706dd0d80e244"
+    },
+    "component_artifact_archive_sha256": "aeed4a122ca95c62eec96feeb00f2d77423b661f5ff34de7eca15bb90ab913bc",
+    "component_receipt_sha256": "72c10f280cf77618184da17d2c8466a6afddf44f099267a8e12ccacac85b42a6",
+    "components": {
+      "git-miner-tests": {
+        "log_sha256": "b4b3d33b76ffdcf713b509b6c57d55f74dc1d537a90047814567c92e8141b41b",
+        "minimum": 80.0,
+        "namespace": "cppulse.git_miner",
+        "percent": 87.44
+      },
+      "predictor-tests": {
+        "log_sha256": "9f0f25bd51f399408090671fd7393909f9037a2f547fdb0c9ca91736de498c22",
+        "minimum": 75.0,
+        "namespace": "cppulse.predictor",
+        "percent": 88.98
+      },
+      "report-engine-tests": {
+        "log_sha256": "f51ea26035f3000bd2cc4e137c7fd46e564e3d397dea683a86a1353307f59b87",
+        "minimum": 75.0,
+        "namespace": "cppulse.report_engine",
+        "percent": 93.36
+      }
+    },
+    "decision_authority": {
+      "added": [
+        "PROD-20261121-39",
+        "PROD-20261121-40",
+        "PROD-20261121-41"
+      ],
+      "authority_sha256": "f1448b0d5e0327773000939e3c1b8bac004245ac339187a08a6c5802626e18d5",
+      "count": 108,
+      "decisions_sha256": "794cfdbde2175d578166eb4e537be1e1d2f0f0c75f085aef59ef46e697445d47",
+      "existing_in_order": true
+    },
+    "fmt_matrix": {
+      "installed_command_replay_sha256": "fdd22c57cd00f697535b9a2209f253a8884e5e37414f3af332237fe863144a8b",
+      "installed_report_pins": {
+        "known-failure/report.html": "abc97b15ad4ff9592e22ce05ade2ab1abee2941b6dcde37149f9fd6e145455e4",
+        "known-failure/report.json": "e9bac117b47cd7943572e84b5bacedd17e8899cacb484925b79ce1ac89a66632",
+        "missing-configuration/report.html": "1c489418ce480b2295fd88903e5ade8f08bc2be84ebce250b8f8dad174399c9e",
+        "missing-configuration/report.json": "3d7ec1365c20822200ab17ecb79b24468351f679c932575079fa7587c5b1c182",
+        "passing/report.html": "2ce3c66d210e94e2b76da6a386eeb4cdbfb6d0d3e080bd39bb78deb6dc938614",
+        "passing/report.json": "1bc12d87beea586592d4bd8f23731e30886cef3dcbec8ddfe1f24a74b40a9982"
+      },
+      "policy_exits": {
+        "known_failure": 1,
+        "missing_configuration": 3,
+        "passing": 0,
+        "stale_source": 3
+      },
+      "retained_source_artifacts_sha256": "630d0057e37095cb24eb09b7c992bbb46a6a87e9895f71d44dfec836055a05b6",
+      "scope": "Named real authored workload in two finite configurations; no claim of upstream analysis, full coverage, performance or safety.",
+      "source_command_replay_sha256": "e3fd7e86348c3a2904be9d6d9dd24f40fb38f2af7ab5cac34de0db2a8fd025c2",
+      "upstream_revision": "e69e5f977d458f2650bb346dadf2ad30c5320281"
+    },
+    "format_facade_receipt_sha256": "572b1a89ac38030af2f474751fe3f357c7a8a2a021b37730f47ecb7f4941a812",
+    "independent_task_reviews": {
+      "T1": {
+        "review_sha256": "ca932e34fca35cf83661e8b20b3e16c4c5e9249eb80cbd349052687abf381cb5",
+        "source_tree": "707e61be10f364d66dea9b61cdb2c9d9e42e9883",
+        "subject": "T1"
+      },
+      "T2": {
+        "review_sha256": "37fb628077390505ce145ebd9be4da2676f52237c4ba6b15e28516470c0c3c4b",
+        "source_tree": "0205740ea3c098be8be98c61fb3b48175d499a2e",
+        "subject": "T2"
+      },
+      "T3": {
+        "review_sha256": "9659c410c5bb61128430062f9d8196fe19c33adc6eeed455adf0a77ef7880893",
+        "source_tree": "1625c58ad2b1b4f544ac7680732adc5ee25cae3e",
+        "subject": "T3"
+      },
+      "combined": {
+        "review_sha256": "8da8a560cf08b893df5659ba449b971ec723afa4e62d561641e8dec306631015",
+        "source_tree": "47090ff3d4f6d9c8a9186d1ce8d694f29068109a",
+        "subject": "combined"
+      }
+    },
+    "installed_bounded_diagnosis": {
+      "health_score": null,
+      "input_verification": "unverified",
+      "manifest_sha256": "c050d40cc0be8cbaf7941d0bef42f7af39fb813f6bf084d8844a295e4a2d924c",
+      "report_html_sha256": "3e3f0354e850fd382f8bf303fe78b05217d5733c335bfa12b66c7ad328ef6976",
+      "report_json_sha256": "9c78d0ea8b685f6ed1d1e5b444929bd8966f20de3a2cf88f1066038ec647a5bd",
+      "result": "partial",
+      "run_id_utf8_sha256": "3a695e91266b3440bc54e876c0dfe4bdfbd3fe9692408cf91c87fc518d33f7a5"
+    },
+    "merged_master_ci": {
+      "run": "44912649822",
+      "source": "d7a0c531bfdb339a6932c0f5ba7b446a3ec45f55",
+      "status": "success"
+    },
+    "native_inputs": {
+      "analyzer_sha256": "1361394cb912096659a54bb0d9aca10380780634f1f5eb983ba60532a1864bf2",
+      "resource_stddef_sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e"
+    },
+    "preserved_history": {
+      "T1_install": "ac140cfd7c410e40a617b220b611505dcd2c2a2af6c49a94df2c9129c90c186d",
+      "T2_controlled_red": "4e496a73f6668c8121217c8611adef0b196e4fd0ddc2f6853e2c1886507ae136",
+      "T3_report_guard_red": "af2293b850c9301bfc9807e5122759ed40ce82d6b5914318b6698d30a1584f78",
+      "T3_retention_guard_red": "6d24753065de21c6d4eaba35202cda92a5c15df5443fb3f0f881261480d1e42b",
+      "first_combined_runner_import_refusal": "3863dad6391000dae4540b0ae094399413d0af04d01d7c1c278cf8fb6c8075c9",
+      "prior_diagnosis_red_controls": "2c1f763dbde64b7eb3706c914ce7975a563515d2fbaf1ece734ba5f9d3ef6440",
+      "second_combined_runner_child_import_refusal": "7f1376c8554c8fe0a4f2e452f05e6f9433f847a7ff5a457ec96fb5c93bf12131"
+    },
+    "test_suites": {
+      "combined_affected_source": {
+        "cases": 121,
+        "error_count": 0,
+        "failure_count": 0,
+        "junit_sha256": "b13d2eb1d004b0b09100fb0ffa38915546fe8bdbaec29eaa9452dbcbe53b1917",
+        "skip_count": 0
+      },
+      "combined_installed_first_trial": {
+        "cases": 3,
+        "error_count": 0,
+        "failure_count": 0,
+        "junit_sha256": "e6a929e0519027c41db2720fc1517a2f2b32ccacb9fc2692290615c325b47578",
+        "skip_count": 0
+      },
+      "diagnosis_after_initial_review": {
+        "cases": 4,
+        "error_count": 0,
+        "failure_count": 0,
+        "junit_sha256": "75825e90376929c0f11ca97ef0db5d55bc4d87c123325f84c40e4a3013dae4a7",
+        "skip_count": 0
+      },
+      "scoped_T2": {
+        "cases": 12,
+        "error_count": 0,
+        "failure_count": 0,
+        "junit_sha256": "6f55885efdf3b90949bd82c0649036cb724b4d1e0b55e3538f413e62591faf49",
+        "skip_count": 0
+      },
+      "scoped_T3": {
+        "cases": 128,
+        "error_count": 0,
+        "failure_count": 0,
+        "junit_sha256": "53852c431d85210426baaa93522eb30be4d51efc65eadc86f96c322510da8d84",
+        "skip_count": 0
+      }
+    }
+  },
+  "current_source_tree_before_evidence_changes": "47090ff3d4f6d9c8a9186d1ce8d694f29068109a",
+  "phase": "Public handoff, bounded diagnosis and finite fmt consumer matrix",
+  "previous_public_commit": "d7a0c531bfdb339a6932c0f5ba7b446a3ec45f55",
+  "previous_public_tree": "59c0f86aed01dadbae62499e58c89340650fce53",
+  "qualification_scope": "Earlier passing criterion executions retain their original commands and logs. This bridge addresses only the exact changed inputs and new bounded checks. It does not represent a passing hosted run or production completion.",
+  "source_changes": {
+    ".github/workflows/ci.yml": {
+      "current_sha256": "568b123706d47672c66cd1eeaf4d25f7db77ab0f85629841762135396b9a6e93",
+      "previous_sha256": "bd7407f422c95969fab2e0a03a3ca81dfc141af10d172230ac63a71aad4b885a",
+      "reason": "Adds an explicit public fmt-only acquisition step and a separate offline example before the original shared contract gates. Existing jobs, thresholds and triggers are unchanged."
+    },
+    "README.md": {
+      "current_sha256": "13fa7c556b6d54a6b81e6f86ecc487e932afbf8d97793a1aae64f1e39800597e",
+      "previous_sha256": "92a327f70822d61021f9cd08a3ef7c038395f6a5ea71e42ee4689e7aa7d4c927",
+      "reason": "Updates the public handoff and links bounded trials. Exact metadata was checked against the installed wheel."
+    },
+    "docs/CODEX_CLOUD_HANDOFF.md": {
+      "current_sha256": "812b6a1eca5b4a33a7d66efda7c1c85fb0d360376a8734b1cee797b352bc904d",
+      "previous_sha256": "beb4a1a7c0153eaa6e228ccd0aa6683bea702aa5e80b0bd280b64fc4412b2546",
+      "reason": "Current merged master and historical publication epochs now have distinct authority."
+    },
+    "docs/DECISIONS.md": {
+      "current_sha256": "794cfdbde2175d578166eb4e537be1e1d2f0f0c75f085aef59ef46e697445d47",
+      "previous_sha256": "2ba5bb971fcacd0776aea6de606b90c763e834cf6203ac3859f6597e256ffbbe",
+      "reason": "Append-only selected journey, typed diagnosis and package-use decisions."
+    },
+    "docs/development/reviewer-fixes.md": {
+      "current_sha256": "8fbe7a68969172358ccdf213e576d8a2f76c09803974e73c32db638f79c60545",
+      "previous_sha256": "087ad7aaf03b2c03a4341681a606a550b1b137bd507838cc9c8c2273c3b280bb",
+      "reason": "Labels historical scoped verification and its exact preceding candidate."
+    },
+    "docs/development/simulated-audience-review.md": {
+      "current_sha256": "9877b9f8ddcb6b22b23bab6e7fee59daaa9814a791154b592845e4d113db96ca",
+      "previous_sha256": null,
+      "reason": "Bounded projection of ten owner-attested simulations with pinned upstream links and explicit limits."
+    },
+    "docs/examples/leveldb/README.md": {
+      "current_sha256": "1407949835e5a2803ffce94dcb12d15cff072205ac045770ce3c47b22ddda425",
+      "previous_sha256": "ab489a23fb234710c4ba91bf3fcada5f7220d5ad5209f770676a71ce2da3b432",
+      "reason": "Labels historical LevelDB measurements without changing their original inputs, outputs or counts."
+    },
+    "docs/plans/production-delivery-status.md": {
+      "current_sha256": "e9d6f9b8ddbeb3db2d399e681ef3e67458f852b011f7f029a7a6b48b095201b4",
+      "previous_sha256": "9fd11ef7b6eae0a9c50637b3c797ef1293d9560c65565b5fab505785203f1bf4",
+      "reason": "Updates the public status without changing accepted state or scope."
+    },
+    "docs/plans/production-scope-authority.md": {
+      "current_sha256": "f1448b0d5e0327773000939e3c1b8bac004245ac339187a08a6c5802626e18d5",
+      "previous_sha256": "c39dab7faafda05b5adf8e392bce4802d64f5f973d64db387e95cd3e9dcbdd54",
+      "reason": "Append-only decision index preserves original authority and scope."
+    },
+    "examples/fmt-consumer-matrix/CMakeLists.txt": {
+      "current_sha256": "b8c77510d8375820ca2f163c8324b6fa7ac3c0843a2683286158067aa440e0a2",
+      "previous_sha256": null,
+      "reason": "Declares the separately executed authored CTest case."
+    },
+    "examples/fmt-consumer-matrix/README.md": {
+      "current_sha256": "3d7ea6124c34fc6cde37b3544502df9ad071ab72d177d60eb145e6cabecf71c2",
+      "previous_sha256": null,
+      "reason": "Documents the finite configuration, distribution, recipe and policy scope."
+    },
+    "examples/fmt-consumer-matrix/main.cpp": {
+      "current_sha256": "e8398b961b377aed7c86a21e83a554928ae92141f82ad770714a46219fa0f416",
+      "previous_sha256": null,
+      "reason": "Executes the actual selected formatting workload."
+    },
+    "examples/fmt-consumer-matrix/policy.json": {
+      "current_sha256": "9d25d33e4575f59b083dc2e8d0cd13347d0c53814fc2df639bda51a24dafa4f7",
+      "previous_sha256": null,
+      "reason": "Requires the named tests in both contexts using the existing evaluator."
+    },
+    "examples/fmt-consumer-matrix/self-containment.cpp": {
+      "current_sha256": "5e76e3daeabf30a6cd3f98ecfe625bba25f1d2f6694ac8e34afe0c942e2da521",
+      "previous_sha256": null,
+      "reason": "Separately compiles the pinned fmt header in each context."
+    },
+    "python/cppulse/analysis_execution.py": {
+      "current_sha256": "987ffd2c4f47c7ff4819b0e4404e88d4bc812a9212ef6b7c327317661b0eac47",
+      "previous_sha256": "36fe09056e50048f4fbf3cd7140283d0635532fce466bd8e6e62e1ebe056b9a0",
+      "reason": "Separates checked changes and unavailable observations using retained postflight causes. Native inputs and scoring predicates stay distinct."
+    },
+    "python/cppulse/contracts/presentation.py": {
+      "current_sha256": "16ade78ac3abe0fe2168e99bb5b9e908c610b3ee3ab6675e141e7e77785c3f92",
+      "previous_sha256": "2874a64a5fc2084270f0d1de4ef4bdec744e4361c546a69daaee1fa4eb4e3852",
+      "reason": "Allows missing expected matrix contexts as declarations. Execution, use, source and report artifact pins stay checked."
+    },
+    "python/cppulse/identities.py": {
+      "current_sha256": "fc01ca0d375d73b7e7855a6a2330f00b6a55cc038109fca1a9931f0792a84f0d",
+      "previous_sha256": "dda870071016e4511492e9531214465e9ab5c103432dff5a52afaf52cbaa3bd9",
+      "reason": "Preserves actual byte and namespace changes and distinguishes unreadable observations. Existing list-shaped verifier remains available."
+    },
+    "python/cppulse/pipeline.py": {
+      "current_sha256": "785ba79d01aa6df79697218617f6910e4637c9d9f23cd01e49b323c3e1e93890",
+      "previous_sha256": "e0c57c79a1f28565da36d3752304d6668d7280590c06d6c198600209ce0f83c1",
+      "reason": "Projects retained changed or unverified input causes; actual late input and frozen metadata guards remain active."
+    },
+    "scripts/demo_fmt_matrix.py": {
+      "current_sha256": "cfe5c0fb042641fda98773910eb8d26b92a416edb2671511e36fce8c14ab4dc2",
+      "previous_sha256": null,
+      "reason": "Run actual finite authored fmt CTest and consumer-use checks with explicit locked public acquisition."
+    },
+    "tests/test_bounded_pipeline.py": {
+      "current_sha256": "60d0b619f44302f1fb020c2a305def2bb550c48935c48aba53faeb699250ca1a",
+      "previous_sha256": "dd5071c3255639842a72f907d64048eb627681e37b38aff343f7c5cc1b0c685b",
+      "reason": "Exercises verified, unavailable, changed and mixed paths with real workers and phase-controlled input negatives."
+    },
+    "tests/test_consumer.py": {
+      "current_sha256": "bdcf2ca8eeaef0df6778890403dc0908fd56e5921e1009e2100df00b3fae70f9",
+      "previous_sha256": "024a73e35158bdf1d7d76335b17f3505b1a71f86a8016e5c711f841b4359888c",
+      "reason": "Checks that a required but unexecuted consumer context renders as a declaration."
+    },
+    "tests/test_github_master_workflow.py": {
+      "current_sha256": "f9180221aa2f1278e3a13e6ac6635c872a940ee3f64f7dbd79ac1e7d0ea56d55",
+      "previous_sha256": "d1791fce66334644a8948677821794f85e6fcc8cc8ecc30c845e3cb1426c729a",
+      "reason": "Checks the scoped fmt provider precedes the required verification command."
+    }
+  },
+  "unaffected_verified_criteria": [],
+  "verified_criteria_spanning_changed_inputs": [
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "PR-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/pr-01/PR-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "ea38e57d436656dc74cf26e839893b274e8bf60fe6c3d671eb049e46eab45d74"
+    },
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "docs/plans/production-scope-authority.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "PR-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/pr-06/PR-06.master-component-coverage.proof.json",
+      "predecessor_sha256": "53bab7ba2503225f9c64ae5162e2cc6b5608db03935cad21e1241d3fd5a69f49"
+    },
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "FR-ANA-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-04/FR-ANA-04.master-component-coverage.proof.json",
+      "predecessor_sha256": "c2dd2805cd84c88af7d5b40faf84086a99fafd07929d40a5fa2a8613f51909ad"
+    },
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "FR-ANA-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-06/FR-ANA-06.master-component-coverage.proof.json",
+      "predecessor_sha256": "5087644804c63e4408728f7dd298d2bd8b0b8ee529d166b75867df10a055ec71"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "FR-ANA-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-07/FR-ANA-07.master-component-coverage.proof.json",
+      "predecessor_sha256": "45c61b5031cadb0d4fa91cf89f689f5366bb4b60f8d55043f1329378700ba7b5"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-ANA-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ana-09/FR-ANA-09.master-hosted-repair.proof.json",
+      "predecessor_sha256": "4c7c1fb6c1b5332df2219c653677b4d62f7dcba88a9c7bf3c82f8782d95a2419"
+    },
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-GIT-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-01/FR-GIT-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "07334bd7494a9dc60b8df10fed92f40a61c22e74c865886b0a51de7fef6ba8ff"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-GIT-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-02/FR-GIT-02.master-hosted-repair.proof.json",
+      "predecessor_sha256": "d6f79925f8999e0db79e588c2f2b7c1b3a8fae6b60a6b6c6a1aeec7f8ea28588"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-GIT-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-03/FR-GIT-03.master-hosted-repair.proof.json",
+      "predecessor_sha256": "5fe87648ceb83a90c1b6ec8bc01e08a4a266995cf9149908871847c4bc4de2ef"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-GIT-05",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-05/FR-GIT-05.master-hosted-repair.proof.json",
+      "predecessor_sha256": "b87fb7374d188f01b1b4e42c503bfe1549e2307ef955e07171a96fec8ac831ff"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-GIT-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-06/FR-GIT-06.master-hosted-repair.proof.json",
+      "predecessor_sha256": "ddc60873ae45df6dcb44d4c5535cf86ed9202eaddacff5ae731ba8fdf41efa6b"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "FR-GIT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-git-08/FR-GIT-08.master-component-coverage.proof.json",
+      "predecessor_sha256": "d2cf81b5db0e559ca84420ffd57dcf53e4216ea85d7f072e325246d39603ccd3"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-01/FR-EVD-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "98ba3724f5eb67de52c61a455ec571bc7bba28c75d3b7d7064b8e5ce614e23fb"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-02/FR-EVD-02.master-hosted-repair.proof.json",
+      "predecessor_sha256": "ba85150725f81a829d34250a5c7fc12631e20e72146eeced935f0ece7b1eee93"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-03/FR-EVD-03.master-hosted-repair.proof.json",
+      "predecessor_sha256": "222a7c3c1146837c1e86ffd14d94d6a09335a23eea23b11429b1c9dbae6bc600"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py"
+      ],
+      "criterion": "FR-EVD-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-04/FR-EVD-04.master-hosted-repair.proof.json",
+      "predecessor_sha256": "7de4f7c0a0e9693e7eab6a87a667314518d5488e27bba38bdb68d6f085f2b089"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-05",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-05/FR-EVD-05.master-hosted-repair.proof.json",
+      "predecessor_sha256": "4737ff2702869c65990b0a36adfdf24a5eb40a32ebef0fa7f3f2db807407f4ef"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "FR-EVD-06",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-06/FR-EVD-06.master-component-coverage.proof.json",
+      "predecessor_sha256": "3c7990f8a78a64c13a6ce0866c4415e054331ceca5a547a6d7a54b84d9a3c032"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-07/FR-EVD-07.master-hosted-repair.proof.json",
+      "predecessor_sha256": "3b0f691d4812da2869f95d74d56c5c9930f93a2b5dbdabf77b1024b9eb8373a0"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-08/FR-EVD-08.master-hosted-repair.proof.json",
+      "predecessor_sha256": "34eec47482d3118389013c1314f0238ef75c642737e39648012966ce801788d5"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-EVD-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-evd-09/FR-EVD-09.master-hosted-repair.proof.json",
+      "predecessor_sha256": "fa7fff41b53633169dc1aa2147420658b43a7789f3211c45c73ae650ddf9b5aa"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-UX-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-03/FR-UX-03.master-hosted-repair.proof.json",
+      "predecessor_sha256": "5c6b589e2bd51cb6f23cd2f9b42e498ec2bd43d874531756d5d9cd47f50dcc6b"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-UX-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-09/FR-UX-09.master-hosted-repair.proof.json",
+      "predecessor_sha256": "0947af5564fa712adaf6e448a8b356fb6f88067b5bfe1bc0765a8ce52e179855"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-UX-11",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-11/FR-UX-11.master-ci.proof.json",
+      "predecessor_sha256": "2ba1bc9c3855bb9a7d642a37e73b0b9152f7701d15c4539dd089d98c1d362649"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "FR-UX-12",
+      "predecessor_proof": "docs/checkpoints/current/qualification/fr-ux-12/FR-UX-12.master-hosted-repair.proof.json",
+      "predecessor_sha256": "db3e79f2c07be209e09842d8590d157e080e3d91fe9fdf8dacf930764c2864c9"
+    },
+    {
+      "affected_selected_paths": [
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "NFR-MNT-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-02/NFR-MNT-02.master-hosted-repair.proof.json",
+      "predecessor_sha256": "1e27b0dd9163cbc949fb9886e6f2c0f5d6c66cc748d15fb3ef7204c89ed356a5"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "README.md",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "NFR-MNT-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-03/NFR-MNT-03.master-component-coverage.proof.json",
+      "predecessor_sha256": "6e020ac6551833a3eb78834023a204fec4af7b1cdb795ce15fd1dbef60d3c6c6"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "README.md",
+        "python/cppulse/identities.py",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "NFR-MNT-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-04/NFR-MNT-04.master-component-coverage.proof.json",
+      "predecessor_sha256": "6e577d188a7a6054293d0809595b95547db2f8558b66798daed4e91534d7acd8"
+    },
+    {
+      "affected_selected_paths": [
+        "docs/CODEX_CLOUD_HANDOFF.md",
+        "docs/DECISIONS.md",
+        "docs/plans/production-scope-authority.md"
+      ],
+      "criterion": "NFR-MNT-08",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-08/NFR-MNT-08.master-component-coverage.proof.json",
+      "predecessor_sha256": "ebd0450907aa35e9257fd309a20998e5f1eb0a98bbefc79b6d190096b73bd7f8"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "NFR-MNT-09",
+      "predecessor_proof": "docs/checkpoints/current/qualification/nfr-mnt-09/NFR-MNT-09.master-hosted-repair.proof.json",
+      "predecessor_sha256": "285b76373cbbfe351706bd0547074ad5144b4a1ace9c5dcd8c757651c5e45f0e"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "README.md",
+        "python/cppulse/identities.py",
+        "tests/test_github_master_workflow.py"
+      ],
+      "criterion": "M1-07",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m1-07/M1-07.master-component-coverage.proof.json",
+      "predecessor_sha256": "9ae747fc2161dcc399fcabb8ca9547b451f256c8e7e4062efba84c63c8da88ef"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "M4-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m4-01/M4-01.master-component-coverage.proof.json",
+      "predecessor_sha256": "e5ad0682b8b541646e44909a459172b0ce6f6ed2d4e45cd2862cccf7beb37de1"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "M5-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-01/M5-01.master-hosted-repair.proof.json",
+      "predecessor_sha256": "75c4466b7f2a0d7b267c07eb1a9f5b9993d00f163c0cb8964252ecb2af3fbfa7"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "M5-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-02/M5-02.master-hosted-repair.proof.json",
+      "predecessor_sha256": "9810310e22a3ab03947472412ce1c950d8e754a8f2b401bb3669a807b3044e13"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "M5-03",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-03/M5-03.master-hosted-repair.proof.json",
+      "predecessor_sha256": "6e4c2f24ba0cb1534ff640bb0003e6ac081b3fceb8570b2aeab6fbeaff3364d0"
+    },
+    {
+      "affected_selected_paths": [
+        ".github/workflows/ci.yml",
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py"
+      ],
+      "criterion": "M5-04",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m5-04/M5-04.master-hosted-repair.proof.json",
+      "predecessor_sha256": "84692bcf169774617278046a8829b56ca5e719724ae92b8328bfc1572537f54d"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "M6-01",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-01/M6-01.master-component-coverage.proof.json",
+      "predecessor_sha256": "d7b72c1b8eb97bf569d44a8cb8621941c7a5472a09092db536566245eed99509"
+    },
+    {
+      "affected_selected_paths": [
+        "python/cppulse/analysis_execution.py",
+        "python/cppulse/contracts/presentation.py",
+        "python/cppulse/identities.py",
+        "python/cppulse/pipeline.py",
+        "tests/test_bounded_pipeline.py",
+        "tests/test_consumer.py"
+      ],
+      "criterion": "M6-02",
+      "predecessor_proof": "docs/checkpoints/current/qualification/m6-02/M6-02.master-component-coverage.proof.json",
+      "predecessor_sha256": "5366bb54251b03e0041f281ebee5d914ba7ddd16aae1974b6465eeaf1f2d9b6e"
+    }
+  ]
+}

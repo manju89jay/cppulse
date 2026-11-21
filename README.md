@@ -21,8 +21,10 @@ upstream evidence actually covers—and what they still need to check themselves
 Fresh Linux verification exercised declared `.c++` units, the three repaired
 modernization checks, and the installed [C++/CTest trial](examples/first-trial/README.md).
 The trial passed with three executed tests and rejected missing or stale evidence.
-The [batch record](docs/development/reviewer-fixes.md) describes the finite OSS
-replays and the delivery evidence still required for publication.
+The first trial is on `master` after [PR #12](https://github.com/manju89jay/cppulse/pull/12).
+The [simulated audience review](docs/development/simulated-audience-review.md)
+summarizes the ten earlier evaluations, the repairs they prompted and the
+questions these runs leave open.
 
 ## See a real project
 
@@ -113,12 +115,10 @@ check rather than inherit an old green result.
 
 ### Install from this development checkout
 
-Start at the root of a checkout containing this README and `examples/first-trial`.
-The reviewer-fix integration was tested from a local checkout and its publication
-is pending. `master` is the default branch. Base new pull requests on `master`.
-The pushed baseline `e5b6db6` contains the earlier preview; the first trial is
-available in this integration.
-[Source history and exact verification scope](docs/development/reviewer-fixes.md).
+Start at the root of a `master` checkout containing this README and
+`examples/first-trial`. Use `master` as the base for new pull requests.
+The [current handoff](docs/CODEX_CLOUD_HANDOFF.md) identifies the merged source
+and the tested CI run.
 
 No published PyPI release or production binary bundle is assumed. Use Python
 **3.11–3.12**, a C++17 compiler, CMake and a matching **LLVM 19+ libclang
@@ -153,6 +153,10 @@ report. In the installed Linux run, the policy passed when all three tests ran.
 It returned exit 3 when test execution was omitted or the source changed.
 The execution-backed adapter requires **CTest 3.31.6** for this trial. The
 preparation script creates the request and policy, and CTest supplies the results.
+
+The [fmt consumer example](examples/fmt-consumer-matrix/README.md) extends this
+workflow to two configurations of pinned fmt 10.2.1. It checks package use
+separately from the test policy and demonstrates failed, missing and stale inputs.
 
 ### Inspect the included synthetic fixture
 
@@ -233,6 +237,24 @@ historical. [Request examples, gates and selectors](docs/development/public-cli.
 | `2` | Invalid input or an operational/capability error |
 | `3` | Evidence is insufficient or the selected analysis is partial |
 
+### Develop and verify a change locally
+
+Install the development dependencies for the checks you want to run. From the
+checkout root, inspect tools, inspect the selected check plan, then run the
+relevant component gate.
+
+```bash
+python -m pip install -e '.[dev,git]'
+python tools/dev.py doctor
+python tools/dev.py verify --scope changed --section python --component git-miner --plan
+python tools/dev.py verify --scope changed --section python --component git-miner
+```
+
+The last command runs the Git miner tests against the canonical implementation
+and requires 80% coverage. It writes commands, outcomes and coverage to a fresh
+`review/development/` directory. The [developer workflow](docs/development/workflow.md)
+lists other scopes and their tool and fixture requirements.
+
 The same explicit recipe and gate can fit a local or CI workflow. The
 [CMake/local-hook guide](docs/development/local-check-integrations.md) explains
 opt-in checks; cppulse does not infer that an upstream sample covers every consumer.
@@ -263,9 +285,8 @@ native snapshot. The separate receiving-host OSS replays retain their actual
 selected units and incomplete evidence.
 
 The full production plan remains incomplete. All 187 requirements, tasks and
-obligations across P0–P14 remain in scope. The strict delivery check still
-requires current evidence for the previously accepted criteria. Broader platform,
-scale, editor and human-usefulness checks remain open. [Delivery status](docs/plans/production-delivery-status.md) ·
+obligations across P0–P14 remain in scope. Broader platform, scale, editor
+and human-usefulness verification remains unfinished. [Delivery status](docs/plans/production-delivery-status.md) ·
 [Full completion plan](docs/plans/cppulse-production-completion-plan.md).
 
 Try a configured run on your project, inspect the facts behind its result, and

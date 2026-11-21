@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 from typing import Any
 
@@ -16,6 +17,7 @@ from cppulse.consumer import (
 from cppulse.contracts import validate
 from cppulse.errors import ContractError, InputChanged, IntegrityError
 from cppulse.identities import snapshot_inputs, verify_inputs
+from cppulse.presentation import build_snapshot_view
 from cppulse.run_store import RunSnapshot, RunStore
 from test_consumer_contracts import configuration
 from test_contracts_v2 import manifest_document
@@ -231,6 +233,14 @@ def test_derived_declarations_preserve_parent_bytes_and_source_identity(
     for descriptor in original["artifacts"]:
         assert descriptor in derived.manifest["artifacts"]
     assert snapshot.manifest == original
+    view = build_snapshot_view(derived)
+    (requirement,) = [
+        fact for fact in view["facts"] if fact["kind"] == "consumer_matrix"
+    ]
+    assert requirement["context_ids"] == ["not-yet-executed"]
+    assert not any(row["id"] == "not-yet-executed" for row in view["contexts"])
+    assert requirement["status"] is None
+    assert json.loads(requirement["raw_json"]) == matrix
     assert (
         persist_consumer_documents(
             derived,

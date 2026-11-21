@@ -24,8 +24,11 @@ The original production documents' “Proposed” headers record their publicati
 state before the user's acceptance. Acceptance now authorizes implementation;
 it does not establish delivery. Historical S0–S7, release A/B/C and expansion
 labels express ordering and provenance. They do not cut off the accepted task.
-The user's no-commit/no-push/ref-update/merge/deploy/publication/third-party-message
-restriction remains in force for this checkout.
+The user has authorized the bounded README, partial-diagnosis and
+library-consumer example batch and one tested local checkpoint. The owner
+reviews and publishes that checkpoint to a new topic branch with a pull request
+to `master`. The prior checkout restrictions describe earlier batches.
+[Current handoff](../CODEX_CLOUD_HANDOFF.md)
 
 The [ledger](production-delivery-ledger.json) records individual acceptance.
 An implementation, passing component, generated scaffold or approved plan alone
@@ -36,11 +39,11 @@ prevents a full completion claim. `open` does not mean “no implementation.”
 
 C++ is the first supported analyzed language. Python implementation modules and
 the TypeScript dashboard are implementation technologies, not claims that those
-project languages have qualified analyzers. Current native evidence is the
-source-bound Linux C++17/libclang19 profile recorded in candidate105, including
-149 real native tests; other compiler/platform/language promises require their
-own evidence. This profile does not imply complete coverage of all C++ syntax,
-target environments or the full production specification.
+project languages have qualified analyzers. Candidate105 recorded a historical
+source-bound Linux C++17/libclang19 profile with 149 native tests. The merged PR
+checkpoint passed its own Linux CI. Other compiler, platform and language
+promises require their own evidence.
+[Current handoff](../CODEX_CLOUD_HANDOFF.md)
 
 Additional analyzed languages, managed hosting, enterprise identity and automatic
 semantic refactoring remain expansion work **within the full retained endpoint**.
@@ -259,6 +262,9 @@ decision text and source epoch.
 - `PROD-20261121-36` — close the dashboard lock under the hosted npm version.
 - `PROD-20261121-37` — trust the Actions checkout for the pinned Git provider.
 - `PROD-20261121-38` — include canonical contract tests in component coverage.
+- `PROD-20261121-39` — separate the public handoff from historical trials.
+- `PROD-20261121-40` — explain why bounded source binding is unverified.
+- `PROD-20261121-41` — verify two finite fmt consumers with independent package-use and test checks.
 
 ## Receiving checkout provenance
 
