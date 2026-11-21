@@ -89,6 +89,17 @@ jobs:
         git_provider="$RUNNER_TEMP/cppulse-git"
         bash scripts/install_ci_git.sh "$git_provider"
         printf '%s\n' "$git_provider/installed/bin" >> "$GITHUB_PATH"
+    - name: Trust the Actions checkout for the pinned Git provider
+      shell: bash
+      run: |
+        workspace=$(realpath -e -- "${GITHUB_WORKSPACE:?}")
+        test -e "$workspace/.git"
+        case "$workspace" in
+          */\*) exit 2 ;;
+        esac
+        git_config=$(mktemp -- "${RUNNER_TEMP:?}/cppulse-workspace-git.XXXXXX")
+        git config --file "$git_config" --add safe.directory "$workspace"
+        printf 'GIT_CONFIG_SYSTEM=%s\n' "$git_config" >> "${GITHUB_ENV:?}"
     - name: Install declared development and optional component dependencies
       run: >-
         python -m pip install -e '.[dev,ml,pdf,web]'
@@ -186,7 +197,7 @@ jobs:
         persist-credentials: false
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: '20.20.2'
         cache: npm
         cache-dependency-path: dashboard/package-lock.json
     - uses: actions/setup-python@v5
@@ -195,7 +206,9 @@ jobs:
     - name: Install local verification metadata dependencies
       run: python -m pip install jsonschema==4.21.1 packaging==26.3
     - name: Install locked dashboard dependencies
-      run: npm ci --prefix dashboard
+      run: |
+        test "$(npm --version)" = '10.8.2'
+        npm ci --prefix dashboard
     - name: Shared dashboard tests and production build
       run: python tools/dev.py verify --scope changed --section dashboard --output-dir review/ci/dashboard
   integration:

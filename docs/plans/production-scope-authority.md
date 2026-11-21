@@ -256,6 +256,8 @@ decision text and source epoch.
 - `PROD-20261121-33` — order tied roadmap rows by file and category after impact.
 - `PROD-20261121-34` — bind master CI to current producers and explicit test scopes.
 - `PROD-20261121-35` — refuse late bounded metadata changes during publication.
+- `PROD-20261121-36` — close the dashboard lock under the hosted npm version.
+- `PROD-20261121-37` — trust the Actions checkout for the pinned Git provider.
 
 ## Receiving checkout provenance
 

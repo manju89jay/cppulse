@@ -832,3 +832,21 @@ Keep sealed private compression, packaged JSON-schema checks and original native
 - **Tradeoffs**. Publication reads the retained metadata a second time. A later diagnostic attempt can fail independently if its inputs change again. A successful run keeps its existing results and pointer behavior.
 - **Verification**. Exercise the actual native pipeline with unchanged metadata, then with a late result mutation. Confirm the earlier completed pointer and original receipt remain intact, and preserve the conflicting bytes only as diagnostics. Keep the external-header test on its existing final-window failure contract.
 - **Interview angle**. Explain how a final pointer update can race with an earlier integrity check, even when the archived receipt itself remains byte-identical.
+
+## PROD-20261121-36 — Close the dashboard lock under the hosted npm version
+
+- **Context**. GitHub Actions run 44905173898 stopped at the dashboard's locked install under Node 20.20.2 and npm 10.8.2. The lock recorded esbuild 0.21.5 for the production Vite build. It lacked the compatible optional esbuild peer and platform entries for the Vite 8 used by Vitest.
+- **Decision**. Regenerate the lock with npm 10.8.2 and preserve all previously locked entries. Pin Node 20.20.2 in this hosted lane and check its bundled npm version before the locked install. Keep the shared dashboard tests and production build after `npm ci`.
+- **Why**. A fresh checkout should resolve exactly the same test and build dependencies selected during qualification. Retaining both esbuild versions preserves the distinct dependency requirements of the existing Vite versions.
+- **Tradeoffs**. The lock adds 27 development-only entries for esbuild 0.28.2 and its platform packages. The pin makes tool upgrades explicit for this job.
+- **Verification**. The original lock failed with npm EUSAGE on the same toolchain. A fresh install with the regenerated lock passed with all 343 previous entries unchanged. All 64 dashboard tests and the production build passed. The shipped HTML, CSS, JavaScript and notices were byte-identical, including the verified 44 production dependencies and 57 license bodies. The rebuilt and installed wheel changed only the asset manifest and its RECORD entry. The hosted rerun remains pending.
+- **Interview angle**. Explain how an optional test-tool peer can make a locked install fail while the versions used by the production build stay unchanged.
+
+## PROD-20261121-37 — Trust the Actions checkout for the pinned Git provider
+
+- **Context**. GitHub Actions run 44905173898 installed Git 2.52.0 in the Python job's container. Its first developer-facade call stopped before native configuration because Git rejected the ownership of the mounted checkout.
+- **Decision**. After adding the pinned Git binary to the job path, register the canonical `GITHUB_WORKSPACE` checkout in a job-owned file under `RUNNER_TEMP`. Require a checkout marker and reject a wildcard directory entry. Select the file in later steps through `GIT_CONFIG_SYSTEM` so the entry survives a fresh HOME.
+- **Why**. The workflow controls which Actions checkout it builds. The exact allowlist entry lets the selected Git inspect that checkout and preserves ownership checks for other repositories.
+- **Tradeoffs**. The trust entry applies for the lifetime of this CI job. The step depends on Actions declaring an existing checkout path.
+- **Verification**. Execute the actual registration step with Git 2.52.0 under its ownership-test mode. Require Git to reject all initially untrusted repositories, then accept the declared checkout from a fresh HOME while continuing to reject both a sibling and a nested repository. The hosted rerun remains pending.
+- **Interview angle**. Explain why a checkout can gain trust for an ephemeral CI job without turning off Git's ownership check for other repositories.

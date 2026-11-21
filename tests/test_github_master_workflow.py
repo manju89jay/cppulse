@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import shlex
 import subprocess
@@ -104,6 +105,99 @@ def test_format_job_uses_fetched_pull_request_revisions(workflow: dict) -> None:
         "CPPULSE_FORMAT_HEAD": "${{ github.event.pull_request.head.sha }}",
         "CPPULSE_FORMAT_ALL_TRACKED": "${{ github.event_name != 'pull_request' }}",
     }
+
+
+def test_dashboard_checks_use_the_locked_hosted_toolchain(workflow: dict) -> None:
+    steps = workflow["jobs"]["build-dashboard"]["steps"]
+    (setup,) = [
+        step for step in steps if step.get("uses", "").startswith("actions/setup-node@")
+    ]
+    (install,) = [
+        step
+        for step in steps
+        if step.get("name") == "Install locked dashboard dependencies"
+    ]
+    (verify,) = [step for step in steps if "--section dashboard" in step.get("run", "")]
+    assert setup["with"]["node-version"] == "20.20.2"
+    assert setup["with"]["cache-dependency-path"] == "dashboard/package-lock.json"
+    assert steps.index(setup) < steps.index(install) < steps.index(verify)
+    assert not install.get("if") and not install.get("continue-on-error")
+    assert [shlex.split(line) for line in install["run"].splitlines()] == [
+        ["test", "$(npm --version)", "=", "10.8.2"],
+        ["npm", "ci", "--prefix", "dashboard"],
+    ]
+
+
+def test_python_job_trusts_only_the_declared_checkout(
+    workflow: dict, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    steps = workflow["jobs"]["test-python"]["steps"]
+    names = [step.get("name") for step in steps]
+    registration_index = names.index(
+        "Trust the Actions checkout for the pinned Git provider"
+    )
+    registration = steps[registration_index]
+    assert (
+        names.index("Build the pinned Git provider for actual local branch tests")
+        < registration_index
+    )
+    assert registration_index < names.index(
+        "Build producer prerequisites for actual contract integration"
+    )
+    assert registration["shell"] == "bash"
+    assert not registration.get("if") and not registration.get("continue-on-error")
+
+    checkout = tmp_path / "actions checkout"
+    untrusted = [tmp_path / "other repo", checkout / "nested repo"]
+    runner_temp = tmp_path / "runner-temp"
+    step_environment = runner_temp / "github-env"
+    initial_home = tmp_path / "initial-home"
+    fresh_home = tmp_path / "fresh-home"
+    for directory in (runner_temp, initial_home, fresh_home):
+        directory.mkdir()
+    for name in (
+        "GIT_CONFIG_GLOBAL",
+        "GIT_CONFIG_NOSYSTEM",
+        "GIT_CONFIG_COUNT",
+        "XDG_CONFIG_HOME",
+    ):
+        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setenv("HOME", str(initial_home))
+    monkeypatch.setenv("GIT_CONFIG_SYSTEM", os.devnull)
+    for path in (checkout, *untrusted):
+        subprocess.run(["git", "init", "-q", str(path)], check=True)
+
+    def inspect(path: Path) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            ["git", "-C", str(path), "rev-parse", "--show-toplevel"],
+            text=True,
+            capture_output=True,
+        )
+
+    monkeypatch.setenv("GIT_TEST_ASSUME_DIFFERENT_OWNER", "1")
+    monkeypatch.setenv("GITHUB_WORKSPACE", str(checkout))
+    monkeypatch.setenv("RUNNER_TEMP", str(runner_temp))
+    monkeypatch.setenv("GITHUB_ENV", str(step_environment))
+    for path in (checkout, *untrusted):
+        denied = inspect(path)
+        assert denied.returncode == 128 and "dubious ownership" in denied.stderr
+
+    subprocess.run(["bash", "-e", "-c", registration["run"]], check=True)
+    (environment_line,) = step_environment.read_text().splitlines()
+    name, _, value = environment_line.partition("=")
+    assert name == "GIT_CONFIG_SYSTEM"
+    assert Path(value).parent == runner_temp
+    monkeypatch.setenv(name, value)
+    monkeypatch.setenv("HOME", str(fresh_home))
+    trusted = inspect(checkout)
+    assert trusted.returncode == 0 and trusted.stdout.strip() == str(checkout.resolve())
+    for path in untrusted:
+        denied = inspect(path)
+        assert denied.returncode == 128 and "dubious ownership" in denied.stderr
+    configured = subprocess.check_output(
+        ["git", "config", "--system", "--list"], text=True
+    )
+    assert configured.splitlines() == [f"safe.directory={checkout.resolve()}"]
 
 
 def test_shared_formatter_selects_committed_and_local_python_changes(
